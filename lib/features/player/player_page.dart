@@ -3,12 +3,12 @@ import 'package:abs_flutter/features/player/modules/play_button.dart';
 import 'package:abs_flutter/features/player/modules/seeking_buttons.dart';
 import 'package:abs_flutter/features/player/modules/sleep_timer.dart';
 import 'package:abs_flutter/features/player/modules/speed_control.dart';
+import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/provider/chapter_provider.dart';
 import 'package:abs_flutter/provider/player_provider.dart';
 import 'package:abs_flutter/provider/player_status_provider.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -35,7 +35,7 @@ class PlayerPage extends ConsumerWidget {
 
     return PlatformScaffold(
       appBar: PlatformAppBar(
-        title: const Text('Player'),
+        title: Text(S.of(context).player),
       ),
       body: LayoutBuilder(
         builder: (context, constraints) {

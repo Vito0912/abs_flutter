@@ -1,3 +1,4 @@
+import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/provider/player_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -26,7 +27,7 @@ class SpeedControl extends StatelessWidget {
           .map((entry) => _buildSpeedOption(entry.key, entry.value, context))
           .toList(),
       icon: Tooltip(
-        message: 'Speed',
+        message: S.of(context).playbackSpeed,
         child: StreamBuilder<double>(
           stream: speedStream,
           builder: (BuildContext context, AsyncSnapshot<double> snapshot) {

@@ -1,3 +1,4 @@
+import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/globals.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
 import 'package:flutter/material.dart';
@@ -15,42 +16,42 @@ class SettingPage extends ConsumerWidget {
 
     return PlatformScaffold(
         appBar: PlatformAppBar(
-          title: const Text('Settings'),
+          title: Text(S.of(context).settings),
         ),
         body: SingleChildScrollView(
           child: Column(
             children: <Widget>[
               SettingsGroup(
-                title: 'General',
+                title: S.of(context).general,
                 children: <Widget>[
                   SwitchSettingsTile(
                     settingKey: 'isDarkMode',
-                    title: 'Dark Mode',
-                    enabledLabel: 'Enabled',
-                    disabledLabel: 'Disabled',
+                    title: S.of(context).darkMode,
+                    enabledLabel: S.of(context).enabled,
+                    disabledLabel: S.of(context).disabled,
                     defaultValue: true,
                     leading: Icon(PlatformIcons(context).brightness),
                   ),
                   Tooltip(
-                    message: 'If this is enabled, the app bar will have a icon button to switch between accounts. This makes the appbar smaller.',
+                    message: S.of(context).showAccountSwitcherDescription,
                     margin: const EdgeInsets.all(8),
                     child: SwitchSettingsTile(
                       settingKey: 'showAccountSwitcher',
-                      title: 'Show Account Switcher',
-                      subtitle: 'If the quick account switcher should be shown',
-                      enabledLabel: 'Enabled',
-                      disabledLabel: 'Disabled',
+                      title: S.of(context).showAccountSwitcher,
+                      subtitle: S.of(context).ifTheQuickAccountSwitcherShouldBeShown,
+                      enabledLabel: S.of(context).enabled,
+                      disabledLabel: S.of(context).disabled,
                       defaultValue: true,
                       leading: Icon(PlatformIcons(context).refresh),
                     ),
                   ),
                   Tooltip(
-                    message: 'Sets the time in seconds after which an item is marked before it is finished. If you set this to 0, the item will be marked as finished when the player reaches the end. If you set this to a value greater than 0, the item will be marked as finished when the player reaches the end minus the value you set here.',
+                    message: S.of(context).markItemsFinishedAfterDescription,
                     margin: const EdgeInsets.all(8),
                     verticalOffset: 48,
                     child: SliderSettingsTile(
                       settingKey: 'markItemsFinishedAfter',
-                      title: 'Mark Items Finished',
+                      title: S.of(context).markItemsFinished,
                       leading: Icon(PlatformIcons(context).time),
                       min: 0,
                       max: 180,
@@ -59,15 +60,15 @@ class SettingPage extends ConsumerWidget {
                       eagerUpdate: true,
                     ),
                   ),
-                  const Tooltip(
-                    message: 'If items of series will be collapsed in the library view to just show a single item',
+                  Tooltip(
+                    message: S.of(context).collapseSeriesDescription,
                     margin: EdgeInsets.all(8),
                     verticalOffset: 48,
                     child: SwitchSettingsTile(
                       settingKey: 'collapseSeries',
-                      title: 'Collapse Series',
-                      enabledLabel: 'Enabled',
-                      disabledLabel: 'Disabled',
+                      title: S.of(context).collapseSeries,
+                      enabledLabel: S.of(context).enabled,
+                      disabledLabel: S.of(context).disabled,
                       defaultValue: false,
                       leading: Icon(Icons.folder_copy_outlined),
                     ),
@@ -75,39 +76,39 @@ class SettingPage extends ConsumerWidget {
                 ],
               ),
               SettingsGroup(
-                  title: 'Player Settings',
+                  title: S.of(context).playerSettings,
                   children: [
                     Tooltip(
-                      message: 'If this is enabled the player will not play until the newest position is synced. This makes sure you will always listen the newest position. If this is disabled there is the possibility that it will switch shortly after the media was played. Turn this on to save some data',
+                      message: S.of(context).stopPlayerWhileSyncingDescription,
                       margin: const EdgeInsets.all(8),
                       child: SwitchSettingsTile(
                         settingKey: 'stopPlayerWhileSyncing',
-                        title: 'Stop Player until Sync',
-                        enabledLabel: 'Enabled',
-                        disabledLabel: 'Disabled',
+                        title: S.of(context).stopPlayerUntilSync,
+                        enabledLabel: S.of(context).enabled,
+                        disabledLabel: S.of(context).disabled,
                         defaultValue: true,
                         leading: Icon(PlatformIcons(context).clockSolid),
                       ),
                     ),
                     Tooltip(
-                      message: 'If this is enabled the progress in the player and notification will be on a per chapter basis. If this is disabled the progress will be on a per item basis',
+                      message: S.of(context).progressAsChaptersDescription,
                       margin: const EdgeInsets.all(8),
                       child: SwitchSettingsTile(
                         settingKey: 'progressAsChapters',
-                        title: 'Show Progress per Chapters',
-                        enabledLabel: 'Enabled',
-                        disabledLabel: 'Disabled',
+                        title: S.of(context).showProgressPerChapters,
+                        enabledLabel: S.of(context).enabled,
+                        disabledLabel: S.of(context).disabled,
                         defaultValue: false,
                         leading: Icon(PlatformIcons(context).time),
                       ),
                     ),
                     Tooltip(
-                      message: 'The amount of seconds to skip forward when the fast forward button is pressed',
+                      message: S.of(context).fastForwardSecondsDescription,
                       margin: const EdgeInsets.all(8),
                       verticalOffset: 48,
                       child: SliderSettingsTile(
                         settingKey: 'fastForwardSeconds',
-                        title: 'Fast Forward Seconds',
+                        title: S.of(context).fastForwardSeconds,
                         leading: Icon(PlatformIcons(context).back),
                         min: 5,
                         max: 60,
@@ -117,12 +118,12 @@ class SettingPage extends ConsumerWidget {
                       ),
                     ),
                     Tooltip(
-                      message: 'The amount of seconds to skip backward when the rewind button is pressed',
+                      message: S.of(context).rewindSecondsDescription,
                       margin: const EdgeInsets.all(8),
                       verticalOffset: 48,
                       child: SliderSettingsTile(
                         settingKey: 'rewindSeconds',
-                        title: 'Rewind Seconds',
+                        title: S.of(context).rewindSeconds,
                         leading: Icon(PlatformIcons(context).forward),
                         min: 5,
                         max: 60,
@@ -133,9 +134,9 @@ class SettingPage extends ConsumerWidget {
                     ),
                   ]
               ),
-              SettingsGroup(title: 'User', children: [
+              SettingsGroup(title: S.of(context).user, children: [
                 SimpleSettingsTile(
-                    title: 'Add new user',
+                    title: S.of(context).addANewUser,
                     leading: Icon(PlatformIcons(context).personAdd),
                   onTap: () {
                     context.push('/select-server');
@@ -143,16 +144,16 @@ class SettingPage extends ConsumerWidget {
                 ),
                 ..._getOtherUsers(ref, context),
                 SimpleSettingsTile(
-                    title: 'Sign Out',
+                    title: S.of(context).signOut,
                     subtitle: user?.username ?? '',
                     onTap: () {
                       ref.watch(currentUserProvider.notifier).removeUser(context);
                     },
                     leading: Icon(PlatformIcons(context).exitToApp)),
               ]),
-              ExpandableSettingsTile(title: 'Miscellaneous', children: [
+              ExpandableSettingsTile(title: S.of(context).miscellaneous, children: [
                 SimpleSettingsTile(
-                    title: 'Attribution',
+                    title: S.of(context).attribution,
                     leading: Icon(PlatformIcons(context).info),
                     onTap: () {
                       showLicensePage(
