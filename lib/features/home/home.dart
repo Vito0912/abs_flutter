@@ -5,6 +5,7 @@ import 'package:abs_flutter/features/home/user_badge.dart';
 import 'package:abs_flutter/features/home/user_switcher.dart';
 import 'package:abs_flutter/features/library/library_items.dart';
 import 'package:abs_flutter/features/library/library_items_wrapper.dart';
+import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/provider/library_items_provider.dart';
 import 'package:abs_flutter/provider/library_provider.dart';
 import 'package:abs_flutter/provider/sleep_timer_provider.dart';
@@ -46,13 +47,13 @@ class Home extends ConsumerWidget {
           PlatformPopupMenu(
             options: [
               PopupMenuOption(
-                label: 'Settings',
+                label: S.of(context).settings,
                 onTap: (PopupMenuOption option) {
                   context.push('/settings');
                 },
               ),
               PopupMenuOption(
-                  label: 'Add User',
+                  label: S.of(context).addUser,
                   onTap: (PopupMenuOption option) {
                     context.push('/select-server');
                   })

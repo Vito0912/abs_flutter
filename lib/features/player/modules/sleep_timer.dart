@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/models/chapter.dart';
 import 'package:abs_flutter/provider/player_provider.dart';
 import 'package:abs_flutter/provider/sleep_timer_provider.dart';
@@ -32,12 +33,12 @@ class SleepTimer extends ConsumerWidget {
           _buildSpeedOption(entry.key, entry.value, context, ref))
           .toList(),
       icon: Tooltip(
-        message: 'Sleep Timer',
+        message: S.of(context).sleepTimer,
         child: Consumer(
           builder: (context, ref, child) {
             final timer = ref.watch(timerProvider);
             return (timer != null && timer > 0.0)
-                ? PlatformText('${(timer / 60).toStringAsFixed(0)} min')
+                ? PlatformText(S.of(context).timerText((timer / 60).toStringAsFixed(0)))
                 : const Icon(Icons.timer_outlined);
           },
         ),
