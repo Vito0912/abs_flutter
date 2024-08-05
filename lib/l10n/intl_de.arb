@@ -1,1 +1,6 @@
-{}
+{
+  "port": "Port",
+  "@port": {},
+  "noUserData": "Login fehlgeschlagen: Keine Daten erhalten",
+  "@noUserData": {}
+}
