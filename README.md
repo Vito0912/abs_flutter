@@ -1,4 +1,7 @@
 # Audiobookshelf Flutter App
+<a href="https://hosted.weblate.org/engage/audiobookshelf-flutter-client/">
+<img src="https://hosted.weblate.org/widget/audiobookshelf-flutter-client/app/svg-badge.svg" alt="Translation status" />
+</a>
 
 For Android, iOS*<sup>1</sup>, Windows, Linux, and Web*<sup>2</sup>
 
@@ -8,6 +11,16 @@ While the current version may not include all the features of the first-party ap
 
 *<sup>1</sup> iOS functionality requires additional work. Since I do not own a Mac, I cannot fully test it. However, I have only used libraries compatible with iOS.\
 *<sup>2</sup> The Audiobookshelf server must be accessible via SSL, so you need a domain with a valid SSL certificate.
+
+## Translation
+For more details and to contribute, please refer to [TRANSLATION.md](TRANSLATION.md).  
+All translations are managed through [Weblate Hosted](https://hosted.weblate.org/projects/audiobookshelf-flutter-client/app/).
+
+A big thank you to [Weblate](https://weblate.org) for providing their services!
+
+<a href="https://hosted.weblate.org/engage/audiobookshelf-flutter-client/">
+<img src="https://hosted.weblate.org/widget/audiobookshelf-flutter-client/app/multi-blue.svg" alt="Translation status" />
+</a>
 
 ## Platform Matrix
 
