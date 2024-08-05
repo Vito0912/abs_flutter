@@ -1,57 +1,110 @@
 {
   "port": "Port",
+  "@port": {},
   "domainOrIp": "Domain or IP",
+  "@domainOrIp": {},
   "serverSelection": "Server Selection",
+  "@serverSelection": {},
   "noUserData": "Login failed: No user data received",
+  "@noUserData": {},
   "usernameOrPasswordNotEmpty": "Username and password cannot be empty",
+  "@usernameOrPasswordNotEmpty": {},
   "mustEnterValidAddress": "You must enter a valid server address",
+  "@mustEnterValidAddress": {},
   "password": "Password",
+  "@password": {},
   "username": "Username",
+  "@username": {},
   "serverAdressContinue": "Enter your server address to continue",
+  "@serverAdressContinue": {},
   "multipleServerAdressess": "If you want to use multiple server addresses, you can add them later",
+  "@multipleServerAdressess": {},
   "enterValidUsernameOrPassword": "Please enter a valid IP/Domain and port before entering your username and password.",
+  "@enterValidUsernameOrPassword": {},
   "settings": "Settings",
+  "@settings": {},
   "addUser": "Add User",
+  "@addUser": {},
   "cancel": "Cancel",
-  "loading": "Loading...",
+  "@cancel": {},
+  "loading": "Loading…",
+  "@loading": {},
   "error": "Error",
+  "@error": {},
   "noConnection": "No Connection",
+  "@noConnection": {},
   "authors": "Authors",
+  "@authors": {},
   "genres": "Genres",
+  "@genres": {},
   "tags": "Tags",
+  "@tags": {},
   "series": "Series",
+  "@series": {},
   "readMore": "Read more",
+  "@readMore": {},
   "readLess": "Read less",
+  "@readLess": {},
   "bookCover": "Book Cover",
+  "@bookCover": {},
   "sleepTimer": "Sleep Timer",
+  "@sleepTimer": {},
   "playbackSpeed": "Speed",
+  "@playbackSpeed": {},
   "player": "Player",
+  "@player": {},
   "general": "General",
+  "@general": {},
   "darkMode": "Dark Mode",
+  "@darkMode": {},
   "enabled": "Enabled",
+  "@enabled": {},
   "disabled": "Disabled",
+  "@disabled": {},
   "showAccountSwitcher": "Show Account Switcher",
+  "@showAccountSwitcher": {},
   "ifTheQuickAccountSwitcherShouldBeShown": "If the quick account switcher should be shown",
+  "@ifTheQuickAccountSwitcherShouldBeShown": {},
   "markItemsFinished": "Mark Items Finished",
+  "@markItemsFinished": {},
   "collapseSeries": "Collapse Series",
+  "@collapseSeries": {},
   "stopPlayerUntilSync": "Stop Player Until Sync",
+  "@stopPlayerUntilSync": {},
   "showProgressPerChapters": "Show Progress per Chapter",
+  "@showProgressPerChapters": {},
   "fastForwardSeconds": "Fast Forward Seconds",
+  "@fastForwardSeconds": {},
   "rewindSeconds": "Rewind Seconds",
+  "@rewindSeconds": {},
   "addANewUser": "Add a New User",
+  "@addANewUser": {},
   "signOut": "Sign Out",
+  "@signOut": {},
   "attribution": "Attribution",
+  "@attribution": {},
   "miscellaneous": "Miscellaneous",
+  "@miscellaneous": {},
   "showAccountSwitcherDescription": "Enable this option to add an icon button to the app bar for quick account switching. This will reduce the size of the app bar.",
+  "@showAccountSwitcherDescription": {},
   "markItemsFinishedAfterDescription": "Specify the time in seconds before the end of an item at which it should be marked as finished. Setting this to 0 marks the item as finished only when the player reaches the very end. If a positive value is set, the item is marked as finished when the player reaches that time before the end.",
+  "@markItemsFinishedAfterDescription": {},
   "collapseSeriesDescription": "When enabled, items in a series will be grouped together in the library view, displaying only a single item to represent the entire series.",
+  "@collapseSeriesDescription": {},
   "playerSettings": "Player Settings",
+  "@playerSettings": {},
   "stopPlayerWhileSyncingDescription": "Enable this option to prevent the player from starting until the most recent playback position has been synced. This ensures that playback resumes from the correct position. If disabled, the playback position may change shortly after starting, potentially leading to data loss. Turning this on helps conserve data usage.",
+  "@stopPlayerWhileSyncingDescription": {},
   "progressAsChaptersDescription": "Enable this option to display progress in the player and notifications on a per-chapter basis. If disabled, progress will be shown based on the entire item.",
+  "@progressAsChaptersDescription": {},
   "fastForwardSecondsDescription": "Set the number of seconds to skip forward when the fast forward button is pressed.",
+  "@fastForwardSecondsDescription": {},
   "rewindSecondsDescription": "Set the number of seconds to skip backward when the rewind button is pressed.",
+  "@rewindSecondsDescription": {},
   "user": "User",
+  "@user": {},
   "description": "Description",
+  "@description": {},
   "timerText": "{time} min",
   "@timerText": {
     "placeholders": {
@@ -61,48 +114,58 @@
     }
   },
   "itemLength": "Length: {hours}:{minutes}",
-    "@itemLength": {
-        "placeholders": {
-        "hours": {
-            "type": "String"
-        },
-        "minutes": {
-            "type": "String"
-        }
-        }
-    },
+  "@itemLength": {
+    "placeholders": {
+      "hours": {
+        "type": "String"
+      },
+      "minutes": {
+        "type": "String"
+      }
+    }
+  },
   "itemProgress": "Progress: {progress}%",
-    "@itemProgress": {
-        "placeholders": {
-        "progress": {
-            "type": "String"
-        }
-        }
-    },
+  "@itemProgress": {
+    "placeholders": {
+      "progress": {
+        "type": "String"
+      }
+    }
+  },
   "itemPublishedYear": "Published Year: {year}",
-    "@itemPublishedYear": {
-        "placeholders": {
-        "year": {
-            "type": "String"
-        }
-        }
-    },
+  "@itemPublishedYear": {
+    "placeholders": {
+      "year": {
+        "type": "String"
+      }
+    }
+  },
   "itemNumChapters": "Number of Chapters: {numChapters}",
-    "@itemNumChapters": {
-        "placeholders": {
-        "numChapters": {
-            "type": "String"
-        }
-        }
-    },
+  "@itemNumChapters": {
+    "placeholders": {
+      "numChapters": {
+        "type": "String"
+      }
+    }
+  },
   "title": "Title",
+  "@title": {},
   "author": "Author",
+  "@author": {},
   "updatedAt": "Updated At",
+  "@updatedAt": {},
   "year": "Year",
+  "@year": {},
   "publisher": "Publisher",
+  "@publisher": {},
   "size": "Size",
+  "@size": {},
   "duration": "Duration",
+  "@duration": {},
   "language": "Language",
+  "@language": {},
   "descending": "Descending",
-  "ascending": "Ascending"
+  "@descending": {},
+  "ascending": "Ascending",
+  "@ascending": {}
 }
