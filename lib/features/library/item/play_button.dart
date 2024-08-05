@@ -17,7 +17,6 @@ class PlayButton extends ConsumerWidget {
 
     return PlatformElevatedButton(
       onPressed: () {
-        print('playerStatus: ${playerStatus.playStatus}');
         if(playerStatus.playStatus == PlayerStatus.playing) {
           session.closeOpenSession();
         } else {

@@ -17,11 +17,11 @@ class LibraryNotch extends ConsumerWidget {
     return Container(
       decoration: BoxDecoration(
         color: Theme.of(context).scaffoldBackgroundColor,
-        boxShadow: [
+        boxShadow: const [
           BoxShadow(
             spreadRadius: 1,
             blurRadius: 1,
-            offset: const Offset(0, 1),
+            offset: Offset(0, 1),
           ),
         ],
         borderRadius: const BorderRadius.only(

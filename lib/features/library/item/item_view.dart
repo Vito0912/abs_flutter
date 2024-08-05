@@ -1,5 +1,6 @@
 import 'package:abs_api/abs_api.dart';
 import 'package:abs_flutter/features/library/item/play_button.dart';
+import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/globals.dart';
 import 'package:abs_flutter/provider/library_item_provider.dart';
 import 'package:abs_flutter/provider/progress_provider.dart';
@@ -68,10 +69,13 @@ class ItemView extends ConsumerWidget {
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(16.0),
                           child: CachedNetworkImage(
-                            imageUrl: '${currentUser!.server!.url}/api/items/$itemId/cover?token=${currentUser.token}',
+                            imageUrl:
+                                '${currentUser!.server!.url}/api/items/$itemId/cover?token=${currentUser.token}',
                             fit: BoxFit.cover,
-                            placeholder: (context, url) => PlatformCircularProgressIndicator(),
-                            errorWidget: (context, url, error) => const Icon(Icons.error),
+                            placeholder: (context, url) =>
+                                PlatformCircularProgressIndicator(),
+                            errorWidget: (context, url, error) =>
+                                const Icon(Icons.error),
                           ),
                         ),
                       ),
@@ -97,39 +101,70 @@ class ItemView extends ConsumerWidget {
                       PlayButton(itemId: itemId),
                       const SizedBox(height: 16.0),
                       if (castItem.media!.metadata!.description != null) ...[
-                        ExpandableDescription(description: castItem.media!.metadata!.description!),
+                        ExpandableDescription(
+                            description:
+                                castItem.media!.metadata!.description!),
                       ],
                       const SizedBox(height: 8.0),
                       if (castItem.media?.audioFiles != null) ...[
                         PlatformText(
-                          'Length: ${Duration(seconds: castItem.media!.audioFiles!.fold<int>(0, (previousValue, element) => previousValue + element.duration!.toInt())).inHours} hours ${Duration(seconds: castItem.media!.audioFiles!.fold<int>(0, (previousValue, element) => previousValue + element.duration!.toInt())).inMinutes.remainder(60)} minutes',
+                          S.of(context).itemLength(
+                              Duration(
+                                      seconds: castItem.media!.audioFiles!
+                                          .fold<int>(
+                                              0,
+                                              (previousValue, element) =>
+                                                  previousValue +
+                                                  element.duration!.toInt()))
+                                  .inHours
+                                  .toString(),
+                              Duration(
+                                      seconds: castItem.media!.audioFiles!
+                                          .fold<int>(
+                                              0,
+                                              (previousValue, element) =>
+                                                  previousValue +
+                                                  element.duration!.toInt()))
+                                  .inMinutes
+                                  .remainder(60)
+                                  .toString()),
                           style: TextStyle(
                             fontSize: 16.0,
                           ),
                         ),
                       ],
                       ...[
-                      const SizedBox(height: 8.0),
-                      PlatformText(
-                        'Progress: ${(mediaProgress.where((element) => element.libraryItemId == itemId).firstOrNull?.progress ?? 0) * 100}%',
-                        style: TextStyle(
-                          fontSize: 16.0,
-                        ),
-                      ),
-                    ],
-                      const SizedBox(height: 8.0),
-                      if (castItem.media!.metadata!.publishedYear != null) ...[
+                        const SizedBox(height: 8.0),
                         PlatformText(
-                          'Published Year: ${castItem.media!.metadata!.publishedYear}',
+                          S.of(context).itemProgress(((mediaProgress
+                                          .where((element) =>
+                                              element.libraryItemId == itemId)
+                                          .firstOrNull
+                                          ?.progress ??
+                                      0) *
+                                  100)
+                              .toString()),
                           style: TextStyle(
                             fontSize: 16.0,
                           ),
                         ),
                       ],
-                      if(castItem.media!.chapters != null) ...[
+                      const SizedBox(height: 8.0),
+                      if (castItem.media!.metadata!.publishedYear != null) ...[
+                        PlatformText(
+                          S.of(context).itemPublishedYear(castItem
+                              .media!.metadata!.publishedYear
+                              .toString()),
+                          style: TextStyle(
+                            fontSize: 16.0,
+                          ),
+                        ),
+                      ],
+                      if (castItem.media!.chapters != null) ...[
                         const SizedBox(height: 8.0),
                         PlatformText(
-                          'Chapters: ${castItem.media!.chapters!.length}',
+                          S.of(context).itemNumChapters(
+                              castItem.media!.chapters!.length.toString()),
                           style: TextStyle(
                             fontSize: 16.0,
                           ),
@@ -137,19 +172,29 @@ class ItemView extends ConsumerWidget {
                       ],
                       const SizedBox(height: 16.0),
                       if (castItem.media!.metadata!.authors != null) ...[
-                        _buildChipSection('Authors', _authors(castItem.media!.metadata!.authors!.toList()) ?? []),
+                        _buildChipSection(
+                            S.of(context).authors,
+                            _authors(castItem.media!.metadata!.authors!
+                                    .toList()) ??
+                                []),
                       ],
                       const SizedBox(height: 8.0),
                       if (castItem.media!.metadata!.genres != null) ...[
-                        _buildChipSection('Genres', castItem.media!.metadata!.genres!.toList()),
+                        _buildChipSection(S.of(context).genres,
+                            castItem.media!.metadata!.genres!.toList()),
                       ],
                       const SizedBox(height: 8.0),
                       if (castItem.media!.tags != null) ...[
-                        _buildChipSection('Tags', castItem.media!.tags!.toList()),
+                        _buildChipSection(
+                            S.of(context).tags, castItem.media!.tags!.toList()),
                       ],
                       const SizedBox(height: 8.0),
                       if (castItem.media!.metadata!.series != null) ...[
-                        _buildChipSection('Series', castItem.media!.metadata!.series!.map((s) => '${s.name} #${s.sequence}').toList()),
+                        _buildChipSection(
+                            S.of(context).series,
+                            castItem.media!.metadata!.series!
+                                .map((s) => '${s.name} #${s.sequence}')
+                                .toList()),
                       ],
                     ],
                   ),
@@ -190,11 +235,14 @@ class ItemView extends ConsumerWidget {
         Wrap(
           spacing: 8.0,
           runSpacing: 4.0,
-          children: items.map((item) => Chip(
-            label: Text(item),
-            padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
-            labelStyle: TextStyle(fontSize: 12.0),
-          )).toList(),
+          children: items
+              .map((item) => Chip(
+                    label: Text(item),
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
+                    labelStyle: TextStyle(fontSize: 12.0),
+                  ))
+              .toList(),
         ),
       ],
     );
@@ -204,7 +252,8 @@ class ItemView extends ConsumerWidget {
 class ExpandableDescription extends StatefulWidget {
   final String description;
 
-  const ExpandableDescription({Key? key, required this.description}) : super(key: key);
+  const ExpandableDescription({Key? key, required this.description})
+      : super(key: key);
 
   @override
   _ExpandableDescriptionState createState() => _ExpandableDescriptionState();
@@ -220,7 +269,7 @@ class _ExpandableDescriptionState extends State<ExpandableDescription> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         PlatformText(
-          'Description:',
+          S.of(context).description,
           style: TextStyle(
             fontSize: 16.0,
             fontWeight: FontWeight.bold,
@@ -234,15 +283,15 @@ class _ExpandableDescriptionState extends State<ExpandableDescription> {
             maxLines: maxLines,
           ),
         ),
-        (!expanded) ?
-        PlatformTextButton(
-            onPressed: () => setState(() => expanded = true),
-            child: PlatformText('Read more'),
-          ) :
-          PlatformTextButton(
-            onPressed: () => setState(() => expanded = false),
-            child: PlatformText('Read less'),
-          ),
+        (!expanded)
+            ? PlatformTextButton(
+                onPressed: () => setState(() => expanded = true),
+                child: PlatformText(S.of(context).readMore),
+              )
+            : PlatformTextButton(
+                onPressed: () => setState(() => expanded = false),
+                child: PlatformText(S.of(context).readLess),
+              ),
       ],
     );
   }

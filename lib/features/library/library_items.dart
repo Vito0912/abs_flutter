@@ -1,4 +1,5 @@
 import 'package:abs_api/abs_api.dart';
+import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/models/library_preview.dart';
 import 'package:abs_flutter/models/library_preview_item.dart';
 import 'package:abs_flutter/provider/library_items_provider.dart';
@@ -81,7 +82,7 @@ class _LibraryItemsState extends ConsumerState<LibraryItems> {
 
   Widget _buildItems(BuildContext context, LibraryPreview items, WidgetRef ref, List<MediaProgress>? progress) {
     if (items.items.isEmpty) {
-      return _error();
+      return _error(context);
     }
 
     final results = items.items;
@@ -140,7 +141,7 @@ class _LibraryItemsState extends ConsumerState<LibraryItems> {
           child: ClipRRect(
             borderRadius: BorderRadius.circular(8.0),
             child: Semantics(
-              label: 'Book cover',
+              label: S.of(context).bookCover,
               child: Stack(
                 children: [
                   AspectRatio(
@@ -205,8 +206,8 @@ class _LibraryItemsState extends ConsumerState<LibraryItems> {
     );
   }
 
-  Widget _error() {
-    return const Center(child: Text('Error loading items'));
+  Widget _error(BuildContext context) {
+    return Center(child: Text(S.of(context).error));
   }
 
   Widget _shimmerPlaceholder({bool withText = true}) {

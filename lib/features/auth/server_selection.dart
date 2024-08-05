@@ -57,7 +57,7 @@ class ServerSelection extends ConsumerWidget {
   void showHint(BuildContext context) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text("Please enter a valid IP/Domain and port before entering username and password."),
+        content: Text(S.of(context).enterValidUsernameOrPassword),
       ),
     );
   }
@@ -129,8 +129,8 @@ class ServerInputContainer extends StatelessWidget {
       ),
       child: Column(
         children: [
-          PlatformText("Enter your server address to continue"),
-          PlatformText("If you want to use multiple server addresses, you can add them later"),
+          PlatformText(S.of(context).serverAdressContinue),
+          PlatformText(S.of(context).multipleServerAdressess),
           SizedBox(height: 24),
           ServerInput(onValidInput: onValidInput),
         ],
@@ -180,7 +180,7 @@ class _UsernameInputFieldState extends ConsumerState<UsernameInputField> {
         absorbing: !widget.isServerInputValid,
         child: PlatformTextField(
           controller: usernameController,
-          hintText: 'Username',
+          hintText: S.of(context).username,
           material: (_, __) => MaterialTextFieldData(
             decoration: InputDecoration(
               border: OutlineInputBorder(
@@ -243,7 +243,7 @@ class _PasswordInputFieldState extends ConsumerState<PasswordInputField> {
         absorbing: !widget.isServerInputValid,
         child: PlatformTextField(
           controller: passwordController,
-          hintText: 'Password',
+          hintText: S.of(context).password,
           obscureText: true,
           material: (_, __) => MaterialTextFieldData(
             decoration: InputDecoration(
@@ -276,14 +276,14 @@ class LoginButton extends ConsumerWidget {
     return PlatformElevatedButton(
       onPressed: () async {
         if (!isServerInputValid) {
-          QuickAlert.show(context: context, type: QuickAlertType.warning, title: 'You must enter a valid server address');
+          QuickAlert.show(context: context, type: QuickAlertType.warning, title: S.of(context).mustEnterValidAddress);
           return;
         }
 
         final username = ref.read(usernameProvider).trim();
         final password = ref.read(passwordProvider).trim();
         if (username.isEmpty || password.isEmpty) {
-          QuickAlert.show(context: context, type: QuickAlertType.warning, title: 'Username and password cannot be empty');
+          QuickAlert.show(context: context, type: QuickAlertType.warning, title: S.of(context).usernameOrPasswordNotEmpty);
           return;
         }
 
@@ -304,7 +304,7 @@ class LoginButton extends ConsumerWidget {
           Response<abs.Login200Response> res = await ref.watch(apiProvider)!.getAuthApi().login(loginRequest: loginPostRequestBuilder.build());
 
           if (res.data!.user == null) {
-            ref.read(loginStateProvider.notifier).setError('Login failed: No user data received');
+            ref.read(loginStateProvider.notifier).setError(S.of(context).noUserData);
             return;
           }
 

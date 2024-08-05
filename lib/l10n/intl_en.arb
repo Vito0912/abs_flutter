@@ -1,5 +1,98 @@
 {
   "port": "Port",
   "domainOrIp": "Domain or IP",
-  "serverSelection": "Server Selection"
+  "serverSelection": "Server Selection",
+  "noUserData": "Login failed: No user data received",
+  "usernameOrPasswordNotEmpty": "Username and password cannot be empty",
+  "mustEnterValidAddress": "You must enter a valid server address",
+  "password": "Password",
+  "username": "Username",
+  "serverAdressContinue": "Enter your server address to continue",
+  "multipleServerAdressess": "If you want to use multiple server addresses, you can add them later",
+  "enterValidUsernameOrPassword": "Please enter a valid IP/Domain and port before entering your username and password.",
+  "settings": "Settings",
+  "addUser": "Add User",
+  "cancel": "Cancel",
+  "loading": "Loading...",
+  "error": "Error",
+  "noConnection": "No Connection",
+  "authors": "Authors",
+  "genres": "Genres",
+  "tags": "Tags",
+  "series": "Series",
+  "readMore": "Read more",
+  "readLess": "Read less",
+  "bookCover": "Book Cover",
+  "sleepTimer": "Sleep Timer",
+  "playbackSpeed": "Speed",
+  "player": "Player",
+  "general": "General",
+  "darkMode": "Dark Mode",
+  "enabled": "Enabled",
+  "disabled": "Disabled",
+  "showAccountSwitcher": "Show Account Switcher",
+  "ifTheQuickAccountSwitcherShouldBeShown": "If the quick account switcher should be shown",
+  "markItemsFinished": "Mark Items Finished",
+  "collapseSeries": "Collapse Series",
+  "stopPlayerUntilSync": "Stop Player Until Sync",
+  "showProgressPerChapters": "Show Progress per Chapter",
+  "fastForwardSeconds": "Fast Forward Seconds",
+  "rewindSeconds": "Rewind Seconds",
+  "addANewUser": "Add a New User",
+  "signOut": "Sign Out",
+  "attribution": "Attribution",
+  "miscellaneous": "Miscellaneous",
+  "showAccountSwitcherDescription": "Enable this option to add an icon button to the app bar for quick account switching. This will reduce the size of the app bar.",
+  "markItemsFinishedAfterDescription": "Specify the time in seconds before the end of an item at which it should be marked as finished. Setting this to 0 marks the item as finished only when the player reaches the very end. If a positive value is set, the item is marked as finished when the player reaches that time before the end.",
+  "collapseSeriesDescription": "When enabled, items in a series will be grouped together in the library view, displaying only a single item to represent the entire series.",
+  "playerSettings": "Player Settings",
+  "stopPlayerWhileSyncingDescription": "Enable this option to prevent the player from starting until the most recent playback position has been synced. This ensures that playback resumes from the correct position. If disabled, the playback position may change shortly after starting, potentially leading to data loss. Turning this on helps conserve data usage.",
+  "progressAsChaptersDescription": "Enable this option to display progress in the player and notifications on a per-chapter basis. If disabled, progress will be shown based on the entire item.",
+  "fastForwardSecondsDescription": "Set the number of seconds to skip forward when the fast forward button is pressed.",
+  "rewindSecondsDescription": "Set the number of seconds to skip backward when the rewind button is pressed.",
+  "user": "User",
+  "description": "Description",
+  "timerText": "{time} min",
+  "@timerText": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "itemLength": "Length: {hours}:{minutes}",
+    "@itemLength": {
+        "placeholders": {
+        "hours": {
+            "type": "String"
+        },
+        "minutes": {
+            "type": "String"
+        }
+        }
+    },
+  "itemProgress": "Progress: {progress}%",
+    "@itemProgress": {
+        "placeholders": {
+        "progress": {
+            "type": "String"
+        }
+        }
+    },
+  "itemPublishedYear": "Published Year: {year}",
+    "@itemPublishedYear": {
+        "placeholders": {
+        "year": {
+            "type": "String"
+        }
+        }
+    },
+  "itemNumChapters": "Number of Chapters: {numChapters}",
+    "@itemNumChapters": {
+        "placeholders": {
+        "numChapters": {
+            "type": "String"
+        }
+        }
+    }
 }

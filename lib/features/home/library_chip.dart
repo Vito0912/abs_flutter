@@ -1,4 +1,5 @@
 import 'package:abs_api/abs_api.dart';
+import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/provider/connection_provider.dart';
 import 'package:abs_flutter/provider/library_provider.dart';
 import 'package:abs_flutter/util/helper.dart';
@@ -19,8 +20,8 @@ class LibraryChip extends ConsumerWidget {
     final connectionState = ref.watch(connectionProvider.notifier);
 
     if (connectionState.canReachServer()) {
-      return const Chip(
-        label: Text('No Connection'),
+      return Chip(
+        label: Text(S.of(context).noConnection),
       );
     }
 
@@ -29,23 +30,23 @@ class LibraryChip extends ConsumerWidget {
         if (libraries == null ||
             libraries.data == null ||
             libraries.data!.libraries == null) {
-          return _error();
+          return _error(context);
         }
         return _buildChip(
             context, libraries.data!.libraries!.toList(), selectedLibrary, ref);
       },
-      loading: () => _buildLoadingChip(),
+      loading: () => _buildLoadingChip(context),
       error: (error, stack) => Text('Error: $error'),
     );
   }
 
-  Widget _error() {
+  Widget _error(BuildContext context) {
     return Chip(
-      label: Text('Error'),
+      label: Text(S.of(context).error),
     );
   }
 
-  Widget _buildLoadingChip() {
+  Widget _buildLoadingChip(BuildContext context) {
     return Shimmer.fromColors(
       baseColor: Colors.grey[300]!,
       highlightColor: Colors.grey[100]!,
@@ -54,7 +55,7 @@ class LibraryChip extends ConsumerWidget {
           constraints:
               BoxConstraints(maxWidth: 200), // Adjust the maxWidth as needed
           child: Text(
-            'Loading...',
+            S.of(context).loading,
             overflow: TextOverflow.ellipsis,
           ),
         ),
@@ -119,7 +120,7 @@ class LibraryChip extends ConsumerWidget {
             );
           }).toList(),
           cancelButton: CupertinoActionSheetAction(
-            child: Text('Cancel'),
+            child: Text(S.of(context).cancel),
             onPressed: () => Navigator.pop(context),
           ),
         ),
