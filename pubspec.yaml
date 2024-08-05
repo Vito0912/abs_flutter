@@ -53,6 +53,7 @@ dev_dependencies:
   riverpod_generator: ^2.4.2
   riverpod_lint: ^2.3.12
   analyzer: ^6.5.0
+  flutter_launcher_icons: ^0.13.1
 
 dependency_overrides:
   meta: ^1.14.0
@@ -60,5 +61,25 @@ flutter:
 
   uses-material-design: true
 
+  assets:
+      - assets/icon/placeholder_app_icon.png
+
 flutter_intl:
   enabled: true
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/icon/placeholder_app_icon.png"
+  remove_alpha_ios: true
+  min_sdk_android: 21
+  web:
+    generate: true
+    image_path: "assets/icon/placeholder_app_icon.png"
+  windows:
+    generate: true
+    image_path: "assets/icon/placeholder_app_icon.png"
+    icon_size: 128
+  macos:
+    generate: true
+    image_path: "assets/icon/placeholder_app_icon.png"
