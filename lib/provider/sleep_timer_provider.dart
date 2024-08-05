@@ -12,7 +12,8 @@ final timerProvider = StateNotifierProvider<TimerNotifier, double?>((ref) {
 
   ref.listen<double>(sleepTimerProvider, (previous, next) {
     if (timerNotifier.isRunning) {
-      timerNotifier.updateTimer(next); // Update the timer duration without resetting the timer
+      timerNotifier.updateTimer(
+          next); // Update the timer duration without resetting the timer
     }
   });
 
@@ -47,11 +48,14 @@ class TimerNotifier extends StateNotifier<double?> {
         timer.cancel();
         return;
       }
-      state ??= ref.read(sleepTimerProvider); // Get the current sleep timer duration
+      state ??=
+          ref.read(sleepTimerProvider); // Get the current sleep timer duration
       if (state! <= 0) {
         timer.cancel();
         _isRunning = false;
-        ref.read(playStatusProvider).setPlayStatus(PlayerStatus.stopped);
+        ref
+            .read(playStatusProvider)
+            .setPlayStatus(PlayerStatus.stopped, "Sleep timer");
       } else {
         state = (state! - 0.5);
       }

@@ -78,7 +78,7 @@ class ProgressBar extends StatelessWidget {
                                         },
                                       ),
                                     ),
-                                    Positioned.fill(
+                                    if(bufferedValue / max >= 0 && bufferedValue / max <= 1) Positioned.fill(
                                       left: 16,
                                       right: 16,
                                       child: Align(
