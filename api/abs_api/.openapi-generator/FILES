@@ -225,10 +225,3 @@ lib/src/model/update_series_request.dart
 lib/src/model/user.dart
 lib/src/serializers.dart
 pubspec.yaml
-test/auth_api_test.dart
-test/media_progress_podcast_episode_test.dart
-test/playback_session_base_test.dart
-test/playback_session_book_expanded_test.dart
-test/playback_session_book_test.dart
-test/playback_session_podcast_expanded_test.dart
-test/playback_session_podcast_test.dart

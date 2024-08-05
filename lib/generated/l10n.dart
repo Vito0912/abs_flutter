@@ -629,6 +629,106 @@ class S {
       args: [numChapters],
     );
   }
+
+  /// `Title`
+  String get title {
+    return Intl.message(
+      'Title',
+      name: 'title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Author`
+  String get author {
+    return Intl.message(
+      'Author',
+      name: 'author',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Updated At`
+  String get updatedAt {
+    return Intl.message(
+      'Updated At',
+      name: 'updatedAt',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Year`
+  String get year {
+    return Intl.message(
+      'Year',
+      name: 'year',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Publisher`
+  String get publisher {
+    return Intl.message(
+      'Publisher',
+      name: 'publisher',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Size`
+  String get size {
+    return Intl.message(
+      'Size',
+      name: 'size',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Duration`
+  String get duration {
+    return Intl.message(
+      'Duration',
+      name: 'duration',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Language`
+  String get language {
+    return Intl.message(
+      'Language',
+      name: 'language',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Descending`
+  String get descending {
+    return Intl.message(
+      'Descending',
+      name: 'descending',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ascending`
+  String get ascending {
+    return Intl.message(
+      'Ascending',
+      name: 'ascending',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

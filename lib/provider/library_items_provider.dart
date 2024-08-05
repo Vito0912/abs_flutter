@@ -1,6 +1,7 @@
 import 'package:abs_api/abs_api.dart';
 import 'package:abs_flutter/models/library_preview.dart';
 import 'package:abs_flutter/models/library_preview_item.dart';
+import 'package:abs_flutter/models/library_sort.dart';
 import 'package:abs_flutter/provider/library_provider.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
 import 'package:built_collection/src/list.dart';
@@ -13,19 +14,9 @@ final libraryItemsProvider = StateNotifierProvider<LibrariesNotifier,
 
   final api = ref.watch(apiProvider);
   final currentLibrary = ref.watch(currentLibraryProvider);
-  final searchTerm = ref.watch(libraryItemSearchProvider);
+  final librarySort = ref.watch(libraryItemSearchProvider);
 
-  String? previousSearchTerm;
-  ModelLibrary? previousLibrary;
-
-  if (searchTerm != previousSearchTerm || currentLibrary?.id != previousLibrary?.id) {
-    previousLibrary = currentLibrary;
-    previousSearchTerm = searchTerm;
-
-    return LibrariesNotifier(api, currentLibrary, searchTerm, true);
-  } else {
-    return LibrariesNotifier(api, currentLibrary, searchTerm, false);
-  }
+  return LibrariesNotifier(api, currentLibrary, librarySort);
 
 });
 
@@ -33,7 +24,7 @@ class LibrariesNotifier
     extends StateNotifier<LibraryPreview?> {
   final AbsApi? api;
   final ModelLibrary? currentLibrary;
-  final String searchTerm;
+  final LibrarySort sort;
   late final int limit;
   Response<GetLibraryItems200Response>? altResponse;
 
@@ -42,9 +33,8 @@ class LibrariesNotifier
       MediaQueryData.fromView(WidgetsBinding.instance.window).size.width *
           MediaQueryData.fromView(WidgetsBinding.instance.window).size.height;
 
-  LibrariesNotifier(this.api, this.currentLibrary, this.searchTerm, bool load) : super(null) {
-    print('loading initial data ($load)');
-    if(load) loadInitialData();
+  LibrariesNotifier(this.api, this.currentLibrary, this.sort) : super(null) {
+    loadInitialData();
   }
 
   int _calculateLoadLimit() {
@@ -62,16 +52,19 @@ class LibrariesNotifier
     limit = _calculateLoadLimit();
     if (api == null || currentLibrary == null) return;
 
-    if(searchTerm.isEmpty) {
+    if(sort.search == null || sort.search!.isEmpty) {
       final response = await api!.getLibrariesApi().getLibraryItems(
         id: currentLibrary!.id!,
         limit: limit,
         page: page,
+        desc: sort.desc,
+        sort: sort.sort,
+        filter: sort.filter,
       );
       altResponse = response;
       state = _convertToLibraryPreview(response);
     } else {
-
+      print('Searching for ${sort.search}');
     }
 
 
@@ -123,11 +116,14 @@ class LibrariesNotifier
 
     try {
 
-      if(searchTerm.isEmpty) {
+      if(sort.search == null || sort.search!.isEmpty) {
         final newResponse = await api!.getLibrariesApi().getLibraryItems(
           id: currentLibrary!.id!,
           limit: limit,
           page: page,
+          desc: sort.desc,
+          sort: sort.sort,
+          filter: sort.filter,
         );
 
         state = _convertToLibraryPreview(_mergeResponses(altResponse, newResponse));
@@ -137,7 +133,7 @@ class LibrariesNotifier
       }
     } catch (e) {
       if (e is DioException) {
-        // Handle the error accordingly
+        print(e);
       } else {
         print('Exception when calling LibrariesApi->getLibraryItems: $e\n');
       }
@@ -180,6 +176,6 @@ class LibrariesNotifier
 }
 
 
-final libraryItemSearchProvider = StateProvider<String>((ref) {
-  return '';
+final libraryItemSearchProvider = StateProvider<LibrarySort>((ref) {
+  return LibrarySort();
 });

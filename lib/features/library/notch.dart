@@ -1,18 +1,38 @@
 import 'package:abs_flutter/features/library/notch/filter_button.dart';
 import 'package:abs_flutter/features/library/notch/sort_button.dart';
+import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/provider/library_items_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class LibraryNotch extends ConsumerWidget {
+class LibraryNotch extends ConsumerStatefulWidget {
   const LibraryNotch({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final searchTerm = ref.watch(libraryItemSearchProvider.notifier);
-    final search = ref.watch(libraryItemSearchProvider);
-    final searchController = TextEditingController(text: searchTerm.state);
+  _LibraryNotchState createState() => _LibraryNotchState();
+}
+
+class _LibraryNotchState extends ConsumerState<LibraryNotch> {
+  late TextEditingController searchController;
+
+  @override
+  void initState() {
+    super.initState();
+    final librarySortNotifier = ref.read(libraryItemSearchProvider.notifier);
+    searchController = TextEditingController(text: librarySortNotifier.state.search);
+  }
+
+  @override
+  void dispose() {
+    searchController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final librarySortNotifier = ref.watch(libraryItemSearchProvider.notifier);
+    final librarySort = ref.watch(libraryItemSearchProvider);
 
     return Container(
       decoration: BoxDecoration(
@@ -38,25 +58,27 @@ class LibraryNotch extends ConsumerWidget {
             Expanded(
               child: SearchBar(
                 controller: searchController,
-                trailing:[
-                  const SortButton(),
+                trailing: [
+                  SortButton(),
                   const FilterButton(),
-
-                  if(search.isNotEmpty) PlatformIconButton(
-                  icon: Icon(PlatformIcons(context).clear),
-                  onPressed: () {
-                    searchController.clear();
-                    searchTerm.state = '';
-                  },
-
-
-                )
+                  if (librarySort.search == null || librarySort.search!.isNotEmpty)
+                    PlatformIconButton(
+                      icon: Icon(PlatformIcons(context).clear),
+                      onPressed: () {
+                        searchController.clear();
+                        librarySortNotifier.state = librarySortNotifier.state.copyWith(
+                          search: "",
+                        );
+                      },
+                    )
                 ],
                 keyboardType: TextInputType.text,
                 leading: Icon(PlatformIcons(context).search),
                 autoFocus: false,
                 onChanged: (value) {
-                  searchTerm.state = value;
+                  librarySortNotifier.state = librarySortNotifier.state.copyWith(
+                    search: value,
+                  );
                 },
               ),
             ),

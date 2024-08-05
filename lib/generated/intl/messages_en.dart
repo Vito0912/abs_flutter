@@ -34,7 +34,9 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "addANewUser": MessageLookupByLibrary.simpleMessage("Add a New User"),
         "addUser": MessageLookupByLibrary.simpleMessage("Add User"),
+        "ascending": MessageLookupByLibrary.simpleMessage("Ascending"),
         "attribution": MessageLookupByLibrary.simpleMessage("Attribution"),
+        "author": MessageLookupByLibrary.simpleMessage("Author"),
         "authors": MessageLookupByLibrary.simpleMessage("Authors"),
         "bookCover": MessageLookupByLibrary.simpleMessage("Book Cover"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
@@ -43,9 +45,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "collapseSeriesDescription": MessageLookupByLibrary.simpleMessage(
             "When enabled, items in a series will be grouped together in the library view, displaying only a single item to represent the entire series."),
         "darkMode": MessageLookupByLibrary.simpleMessage("Dark Mode"),
+        "descending": MessageLookupByLibrary.simpleMessage("Descending"),
         "description": MessageLookupByLibrary.simpleMessage("Description"),
         "disabled": MessageLookupByLibrary.simpleMessage("Disabled"),
         "domainOrIp": MessageLookupByLibrary.simpleMessage("Domain or IP"),
+        "duration": MessageLookupByLibrary.simpleMessage("Duration"),
         "enabled": MessageLookupByLibrary.simpleMessage("Enabled"),
         "enterValidUsernameOrPassword": MessageLookupByLibrary.simpleMessage(
             "Please enter a valid IP/Domain and port before entering your username and password."),
@@ -63,6 +67,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "itemNumChapters": m1,
         "itemProgress": m2,
         "itemPublishedYear": m3,
+        "language": MessageLookupByLibrary.simpleMessage("Language"),
         "loading": MessageLookupByLibrary.simpleMessage("Loading..."),
         "markItemsFinished":
             MessageLookupByLibrary.simpleMessage("Mark Items Finished"),
@@ -84,6 +89,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "port": MessageLookupByLibrary.simpleMessage("Port"),
         "progressAsChaptersDescription": MessageLookupByLibrary.simpleMessage(
             "Enable this option to display progress in the player and notifications on a per-chapter basis. If disabled, progress will be shown based on the entire item."),
+        "publisher": MessageLookupByLibrary.simpleMessage("Publisher"),
         "readLess": MessageLookupByLibrary.simpleMessage("Read less"),
         "readMore": MessageLookupByLibrary.simpleMessage("Read more"),
         "rewindSeconds": MessageLookupByLibrary.simpleMessage("Rewind Seconds"),
@@ -102,6 +108,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "showProgressPerChapters":
             MessageLookupByLibrary.simpleMessage("Show Progress per Chapter"),
         "signOut": MessageLookupByLibrary.simpleMessage("Sign Out"),
+        "size": MessageLookupByLibrary.simpleMessage("Size"),
         "sleepTimer": MessageLookupByLibrary.simpleMessage("Sleep Timer"),
         "stopPlayerUntilSync":
             MessageLookupByLibrary.simpleMessage("Stop Player Until Sync"),
@@ -109,9 +116,12 @@ class MessageLookup extends MessageLookupByLibrary {
             "Enable this option to prevent the player from starting until the most recent playback position has been synced. This ensures that playback resumes from the correct position. If disabled, the playback position may change shortly after starting, potentially leading to data loss. Turning this on helps conserve data usage."),
         "tags": MessageLookupByLibrary.simpleMessage("Tags"),
         "timerText": m4,
+        "title": MessageLookupByLibrary.simpleMessage("Title"),
+        "updatedAt": MessageLookupByLibrary.simpleMessage("Updated At"),
         "user": MessageLookupByLibrary.simpleMessage("User"),
         "username": MessageLookupByLibrary.simpleMessage("Username"),
         "usernameOrPasswordNotEmpty": MessageLookupByLibrary.simpleMessage(
-            "Username and password cannot be empty")
+            "Username and password cannot be empty"),
+        "year": MessageLookupByLibrary.simpleMessage("Year")
       };
 }

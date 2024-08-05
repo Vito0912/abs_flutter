@@ -94,5 +94,15 @@
             "type": "String"
         }
         }
-    }
+    },
+  "title": "Title",
+  "author": "Author",
+  "updatedAt": "Updated At",
+  "year": "Year",
+  "publisher": "Publisher",
+  "size": "Size",
+  "duration": "Duration",
+  "language": "Language",
+  "descending": "Descending",
+  "ascending": "Ascending"
 }
