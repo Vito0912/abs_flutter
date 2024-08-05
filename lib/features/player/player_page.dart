@@ -30,8 +30,7 @@ class PlayerPage extends ConsumerWidget {
     final positionStream = player.audioService.player.positionStream;
     final durationStream = player.audioService.player.durationStream;
     final speedStream = player.audioService.player.speedStream;
-    final bufferStream =
-        player.audioService.player.bufferedPositionStream;
+    final bufferStream = player.audioService.player.bufferedPositionStream;
 
     return PlatformScaffold(
       appBar: PlatformAppBar(
@@ -44,7 +43,8 @@ class PlayerPage extends ConsumerWidget {
               child: ConstrainedBox(
                 constraints: BoxConstraints(
                   maxWidth: 600,
-                  minHeight: constraints.maxHeight, // Ensure the column takes up the full height
+                  minHeight: constraints
+                      .maxHeight, // Ensure the column takes up the full height
                 ),
                 child: IntrinsicHeight(
                   child: Padding(
@@ -60,7 +60,10 @@ class PlayerPage extends ConsumerWidget {
                             color: Colors.grey[300],
                           ),
                           child: CachedNetworkImage(
-                            imageUrl: player.audioService.mediaItem.value?.artUri.toString() ?? '',
+                            imageUrl: player
+                                    .audioService.mediaItem.value?.artUri
+                                    .toString() ??
+                                '',
                             placeholder: (context, url) => Shimmer.fromColors(
                               baseColor: Colors.grey[300]!,
                               highlightColor: Colors.grey[100]!,
@@ -68,7 +71,8 @@ class PlayerPage extends ConsumerWidget {
                                 color: Colors.grey[300],
                               ),
                             ),
-                            errorWidget: (context, url, error) => Icon(Icons.error),
+                            errorWidget: (context, url, error) =>
+                                Icon(Icons.error),
                           ),
                         ),
                         SizedBox(height: 16),
@@ -79,18 +83,21 @@ class PlayerPage extends ConsumerWidget {
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
                               PlatformText(
-                                player.audioService.mediaItem.value?.title ?? '',
+                                player.audioService.mediaItem.value?.title ??
+                                    '',
                                 style: Theme.of(context).textTheme.titleLarge,
                               ),
                               if (currentChapter != null)
                                 PlatformText(
                                   '  -  ',
-                                  style: Theme.of(context).textTheme.titleMedium,
+                                  style:
+                                      Theme.of(context).textTheme.titleMedium,
                                 ),
                               if (currentChapter != null)
                                 PlatformText(
                                   currentChapter.title,
-                                  style: Theme.of(context).textTheme.titleMedium,
+                                  style:
+                                      Theme.of(context).textTheme.titleMedium,
                                 ),
                             ],
                           ),
@@ -120,7 +127,8 @@ class PlayerPage extends ConsumerWidget {
                                     player: player,
                                     isForward: false,
                                   ),
-                                  PlayButton(playerStatusProvider: playerStatus),
+                                  PlayButton(
+                                      playerStatusProvider: playerStatus),
                                   SeekingButtons(
                                     positionStream: positionStream,
                                     player: player,
@@ -139,7 +147,9 @@ class PlayerPage extends ConsumerWidget {
                                 positionStream: positionStream,
                                 durationStream: durationStream,
                                 player: player,
-                                showPerChapter: user?.setting?.settings['progressAsChapters'] ?? false,
+                                showPerChapter: user?.setting
+                                        ?.settings['progressAsChapters'] ??
+                                    false,
                                 currentChapter: currentChapter,
                                 bufferStream: bufferStream,
                               ),
@@ -150,11 +160,15 @@ class PlayerPage extends ConsumerWidget {
                                     player: player,
                                     speedStream: speedStream,
                                   ),
-                                  SleepTimer(player: player, currentChapter: currentChapter,),
+                                  SleepTimer(
+                                    player: player,
+                                    currentChapter: currentChapter,
+                                  ),
                                   PlatformIconButton(
                                     icon: Icon(Icons.close),
                                     onPressed: () {
-                                      playerStatus.setPlayStatus(PlayerStatus.stopped);
+                                      playerStatus.setPlayStatus(
+                                          PlayerStatus.stopped, "Close player");
                                       context.pop();
                                     },
                                   )
@@ -162,7 +176,8 @@ class PlayerPage extends ConsumerWidget {
                               ),
                               StreamBuilder(
                                 stream: volumeStream,
-                                builder: (BuildContext context, AsyncSnapshot<double> snapshot) {
+                                builder: (BuildContext context,
+                                    AsyncSnapshot<double> snapshot) {
                                   return Slider(
                                     value: snapshot.data ?? 0.0,
                                     onChanged: (double value) {

@@ -11,11 +11,11 @@ import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:built_collection/built_collection.dart';
 
-class PlaybackSessionNotifier extends StateNotifier<AsyncValue<Response<PlaybackSessionExpanded>?>> {
+class PlaybackSessionNotifier
+    extends StateNotifier<AsyncValue<Response<PlaybackSessionExpanded>?>> {
   final Ref ref;
   Response<PlaybackSessionExpanded>? _session;
   PlaybackSessionBookExpanded? _book;
-
 
   PlaybackSessionNotifier(this.ref) : super(const AsyncValue.loading());
 
@@ -35,70 +35,78 @@ class PlaybackSessionNotifier extends StateNotifier<AsyncValue<Response<Playback
       CancelToken cancelToken = CancelToken();
       playerStatus.setCancelToken(cancelToken);
 
+
+      //TODO: Currently always using hls
       DeviceInfoBuilder deviceInfoBuilder = DeviceInfoBuilder();
       deviceInfoBuilder.clientName = appName;
       deviceInfoBuilder.clientVersion = version;
-      deviceInfoBuilder.deviceId = currentUser?.hashCode.toString();
 
       final response = await api.getLibraryItemApi().playLibraryItem(
-        id: id, cancelToken: cancelToken,
-        mediaPlayer: 'html5',
-        deviceInfo: deviceInfoBuilder.build(),
-        supportedMimeTypes:BuiltList<String>( [
-          'audio/flac',
-          'audio/mpeg',
-          'audio/mp4',
-          'audio/ogg',
-          'audio/aac'
-              'audio/webm',
-        ]),
-        forceDirectPlay: false,
-        forceTranscode: false,
-      );
+            id: id,
+            cancelToken: cancelToken,
+            mediaPlayer: 'html5',
+            deviceInfo: deviceInfoBuilder.build(),
+            supportedMimeTypes: BuiltList<String>([
+              'audio/flac',
+              'audio/mpeg',
+              'audio/mp4',
+              'audio/ogg',
+              'audio/aac'
+                  'audio/webm',
+            ]),
+            forceDirectPlay: false,
+            forceTranscode: false,
+          );
       _session = response;
-      state = AsyncValue.data(response);
 
       late final PlaybackSessionBookExpanded playback;
-      if(response.data!.oneOf.value is PlaybackSessionBookExpanded) {
+      if (response.data!.oneOf.value is PlaybackSessionBookExpanded) {
         playback = response.data!.oneOf.value as PlaybackSessionBookExpanded;
         _book = playback;
       } else {
-        state = const AsyncValue.error('PlaybackSession is not a book', StackTrace.empty);
+        state = const AsyncValue.error(
+            'PlaybackSession is not a book', StackTrace.empty);
         return;
       }
 
       MediaItem mediaItem = MediaItem(
-        id: '${currentUser?.server!.url}${playback.audioTracks![0].contentUrl!}?token=${currentUser?.token!}',
-        album: playback.mediaMetadata?.series?.toList().join(', '),
-        title: playback.displayTitle!,
-        artist: playback.displayAuthor!,
-        duration: Duration(seconds: playback.audioTracks![0].duration!.round()),
-        artUri: Uri.parse('${currentUser!.server!.url}/api/items/$id/cover?token=${currentUser.token}'),
-        extras: {
-          'libraryItemId': id,
-          'sessionId': playback.id,
-          'chapters': playback.chapters?.map((e) => {
-            'title': e?.title,
-            'start': e?.start,
-            'end': e?.end,
-          }).toList(),
-        }
-      );
+          id:
+              '${currentUser?.server!.url}${playback.audioTracks![0].contentUrl!}?token=${currentUser?.token!}',
+          album: playback.mediaMetadata?.series?.toList().join(', '),
+          title: playback.displayTitle!,
+          artist: playback.displayAuthor!,
+          duration:
+              Duration(seconds: playback.audioTracks![0].duration!.round()),
+          artUri: Uri.parse(
+              '${currentUser!.server!.url}/api/items/$id/cover?token=${currentUser.token}'),
+          extras: {
+            'libraryItemId': id,
+            'sessionId': playback.id,
+            'chapters': playback.chapters
+                ?.map((e) => {
+                      'title': e?.title,
+                      'start': e?.start,
+                      'end': e?.end,
+                    })
+                .toList(),
+          });
 
       log('Adding to queue: ${mediaItem.title} from ${currentUser?.server!.url}${playback.audioTracks![0].contentUrl!}?token=${currentUser?.token!}');
 
       await player.playMediaItem(mediaItem);
 
+      state = AsyncValue.data(response);
+
       log('Playing: ${mediaItem.title}');
     } catch (e) {
-      playerStatus.setPlayStatus(PlayerStatus.stopped);
+      playerStatus.setPlayStatus(PlayerStatus.stopped, "Session error");
       log(e.toString());
       if (e is DioException) {
-        if(e.response != null && e.response!.data != null) {
+        if (e.response != null && e.response!.data != null) {
           log(e.response!.data.toString());
           try {
             final sessionId = e.response!.data!['session_id'];
-            if(sessionId == null) {
+            if (sessionId == null) {
               state = AsyncValue.error(e, e.stackTrace);
               return;
             }
@@ -116,7 +124,6 @@ class PlaybackSessionNotifier extends StateNotifier<AsyncValue<Response<Playback
           } catch (e) {
             log(e.toString());
           }
-
         }
         state = AsyncValue.error(e, e.stackTrace);
       } else {
@@ -125,28 +132,42 @@ class PlaybackSessionNotifier extends StateNotifier<AsyncValue<Response<Playback
     }
   }
 
-
-  bool closeOpenSession() {
+  Future<bool> closeOpenSession() async {
     final AbsApi? api = ref.read(apiProvider);
     final currentUser = ref.read(currentUserProvider);
     final playerStatus = ref.read(playStatusProvider.notifier);
 
-    if (api == null || _session == null || currentUser == null || _session!.data == null) {
+    if (api == null ||
+        _session == null ||
+        currentUser == null ||
+        _session!.data == null) {
       return false;
     }
 
-    try {
-      if(_book != null) api.getSessionApi().closeSession(id: _book!.id!);
-      _session = null;
-      playerStatus.setPlayStatus(PlayerStatus.stopped);
-      return true;
-    } catch (e) {
-      log(e.toString());
-      return false;
-    }
+    bool returnValue = false;
+
+    // Delay the closing of the session to allow the player to send the last progress
+    await Future.delayed(const Duration(seconds: 1), () async {
+      try {
+        if (_book != null) api.getSessionApi().closeSession(id: _book!.id!);
+        _session = null;
+        returnValue = true;
+        playerStatus.setPlayStatus(PlayerStatus.stopped, "Close session");
+        return true;
+      } catch (e) {
+        log(e.toString());
+        returnValue = false;
+        return false;
+      }
+    });
+
+    return returnValue;
   }
+
+  PlaybackSessionBookExpanded? get session => _book;
 }
 
-final sessionProvider = StateNotifierProvider<PlaybackSessionNotifier, AsyncValue<Response<PlaybackSessionExpanded>?>>((ref) {
+final sessionProvider = StateNotifierProvider<PlaybackSessionNotifier,
+    AsyncValue<Response<PlaybackSessionExpanded>?>>((ref) {
   return PlaybackSessionNotifier(ref);
 });

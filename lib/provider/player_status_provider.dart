@@ -1,15 +1,11 @@
+import 'dart:developer';
+
 import 'package:abs_flutter/provider/player_provider.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-enum PlayerStatus {
-  stopped,
-  playing,
-  paused,
-  hidden,
-  loading
-}
+enum PlayerStatus { stopped, playing, paused, hidden, loading }
 
 class PlayerStatusProvider extends ChangeNotifier {
   late final ChangeNotifierProviderRef<PlayerStatusProvider> ref;
@@ -25,21 +21,24 @@ class PlayerStatusProvider extends ChangeNotifier {
     addListener(_onStatusChanged);
   }
 
-  void _onStatusChanged() {
-
+  Future<void> _onStatusChanged() async {
     switch (_playStatus) {
       case PlayerStatus.playing:
-        player.play();
+        log('PlayerStatus is playing now');
+        await player.play();
         break;
       case PlayerStatus.paused:
-        player.pause();
+        log('PlayerStatus is paused now');
+        await player.pause();
         break;
       case PlayerStatus.stopped:
-        player.stop();
+        log('PlayerStatus is stopped now');
+        await player.stop();
         _cancelToken?.cancel();
         break;
       case PlayerStatus.hidden:
-        player.stop();
+        log('PlayerStatus is hidden now');
+        await player.stop();
         break;
       case PlayerStatus.loading:
         break;
@@ -54,7 +53,8 @@ class PlayerStatusProvider extends ChangeNotifier {
 
   PlayerStatus get playStatus => _playStatus;
 
-  void setPlayStatus(PlayerStatus playStatus) {
+  Future<void> setPlayStatus(PlayerStatus playStatus, String origin) async {
+    log('setPlayStatus: $playStatus, origin: $origin');
     _previousStatus = _playStatus;
     _playStatus = playStatus;
     notifyListeners();
@@ -114,12 +114,6 @@ class PlayerStatusProvider extends ChangeNotifier {
 
   void setHidden() {
     _playStatus = PlayerStatus.hidden;
-    notifyListeners();
-  }
-
-  void undo(String itemId) {
-    _playStatus = _previousStatus;
-    _itemId = itemId;
     notifyListeners();
   }
 

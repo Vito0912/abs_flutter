@@ -4,6 +4,7 @@ import 'package:abs_api/abs_api.dart';
 import 'package:abs_flutter/models/chapter.dart';
 import 'package:abs_flutter/provider/player_status_provider.dart';
 import 'package:abs_flutter/provider/progress_provider.dart';
+import 'package:abs_flutter/provider/progress_timer_provider.dart';
 import 'package:abs_flutter/provider/session_provider.dart';
 import 'package:abs_flutter/provider/sleep_timer_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -15,6 +16,7 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
   late final PlayerStatusProvider _playerStatusProvider;
   ProgressProvider? _progressProvider;
   final ProviderContainer _container;
+  bool? seeking;
 
   AbsAudioHandler(this._container) {
     _playerStatusProvider = _container.read(playStatusProvider.notifier);
@@ -25,8 +27,28 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
       _progressProvider = next;
     });
 
-    androidPlaybackInfo.listen((event) {
-      log('Android playback info: $event');
+    _player.playerStateStream.distinct().listen((event) {
+      if(seeking == true) {
+        return;
+      }
+      if (event.playing) {
+        _container.read(progressTimerProvider.notifier).startSending(Duration(seconds: 10));
+      } else {
+
+        if(
+        event.processingState != ProcessingState.loading &&
+        event.processingState != ProcessingState.buffering &&
+        _container.read(playStatusProvider).playStatus == PlayerStatus.playing
+        ) {
+          // Needed for windows
+          if(_player.position <= const Duration(seconds: 1)) {
+            log('Force play');
+            _player.play();
+          }
+        } else {
+          _container.read(progressTimerProvider.notifier).stopSending();
+        }
+      }
     });
 
     _player.positionStream.listen((event) {
@@ -56,23 +78,18 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
       }
     }
 
-    log('Playing media item: $item');
-
     mediaItem.add(item);
 
     await _player.setAudioSource(source);
 
-    _playerStatusProvider.setPlayStatus(PlayerStatus.playing);
+    await _playerStatusProvider.setPlayStatus(PlayerStatus.playing, 'playMediaItem');
 
-    if (_progress != null && !_progress.isFinished!) {
+    await _player.play();
+
+    if (_progress != null) {
       log('Seeking to ${_progress.currentTime?.round()} due to progress');
       await _player.seek(Duration(seconds: _progress.currentTime?.round() ?? 0));
     }
-
-    playbackState.add(playbackState.value.copyWith(
-      playing: true,
-      controls: [MediaControl.pause],
-    ));
   }
 
   @override
@@ -90,6 +107,7 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
   Future<void> pause() async {
     await _player.pause();
     _container.read(timerProvider.notifier).pause();
+
     playbackState.add(playbackState.value.copyWith(
       playing: false,
       controls: [MediaControl.play],
@@ -101,6 +119,7 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
     await _player.stop();
     _container.read(timerProvider.notifier).stop();
     _container.read(sessionProvider.notifier).closeOpenSession();
+
     playbackState.add(playbackState.value.copyWith(
       playing: false,
       controls: [MediaControl.play],
@@ -109,10 +128,12 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
 
   @override
   Future<void> seek(Duration position) async {
+    seeking = true;
     await _player.seek(position);
     playbackState.add(playbackState.value.copyWith(
       updatePosition: position,
     ));
+    seeking = false;
   }
 
   Future<void> setVolume(double volume) async {

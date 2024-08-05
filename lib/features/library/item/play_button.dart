@@ -17,16 +17,16 @@ class PlayButton extends ConsumerWidget {
 
     return PlatformElevatedButton(
       onPressed: () {
-        if(playerStatus.playStatus == PlayerStatus.playing) {
-          session.closeOpenSession();
+        if (playerStatus.playStatus == PlayerStatus.playing) {
+          playerStatus.setPlayStatus(
+              PlayerStatus.stopped, "Close player via play button");
         } else {
           session.load(itemId);
         }
       },
       child: playerStatus.playStatus == PlayerStatus.loading
           ? SizedBox(
-          width: 16, height: 16,
-          child: PlatformCircularProgressIndicator())
+              width: 16, height: 16, child: PlatformCircularProgressIndicator())
           : playerStatus.playStatus == PlayerStatus.playing
               ? const Icon(Icons.stop)
               : const Icon(Icons.play_arrow),
