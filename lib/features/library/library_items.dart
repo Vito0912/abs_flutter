@@ -29,14 +29,16 @@ class _LibraryItemsState extends ConsumerState<LibraryItems> {
   @override
   void initState() {
     super.initState();
-    _scrollController = ScrollController()
-      ..addListener(() {
-        if (_scrollController.position.pixels > _scrollController.position.maxScrollExtent - 400) {
-          if (_scrollController.position.pixels != 0) {
-            _loadMoreData();
-          }
-        }
-      });
+    _scrollController = ScrollController()..addListener(_onScroll);
+  }
+
+  void _onScroll() {
+    if (_scrollController.position.pixels >
+        _scrollController.position.maxScrollExtent - 400) {
+      if (_scrollController.position.pixels != 0) {
+        _loadMoreData();
+      }
+    }
   }
 
   Future<void> _loadMoreData() async {
@@ -44,10 +46,14 @@ class _LibraryItemsState extends ConsumerState<LibraryItems> {
       setState(() {
         _isLoadingMore = true;
       });
+
       final libraryItems = ref.read(libraryItemsProvider);
       if (libraryItems != null) {
-        await ref.read(libraryItemsProvider.notifier).loadMoreData(libraryItems.page + 1);
+        await ref
+            .read(libraryItemsProvider.notifier)
+            .loadMoreData(libraryItems.page + 1);
       }
+
       setState(() {
         _isLoadingMore = false;
       });
@@ -56,83 +62,91 @@ class _LibraryItemsState extends ConsumerState<LibraryItems> {
 
   @override
   Widget build(BuildContext context) {
-    final progressProvide = ref.watch(progressProvider);
-
-    final progress = progressProvide.getProgress();
-
+    final progressProv = ref.watch(progressProvider);
+    final progress = progressProv.getProgress();
     final libraryItems = ref.watch(libraryItemsProvider);
-    int total = 0;
 
     if (libraryItems == null) {
-      return _addSafeZone(_shimmerLoading());
+      return _buildSafeArea(_buildShimmerLoading());
     } else {
-      total = libraryItems.total ?? 0;
-      if(total == (libraryItems.items.length ?? 0)) {
-        _hasMore = false;
-      }
-      return _addSafeZone(_buildItems(context, libraryItems, ref, progress));
+      _hasMore = libraryItems.total != libraryItems.items.length;
+      return _buildSafeArea(_buildItems(context, libraryItems, progress));
     }
   }
 
-  Widget _addSafeZone(Widget child) {
-    return SafeArea(
-      child: child,
-    );
+  Widget _buildSafeArea(Widget child) {
+    return SafeArea(child: child);
   }
 
-  Widget _buildItems(BuildContext context, LibraryPreview items, WidgetRef ref, List<MediaProgress>? progress) {
+  Widget _buildItems(BuildContext context, LibraryPreview items,
+      List<MediaProgress>? progress) {
     if (items.items.isEmpty) {
-      return _error(context);
+      return _buildError(context);
     }
 
-    final results = items.items;
     return LayoutBuilder(
       builder: (context, constraints) {
         final crossAxisCount = (constraints.maxWidth / 200).floor();
         return GridView.builder(
           controller: _scrollController,
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.only(
+              left: 8.0, right: 8.0, top: 80, bottom: 8.0),
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: crossAxisCount,
             crossAxisSpacing: 8.0,
             mainAxisSpacing: 2.0,
             childAspectRatio: 0.75,
           ),
-          itemCount: results.length + (_isLoadingMore ? 20 : 0), // Show 20 placeholders if loading more
+          itemCount: items.items.length + (_isLoadingMore ? 20 : 0),
           itemBuilder: (context, index) {
-            if (index >= results.length) {
-              return _shimmerPlaceholder();
+            if (index >= items.items.length) {
+              return _buildShimmerPlaceholder();
             }
-            final item = results[index];
-            return MouseRegion(
-              cursor: SystemMouseCursors.click,
-              child: GestureDetector(
-                onTap: () {
-                },
-                child: PlatformWidget(
-                  material: (_, __) => InkWell(
-                    onTap: () {
-                      context.push('/view/book/${item.id}');
-                    },
-                    child: _buildCard(item, progress?.where((element) => element.libraryItemId == item.id).firstOrNull?.progress),
-                  ),
-                  cupertino: (_, __) => GestureDetector(
-                    onTap: () {
-                      context.push('/view/book/${item.id}');
-                    },
-                    child: _buildCard(item, progress?.where((element) => element.libraryItemId == item.id).firstOrNull?.progress),
-                  ),
-                ),
-              ),
-            );
+            final item = items.items[index];
+            return _buildItemCard(context, item, progress);
           },
         );
       },
     );
   }
 
-  Widget _buildCard(LibraryPreviewItem item, num? progress) {
+  Widget _buildItemCard(BuildContext context, LibraryPreviewItem item,
+      List<MediaProgress>? progress) {
     final currentUser = ref.watch(currentUserProvider);
+    final itemProgress = progress
+        ?.where((element) => element.libraryItemId == item.id)
+        .firstOrNull
+        ?.progress;
+
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      child: GestureDetector(
+        onTap: () {
+          context.push('/view/book/${item.id}');
+        },
+        child: Padding(
+          padding: const EdgeInsets.only(bottom: 8.0),
+          child: PlatformWidget(
+            material: (_, __) => InkWell(
+              onTap: () {
+                context.push('/view/book/${item.id}');
+              },
+              child: _buildCard(item, itemProgress, currentUser),
+            ),
+            cupertino: (_, __) => GestureDetector(
+              onTap: () {
+                context.push('/view/book/${item.id}');
+              },
+              child: _buildCard(item, itemProgress, currentUser),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildCard(
+      LibraryPreviewItem item, num? progress, m.User? currentUser) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -147,21 +161,26 @@ class _LibraryItemsState extends ConsumerState<LibraryItems> {
                   AspectRatio(
                     aspectRatio: 1.0,
                     child: CachedNetworkImage(
-                      imageUrl: '${currentUser!.server!.url}/api/items/${item.id}/cover?token=${currentUser.token}',
+                      imageUrl:
+                          '${currentUser!.server!.url}/api/items/${item.id}/cover?token=${currentUser.token}',
                       fit: BoxFit.cover,
-                      placeholder: (context, url) => _shimmerPlaceholder(withText: false),
-                      errorWidget: (context, url, error) => const Icon(Icons.error),
+                      placeholder: (context, url) =>
+                          _buildShimmerPlaceholder(withText: false),
+                      errorWidget: (context, url, error) =>
+                          const Icon(Icons.error),
                     ),
                   ),
-                  Align(
-                    alignment: Alignment.bottomCenter,
-                    child: LinearProgressIndicator(
-                      value: progress?.toDouble() ?? 0.0,
+                  if (progress != null)
+                    Align(
+                      alignment: Alignment.bottomCenter,
+                      child: LinearProgressIndicator(
+                        value: progress.toDouble(),
                         minHeight: 5.0,
-                      valueColor: const AlwaysStoppedAnimation<Color>(Colors.green),
-                      backgroundColor: Colors.grey[300],
+                        valueColor:
+                            const AlwaysStoppedAnimation<Color>(Colors.green),
+                        backgroundColor: Colors.grey[300],
+                      ),
                     ),
-                  )
                 ],
               ),
             ),
@@ -176,7 +195,7 @@ class _LibraryItemsState extends ConsumerState<LibraryItems> {
           maxLines: 1,
         ),
         Text(
-          item.authors.join(","),
+          item.authors.join(", "),
           textAlign: TextAlign.center,
           overflow: TextOverflow.ellipsis,
           maxLines: 1,
@@ -185,12 +204,13 @@ class _LibraryItemsState extends ConsumerState<LibraryItems> {
     );
   }
 
-  Widget _shimmerLoading() {
+  Widget _buildShimmerLoading() {
     return LayoutBuilder(
       builder: (context, constraints) {
         final crossAxisCount = (constraints.maxWidth / 200).floor();
         return GridView.builder(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.only(
+              left: 8.0, right: 8.0, top: 80, bottom: 8.0),
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: crossAxisCount,
             crossAxisSpacing: 8.0,
@@ -198,19 +218,17 @@ class _LibraryItemsState extends ConsumerState<LibraryItems> {
             childAspectRatio: 0.7,
           ),
           itemCount: 20,
-          itemBuilder: (context, index) {
-            return _shimmerPlaceholder();
-          },
+          itemBuilder: (context, index) => _buildShimmerPlaceholder(),
         );
       },
     );
   }
 
-  Widget _error(BuildContext context) {
+  Widget _buildError(BuildContext context) {
     return Center(child: Text(S.of(context).error));
   }
 
-  Widget _shimmerPlaceholder({bool withText = true}) {
+  Widget _buildShimmerPlaceholder({bool withText = true}) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -219,35 +237,30 @@ class _LibraryItemsState extends ConsumerState<LibraryItems> {
           child: Shimmer.fromColors(
             baseColor: Colors.grey[300]!,
             highlightColor: Colors.grey[100]!,
-            child: Container(
-              color: Colors.white,
-            ),
+            child: Container(color: Colors.white),
           ),
         ),
-        withText ? const SizedBox(height: 8.0) : const SizedBox(),
-        withText ? Shimmer.fromColors(
-          baseColor: Colors.grey[300]!,
-          highlightColor: Colors.grey[100]!,
-          child: Container(
-            height: 20.0,
-            color: Colors.white,
+        if (withText) ...[
+          const SizedBox(height: 8.0),
+          Shimmer.fromColors(
+            baseColor: Colors.grey[300]!,
+            highlightColor: Colors.grey[100]!,
+            child: Container(height: 20.0, color: Colors.white),
           ),
-        ) : const SizedBox(),
-        withText ? const SizedBox(height: 4.0) : const SizedBox(),
-        withText ? Shimmer.fromColors(
-          baseColor: Colors.grey[300]!,
-          highlightColor: Colors.grey[100]!,
-          child: Container(
-            height: 20.0,
-            color: Colors.white,
+          const SizedBox(height: 4.0),
+          Shimmer.fromColors(
+            baseColor: Colors.grey[300]!,
+            highlightColor: Colors.grey[100]!,
+            child: Container(height: 20.0, width: 50, color: Colors.white),
           ),
-        ) : const SizedBox(),
+        ],
       ],
     );
   }
 
   @override
   void dispose() {
+    _scrollController.removeListener(_onScroll);
     _scrollController.dispose();
     super.dispose();
   }
