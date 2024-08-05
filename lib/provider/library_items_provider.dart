@@ -88,6 +88,7 @@ class LibrariesNotifier
 
     if (libraryItem.data != null) {
       for (final item in libraryItem.data!.results!) {
+        //TODO: Wrong OpenAPI spec for authors
         final previewItem = LibraryPreviewItem(
           id: item.id!,
           title: item.media!.metadata!.title!,
