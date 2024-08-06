@@ -24,4 +24,6 @@
 
 library_item_minified.dart
 library_item_minified.g.dart
+lib/src/model/library_item_minified.dart
+lib/src/model/library_item_minified.g.dart
 

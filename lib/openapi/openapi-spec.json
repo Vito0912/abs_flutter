@@ -3021,16 +3021,13 @@
                             "description": "The ID of the library item."
                           },
                           "timeListening": {
-                            "type": "integer",
+                            "type": "number",
                             "description": "The time (in seconds) the user listened to this library item."
                           },
                           "mediaMetadata": {
                             "oneOf": [
                               {
                                 "$ref": "#/components/schemas/bookMetadata"
-                              },
-                              {
-                                "$ref": "#/components/schemas/PodcastMetadata"
                               }
                             ]
                           }
@@ -3041,7 +3038,7 @@
                       "type": "object",
                       "description": "A mapping of days to total listening times.",
                       "additionalProperties": {
-                        "type": "integer",
+                        "type": "number",
                         "description": "The total time (in seconds) listened to on that day."
                       }
                     },
@@ -3049,12 +3046,12 @@
                       "type": "object",
                       "description": "A mapping of days of the week to total listening times.",
                       "additionalProperties": {
-                        "type": "integer",
+                        "type": "number",
                         "description": "The total time (in seconds) listened to on that day of the week."
                       }
                     },
                     "today": {
-                      "type": "integer",
+                      "type": "number",
                       "description": "The time (in seconds) the user has listened to library items today."
                     },
                     "recentSessions": {
@@ -5368,7 +5365,7 @@
       },
       "sdkVersion": {
         "description": "For an Android client, the Android SDK version of the client.",
-        "type": "integer",
+        "type": "string",
         "example": 49
       },
       "deviceInfo": {
@@ -5648,7 +5645,7 @@
       },
       "totalTime": {
         "description": "The total time listened in seconds.",
-        "type": "integer",
+        "type": "number",
         "example": 123456
       }
     },

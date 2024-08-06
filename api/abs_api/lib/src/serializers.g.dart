@@ -314,12 +314,12 @@ Serializers _$serializers = (new Serializers().toBuilder()
               new MapBuilder<String, GetListeningStats200ResponseItemsValue>())
       ..addBuilderFactory(
           const FullType(
-              BuiltMap, const [const FullType(String), const FullType(int)]),
-          () => new MapBuilder<String, int>())
+              BuiltMap, const [const FullType(String), const FullType(num)]),
+          () => new MapBuilder<String, num>())
       ..addBuilderFactory(
           const FullType(
-              BuiltMap, const [const FullType(String), const FullType(int)]),
-          () => new MapBuilder<String, int>())
+              BuiltMap, const [const FullType(String), const FullType(num)]),
+          () => new MapBuilder<String, num>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(PlaybackSession)]),
           () => new ListBuilder<PlaybackSession>())

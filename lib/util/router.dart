@@ -5,6 +5,7 @@ import 'package:abs_flutter/features/library/item/item_view.dart';
 import 'package:abs_flutter/features/player/player_page.dart';
 import 'package:abs_flutter/features/player/player_wrapper.dart';
 import 'package:abs_flutter/features/settings/setting_wrapper.dart';
+import 'package:abs_flutter/features/stats/stats_wrapper.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -30,6 +31,10 @@ final router = GoRouter(
           GoRoute(
             path: '/init',
             builder: (context, state) => const ServerSelection(initAttempted: true,),
+          ),
+          GoRoute(
+            path: '/stats',
+            builder: (context, state) => const StatsWrapper(),
           ),
           GoRoute(
               path: '/',

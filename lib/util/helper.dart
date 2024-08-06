@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:abs_flutter/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class Helper {
@@ -53,7 +54,41 @@ class Helper {
       default:
         return Icon(Icons.question_mark_rounded);
     }
+  }
 
+
+  static String formattedTime(Duration position) {
+    int totalMinutes = position.inMinutes;
+    int hours = totalMinutes >= 60 ? totalMinutes ~/ 60 : 0;
+    int minutes = totalMinutes % 60;
+    int seconds = position.inSeconds % 60;
+
+    String formattedTime = '';
+    if (hours > 0) {
+      formattedTime = '${hours.toString().padLeft(2, '0')}:';
+    }
+    formattedTime +=
+    '${minutes.toString().padLeft(2, '0')}:${seconds.toString().padLeft(2, '0')}';
+
+    return formattedTime;
+  }
+
+  static String formatTimeToClock(num? seconds) {
+    if(seconds == null) return '00:00';
+    return formattedTime(Duration(seconds: seconds.toInt()));
+  }
+
+  static String formatTimeToReadable(num? seconds) {
+    seconds ??= 0;
+
+    int days = seconds ~/ 86400;
+    int hours = (seconds % 86400) ~/ 3600;
+    int minutes = (seconds % 3600) ~/ 60;
+
+    if (seconds < 60) return S.current.dateFormatSecond(seconds.toInt());
+    if (seconds < 3600) return S.current.dateFormatMinute(minutes);
+    if (seconds < 86400) return S.current.dateFormatHourMinute(hours, minutes);
+    return S.current.dateFormatDayHourMinute(days, hours, minutes);
   }
 
 

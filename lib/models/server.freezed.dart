@@ -27,8 +27,12 @@ mixin _$Server {
   bool get ssl => throw _privateConstructorUsedError;
   set ssl(bool value) => throw _privateConstructorUsedError;
 
+  /// Serializes this Server to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Server
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ServerCopyWith<Server> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -50,6 +54,8 @@ class _$ServerCopyWithImpl<$Res, $Val extends Server>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Server
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -92,6 +98,8 @@ class __$$ServerImplCopyWithImpl<$Res>
       _$ServerImpl _value, $Res Function(_$ServerImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Server
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -147,7 +155,9 @@ class _$ServerImpl extends _Server with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('ssl', ssl));
   }
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Server
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ServerImplCopyWith<_$ServerImpl> get copyWith =>
@@ -179,8 +189,11 @@ abstract class _Server extends Server {
   @override
   bool get ssl;
   set ssl(bool value);
+
+  /// Create a copy of Server
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ServerImplCopyWith<_$ServerImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

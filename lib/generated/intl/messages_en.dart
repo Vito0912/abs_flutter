@@ -20,15 +20,36 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
-  static String m0(hours, minutes) => "Length: ${hours}:${minutes}";
+  static String m0(count) =>
+      "${Intl.plural(count, one: '# day', other: '${count} days')}";
 
-  static String m1(numChapters) => "Number of Chapters: ${numChapters}";
+  static String m1(days, hours) =>
+      "${Intl.plural(days, one: '${days} day', other: '${days} days')} ${Intl.plural(hours, one: '${hours} hour', other: '${hours} hours')}";
 
-  static String m2(progress) => "Progress: ${progress}%";
+  static String m2(days, hours, minutes) =>
+      "${Intl.plural(days, one: '${days} day', other: '${days} days')} ${Intl.plural(hours, one: '${hours} hour', other: '${hours} hours')} ${Intl.plural(minutes, one: '${minutes} minute', other: '${minutes} minutes')}";
 
-  static String m3(year) => "Published Year: ${year}";
+  static String m3(count) =>
+      "${Intl.plural(count, one: '# hour', other: '${count} hours')}";
 
-  static String m4(time) => "${time} min";
+  static String m4(hours, minutes) =>
+      "${Intl.plural(hours, one: '${hours} hour', other: '${hours} hours')} ${Intl.plural(minutes, one: '${minutes} minute', other: '${minutes} minutes')}";
+
+  static String m5(count) =>
+      "${Intl.plural(count, one: '# minute', other: '${count} minutes')}";
+
+  static String m6(count) =>
+      "${Intl.plural(count, one: '# second', other: '${count} seconds')}";
+
+  static String m7(hours, minutes) => "Length: ${hours}:${minutes}";
+
+  static String m8(numChapters) => "Number of Chapters: ${numChapters}";
+
+  static String m9(progress) => "Progress: ${progress}%";
+
+  static String m10(year) => "Published Year: ${year}";
+
+  static String m11(time) => "${time} min";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -44,7 +65,17 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Collapse Series"),
         "collapseSeriesDescription": MessageLookupByLibrary.simpleMessage(
             "When enabled, items in a series will be grouped together in the library view, displaying only a single item to represent the entire series."),
+        "consecutiveDays":
+            MessageLookupByLibrary.simpleMessage("Consecutive days"),
         "darkMode": MessageLookupByLibrary.simpleMessage("Dark Mode"),
+        "dateFormatDay": m0,
+        "dateFormatDayHour": m1,
+        "dateFormatDayHourMinute": m2,
+        "dateFormatHour": m3,
+        "dateFormatHourMinute": m4,
+        "dateFormatMinute": m5,
+        "dateFormatSecond": m6,
+        "daysListened": MessageLookupByLibrary.simpleMessage("Days listened"),
         "descending": MessageLookupByLibrary.simpleMessage("Descending"),
         "description": MessageLookupByLibrary.simpleMessage("Description"),
         "disabled": MessageLookupByLibrary.simpleMessage("Disabled"),
@@ -63,12 +94,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "ifTheQuickAccountSwitcherShouldBeShown":
             MessageLookupByLibrary.simpleMessage(
                 "If the quick account switcher should be shown"),
-        "itemLength": m0,
-        "itemNumChapters": m1,
-        "itemProgress": m2,
-        "itemPublishedYear": m3,
+        "itemLength": m7,
+        "itemNumChapters": m8,
+        "itemProgress": m9,
+        "itemPublishedYear": m10,
         "language": MessageLookupByLibrary.simpleMessage("Language"),
-        "loading": MessageLookupByLibrary.simpleMessage("Loading..."),
+        "libraryStats": MessageLookupByLibrary.simpleMessage("Library Stats"),
+        "loading": MessageLookupByLibrary.simpleMessage("Loading…"),
         "markItemsFinished":
             MessageLookupByLibrary.simpleMessage("Mark Items Finished"),
         "markItemsFinishedAfterDescription": MessageLookupByLibrary.simpleMessage(
@@ -81,6 +113,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "noConnection": MessageLookupByLibrary.simpleMessage("No Connection"),
         "noUserData": MessageLookupByLibrary.simpleMessage(
             "Login failed: No user data received"),
+        "ownStats": MessageLookupByLibrary.simpleMessage("Own Stats"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "playbackSpeed": MessageLookupByLibrary.simpleMessage("Speed"),
         "player": MessageLookupByLibrary.simpleMessage("Player"),
@@ -110,13 +143,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "signOut": MessageLookupByLibrary.simpleMessage("Sign Out"),
         "size": MessageLookupByLibrary.simpleMessage("Size"),
         "sleepTimer": MessageLookupByLibrary.simpleMessage("Sleep Timer"),
+        "stats": MessageLookupByLibrary.simpleMessage("Stats"),
         "stopPlayerUntilSync":
             MessageLookupByLibrary.simpleMessage("Stop Player Until Sync"),
         "stopPlayerWhileSyncingDescription": MessageLookupByLibrary.simpleMessage(
             "Enable this option to prevent the player from starting until the most recent playback position has been synced. This ensures that playback resumes from the correct position. If disabled, the playback position may change shortly after starting, potentially leading to data loss. Turning this on helps conserve data usage."),
         "tags": MessageLookupByLibrary.simpleMessage("Tags"),
-        "timerText": m4,
+        "timerText": m11,
         "title": MessageLookupByLibrary.simpleMessage("Title"),
+        "totalTimeListened":
+            MessageLookupByLibrary.simpleMessage("Total time listened"),
         "updatedAt": MessageLookupByLibrary.simpleMessage("Updated At"),
         "user": MessageLookupByLibrary.simpleMessage("User"),
         "username": MessageLookupByLibrary.simpleMessage("Username"),

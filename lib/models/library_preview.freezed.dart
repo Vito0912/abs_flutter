@@ -42,8 +42,12 @@ mixin _$LibraryPreview {
   String? get include => throw _privateConstructorUsedError;
   set include(String? value) => throw _privateConstructorUsedError;
 
+  /// Serializes this LibraryPreview to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of LibraryPreview
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $LibraryPreviewCopyWith<LibraryPreview> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -77,6 +81,8 @@ class _$LibraryPreviewCopyWithImpl<$Res, $Val extends LibraryPreview>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of LibraryPreview
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -165,6 +171,8 @@ class __$$LibraryPreviewImplCopyWithImpl<$Res>
       _$LibraryPreviewImpl _value, $Res Function(_$LibraryPreviewImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of LibraryPreview
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -287,7 +295,9 @@ class _$LibraryPreviewImpl extends _LibraryPreview
       ..add(DiagnosticsProperty('include', include));
   }
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LibraryPreview
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$LibraryPreviewImplCopyWith<_$LibraryPreviewImpl> get copyWith =>
@@ -349,8 +359,11 @@ abstract class _LibraryPreview extends LibraryPreview {
   @override
   String? get include;
   set include(String? value);
+
+  /// Create a copy of LibraryPreview
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LibraryPreviewImplCopyWith<_$LibraryPreviewImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

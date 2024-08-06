@@ -27,8 +27,12 @@ mixin _$Chapter {
   double get end => throw _privateConstructorUsedError;
   set end(double value) => throw _privateConstructorUsedError;
 
+  /// Serializes this Chapter to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Chapter
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ChapterCopyWith<Chapter> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -50,6 +54,8 @@ class _$ChapterCopyWithImpl<$Res, $Val extends Chapter>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Chapter
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -92,6 +98,8 @@ class __$$ChapterImplCopyWithImpl<$Res>
       _$ChapterImpl _value, $Res Function(_$ChapterImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Chapter
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -147,7 +155,9 @@ class _$ChapterImpl extends _Chapter with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('end', end));
   }
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Chapter
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ChapterImplCopyWith<_$ChapterImpl> get copyWith =>
@@ -179,8 +189,11 @@ abstract class _Chapter extends Chapter {
   @override
   double get end;
   set end(double value);
+
+  /// Create a copy of Chapter
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ChapterImplCopyWith<_$ChapterImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

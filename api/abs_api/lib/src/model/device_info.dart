@@ -41,7 +41,7 @@ abstract class DeviceInfo implements Built<DeviceInfo, DeviceInfoBuilder> {
 
   /// For an Android client, the Android SDK version of the client.
   @BuiltValueField(wireName: r'sdkVersion')
-  int? get sdkVersion;
+  String? get sdkVersion;
 
   DeviceInfo._();
 
@@ -105,7 +105,7 @@ class _$DeviceInfoSerializer implements PrimitiveSerializer<DeviceInfo> {
       yield r'sdkVersion';
       yield serializers.serialize(
         object.sdkVersion,
-        specifiedType: const FullType(int),
+        specifiedType: const FullType(String),
       );
     }
   }
@@ -171,8 +171,8 @@ class _$DeviceInfoSerializer implements PrimitiveSerializer<DeviceInfo> {
         case r'sdkVersion':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType(String),
+          ) as String;
           result.sdkVersion = valueDes;
           break;
         default:
