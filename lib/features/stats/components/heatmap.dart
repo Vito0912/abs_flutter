@@ -1,3 +1,5 @@
+import 'package:abs_flutter/generated/l10n.dart';
+import 'package:abs_flutter/util/helper.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -69,14 +71,17 @@ class HeatMap extends StatelessWidget {
                     GestureDetector(
                       onTap: () => onClick?.call(day, normalizedData[day]!),
                       child: Tooltip(
-                        message: '${_formatTime(normalizedData[day] ?? 0)}',
+                        message: Helper.formatTimeToReadable(normalizedData[day] ?? 0),
                         child: Container(
                           width: size,
                           height: size,
                           margin: EdgeInsets.all(2),
                           decoration: BoxDecoration(
-                            color: _getColor(normalizedData[day]!, maxVal,
-                                Theme.of(context).brightness == Brightness.dark),
+                            color: _getColor(
+                                normalizedData[day]!,
+                                maxVal,
+                                Theme.of(context).brightness ==
+                                    Brightness.dark),
                             borderRadius: BorderRadius.circular(4),
                           ),
                         ),
@@ -111,12 +116,11 @@ class HeatMap extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               _getMonthWidget(week, spacing),
-
               for (var day in week)
                 GestureDetector(
                   onTap: () => onClick?.call(day, normalizedData[day]!),
                   child: Tooltip(
-                    message: '${_formatTime(normalizedData[day] ?? 0)}',
+                    message: Helper.formatTimeToReadable(normalizedData[day] ?? 0),
                     child: Container(
                       width: size,
                       height: size,
@@ -138,7 +142,7 @@ class HeatMap extends StatelessWidget {
   Widget _getMonthWidget(List<DateTime> week, double spacing) {
     for (var day in week) {
       if (day.day == 1) {
-        if(axis == Axis.horizontal) {
+        if (axis == Axis.horizontal) {
           return SizedBox(
             width: spacing,
             child: RotatedBox(
@@ -158,10 +162,9 @@ class HeatMap extends StatelessWidget {
             ),
           );
         }
-
       }
     }
-    if(axis == Axis.horizontal) {
+    if (axis == Axis.horizontal) {
       return SizedBox(
         width: spacing,
       );
@@ -173,8 +176,9 @@ class HeatMap extends StatelessWidget {
   }
 
   Widget _getWeekdayWidget(int index) {
-    if (axis == Axis.horizontal && index % 2 == 1) return const SizedBox.shrink();
-    if(axis == Axis.horizontal) {
+    if (axis == Axis.horizontal && index % 2 == 1)
+      return const SizedBox.shrink();
+    if (axis == Axis.horizontal) {
       return Container(
         width: size * 2,
         margin: EdgeInsets.all(4),
@@ -193,7 +197,6 @@ class HeatMap extends StatelessWidget {
         ),
       );
     }
-
   }
 
   List<List<DateTime>> _getWeeks(List<DateTime> days) {
@@ -212,26 +215,15 @@ class HeatMap extends StatelessWidget {
   }
 
   String _weekdayLabel(int index) {
-    const weekdays = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'];
-    return weekdays[index];
+    final weekdays = DateFormat().dateSymbols.WEEKDAYS;
+    final shortWeekdays = weekdays.map((e) => e.substring(0, 2)).toList();
+       return shortWeekdays[index];
   }
 
   String _monthLabel(int month) {
-    const months = [
-      'Jan',
-      'Feb',
-      'Mar',
-      'Apr',
-      'May',
-      'Jun',
-      'Jul',
-      'Aug',
-      'Sep',
-      'Oct',
-      'Nov',
-      'Dec'
-    ];
-    return months[month - 1];
+    final months = DateFormat().dateSymbols.MONTHS;
+    final shortMonths = months.map((e) => e.substring(0, 3)).toList();
+    return shortMonths[month - 1];
   }
 
   Color _getColor(num value, num maxVal, bool isDarkMode) {
@@ -249,12 +241,5 @@ class HeatMap extends StatelessWidget {
       Colors.green,
       adjustedIntensity,
     )!;
-  }
-
-  String _formatTime(num seconds) {
-    int hours = seconds ~/ 3600;
-    int minutes = (seconds % 3600) ~/ 60;
-
-    return '${hours.toString().padLeft(2, '0')} hours ${minutes.toString().padLeft(2, '0')} minutes';
   }
 }

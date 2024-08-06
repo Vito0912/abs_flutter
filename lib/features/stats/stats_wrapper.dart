@@ -1,4 +1,5 @@
 import 'package:abs_flutter/features/stats/own_stats.dart';
+import 'package:abs_flutter/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 
@@ -14,23 +15,23 @@ class StatsWrapper extends StatelessWidget {
       ),
       appBarBuilder: (_, index) {
         return PlatformAppBar(
-          title: Text('Stats'),
+          title: Text(S.of(context).stats),
         );
       },
       bodyBuilder: (_, index) {
-        if(index == 0) return OwnStats();
+        if (index == 0) return const OwnStats();
         return Center(
-          child: Text('Stats'),
+          child: Text(S.of(context).stats),
         );
       },
       items: [
         BottomNavigationBarItem(
           icon: Icon(context.platformIcons.accountCircle),
-          label: 'Own Stats',
+          label: S.of(context).ownStats,
         ),
         BottomNavigationBarItem(
           icon: Icon(context.platformIcons.book),
-          label: 'Library Stats',
+          label: S.of(context).libraryStats,
         ),
       ],
     );

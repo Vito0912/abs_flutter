@@ -729,6 +729,144 @@ class S {
       args: [],
     );
   }
+
+  /// `Own Stats`
+  String get ownStats {
+    return Intl.message(
+      'Own Stats',
+      name: 'ownStats',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Library Stats`
+  String get libraryStats {
+    return Intl.message(
+      'Library Stats',
+      name: 'libraryStats',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Stats`
+  String get stats {
+    return Intl.message(
+      'Stats',
+      name: 'stats',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total time listened`
+  String get totalTimeListened {
+    return Intl.message(
+      'Total time listened',
+      name: 'totalTimeListened',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Days listened`
+  String get daysListened {
+    return Intl.message(
+      'Days listened',
+      name: 'daysListened',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Consecutive days`
+  String get consecutiveDays {
+    return Intl.message(
+      'Consecutive days',
+      name: 'consecutiveDays',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `{count, plural, one {# second} other {{count} seconds}}`
+  String dateFormatSecond(int count) {
+    return Intl.plural(
+      count,
+      one: '# second',
+      other: '$count seconds',
+      name: 'dateFormatSecond',
+      desc: '',
+      args: [count],
+    );
+  }
+
+  /// `{count, plural, one {# minute} other {{count} minutes}}`
+  String dateFormatMinute(int count) {
+    return Intl.plural(
+      count,
+      one: '# minute',
+      other: '$count minutes',
+      name: 'dateFormatMinute',
+      desc: '',
+      args: [count],
+    );
+  }
+
+  /// `{count, plural, one {# hour} other {{count} hours}}`
+  String dateFormatHour(int count) {
+    return Intl.plural(
+      count,
+      one: '# hour',
+      other: '$count hours',
+      name: 'dateFormatHour',
+      desc: '',
+      args: [count],
+    );
+  }
+
+  /// `{hours, plural, one {{hours} hour} other {{hours} hours}} {minutes, plural, one {{minutes} minute} other {{minutes} minutes}}`
+  String dateFormatHourMinute(int hours, int minutes) {
+    return Intl.message(
+      '${Intl.plural(hours, one: '$hours hour', other: '$hours hours')} ${Intl.plural(minutes, one: '$minutes minute', other: '$minutes minutes')}',
+      name: 'dateFormatHourMinute',
+      desc: '',
+      args: [hours, minutes],
+    );
+  }
+
+  /// `{count, plural, one {# day} other {{count} days}}`
+  String dateFormatDay(int count) {
+    return Intl.plural(
+      count,
+      one: '# day',
+      other: '$count days',
+      name: 'dateFormatDay',
+      desc: '',
+      args: [count],
+    );
+  }
+
+  /// `{days, plural, one {{days} day} other {{days} days}} {hours, plural, one {{hours} hour} other {{hours} hours}}`
+  String dateFormatDayHour(int days, int hours) {
+    return Intl.message(
+      '${Intl.plural(days, one: '$days day', other: '$days days')} ${Intl.plural(hours, one: '$hours hour', other: '$hours hours')}',
+      name: 'dateFormatDayHour',
+      desc: '',
+      args: [days, hours],
+    );
+  }
+
+  /// `{days, plural, one {{days} day} other {{days} days}} {hours, plural, one {{hours} hour} other {{hours} hours}} {minutes, plural, one {{minutes} minute} other {{minutes} minutes}}`
+  String dateFormatDayHourMinute(int days, int hours, int minutes) {
+    return Intl.message(
+      '${Intl.plural(days, one: '$days day', other: '$days days')} ${Intl.plural(hours, one: '$hours hour', other: '$hours hours')} ${Intl.plural(minutes, one: '$minutes minute', other: '$minutes minutes')}',
+      name: 'dateFormatDayHourMinute',
+      desc: '',
+      args: [days, hours, minutes],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

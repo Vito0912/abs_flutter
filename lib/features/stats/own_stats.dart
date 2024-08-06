@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'package:abs_flutter/features/stats/components/heatmap.dart';
 import 'package:abs_flutter/features/stats/components/listen_chart.dart';
+import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/provider/stats_provider.dart';
 import 'package:abs_flutter/util/helper.dart';
 import 'package:fl_chart/fl_chart.dart';
@@ -40,7 +41,8 @@ class _OwnStatsState extends ConsumerState<OwnStats> {
         ? _getLastDaysLabels(today, 7, context)
         : _getLastDaysLabels(today, 30, context);
 
-    final int consecutiveDays = _calculateConsecutiveDays(ownStats.days?.toMap());
+    final int consecutiveDays =
+        _calculateConsecutiveDays(ownStats.days?.toMap());
 
     return SingleChildScrollView(
       child: Column(
@@ -64,16 +66,29 @@ class _OwnStatsState extends ConsumerState<OwnStats> {
                       child: LayoutBuilder(
                         builder: (context, constraints) {
                           // Check if the available width is less than a certain threshold
-                          if (constraints.maxWidth < 600) {
+                          if (constraints.maxWidth < 700) {
                             // If the width is less than 600, switch to a column layout
                             return Column(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                _buildInfoRow(Icons.timer_sharp, Helper.formattedTimeWithTime(ownStats.totalTime), "Total listened time", context),
+                                _buildInfoRow(
+                                    Icons.timer_sharp,
+                                    Helper.formatTimeToReadable(
+                                        ownStats.totalTime),
+                                    S.of(context).totalTimeListened,
+                                    context),
                                 const SizedBox(height: 16),
-                                _buildInfoRow(Icons.date_range_outlined, ownStats.days?.length.toString() ?? '0', "Days listened", context),
+                                _buildInfoRow(
+                                    Icons.date_range_outlined,
+                                    ownStats.days?.length.toString() ?? '0',
+                                    S.of(context).daysListened,
+                                    context),
                                 const SizedBox(height: 16),
-                                _buildInfoRow(Icons.stacked_line_chart, consecutiveDays.toString() ?? '0', "Consecutive days", context),
+                                _buildInfoRow(
+                                    Icons.stacked_line_chart,
+                                    consecutiveDays.toString() ?? '0',
+                                    S.of(context).consecutiveDays,
+                                    context),
                               ],
                             );
                           } else {
@@ -81,15 +96,27 @@ class _OwnStatsState extends ConsumerState<OwnStats> {
                             return Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                _buildInfoRow(Icons.timer_sharp, Helper.formattedTimeWithTime(ownStats.totalTime), "Total listened time", context),
-                                _buildInfoRow(Icons.date_range_outlined, ownStats.days?.length.toString() ?? '0', "Days listened", context),
-                                _buildInfoRow(Icons.stacked_line_chart, consecutiveDays.toString() ?? '0', "Consecutive days", context),
+                                _buildInfoRow(
+                                    Icons.timer_sharp,
+                                    Helper.formatTimeToReadable(
+                                        ownStats.totalTime),
+                                    S.of(context).totalTimeListened,
+                                    context),
+                                _buildInfoRow(
+                                    Icons.date_range_outlined,
+                                    ownStats.days?.length.toString() ?? '0',
+                                    S.of(context).daysListened,
+                                    context),
+                                _buildInfoRow(
+                                    Icons.stacked_line_chart,
+                                    consecutiveDays.toString() ?? '0',
+                                    S.of(context).consecutiveDays,
+                                    context),
                               ],
                             );
                           }
                         },
-                      )
-                  ),
+                      )),
                 ),
               ],
             ),
@@ -124,7 +151,7 @@ class _OwnStatsState extends ConsumerState<OwnStats> {
             child: Padding(
               padding: const EdgeInsets.all(16.0),
               child: SizedBox(
-                height: 200,  // Height for the chart
+                height: 200, // Height for the chart
                 child: ListenChart(
                   lastDays: lastDays,
                   lastDaysLabels: lastDaysLabels,
@@ -143,7 +170,9 @@ class _OwnStatsState extends ConsumerState<OwnStats> {
           Center(
             child: HeatMap(
               size: 14,
-              axis: MediaQuery.of(context).size.width > 1080 ? Axis.vertical : Axis.horizontal,
+              axis: MediaQuery.of(context).size.width > 1080
+                  ? Axis.vertical
+                  : Axis.horizontal,
               datasets: _generateDatasets(ownStats.days?.toMap()),
             ),
           ),
@@ -175,10 +204,12 @@ class _OwnStatsState extends ConsumerState<OwnStats> {
     return lastDays;
   }
 
-  List<String> _getLastDaysLabels(DateTime today, int days, BuildContext context) {
+  List<String> _getLastDaysLabels(
+      DateTime today, int days, BuildContext context) {
     List<String> lastDaysLabels = List.generate(days, (index) {
       DateTime day = today.subtract(Duration(days: days - 1 - index));
-      return DateFormat.E(Localizations.localeOf(context).toString()).format(day);
+      return DateFormat.E(Localizations.localeOf(context).toString())
+          .format(day);
     });
     return lastDaysLabels;
   }
@@ -220,7 +251,8 @@ class _OwnStatsState extends ConsumerState<OwnStats> {
     return consecutiveDays;
   }
 
-  Widget _buildInfoRow(IconData icon, String mainText, String subText, BuildContext context) {
+  Widget _buildInfoRow(
+      IconData icon, String mainText, String subText, BuildContext context) {
     return Row(
       children: [
         Icon(
@@ -231,8 +263,10 @@ class _OwnStatsState extends ConsumerState<OwnStats> {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            // TODO: Fix overflow
             PlatformText(
               mainText,
+              overflow: TextOverflow.clip,
               style: Theme.of(context).textTheme.titleLarge,
             ),
             PlatformText(
