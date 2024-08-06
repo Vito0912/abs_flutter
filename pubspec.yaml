@@ -40,12 +40,13 @@ dependencies:
   flutter_settings_screens: ^0.3.4
   device_info_plus: ^10.1.1
   window_manager: ^0.3.9
+  fl_chart: ^0.68.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  flutter_lints: ^3.0.0
+  flutter_lints: ^4.0.0
   openapi_generator: ^5.0.2
   build_runner: ^2.4.11
   freezed: ^2.5.2

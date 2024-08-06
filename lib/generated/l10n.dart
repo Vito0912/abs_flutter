@@ -190,10 +190,10 @@ class S {
     );
   }
 
-  /// `Loading...`
+  /// `Loading…`
   String get loading {
     return Intl.message(
-      'Loading...',
+      'Loading…',
       name: 'loading',
       desc: '',
       args: [],
@@ -738,6 +738,7 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
     return const <Locale>[
       Locale.fromSubtags(languageCode: 'en'),
       Locale.fromSubtags(languageCode: 'de'),
+      Locale.fromSubtags(languageCode: 'nb', countryCode: 'NO'),
     ];
   }
 

@@ -14,6 +14,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:just_audio_media_kit/just_audio_media_kit.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -29,7 +30,7 @@ void main() async {
     encryptedSharedPreferences: true,
   );
 
-
+  initializeDateFormatting();
 
   secureStorage = FlutterSecureStorage(aOptions: getAndroidOptions());
   sp = await SharedPreferences.getInstance();

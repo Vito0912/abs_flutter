@@ -68,7 +68,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "itemProgress": m2,
         "itemPublishedYear": m3,
         "language": MessageLookupByLibrary.simpleMessage("Language"),
-        "loading": MessageLookupByLibrary.simpleMessage("Loading..."),
+        "loading": MessageLookupByLibrary.simpleMessage("Loading…"),
         "markItemsFinished":
             MessageLookupByLibrary.simpleMessage("Mark Items Finished"),
         "markItemsFinishedAfterDescription": MessageLookupByLibrary.simpleMessage(

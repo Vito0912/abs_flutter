@@ -177,7 +177,6 @@ lib/src/model/get_sessions200_response.dart
 lib/src/model/library_file.dart
 lib/src/model/library_item.dart
 lib/src/model/library_item_base.dart
-lib/src/model/library_item_minified.dart
 lib/src/model/library_item_sequence.dart
 lib/src/model/library_settings.dart
 lib/src/model/login200_response.dart

@@ -11,7 +11,7 @@ class _$GetListeningStats200ResponseItemsValue
   @override
   final String? id;
   @override
-  final int? timeListening;
+  final num? timeListening;
   @override
   final GetListeningStats200ResponseItemsValueMediaMetadata? mediaMetadata;
 
@@ -75,9 +75,9 @@ class GetListeningStats200ResponseItemsValueBuilder
   String? get id => _$this._id;
   set id(String? id) => _$this._id = id;
 
-  int? _timeListening;
-  int? get timeListening => _$this._timeListening;
-  set timeListening(int? timeListening) =>
+  num? _timeListening;
+  num? get timeListening => _$this._timeListening;
+  set timeListening(num? timeListening) =>
       _$this._timeListening = timeListening;
 
   GetListeningStats200ResponseItemsValueMediaMetadataBuilder? _mediaMetadata;

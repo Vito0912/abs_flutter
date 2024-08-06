@@ -24,8 +24,12 @@ mixin _$Setting {
   set settings(Map<String, dynamic> value) =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this Setting to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Setting
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SettingCopyWith<Setting> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -47,6 +51,8 @@ class _$SettingCopyWithImpl<$Res, $Val extends Setting>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Setting
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -79,6 +85,8 @@ class __$$SettingImplCopyWithImpl<$Res>
       _$SettingImpl _value, $Res Function(_$SettingImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Setting
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -118,7 +126,9 @@ class _$SettingImpl with DiagnosticableTreeMixin implements _Setting {
       ..add(DiagnosticsProperty('settings', settings));
   }
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Setting
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SettingImplCopyWith<_$SettingImpl> get copyWith =>
@@ -140,8 +150,11 @@ abstract class _Setting implements Setting {
   @override
   Map<String, dynamic> get settings;
   set settings(Map<String, dynamic> value);
+
+  /// Create a copy of Setting
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SettingImplCopyWith<_$SettingImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

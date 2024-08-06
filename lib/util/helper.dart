@@ -53,7 +53,30 @@ class Helper {
       default:
         return Icon(Icons.question_mark_rounded);
     }
+  }
 
+
+  static String formattedTime(Duration position) {
+    int totalMinutes = position.inMinutes;
+    int hours = totalMinutes >= 60 ? totalMinutes ~/ 60 : 0;
+    int minutes = totalMinutes % 60;
+    int seconds = position.inSeconds % 60;
+
+    String formattedTime = '';
+    if (hours > 0) {
+      formattedTime = '${hours.toString().padLeft(2, '0')}:';
+    }
+    formattedTime +=
+    '${minutes.toString().padLeft(2, '0')}:${seconds.toString().padLeft(2, '0')}';
+
+    return formattedTime;
+  }
+
+  static String formattedTimeWithTime(num? seconds) {
+    if (seconds == null) {
+      return '0:00';
+    }
+    return formattedTime(Duration(seconds: seconds.toInt()));
   }
 
 

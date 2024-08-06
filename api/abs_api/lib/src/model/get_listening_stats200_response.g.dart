@@ -8,15 +8,15 @@ part of 'get_listening_stats200_response.dart';
 
 class _$GetListeningStats200Response extends GetListeningStats200Response {
   @override
-  final int? totalTime;
+  final num? totalTime;
   @override
   final BuiltMap<String, GetListeningStats200ResponseItemsValue>? items;
   @override
-  final BuiltMap<String, int>? days;
+  final BuiltMap<String, num>? days;
   @override
-  final BuiltMap<String, int>? dayOfWeek;
+  final BuiltMap<String, num>? dayOfWeek;
   @override
-  final int? today;
+  final num? today;
   @override
   final BuiltList<PlaybackSession>? recentSessions;
 
@@ -86,9 +86,9 @@ class GetListeningStats200ResponseBuilder
             GetListeningStats200ResponseBuilder> {
   _$GetListeningStats200Response? _$v;
 
-  int? _totalTime;
-  int? get totalTime => _$this._totalTime;
-  set totalTime(int? totalTime) => _$this._totalTime = totalTime;
+  num? _totalTime;
+  num? get totalTime => _$this._totalTime;
+  set totalTime(num? totalTime) => _$this._totalTime = totalTime;
 
   MapBuilder<String, GetListeningStats200ResponseItemsValue>? _items;
   MapBuilder<String, GetListeningStats200ResponseItemsValue> get items =>
@@ -98,20 +98,20 @@ class GetListeningStats200ResponseBuilder
           MapBuilder<String, GetListeningStats200ResponseItemsValue>? items) =>
       _$this._items = items;
 
-  MapBuilder<String, int>? _days;
-  MapBuilder<String, int> get days =>
-      _$this._days ??= new MapBuilder<String, int>();
-  set days(MapBuilder<String, int>? days) => _$this._days = days;
+  MapBuilder<String, num>? _days;
+  MapBuilder<String, num> get days =>
+      _$this._days ??= new MapBuilder<String, num>();
+  set days(MapBuilder<String, num>? days) => _$this._days = days;
 
-  MapBuilder<String, int>? _dayOfWeek;
-  MapBuilder<String, int> get dayOfWeek =>
-      _$this._dayOfWeek ??= new MapBuilder<String, int>();
-  set dayOfWeek(MapBuilder<String, int>? dayOfWeek) =>
+  MapBuilder<String, num>? _dayOfWeek;
+  MapBuilder<String, num> get dayOfWeek =>
+      _$this._dayOfWeek ??= new MapBuilder<String, num>();
+  set dayOfWeek(MapBuilder<String, num>? dayOfWeek) =>
       _$this._dayOfWeek = dayOfWeek;
 
-  int? _today;
-  int? get today => _$this._today;
-  set today(int? today) => _$this._today = today;
+  num? _today;
+  num? get today => _$this._today;
+  set today(num? today) => _$this._today = today;
 
   ListBuilder<PlaybackSession>? _recentSessions;
   ListBuilder<PlaybackSession> get recentSessions =>

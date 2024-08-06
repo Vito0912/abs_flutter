@@ -44,6 +44,12 @@ class Home extends ConsumerWidget {
               users[user].setting != null &&
               users[user].setting!.settings['showAccountSwitcher'] == true)
             const UserSwitcher(),
+          IconButton(
+              onPressed: () => {
+                context.push('/stats')
+              },
+              icon: Icon(Icons.pie_chart_outline_rounded)
+          ),
           PlatformPopupMenu(
             options: [
               PopupMenuOption(
@@ -76,7 +82,7 @@ class Home extends ConsumerWidget {
         items: [
           BottomNavigationBarItem(
             icon: Icon(context.platformIcons.home),
-            label: "Home",
+            label: "Library",
           ),
           BottomNavigationBarItem(
             icon: Icon(context.platformIcons.home),

@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **clientName** | **String** | The client name. | [optional] 
 **manufacturer** | **String** | The manufacturer of the device. | [optional] 
 **model** | **String** | The model of the device. | [optional] 
-**sdkVersion** | **int** | For an Android client, the Android SDK version of the client. | [optional] 
+**sdkVersion** | **String** | For an Android client, the Android SDK version of the client. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

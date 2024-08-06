@@ -27,7 +27,7 @@ abstract class GetListeningStats200Response
             GetListeningStats200ResponseBuilder> {
   /// The total time listened in seconds.
   @BuiltValueField(wireName: r'totalTime')
-  int? get totalTime;
+  num? get totalTime;
 
   /// A list of library items the user has listened to, keyed by their item IDs.
   @BuiltValueField(wireName: r'items')
@@ -35,15 +35,15 @@ abstract class GetListeningStats200Response
 
   /// A mapping of days to total listening times.
   @BuiltValueField(wireName: r'days')
-  BuiltMap<String, int>? get days;
+  BuiltMap<String, num>? get days;
 
   /// A mapping of days of the week to total listening times.
   @BuiltValueField(wireName: r'dayOfWeek')
-  BuiltMap<String, int>? get dayOfWeek;
+  BuiltMap<String, num>? get dayOfWeek;
 
   /// The time (in seconds) the user has listened to library items today.
   @BuiltValueField(wireName: r'today')
-  int? get today;
+  num? get today;
 
   @BuiltValueField(wireName: r'recentSessions')
   BuiltList<PlaybackSession>? get recentSessions;
@@ -82,7 +82,7 @@ class _$GetListeningStats200ResponseSerializer
       yield r'totalTime';
       yield serializers.serialize(
         object.totalTime,
-        specifiedType: const FullType(int),
+        specifiedType: const FullType(num),
       );
     }
     if (object.items != null) {
@@ -100,7 +100,7 @@ class _$GetListeningStats200ResponseSerializer
       yield serializers.serialize(
         object.days,
         specifiedType:
-            const FullType(BuiltMap, [FullType(String), FullType(int)]),
+            const FullType(BuiltMap, [FullType(String), FullType(num)]),
       );
     }
     if (object.dayOfWeek != null) {
@@ -108,14 +108,14 @@ class _$GetListeningStats200ResponseSerializer
       yield serializers.serialize(
         object.dayOfWeek,
         specifiedType:
-            const FullType(BuiltMap, [FullType(String), FullType(int)]),
+            const FullType(BuiltMap, [FullType(String), FullType(num)]),
       );
     }
     if (object.today != null) {
       yield r'today';
       yield serializers.serialize(
         object.today,
-        specifiedType: const FullType(int),
+        specifiedType: const FullType(num),
       );
     }
     if (object.recentSessions != null) {
@@ -153,8 +153,8 @@ class _$GetListeningStats200ResponseSerializer
         case r'totalTime':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType(num),
+          ) as num;
           result.totalTime = valueDes;
           break;
         case r'items':
@@ -171,23 +171,23 @@ class _$GetListeningStats200ResponseSerializer
           final valueDes = serializers.deserialize(
             value,
             specifiedType:
-                const FullType(BuiltMap, [FullType(String), FullType(int)]),
-          ) as BuiltMap<String, int>;
+                const FullType(BuiltMap, [FullType(String), FullType(num)]),
+          ) as BuiltMap<String, num>;
           result.days.replace(valueDes);
           break;
         case r'dayOfWeek':
           final valueDes = serializers.deserialize(
             value,
             specifiedType:
-                const FullType(BuiltMap, [FullType(String), FullType(int)]),
-          ) as BuiltMap<String, int>;
+                const FullType(BuiltMap, [FullType(String), FullType(num)]),
+          ) as BuiltMap<String, num>;
           result.dayOfWeek.replace(valueDes);
           break;
         case r'today':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType(num),
+          ) as num;
           result.today = valueDes;
           break;
         case r'recentSessions':

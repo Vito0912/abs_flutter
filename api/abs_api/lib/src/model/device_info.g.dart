@@ -18,7 +18,7 @@ class _$DeviceInfo extends DeviceInfo {
   @override
   final String? model;
   @override
-  final int? sdkVersion;
+  final String? sdkVersion;
 
   factory _$DeviceInfo([void Function(DeviceInfoBuilder)? updates]) =>
       (new DeviceInfoBuilder()..update(updates))._build();
@@ -101,9 +101,9 @@ class DeviceInfoBuilder implements Builder<DeviceInfo, DeviceInfoBuilder> {
   String? get model => _$this._model;
   set model(String? model) => _$this._model = model;
 
-  int? _sdkVersion;
-  int? get sdkVersion => _$this._sdkVersion;
-  set sdkVersion(int? sdkVersion) => _$this._sdkVersion = sdkVersion;
+  String? _sdkVersion;
+  String? get sdkVersion => _$this._sdkVersion;
+  set sdkVersion(String? sdkVersion) => _$this._sdkVersion = sdkVersion;
 
   DeviceInfoBuilder() {
     DeviceInfo._defaults(this);

@@ -3,7 +3,6 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:abs_api/src/model/podcast_metadata.dart';
 import 'package:abs_api/src/model/author_minified.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:abs_api/src/model/series_sequence.dart';
@@ -17,35 +16,27 @@ part 'get_listening_stats200_response_items_value_media_metadata.g.dart';
 /// GetListeningStats200ResponseItemsValueMediaMetadata
 ///
 /// Properties:
-/// * [title] - The title of the podcast.
+/// * [title] - The title of the book. Will be null if unknown.
 /// * [subtitle] - The subtitle of the book. Will be null if there is no subtitle.
-/// * [genres] - The genres of the podcast.
+/// * [genres] - The genres of the book.
 /// * [publishedYear] - The year the book was published. Will be null if unknown.
 /// * [publishedDate] - The date the book was published. Will be null if unknown.
 /// * [publisher] - The publisher of the book. Will be null if unknown.
-/// * [description] - The description of the podcast.
+/// * [description] - A description for the book. Will be null if empty.
 /// * [isbn] - The ISBN of the book. Will be null if unknown.
 /// * [asin] - The ASIN of the book. Will be null if unknown.
-/// * [language] - The language of the podcast.
-/// * [explicit] - Whether the podcast contains explicit content.
+/// * [language] - The language of the book. Will be null if unknown.
+/// * [explicit] - Whether the book has been marked as explicit.
 /// * [abridged] - Whether the book is abridged.
 /// * [authors]
 /// * [narrators]
 /// * [series]
-/// * [author] - The author of the podcast.
-/// * [releaseDate] - The release date of the podcast.
-/// * [feedUrl] - The URL of the podcast feed.
-/// * [imageUrl] - The URL of the podcast's image.
-/// * [itunesPageUrl] - The URL of the podcast's iTunes page.
-/// * [itunesId] - The iTunes ID of the podcast.
-/// * [itunesArtistId] - The iTunes artist ID of the podcast.
-/// * [type] - The type of podcast (e.g., episodic, serial).
 @BuiltValue()
 abstract class GetListeningStats200ResponseItemsValueMediaMetadata
     implements
         Built<GetListeningStats200ResponseItemsValueMediaMetadata,
             GetListeningStats200ResponseItemsValueMediaMetadataBuilder> {
-  /// One Of [BookMetadata], [PodcastMetadata]
+  /// One Of [BookMetadata]
   OneOf get oneOf;
 
   GetListeningStats200ResponseItemsValueMediaMetadata._();
@@ -107,7 +98,6 @@ class _$GetListeningStats200ResponseItemsValueMediaMetadataSerializer
     Object? oneOfDataSrc;
     final targetType = const FullType(OneOf, [
       FullType(BookMetadata),
-      FullType(PodcastMetadata),
     ]);
     oneOfDataSrc = serialized;
     result.oneOf = serializers.deserialize(oneOfDataSrc,

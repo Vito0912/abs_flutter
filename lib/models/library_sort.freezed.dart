@@ -33,8 +33,12 @@ mixin _$LibrarySort {
   String? get search => throw _privateConstructorUsedError;
   set search(String? value) => throw _privateConstructorUsedError;
 
+  /// Serializes this LibrarySort to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of LibrarySort
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $LibrarySortCopyWith<LibrarySort> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -64,6 +68,8 @@ class _$LibrarySortCopyWithImpl<$Res, $Val extends LibrarySort>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of LibrarySort
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -128,6 +134,8 @@ class __$$LibrarySortImplCopyWithImpl<$Res>
       _$LibrarySortImpl _value, $Res Function(_$LibrarySortImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of LibrarySort
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -218,7 +226,9 @@ class _$LibrarySortImpl with DiagnosticableTreeMixin implements _LibrarySort {
       ..add(DiagnosticsProperty('search', search));
   }
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LibrarySort
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$LibrarySortImplCopyWith<_$LibrarySortImpl> get copyWith =>
@@ -262,8 +272,11 @@ abstract class _LibrarySort implements LibrarySort {
   @override
   String? get search;
   set search(String? value);
+
+  /// Create a copy of LibrarySort
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LibrarySortImplCopyWith<_$LibrarySortImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -26,7 +26,7 @@ abstract class GetListeningStats200ResponseItemsValue
 
   /// The time (in seconds) the user listened to this library item.
   @BuiltValueField(wireName: r'timeListening')
-  int? get timeListening;
+  num? get timeListening;
 
   @BuiltValueField(wireName: r'mediaMetadata')
   GetListeningStats200ResponseItemsValueMediaMetadata? get mediaMetadata;
@@ -72,7 +72,7 @@ class _$GetListeningStats200ResponseItemsValueSerializer
       yield r'timeListening';
       yield serializers.serialize(
         object.timeListening,
-        specifiedType: const FullType(int),
+        specifiedType: const FullType(num),
       );
     }
     if (object.mediaMetadata != null) {
@@ -118,8 +118,8 @@ class _$GetListeningStats200ResponseItemsValueSerializer
         case r'timeListening':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType(num),
+          ) as num;
           result.timeListening = valueDes;
           break;
         case r'mediaMetadata':
