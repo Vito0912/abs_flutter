@@ -71,6 +71,20 @@ A big thank you to [Weblate](https://weblate.org) for providing their services!
 📖 **Reading eBooks**\
 🎙️ **Playing Podcasts**
 
+### Attribution
+> The following attributions highlight contributions that were essential to this project.\
+> For a complete list of libraries used, please refer to the [pubspec.yaml](pubspec.yaml) file.\
+> The libraries mentioned below had a particularly significant impact on the development of the app.
+
+| Library                                                                     | License      | Publisher                                                                  | Repository                                                   |
+|-----------------------------------------------------------------------------|--------------|----------------------------------------------------------------------------|--------------------------------------------------------------|
+| [openapi_generator](https://pub.dev/packages/openapi_generator) (flutter)   | BSD-3-Clause | [devappliance.com](https://pub.dev/publishers/devappliance.com/packages)   | [GitHub](https://github.com/gibahjoe/openapi-generator-dart) |
+| OpenAPI Generator                                                           | Apache-2.0   | -                                                                          | [GitHub](https://github.com/OpenAPITools/openapi-generator)  |
+| [Riverpod](https://pub.dev/packages/flutter_riverpod)                       | MIT          | [dash-overflow.net](https://pub.dev/publishers/dash-overflow.net/packages) | [GitHub](https://github.com/rrousselGit/riverpod)            | [GitHub](
+| [OpenLeaf](https://github.com/JideGuru/FlutterEbookApp) for modified iridum | Apache-2.0   | [JideGuru](https://github.com/JideGuru)                                    | [GitHub](https://github.com/JideGuru/FlutterEbookApp)        |
+| [iridium_reader_widget](https://github.com/Mantano/iridium_reader_widget)   | -            | [Mantano](https://github.com/Mantano)                                      | [GitHub](https://github.com/Mantano/iridium_reader_widget)   |
+| [iridium](https://github.com/Mantano/iridium)                               | -            | [Mantano](https://github.com/Mantano)                                      | [GitHub](https://github.com/Mantano/iridium)                 |
+
 ### Known Bugs
 
 #### Sleep Timer
