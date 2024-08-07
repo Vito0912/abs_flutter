@@ -1,8 +1,8 @@
 import 'dart:developer';
 
-import 'package:abs_flutter/features/home/library_chip.dart';
-import 'package:abs_flutter/features/home/user_badge.dart';
-import 'package:abs_flutter/features/home/user_switcher.dart';
+import 'package:abs_flutter/features/home/components/library_chip.dart';
+import 'package:abs_flutter/features/home/components/user_badge.dart';
+import 'package:abs_flutter/features/home/components/user_switcher.dart';
 import 'package:abs_flutter/features/library/library_items.dart';
 import 'package:abs_flutter/features/library/library_items_wrapper.dart';
 import 'package:abs_flutter/generated/l10n.dart';
@@ -14,6 +14,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+
+import 'components/download_info_button.dart';
 
 class Home extends ConsumerWidget {
   const Home({super.key});
@@ -50,6 +52,7 @@ class Home extends ConsumerWidget {
               },
               icon: Icon(Icons.pie_chart_outline_rounded)
           ),
+          const DownloadInfoButton(),
           PlatformPopupMenu(
             options: [
               PopupMenuOption(

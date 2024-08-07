@@ -877,6 +877,76 @@ class S {
       args: [],
     );
   }
+
+  /// `Downloads only via WiFi`
+  String get downloadsOnlyViaWifi {
+    return Intl.message(
+      'Downloads only via WiFi',
+      name: 'downloadsOnlyViaWifi',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No downloads`
+  String get noDownloads {
+    return Intl.message(
+      'No downloads',
+      name: 'noDownloads',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Download complete`
+  String get downloadComplete {
+    return Intl.message(
+      'Download complete',
+      name: 'downloadComplete',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Waiting for download to start`
+  String get waitingForDownload {
+    return Intl.message(
+      'Waiting for download to start',
+      name: 'waitingForDownload',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `OK`
+  String get ok {
+    return Intl.message(
+      'OK',
+      name: 'ok',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enable notifications to receive download progress updates and be able to download files in the background.`
+  String get enableNotificationsDownload {
+    return Intl.message(
+      'Please enable notifications to receive download progress updates and be able to download files in the background.',
+      name: 'enableNotificationsDownload',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Notifications should be enabled`
+  String get notificationHeading {
+    return Intl.message(
+      'Notifications should be enabled',
+      name: 'notificationHeading',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

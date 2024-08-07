@@ -72,7 +72,15 @@ class SettingPage extends ConsumerWidget {
                       defaultValue: false,
                       leading: Icon(Icons.folder_copy_outlined),
                     ),
-                  )
+                  ),
+                    SwitchSettingsTile(
+                      settingKey: 'downloadsOnlyViaWifi',
+                      title: S.of(context).downloadsOnlyViaWifi,
+                      enabledLabel: S.of(context).enabled,
+                      disabledLabel: S.of(context).disabled,
+                      defaultValue: false,
+                      leading: Icon(PlatformIcons(context).wifi),
+                    )
                 ],
               ),
               SettingsGroup(

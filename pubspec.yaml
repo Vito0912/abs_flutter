@@ -41,6 +41,8 @@ dependencies:
   device_info_plus: ^10.1.1
   window_manager: ^0.3.9
   fl_chart: ^0.68.0
+  background_downloader: ^8.5.2
+  permission_handler: ^11.3.1
 
 dev_dependencies:
   flutter_test:

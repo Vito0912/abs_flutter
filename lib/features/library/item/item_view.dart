@@ -1,4 +1,5 @@
 import 'package:abs_api/abs_api.dart';
+import 'package:abs_flutter/features/home/components/download_info_button.dart';
 import 'package:abs_flutter/features/library/item/components/chip_section.dart';
 import 'package:abs_flutter/features/library/item/components/download_button.dart';
 import 'package:abs_flutter/features/library/item/components/expandable_description.dart';
@@ -51,6 +52,11 @@ class ItemView extends ConsumerWidget {
     return PlatformScaffold(
       appBar: PlatformAppBar(
         title: PlatformText(castItem.media!.metadata!.title!),
+        trailingActions: const [
+          DownloadInfoButton(
+            show: true,
+          )
+        ],
       ),
       body: SelectionArea(
         child: SingleChildScrollView(
@@ -63,7 +69,8 @@ class ItemView extends ConsumerWidget {
                 children: [
                   _buildImage(currentUser, castItem),
                   const SizedBox(height: 16.0),
-                  _buildTextContent(context, castItem, mediaProgress),
+                  _buildTextContent(
+                      context, castItem, mediaProgress, currentUser),
                   const SizedBox(height: 16.0),
                   _buildChipSections(context, castItem),
                 ],
@@ -103,10 +110,11 @@ class ItemView extends ConsumerWidget {
   }
 
   Widget _buildTextContent(BuildContext context, LibraryItemBase castItem,
-      List<MediaProgress> mediaProgress) {
+      List<MediaProgress> mediaProgress, m.User user) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+
         PlatformText(
           castItem.media!.metadata!.title!,
           style: const TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
@@ -120,11 +128,13 @@ class ItemView extends ConsumerWidget {
         ],
         const SizedBox(height: 8.0),
         Row(
-
           children: [
             PlayButton(itemId: castItem.id!),
             const VerticalDivider(),
-            DownloadButton(itemId: castItem.id!),
+            DownloadButton(
+              libraryItem: castItem,
+              user: user,
+            ),
           ],
         ),
         const SizedBox(height: 16.0),

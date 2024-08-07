@@ -80,7 +80,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "description": MessageLookupByLibrary.simpleMessage("Description"),
         "disabled": MessageLookupByLibrary.simpleMessage("Disabled"),
         "domainOrIp": MessageLookupByLibrary.simpleMessage("Domain or IP"),
+        "downloadComplete":
+            MessageLookupByLibrary.simpleMessage("Download complete"),
+        "downloadsOnlyViaWifi":
+            MessageLookupByLibrary.simpleMessage("Downloads only via WiFi"),
         "duration": MessageLookupByLibrary.simpleMessage("Duration"),
+        "enableNotificationsDownload": MessageLookupByLibrary.simpleMessage(
+            "Please enable notifications to receive download progress updates and be able to download files in the background."),
         "enabled": MessageLookupByLibrary.simpleMessage("Enabled"),
         "enterValidUsernameOrPassword": MessageLookupByLibrary.simpleMessage(
             "Please enter a valid IP/Domain and port before entering your username and password."),
@@ -111,8 +117,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "mustEnterValidAddress": MessageLookupByLibrary.simpleMessage(
             "You must enter a valid server address"),
         "noConnection": MessageLookupByLibrary.simpleMessage("No Connection"),
+        "noDownloads": MessageLookupByLibrary.simpleMessage("No downloads"),
         "noUserData": MessageLookupByLibrary.simpleMessage(
             "Login failed: No user data received"),
+        "notificationHeading": MessageLookupByLibrary.simpleMessage(
+            "Notifications should be enabled"),
+        "ok": MessageLookupByLibrary.simpleMessage("OK"),
         "ownStats": MessageLookupByLibrary.simpleMessage("Own Stats"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "playbackSpeed": MessageLookupByLibrary.simpleMessage("Speed"),
@@ -159,6 +169,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "username": MessageLookupByLibrary.simpleMessage("Username"),
         "usernameOrPasswordNotEmpty": MessageLookupByLibrary.simpleMessage(
             "Username and password cannot be empty"),
+        "waitingForDownload": MessageLookupByLibrary.simpleMessage(
+            "Waiting for download to start"),
         "year": MessageLookupByLibrary.simpleMessage("Year")
       };
 }

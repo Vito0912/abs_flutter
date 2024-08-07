@@ -1,5 +1,6 @@
 // globals.dart
 
+import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -14,6 +15,8 @@ late final String osVersion;
 late final FlutterSecureStorage secureStorage;
 late final SharedPreferences sp;
 
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
 double maxWidth = 800;
 const String mediaPlayer = 'just_audio /w audio_service @ abs_flutter';
 
@@ -26,4 +29,5 @@ final Map<String, dynamic> defaultSettings = {
   'fastForwardSeconds': 10,
   'rewindSeconds': 10,
   'progressAsChapters': false,
+  'downloadsOnlyViaWifi': true,
 };

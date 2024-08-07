@@ -39,32 +39,30 @@ class SortButton extends ConsumerWidget {
     showPlatformModalSheet(
       context: context,
       builder: (BuildContext context) {
-        return FractionallySizedBox(
-          heightFactor: 0.4,
-          child: ListView.builder(
-            itemCount: sortOptions.length,
-            itemBuilder: (BuildContext context, int index) {
-              final sortKey = sortOptions.keys.elementAt(index);
-              final sortValue = sortOptions.values.elementAt(index);
-              final isSelected = sort.state.sort == sortKey;
-              final isDescending = sort.state.desc == 0;
+        return ListView.builder(
+          shrinkWrap: true,
+          itemCount: sortOptions.length,
+          itemBuilder: (BuildContext context, int index) {
+            final sortKey = sortOptions.keys.elementAt(index);
+            final sortValue = sortOptions.values.elementAt(index);
+            final isSelected = sort.state.sort == sortKey;
+            final isDescending = sort.state.desc == 0;
 
-              void onItemTap() {
-                sort.state = sort.state.copyWith(
-                  sort: sortKey,
-                  desc: isSelected ? (isDescending ? 1 : 0) : 0,
-                );
-                Navigator.of(context).pop();
-              }
-
-              return PlatformWidget(
-                material: (_, __) => _buildMaterialListTile(
-                    sortValue, isSelected, isDescending, onItemTap),
-                cupertino: (_, __) => _buildCupertinoListTile(
-                    sortValue, isSelected, isDescending, onItemTap),
+            void onItemTap() {
+              sort.state = sort.state.copyWith(
+                sort: sortKey,
+                desc: isSelected ? (isDescending ? 1 : 0) : 0,
               );
-            },
-          ),
+              Navigator.of(context).pop();
+            }
+
+            return PlatformWidget(
+              material: (_, __) => _buildMaterialListTile(
+                  sortValue, isSelected, isDescending, onItemTap),
+              cupertino: (_, __) => _buildCupertinoListTile(
+                  sortValue, isSelected, isDescending, onItemTap),
+            );
+          },
         );
       },
     );

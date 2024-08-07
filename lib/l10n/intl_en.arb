@@ -242,5 +242,12 @@
       }
     }
   },
-  "today": "Today"
+  "today": "Today",
+  "downloadsOnlyViaWifi": "Downloads only via WiFi",
+  "noDownloads": "No downloads",
+  "downloadComplete": "Download complete",
+  "waitingForDownload": "Waiting for download to start",
+  "ok": "OK",
+  "enableNotificationsDownload": "Please enable notifications to receive download progress updates and be able to download files in the background.",
+  "notificationHeading": "Notifications should be enabled"
 }
