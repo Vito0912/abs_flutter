@@ -79,6 +79,50 @@ class _OwnStatsState extends ConsumerState<OwnStats> {
                                     context),
                                 const SizedBox(height: 16),
                                 _buildInfoRow(
+                                    Icons.today,
+                                    Helper.formatTimeToReadable(
+                                        ownStats.today),
+                                    S.of(context).today,
+                                    context),
+                              ],
+                            );
+                          } else {
+                            // If the width is sufficient, use a row layout
+                            return Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                _buildInfoRow(
+                                    Icons.timer_sharp,
+                                    Helper.formatTimeToReadable(
+                                        ownStats.totalTime),
+                                    S.of(context).totalTimeListened,
+                                    context),
+                                _buildInfoRow(
+                                    Icons.today,
+                                    Helper.formatTimeToReadable(
+                                        ownStats.today),
+                                    S.of(context).today,
+                                    context),
+                              ],
+                            );
+                          }
+                        },
+                      )),
+                ),
+                const SizedBox(height: 16),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Container(
+                      constraints: const BoxConstraints(maxWidth: 700),
+                      child: LayoutBuilder(
+                        builder: (context, constraints) {
+                          // Check if the available width is less than a certain threshold
+                          if (constraints.maxWidth < 700) {
+                            // If the width is less than 600, switch to a column layout
+                            return Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                _buildInfoRow(
                                     Icons.date_range_outlined,
                                     ownStats.days?.length.toString() ?? '0',
                                     S.of(context).daysListened,
@@ -96,12 +140,6 @@ class _OwnStatsState extends ConsumerState<OwnStats> {
                             return Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                _buildInfoRow(
-                                    Icons.timer_sharp,
-                                    Helper.formatTimeToReadable(
-                                        ownStats.totalTime),
-                                    S.of(context).totalTimeListened,
-                                    context),
                                 _buildInfoRow(
                                     Icons.date_range_outlined,
                                     ownStats.days?.length.toString() ?? '0',

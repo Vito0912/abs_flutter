@@ -241,5 +241,6 @@
         "type": "int"
       }
     }
-  }
+  },
+  "today": "Today"
 }
