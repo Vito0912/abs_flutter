@@ -151,6 +151,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "tags": MessageLookupByLibrary.simpleMessage("Tags"),
         "timerText": m11,
         "title": MessageLookupByLibrary.simpleMessage("Title"),
+        "today": MessageLookupByLibrary.simpleMessage("Today"),
         "totalTimeListened":
             MessageLookupByLibrary.simpleMessage("Total time listened"),
         "updatedAt": MessageLookupByLibrary.simpleMessage("Updated At"),
