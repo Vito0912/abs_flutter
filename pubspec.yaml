@@ -65,3 +65,4 @@ flutter:
 
 flutter_intl:
   enabled: true
+  use-escaping: true

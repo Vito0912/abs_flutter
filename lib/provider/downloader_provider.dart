@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:abs_api/abs_api.dart' as api;
+import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/models/file.dart';
 import 'package:abs_flutter/models/user.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
@@ -44,17 +45,17 @@ class DownloadProvider extends ChangeNotifier {
   void _init() {
     // Configure notifications with grouping and click action
     FileDownloader().configureNotification(
-      running: const TaskNotification(
-        'Downloading',
-        'Downloading {displayName}',
+      running: TaskNotification(
+        S.current.downloading,
+        S.current.downloadingBody,
       ),
-      complete: const TaskNotification(
-        'Download complete',
-        'Download of {displayName} complete',
+      complete: TaskNotification(
+        S.current.downloadComplete,
+        S.current.downloadCompleteBody,
       ),
-      error: const TaskNotification(
-        'Error downloading',
-        'An error occurred while downloading {displayName}',
+      error: TaskNotification(
+        S.current.errorDownloading,
+        S.current.errorDownloadingBody,
       ),
       progressBar: true
     );
@@ -134,9 +135,8 @@ class DownloadProvider extends ChangeNotifier {
       filename: fileName,
       updates: Updates.statusAndProgress,
       requiresWiFi: onlyWifi,
-      directory: 'abs_flutter',
+      directory: 'abs_flutter/$itemId',
       displayName: displayName ?? fileName,
-      group: 'download_group',
     );
 
     await FileDownloader().enqueue(task);

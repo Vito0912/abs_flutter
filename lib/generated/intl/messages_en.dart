@@ -82,6 +82,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "domainOrIp": MessageLookupByLibrary.simpleMessage("Domain or IP"),
         "downloadComplete":
             MessageLookupByLibrary.simpleMessage("Download complete"),
+        "downloadCompleteBody": MessageLookupByLibrary.simpleMessage(
+            "Download of \'{\'displayName\'}\' complete"),
+        "downloading": MessageLookupByLibrary.simpleMessage("Downloading"),
+        "downloadingBody": MessageLookupByLibrary.simpleMessage(
+            "Downloading \'{\'displayName\'}\'"),
         "downloadsOnlyViaWifi":
             MessageLookupByLibrary.simpleMessage("Downloads only via WiFi"),
         "duration": MessageLookupByLibrary.simpleMessage("Duration"),
@@ -91,6 +96,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "enterValidUsernameOrPassword": MessageLookupByLibrary.simpleMessage(
             "Please enter a valid IP/Domain and port before entering your username and password."),
         "error": MessageLookupByLibrary.simpleMessage("Error"),
+        "errorDownloading":
+            MessageLookupByLibrary.simpleMessage("Error downloading"),
+        "errorDownloadingBody": MessageLookupByLibrary.simpleMessage(
+            "An error occurred while downloading \'{\'displayName\'}\'"),
         "fastForwardSeconds":
             MessageLookupByLibrary.simpleMessage("Fast Forward Seconds"),
         "fastForwardSecondsDescription": MessageLookupByLibrary.simpleMessage(

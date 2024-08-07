@@ -947,6 +947,56 @@ class S {
       args: [],
     );
   }
+
+  /// `Error downloading`
+  String get errorDownloading {
+    return Intl.message(
+      'Error downloading',
+      name: 'errorDownloading',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Downloading`
+  String get downloading {
+    return Intl.message(
+      'Downloading',
+      name: 'downloading',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Downloading '{'displayName'}'`
+  String get downloadingBody {
+    return Intl.message(
+      'Downloading \'{\'displayName\'}\'',
+      name: 'downloadingBody',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Download of '{'displayName'}' complete`
+  String get downloadCompleteBody {
+    return Intl.message(
+      'Download of \'{\'displayName\'}\' complete',
+      name: 'downloadCompleteBody',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `An error occurred while downloading '{'displayName'}'`
+  String get errorDownloadingBody {
+    return Intl.message(
+      'An error occurred while downloading \'{\'displayName\'}\'',
+      name: 'errorDownloadingBody',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

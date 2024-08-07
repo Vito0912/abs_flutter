@@ -249,5 +249,10 @@
   "waitingForDownload": "Waiting for download to start",
   "ok": "OK",
   "enableNotificationsDownload": "Please enable notifications to receive download progress updates and be able to download files in the background.",
-  "notificationHeading": "Notifications should be enabled"
+  "notificationHeading": "Notifications should be enabled",
+  "errorDownloading": "Error downloading",
+  "downloading": "Downloading",
+  "downloadingBody": "Downloading '{'displayName'}'",
+  "downloadCompleteBody": "Download of '{'displayName'}' complete",
+  "errorDownloadingBody": "An error occurred while downloading '{'displayName'}'"
 }
