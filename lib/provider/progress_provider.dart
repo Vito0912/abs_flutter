@@ -2,7 +2,10 @@
 import 'dart:developer';
 
 import 'package:abs_api/abs_api.dart';
+import 'package:abs_flutter/models/progress_item.dart';
 import 'package:abs_flutter/models/user.dart' as m;
+import 'package:abs_flutter/provider/connection_provider.dart';
+import 'package:abs_flutter/provider/progress_timer_provider.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
 import 'package:audio_service/audio_service.dart';
 import 'package:dio/dio.dart';
@@ -30,25 +33,41 @@ class ProgressProvider extends ChangeNotifier {
     if (api == null) {
       return;
     }
-    try {
-      final response = await api!.getMeApi().getMe();
 
-      User user = response.data!;
+    final offlineProgress = ref.read(offlineProgressProviderHandler);
 
-      if (user.mediaProgress == null) {
-        progress = [];
-      } else {
-        progress = user.mediaProgress!.toList();
+      try {
+        final response = await api!.getMeApi().getMe();
+
+        User user = response.data!;
+
+        if (user.mediaProgress == null) {
+          progress = [];
+        } else {
+          progress = user.mediaProgress!.toList();
+        }
+      } catch (e) {
+        if (e is DioException) {
+          log(e.response?.data?.toString() ?? e.toString());
+        } else {
+          log(e.toString());
+        }
+        return;
       }
-      notifyListeners();
-    } catch (e) {
-      if (e is DioException) {
-        log(e.response?.data?.toString() ?? e.toString());
-      } else {
-        log(e.toString());
+
+    for (ProgressItem item in offlineProgress) {
+      progress ??= [];
+      int index = progress!.indexWhere((element) => element.libraryItemId == item.itemId);
+      if(index >= 0) {
+        MediaProgressBuilder builder = progress![index].toBuilder();
+        builder.currentTime = item.currentTime;
+        builder.duration = item.durationOfItem;
+        builder.progress = item.currentTime / item.durationOfItem;
+        progress![index] = builder.build();
       }
-      return;
     }
+
+    notifyListeners();
   }
 
   Future<void> getProgressWithLibraryItem(String id) async {
@@ -84,6 +103,24 @@ class ProgressProvider extends ChangeNotifier {
       return;
     }
     return;
+  }
+
+  void updateProgressForItem(String id, double currentTime) {
+    if (progress == null) {
+      return;
+    }
+
+    int index = progress!.indexWhere((element) => element.libraryItemId == id);
+    if (index == -1) {
+      return;
+    }
+
+    MediaProgressBuilder builder = progress![index].toBuilder();
+    builder.currentTime = currentTime;
+
+    progress![index] = builder.build();
+
+    notifyListeners();
   }
 
   List<MediaProgress>? getProgress() {

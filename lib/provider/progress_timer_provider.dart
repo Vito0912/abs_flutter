@@ -1,7 +1,12 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:developer';
 import 'package:abs_api/abs_api.dart';
+import 'package:abs_flutter/globals.dart';
+import 'package:abs_flutter/models/progress_item.dart';
+import 'package:abs_flutter/provider/connection_provider.dart';
 import 'package:abs_flutter/provider/player_provider.dart';
+import 'package:abs_flutter/provider/progress_provider.dart';
 import 'package:abs_flutter/provider/session_provider.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -44,11 +49,8 @@ class TimerNotifier extends StateNotifier<DateTime?> {
 
   void _sendDataToServer(Duration listenedDuration) {
     final AbsApi? api = ref.read(apiProvider);
-    final PlaybackSessionBookExpanded? session =
-        ref.read(sessionProvider.notifier).session;
+    final connection = ref.read(connectionProvider);
     final player = ref.read(playerProvider.notifier);
-
-    if (session == null || api == null) return;
 
     final currentTime =
         player.audioService.player.position.inMicroseconds / 1000000;
@@ -57,17 +59,49 @@ class TimerNotifier extends StateNotifier<DateTime?> {
     // Everything under 1 second is considered a fault (like seeking)
     if (listenedSeconds <= 1) return;
 
-    log('Sending data to server: $listenedSeconds');
+    final PlaybackSessionBookExpanded? session =
+        ref.read(sessionProvider.notifier).session;
 
-    api
-        .getSessionApi()
-        .syncOpenSession(
-          id: session.id!,
-          currentTime: currentTime,
-          timeListened: listenedSeconds,
-          duration: session.duration!,
-        )
-        .then((response) => print(response.data));
+    if (connection && session != null && api != null) {
+
+      log('Sending data to server: $listenedSeconds');
+
+      api
+          .getSessionApi()
+          .syncOpenSession(
+            id: session.id!,
+            currentTime: currentTime,
+            timeListened: listenedSeconds,
+            duration: session.duration!,
+          )
+          .then((response) => print(response.data));
+    } else {
+      log('Saving data offline: $listenedSeconds');
+      final user = ref.read(currentUserProvider);
+      if (user == null ||
+          player.audioService.mediaItem.value?.extras == null ||
+          player.audioService.mediaItem.value?.duration == null) return;
+      final offlineProgressProvider =
+          ref.read(offlineProgressProviderHandler.notifier);
+
+      ProgressItem newProgress = ProgressItem(
+        itemId: player.audioService.mediaItem.value!.extras!['libraryItemId'],
+        userId: user.id!,
+        sessionId: session?.id,
+        currentTime: currentTime,
+        timeListened: listenedSeconds,
+        durationOfItem:
+            player.audioService.mediaItem.value!.duration!.inSeconds.toDouble(),
+      );
+
+      offlineProgressProvider.addProgress(newProgress);
+    }
+
+    final progressProv = ref.read(progressProvider.notifier);
+
+    progressProv.updateProgressForItem(
+        player.audioService.mediaItem.value!.extras!['libraryItemId'],
+        currentTime);
   }
 
   void _ensureAccurateTiming(Duration interval, Duration elapsed) {
@@ -100,5 +134,57 @@ class TimerNotifier extends StateNotifier<DateTime?> {
   void dispose() {
     _timer?.cancel();
     super.dispose();
+  }
+}
+
+final offlineProgressProviderHandler =
+    StateNotifierProvider<OfflineProgressProvider, List<ProgressItem>>((ref) {
+  return OfflineProgressProvider(ref);
+});
+
+class OfflineProgressProvider extends StateNotifier<List<ProgressItem>> {
+  final _ref;
+
+  OfflineProgressProvider(this._ref) : super([]) {
+    _loadProgress();
+    addListener((state) {
+      _saveProgress();
+    });
+  }
+
+  _loadProgress() {
+    final progressString = sp.getString('offlineProgress');
+    if (progressString != null) {
+      final List<dynamic> decodedJson = jsonDecode(progressString);
+      final List<ProgressItem> progressItems =
+          decodedJson.map((json) => ProgressItem.fromJson(json)).toList();
+      state = progressItems;
+    }
+  }
+
+  _saveProgress() {
+    print(state.length);
+    sp.setString('offlineProgress', jsonEncode(state));
+  }
+
+  addProgress(ProgressItem progress) {
+    state = [...state, progress];
+  }
+
+  getProgressByItemAndUser(String itemId, String userId) {
+    return state.firstWhere(
+        (element) => element.itemId == itemId && element.userId == userId);
+  }
+
+  getProgressByUser(String userId) {
+    return state.where((element) => element.userId == userId).toList();
+  }
+
+  getProgressBySession(String sessionId) {
+    return state.where((element) => element.sessionId == sessionId).toList();
+  }
+
+  removeProgress(ProgressItem progress) {
+    state = state.where((element) => element != progress).toList();
   }
 }

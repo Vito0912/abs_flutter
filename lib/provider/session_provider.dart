@@ -3,6 +3,7 @@ import 'dart:developer';
 
 import 'package:abs_api/abs_api.dart';
 import 'package:abs_flutter/globals.dart';
+import 'package:abs_flutter/provider/connection_provider.dart';
 import 'package:abs_flutter/provider/download_provider.dart';
 import 'package:abs_flutter/provider/library_item_provider.dart';
 import 'package:abs_flutter/provider/player_provider.dart';
@@ -34,8 +35,9 @@ class PlaybackSessionNotifier
 
     final downloads = ref.read(downloadListProvider.notifier);
     final download = downloads.getDownload(id);
+    final connection = ref.read(connectionProvider);
 
-    if(download == null) {
+    if(connection) {
 
 
     try {
@@ -79,10 +81,15 @@ class PlaybackSessionNotifier
       final streamUrl =
           '${currentUser?.server!.url}${playback.audioTracks![0].contentUrl!}?token=${currentUser?.token!}';
 
-      String? path = streamUrl;
+      String? path;
+      if (download != null) {
+        path = download.filePath;
+      } else {
+        path = streamUrl;
+      }
 
       MediaItem mediaItem = MediaItem(
-          id: path,
+          id: path!,
           album: playback.mediaMetadata?.series?.toList().join(', '),
           title: playback.displayTitle!,
           displaySubtitle: playback.mediaMetadata!.subtitle!,
@@ -147,7 +154,8 @@ class PlaybackSessionNotifier
     } else {
       // Offline playback
       final item = ref.read(itemProvider(id));
-      if(item.value == null) {
+      if(item.value == null || download == null) {
+        log('Could not create session for offline playback');
         state = const AsyncValue.error('Item is not available', StackTrace.empty);
         return;
       }
