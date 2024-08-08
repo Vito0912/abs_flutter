@@ -10,6 +10,7 @@ import 'package:abs_flutter/provider/library_item_provider.dart';
 import 'package:abs_flutter/provider/progress_provider.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
 import 'package:abs_flutter/models/user.dart' as m;
+import 'package:abs_flutter/widgets/album_image.dart';
 import 'package:abs_flutter/widgets/error_text.dart';
 import 'package:abs_flutter/widgets/no_connection.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -27,12 +28,10 @@ class ItemView extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final item = ref.watch(itemProvider(itemId));
     final currentUser = ref.read(currentUserProvider);
-    final progress = ref.read(progressProvider);
     final connection = ref.read(connectionProvider);
-    progress.getProgressWithLibraryItem(itemId);
     final mediaProgress = ref.watch(mediaProgressProvider);
 
-    if (!connection) return const NoConnection();
+    //if (!connection) return const NoConnection();
 
     return item.when(
       data: (item) => item == null
@@ -40,7 +39,7 @@ class ItemView extends ConsumerWidget {
           : _buildContent(
               context,
               ref,
-              item.data!.oneOf.value as LibraryItemBase,
+              item,
               currentUser!,
               mediaProgress),
       loading: () => Center(child: PlatformCircularProgressIndicator()),
@@ -103,13 +102,7 @@ class ItemView extends ConsumerWidget {
       height: 150,
       child: ClipRRect(
         borderRadius: BorderRadius.circular(16.0),
-        child: CachedNetworkImage(
-          imageUrl:
-              '${currentUser.server!.url}/api/items/${castItem.id}/cover?token=${currentUser.token}',
-          fit: BoxFit.cover,
-          placeholder: (context, url) => PlatformCircularProgressIndicator(),
-          errorWidget: (context, url, error) => const Icon(Icons.error),
-        ),
+        child: AlbumImage(castItem.id!),
       ),
     );
   }

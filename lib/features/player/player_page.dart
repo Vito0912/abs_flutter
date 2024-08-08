@@ -8,6 +8,7 @@ import 'package:abs_flutter/provider/chapter_provider.dart';
 import 'package:abs_flutter/provider/player_provider.dart';
 import 'package:abs_flutter/provider/player_status_provider.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
+import 'package:abs_flutter/widgets/album_image.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
@@ -59,20 +60,9 @@ class PlayerPage extends ConsumerWidget {
                             borderRadius: BorderRadius.circular(100),
                             color: Colors.grey[300],
                           ),
-                          child: CachedNetworkImage(
-                            imageUrl: player
-                                    .audioService.mediaItem.value?.artUri
-                                    .toString() ??
-                                '',
-                            placeholder: (context, url) => Shimmer.fromColors(
-                              baseColor: Colors.grey[300]!,
-                              highlightColor: Colors.grey[100]!,
-                              child: Container(
-                                color: Colors.grey[300],
-                              ),
-                            ),
-                            errorWidget: (context, url, error) =>
-                                Icon(Icons.error),
+                          child: AlbumImage(
+                              player.audioService.mediaItem.value!
+                                  .extras!['libraryItemId']
                           ),
                         ),
                         SizedBox(height: 16),

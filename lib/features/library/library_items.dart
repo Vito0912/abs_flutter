@@ -6,6 +6,7 @@ import 'package:abs_flutter/provider/connection_provider.dart';
 import 'package:abs_flutter/provider/library_items_provider.dart';
 import 'package:abs_flutter/provider/progress_provider.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
+import 'package:abs_flutter/widgets/album_image.dart';
 import 'package:abs_flutter/widgets/no_connection.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
@@ -167,15 +168,7 @@ class _LibraryItemsState extends ConsumerState<LibraryItems> {
                 children: [
                   AspectRatio(
                     aspectRatio: 1.0,
-                    child: CachedNetworkImage(
-                      imageUrl:
-                          '${currentUser!.server!.url}/api/items/${item.id}/cover?token=${currentUser.token}',
-                      fit: BoxFit.cover,
-                      placeholder: (context, url) =>
-                          _buildShimmerPlaceholder(withText: false),
-                      errorWidget: (context, url, error) =>
-                          const Icon(Icons.error),
-                    ),
+                    child: AlbumImage(item.id),
                   ),
                   if (progress != null)
                     Align(

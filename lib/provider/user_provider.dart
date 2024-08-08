@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:abs_flutter/globals.dart';
 import 'package:abs_flutter/models/setting.dart';
@@ -190,6 +191,10 @@ final apiProvider = Provider<abs_api.AbsApi?>((ref) {
         ref.read(connectionProvider.notifier).setServerState(true);
       }
       return handler.next(response);
+    },
+    onRequest: (RequestOptions options, RequestInterceptorHandler handler) {
+      log('Request: ${options.uri.toString()}');
+      return handler.next(options);
     },
   ));
 

@@ -74,12 +74,14 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
       source = AudioSource.file(item.id);
     }
 
-    final List<MediaProgress>? _progresses = _progressProvider?.progress;
+    final List<MediaProgress>? progresses = _progressProvider?.progress;
     MediaProgress? _progress;
-    for (final progress in _progresses!) {
-      if (progress.libraryItemId == item.extras?['libraryItemId']) {
-        _progress = progress;
-        break;
+    if(progresses != null) {
+      for (final progress in progresses) {
+        if (progress.libraryItemId == item.extras?['libraryItemId']) {
+          _progress = progress;
+          break;
+        }
       }
     }
 

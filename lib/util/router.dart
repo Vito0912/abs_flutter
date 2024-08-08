@@ -46,8 +46,6 @@ final router = GoRouter(
                 GoRoute(
                     path: 'view/:mediaType/:itemId',
                     builder: (context, viewState) {
-                      print(viewState.pathParameters);
-                      // mediaType must be either book or podcast
                       assert(viewState.pathParameters['mediaType'] == 'book' ||
                           viewState.pathParameters['mediaType'] == 'podcast');
                       return ItemView(

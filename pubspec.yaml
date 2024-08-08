@@ -43,6 +43,7 @@ dependencies:
   fl_chart: ^0.68.0
   background_downloader: ^8.5.2
   permission_handler: ^11.3.1
+  path: ^1.9.0
 
 dev_dependencies:
   flutter_test:

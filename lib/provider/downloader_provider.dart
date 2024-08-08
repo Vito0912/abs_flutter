@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 import 'package:abs_api/abs_api.dart' as api;
 import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/models/file.dart';
@@ -103,6 +104,16 @@ class DownloadProvider extends ChangeNotifier {
       downloadItem.dispose();
     }
 
+    if(
+    update.status == TaskStatus.failed ||
+    update.status == TaskStatus.canceled ||
+    update.status == TaskStatus.notFound
+    ) {
+      // Remove the directory if the download failed
+      String path = await update.task.filePath();
+      Directory(path).parent.deleteSync(recursive: true);
+    }
+
     _taskStatuses[update.task.taskId] = update.status;
     notifyListeners();
   }
@@ -167,16 +178,28 @@ class DownloadProvider extends ChangeNotifier {
       status: TaskStatus.enqueued,
     );
 
-    await _download(url, fileName, name, item.id!);
+    String? metaPath = await _download(url, fileName, name, item.id!);
 
     downloadList.add(downloadInfo);
+
+    // Save item to BaseDirectory.applicationDocuments/abs_flutter/itemId/meta.json
+    String json = api.AbsApi().serializers.toJson(api.LibraryItemBase.serializer, item);
+    if(metaPath != null) {
+      // Create the parent directory
+      final dir = Directory(metaPath).parent;
+      if (!dir.existsSync()) {
+        dir.createSync(recursive: true);
+      }
+      final file = File(metaPath);
+      file.writeAsString(json);
+    }
   }
 
-  Future<void> _download(
+  Future<String?> _download(
       String url, String fileName, String? displayName, String itemId) async {
     final User? user = ref.read(currentUserProvider);
     if (user == null) {
-      return;
+      return null;
     }
     final token = user.token;
     final bool onlyWifi =
@@ -186,6 +209,7 @@ class DownloadProvider extends ChangeNotifier {
       url: '$url?token=${token.toString()}',
       filename: fileName,
       updates: Updates.statusAndProgress,
+      baseDirectory: BaseDirectory.applicationDocuments,
       requiresWiFi: onlyWifi,
       directory: 'abs_flutter/$itemId',
       displayName: displayName ?? fileName,
@@ -206,6 +230,7 @@ class DownloadProvider extends ChangeNotifier {
 
     _downloads.add(downloadItem);
     notifyListeners();
+    return task.filePath(withFilename: 'meta.json');
   }
 
   void cancelDownload(DownloadItem downloadItem) async {

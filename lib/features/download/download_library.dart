@@ -1,5 +1,7 @@
 import 'package:abs_flutter/models/file.dart';
 import 'package:abs_flutter/provider/download_provider.dart';
+import 'package:abs_flutter/widgets/album_image.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -52,6 +54,7 @@ class DownloadLibrary extends ConsumerWidget {
             onTap: () {
               context.push('/view/$itemType/${item.itemId}');
             },
+            leading: AlbumImage(item.itemId),
             trailing: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
