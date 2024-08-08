@@ -24,16 +24,26 @@ mixin _$DownloadInfo {
   set index(int value) => throw _privateConstructorUsedError;
   MediaTypeDownload get type => throw _privateConstructorUsedError;
   set type(MediaTypeDownload value) => throw _privateConstructorUsedError;
+  String get userId => throw _privateConstructorUsedError;
+  set userId(String value) => throw _privateConstructorUsedError;
+  String get displayName => throw _privateConstructorUsedError;
+  set displayName(String value) => throw _privateConstructorUsedError;
   String get filename => throw _privateConstructorUsedError;
   set filename(String value) => throw _privateConstructorUsedError;
   String get format => throw _privateConstructorUsedError;
   set format(String value) => throw _privateConstructorUsedError;
   String get libraryId => throw _privateConstructorUsedError;
   set libraryId(String value) => throw _privateConstructorUsedError;
+  String get libraryName => throw _privateConstructorUsedError;
+  set libraryName(String value) => throw _privateConstructorUsedError;
   String get itemId => throw _privateConstructorUsedError;
   set itemId(String value) => throw _privateConstructorUsedError;
+  TaskStatus get status => throw _privateConstructorUsedError;
+  set status(TaskStatus value) => throw _privateConstructorUsedError;
   num get size => throw _privateConstructorUsedError;
   set size(num value) => throw _privateConstructorUsedError;
+  String? get filePath => throw _privateConstructorUsedError;
+  set filePath(String? value) => throw _privateConstructorUsedError;
   num? get duration => throw _privateConstructorUsedError;
   set duration(num? value) => throw _privateConstructorUsedError;
   int? get bitrate => throw _privateConstructorUsedError;
@@ -64,11 +74,16 @@ abstract class $DownloadInfoCopyWith<$Res> {
   $Res call(
       {int index,
       MediaTypeDownload type,
+      String userId,
+      String displayName,
       String filename,
       String format,
       String libraryId,
+      String libraryName,
       String itemId,
+      TaskStatus status,
       num size,
+      String? filePath,
       num? duration,
       int? bitrate,
       String? codec,
@@ -93,11 +108,16 @@ class _$DownloadInfoCopyWithImpl<$Res, $Val extends DownloadInfo>
   $Res call({
     Object? index = null,
     Object? type = null,
+    Object? userId = null,
+    Object? displayName = null,
     Object? filename = null,
     Object? format = null,
     Object? libraryId = null,
+    Object? libraryName = null,
     Object? itemId = null,
+    Object? status = null,
     Object? size = null,
+    Object? filePath = freezed,
     Object? duration = freezed,
     Object? bitrate = freezed,
     Object? codec = freezed,
@@ -113,6 +133,14 @@ class _$DownloadInfoCopyWithImpl<$Res, $Val extends DownloadInfo>
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as MediaTypeDownload,
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String,
+      displayName: null == displayName
+          ? _value.displayName
+          : displayName // ignore: cast_nullable_to_non_nullable
+              as String,
       filename: null == filename
           ? _value.filename
           : filename // ignore: cast_nullable_to_non_nullable
@@ -125,14 +153,26 @@ class _$DownloadInfoCopyWithImpl<$Res, $Val extends DownloadInfo>
           ? _value.libraryId
           : libraryId // ignore: cast_nullable_to_non_nullable
               as String,
+      libraryName: null == libraryName
+          ? _value.libraryName
+          : libraryName // ignore: cast_nullable_to_non_nullable
+              as String,
       itemId: null == itemId
           ? _value.itemId
           : itemId // ignore: cast_nullable_to_non_nullable
               as String,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as TaskStatus,
       size: null == size
           ? _value.size
           : size // ignore: cast_nullable_to_non_nullable
               as num,
+      filePath: freezed == filePath
+          ? _value.filePath
+          : filePath // ignore: cast_nullable_to_non_nullable
+              as String?,
       duration: freezed == duration
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
@@ -168,11 +208,16 @@ abstract class _$$DownloadInfoImplCopyWith<$Res>
   $Res call(
       {int index,
       MediaTypeDownload type,
+      String userId,
+      String displayName,
       String filename,
       String format,
       String libraryId,
+      String libraryName,
       String itemId,
+      TaskStatus status,
       num size,
+      String? filePath,
       num? duration,
       int? bitrate,
       String? codec,
@@ -195,11 +240,16 @@ class __$$DownloadInfoImplCopyWithImpl<$Res>
   $Res call({
     Object? index = null,
     Object? type = null,
+    Object? userId = null,
+    Object? displayName = null,
     Object? filename = null,
     Object? format = null,
     Object? libraryId = null,
+    Object? libraryName = null,
     Object? itemId = null,
+    Object? status = null,
     Object? size = null,
+    Object? filePath = freezed,
     Object? duration = freezed,
     Object? bitrate = freezed,
     Object? codec = freezed,
@@ -215,6 +265,14 @@ class __$$DownloadInfoImplCopyWithImpl<$Res>
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as MediaTypeDownload,
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String,
+      displayName: null == displayName
+          ? _value.displayName
+          : displayName // ignore: cast_nullable_to_non_nullable
+              as String,
       filename: null == filename
           ? _value.filename
           : filename // ignore: cast_nullable_to_non_nullable
@@ -227,14 +285,26 @@ class __$$DownloadInfoImplCopyWithImpl<$Res>
           ? _value.libraryId
           : libraryId // ignore: cast_nullable_to_non_nullable
               as String,
+      libraryName: null == libraryName
+          ? _value.libraryName
+          : libraryName // ignore: cast_nullable_to_non_nullable
+              as String,
       itemId: null == itemId
           ? _value.itemId
           : itemId // ignore: cast_nullable_to_non_nullable
               as String,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as TaskStatus,
       size: null == size
           ? _value.size
           : size // ignore: cast_nullable_to_non_nullable
               as num,
+      filePath: freezed == filePath
+          ? _value.filePath
+          : filePath // ignore: cast_nullable_to_non_nullable
+              as String?,
       duration: freezed == duration
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
@@ -265,11 +335,16 @@ class _$DownloadInfoImpl extends _DownloadInfo with DiagnosticableTreeMixin {
   _$DownloadInfoImpl(
       {required this.index,
       required this.type,
+      required this.userId,
+      required this.displayName,
       required this.filename,
       required this.format,
       required this.libraryId,
+      required this.libraryName,
       required this.itemId,
+      required this.status,
       required this.size,
+      this.filePath,
       this.duration,
       this.bitrate,
       this.codec,
@@ -285,15 +360,25 @@ class _$DownloadInfoImpl extends _DownloadInfo with DiagnosticableTreeMixin {
   @override
   MediaTypeDownload type;
   @override
+  String userId;
+  @override
+  String displayName;
+  @override
   String filename;
   @override
   String format;
   @override
   String libraryId;
   @override
+  String libraryName;
+  @override
   String itemId;
   @override
+  TaskStatus status;
+  @override
   num size;
+  @override
+  String? filePath;
   @override
   num? duration;
   @override
@@ -307,7 +392,7 @@ class _$DownloadInfoImpl extends _DownloadInfo with DiagnosticableTreeMixin {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'DownloadInfo(index: $index, type: $type, filename: $filename, format: $format, libraryId: $libraryId, itemId: $itemId, size: $size, duration: $duration, bitrate: $bitrate, codec: $codec, mimeType: $mimeType, embeddedCoverArt: $embeddedCoverArt)';
+    return 'DownloadInfo(index: $index, type: $type, userId: $userId, displayName: $displayName, filename: $filename, format: $format, libraryId: $libraryId, libraryName: $libraryName, itemId: $itemId, status: $status, size: $size, filePath: $filePath, duration: $duration, bitrate: $bitrate, codec: $codec, mimeType: $mimeType, embeddedCoverArt: $embeddedCoverArt)';
   }
 
   @override
@@ -317,11 +402,16 @@ class _$DownloadInfoImpl extends _DownloadInfo with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('type', 'DownloadInfo'))
       ..add(DiagnosticsProperty('index', index))
       ..add(DiagnosticsProperty('type', type))
+      ..add(DiagnosticsProperty('userId', userId))
+      ..add(DiagnosticsProperty('displayName', displayName))
       ..add(DiagnosticsProperty('filename', filename))
       ..add(DiagnosticsProperty('format', format))
       ..add(DiagnosticsProperty('libraryId', libraryId))
+      ..add(DiagnosticsProperty('libraryName', libraryName))
       ..add(DiagnosticsProperty('itemId', itemId))
+      ..add(DiagnosticsProperty('status', status))
       ..add(DiagnosticsProperty('size', size))
+      ..add(DiagnosticsProperty('filePath', filePath))
       ..add(DiagnosticsProperty('duration', duration))
       ..add(DiagnosticsProperty('bitrate', bitrate))
       ..add(DiagnosticsProperty('codec', codec))
@@ -349,11 +439,16 @@ abstract class _DownloadInfo extends DownloadInfo {
   factory _DownloadInfo(
       {required int index,
       required MediaTypeDownload type,
+      required String userId,
+      required String displayName,
       required String filename,
       required String format,
       required String libraryId,
+      required String libraryName,
       required String itemId,
+      required TaskStatus status,
       required num size,
+      String? filePath,
       num? duration,
       int? bitrate,
       String? codec,
@@ -371,6 +466,12 @@ abstract class _DownloadInfo extends DownloadInfo {
   MediaTypeDownload get type;
   set type(MediaTypeDownload value);
   @override
+  String get userId;
+  set userId(String value);
+  @override
+  String get displayName;
+  set displayName(String value);
+  @override
   String get filename;
   set filename(String value);
   @override
@@ -380,11 +481,20 @@ abstract class _DownloadInfo extends DownloadInfo {
   String get libraryId;
   set libraryId(String value);
   @override
+  String get libraryName;
+  set libraryName(String value);
+  @override
   String get itemId;
   set itemId(String value);
   @override
+  TaskStatus get status;
+  set status(TaskStatus value);
+  @override
   num get size;
   set size(num value);
+  @override
+  String? get filePath;
+  set filePath(String? value);
   @override
   num? get duration;
   set duration(num? value);

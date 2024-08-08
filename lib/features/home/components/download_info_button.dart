@@ -10,7 +10,7 @@ class DownloadInfoButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final downloader = ref.watch(downloadProvider);
+    final downloader = ref.watch(downloaderProvider);
 
     if(!downloader.isDownloading && !show) {
       return const SizedBox.shrink();

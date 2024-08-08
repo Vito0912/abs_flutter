@@ -17,7 +17,7 @@ class DownloadButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final downloader = ref.watch(downloadProvider);
+    final downloader = ref.watch(downloaderProvider);
     final currentDownload = downloader.downloads
         .where((element) => element.itemId == libraryItem.id).firstOrNull;
 
@@ -70,7 +70,7 @@ class DownloadButton extends ConsumerWidget {
       ;
     }
 
-    final downloader = ref.read(downloadProvider);
+    final downloader = ref.read(downloaderProvider);
     for (AudioFile file in libraryItem.media!.audioFiles!) {
       downloader.downloadAudioFile(
           getDownloadUrl(file.ino!), file, libraryItem);

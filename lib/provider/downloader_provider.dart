@@ -3,23 +3,26 @@ import 'package:abs_api/abs_api.dart' as api;
 import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/models/file.dart';
 import 'package:abs_flutter/models/user.dart';
+import 'package:abs_flutter/provider/download_provider.dart';
+import 'package:abs_flutter/provider/library_provider.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
-import 'package:abs_flutter/util/router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:background_downloader/background_downloader.dart';
 import 'package:flutter/foundation.dart';
-import 'package:go_router/go_router.dart';
+import 'package:collection/collection.dart';
 
 class DownloadItem {
   final DownloadTask task;
   final StreamController<TaskProgressUpdate> progressController;
   final StreamController<TaskStatusUpdate> statusController;
   final String itemId;
+  final String userId;
 
   DownloadItem({
     required this.task,
     required this.progressController,
     required this.statusController,
+    required this.userId,
     required this.itemId,
   });
 
@@ -45,20 +48,19 @@ class DownloadProvider extends ChangeNotifier {
   void _init() {
     // Configure notifications with grouping and click action
     FileDownloader().configureNotification(
-      running: TaskNotification(
-        S.current.downloading,
-        S.current.downloadingBody,
-      ),
-      complete: TaskNotification(
-        S.current.downloadComplete,
-        S.current.downloadCompleteBody,
-      ),
-      error: TaskNotification(
-        S.current.errorDownloading,
-        S.current.errorDownloadingBody,
-      ),
-      progressBar: true
-    );
+        running: TaskNotification(
+          S.current.downloading,
+          S.current.downloadingBody,
+        ),
+        complete: TaskNotification(
+          S.current.downloadComplete,
+          S.current.downloadCompleteBody,
+        ),
+        error: TaskNotification(
+          S.current.errorDownloading,
+          S.current.errorDownloadingBody,
+        ),
+        progressBar: true);
 
     // Listen to updates
     FileDownloader().updates.listen((update) {
@@ -70,15 +72,33 @@ class DownloadProvider extends ChangeNotifier {
     });
   }
 
-  void _handleStatusUpdate(TaskStatusUpdate update) {
+  void _handleStatusUpdate(TaskStatusUpdate update) async {
     final downloadItem = _downloads.firstWhere(
-          (item) => item.task.taskId == update.task.taskId,
+      (item) => item.task.taskId == update.task.taskId,
       orElse: () => _createDummyDownloadItem(update.task as DownloadTask),
     );
+    final downloadList = ref.read(downloadListProvider);
+    final DownloadInfo? currentDownload = downloadList.firstWhereOrNull(
+      (download) => (download.filename == downloadItem.task.filename &&
+          download.itemId == downloadItem.itemId &&
+          download.userId == downloadItem.userId),
+    );
+
+    if (currentDownload != null) {
+      final newDownload = currentDownload.copyWith(
+        status: update.status,
+        filePath: update.status == TaskStatus.complete
+            ? await update.task.filePath()
+            : currentDownload.filePath,
+      );
+      final downloadListNotifier = ref.read(downloadListProvider.notifier);
+      downloadListNotifier.replaceDownload(currentDownload, newDownload);
+    }
 
     downloadItem.statusController.add(update);
 
-    if (update.status == TaskStatus.complete || update.status == TaskStatus.failed) {
+    if (update.status == TaskStatus.complete ||
+        update.status == TaskStatus.failed) {
       _downloads.remove(downloadItem);
       downloadItem.dispose();
     }
@@ -89,7 +109,7 @@ class DownloadProvider extends ChangeNotifier {
 
   void _handleProgressUpdate(TaskProgressUpdate update) {
     final downloadItem = _downloads.firstWhere(
-          (item) => item.task.taskId == update.task.taskId,
+      (item) => item.task.taskId == update.task.taskId,
       orElse: () => _createDummyDownloadItem(update.task as DownloadTask),
     );
 
@@ -97,20 +117,22 @@ class DownloadProvider extends ChangeNotifier {
   }
 
   DownloadItem _createDummyDownloadItem(DownloadTask task) {
-    final dummyProgressController = StreamController<TaskProgressUpdate>.broadcast();
-    final dummyStatusController = StreamController<TaskStatusUpdate>.broadcast();
+    final dummyProgressController =
+        StreamController<TaskProgressUpdate>.broadcast();
+    final dummyStatusController =
+        StreamController<TaskStatusUpdate>.broadcast();
 
     return DownloadItem(
-      task: task,
-      progressController: dummyProgressController,
-      statusController: dummyStatusController,
-      itemId: '',
-    );
+        task: task,
+        progressController: dummyProgressController,
+        statusController: dummyStatusController,
+        itemId: '',
+        userId: '');
   }
 
   bool get isDownloading {
     return _taskStatuses.values.any((status) =>
-    status == TaskStatus.enqueued || status == TaskStatus.running);
+        status == TaskStatus.enqueued || status == TaskStatus.running);
   }
 
   Future<void> downloadAudioFile(
@@ -118,7 +140,36 @@ class DownloadProvider extends ChangeNotifier {
     final fileName = file.metadata!.filename!;
     final name = item.media!.metadata!.title;
 
+    final downloadList = ref.read(downloadListProvider);
+    final currentUser = ref.read(currentUserProvider);
+    final libraries = ref.read(librariesProvider);
+    if (currentUser == null ||
+        libraries.value == null ||
+        libraries.value!.data == null ||
+        libraries.value!.data!.libraries == null) {
+      return;
+    }
+    final userId = currentUser.id!;
+
+    final downloadInfo = DownloadInfo(
+      index: int.parse(file.ino!),
+      type: MediaTypeDownload.book,
+      userId: userId,
+      filename: file.metadata!.filename!,
+      format: file.metadata!.ext!,
+      libraryId: item.libraryId!,
+      itemId: item.id!,
+      size: file.metadata!.size!,
+      displayName: name ?? fileName,
+      libraryName: libraries.value!.data!.libraries!
+          .firstWhere((library) => library.id == item.libraryId)
+          .name!,
+      status: TaskStatus.enqueued,
+    );
+
     await _download(url, fileName, name, item.id!);
+
+    downloadList.add(downloadInfo);
   }
 
   Future<void> _download(
@@ -128,7 +179,8 @@ class DownloadProvider extends ChangeNotifier {
       return;
     }
     final token = user.token;
-    final bool onlyWifi = user.setting?.settings['downloadsOnlyViaWifi'] ?? false;
+    final bool onlyWifi =
+        user.setting?.settings['downloadsOnlyViaWifi'] ?? false;
 
     final task = DownloadTask(
       url: '$url?token=${token.toString()}',
@@ -149,6 +201,7 @@ class DownloadProvider extends ChangeNotifier {
       progressController: progressController,
       statusController: statusController,
       itemId: itemId,
+      userId: user.id!,
     );
 
     _downloads.add(downloadItem);
@@ -178,4 +231,5 @@ class DownloadProvider extends ChangeNotifier {
   }
 }
 
-final downloadProvider = ChangeNotifierProvider((ref) => DownloadProvider(ref));
+final downloaderProvider =
+    ChangeNotifierProvider((ref) => DownloadProvider(ref));

@@ -62,6 +62,12 @@ class Home extends ConsumerWidget {
                 },
               ),
               PopupMenuOption(
+                label: S.of(context).downloads,
+                onTap: (PopupMenuOption option) {
+                  context.push('/downloads');
+                },
+              ),
+              PopupMenuOption(
                   label: S.of(context).addUser,
                   onTap: (PopupMenuOption option) {
                     context.push('/select-server');

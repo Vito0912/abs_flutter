@@ -87,6 +87,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "downloading": MessageLookupByLibrary.simpleMessage("Downloading"),
         "downloadingBody": MessageLookupByLibrary.simpleMessage(
             "Downloading \'{\'displayName\'}\'"),
+        "downloads": MessageLookupByLibrary.simpleMessage("Downloads"),
         "downloadsOnlyViaWifi":
             MessageLookupByLibrary.simpleMessage("Downloads only via WiFi"),
         "duration": MessageLookupByLibrary.simpleMessage("Duration"),

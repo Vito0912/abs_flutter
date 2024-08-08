@@ -254,5 +254,6 @@
   "downloading": "Downloading",
   "downloadingBody": "Downloading '{'displayName'}'",
   "downloadCompleteBody": "Download of '{'displayName'}' complete",
-  "errorDownloadingBody": "An error occurred while downloading '{'displayName'}'"
+  "errorDownloadingBody": "An error occurred while downloading '{'displayName'}'",
+  "downloads": "Downloads"
 }
