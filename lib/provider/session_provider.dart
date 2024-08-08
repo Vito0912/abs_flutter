@@ -3,6 +3,7 @@ import 'dart:developer';
 
 import 'package:abs_api/abs_api.dart';
 import 'package:abs_flutter/globals.dart';
+import 'package:abs_flutter/provider/download_provider.dart';
 import 'package:abs_flutter/provider/player_provider.dart';
 import 'package:abs_flutter/provider/player_status_provider.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
@@ -69,11 +70,30 @@ class PlaybackSessionNotifier
         return;
       }
 
+      final streamUrl = '${currentUser?.server!.url}${playback.audioTracks![0].contentUrl!}?token=${currentUser?.token!}';
+
+      final downloads = ref.read(downloadListProvider);
+
+      final download = downloads
+          .where((element) {
+        return (element.itemId == playback.libraryItem?.id &&
+            element.userId == playback.userId);
+      })
+          .firstOrNull;
+
+
+      String? path;
+      if(download != null) {
+        path = download.filePath;
+      } else {
+        path = streamUrl;
+      }
+
       MediaItem mediaItem = MediaItem(
-          id:
-              '${currentUser?.server!.url}${playback.audioTracks![0].contentUrl!}?token=${currentUser?.token!}',
+          id: path!,
           album: playback.mediaMetadata?.series?.toList().join(', '),
           title: playback.displayTitle!,
+          displaySubtitle: playback.mediaMetadata!.subtitle!,
           artist: playback.displayAuthor!,
           duration:
               Duration(seconds: playback.audioTracks![0].duration!.round()),
@@ -82,6 +102,7 @@ class PlaybackSessionNotifier
           extras: {
             'libraryItemId': id,
             'sessionId': playback.id,
+            'streaming': download == null,
             'chapters': playback.chapters
                 ?.map((e) => {
                       'title': e?.title,

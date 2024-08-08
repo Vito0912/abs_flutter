@@ -67,7 +67,12 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
 
   @override
   Future<void> playMediaItem(MediaItem item) async {
-    AudioSource source = AudioSource.uri(Uri.parse(item.id));
+    late AudioSource source;
+    if(item.extras?['streaming'] == true) {
+      source = AudioSource.uri(Uri.parse(item.id));
+    } else {
+      source = AudioSource.file(item.id);
+    }
 
     final List<MediaProgress>? _progresses = _progressProvider?.progress;
     MediaProgress? _progress;
@@ -86,7 +91,7 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
 
     await _player.play();
 
-    if (_progress != null) {
+    if (_progress != null && _progress.progress! <= 0.99) {
       log('Seeking to ${_progress.currentTime?.round()} due to progress');
       await _player.seek(Duration(seconds: _progress.currentTime?.round() ?? 0));
     }
