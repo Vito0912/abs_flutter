@@ -5,11 +5,13 @@ import 'package:abs_flutter/features/library/item/components/download_button.dar
 import 'package:abs_flutter/features/library/item/components/expandable_description.dart';
 import 'package:abs_flutter/features/library/item/components/play_button.dart';
 import 'package:abs_flutter/generated/l10n.dart';
+import 'package:abs_flutter/provider/connection_provider.dart';
 import 'package:abs_flutter/provider/library_item_provider.dart';
 import 'package:abs_flutter/provider/progress_provider.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
 import 'package:abs_flutter/models/user.dart' as m;
 import 'package:abs_flutter/widgets/error_text.dart';
+import 'package:abs_flutter/widgets/no_connection.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
@@ -26,8 +28,11 @@ class ItemView extends ConsumerWidget {
     final item = ref.watch(itemProvider(itemId));
     final currentUser = ref.read(currentUserProvider);
     final progress = ref.read(progressProvider);
+    final connection = ref.read(connectionProvider);
     progress.getProgressWithLibraryItem(itemId);
     final mediaProgress = ref.watch(mediaProgressProvider);
+
+    if (!connection) return const NoConnection();
 
     return item.when(
       data: (item) => item == null
@@ -114,7 +119,6 @@ class ItemView extends ConsumerWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-
         PlatformText(
           castItem.media!.metadata!.title!,
           style: const TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),

@@ -1,120 +1,114 @@
 import 'dart:async';
-import 'dart:io';
-
+import 'dart:developer';
+import 'package:abs_flutter/models/user.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-// Define the possible states
-enum ConnectionState {
-  noInternet,
-  cantConnectToServer,
-  cantConnectToService,
-  reachable,
-  connected,
-}
+final connectionProvider = StateNotifierProvider<ConnectionNotifier, bool>((ref) {
+  return ConnectionNotifier(ref);
+});
 
-// Define a class to manage the connection state
-class ConnectionNotifier extends StateNotifier<ConnectionState> {
-  ConnectionNotifier(this.ref) : super(ConnectionState.noInternet) {
-    _init();
-  }
-
+class ConnectionNotifier extends StateNotifier<bool> {
   final Ref ref;
-  Timer? _timer;
-  bool _isChecking = false;
-  final Dio _dio = Dio();
+  Timer? _serverReachabilityTimer;
+  final _connectivity = Connectivity();
 
-  // Define intervals as variables
-  final Duration noInternetInterval = Duration(seconds: 30);
-  final Duration cantConnectToServerInterval = Duration(minutes: 1);
-  final Duration cantConnectToServiceInterval = Duration(minutes: 1);
-  final Duration reachableInterval = Duration(minutes: 1);
-
-  Future<void> _init() async {
-    await _checkConnection();
+  ConnectionNotifier(this.ref) : super(false) {
+    log('ConnectionNotifier initialized');
+    _connectivity.onConnectivityChanged.listen(_handleConnectivityChange);
+    _checkServerReachability(); // Initial server reachability check
   }
 
-  Future<void> _checkConnection() async {
-    if (_isChecking) return;
-    _isChecking = true;
+  void _handleConnectivityChange(List<ConnectivityResult> results) {
+    log('Connectivity changed: $results');
+    _updateConnectivityStatus(results);
+  }
 
-    final currentUser = ref.watch(currentUserProvider);
-    if (currentUser == null) {
-      state = ConnectionState.cantConnectToServer;
-      return;
+  Future<void> _updateConnectivityStatus(List<ConnectivityResult> results) async {
+    bool isConnected = results.any((result) => result != ConnectivityResult.none);
+    final isReachable = isConnected ? await _isServerReachable() : false;
+
+    // Only update state if there's a real change in connection status
+    if (state != isReachable) {
+      state = isReachable;
+      log('Server reachable: $isReachable');
+      if (isReachable) {
+        _startServerReachabilityCheck(); // Start periodic checks if reachable
+      } else {
+        _stopServerReachabilityCheck(); // Stop checks if not reachable
+      }
     }
-    final serverUrl = currentUser.server!.url;
-
-    if (!(await _hasInternetConnection())) {
-      state = ConnectionState.noInternet;
-      _startChecking(noInternetInterval);
-    } else if (!(await _canPingServer(serverUrl))) {
-      state = ConnectionState.cantConnectToServer;
-      _startChecking(cantConnectToServerInterval);
-    } else if (!(await _canReachService(serverUrl))) {
-      state = ConnectionState.cantConnectToService;
-      _startChecking(cantConnectToServiceInterval);
-    } else {
-      state = ConnectionState.reachable;
-      _startChecking(reachableInterval);
-    }
-
-    _isChecking = false;
   }
 
-  Future<bool> _hasInternetConnection() async {
-    var connectivityResult = await (Connectivity().checkConnectivity());
-    return connectivityResult != ConnectivityResult.none;
-  }
+  Future<bool> _isServerReachable() async {
+    final User? user = ref.read(currentUserProvider);
 
-  Future<bool> _canPingServer(String url) async {
+    if (user?.server?.url == null) return false;
+
+    final serverUrl = user!.server!.url;
+
     try {
-      final result = await InternetAddress.lookup(url);
-      return result.isNotEmpty && result[0].rawAddress.isNotEmpty;
-    } on SocketException catch (_) {
-      return false;
-    }
-  }
-
-  Future<bool> _canReachService(String url) async {
-    try {
-      final response = await _dio.get('$url/health');
+      final response = await Dio().get('$serverUrl/healthcheck');
       return response.statusCode == 200;
-    } catch (_) {
+    } catch (e) {
+      log('Server not reachable: $e');
       return false;
     }
   }
 
-  void _startChecking(Duration interval) {
-    _timer?.cancel();
-    _timer = Timer.periodic(interval, (_) async {
-      await _checkConnection();
+  void _checkServerReachability() {
+    _serverReachabilityTimer?.cancel();
+    _serverReachabilityTimer = Timer.periodic(const Duration(minutes: 1), (timer) async {
+      final isReachable = await _isServerReachable();
+      if (state != isReachable) {
+        state = isReachable;
+        log('Server reachable: $isReachable');
+      }
     });
   }
 
-  bool canReachServer() {
-    return state == ConnectionState.reachable || state == ConnectionState.connected;
+  void _startServerReachabilityCheck() {
+    _serverReachabilityTimer?.cancel();
+    _serverReachabilityTimer = Timer.periodic(const Duration(minutes: 1), (timer) async {
+      final isReachable = await _isServerReachable();
+      if (state != isReachable) {
+        state = isReachable;
+        log('Server reachable: $isReachable');
+      }
+      if (!isReachable) {
+        _stopServerReachabilityCheck(); // Stop the timer if the server is no longer reachable
+      }
+    });
+  }
+
+  void _stopServerReachabilityCheck() {
+    _serverReachabilityTimer?.cancel();
+  }
+
+  /// Manually set the server's state
+  void setServerState(bool isReachable) {
+    if (state != isReachable) {
+      state = isReachable;
+      log('Server reachable: $isReachable');
+
+      // Immediately start or stop reachability checks based on the new state
+      if (isReachable) {
+        _startServerReachabilityCheck();
+      } else {
+        _stopServerReachabilityCheck();
+      }
+    }
+  }
+
+  void checkServerReachability() {
+    _checkServerReachability();
   }
 
   @override
   void dispose() {
-    _timer?.cancel();
+    _stopServerReachabilityCheck();
     super.dispose();
   }
 }
-
-// Define a provider for the connection notifier
-final connectionProvider =
-StateNotifierProvider<ConnectionNotifier, ConnectionState>((ref) {
-  return ConnectionNotifier(ref);
-});
-
-// Define an extension to expose the canReachServer method
-extension ConnectionNotifierX on ConnectionNotifier {
-  bool canReachServer() {
-    return state == ConnectionState.reachable || state == ConnectionState.connected;
-  }
-}
-

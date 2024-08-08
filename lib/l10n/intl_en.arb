@@ -255,5 +255,9 @@
   "downloadingBody": "Downloading '{'displayName'}'",
   "downloadCompleteBody": "Download of '{'displayName'}' complete",
   "errorDownloadingBody": "An error occurred while downloading '{'displayName'}'",
-  "downloads": "Downloads"
+  "downloads": "Downloads",
+  "noInternetDescription": "We are having trouble connecting to the server.",
+  "pleaseCheckInternet": "Please check your internet connection and try again.",
+  "tryAgain": "Try Again",
+  "openDownloads": "Open Downloads"
 }

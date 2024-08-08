@@ -128,17 +128,22 @@ class MessageLookup extends MessageLookupByLibrary {
             "You must enter a valid server address"),
         "noConnection": MessageLookupByLibrary.simpleMessage("No Connection"),
         "noDownloads": MessageLookupByLibrary.simpleMessage("No downloads"),
+        "noInternetDescription": MessageLookupByLibrary.simpleMessage(
+            "We are having trouble connecting to the server."),
         "noUserData": MessageLookupByLibrary.simpleMessage(
             "Login failed: No user data received"),
         "notificationHeading": MessageLookupByLibrary.simpleMessage(
             "Notifications should be enabled"),
         "ok": MessageLookupByLibrary.simpleMessage("OK"),
+        "openDownloads": MessageLookupByLibrary.simpleMessage("Open Downloads"),
         "ownStats": MessageLookupByLibrary.simpleMessage("Own Stats"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "playbackSpeed": MessageLookupByLibrary.simpleMessage("Speed"),
         "player": MessageLookupByLibrary.simpleMessage("Player"),
         "playerSettings":
             MessageLookupByLibrary.simpleMessage("Player Settings"),
+        "pleaseCheckInternet": MessageLookupByLibrary.simpleMessage(
+            "Please check your internet connection and try again."),
         "port": MessageLookupByLibrary.simpleMessage("Port"),
         "progressAsChaptersDescription": MessageLookupByLibrary.simpleMessage(
             "Enable this option to display progress in the player and notifications on a per-chapter basis. If disabled, progress will be shown based on the entire item."),
@@ -174,6 +179,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "today": MessageLookupByLibrary.simpleMessage("Today"),
         "totalTimeListened":
             MessageLookupByLibrary.simpleMessage("Total time listened"),
+        "tryAgain": MessageLookupByLibrary.simpleMessage("Try Again"),
         "updatedAt": MessageLookupByLibrary.simpleMessage("Updated At"),
         "user": MessageLookupByLibrary.simpleMessage("User"),
         "username": MessageLookupByLibrary.simpleMessage("Username"),

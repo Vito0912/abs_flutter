@@ -1007,6 +1007,46 @@ class S {
       args: [],
     );
   }
+
+  /// `We are having trouble connecting to the server.`
+  String get noInternetDescription {
+    return Intl.message(
+      'We are having trouble connecting to the server.',
+      name: 'noInternetDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please check your internet connection and try again.`
+  String get pleaseCheckInternet {
+    return Intl.message(
+      'Please check your internet connection and try again.',
+      name: 'pleaseCheckInternet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Try Again`
+  String get tryAgain {
+    return Intl.message(
+      'Try Again',
+      name: 'tryAgain',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Open Downloads`
+  String get openDownloads {
+    return Intl.message(
+      'Open Downloads',
+      name: 'openDownloads',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

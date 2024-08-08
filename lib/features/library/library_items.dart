@@ -2,9 +2,11 @@ import 'package:abs_api/abs_api.dart';
 import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/models/library_preview.dart';
 import 'package:abs_flutter/models/library_preview_item.dart';
+import 'package:abs_flutter/provider/connection_provider.dart';
 import 'package:abs_flutter/provider/library_items_provider.dart';
 import 'package:abs_flutter/provider/progress_provider.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
+import 'package:abs_flutter/widgets/no_connection.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -62,9 +64,14 @@ class _LibraryItemsState extends ConsumerState<LibraryItems> {
 
   @override
   Widget build(BuildContext context) {
+    final connection = ref.watch(connectionProvider);
     final progressProv = ref.watch(progressProvider);
     final progress = progressProv.getProgress();
     final libraryItems = ref.watch(libraryItemsProvider);
+
+    if (!connection) {
+      return _buildSafeArea(const NoConnection());
+    }
 
     if (libraryItems == null) {
       return _buildSafeArea(_buildShimmerLoading());
