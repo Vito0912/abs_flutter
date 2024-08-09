@@ -78,6 +78,7 @@ class ConnectionNotifier extends StateNotifier<bool> {
 
   void _checkServerReachability() {
     _serverReachabilityTimer?.cancel();
+    log('Triggering server reachability check');
     _serverReachabilityTimer =
         Timer.periodic(const Duration(minutes: 1), (timer) async {
       final isReachable = await _isServerReachable();
