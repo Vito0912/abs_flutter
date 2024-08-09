@@ -228,4 +228,3 @@ lib/src/model/update_series_request.dart
 lib/src/model/user.dart
 lib/src/serializers.dart
 pubspec.yaml
-test/play_library_item_request_test.dart

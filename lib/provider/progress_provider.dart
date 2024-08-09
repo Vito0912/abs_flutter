@@ -34,8 +34,6 @@ class ProgressProvider extends ChangeNotifier {
       return;
     }
 
-    final offlineProgress = ref.read(offlineProgressProviderHandler);
-
       try {
         final response = await api!.getMeApi().getMe();
 
@@ -55,15 +53,19 @@ class ProgressProvider extends ChangeNotifier {
         return;
       }
 
-    for (ProgressItem item in offlineProgress) {
-      progress ??= [];
-      int index = progress!.indexWhere((element) => element.libraryItemId == item.itemId);
-      if(index >= 0) {
-        MediaProgressBuilder builder = progress![index].toBuilder();
-        builder.currentTime = item.currentTime;
-        builder.duration = item.durationOfItem;
-        builder.progress = item.currentTime / item.durationOfItem;
-        progress![index] = builder.build();
+    final offlineProgress = ref.read(offlineProgressProviderHandler);
+
+    if(offlineProgress.isNotEmpty) {
+      for (ProgressItem item in offlineProgress) {
+        progress ??= [];
+        int index = progress!.indexWhere((element) => element.libraryItemId == item.itemId);
+        if(index >= 0) {
+          MediaProgressBuilder builder = progress![index].toBuilder();
+          builder.currentTime = item.currentTime;
+          builder.duration = item.durationOfItem;
+          builder.progress = item.currentTime / item.durationOfItem;
+          progress![index] = builder.build();
+        }
       }
     }
 

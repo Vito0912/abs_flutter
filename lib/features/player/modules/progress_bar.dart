@@ -44,18 +44,11 @@ class ProgressBar extends StatelessWidget {
                       stream: positionStream,
                       builder: (BuildContext context,
                           AsyncSnapshot<Duration?> position) {
-                        return StreamBuilder(
-                            stream: bufferStream,
-                            builder: (BuildContext context, AsyncSnapshot<Duration?> buffered) {
-                              if (duration.hasData && position.hasData && buffered.hasData) {
+                              if (duration.hasData && position.hasData) {
                                 double min = _getMinValue(currentChapter);
                                 double max = _getMaxValue(currentChapter, duration.data!);
                                 double currentValue = _maxBoundaries(
                                     position.data!.inMilliseconds.toDouble(),
-                                    min,
-                                    max);
-                                double bufferedValue = _maxBoundaries(
-                                    buffered.data!.inMilliseconds.toDouble(),
                                     min,
                                     max);
                                 return Stack(
@@ -78,26 +71,11 @@ class ProgressBar extends StatelessWidget {
                                         },
                                       ),
                                     ),
-                                    if(bufferedValue / max >= 0 && bufferedValue / max <= 1) Positioned.fill(
-                                      left: 16,
-                                      right: 16,
-                                      child: Align(
-                                        alignment: Alignment.centerLeft,
-                                        child: FractionallySizedBox(
-                                          widthFactor: bufferedValue / max,
-                                          child: Container(
-                                            height: 6.0,
-                                            color: Theme.of(context).colorScheme.surfaceBright.withOpacity(0.4),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
                                   ],
                                 );
                               } else {
                                 return const SizedBox.shrink();
                               }
-                            });
                       });
 
                   return const SizedBox.shrink();

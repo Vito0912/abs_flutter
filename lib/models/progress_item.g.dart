@@ -14,6 +14,10 @@ _$ProgressItemImpl _$$ProgressItemImplFromJson(Map<String, dynamic> json) =>
       currentTime: (json['currentTime'] as num).toDouble(),
       timeListened: (json['timeListened'] as num).toDouble(),
       durationOfItem: (json['durationOfItem'] as num).toDouble(),
+      type: json['type'] as String,
+      createdAt: json['createdAt'] == null
+          ? null
+          : DateTime.parse(json['createdAt'] as String),
     );
 
 Map<String, dynamic> _$$ProgressItemImplToJson(_$ProgressItemImpl instance) =>
@@ -24,4 +28,6 @@ Map<String, dynamic> _$$ProgressItemImplToJson(_$ProgressItemImpl instance) =>
       'currentTime': instance.currentTime,
       'timeListened': instance.timeListened,
       'durationOfItem': instance.durationOfItem,
+      'type': instance.type,
+      'createdAt': instance.createdAt?.toIso8601String(),
     };

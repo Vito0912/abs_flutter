@@ -9,6 +9,7 @@ import 'package:abs_flutter/provider/player_provider.dart';
 import 'package:abs_flutter/provider/progress_provider.dart';
 import 'package:abs_flutter/provider/session_provider.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final progressTimerProvider = StateNotifierProvider<TimerNotifier, DateTime?>(
@@ -49,20 +50,29 @@ class TimerNotifier extends StateNotifier<DateTime?> {
 
   void _sendDataToServer(Duration listenedDuration) {
     final AbsApi? api = ref.read(apiProvider);
-    final connection = ref.read(connectionProvider);
+    final connection = ref.read(connectionProvider.notifier);
     final player = ref.read(playerProvider.notifier);
 
     final currentTime =
         player.audioService.player.position.inMicroseconds / 1000000;
     final listenedSeconds = listenedDuration.inMicroseconds / 1000000.0;
+    final settings = ref.read(settingsProvider);
 
     // Everything under 1 second is considered a fault (like seeking)
-    if (listenedSeconds <= 1) return;
+    if (listenedSeconds <= 1 ||
+        listenedSeconds > ((settings['syncInterval'] ?? 60) * 2)) return;
 
     final PlaybackSessionBookExpanded? session =
         ref.read(sessionProvider.notifier).session;
 
-    if (connection && session != null && api != null) {
+    final shouldSyncOnline = (settings['syncOnlyViaWifi'] == false ||
+        connection.currentConnectivity.contains(ConnectivityResult.wifi) ||
+        connection.currentConnectivity.contains(ConnectivityResult.ethernet));
+
+    if (connection.state &&
+        session != null &&
+        api != null &&
+        shouldSyncOnline) {
       log('Sending data to server: $listenedSeconds');
 
       SyncOpenSessionRequestBuilder syncSession =
@@ -71,13 +81,21 @@ class TimerNotifier extends StateNotifier<DateTime?> {
             ..timeListened = listenedSeconds
             ..currentTime = currentTime;
 
-      api
-          .getSessionApi()
-          .syncOpenSession(
-            id: session.id!,
-            syncOpenSessionRequest: syncSession.build(),
-          )
-          .then((response) => print(response.data));
+      // TODO: Wenn session geschlossen kein Sync!
+      try {
+        api
+            .getSessionApi()
+            .syncOpenSession(
+          id: session.id!,
+          syncOpenSessionRequest: syncSession.build(),
+        )
+            .then((response) => print(response.data));
+      } catch(e) {
+        log(e.toString());
+      }
+
+
+
     } else {
       log('Saving data offline: $listenedSeconds');
       final user = ref.read(currentUserProvider);
@@ -93,6 +111,8 @@ class TimerNotifier extends StateNotifier<DateTime?> {
         sessionId: session?.id,
         currentTime: currentTime,
         timeListened: listenedSeconds,
+        createdAt: DateTime.now(),
+        type: 'book',
         durationOfItem:
             player.audioService.mediaItem.value!.duration!.inSeconds.toDouble(),
       );
@@ -174,20 +194,26 @@ class OfflineProgressProvider extends StateNotifier<List<ProgressItem>> {
     state = [...state, progress];
   }
 
-  getProgressByItemAndUser(String itemId, String userId) {
-    return state.firstWhere(
-        (element) => element.itemId == itemId && element.userId == userId);
+  ProgressItem? getProgressByItemAndUser(String itemId, String userId) {
+    return state
+        .where(
+            (element) => element.itemId == itemId && element.userId == userId)
+        .firstOrNull;
   }
 
-  getProgressByUser(String userId) {
+  List<ProgressItem> getProgressByUser(String userId) {
     return state.where((element) => element.userId == userId).toList();
   }
 
-  getProgressBySession(String sessionId) {
+  List<ProgressItem> getProgressBySession(String sessionId) {
     return state.where((element) => element.sessionId == sessionId).toList();
   }
 
   removeProgress(ProgressItem progress) {
     state = state.where((element) => element != progress).toList();
+  }
+
+  removeListProgress(List<ProgressItem> progresses) {
+    state = state.where((element) => !progresses.contains(element)).toList();
   }
 }

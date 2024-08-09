@@ -150,6 +150,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "publisher": MessageLookupByLibrary.simpleMessage("Publisher"),
         "readLess": MessageLookupByLibrary.simpleMessage("Read less"),
         "readMore": MessageLookupByLibrary.simpleMessage("Read more"),
+        "restartRequired":
+            MessageLookupByLibrary.simpleMessage("Restart Required"),
+        "restartRequiredDescription": MessageLookupByLibrary.simpleMessage(
+            "Please restart the app to apply the changes."),
         "rewindSeconds": MessageLookupByLibrary.simpleMessage("Rewind Seconds"),
         "rewindSecondsDescription": MessageLookupByLibrary.simpleMessage(
             "Set the number of seconds to skip backward when the rewind button is pressed."),
@@ -173,6 +177,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Stop Player Until Sync"),
         "stopPlayerWhileSyncingDescription": MessageLookupByLibrary.simpleMessage(
             "Enable this option to prevent the player from starting until the most recent playback position has been synced. This ensures that playback resumes from the correct position. If disabled, the playback position may change shortly after starting, potentially leading to data loss. Turning this on helps conserve data usage."),
+        "syncInterval":
+            MessageLookupByLibrary.simpleMessage("Sync Interval (seconds)"),
+        "syncIntervalDescription": MessageLookupByLibrary.simpleMessage(
+            "Specifies how often the app should sync with the server. Please restart the app for the changes to take effect."),
+        "syncOnlyViaWifi":
+            MessageLookupByLibrary.simpleMessage("Sync only via WiFi"),
         "tags": MessageLookupByLibrary.simpleMessage("Tags"),
         "timerText": m11,
         "title": MessageLookupByLibrary.simpleMessage("Title"),

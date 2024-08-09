@@ -226,3 +226,8 @@ void setBasePathOverride(WidgetRef ref, String? newBasePath) {
 void resetBasePathOverride(WidgetRef ref) {
   ref.read(basePathOverrideProvider.notifier).state = null;
 }
+
+final settingsProvider = Provider<Map<String, dynamic>>((ref) {
+  final user = ref.watch(currentUserProvider);
+  return user?.setting?.settings ?? defaultSettings;
+});

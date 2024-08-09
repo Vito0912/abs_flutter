@@ -227,6 +227,10 @@ Serializers serializers = (_$serializers.toBuilder()
         const FullType(BuiltList, [FullType(String)]),
         () => ListBuilder<String>(),
       )
+      ..addBuilderFactory(
+        const FullType(BuiltList, [FullType(PlaybackSession)]),
+        () => ListBuilder<PlaybackSession>(),
+      )
       ..add(Author.serializer)
       ..add(BookBase.serializer)
       ..add(BookMetadataBase.serializer)

@@ -3081,6 +3081,96 @@
           }
         }
       }
+    },
+    "/api/session/local": {
+      "post": {
+        "operationId": "createLocalSession",
+        "summary": "Create a local session.",
+        "description": "Create a local session.",
+        "tags": [
+          "Session"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/playbackSession"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "html/text": {
+                "schema": {
+                  "type": "string",
+                  "example": "OK"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "There was an error creating the session.",
+            "content": {
+              "html/text": {
+                "schema": {
+                  "type": "string",
+                  "example": "Internal Server Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/session/local-all": {
+      "post": {
+        "operationId": "createLocalSessionAll",
+        "summary": "Create a local session for all users.",
+        "description": "Create a local session for all users.",
+        "tags": [
+          "Session"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/playbackSession"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "html/text": {
+                "schema": {
+                  "type": "string",
+                  "example": "OK"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "There was an error creating the session.",
+            "content": {
+              "html/text": {
+                "schema": {
+                  "type": "string",
+                  "example": "Internal Server Error"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {

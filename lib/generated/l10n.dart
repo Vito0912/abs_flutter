@@ -1047,6 +1047,56 @@ class S {
       args: [],
     );
   }
+
+  /// `Sync Interval (seconds)`
+  String get syncInterval {
+    return Intl.message(
+      'Sync Interval (seconds)',
+      name: 'syncInterval',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Restart Required`
+  String get restartRequired {
+    return Intl.message(
+      'Restart Required',
+      name: 'restartRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please restart the app to apply the changes.`
+  String get restartRequiredDescription {
+    return Intl.message(
+      'Please restart the app to apply the changes.',
+      name: 'restartRequiredDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Specifies how often the app should sync with the server. Please restart the app for the changes to take effect.`
+  String get syncIntervalDescription {
+    return Intl.message(
+      'Specifies how often the app should sync with the server. Please restart the app for the changes to take effect.',
+      name: 'syncIntervalDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sync only via WiFi`
+  String get syncOnlyViaWifi {
+    return Intl.message(
+      'Sync only via WiFi',
+      name: 'syncOnlyViaWifi',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

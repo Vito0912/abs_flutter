@@ -10,6 +10,8 @@ All URIs are relative to *http://localhost:3000*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**closeSession**](SessionApi.md#closesession) | **POST** /api/session/{id}/close | Close a listening session.
+[**createLocalSession**](SessionApi.md#createlocalsession) | **POST** /api/session/local | Create a local session.
+[**createLocalSessionAll**](SessionApi.md#createlocalsessionall) | **POST** /api/session/local-all | Create a local session for all users.
 [**deleteSession**](SessionApi.md#deletesession) | **DELETE** /api/sessions/{id} | Delets a listening session.
 [**getSession**](SessionApi.md#getsession) | **GET** /api/session/{id} | Get a listening session.
 [**getSessions**](SessionApi.md#getsessions) | **GET** /api/sessions | Get all listening sessions.
@@ -61,6 +63,92 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: html/text
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **createLocalSession**
+> String createLocalSession(playbackSession)
+
+Create a local session.
+
+Create a local session.
+
+### Example
+```dart
+import 'package:abs_api/api.dart';
+
+final api = AbsApi().getSessionApi();
+final PlaybackSession playbackSession = ; // PlaybackSession | 
+
+try {
+    final response = api.createLocalSession(playbackSession);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling SessionApi->createLocalSession: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **playbackSession** | [**PlaybackSession**](PlaybackSession.md)|  | 
+
+### Return type
+
+**String**
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: html/text
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **createLocalSessionAll**
+> String createLocalSessionAll(playbackSession)
+
+Create a local session for all users.
+
+Create a local session for all users.
+
+### Example
+```dart
+import 'package:abs_api/api.dart';
+
+final api = AbsApi().getSessionApi();
+final BuiltList<PlaybackSession> playbackSession = ; // BuiltList<PlaybackSession> | 
+
+try {
+    final response = api.createLocalSessionAll(playbackSession);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling SessionApi->createLocalSessionAll: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **playbackSession** | [**BuiltList&lt;PlaybackSession&gt;**](PlaybackSession.md)|  | 
+
+### Return type
+
+**String**
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: html/text
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

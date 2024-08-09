@@ -17,6 +17,8 @@ class ProgressItem with _$ProgressItem {
     required double currentTime,
     required double timeListened,
     required double durationOfItem,
+    required String type,
+    required DateTime? createdAt,
   }) = _ProgressItem;
 
 
