@@ -79,6 +79,7 @@ doc/NotificationEventName.md
 doc/NotificationSettings.md
 doc/NotificationType.md
 doc/Permissions.md
+doc/PlayLibraryItemRequest.md
 doc/PlaybackSession.md
 doc/PlaybackSessionBase.md
 doc/PlaybackSessionBook.md
@@ -100,6 +101,7 @@ doc/SeriesSequence.md
 doc/SeriesWithProgressAndRSS.md
 doc/SeriesWithProgressAndRSSOneOf.md
 doc/SessionApi.md
+doc/SyncOpenSessionRequest.md
 doc/UpdateAuthorById200Response.md
 doc/UpdateAuthorByIdRequest.md
 doc/UpdateEReaderDevicesRequest.md
@@ -197,6 +199,7 @@ lib/src/model/notification_event_name.dart
 lib/src/model/notification_settings.dart
 lib/src/model/notification_type.dart
 lib/src/model/permissions.dart
+lib/src/model/play_library_item_request.dart
 lib/src/model/playback_session.dart
 lib/src/model/playback_session_base.dart
 lib/src/model/playback_session_book.dart
@@ -215,6 +218,7 @@ lib/src/model/series_progress.dart
 lib/src/model/series_sequence.dart
 lib/src/model/series_with_progress_and_rss.dart
 lib/src/model/series_with_progress_and_rss_one_of.dart
+lib/src/model/sync_open_session_request.dart
 lib/src/model/update_author_by_id200_response.dart
 lib/src/model/update_author_by_id_request.dart
 lib/src/model/update_e_reader_devices_request.dart
@@ -224,3 +228,4 @@ lib/src/model/update_series_request.dart
 lib/src/model/user.dart
 lib/src/serializers.dart
 pubspec.yaml
+test/play_library_item_request_test.dart

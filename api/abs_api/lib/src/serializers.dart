@@ -85,6 +85,7 @@ import 'package:abs_api/src/model/notification_event_name.dart';
 import 'package:abs_api/src/model/notification_settings.dart';
 import 'package:abs_api/src/model/notification_type.dart';
 import 'package:abs_api/src/model/permissions.dart';
+import 'package:abs_api/src/model/play_library_item_request.dart';
 import 'package:abs_api/src/model/playback_session.dart';
 import 'package:abs_api/src/model/playback_session_base.dart';
 import 'package:abs_api/src/model/playback_session_book.dart';
@@ -103,6 +104,7 @@ import 'package:abs_api/src/model/series_progress.dart';
 import 'package:abs_api/src/model/series_sequence.dart';
 import 'package:abs_api/src/model/series_with_progress_and_rss.dart';
 import 'package:abs_api/src/model/series_with_progress_and_rss_one_of.dart';
+import 'package:abs_api/src/model/sync_open_session_request.dart';
 import 'package:abs_api/src/model/update_author_by_id200_response.dart';
 import 'package:abs_api/src/model/update_author_by_id_request.dart';
 import 'package:abs_api/src/model/update_e_reader_devices_request.dart';
@@ -189,6 +191,7 @@ part 'serializers.g.dart';
   NotificationSettings,
   NotificationType,
   Permissions,
+  PlayLibraryItemRequest,
   PlaybackSession,
   PlaybackSessionBase,
   $PlaybackSessionBase,
@@ -210,6 +213,7 @@ part 'serializers.g.dart';
   SeriesSequence,
   SeriesWithProgressAndRSS,
   SeriesWithProgressAndRSSOneOf,
+  SyncOpenSessionRequest,
   UpdateAuthorById200Response,
   UpdateAuthorByIdRequest,
   UpdateEReaderDevicesRequest,

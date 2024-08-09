@@ -199,7 +199,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **syncOpenSession**
-> String syncOpenSession(id, currentTime, timeListened, duration)
+> String syncOpenSession(id, syncOpenSessionRequest)
 
 Sync an open session.
 
@@ -211,12 +211,10 @@ import 'package:abs_api/api.dart';
 
 final api = AbsApi().getSessionApi();
 final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | The ID of the session.
-final num currentTime = 8.14; // num | The current time of the session.
-final num timeListened = 8.14; // num | The time listened to the session.
-final num duration = 8.14; // num | The duration of the session.
+final SyncOpenSessionRequest syncOpenSessionRequest = ; // SyncOpenSessionRequest | 
 
 try {
-    final response = api.syncOpenSession(id, currentTime, timeListened, duration);
+    final response = api.syncOpenSession(id, syncOpenSessionRequest);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling SessionApi->syncOpenSession: $e\n');
@@ -228,9 +226,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**| The ID of the session. | 
- **currentTime** | **num**| The current time of the session. | 
- **timeListened** | **num**| The time listened to the session. | 
- **duration** | **num**| The duration of the session. | 
+ **syncOpenSessionRequest** | [**SyncOpenSessionRequest**](SyncOpenSessionRequest.md)|  | 
 
 ### Return type
 
@@ -242,7 +238,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: html/text
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

@@ -83,6 +83,7 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(NotificationSettings.serializer)
       ..add(NotificationType.serializer)
       ..add(Permissions.serializer)
+      ..add(PlayLibraryItemRequest.serializer)
       ..add(PlaybackSession.serializer)
       ..add(PlaybackSessionBookExpanded.serializer)
       ..add(PlaybackSessionExpanded.serializer)
@@ -98,6 +99,7 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(SeriesSequence.serializer)
       ..add(SeriesWithProgressAndRSS.serializer)
       ..add(SeriesWithProgressAndRSSOneOf.serializer)
+      ..add(SyncOpenSessionRequest.serializer)
       ..add(UpdateAuthorById200Response.serializer)
       ..add(UpdateAuthorByIdRequest.serializer)
       ..add(UpdateEReaderDevicesRequest.serializer)
@@ -216,6 +218,9 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(AuthorMinified)]),
           () => new ListBuilder<AuthorMinified>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
           () => new ListBuilder<String>())

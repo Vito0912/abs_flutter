@@ -49,22 +49,27 @@ class PlaybackSessionNotifier
       DeviceInfoBuilder deviceInfoBuilder = DeviceInfoBuilder();
       deviceInfoBuilder.clientName = appName;
       deviceInfoBuilder.clientVersion = version;
+      deviceInfoBuilder.deviceId = currentUser?.hashCode.toString();
+
+      PlayLibraryItemRequestBuilder requestBuilder = PlayLibraryItemRequestBuilder()
+      ..mediaPlayer = 'abs_flutter w/ just_audio'
+      ..deviceInfo = deviceInfoBuilder
+      ..supportedMimeTypes = ListBuilder<String>([
+        'audio/flac',
+        'audio/mpeg',
+        'audio/mp4',
+        'audio/ogg',
+        'audio/aac'
+            'audio/webm',
+      ])
+      ..forceDirectPlay = false
+      ..forceTranscode = false;
+      ;
 
       final response = await api.getLibraryItemApi().playLibraryItem(
             id: id,
             cancelToken: cancelToken,
-            mediaPlayer: 'html5',
-            deviceInfo: deviceInfoBuilder.build(),
-            supportedMimeTypes: BuiltList<String>([
-              'audio/flac',
-              'audio/mpeg',
-              'audio/mp4',
-              'audio/ogg',
-              'audio/aac'
-                  'audio/webm',
-            ]),
-            forceDirectPlay: false,
-            forceTranscode: false,
+            playLibraryItemRequest: requestBuilder.build(),
           );
       _session = response;
 

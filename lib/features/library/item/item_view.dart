@@ -28,10 +28,7 @@ class ItemView extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final item = ref.watch(itemProvider(itemId));
     final currentUser = ref.read(currentUserProvider);
-    final connection = ref.read(connectionProvider);
     final mediaProgress = ref.watch(mediaProgressProvider);
-
-    //if (!connection) return const NoConnection();
 
     return item.when(
       data: (item) => item == null
@@ -183,14 +180,14 @@ class ItemView extends ConsumerWidget {
       children: [
         ChipSection(
           label: S.of(context).authors,
-          items: _mapNames(castItem.media!.metadata!.authors!.toList()),
+          items: _mapNames(castItem.media!.metadata!.authors?.toList()),
         ),
         ChipSection(
             label: S.of(context).genres,
             items: castItem.media!.metadata!.genres!.toList()),
         ChipSection(
             label: S.of(context).tags, items: castItem.media!.tags!.toList()),
-        ChipSection(
+        if(castItem.mediaType != null && castItem.mediaType == MediaType.book)ChipSection(
           label: S.of(context).series,
           items: castItem.media!.metadata!.series!
               .map((s) => '${s.name} #${s.sequence}')
@@ -200,7 +197,8 @@ class ItemView extends ConsumerWidget {
     );
   }
 
-  List<String> _mapNames(List<AuthorMinified> authors) {
+  List<String> _mapNames(List<AuthorMinified>? authors) {
+    if (authors == null) return [];
     return authors.map((author) => author.name!).toList();
   }
 

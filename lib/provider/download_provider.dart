@@ -85,8 +85,13 @@ class DownloadListNotifier extends StateNotifier<List<DownloadInfo>> {
       return null;
     }
     final downloads = state;
-    final download = downloads.firstWhere((element) =>
-        (element.itemId == itemId && element.userId == currentUser.id));
+    if (downloads.isEmpty) {
+      return null;
+    }
+    final download = downloads
+        .where((element) =>
+            (element.itemId == itemId && element.userId == currentUser.id))
+        .firstOrNull;
     return download;
   }
 }

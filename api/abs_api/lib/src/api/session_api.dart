@@ -10,6 +10,7 @@ import 'package:dio/dio.dart';
 import 'package:abs_api/src/api_util.dart';
 import 'package:abs_api/src/model/get_sessions200_response.dart';
 import 'package:abs_api/src/model/playback_session_expanded.dart';
+import 'package:abs_api/src/model/sync_open_session_request.dart';
 
 class SessionApi {
   final Dio _dio;
@@ -385,9 +386,7 @@ class SessionApi {
   ///
   /// Parameters:
   /// * [id] - The ID of the session.
-  /// * [currentTime] - The current time of the session.
-  /// * [timeListened] - The time listened to the session.
-  /// * [duration] - The duration of the session.
+  /// * [syncOpenSessionRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -399,9 +398,7 @@ class SessionApi {
   /// Throws [DioException] if API call or serialization fails
   Future<Response<String>> syncOpenSession({
     required String id,
-    required num currentTime,
-    required num timeListened,
-    required num duration,
+    required SyncOpenSessionRequest syncOpenSessionRequest,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -428,22 +425,32 @@ class SessionApi {
         ],
         ...?extra,
       },
+      contentType: 'application/json',
       validateStatus: validateStatus,
     );
 
-    final _queryParameters = <String, dynamic>{
-      r'currentTime':
-          encodeQueryParameter(_serializers, currentTime, const FullType(num)),
-      r'timeListened':
-          encodeQueryParameter(_serializers, timeListened, const FullType(num)),
-      r'duration':
-          encodeQueryParameter(_serializers, duration, const FullType(num)),
-    };
+    dynamic _bodyData;
+
+    try {
+      const _type = FullType(SyncOpenSessionRequest);
+      _bodyData =
+          _serializers.serialize(syncOpenSessionRequest, specifiedType: _type);
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _options.compose(
+          _dio.options,
+          _path,
+        ),
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
 
     final _response = await _dio.request<Object>(
       _path,
+      data: _bodyData,
       options: _options,
-      queryParameters: _queryParameters,
       cancelToken: cancelToken,
       onSendProgress: onSendProgress,
       onReceiveProgress: onReceiveProgress,

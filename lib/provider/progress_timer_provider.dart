@@ -63,16 +63,19 @@ class TimerNotifier extends StateNotifier<DateTime?> {
         ref.read(sessionProvider.notifier).session;
 
     if (connection && session != null && api != null) {
-
       log('Sending data to server: $listenedSeconds');
+
+      SyncOpenSessionRequestBuilder syncSession =
+          SyncOpenSessionRequestBuilder()
+            ..id = session.id
+            ..timeListened = listenedSeconds
+            ..currentTime = currentTime;
 
       api
           .getSessionApi()
           .syncOpenSession(
             id: session.id!,
-            currentTime: currentTime,
-            timeListened: listenedSeconds,
-            duration: session.duration!,
+            syncOpenSessionRequest: syncSession.build(),
           )
           .then((response) => print(response.data));
     } else {
