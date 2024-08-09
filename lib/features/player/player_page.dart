@@ -1,5 +1,6 @@
 import 'package:abs_flutter/features/player/modules/chapter_buttons.dart';
 import 'package:abs_flutter/features/player/modules/play_button.dart';
+import 'package:abs_flutter/features/player/modules/queue_button.dart';
 import 'package:abs_flutter/features/player/modules/seeking_buttons.dart';
 import 'package:abs_flutter/features/player/modules/sleep_timer.dart';
 import 'package:abs_flutter/features/player/modules/speed_control.dart';
@@ -7,6 +8,7 @@ import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/provider/chapter_provider.dart';
 import 'package:abs_flutter/provider/player_provider.dart';
 import 'package:abs_flutter/provider/player_status_provider.dart';
+import 'package:abs_flutter/provider/queue_provider.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
 import 'package:abs_flutter/widgets/album_image.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -154,9 +156,14 @@ class PlayerPage extends ConsumerWidget {
                                     player: player,
                                     currentChapter: currentChapter,
                                   ),
+                                  QueueButton(),
                                   PlatformIconButton(
                                     icon: Icon(Icons.close),
                                     onPressed: () {
+                                      final queue = ref.read(queueProvider);
+                                      queue.clear();
+                                      ref.read(queueProvider.notifier).update(
+                                          (state) => [...queue]);
                                       playerStatus.setPlayStatus(
                                           PlayerStatus.stopped, "Close player");
                                       context.pop();

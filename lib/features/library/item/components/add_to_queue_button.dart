@@ -1,4 +1,5 @@
 import 'package:abs_api/abs_api.dart';
+import 'package:abs_flutter/provider/player_status_provider.dart';
 import 'package:abs_flutter/provider/queue_provider.dart';
 import 'package:abs_flutter/provider/session_provider.dart';
 import 'package:flutter/material.dart';
@@ -12,10 +13,10 @@ class AddQueueButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final session = ref.watch(sessionProvider.notifier);
+    final playerStatus = ref.watch(playStatusProvider);
     final queue = ref.watch(queueProvider);
 
-    if(session.session == null) return const SizedBox.shrink();
+    if(playerStatus == PlayerStatus.playing) return const SizedBox.shrink();
 
     return PlatformElevatedButton(
       onPressed: () {

@@ -61,6 +61,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "authors": MessageLookupByLibrary.simpleMessage("Authors"),
         "bookCover": MessageLookupByLibrary.simpleMessage("Book Cover"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+        "close": MessageLookupByLibrary.simpleMessage("Close"),
         "collapseSeries":
             MessageLookupByLibrary.simpleMessage("Collapse Series"),
         "collapseSeriesDescription": MessageLookupByLibrary.simpleMessage(
@@ -91,6 +92,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "downloadsOnlyViaWifi":
             MessageLookupByLibrary.simpleMessage("Downloads only via WiFi"),
         "duration": MessageLookupByLibrary.simpleMessage("Duration"),
+        "editQueue": MessageLookupByLibrary.simpleMessage("Edit Queue"),
         "enableNotificationsDownload": MessageLookupByLibrary.simpleMessage(
             "Please enable notifications to receive download progress updates and be able to download files in the background."),
         "enabled": MessageLookupByLibrary.simpleMessage("Enabled"),
@@ -190,6 +192,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "totalTimeListened":
             MessageLookupByLibrary.simpleMessage("Total time listened"),
         "tryAgain": MessageLookupByLibrary.simpleMessage("Try Again"),
+        "unknownTitle": MessageLookupByLibrary.simpleMessage("Unknown Title"),
         "updatedAt": MessageLookupByLibrary.simpleMessage("Updated At"),
         "user": MessageLookupByLibrary.simpleMessage("User"),
         "username": MessageLookupByLibrary.simpleMessage("Username"),

@@ -264,5 +264,8 @@
   "restartRequired": "Restart Required",
   "restartRequiredDescription": "Please restart the app to apply the changes.",
   "syncIntervalDescription": "Specifies how often the app should sync with the server. Please restart the app for the changes to take effect.",
-  "syncOnlyViaWifi": "Sync only via WiFi"
+  "syncOnlyViaWifi": "Sync only via WiFi",
+  "close": "Close",
+  "editQueue": "Edit Queue",
+  "unknownTitle": "Unknown Title"
 }

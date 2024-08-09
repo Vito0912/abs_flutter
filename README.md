@@ -53,7 +53,8 @@ A big thank you to [Weblate](https://weblate.org) for providing their services!
 🚀 **Caching** - Caches images for faster loading times.\
 🚀 **Pagination** - Load more items when you reach the end of lists to save data.\
 📈 **Does Not Rely on a Socket** - Use the app even with an occasionally interrupted connection.\
-📅 **Up-to-date Sync** - The app stays synchronized with the server when connected to the internet.
+📅 **Up-to-date Sync** - The app stays synchronized with the server when connected to the internet.\
+🔁 **Queue Support** - Add multiple items to the queue and play them in order. Even works offline.
 
 ### Additional to First-party App
 
@@ -61,7 +62,8 @@ A big thank you to [Weblate](https://weblate.org) for providing their services!
 > If no specific platform is mentioned, the feature is available on all platforms.
 
 🚀 **Fast Account Switching**\
-📅 **Up-to-date Sync**
+📅 **Up-to-date Sync**\
+🔁 **Queue Support**
 
 ### Missing from First-party App
 

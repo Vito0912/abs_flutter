@@ -1097,6 +1097,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Close`
+  String get close {
+    return Intl.message(
+      'Close',
+      name: 'close',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit Queue`
+  String get editQueue {
+    return Intl.message(
+      'Edit Queue',
+      name: 'editQueue',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unknown Title`
+  String get unknownTitle {
+    return Intl.message(
+      'Unknown Title',
+      name: 'unknownTitle',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
