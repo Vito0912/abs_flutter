@@ -55,6 +55,16 @@ class TimerNotifier extends StateNotifier<DateTime?> {
 
     final currentTime =
         player.audioService.player.position.inMicroseconds / 1000000;
+    final duration = player.audioService.player.duration?.inMicroseconds ?? -1;
+    bool shouldFinish = false;
+    if (duration >= 0) {
+      final settings = ref.read(settingsProvider);
+      shouldFinish = currentTime >=
+          duration -
+              (double.tryParse(settings['markItemsFinishedAfter'].toString()) ??
+                  0);
+    }
+
     final listenedSeconds = listenedDuration.inMicroseconds / 1000000.0;
     final settings = ref.read(settingsProvider);
 
@@ -79,23 +89,20 @@ class TimerNotifier extends StateNotifier<DateTime?> {
           SyncOpenSessionRequestBuilder()
             ..id = session.id
             ..timeListened = listenedSeconds
-            ..currentTime = currentTime;
+            ..currentTime = shouldFinish ? duration.toDouble() : currentTime;
 
-      // TODO: Wenn session geschlossen kein Sync!
+      // TODO: When no session there is no sync
       try {
         api
             .getSessionApi()
             .syncOpenSession(
-          id: session.id!,
-          syncOpenSessionRequest: syncSession.build(),
-        )
+              id: session.id!,
+              syncOpenSessionRequest: syncSession.build(),
+            )
             .then((response) => print(response.data));
-      } catch(e) {
+      } catch (e) {
         log(e.toString());
       }
-
-
-
     } else {
       log('Saving data offline: $listenedSeconds');
       final user = ref.read(currentUserProvider);
@@ -109,7 +116,7 @@ class TimerNotifier extends StateNotifier<DateTime?> {
         itemId: player.audioService.mediaItem.value!.extras!['libraryItemId'],
         userId: user.id!,
         sessionId: session?.id,
-        currentTime: currentTime,
+        currentTime: shouldFinish ? duration.toDouble() : currentTime,
         timeListened: listenedSeconds,
         createdAt: DateTime.now(),
         type: 'book',
