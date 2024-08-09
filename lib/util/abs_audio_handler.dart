@@ -5,6 +5,7 @@ import 'package:abs_flutter/models/chapter.dart';
 import 'package:abs_flutter/provider/player_status_provider.dart';
 import 'package:abs_flutter/provider/progress_provider.dart';
 import 'package:abs_flutter/provider/progress_timer_provider.dart';
+import 'package:abs_flutter/provider/queue_provider.dart';
 import 'package:abs_flutter/provider/session_provider.dart';
 import 'package:abs_flutter/provider/sleep_timer_provider.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
@@ -57,7 +58,15 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
           _container
               .read(playStatusProvider)
               .setPlayStatus(PlayerStatus.stopped, 'Audio completed');
+
+          final queue = _container.read(queueProvider);
+          if(queue.isNotEmpty) {
+            final session = _container.read(sessionProvider.notifier);
+            session.load(queue[0].id!);
+            queue.removeAt(0);
+          }
         }
+
         if (event.processingState != ProcessingState.loading &&
             event.processingState != ProcessingState.buffering &&
             _container.read(playStatusProvider).playStatus ==
@@ -72,10 +81,26 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
       }
     });
 
-    _player.positionStream.listen((event) {
+    _player.positionStream.listen((event) async {
       playbackState.add(playbackState.value.copyWith(
         updatePosition: event,
       ));
+      if(_player.duration != null && _player.position >= _player.duration!) {
+        log('Stopping player due to position: ${_player.position} and duration: ${_player.duration}');
+        await _container
+            .read(playStatusProvider)
+            .setPlayStatus(PlayerStatus.completed, 'Audio completed');
+
+        final queue = _container.read(queueProvider);
+        if(queue.isNotEmpty) {
+          // Delay 3 seconds
+          Future.delayed(const Duration(seconds: 3)).then((value) {
+            final session = _container.read(sessionProvider.notifier);
+            session.load(queue[0].id!);
+            queue.removeAt(0);
+          });
+        }
+      }
     });
   }
 
@@ -157,12 +182,10 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
 
   @override
   Future<void> seek(Duration position) async {
-    seeking = true;
     await _player.seek(position);
     playbackState.add(playbackState.value.copyWith(
       updatePosition: position,
     ));
-    seeking = false;
   }
 
   Future<void> setVolume(double volume) async {

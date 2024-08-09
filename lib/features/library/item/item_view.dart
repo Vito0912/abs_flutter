@@ -1,5 +1,6 @@
 import 'package:abs_api/abs_api.dart';
 import 'package:abs_flutter/features/home/components/download_info_button.dart';
+import 'package:abs_flutter/features/library/item/components/add_to_queue_button.dart';
 import 'package:abs_flutter/features/library/item/components/chip_section.dart';
 import 'package:abs_flutter/features/library/item/components/download_button.dart';
 import 'package:abs_flutter/features/library/item/components/expandable_description.dart';
@@ -129,6 +130,8 @@ class ItemView extends ConsumerWidget {
               libraryItem: castItem,
               user: user,
             ),
+            const VerticalDivider(),
+            AddQueueButton(item: castItem),
           ],
         ),
         const SizedBox(height: 16.0),

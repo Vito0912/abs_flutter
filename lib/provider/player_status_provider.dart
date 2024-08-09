@@ -5,7 +5,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-enum PlayerStatus { stopped, playing, paused, hidden, loading }
+enum PlayerStatus { stopped, playing, paused, hidden, loading, completed }
 
 class PlayerStatusProvider extends ChangeNotifier {
   late final ChangeNotifierProviderRef<PlayerStatusProvider> ref;
@@ -15,6 +15,7 @@ class PlayerStatusProvider extends ChangeNotifier {
   PlayerStatus _previousStatus = PlayerStatus.stopped;
   CancelToken? _cancelToken;
   Duration _currentPosition = Duration.zero;
+  bool quite = false;
 
   PlayerStatusProvider(this.ref) {
     player = ref.read(playerProvider.notifier);
@@ -22,6 +23,9 @@ class PlayerStatusProvider extends ChangeNotifier {
   }
 
   Future<void> _onStatusChanged() async {
+    if(quite) {
+      return;
+    }
     switch (_playStatus) {
       case PlayerStatus.playing:
         log('PlayerStatus is playing now');
@@ -42,6 +46,8 @@ class PlayerStatusProvider extends ChangeNotifier {
         break;
       case PlayerStatus.loading:
         break;
+      case PlayerStatus.completed:
+        await player.stop(completed: true);
     }
   }
 
@@ -58,6 +64,12 @@ class PlayerStatusProvider extends ChangeNotifier {
     _previousStatus = _playStatus;
     _playStatus = playStatus;
     notifyListeners();
+  }
+
+  Future<void> setPlayStatusQuietly(PlayerStatus playStatus, String origin) async {
+    quite = true;
+    await setPlayStatus(playStatus, origin);
+    quite = false;
   }
 
   void setItemId(String itemId) {

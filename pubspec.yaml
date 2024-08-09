@@ -42,7 +42,7 @@ dependencies:
   window_manager: ^0.3.9
   fl_chart: ^0.68.0
   background_downloader: ^8.5.2
-  permission_handler: ^11.3.1
+  permission_handler: ^11.3.1 # Nuget not found
   path: ^1.9.0
 
 dev_dependencies:
