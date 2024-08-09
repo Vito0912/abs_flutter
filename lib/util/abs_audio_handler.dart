@@ -38,6 +38,7 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
       if (seeking == true) {
         return;
       }
+
       if (event.playing) {
         // Fallback
         double interval = 60;
@@ -53,19 +54,6 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
             .read(progressTimerProvider.notifier)
             .startSending(Duration(seconds: interval.toInt()));
       } else {
-        if (event.processingState == ProcessingState.completed) {
-          _container.read(progressTimerProvider.notifier).stopSending();
-          _container
-              .read(playStatusProvider)
-              .setPlayStatus(PlayerStatus.stopped, 'Audio completed');
-
-          final queue = _container.read(queueProvider);
-          if(queue.isNotEmpty) {
-            final session = _container.read(sessionProvider.notifier);
-            session.load(queue[0].id!);
-            queue.removeAt(0);
-          }
-        }
 
         if (event.processingState != ProcessingState.loading &&
             event.processingState != ProcessingState.buffering &&
@@ -91,14 +79,14 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
             .read(playStatusProvider)
             .setPlayStatus(PlayerStatus.completed, 'Audio completed');
 
+        _container.read(progressTimerProvider.notifier).stopSending();
+
         final queue = _container.read(queueProvider);
         if(queue.isNotEmpty) {
           // Delay 3 seconds
-          Future.delayed(const Duration(seconds: 3)).then((value) {
-            final session = _container.read(sessionProvider.notifier);
-            session.load(queue[0].id!);
-            queue.removeAt(0);
-          });
+          final session = _container.read(sessionProvider.notifier);
+          session.load(queue[0].id!);
+          queue.removeAt(0);
         }
       }
     });
@@ -139,7 +127,7 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
 
     await _player.play();
 
-    if (_progress != null && _progress.progress! <= 0.99) {
+    if (_progress != null && _progress.progress! <= 0.95) {
       log('Seeking to ${_progress.currentTime?.round()} due to progress');
       await _player
           .seek(Duration(seconds: _progress.currentTime?.round() ?? 0));

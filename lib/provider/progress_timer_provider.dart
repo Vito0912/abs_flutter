@@ -55,7 +55,8 @@ class TimerNotifier extends StateNotifier<DateTime?> {
 
     final currentTime =
         player.audioService.player.position.inMicroseconds / 1000000;
-    final duration = player.audioService.player.duration?.inMicroseconds ?? -1;
+    final duration =
+        (player.audioService.player.duration?.inMicroseconds ?? -1) / 1000000;
     bool shouldFinish = false;
     if (duration >= 0) {
       final settings = ref.read(settingsProvider);
@@ -63,6 +64,7 @@ class TimerNotifier extends StateNotifier<DateTime?> {
           duration -
               (double.tryParse(settings['markItemsFinishedAfter'].toString()) ??
                   0);
+      log("Should finish: $shouldFinish");
     }
 
     final listenedSeconds = listenedDuration.inMicroseconds / 1000000.0;

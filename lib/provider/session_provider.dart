@@ -37,6 +37,8 @@ class PlaybackSessionNotifier
     final download = downloads.getDownload(id);
     final connection = ref.read(connectionProvider);
 
+    _session = null;
+
     if(connection) {
 
 
