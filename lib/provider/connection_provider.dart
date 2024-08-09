@@ -191,6 +191,7 @@ class ConnectionNotifier extends StateNotifier<bool> {
                 syncOpenSessionRequest: syncSession.build(),
               );
               successSessionSave = true;
+              progressList.removeListProgress(itemSessionItems);
             } catch (e) {
               log(e.toString());
               successSessionSave = false;
