@@ -7,11 +7,12 @@ class SeekingButtons extends StatelessWidget {
   final Stream<Duration> positionStream;
   final PlayerProvider player;
   final bool isForward;
+  final double? size;
   const SeekingButtons(
       {super.key,
       required this.positionStream,
       required this.player,
-      required this.isForward});
+      required this.isForward, this.size});
 
   @override
   Widget build(BuildContext context) {
@@ -23,8 +24,8 @@ class SeekingButtons extends StatelessWidget {
           }
           return PlatformIconButton(
               icon: isForward
-                  ? const Icon(Icons.fast_forward_rounded)
-                  : const Icon(Icons.fast_rewind_rounded),
+                  ? Icon(size: size, Icons.fast_forward_rounded)
+                  : Icon(size: size, Icons.fast_rewind_rounded),
               onPressed: () {
                 player.audioService.seek(
                     Duration(

@@ -35,6 +35,8 @@ class PlayerPage extends ConsumerWidget {
     final speedStream = player.audioService.player.speedStream;
     final bufferStream = player.audioService.player.bufferedPositionStream;
 
+    const double size = 40.0;
+
     return PlatformScaffold(
       appBar: PlatformAppBar(
         title: Text(S.of(context).player),
@@ -62,10 +64,8 @@ class PlayerPage extends ConsumerWidget {
                             borderRadius: BorderRadius.circular(100),
                             color: Colors.grey[300],
                           ),
-                          child: AlbumImage(
-                              player.audioService.mediaItem.value!
-                                  .extras!['libraryItemId']
-                          ),
+                          child: AlbumImage(player.audioService.mediaItem.value!
+                              .extras!['libraryItemId']),
                         ),
                         SizedBox(height: 16),
                         SingleChildScrollView(
@@ -111,25 +111,30 @@ class PlayerPage extends ConsumerWidget {
                                     ChapterButtons(
                                       positionStream: positionStream,
                                       player: player,
+                                      size: size,
                                       isForward: false,
                                       currentChapter: currentChapter,
                                     ),
                                   SeekingButtons(
                                     positionStream: positionStream,
                                     player: player,
+                                    size: size,
                                     isForward: false,
                                   ),
                                   PlayButton(
+                                      size: size,
                                       playerStatusProvider: playerStatus),
                                   SeekingButtons(
                                     positionStream: positionStream,
                                     player: player,
+                                    size: size,
                                     isForward: true,
                                   ),
                                   if (currentChapter != null)
                                     ChapterButtons(
                                       positionStream: positionStream,
                                       player: player,
+                                      size: size,
                                       isForward: true,
                                       currentChapter: currentChapter,
                                     ),
@@ -144,26 +149,30 @@ class PlayerPage extends ConsumerWidget {
                                     false,
                                 currentChapter: currentChapter,
                                 bufferStream: bufferStream,
+                                size: 40,
                               ),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   SpeedControl(
                                     player: player,
+                                    size: size,
                                     speedStream: speedStream,
                                   ),
                                   SleepTimer(
                                     player: player,
+                                    size: size,
                                     currentChapter: currentChapter,
                                   ),
-                                  QueueButton(),
+                                  const QueueButton(size: size),
                                   PlatformIconButton(
-                                    icon: Icon(Icons.close),
+                                    icon: const Icon(size: size, Icons.close),
                                     onPressed: () {
                                       final queue = ref.read(queueProvider);
                                       queue.clear();
-                                      ref.read(queueProvider.notifier).update(
-                                          (state) => [...queue]);
+                                      ref
+                                          .read(queueProvider.notifier)
+                                          .update((state) => [...queue]);
                                       playerStatus.setPlayStatus(
                                           PlayerStatus.stopped, "Close player");
                                       context.pop();

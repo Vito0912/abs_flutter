@@ -7,7 +7,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 
 class QueueButton extends ConsumerWidget {
-  const QueueButton({super.key});
+  final double? size;
+  const QueueButton({super.key, this.size});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -17,7 +18,7 @@ class QueueButton extends ConsumerWidget {
 
     return PlatformIconButton(
       onPressed: () => _showQueueDialog(context, queue, ref),
-      icon: const Icon(Icons.queue_music),
+      icon: Icon(size: size, Icons.queue_music),
     );
   }
 

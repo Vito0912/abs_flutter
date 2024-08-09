@@ -4,7 +4,8 @@ import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 
 class PlayButton extends StatelessWidget {
   final PlayerStatusProvider playerStatusProvider;
-  const PlayButton({super.key, required this.playerStatusProvider});
+  final double? size;
+  const PlayButton({super.key, required this.playerStatusProvider, this.size});
 
   @override
   Widget build(BuildContext context) {
@@ -19,13 +20,13 @@ class PlayButton extends StatelessWidget {
   Widget _getIcon(PlayerStatus playerStatus, BuildContext context) {
     switch (playerStatus) {
       case PlayerStatus.playing:
-        return Icon(PlatformIcons(context).pause);
+        return Icon(size: size, PlatformIcons(context).pause);
       case PlayerStatus.paused:
-        return Icon(PlatformIcons(context).playArrow);
+        return Icon(size: size, PlatformIcons(context).playArrow);
       case PlayerStatus.loading:
         return PlatformCircularProgressIndicator();
       default:
-        return Icon(PlatformIcons(context).playArrow);
+        return Icon(size: size, PlatformIcons(context).playArrow);
     }
   }
 

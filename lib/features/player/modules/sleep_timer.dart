@@ -11,7 +11,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class SleepTimer extends ConsumerWidget {
   final PlayerProvider player;
   final Chapter? currentChapter;
-  SleepTimer({super.key, required this.player, required this.currentChapter});
+  final double? size;
+  SleepTimer(
+      {super.key,
+      required this.player,
+      required this.currentChapter,
+      this.size});
 
   final Map<String, dynamic> sleepOptions = {
     '1 min': 1.0 * 60.0,
@@ -30,17 +35,27 @@ class SleepTimer extends ConsumerWidget {
     return PlatformPopupMenu(
       options: sleepOptions.entries
           .map((entry) =>
-          _buildSpeedOption(entry.key, entry.value, context, ref))
+              _buildSpeedOption(entry.key, entry.value, context, ref))
           .toList(),
       icon: Tooltip(
         message: S.of(context).sleepTimer,
-        child: Consumer(
-          builder: (context, ref, child) {
-            final timer = ref.watch(timerProvider);
-            return (timer != null && timer > 0.0)
-                ? PlatformText(S.of(context).timerText((timer / 60).toStringAsFixed(0)))
-                : const Icon(Icons.timer_outlined);
-          },
+        child: SizedBox(
+          width: size,
+          height: size,
+          child: FittedBox(
+            fit: BoxFit.fitWidth,
+            alignment: Alignment.center,
+            child: Consumer(
+              builder: (context, ref, child) {
+                final timer = ref.watch(timerProvider);
+                return (timer != null && timer > 0.0)
+                    ? PlatformText(S
+                        .of(context)
+                        .timerText((timer / 60).toStringAsFixed(0)))
+                    : Icon(size: size, Icons.timer_outlined);
+              },
+            ),
+          ),
         ),
       ),
     );
@@ -55,14 +70,16 @@ class SleepTimer extends ConsumerWidget {
       label: key,
       onTap: (option) {
         // When end of chapter is selected
-        if(value == -1 && currentChapter != null) {
-          double chapterTimer = currentChapter!.end - player.audioService.player.position.inSeconds;
+        if (value == -1 && currentChapter != null) {
+          double chapterTimer = currentChapter!.end -
+              player.audioService.player.position.inSeconds;
           if (timerNotifier.isRunning) {
             timerNotifier.updateTimer(chapterTimer); // Update the running timer
           } else {
-            timerNotifier.start(chapterTimer); // Start a new timer if not running
+            timerNotifier
+                .start(chapterTimer); // Start a new timer if not running
           }
-        } else if(value == -2) {
+        } else if (value == -2) {
           sleepTimerNotifier.state = 0.0;
           timerNotifier.stop();
         } else {

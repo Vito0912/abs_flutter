@@ -10,15 +10,17 @@ class ProgressBar extends StatelessWidget {
   final PlayerProvider player;
   final bool showPerChapter;
   final Chapter? currentChapter;
+  final double size;
 
   ProgressBar(
       {super.key,
-        required this.positionStream,
-        required this.durationStream,
-        required this.player,
-        required this.showPerChapter,
-        required this.currentChapter,
-        required this.bufferStream});
+      required this.positionStream,
+      required this.durationStream,
+      required this.player,
+      required this.showPerChapter,
+      required this.currentChapter,
+      required this.bufferStream,
+      this.size = 32});
 
   @override
   Widget build(BuildContext context) {
@@ -28,59 +30,59 @@ class ProgressBar extends StatelessWidget {
             stream: positionStream,
             builder: (BuildContext context, AsyncSnapshot<Duration?> position) {
               if (position.hasData) {
-                return PlatformText(_formattedTime(position.data!));
+                return SizedBox(
+                    height: size / 1.5,
+                    child: FittedBox(
+                        fit: BoxFit.fitWidth,
+                        alignment: Alignment.center,
+                        child: PlatformText(_formattedTime(position.data!))));
               } else {
                 return const SizedBox.shrink();
               }
             }),
         Expanded(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12.0), // Adjust padding
-            child: StreamBuilder(
-                stream: durationStream,
-                builder:
-                    (BuildContext context, AsyncSnapshot<Duration?> duration) {
-                  return StreamBuilder(
-                      stream: positionStream,
-                      builder: (BuildContext context,
-                          AsyncSnapshot<Duration?> position) {
-                              if (duration.hasData && position.hasData) {
-                                double min = _getMinValue(currentChapter);
-                                double max = _getMaxValue(currentChapter, duration.data!);
-                                double currentValue = _maxBoundaries(
-                                    position.data!.inMilliseconds.toDouble(),
-                                    min,
-                                    max);
-                                return Stack(
-                                  children: [
-                                    SliderTheme(
-                                      data: SliderTheme.of(context).copyWith(
-                                        thumbShape: const RoundSliderThumbShape(
-                                            enabledThumbRadius: 6.0),
-                                        overlayShape: const RoundSliderOverlayShape(
-                                            overlayRadius: 16.0),
-                                        trackHeight: 4.0, // Ensure track height matches the buffered indicator
-                                      ),
-                                      child: Slider(
-                                        value: currentValue,
-                                        min: min,
-                                        max: max,
-                                        onChanged: (double value) {
-                                          player.audioService.seek(
-                                              Duration(milliseconds: value.toInt()));
-                                        },
-                                      ),
-                                    ),
-                                  ],
-                                );
-                              } else {
-                                return const SizedBox.shrink();
-                              }
-                      });
+          child: StreamBuilder(
+              stream: durationStream,
+              builder:
+                  (BuildContext context, AsyncSnapshot<Duration?> duration) {
+                return StreamBuilder(
+                    stream: positionStream,
+                    builder: (BuildContext context,
+                        AsyncSnapshot<Duration?> position) {
+                      if (duration.hasData && position.hasData) {
+                        double min = _getMinValue(currentChapter);
+                        double max =
+                            _getMaxValue(currentChapter, duration.data!);
+                        double currentValue = _maxBoundaries(
+                            position.data!.inMilliseconds.toDouble(),
+                            min,
+                            max);
+                        return SliderTheme(
+                          data: SliderTheme.of(context).copyWith(
+                            thumbShape: RoundSliderThumbShape(
+                                enabledThumbRadius: (size / 5)),
+                            overlayShape: RoundSliderOverlayShape(
+                                overlayRadius: (size / 2)),
+                            trackHeight: size /
+                                6, // Ensure track height matches the buffered indicator
+                          ),
+                          child: Slider(
+                            value: currentValue,
+                            min: min,
+                            max: max,
+                            onChanged: (double value) {
+                              player.audioService.seek(
+                                  Duration(milliseconds: value.toInt()));
+                            },
+                          ),
+                        );
+                      } else {
+                        return const SizedBox.shrink();
+                      }
+                    });
 
-                  return const SizedBox.shrink();
-                }),
-          ),
+                return const SizedBox.shrink();
+              }),
         ),
         StreamBuilder(
             stream: durationStream,
@@ -88,18 +90,31 @@ class ProgressBar extends StatelessWidget {
               if (duration.hasData) {
                 return (showPerChapter && currentChapter != null)
                     ? StreamBuilder<Duration>(
-                    stream: positionStream,
-                    builder: (BuildContext context,
-                        AsyncSnapshot<Duration?> position) {
-                      if (!position.hasData) {
-                        return const SizedBox.shrink();
-                      }
-                      return PlatformText(_formattedTime(Duration(
-                          seconds:
-                          (currentChapter!.end - position.data!.inSeconds)
-                              .toInt())));
-                    })
-                    : PlatformText(_formattedTime(duration.data!));
+                        stream: positionStream,
+                        builder: (BuildContext context,
+                            AsyncSnapshot<Duration?> position) {
+                          if (!position.hasData) {
+                            return const SizedBox.shrink();
+                          }
+                          return SizedBox(
+                            height: size / 1.5,
+                            child: FittedBox(
+                              fit: BoxFit.fitWidth,
+                              alignment: Alignment.center,
+                              child: PlatformText(_formattedTime(Duration(
+                                  seconds: (currentChapter!.end -
+                                          position.data!.inSeconds)
+                                      .toInt()))),
+                            ),
+                          );
+                        })
+                    : SizedBox(
+                    height: size / 1.5,
+                        child: FittedBox(
+                            fit: BoxFit.fitWidth,
+                            alignment: Alignment.center,
+                            child:
+                                PlatformText(_formattedTime(duration.data!))));
               } else {
                 return const SizedBox.shrink();
               }
@@ -119,7 +134,7 @@ class ProgressBar extends StatelessWidget {
       formattedTime = '${hours.toString().padLeft(2, '0')}:';
     }
     formattedTime +=
-    '${minutes.toString().padLeft(2, '0')}:${seconds.toString().padLeft(2, '0')}';
+        '${minutes.toString().padLeft(2, '0')}:${seconds.toString().padLeft(2, '0')}';
 
     return formattedTime;
   }
