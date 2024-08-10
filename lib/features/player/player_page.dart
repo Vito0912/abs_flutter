@@ -37,7 +37,7 @@ class PlayerPage extends ConsumerWidget {
     final libraryItemId =
         player.audioService.mediaItem.value?.extras?['libraryItemId'];
 
-    const double size = 40.0;
+    const double size = 32.0;
 
     return PlatformScaffold(
       appBar: PlatformAppBar(
@@ -151,7 +151,7 @@ class PlayerPage extends ConsumerWidget {
                                     false,
                                 currentChapter: currentChapter,
                                 bufferStream: bufferStream,
-                                size: 40,
+                                size: size,
                               ),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
