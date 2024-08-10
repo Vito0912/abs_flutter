@@ -15,8 +15,6 @@ late final String osVersion;
 late final FlutterSecureStorage secureStorage;
 late final SharedPreferences sp;
 
-final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
-
 double maxWidth = 800;
 const String mediaPlayer = 'just_audio /w audio_service @ abs_flutter';
 

@@ -1,4 +1,3 @@
-
 import 'dart:developer';
 
 import 'package:abs_api/abs_api.dart';
@@ -21,7 +20,7 @@ class ProgressProvider extends ChangeNotifier {
     // Listen to changes in the API provider and update the API instance
     ref.listen<AbsApi?>(apiProvider, (previousApi, nextApi) {
       api = nextApi;
-      getAllProgress();  // Refresh progress whenever the API changes
+      getAllProgress(); // Refresh progress whenever the API changes
     });
 
     // Initialize the API and fetch the initial progress data
@@ -34,39 +33,35 @@ class ProgressProvider extends ChangeNotifier {
       return;
     }
 
-      try {
-        final response = await api!.getMeApi().getMe();
-
-        User user = response.data!;
-
-        if (user.mediaProgress == null) {
-          progress = [];
-        } else {
-          progress = user.mediaProgress!.toList();
-        }
-      } catch (e) {
-        if (e is DioException) {
-          log(e.response?.data?.toString() ?? e.toString());
-        } else {
-          log(e.toString());
-        }
-        return;
-      }
-
     final offlineProgress = ref.read(offlineProgressProviderHandler);
 
-    if(offlineProgress.isNotEmpty) {
+    if (offlineProgress.isNotEmpty) {
       for (ProgressItem item in offlineProgress) {
         progress ??= [];
-        int index = progress!.indexWhere((element) => element.libraryItemId == item.itemId);
-        if(index >= 0) {
-          MediaProgressBuilder builder = progress![index].toBuilder();
-          builder.currentTime = item.currentTime;
-          builder.duration = item.durationOfItem;
-          builder.progress = item.currentTime / item.durationOfItem;
-          progress![index] = builder.build();
-        }
+        MediaProgressBuilder builder = MediaProgressBuilder()
+          ..currentTime = item.currentTime
+          ..duration = item.durationOfItem
+          ..progress = item.currentTime / item.durationOfItem;
+        progress!.add(builder.build());
       }
+    }
+
+    try {
+      final response = await api!.getMeApi().getMe();
+
+      User user = response.data!;
+
+      if (user.mediaProgress != null) {
+        List<MediaProgress>? tmp = user.mediaProgress!.toList();
+        progress?.addAll(tmp);
+      }
+    } catch (e) {
+      if (e is DioException) {
+        log(e.response?.data?.toString() ?? e.toString());
+      } else {
+        log(e.toString());
+      }
+      return;
     }
 
     notifyListeners();
@@ -77,21 +72,50 @@ class ProgressProvider extends ChangeNotifier {
       return;
     }
     try {
-      final response = await api!.getMeApi().getProgressLibraryItem(libraryItemId: id);
+      final offlineProgress = ref.read(offlineProgressProviderHandler);
 
-      Response<MediaProgress> progressResponse = response;
+      if (offlineProgress.isNotEmpty) {
+        int index =
+            offlineProgress.indexWhere((element) => element.itemId == id);
+        if (index != -1) {
+          ProgressItem item = offlineProgress[index];
+          MediaProgressBuilder builder = MediaProgressBuilder()
+            ..currentTime = item.currentTime
+            ..duration = item.durationOfItem
+            ..progress = item.currentTime / item.durationOfItem;
+          progress ??= [];
 
-      MediaProgress progress = progressResponse.data!;
+          int indexInList = progress!.indexWhere((element) => element.libraryItemId == id);
+          if (indexInList == -1) {
+            progress!.add(builder.build());
+          } else {
+            progress![indexInList] = builder.build();
+          }
+        }
+      }
 
-      // Add or update the progress data
-      if (this.progress == null) {
-        this.progress = [progress];
-      } else {
-        int index = this.progress!.indexWhere((element) => element.libraryItemId == id);
-        if (index == -1) {
-          this.progress!.add(progress);
+      final connection = ref.read(connectionProvider);
+
+      if (connection) {
+        final response =
+            await api!.getMeApi().getProgressLibraryItem(libraryItemId: id);
+
+        Response<MediaProgress> progressResponse = response;
+
+        MediaProgress progress = progressResponse.data!;
+
+        // Add or update the progress data
+        if (this.progress == null) {
+          this.progress = [progress];
         } else {
-          this.progress![index] = progress;
+          int index = this
+              .progress!
+              .indexWhere((element) => element.libraryItemId == id);
+          if (index == -1) {
+            this.progress!.add(progress);
+          } else {
+            this.progress![index] = progress;
+          }
         }
       }
 
@@ -135,10 +159,12 @@ final progressProvider = ChangeNotifierProvider<ProgressProvider>((ref) {
 });
 
 // Separate provider for reactive watching
-final mediaProgressProvider = StateNotifierProvider<MediaProgressNotifier, List<MediaProgress>>((ref) {
+final mediaProgressProvider =
+    StateNotifierProvider<MediaProgressNotifier, List<MediaProgress>>((ref) {
   return MediaProgressNotifier(ref.read(progressProvider).getProgress());
 });
 
 class MediaProgressNotifier extends StateNotifier<List<MediaProgress>> {
-  MediaProgressNotifier(List<MediaProgress>? initialProgress) : super(initialProgress ?? []);
+  MediaProgressNotifier(List<MediaProgress>? initialProgress)
+      : super(initialProgress ?? []);
 }

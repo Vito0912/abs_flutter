@@ -3,8 +3,10 @@ import 'dart:convert';
 import 'dart:developer';
 import 'package:abs_api/abs_api.dart';
 import 'package:abs_flutter/globals.dart';
+import 'package:abs_flutter/models/history.dart';
 import 'package:abs_flutter/models/progress_item.dart';
 import 'package:abs_flutter/provider/connection_provider.dart';
+import 'package:abs_flutter/provider/history_provider.dart';
 import 'package:abs_flutter/provider/player_provider.dart';
 import 'package:abs_flutter/provider/progress_provider.dart';
 import 'package:abs_flutter/provider/session_provider.dart';
@@ -130,10 +132,14 @@ class TimerNotifier extends StateNotifier<DateTime?> {
     }
 
     final progressProv = ref.read(progressProvider.notifier);
+    final itemId =
+        player.audioService.mediaItem.value!.extras!['libraryItemId'];
 
-    progressProv.updateProgressForItem(
-        player.audioService.mediaItem.value!.extras!['libraryItemId'],
-        currentTime);
+    progressProv.updateProgressForItem(itemId, currentTime);
+
+    ref
+        .read(historyProviderFamily(itemId).notifier)
+        .addHistory(HistoryType.sync, currentTime);
   }
 
   void _ensureAccurateTiming(Duration interval, Duration elapsed) {

@@ -190,6 +190,17 @@
       }
     }
   },
+  "dateFormatMinuteSecond": "{minutes, plural, one {{minutes} minute} other {{minutes} minutes}} {seconds, plural, one {{seconds} second} other {{seconds} seconds}}",
+  "@dateFormatMinuteSecond": {
+      "placeholders": {
+      "minutes": {
+          "type": "int"
+      },
+      "seconds": {
+          "type": "int"
+      }
+      }
+  },
   "dateFormatHour": "{count, plural, one {# hour} other {{count} hours}}",
   "@dateFormatHour": {
     "placeholders": {
@@ -209,6 +220,20 @@
       }
     }
   },
+  "dateFormatHourMinuteSecond": "{hours, plural, one {{hours} hour} other {{hours} hours}} {minutes, plural, one {{minutes} minute} other {{minutes} minutes}} {seconds, plural, one {{seconds} second} other {{seconds} seconds}}",
+    "@dateFormatHourMinuteSecond": {
+        "placeholders": {
+        "hours": {
+            "type": "int"
+        },
+        "minutes": {
+            "type": "int"
+        },
+        "seconds": {
+            "type": "int"
+        }
+        }
+    },
   "dateFormatDay": "{count, plural, one {# day} other {{count} days}}",
   "@dateFormatDay": {
     "placeholders": {
@@ -242,6 +267,23 @@
       }
     }
   },
+  "dateFormatDayHourMinuteSecond": "{days, plural, one {{days} day} other {{days} days}} {hours, plural, one {{hours} hour} other {{hours} hours}} {minutes, plural, one {{minutes} minute} other {{minutes} minutes}} {seconds, plural, one {{seconds} second} other {{seconds} seconds}}",
+  "@dateFormatDayHourMinuteSecond": {
+        "placeholders": {
+        "days": {
+            "type": "int"
+        },
+        "hours": {
+            "type": "int"
+        },
+        "minutes": {
+            "type": "int"
+        },
+        "seconds": {
+            "type": "int"
+        }
+      }
+  },
   "today": "Today",
   "downloadsOnlyViaWifi": "Downloads only via WiFi",
   "noDownloads": "No downloads",
@@ -267,5 +309,12 @@
   "syncOnlyViaWifi": "Sync only via WiFi",
   "close": "Close",
   "editQueue": "Edit Queue",
-  "unknownTitle": "Unknown Title"
+  "unknownTitle": "Unknown Title",
+  "playHistory": "Play History",
+  "play": "Play",
+  "pause": "Pause",
+  "stop": "Stop",
+  "sync": "Sync",
+  "unknown": "Unknown",
+  "seek": "Seek"
 }

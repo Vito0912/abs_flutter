@@ -4,16 +4,15 @@ import 'package:abs_flutter/features/download/download_library.dart';
 import 'package:abs_flutter/features/download/download_page.dart';
 import 'package:abs_flutter/features/home/home.dart';
 import 'package:abs_flutter/features/library/item/item_view.dart';
+import 'package:abs_flutter/features/player/play_history_page.dart';
 import 'package:abs_flutter/features/player/player_page.dart';
 import 'package:abs_flutter/features/player/player_wrapper.dart';
 import 'package:abs_flutter/features/settings/setting_wrapper.dart';
 import 'package:abs_flutter/features/stats/stats_wrapper.dart';
-import 'package:abs_flutter/globals.dart';
 import 'package:go_router/go_router.dart';
 
 final router = GoRouter(
   initialLocation: '/',
-  navigatorKey: navigatorKey,
   routes: [
     GoRoute(
         path: '/player',
@@ -61,15 +60,25 @@ final router = GoRouter(
                 GoRoute(
                     path: 'downloads/:libraryId',
                     builder: (context, state) => DownloadLibrary(
-                      libraryId: state.pathParameters['libraryId'],
-                    )),
+                          libraryId: state.pathParameters['libraryId'],
+                        )),
                 GoRoute(
                     path: 'downloads/:libraryId/:libraryName',
                     builder: (context, state) => DownloadLibrary(
-                      libraryId: state.pathParameters['libraryId'],
-                      libraryName: state.pathParameters['libraryName'],
-                    )),
+                          libraryId: state.pathParameters['libraryId'],
+                          libraryName: state.pathParameters['libraryName'],
+                        )),
               ]),
+          GoRoute(
+              path: '/history/:itemId',
+              builder: (context, state) {
+                if(state.pathParameters['itemId'] == null) {
+                  context.go('/');
+                }
+                return PlayHistoryPage(
+                  itemId: state.pathParameters['itemId']!,
+                );
+              }),
         ]),
   ],
 );

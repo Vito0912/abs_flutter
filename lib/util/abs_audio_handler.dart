@@ -2,6 +2,8 @@ import 'dart:developer';
 
 import 'package:abs_api/abs_api.dart';
 import 'package:abs_flutter/models/chapter.dart';
+import 'package:abs_flutter/models/history.dart';
+import 'package:abs_flutter/provider/history_provider.dart';
 import 'package:abs_flutter/provider/player_status_provider.dart';
 import 'package:abs_flutter/provider/progress_provider.dart';
 import 'package:abs_flutter/provider/progress_timer_provider.dart';
@@ -171,6 +173,13 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
   @override
   Future<void> seek(Duration position) async {
     await _player.seek(position);
+
+    final itemId = mediaItem.value?.extras?['libraryItemId'];
+    if(itemId != null) {
+      final history = _container.read(historyProviderFamily(itemId).notifier);
+      history.addHistory(HistoryType.seek, position.inSeconds.toDouble());
+    }
+
     playbackState.add(playbackState.value.copyWith(
       updatePosition: position,
     ));

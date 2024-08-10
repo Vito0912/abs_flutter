@@ -814,6 +814,16 @@ class S {
     );
   }
 
+  /// `{minutes, plural, one {{minutes} minute} other {{minutes} minutes}} {seconds, plural, one {{seconds} second} other {{seconds} seconds}}`
+  String dateFormatMinuteSecond(int minutes, int seconds) {
+    return Intl.message(
+      '${Intl.plural(minutes, one: '$minutes minute', other: '$minutes minutes')} ${Intl.plural(seconds, one: '$seconds second', other: '$seconds seconds')}',
+      name: 'dateFormatMinuteSecond',
+      desc: '',
+      args: [minutes, seconds],
+    );
+  }
+
   /// `{count, plural, one {# hour} other {{count} hours}}`
   String dateFormatHour(int count) {
     return Intl.plural(
@@ -833,6 +843,16 @@ class S {
       name: 'dateFormatHourMinute',
       desc: '',
       args: [hours, minutes],
+    );
+  }
+
+  /// `{hours, plural, one {{hours} hour} other {{hours} hours}} {minutes, plural, one {{minutes} minute} other {{minutes} minutes}} {seconds, plural, one {{seconds} second} other {{seconds} seconds}}`
+  String dateFormatHourMinuteSecond(int hours, int minutes, int seconds) {
+    return Intl.message(
+      '${Intl.plural(hours, one: '$hours hour', other: '$hours hours')} ${Intl.plural(minutes, one: '$minutes minute', other: '$minutes minutes')} ${Intl.plural(seconds, one: '$seconds second', other: '$seconds seconds')}',
+      name: 'dateFormatHourMinuteSecond',
+      desc: '',
+      args: [hours, minutes, seconds],
     );
   }
 
@@ -865,6 +885,17 @@ class S {
       name: 'dateFormatDayHourMinute',
       desc: '',
       args: [days, hours, minutes],
+    );
+  }
+
+  /// `{days, plural, one {{days} day} other {{days} days}} {hours, plural, one {{hours} hour} other {{hours} hours}} {minutes, plural, one {{minutes} minute} other {{minutes} minutes}} {seconds, plural, one {{seconds} second} other {{seconds} seconds}}`
+  String dateFormatDayHourMinuteSecond(
+      int days, int hours, int minutes, int seconds) {
+    return Intl.message(
+      '${Intl.plural(days, one: '$days day', other: '$days days')} ${Intl.plural(hours, one: '$hours hour', other: '$hours hours')} ${Intl.plural(minutes, one: '$minutes minute', other: '$minutes minutes')} ${Intl.plural(seconds, one: '$seconds second', other: '$seconds seconds')}',
+      name: 'dateFormatDayHourMinuteSecond',
+      desc: '',
+      args: [days, hours, minutes, seconds],
     );
   }
 
@@ -1123,6 +1154,76 @@ class S {
     return Intl.message(
       'Unknown Title',
       name: 'unknownTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Play History`
+  String get playHistory {
+    return Intl.message(
+      'Play History',
+      name: 'playHistory',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Play`
+  String get play {
+    return Intl.message(
+      'Play',
+      name: 'play',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pause`
+  String get pause {
+    return Intl.message(
+      'Pause',
+      name: 'pause',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Stop`
+  String get stop {
+    return Intl.message(
+      'Stop',
+      name: 'stop',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sync`
+  String get sync {
+    return Intl.message(
+      'Sync',
+      name: 'sync',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unknown`
+  String get unknown {
+    return Intl.message(
+      'Unknown',
+      name: 'unknown',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Seek`
+  String get seek {
+    return Intl.message(
+      'Seek',
+      name: 'seek',
       desc: '',
       args: [],
     );

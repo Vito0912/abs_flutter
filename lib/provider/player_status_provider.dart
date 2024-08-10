@@ -1,6 +1,8 @@
 import 'dart:developer';
 
+import 'package:abs_flutter/provider/history_provider.dart';
 import 'package:abs_flutter/provider/player_provider.dart';
+import 'package:abs_flutter/util/helper.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -23,7 +25,20 @@ class PlayerStatusProvider extends ChangeNotifier {
   }
 
   Future<void> _onStatusChanged() async {
-    if(quite) {
+    String newItemId = _itemId;
+    if (newItemId.isEmpty) {
+      newItemId =
+          player.audioService.mediaItem.value?.extras?['libraryId'] ?? '';
+    }
+    if (newItemId.isNotEmpty) {
+      final history = ref.read(historyProviderFamily(newItemId).notifier);
+      history.addHistory(Helper.convertPlayerStatusToHistoryType(_playStatus),
+          _currentPosition.inSeconds.toDouble());
+    } else {
+      log('Could not save history, itemId is empty');
+    }
+
+    if (quite) {
       return;
     }
     switch (_playStatus) {
@@ -66,7 +81,8 @@ class PlayerStatusProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> setPlayStatusQuietly(PlayerStatus playStatus, String origin) async {
+  Future<void> setPlayStatusQuietly(
+      PlayerStatus playStatus, String origin) async {
     quite = true;
     await setPlayStatus(playStatus, origin);
     quite = false;

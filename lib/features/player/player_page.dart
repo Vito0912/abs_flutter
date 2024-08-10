@@ -24,7 +24,7 @@ class PlayerPage extends ConsumerWidget {
   const PlayerPage({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context1, WidgetRef ref) {
     final playerStatus = ref.watch(playStatusProvider);
     final player = ref.watch(playerProvider);
     final user = ref.watch(currentUserProvider);
@@ -34,12 +34,14 @@ class PlayerPage extends ConsumerWidget {
     final durationStream = player.audioService.player.durationStream;
     final speedStream = player.audioService.player.speedStream;
     final bufferStream = player.audioService.player.bufferedPositionStream;
+    final libraryItemId =
+        player.audioService.mediaItem.value?.extras?['libraryItemId'];
 
     const double size = 40.0;
 
     return PlatformScaffold(
       appBar: PlatformAppBar(
-        title: Text(S.of(context).player),
+        title: Text(S.of(context1).player),
       ),
       body: LayoutBuilder(
         builder: (context, constraints) {
@@ -165,6 +167,15 @@ class PlayerPage extends ConsumerWidget {
                                     currentChapter: currentChapter,
                                   ),
                                   const QueueButton(size: size),
+                                  if (libraryItemId != null)
+                                    PlatformIconButton(
+                                      icon: const Icon(
+                                          size: size, Icons.note_alt_outlined),
+                                      onPressed: () {
+                                        print('history/$libraryItemId');
+                                        context.go('/history/$libraryItemId');
+                                      },
+                                    ),
                                   PlatformIconButton(
                                     icon: const Icon(size: size, Icons.close),
                                     onPressed: () {
