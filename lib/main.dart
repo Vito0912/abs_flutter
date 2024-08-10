@@ -10,6 +10,7 @@ import 'package:abs_flutter/provider/player_provider.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
 import 'package:abs_flutter/util/abs_audio_handler.dart';
 import 'package:abs_flutter/util/setting_cache_provider.dart';
+import 'package:abs_flutter/util/shake_handler.dart';
 import 'package:audio_service/audio_service.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -54,7 +55,8 @@ void main() async {
     builder: () => AbsAudioHandler(container),
     config: const AudioServiceConfig(
       androidNotificationChannelId: 'de.vito.abs_flutter.playback',
-      androidNotificationChannelName: 'Audiobookshelf Playback',
+      androidNotificationChannelName: 'ABSPlayback',
+      preloadArtwork: true,
     ),
   );
 
@@ -79,7 +81,7 @@ void main() async {
   selectedUserNotifier.state = currentUser;
   selectedLibraryNotifier.state = currentLibrary;
 
-  print(users?.length ?? 0);
+  log((users?.length ?? 0).toString(), name: 'init @ number of users');
 
   await Settings.init(cacheProvider: UserSharedPreferences(container));
 

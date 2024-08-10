@@ -56,7 +56,6 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
             .read(progressTimerProvider.notifier)
             .startSending(Duration(seconds: interval.toInt()));
       } else {
-
         if (event.processingState != ProcessingState.loading &&
             event.processingState != ProcessingState.buffering &&
             _container.read(playStatusProvider).playStatus ==
@@ -75,7 +74,7 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
       playbackState.add(playbackState.value.copyWith(
         updatePosition: event,
       ));
-      if(_player.duration != null && _player.position >= _player.duration!) {
+      if (_player.duration != null && _player.position >= _player.duration!) {
         log('Stopping player due to position: ${_player.position} and duration: ${_player.duration}');
         await _container
             .read(playStatusProvider)
@@ -84,7 +83,7 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
         _container.read(progressTimerProvider.notifier).stopSending();
 
         final queue = _container.read(queueProvider);
-        if(queue.isNotEmpty) {
+        if (queue.isNotEmpty) {
           // Delay 3 seconds
           final session = _container.read(sessionProvider.notifier);
           session.load(queue[0].id!);
@@ -163,6 +162,7 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
     await _player.stop();
     _container.read(timerProvider.notifier).stop();
     _container.read(sessionProvider.notifier).closeOpenSession();
+    _container.read(timerProvider.notifier).stop();
 
     playbackState.add(playbackState.value.copyWith(
       playing: false,
@@ -175,7 +175,7 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
     await _player.seek(position);
 
     final itemId = mediaItem.value?.extras?['libraryItemId'];
-    if(itemId != null) {
+    if (itemId != null) {
       final history = _container.read(historyProviderFamily(itemId).notifier);
       history.addHistory(HistoryType.seek, position.inSeconds.toDouble());
     }
