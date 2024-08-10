@@ -181,6 +181,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "serverSelection":
             MessageLookupByLibrary.simpleMessage("Server Selection"),
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
+        "shakeResetTimer":
+            MessageLookupByLibrary.simpleMessage("Shake to reset sleep timer"),
         "showAccountSwitcher":
             MessageLookupByLibrary.simpleMessage("Show Account Switcher"),
         "showAccountSwitcherDescription": MessageLookupByLibrary.simpleMessage(

@@ -13,7 +13,6 @@ class ShakeHandler {
   final int shakeCounterResetMilliseconds;
   final int minimumShakeCounter;
   final Duration samplingInterval;
-
   int lastShakeTimestamp = DateTime.now().millisecondsSinceEpoch;
   int shakeCounter = 0;
 
@@ -37,22 +36,24 @@ class ShakeHandler {
       accSubscript = accelerometerEventStream(
         samplingPeriod: samplingInterval,
       ).listen(
-            (AccelerometerEvent event) {
+        (AccelerometerEvent event) {
           double gX = event.x / 9.80665;
           double gY = event.y / 9.80665;
           double gZ = event.z / 9.80665;
 
           double shakeForce = sqrt(gX * gX + gY * gY + gZ * gZ);
-          
+
           if (shakeForce > shakeThresholdGravity) {
             final currentTimestamp = DateTime.now().millisecondsSinceEpoch;
 
             // Ignore shake events that are too close to each other
-            if (lastShakeTimestamp + shakeDelayMilliseconds > currentTimestamp) {
+            if (lastShakeTimestamp + shakeDelayMilliseconds >
+                currentTimestamp) {
               return;
             }
 
-            if (lastShakeTimestamp + shakeCounterResetMilliseconds < currentTimestamp) {
+            if (lastShakeTimestamp + shakeCounterResetMilliseconds <
+                currentTimestamp) {
               shakeCounter = 0;
             }
 

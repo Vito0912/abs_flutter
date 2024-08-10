@@ -119,6 +119,14 @@ class SettingPage extends ConsumerWidget {
                         leading: Icon(PlatformIcons(context).time),
                       ),
                     ),
+                    SwitchSettingsTile(
+                      settingKey: 'shakeResetTimer',
+                      title: S.of(context).shakeResetTimer,
+                      enabledLabel: S.of(context).enabled,
+                      disabledLabel: S.of(context).disabled,
+                      defaultValue: false,
+                      leading: Icon(PlatformIcons(context).time),
+                    ),
                     Tooltip(
                       message: S.of(context).fastForwardSecondsDescription,
                       margin: const EdgeInsets.all(8),

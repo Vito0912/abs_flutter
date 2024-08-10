@@ -29,5 +29,6 @@ final Map<String, dynamic> defaultSettings = {
   'progressAsChapters': false,
   'downloadsOnlyViaWifi': true,
   'syncInterval': 10,
-  'syncOnlyViaWifi': false
+  'syncOnlyViaWifi': false,
+  'shakeResetTimer': false
 };

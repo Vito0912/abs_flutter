@@ -1228,6 +1228,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Shake to reset sleep timer`
+  String get shakeResetTimer {
+    return Intl.message(
+      'Shake to reset sleep timer',
+      name: 'shakeResetTimer',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

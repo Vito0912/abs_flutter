@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:developer';
 import 'package:abs_flutter/provider/player_provider.dart';
 import 'package:abs_flutter/provider/player_status_provider.dart';
+import 'package:abs_flutter/provider/user_provider.dart';
 import 'package:abs_flutter/util/shake_handler.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -56,7 +57,8 @@ class TimerNotifier extends StateNotifier<double?> {
 
   void _startTimer() {
     _timer?.cancel(); // Cancel any existing timer before starting a new one
-    _shakeHandler.start();
+    final settings = ref.read(settingsProvider);
+    if(settings['shakeResetTimer']) _shakeHandler.start();
     _timer = Timer.periodic(const Duration(milliseconds: 500), (timer) {
       if (_isDisposed || _isPaused) {
         timer.cancel();

@@ -316,5 +316,6 @@
   "stop": "Stop",
   "sync": "Sync",
   "unknown": "Unknown",
-  "seek": "Seek"
+  "seek": "Seek",
+  "shakeResetTimer": "Shake to reset sleep timer"
 }
