@@ -6,6 +6,7 @@ import 'package:abs_flutter/provider/user_provider.dart';
 import 'package:abs_flutter/util/fade_out_handler.dart';
 import 'package:abs_flutter/util/shake_handler.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:vibration/vibration.dart';
 
 final sleepTimerProvider = StateProvider<double>((ref) {
   return 20.0;
@@ -26,11 +27,18 @@ final timerProvider = StateNotifierProvider<TimerNotifier, double?>((ref) {
 
 class TimerNotifier extends StateNotifier<double?> {
   TimerNotifier(this.ref) : super(null) {
-    _shakeHandler = ShakeHandler(onShake: () {
+    _shakeHandler = ShakeHandler(onShake: () async {
       log('Shake detected, continuing timer ($_duration,$_isPaused)',
           name: 'SleepTimer');
       if (_duration != null && !_isPaused) {
         updateTimer(_duration!);
+        final hasVibration = await Vibration.hasVibrator();
+        final hasAmplitudeControl = await Vibration.hasAmplitudeControl();
+        if (hasAmplitudeControl != null && hasAmplitudeControl) {
+          Vibration.vibrate(duration: 250, intensities: [100]);
+        } else if (hasVibration != null && hasVibration) {
+          Vibration.vibrate();
+        }
       }
     });
   }
@@ -82,7 +90,8 @@ class TimerNotifier extends StateNotifier<double?> {
           player: audioService,
           durationInMilliseconds: (state! * 1000).toInt(),
         );
-      } else if (state! > durationInSeconds && fadeOutController != null &&
+      } else if (state! > durationInSeconds &&
+          fadeOutController != null &&
           !fadeOutController!.isActive) {
         log('Cancelling fade out due to timer reset', name: 'SleepTimer');
         fadeOutController?.cancel();
