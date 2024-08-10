@@ -35,9 +35,10 @@ class ProgressProvider extends ChangeNotifier {
 
     final offlineProgress = ref.read(offlineProgressProviderHandler);
 
+    progress ??= [];
+
     if (offlineProgress.isNotEmpty) {
       for (ProgressItem item in offlineProgress) {
-        progress ??= [];
         MediaProgressBuilder builder = MediaProgressBuilder()
           ..currentTime = item.currentTime
           ..duration = item.durationOfItem
@@ -85,7 +86,8 @@ class ProgressProvider extends ChangeNotifier {
             ..progress = item.currentTime / item.durationOfItem;
           progress ??= [];
 
-          int indexInList = progress!.indexWhere((element) => element.libraryItemId == id);
+          int indexInList =
+              progress!.indexWhere((element) => element.libraryItemId == id);
           if (indexInList == -1) {
             progress!.add(builder.build());
           } else {
