@@ -9,19 +9,16 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final libraryItemsProvider = StateNotifierProvider<LibrariesNotifier,
-    LibraryPreview?>((ref) {
-
+final libraryItemsProvider =
+    StateNotifierProvider<LibrariesNotifier, LibraryPreview?>((ref) {
   final api = ref.watch(apiProvider);
   final currentLibrary = ref.watch(currentLibraryProvider);
   final librarySort = ref.watch(libraryItemSearchProvider);
 
   return LibrariesNotifier(api, currentLibrary, librarySort);
-
 });
 
-class LibrariesNotifier
-    extends StateNotifier<LibraryPreview?> {
+class LibrariesNotifier extends StateNotifier<LibraryPreview?> {
   final AbsApi? api;
   final ModelLibrary? currentLibrary;
   final LibrarySort sort;
@@ -52,27 +49,34 @@ class LibrariesNotifier
     limit = _calculateLoadLimit();
     if (api == null || currentLibrary == null) return;
 
-    if(sort.search == null || sort.search!.isEmpty) {
+    if (sort.search == null || sort.search!.isEmpty) {
       final response = await api!.getLibrariesApi().getLibraryItems(
-        id: currentLibrary!.id!,
-        limit: limit,
-        page: page,
-        desc: sort.desc,
-        sort: sort.sort,
-        filter: sort.filter,
-      );
+            id: currentLibrary!.id!,
+            limit: limit,
+            page: page,
+            desc: sort.desc,
+            sort: sort.sort,
+            filter: sort.filter,
+          );
       altResponse = response;
       state = _convertToLibraryPreview(response);
     } else {
-      print('Searching for ${sort.search}');
+      final response = await api!
+          .getLibrariesApi()
+          .searchLibrary(id: currentLibrary!.id!, q: sort.search!, limit: 25);
+
+      // Check if mounted
+      if (mounted) {
+        state = _convertSearchToLibraryPreview(response);
+      }
     }
-
-
   }
 
+  ///
+  /// Convert LibraryItems to LibraryItemPreview
+  ///
   LibraryPreview? _convertToLibraryPreview(
-  Response<GetLibraryItems200Response>? libraryItem) {
-
+      Response<GetLibraryItems200Response>? libraryItem) {
     if (libraryItem == null || libraryItem.data == null) {
       return null;
     }
@@ -103,6 +107,57 @@ class LibrariesNotifier
     return preview;
   }
 
+  ///
+  /// Convert LibraryItems to LibraryItemPreview
+  ///
+  LibraryPreview? _convertSearchToLibraryPreview(
+      Response<SearchLibrary200Response> item) {
+    if (item.data == null) {
+      return null;
+    }
+    SearchLibrary200Response libraryItem = item.data!;
+
+    List<LibraryPreviewItem> previewItems = [];
+    if(libraryItem.book != null) {
+      for (final item in libraryItem.book!) {
+        LibraryPreviewItem previewItem = LibraryPreviewItem(
+            id: item.libraryItem!.id!,
+            title: item.libraryItem!.media!.metadata!.title!,
+            subtitle: item.libraryItem!.media!.metadata!.subtitle ?? "",
+            authors: item.libraryItem!.media!.metadata!.authors
+                ?.toList()
+                .map ((e) => e.name ?? "")
+                .toList() ?? []
+        );
+        previewItems.add(previewItem);
+      }
+    } else if(libraryItem.podcast != null) {
+      for (final item in libraryItem.podcast!) {
+        LibraryPreviewItem previewItem = LibraryPreviewItem(
+            id: item.libraryItem!.id!,
+            title: item.libraryItem!.media!.metadata!.title!,
+            subtitle: item.libraryItem!.media!.metadata!.subtitle ?? "",
+            authors: item.libraryItem!.media!.metadata!.authors
+                ?.toList()
+                .map ((e) => e.name ?? "")
+                .toList() ?? []
+        );
+        previewItems.add(previewItem);
+      }
+    } else {
+      return null;
+    }
+
+    LibraryPreview preview = LibraryPreview(
+      items: previewItems,
+      total: libraryItem.book?.length ?? 0,
+      page: 0,
+      limit: 25
+    );
+
+    return preview;
+  }
+
   Future<void> loadMoreData(int? userPage) async {
     if (api == null || currentLibrary == null) return;
 
@@ -115,22 +170,20 @@ class LibrariesNotifier
     print('Loading more data for page $page');
 
     try {
-
-      if(sort.search == null || sort.search!.isEmpty) {
+      if (sort.search == null || sort.search!.isEmpty) {
         final newResponse = await api!.getLibrariesApi().getLibraryItems(
-          id: currentLibrary!.id!,
-          limit: limit,
-          page: page,
-          desc: sort.desc,
-          sort: sort.sort,
-          filter: sort.filter,
-        );
+              id: currentLibrary!.id!,
+              limit: limit,
+              page: page,
+              desc: sort.desc,
+              sort: sort.sort,
+              filter: sort.filter,
+            );
 
-        state = _convertToLibraryPreview(_mergeResponses(altResponse, newResponse));
+        state =
+            _convertToLibraryPreview(_mergeResponses(altResponse, newResponse));
         altResponse = newResponse;
-      } else {
-
-      }
+      } else {}
     } catch (e) {
       if (e is DioException) {
         print(e);
@@ -174,7 +227,6 @@ class LibrariesNotifier
     return newResponse;
   }
 }
-
 
 final libraryItemSearchProvider = StateProvider<LibrarySort>((ref) {
   return LibrarySort();

@@ -88,6 +88,7 @@ Class | Method | HTTP request | Description
 [*LibrariesApi*](doc/LibrariesApi.md) | [**getLibraryItems**](doc/LibrariesApi.md#getlibraryitems) | **GET** /api/libraries/{id}/items | Get items in a library
 [*LibrariesApi*](doc/LibrariesApi.md) | [**getLibrarySeries**](doc/LibrariesApi.md#getlibraryseries) | **GET** /api/libraries/{id}/series | Get library series
 [*LibrariesApi*](doc/LibrariesApi.md) | [**getLibrarySeriesById**](doc/LibrariesApi.md#getlibraryseriesbyid) | **GET** /api/libraries/{id}/series/{seriesId} | Get single series in library
+[*LibrariesApi*](doc/LibrariesApi.md) | [**searchLibrary**](doc/LibrariesApi.md#searchlibrary) | **GET** /api/libraries/{id}/search | Search library
 [*LibrariesApi*](doc/LibrariesApi.md) | [**updateLibraryById**](doc/LibrariesApi.md#updatelibrarybyid) | **PATCH** /api/libraries/{id} | Update a single library by ID on server
 [*LibraryItemApi*](doc/LibraryItemApi.md) | [**getLibraryItem**](doc/LibraryItemApi.md#getlibraryitem) | **GET** /api/items/{id} | Get a single library item by ID on server.
 [*LibraryItemApi*](doc/LibraryItemApi.md) | [**playLibraryItem**](doc/LibraryItemApi.md#playlibraryitem) | **POST** /api/items/{id}/play | Play a library item
@@ -141,8 +142,10 @@ Class | Method | HTTP request | Description
  - [Book](doc/Book.md)
  - [BookBase](doc/BookBase.md)
  - [BookChapter](doc/BookChapter.md)
+ - [BookExpanded](doc/BookExpanded.md)
  - [BookMetadata](doc/BookMetadata.md)
  - [BookMetadataBase](doc/BookMetadataBase.md)
+ - [BookMetadataExpanded](doc/BookMetadataExpanded.md)
  - [BookMetadataMinified](doc/BookMetadataMinified.md)
  - [BookMinified](doc/BookMinified.md)
  - [Bookmark](doc/Bookmark.md)
@@ -181,7 +184,9 @@ Class | Method | HTTP request | Description
  - [LibraryFile](doc/LibraryFile.md)
  - [LibraryItem](doc/LibraryItem.md)
  - [LibraryItemBase](doc/LibraryItemBase.md)
+ - [LibraryItemExpanded](doc/LibraryItemExpanded.md)
  - [LibraryItemMinified](doc/LibraryItemMinified.md)
+ - [LibraryItemSearchResult](doc/LibraryItemSearchResult.md)
  - [LibraryItemSequence](doc/LibraryItemSequence.md)
  - [LibrarySettings](doc/LibrarySettings.md)
  - [Login200Response](doc/Login200Response.md)
@@ -214,6 +219,7 @@ Class | Method | HTTP request | Description
  - [PodcastEpisode](doc/PodcastEpisode.md)
  - [PodcastMetadata](doc/PodcastMetadata.md)
  - [QuickMatchEpisodes200Response](doc/QuickMatchEpisodes200Response.md)
+ - [SearchLibrary200Response](doc/SearchLibrary200Response.md)
  - [SendEBookToDeviceRequest](doc/SendEBookToDeviceRequest.md)
  - [Series](doc/Series.md)
  - [SeriesBooks](doc/SeriesBooks.md)

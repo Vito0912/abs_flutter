@@ -1,6 +1,7 @@
+import 'dart:async';
+
 import 'package:abs_flutter/features/library/notch/filter_button.dart';
 import 'package:abs_flutter/features/library/notch/sort_button.dart';
-import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/provider/library_items_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
@@ -15,17 +16,21 @@ class LibraryNotch extends ConsumerStatefulWidget {
 
 class _LibraryNotchState extends ConsumerState<LibraryNotch> {
   late TextEditingController searchController;
+  Duration _debouceDuration = const Duration(milliseconds: 500);
+  Timer? _debounce;
 
   @override
   void initState() {
     super.initState();
     final librarySortNotifier = ref.read(libraryItemSearchProvider.notifier);
-    searchController = TextEditingController(text: librarySortNotifier.state.search);
+    searchController =
+        TextEditingController(text: librarySortNotifier.state.search);
   }
 
   @override
   void dispose() {
     searchController.dispose();
+    _debounce?.cancel();
     super.dispose();
   }
 
@@ -61,12 +66,14 @@ class _LibraryNotchState extends ConsumerState<LibraryNotch> {
                 trailing: [
                   SortButton(),
                   const FilterButton(),
-                  if (librarySort.search == null || librarySort.search!.isNotEmpty)
+                  if (librarySort.search == null ||
+                      librarySort.search!.isNotEmpty)
                     PlatformIconButton(
                       icon: Icon(PlatformIcons(context).clear),
                       onPressed: () {
                         searchController.clear();
-                        librarySortNotifier.state = librarySortNotifier.state.copyWith(
+                        librarySortNotifier.state =
+                            librarySortNotifier.state.copyWith(
                           search: "",
                         );
                       },
@@ -76,9 +83,13 @@ class _LibraryNotchState extends ConsumerState<LibraryNotch> {
                 leading: Icon(PlatformIcons(context).search),
                 autoFocus: false,
                 onChanged: (value) {
-                  librarySortNotifier.state = librarySortNotifier.state.copyWith(
-                    search: value,
-                  );
+                  if (_debounce?.isActive ?? false) _debounce?.cancel();
+                  _debounce = Timer(_debouceDuration, () async {
+                    librarySortNotifier.state =
+                        librarySortNotifier.state.copyWith(
+                          search: value,
+                        );
+                  });
                 },
               ),
             ),

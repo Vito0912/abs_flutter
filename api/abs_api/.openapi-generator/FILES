@@ -13,8 +13,10 @@ doc/AuthorsApi.md
 doc/Book.md
 doc/BookBase.md
 doc/BookChapter.md
+doc/BookExpanded.md
 doc/BookMetadata.md
 doc/BookMetadataBase.md
+doc/BookMetadataExpanded.md
 doc/BookMetadataMinified.md
 doc/BookMinified.md
 doc/Bookmark.md
@@ -56,7 +58,9 @@ doc/LibraryFile.md
 doc/LibraryItem.md
 doc/LibraryItemApi.md
 doc/LibraryItemBase.md
+doc/LibraryItemExpanded.md
 doc/LibraryItemMinified.md
+doc/LibraryItemSearchResult.md
 doc/LibraryItemSequence.md
 doc/LibrarySettings.md
 doc/Login200Response.md
@@ -92,6 +96,7 @@ doc/PodcastEpisode.md
 doc/PodcastMetadata.md
 doc/PodcastsApi.md
 doc/QuickMatchEpisodes200Response.md
+doc/SearchLibrary200Response.md
 doc/SendEBookToDeviceRequest.md
 doc/Series.md
 doc/SeriesApi.md
@@ -138,8 +143,10 @@ lib/src/model/author_series.dart
 lib/src/model/book.dart
 lib/src/model/book_base.dart
 lib/src/model/book_chapter.dart
+lib/src/model/book_expanded.dart
 lib/src/model/book_metadata.dart
 lib/src/model/book_metadata_base.dart
+lib/src/model/book_metadata_expanded.dart
 lib/src/model/book_metadata_minified.dart
 lib/src/model/book_minified.dart
 lib/src/model/bookmark.dart
@@ -179,6 +186,8 @@ lib/src/model/get_sessions200_response.dart
 lib/src/model/library_file.dart
 lib/src/model/library_item.dart
 lib/src/model/library_item_base.dart
+lib/src/model/library_item_expanded.dart
+lib/src/model/library_item_search_result.dart
 lib/src/model/library_item_sequence.dart
 lib/src/model/library_settings.dart
 lib/src/model/login200_response.dart
@@ -211,6 +220,7 @@ lib/src/model/podcast.dart
 lib/src/model/podcast_episode.dart
 lib/src/model/podcast_metadata.dart
 lib/src/model/quick_match_episodes200_response.dart
+lib/src/model/search_library200_response.dart
 lib/src/model/send_e_book_to_device_request.dart
 lib/src/model/series.dart
 lib/src/model/series_books.dart

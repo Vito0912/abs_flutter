@@ -144,6 +144,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "noDownloads": MessageLookupByLibrary.simpleMessage("No downloads"),
         "noInternetDescription": MessageLookupByLibrary.simpleMessage(
             "We are having trouble connecting to the server."),
+        "noItemsFound": MessageLookupByLibrary.simpleMessage("No items found"),
         "noUserData": MessageLookupByLibrary.simpleMessage(
             "Login failed: No user data received"),
         "notificationHeading": MessageLookupByLibrary.simpleMessage(

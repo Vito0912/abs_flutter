@@ -22,7 +22,9 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(AuthorSeries.serializer)
       ..add(Book.serializer)
       ..add(BookChapter.serializer)
+      ..add(BookExpanded.serializer)
       ..add(BookMetadata.serializer)
+      ..add(BookMetadataExpanded.serializer)
       ..add(BookMetadataMinified.serializer)
       ..add(BookMinified.serializer)
       ..add(Bookmark.serializer)
@@ -62,7 +64,9 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(GetSessions200Response.serializer)
       ..add(LibraryFile.serializer)
       ..add(LibraryItem.serializer)
+      ..add(LibraryItemExpanded.serializer)
       ..add(LibraryItemMinified.serializer)
+      ..add(LibraryItemSearchResult.serializer)
       ..add(LibraryItemSequence.serializer)
       ..add(LibrarySettings.serializer)
       ..add(Login200Response.serializer)
@@ -92,6 +96,7 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(PodcastEpisode.serializer)
       ..add(PodcastMetadata.serializer)
       ..add(QuickMatchEpisodes200Response.serializer)
+      ..add(SearchLibrary200Response.serializer)
       ..add(SendEBookToDeviceRequest.serializer)
       ..add(Series.serializer)
       ..add(SeriesBooks.serializer)
@@ -110,6 +115,22 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(AudioTrack)]),
           () => new ListBuilder<AudioTrack>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(AudioTrack)]),
+          () => new ListBuilder<AudioTrack>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(AudioFile)]),
+          () => new ListBuilder<AudioFile>())
+      ..addBuilderFactory(
+          const FullType(
+              BuiltList, const [const FullType.nullable(BookChapter)]),
+          () => new ListBuilder<BookChapter?>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(int)]),
+          () => new ListBuilder<int>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(AudioTrack)]),
           () => new ListBuilder<AudioTrack>())
@@ -174,6 +195,23 @@ Serializers _$serializers = (new Serializers().toBuilder()
           () => new ListBuilder<AuthorSeries>())
       ..addBuilderFactory(
           const FullType(
+              BuiltList, const [const FullType(LibraryItemSearchResult)]),
+          () => new ListBuilder<LibraryItemSearchResult>())
+      ..addBuilderFactory(
+          const FullType(
+              BuiltList, const [const FullType(LibraryItemSearchResult)]),
+          () => new ListBuilder<LibraryItemSearchResult>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(AuthorExpanded)]),
+          () => new ListBuilder<AuthorExpanded>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(SeriesBooks)]),
+          () => new ListBuilder<SeriesBooks>())
+      ..addBuilderFactory(
+          const FullType(
               BuiltList, const [const FullType(LibraryItemSequence)]),
           () => new ListBuilder<LibraryItemSequence>())
       ..addBuilderFactory(
@@ -218,6 +256,9 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(AuthorMinified)]),
           () => new ListBuilder<AuthorMinified>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
           () => new ListBuilder<String>())

@@ -3171,6 +3171,102 @@
           }
         }
       }
+    },
+    "/api/libraries/{id}/search": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "description": "The ID of the library.",
+          "required": true,
+          "schema": {
+            "$ref": "#/components/schemas/libraryId"
+          }
+        }
+      ],
+      "get": {
+        "operationId": "searchLibrary",
+        "summary": "Search library",
+        "description": "Search library by ID on server.",
+        "tags": [
+          "Libraries"
+        ],
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "description": "The search query.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/limit"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "searchLibrary OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "book": {
+                      "type": "array",
+                      "nullable": true,
+                      "items": {
+                        "$ref": "#/components/schemas/libraryItemSearchResult"
+                      }
+                    },
+                    "podcast": {
+                      "type": "array",
+                      "nullable": true,
+                      "description": "TODO. Add podcast to libraryItemExpanded/media - try without oneOf",
+                      "items": {
+                        "$ref": "#/components/schemas/libraryItemSearchResult"
+                      }
+                    },
+                    "tags": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "authors": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/authorExpanded"
+                      }
+                    },
+                    "series": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/seriesBooks"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "No search query provided.",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "type": "string",
+                  "example": "Bad Request"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/library404"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -3910,6 +4006,30 @@
           }
         }
       },
+      "titleIgnorePrefix": {
+        "description": "The title of the book with any prefix moved to the end.",
+        "type": "string"
+      },
+      "schemas-authorName": {
+        "description": "The name of the book's author(s).",
+        "type": "string",
+        "example": "Terry Goodkind"
+      },
+      "authorNameLF": {
+        "description": "The name of the book's author(s) with last names first.",
+        "type": "string",
+        "example": "Goodkind, Terry"
+      },
+      "narratorName": {
+        "description": "The name of the audiobook's narrator(s).",
+        "type": "string",
+        "example": "Sam Tsoutsouvas"
+      },
+      "schemas-seriesName": {
+        "description": "The name of the book's series.",
+        "type": "string",
+        "example": "Sword of Truth"
+      },
       "bookMetadataMinified": {
         "type": "object",
         "description": "The minified metadata for a book in the database.",
@@ -3921,28 +4041,19 @@
             "type": "object",
             "properties": {
               "titleIgnorePrefix": {
-                "description": "The title of the book with any prefix moved to the end.",
-                "type": "string"
+                "$ref": "#/components/schemas/titleIgnorePrefix"
               },
               "authorName": {
-                "description": "The name of the book's author(s).",
-                "type": "string",
-                "example": "Terry Goodkind"
+                "$ref": "#/components/schemas/schemas-authorName"
               },
               "authorNameLF": {
-                "description": "The name of the book's author(s) with last names first.",
-                "type": "string",
-                "example": "Goodkind, Terry"
+                "$ref": "#/components/schemas/authorNameLF"
               },
               "narratorName": {
-                "description": "The name of the audiobook's narrator(s).",
-                "type": "string",
-                "example": "Sam Tsoutsouvas"
+                "$ref": "#/components/schemas/narratorName"
               },
               "seriesName": {
-                "description": "The name of the book's series.",
-                "type": "string",
-                "example": "Sword of Truth"
+                "$ref": "#/components/schemas/schemas-seriesName"
               }
             }
           }
@@ -5772,6 +5883,95 @@
         "description": "The total time listened in seconds.",
         "type": "number",
         "example": 123456
+      },
+      "bookMetadataExpanded": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/bookMetadataBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "titleIgnorePrefix": {
+                "$ref": "#/components/schemas/titleIgnorePrefix"
+              },
+              "authorName": {
+                "$ref": "#/components/schemas/schemas-authorName"
+              },
+              "authorNameLF": {
+                "$ref": "#/components/schemas/authorNameLF"
+              },
+              "narratorName": {
+                "$ref": "#/components/schemas/narratorName"
+              },
+              "seriesName": {
+                "$ref": "#/components/schemas/schemas-seriesName"
+              }
+            }
+          }
+        ]
+      },
+      "bookExpanded": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/bookBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "duration": {
+                "$ref": "#/components/schemas/durationSec"
+              },
+              "size": {
+                "$ref": "#/components/schemas/size"
+              },
+              "tracks": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/AudioTrack"
+                }
+              },
+              "metadata": {
+                "$ref": "#/components/schemas/bookMetadataExpanded"
+              }
+            }
+          }
+        ]
+      },
+      "libraryItemExpanded": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/libraryItemBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "size": {
+                "$ref": "#/components/schemas/size"
+              },
+              "media": {
+                "$ref": "#/components/schemas/bookExpanded"
+              }
+            }
+          }
+        ]
+      },
+      "libraryItemSearchResult": {
+        "type": "object",
+        "properties": {
+          "libraryItem": {
+            "$ref": "#/components/schemas/libraryItemExpanded"
+          },
+          "matchKey": {
+            "nullable": true,
+            "type": "string"
+          },
+          "matchText": {
+            "nullable": true,
+            "type": "string"
+          }
+        }
       }
     },
     "responses": {

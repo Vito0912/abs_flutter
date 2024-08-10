@@ -317,5 +317,6 @@
   "sync": "Sync",
   "unknown": "Unknown",
   "seek": "Seek",
-  "shakeResetTimer": "Shake to reset sleep timer"
+  "shakeResetTimer": "Shake to reset sleep timer",
+  "noItemsFound": "No items found"
 }

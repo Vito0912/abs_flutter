@@ -89,7 +89,7 @@ class _LibraryItemsState extends ConsumerState<LibraryItems> {
   Widget _buildItems(BuildContext context, LibraryPreview items,
       List<MediaProgress>? progress) {
     if (items.items.isEmpty) {
-      return _buildError(context);
+      return Center(child: PlatformText(S.of(context).noItemsFound));
     }
 
     return LayoutBuilder(

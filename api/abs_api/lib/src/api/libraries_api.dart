@@ -14,6 +14,7 @@ import 'package:abs_api/src/model/get_library_authors200_response.dart';
 import 'package:abs_api/src/model/get_library_items200_response.dart';
 import 'package:abs_api/src/model/get_library_series200_response.dart';
 import 'package:abs_api/src/model/model_library.dart';
+import 'package:abs_api/src/model/search_library200_response.dart';
 import 'package:abs_api/src/model/series_with_progress_and_rss.dart';
 import 'package:abs_api/src/model/update_library_by_id_request.dart';
 
@@ -924,6 +925,103 @@ class LibrariesApi {
     }
 
     return Response<SeriesWithProgressAndRSS>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
+
+  /// Search library
+  /// Search library by ID on server.
+  ///
+  /// Parameters:
+  /// * [id] - The ID of the library.
+  /// * [q] - The search query.
+  /// * [limit] - The number of items to return. This the size of a single page for the optional `page` query.
+  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
+  /// * [headers] - Can be used to add additional headers to the request
+  /// * [extras] - Can be used to add flags to the request
+  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
+  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
+  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
+  ///
+  /// Returns a [Future] containing a [Response] with a [SearchLibrary200Response] as data
+  /// Throws [DioException] if API call or serialization fails
+  Future<Response<SearchLibrary200Response>> searchLibrary({
+    required String id,
+    required String q,
+    int? limit = 0,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/api/libraries/{id}/search'.replaceAll(
+        '{' r'id' '}',
+        encodeQueryParameter(_serializers, id, const FullType(String))
+            .toString());
+    final _options = Options(
+      method: r'GET',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'http',
+            'scheme': 'bearer',
+            'name': 'BearerAuth',
+          },
+        ],
+        ...?extra,
+      },
+      validateStatus: validateStatus,
+    );
+
+    final _queryParameters = <String, dynamic>{
+      r'q': encodeQueryParameter(_serializers, q, const FullType(String)),
+      if (limit != null)
+        r'limit':
+            encodeQueryParameter(_serializers, limit, const FullType(int)),
+    };
+
+    final _response = await _dio.request<Object>(
+      _path,
+      options: _options,
+      queryParameters: _queryParameters,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    SearchLibrary200Response? _responseData;
+
+    try {
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(SearchLibrary200Response),
+            ) as SearchLibrary200Response;
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    return Response<SearchLibrary200Response>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,

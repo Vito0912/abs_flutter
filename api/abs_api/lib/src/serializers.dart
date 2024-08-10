@@ -24,8 +24,10 @@ import 'package:abs_api/src/model/author_series.dart';
 import 'package:abs_api/src/model/book.dart';
 import 'package:abs_api/src/model/book_base.dart';
 import 'package:abs_api/src/model/book_chapter.dart';
+import 'package:abs_api/src/model/book_expanded.dart';
 import 'package:abs_api/src/model/book_metadata.dart';
 import 'package:abs_api/src/model/book_metadata_base.dart';
+import 'package:abs_api/src/model/book_metadata_expanded.dart';
 import 'package:abs_api/src/model/book_metadata_minified.dart';
 import 'package:abs_api/src/model/book_minified.dart';
 import 'package:abs_api/src/model/bookmark.dart';
@@ -64,7 +66,9 @@ import 'package:abs_api/src/model/get_sessions200_response.dart';
 import 'package:abs_api/src/model/library_file.dart';
 import 'package:abs_api/src/model/library_item.dart';
 import 'package:abs_api/src/model/library_item_base.dart';
+import 'package:abs_api/src/model/library_item_expanded.dart';
 import 'package:abs_api/src/model/library_item_minified.dart';
+import 'package:abs_api/src/model/library_item_search_result.dart';
 import 'package:abs_api/src/model/library_item_sequence.dart';
 import 'package:abs_api/src/model/library_settings.dart';
 import 'package:abs_api/src/model/login200_response.dart';
@@ -97,6 +101,7 @@ import 'package:abs_api/src/model/podcast.dart';
 import 'package:abs_api/src/model/podcast_episode.dart';
 import 'package:abs_api/src/model/podcast_metadata.dart';
 import 'package:abs_api/src/model/quick_match_episodes200_response.dart';
+import 'package:abs_api/src/model/search_library200_response.dart';
 import 'package:abs_api/src/model/send_e_book_to_device_request.dart';
 import 'package:abs_api/src/model/series.dart';
 import 'package:abs_api/src/model/series_books.dart';
@@ -128,9 +133,11 @@ part 'serializers.g.dart';
   BookBase,
   $BookBase,
   BookChapter,
+  BookExpanded,
   BookMetadata,
   BookMetadataBase,
   $BookMetadataBase,
+  BookMetadataExpanded,
   BookMetadataMinified,
   BookMinified,
   Bookmark,
@@ -170,7 +177,9 @@ part 'serializers.g.dart';
   LibraryItem,
   LibraryItemBase,
   $LibraryItemBase,
+  LibraryItemExpanded,
   LibraryItemMinified,
+  LibraryItemSearchResult,
   LibraryItemSequence,
   LibrarySettings,
   Login200Response,
@@ -206,6 +215,7 @@ part 'serializers.g.dart';
   PodcastEpisode,
   PodcastMetadata,
   QuickMatchEpisodes200Response,
+  SearchLibrary200Response,
   SendEBookToDeviceRequest,
   Series,
   SeriesBooks,
