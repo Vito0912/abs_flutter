@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:abs_flutter/provider/player_provider.dart';
 import 'package:abs_flutter/provider/player_status_provider.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
+import 'package:abs_flutter/util/fade_out_handler.dart';
 import 'package:abs_flutter/util/shake_handler.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -58,7 +59,12 @@ class TimerNotifier extends StateNotifier<double?> {
   void _startTimer() {
     _timer?.cancel(); // Cancel any existing timer before starting a new one
     final settings = ref.read(settingsProvider);
-    if(settings['shakeResetTimer']) _shakeHandler.start();
+    if (settings['shakeResetTimer']) _shakeHandler.start();
+
+    // When the timer starts to volume down the player
+    const int durationInSeconds = 30;
+    FadeOutHandler? fadeOutController;
+
     _timer = Timer.periodic(const Duration(milliseconds: 500), (timer) {
       if (_isDisposed || _isPaused) {
         timer.cancel();
@@ -66,12 +72,35 @@ class TimerNotifier extends StateNotifier<double?> {
       }
       state ??=
           ref.read(sleepTimerProvider); // Get the current sleep timer duration
+
+      if (state! <= durationInSeconds &&
+          (fadeOutController == null || !fadeOutController!.isActive)) {
+        final audioService = ref.read(playerProvider).audioService;
+        log('Starting fade out', name: 'SleepTimer');
+        fadeOutController = FadeOutHandler.fadeOutAndStop(
+          startVolume: audioService.player.volume,
+          player: audioService,
+          durationInMilliseconds: (state! * 1000).toInt(),
+        );
+      } else if (state! > durationInSeconds && fadeOutController != null &&
+          !fadeOutController!.isActive) {
+        log('Cancelling fade out due to timer reset', name: 'SleepTimer');
+        fadeOutController?.cancel();
+      }
+
       if (state! <= 0) {
         timer.cancel();
         _isRunning = false;
         ref
             .read(playStatusProvider)
             .setPlayStatus(PlayerStatus.stopped, "Sleep timer");
+        if (fadeOutController != null) {
+          fadeOutController?.cancel();
+          if (fadeOutController?.startVolume != null) {
+            final audioService = ref.read(playerProvider).audioService;
+            audioService.setVolume(fadeOutController!.startVolume!);
+          }
+        }
       } else {
         state = (state! - 0.5);
       }
