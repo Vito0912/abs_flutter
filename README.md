@@ -54,7 +54,9 @@ A big thank you to [Weblate](https://weblate.org) for providing their services!
 🚀 **Pagination** - Load more items when you reach the end of lists to save data.\
 📈 **Does Not Rely on a Socket** - Use the app even with an occasionally interrupted connection.\
 📅 **Up-to-date Sync** - The app stays synchronized with the server when connected to the internet.\
-🔁 **Queue Support** - Add multiple items to the queue and play them in order. Even works offline.
+🔁 **Queue Support** - Add multiple items to the queue and play them in order. Even works offline.\
+🔊 **Advanced Player Controls** - Skip chapters, set a sleep timer, adjust playback speed, and more.\
+📴 **Offline Support** - Listen to your audiobooks even when you're offline. Sync offline up to one year
 
 ### Additional to First-party App
 
@@ -88,6 +90,10 @@ A big thank you to [Weblate](https://weblate.org) for providing their services!
 | [iridium_reader_widget](https://github.com/Mantano/iridium_reader_widget)   | -            | [Mantano](https://github.com/Mantano)                                      | [GitHub](https://github.com/Mantano/iridium_reader_widget)   |
 | [iridium](https://github.com/Mantano/iridium)                               | -            | [Mantano](https://github.com/Mantano)                                      | [GitHub](https://github.com/Mantano/iridium)                 |
 
+> Thanks to everybody contributing to [Audiobookshelf](https://github.com/advplyr/audiobookshelf) to make this software so awesome.
+> Thanks to everybody who contributed to [Audiobookshelf-App](https://github.com/advplyr/audiobookshelf-app) to make this software so awesome.
+> Many features of this app are based on the first-party app.
+
 ### Known Bugs
 
 #### Sleep Timer
@@ -97,3 +103,8 @@ A big thank you to [Weblate](https://weblate.org) for providing their services!
 #### Sign-in
 
 - When logging in for the first time, the library may not load. Please restart the app to resolve this issue.
+
+#### Windows seeking
+
+- When seeking big jumps on Windows, the audio sometimes just continues playing without seeking, despite the progressbar moving.
+    - See [Issue](https://github.com/bdlukaa/just_audio_windows/issues/19). On next release of just_audio_windows this should be fixed.

@@ -21,7 +21,7 @@ class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
   static String m0(count) =>
-      "${Intl.plural(count, one: '# day', other: '${count} days')}";
+      "${Intl.plural(count, one: '${count}  day', other: '${count} days')}";
 
   static String m1(days, hours) =>
       "${Intl.plural(days, one: '${days} day', other: '${days} days')} ${Intl.plural(hours, one: '${hours} hour', other: '${hours} hours')}";
@@ -33,7 +33,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "${Intl.plural(days, one: '${days} day', other: '${days} days')} ${Intl.plural(hours, one: '${hours} hour', other: '${hours} hours')} ${Intl.plural(minutes, one: '${minutes} minute', other: '${minutes} minutes')} ${Intl.plural(seconds, one: '${seconds} second', other: '${seconds} seconds')}";
 
   static String m4(count) =>
-      "${Intl.plural(count, one: '# hour', other: '${count} hours')}";
+      "${Intl.plural(count, one: '${count} hour', other: '${count} hours')}";
 
   static String m5(hours, minutes) =>
       "${Intl.plural(hours, one: '${hours} hour', other: '${hours} hours')} ${Intl.plural(minutes, one: '${minutes} minute', other: '${minutes} minutes')}";
@@ -42,13 +42,13 @@ class MessageLookup extends MessageLookupByLibrary {
       "${Intl.plural(hours, one: '${hours} hour', other: '${hours} hours')} ${Intl.plural(minutes, one: '${minutes} minute', other: '${minutes} minutes')} ${Intl.plural(seconds, one: '${seconds} second', other: '${seconds} seconds')}";
 
   static String m7(count) =>
-      "${Intl.plural(count, one: '# minute', other: '${count} minutes')}";
+      "${Intl.plural(count, one: '${count} minute', other: '${count} minutes')}";
 
   static String m8(minutes, seconds) =>
       "${Intl.plural(minutes, one: '${minutes} minute', other: '${minutes} minutes')} ${Intl.plural(seconds, one: '${seconds} second', other: '${seconds} seconds')}";
 
   static String m9(count) =>
-      "${Intl.plural(count, one: '# second', other: '${count} seconds')}";
+      "${Intl.plural(count, one: '${count}  second', other: '${count} seconds')}";
 
   static String m10(hours, minutes) => "Length: ${hours}:${minutes}";
 

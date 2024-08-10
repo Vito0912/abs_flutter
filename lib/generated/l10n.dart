@@ -790,11 +790,11 @@ class S {
     );
   }
 
-  /// `{count, plural, one {# second} other {{count} seconds}}`
+  /// `{count, plural, one {{count}  second} other {{count} seconds}}`
   String dateFormatSecond(int count) {
     return Intl.plural(
       count,
-      one: '# second',
+      one: '$count  second',
       other: '$count seconds',
       name: 'dateFormatSecond',
       desc: '',
@@ -802,11 +802,11 @@ class S {
     );
   }
 
-  /// `{count, plural, one {# minute} other {{count} minutes}}`
+  /// `{count, plural, one {{count} minute} other {{count} minutes}}`
   String dateFormatMinute(int count) {
     return Intl.plural(
       count,
-      one: '# minute',
+      one: '$count minute',
       other: '$count minutes',
       name: 'dateFormatMinute',
       desc: '',
@@ -824,11 +824,11 @@ class S {
     );
   }
 
-  /// `{count, plural, one {# hour} other {{count} hours}}`
+  /// `{count, plural, one {{count} hour} other {{count} hours}}`
   String dateFormatHour(int count) {
     return Intl.plural(
       count,
-      one: '# hour',
+      one: '$count hour',
       other: '$count hours',
       name: 'dateFormatHour',
       desc: '',
@@ -856,11 +856,11 @@ class S {
     );
   }
 
-  /// `{count, plural, one {# day} other {{count} days}}`
+  /// `{count, plural, one {{count}  day} other {{count} days}}`
   String dateFormatDay(int count) {
     return Intl.plural(
       count,
-      one: '# day',
+      one: '$count  day',
       other: '$count days',
       name: 'dateFormatDay',
       desc: '',

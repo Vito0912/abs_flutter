@@ -174,7 +174,7 @@
   "totalTimeListened": "Total time listened",
   "daysListened": "Days listened",
   "consecutiveDays": "Consecutive days",
-  "dateFormatSecond": "{count, plural, one {# second} other {{count} seconds}}",
+  "dateFormatSecond": "{count, plural, one {{count}  second} other {{count} seconds}}",
   "@dateFormatSecond": {
     "placeholders": {
       "count": {
@@ -182,7 +182,7 @@
       }
     }
   },
-  "dateFormatMinute": "{count, plural, one {# minute} other {{count} minutes}}",
+  "dateFormatMinute": "{count, plural, one {{count} minute} other {{count} minutes}}",
   "@dateFormatMinute": {
     "placeholders": {
       "count": {
@@ -201,7 +201,7 @@
       }
       }
   },
-  "dateFormatHour": "{count, plural, one {# hour} other {{count} hours}}",
+  "dateFormatHour": "{count, plural, one {{count} hour} other {{count} hours}}",
   "@dateFormatHour": {
     "placeholders": {
       "count": {
@@ -234,7 +234,7 @@
         }
         }
     },
-  "dateFormatDay": "{count, plural, one {# day} other {{count} days}}",
+  "dateFormatDay": "{count, plural, one {{count}  day} other {{count} days}}",
   "@dateFormatDay": {
     "placeholders": {
       "count": {

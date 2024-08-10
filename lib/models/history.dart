@@ -13,11 +13,11 @@ enum HistoryType {
   sync, unknown, seek
 }
 
-@unfreezed
+@freezed
 class History with _$History {
-  History._();
+  const History._();
 
-  factory History({
+  const factory History({
     required DateTime date,
     required HistoryType type,
     required double position,
@@ -25,4 +25,29 @@ class History with _$History {
 
   factory History.fromJson(Map<String, dynamic> json) =>
       _$HistoryFromJson(json);
+}
+
+@freezed
+class HistoryView with _$HistoryView {
+  const factory HistoryView({
+    required HistoryType type,
+    required List<History> histories,
+  }) = _HistoryView;
+
+  const HistoryView._();
+
+  History get first => histories.first;
+
+  History get last => histories.last;
+
+  bool get isCompressed => histories.length > 1;
+
+  factory HistoryView.fromJson(Map<String, dynamic> json) => _$HistoryViewFromJson(json);
+
+  factory HistoryView.fromHistories(List<History> histories) {
+    return HistoryView(
+      type: histories.first.type,
+      histories: histories,
+    );
+  }
 }

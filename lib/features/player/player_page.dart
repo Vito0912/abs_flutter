@@ -173,7 +173,7 @@ class PlayerPage extends ConsumerWidget {
                                           size: size, Icons.note_alt_outlined),
                                       onPressed: () {
                                         print('history/$libraryItemId');
-                                        context.go('/history/$libraryItemId');
+                                        context.push('/history/$libraryItemId');
                                       },
                                     ),
                                   PlatformIconButton(

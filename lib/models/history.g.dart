@@ -26,4 +26,20 @@ const _$HistoryTypeEnumMap = {
   HistoryType.pause: 'pause',
   HistoryType.stop: 'stop',
   HistoryType.sync: 'sync',
+  HistoryType.unknown: 'unknown',
+  HistoryType.seek: 'seek',
 };
+
+_$HistoryViewImpl _$$HistoryViewImplFromJson(Map<String, dynamic> json) =>
+    _$HistoryViewImpl(
+      type: $enumDecode(_$HistoryTypeEnumMap, json['type']),
+      histories: (json['histories'] as List<dynamic>)
+          .map((e) => History.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$$HistoryViewImplToJson(_$HistoryViewImpl instance) =>
+    <String, dynamic>{
+      'type': _$HistoryTypeEnumMap[instance.type]!,
+      'histories': instance.histories,
+    };

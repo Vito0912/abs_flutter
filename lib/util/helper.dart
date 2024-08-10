@@ -93,16 +93,17 @@ class Helper {
       }
       return S.current.dateFormatDayHourMinute(days, hours, minutes);
     } else {
-      if (seconds < 60) return S.current.dateFormatSecond(seconds.toInt());
+      num timeSeconds = seconds % 60;
+      if (seconds < 60) return S.current.dateFormatSecond(timeSeconds.toInt());
       if (seconds < 3600) {
-        return S.current.dateFormatMinuteSecond(minutes, seconds.toInt());
+        return S.current.dateFormatMinuteSecond(minutes, timeSeconds.toInt());
       }
       if (seconds < 86400) {
         return S.current
-            .dateFormatHourMinuteSecond(hours, minutes, seconds.toInt());
+            .dateFormatHourMinuteSecond(hours, minutes, timeSeconds.toInt());
       }
-      return S.current
-          .dateFormatDayHourMinuteSecond(days, hours, minutes, seconds.toInt());
+      return S.current.dateFormatDayHourMinuteSecond(
+          days, hours, minutes, timeSeconds.toInt());
     }
   }
 

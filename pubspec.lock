@@ -434,6 +434,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.4.0"
+  flutter_hooks:
+    dependency: transitive
+    description:
+      name: flutter_hooks
+      sha256: cde36b12f7188c85286fba9b38cc5a902e7279f36dd676967106c041dc9dde70
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.20.5"
   flutter_lints:
     dependency: "direct dev"
     description:
@@ -568,10 +576,10 @@ packages:
     dependency: "direct main"
     description:
       name: go_router
-      sha256: ddc16d34b0d74cb313986918c0f0885a7ba2fc24d8fb8419de75f0015144ccfe
+      sha256: c5fa45fa502ee880839e3b2152d987c44abae26d064a2376d4aad434cf0f7b15
       url: "https://pub.dev"
     source: hosted
-    version: "14.2.3"
+    version: "12.1.3"
   graphs:
     dependency: transitive
     description:
@@ -580,6 +588,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.3.2"
+  hooks_riverpod:
+    dependency: "direct main"
+    description:
+      name: hooks_riverpod
+      sha256: "45b2030a18bcd6dbd680c2c91bc3b33e3fe7c323e3acb5ecec93a613e2fbaa8a"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.5.1"
   hotreloader:
     dependency: transitive
     description:
