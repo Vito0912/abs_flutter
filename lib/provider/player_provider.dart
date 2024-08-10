@@ -29,7 +29,7 @@ class PlayerProvider extends ChangeNotifier {
     await _audioService.pause();
   }
 
-  Future<void> stop() async {
+  Future<void> stop({bool completed = false}) async {
     await _audioService.stop();
   }
 

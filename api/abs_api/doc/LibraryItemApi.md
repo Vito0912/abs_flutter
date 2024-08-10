@@ -64,7 +64,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **playLibraryItem**
-> PlaybackSessionExpanded playLibraryItem(id, deviceInfo, forceDirectPlay, forceTranscode, supportedMimeTypes, mediaPlayer)
+> PlaybackSessionExpanded playLibraryItem(id, playLibraryItemRequest)
 
 Play a library item
 
@@ -76,14 +76,10 @@ import 'package:abs_api/api.dart';
 
 final api = AbsApi().getLibraryItemApi();
 final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | The ID of the library item.
-final DeviceInfo deviceInfo = ; // DeviceInfo | The device information to send to the server.
-final bool forceDirectPlay = false; // bool | Whether to force direct play of the library item.
-final bool forceTranscode = false; // bool | Whether to force transcoding of the library item.
-final BuiltList<String> supportedMimeTypes = ; // BuiltList<String> | The supported mime types for the device.
-final String mediaPlayer = mediaPlayer_example; // String | The media player to use.
+final PlayLibraryItemRequest playLibraryItemRequest = ; // PlayLibraryItemRequest | 
 
 try {
-    final response = api.playLibraryItem(id, deviceInfo, forceDirectPlay, forceTranscode, supportedMimeTypes, mediaPlayer);
+    final response = api.playLibraryItem(id, playLibraryItemRequest);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling LibraryItemApi->playLibraryItem: $e\n');
@@ -95,11 +91,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**| The ID of the library item. | 
- **deviceInfo** | [**DeviceInfo**](.md)| The device information to send to the server. | [optional] 
- **forceDirectPlay** | **bool**| Whether to force direct play of the library item. | [optional] 
- **forceTranscode** | **bool**| Whether to force transcoding of the library item. | [optional] 
- **supportedMimeTypes** | [**BuiltList&lt;String&gt;**](String.md)| The supported mime types for the device. | [optional] 
- **mediaPlayer** | **String**| The media player to use. | [optional] 
+ **playLibraryItemRequest** | [**PlayLibraryItemRequest**](PlayLibraryItemRequest.md)|  | 
 
 ### Return type
 
@@ -111,13 +103,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **playLibraryItemPodcastEpisode**
-> PlaybackSessionExpanded playLibraryItemPodcastEpisode(id, episodeId, deviceInfo, forceDirectPlay, forceTranscode, supportedMimeTypes, mediaPlayer)
+> PlaybackSessionExpanded playLibraryItemPodcastEpisode(id, episodeId, playLibraryItemRequest)
 
 Play a podcast episode
 
@@ -130,14 +122,10 @@ import 'package:abs_api/api.dart';
 final api = AbsApi().getLibraryItemApi();
 final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | The ID of the library item.
 final String episodeId = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | The ID of the episode to play.
-final DeviceInfo deviceInfo = ; // DeviceInfo | The device information to send to the server.
-final bool forceDirectPlay = false; // bool | Whether to force direct play of the library item.
-final bool forceTranscode = false; // bool | Whether to force transcoding of the library item.
-final BuiltList<String> supportedMimeTypes = ; // BuiltList<String> | The supported mime types for the device.
-final String mediaPlayer = mediaPlayer_example; // String | The media player to use.
+final PlayLibraryItemRequest playLibraryItemRequest = ; // PlayLibraryItemRequest | 
 
 try {
-    final response = api.playLibraryItemPodcastEpisode(id, episodeId, deviceInfo, forceDirectPlay, forceTranscode, supportedMimeTypes, mediaPlayer);
+    final response = api.playLibraryItemPodcastEpisode(id, episodeId, playLibraryItemRequest);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling LibraryItemApi->playLibraryItemPodcastEpisode: $e\n');
@@ -150,11 +138,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**| The ID of the library item. | 
  **episodeId** | **String**| The ID of the episode to play. | 
- **deviceInfo** | [**DeviceInfo**](.md)| The device information to send to the server. | [optional] 
- **forceDirectPlay** | **bool**| Whether to force direct play of the library item. | [optional] 
- **forceTranscode** | **bool**| Whether to force transcoding of the library item. | [optional] 
- **supportedMimeTypes** | [**BuiltList&lt;String&gt;**](String.md)| The supported mime types for the device. | [optional] 
- **mediaPlayer** | **String**| The media player to use. | [optional] 
+ **playLibraryItemRequest** | [**PlayLibraryItemRequest**](PlayLibraryItemRequest.md)|  | 
 
 ### Return type
 
@@ -166,7 +150,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

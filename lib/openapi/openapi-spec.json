@@ -2387,23 +2387,32 @@
         "tags": [
           "LibraryItem"
         ],
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/deviceInfo"
-          },
-          {
-            "$ref": "#/components/parameters/forceDirectPlay"
-          },
-          {
-            "$ref": "#/components/parameters/forceTranscode"
-          },
-          {
-            "$ref": "#/components/parameters/supportedMimeTypes"
-          },
-          {
-            "$ref": "#/components/parameters/mediaPlayer"
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "deviceInfo": {
+                    "$ref": "#/components/schemas/deviceInfo"
+                  },
+                  "forceDirectPlay": {
+                    "$ref": "#/components/schemas/forceDirectPlay"
+                  },
+                  "forceTranscode": {
+                    "$ref": "#/components/schemas/forceTranscode"
+                  },
+                  "supportedMimeTypes": {
+                    "$ref": "#/components/schemas/supportedMimeTypes"
+                  },
+                  "mediaPlayer": {
+                    "$ref": "#/components/schemas/mediaPlayer"
+                  }
+                }
+              }
+            }
           }
-        ],
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -2449,23 +2458,32 @@
         "tags": [
           "LibraryItem"
         ],
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/deviceInfo"
-          },
-          {
-            "$ref": "#/components/parameters/forceDirectPlay"
-          },
-          {
-            "$ref": "#/components/parameters/forceTranscode"
-          },
-          {
-            "$ref": "#/components/parameters/supportedMimeTypes"
-          },
-          {
-            "$ref": "#/components/parameters/mediaPlayer"
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "deviceInfo": {
+                    "$ref": "#/components/schemas/deviceInfo"
+                  },
+                  "forceDirectPlay": {
+                    "$ref": "#/components/schemas/forceDirectPlay"
+                  },
+                  "forceTranscode": {
+                    "$ref": "#/components/schemas/forceTranscode"
+                  },
+                  "supportedMimeTypes": {
+                    "$ref": "#/components/schemas/supportedMimeTypes"
+                  },
+                  "mediaPlayer": {
+                    "$ref": "#/components/schemas/mediaPlayer"
+                  }
+                }
+              }
+            }
           }
-        ],
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -2603,35 +2621,31 @@
             "schema": {
               "$ref": "#/components/schemas/playbackSessionId"
             }
-          },
-          {
-            "name": "currentTime",
-            "in": "query",
-            "description": "The current time of the session.",
-            "required": true,
-            "schema": {
-              "$ref": "#/components/schemas/durationSec"
-            }
-          },
-          {
-            "name": "timeListened",
-            "in": "query",
-            "description": "The time listened to the session.",
-            "required": true,
-            "schema": {
-              "$ref": "#/components/schemas/durationSec"
-            }
-          },
-          {
-            "name": "duration",
-            "in": "query",
-            "description": "The duration of the session.",
-            "required": true,
-            "schema": {
-              "$ref": "#/components/schemas/durationSec"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "id": {
+                    "$ref": "#/components/schemas/playbackSessionId"
+                  },
+                  "currentTime": {
+                    "$ref": "#/components/schemas/durationSec"
+                  },
+                  "timeListened": {
+                    "$ref": "#/components/schemas/durationSec"
+                  },
+                  "duration": {
+                    "$ref": "#/components/schemas/durationSec"
+                  }
+                }
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -3061,6 +3075,96 @@
                       }
                     }
                   }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/session/local": {
+      "post": {
+        "operationId": "createLocalSession",
+        "summary": "Create a local session.",
+        "description": "Create a local session.",
+        "tags": [
+          "Session"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/playbackSession"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "html/text": {
+                "schema": {
+                  "type": "string",
+                  "example": "OK"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "There was an error creating the session.",
+            "content": {
+              "html/text": {
+                "schema": {
+                  "type": "string",
+                  "example": "Internal Server Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/session/local-all": {
+      "post": {
+        "operationId": "createLocalSessionAll",
+        "summary": "Create a local session for all users.",
+        "description": "Create a local session for all users.",
+        "tags": [
+          "Session"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/playbackSession"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "html/text": {
+                "schema": {
+                  "type": "string",
+                  "example": "OK"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "There was an error creating the session.",
+            "content": {
+              "html/text": {
+                "schema": {
+                  "type": "string",
+                  "example": "Internal Server Error"
                 }
               }
             }
@@ -5392,6 +5496,27 @@
           }
         }
       },
+      "forceDirectPlay": {
+        "description": "Whether to force direct play of the library item.",
+        "type": "boolean",
+        "example": false
+      },
+      "forceTranscode": {
+        "description": "Whether to force transcoding of the library item.",
+        "type": "boolean",
+        "example": false
+      },
+      "supportedMimeTypes": {
+        "description": "The supported mime types for the device.",
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "mediaPlayer": {
+        "description": "The media player to use.",
+        "type": "string"
+      },
       "playbackSessionId": {
         "description": "The playback session identifier.",
         "type": "string",
@@ -5832,51 +5957,6 @@
         "description": "If requesting progress for a podcast, the episode ID to get progress for.",
         "schema": {
           "$ref": "#/components/schemas/podcastId"
-        }
-      },
-      "deviceInfo": {
-        "in": "query",
-        "name": "deviceInfo",
-        "description": "The device information to send to the server.",
-        "schema": {
-          "$ref": "#/components/schemas/deviceInfo"
-        }
-      },
-      "forceDirectPlay": {
-        "in": "query",
-        "name": "forceDirectPlay",
-        "description": "Whether to force direct play of the library item.",
-        "schema": {
-          "type": "boolean",
-          "example": false
-        }
-      },
-      "forceTranscode": {
-        "in": "query",
-        "name": "forceTranscode",
-        "description": "Whether to force transcoding of the library item.",
-        "schema": {
-          "type": "boolean",
-          "example": false
-        }
-      },
-      "supportedMimeTypes": {
-        "in": "query",
-        "name": "supportedMimeTypes",
-        "description": "The supported mime types for the device.",
-        "schema": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      },
-      "mediaPlayer": {
-        "in": "query",
-        "name": "mediaPlayer",
-        "description": "The media player to use.",
-        "schema": {
-          "type": "string"
         }
       }
     }

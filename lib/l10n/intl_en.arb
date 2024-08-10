@@ -174,7 +174,7 @@
   "totalTimeListened": "Total time listened",
   "daysListened": "Days listened",
   "consecutiveDays": "Consecutive days",
-  "dateFormatSecond": "{count, plural, one {# second} other {{count} seconds}}",
+  "dateFormatSecond": "{count, plural, one {{count}  second} other {{count} seconds}}",
   "@dateFormatSecond": {
     "placeholders": {
       "count": {
@@ -182,7 +182,7 @@
       }
     }
   },
-  "dateFormatMinute": "{count, plural, one {# minute} other {{count} minutes}}",
+  "dateFormatMinute": "{count, plural, one {{count} minute} other {{count} minutes}}",
   "@dateFormatMinute": {
     "placeholders": {
       "count": {
@@ -190,7 +190,18 @@
       }
     }
   },
-  "dateFormatHour": "{count, plural, one {# hour} other {{count} hours}}",
+  "dateFormatMinuteSecond": "{minutes, plural, one {{minutes} minute} other {{minutes} minutes}} {seconds, plural, one {{seconds} second} other {{seconds} seconds}}",
+  "@dateFormatMinuteSecond": {
+      "placeholders": {
+      "minutes": {
+          "type": "int"
+      },
+      "seconds": {
+          "type": "int"
+      }
+      }
+  },
+  "dateFormatHour": "{count, plural, one {{count} hour} other {{count} hours}}",
   "@dateFormatHour": {
     "placeholders": {
       "count": {
@@ -209,7 +220,21 @@
       }
     }
   },
-  "dateFormatDay": "{count, plural, one {# day} other {{count} days}}",
+  "dateFormatHourMinuteSecond": "{hours, plural, one {{hours} hour} other {{hours} hours}} {minutes, plural, one {{minutes} minute} other {{minutes} minutes}} {seconds, plural, one {{seconds} second} other {{seconds} seconds}}",
+    "@dateFormatHourMinuteSecond": {
+        "placeholders": {
+        "hours": {
+            "type": "int"
+        },
+        "minutes": {
+            "type": "int"
+        },
+        "seconds": {
+            "type": "int"
+        }
+        }
+    },
+  "dateFormatDay": "{count, plural, one {{count}  day} other {{count} days}}",
   "@dateFormatDay": {
     "placeholders": {
       "count": {
@@ -242,5 +267,55 @@
       }
     }
   },
-  "today": "Today"
+  "dateFormatDayHourMinuteSecond": "{days, plural, one {{days} day} other {{days} days}} {hours, plural, one {{hours} hour} other {{hours} hours}} {minutes, plural, one {{minutes} minute} other {{minutes} minutes}} {seconds, plural, one {{seconds} second} other {{seconds} seconds}}",
+  "@dateFormatDayHourMinuteSecond": {
+        "placeholders": {
+        "days": {
+            "type": "int"
+        },
+        "hours": {
+            "type": "int"
+        },
+        "minutes": {
+            "type": "int"
+        },
+        "seconds": {
+            "type": "int"
+        }
+      }
+  },
+  "today": "Today",
+  "downloadsOnlyViaWifi": "Downloads only via WiFi",
+  "noDownloads": "No downloads",
+  "downloadComplete": "Download complete",
+  "waitingForDownload": "Waiting for download to start",
+  "ok": "OK",
+  "enableNotificationsDownload": "Please enable notifications to receive download progress updates and be able to download files in the background.",
+  "notificationHeading": "Notifications should be enabled",
+  "errorDownloading": "Error downloading",
+  "downloading": "Downloading",
+  "downloadingBody": "Downloading '{'displayName'}'",
+  "downloadCompleteBody": "Download of '{'displayName'}' complete",
+  "errorDownloadingBody": "An error occurred while downloading '{'displayName'}'",
+  "downloads": "Downloads",
+  "noInternetDescription": "We are having trouble connecting to the server.",
+  "pleaseCheckInternet": "Please check your internet connection and try again.",
+  "tryAgain": "Try Again",
+  "openDownloads": "Open Downloads",
+  "syncInterval": "Sync Interval (seconds)",
+  "restartRequired": "Restart Required",
+  "restartRequiredDescription": "Please restart the app to apply the changes.",
+  "syncIntervalDescription": "Specifies how often the app should sync with the server. Please restart the app for the changes to take effect.",
+  "syncOnlyViaWifi": "Sync only via WiFi",
+  "close": "Close",
+  "editQueue": "Edit Queue",
+  "unknownTitle": "Unknown Title",
+  "playHistory": "Play History",
+  "play": "Play",
+  "pause": "Pause",
+  "stop": "Stop",
+  "sync": "Sync",
+  "unknown": "Unknown",
+  "seek": "Seek",
+  "shakeResetTimer": "Shake to reset sleep timer"
 }

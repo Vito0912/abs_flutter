@@ -1,17 +1,13 @@
 import 'package:abs_flutter/features/player/modules/play_button.dart';
 import 'package:abs_flutter/features/player/modules/progress_bar.dart';
-import 'package:abs_flutter/models/user.dart';
 import 'package:abs_flutter/provider/chapter_provider.dart';
-import 'package:abs_flutter/provider/library_item_provider.dart';
 import 'package:abs_flutter/provider/player_provider.dart';
 import 'package:abs_flutter/provider/player_status_provider.dart';
-import 'package:abs_flutter/provider/session_provider.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
-import 'package:cached_network_image/cached_network_image.dart';
+import 'package:abs_flutter/widgets/album_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_settings_screens/flutter_settings_screens.dart';
 import 'package:go_router/go_router.dart';
 
 import 'modules/seeking_buttons.dart';
@@ -46,90 +42,92 @@ class PlayerMinified extends ConsumerWidget {
       child: Material(
         child: Container(
           color: Theme.of(context).colorScheme.surfaceContainer,
-          padding: const EdgeInsets.only(bottom: 8.0, left: 8.0, right: 8.0, top: 4),
+          padding:
+              const EdgeInsets.only(bottom: 8.0, left: 8.0, right: 8.0, top: 4),
           child: Column(
             children: [
-              if(player.audioService.mediaItem.value != null) Row(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Flexible(
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        CachedNetworkImage(
-                          imageUrl: player.audioService.mediaItem.value!.artUri!.toString(),
-                          imageBuilder: (context, imageProvider) => Container(
-                            width: 40.0,
-                            height: 40.0,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.rectangle,
-                              borderRadius: BorderRadius.circular(8.0),
-                              image: DecorationImage(
-                                  image: imageProvider, fit: BoxFit.cover),
+              if (player.audioService.mediaItem.value != null)
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Flexible(
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          AlbumImage(
+                            player.audioService.mediaItem.value!
+                                .extras!['libraryItemId'],
+                            size: 40,
+                          ),
+                          const SizedBox(
+                            width: 8.0,
+                          ),
+                          Flexible(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                PlatformText(
+                                  player.audioService.mediaItem.value!.title +
+                                      (currentChapter != null
+                                          ? ' - ${currentChapter.title}'
+                                          : ''),
+                                  style: Theme.of(context).textTheme.labelSmall,
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 1,
+                                ),
+                                PlatformText(
+                                  player.audioService.mediaItem.value!.artist!,
+                                  style: Theme.of(context).textTheme.labelSmall,
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 1,
+                                ),
+                              ],
                             ),
-                          ),
-                          placeholder: (context, url) =>
-                              PlatformCircularProgressIndicator(),
-                          errorWidget: (context, url, error) =>
-                              const Icon(Icons.error),
+                          )
+                        ],
+                      ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.max,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        SeekingButtons(
+                          positionStream: positionStream,
+                          player: player,
+                          isForward: false,
                         ),
-                        const SizedBox(
-                          width: 8.0,
+                        PlayButton(playerStatusProvider: playerStatusProvider),
+                        SeekingButtons(
+                          positionStream: positionStream,
+                          player: player,
+                          isForward: true,
                         ),
-                        Flexible(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              PlatformText(
-                                player.audioService.mediaItem.value!.title + (currentChapter != null ? ' - ${currentChapter.title}' : ''),
-                                style: Theme.of(context).textTheme.labelSmall,
-                                overflow: TextOverflow.ellipsis,
-                                maxLines: 1,
-                              ),
-                              PlatformText(
-                                player.audioService.mediaItem.value!.artist!,
-                                style: Theme.of(context).textTheme.labelSmall,
-                                overflow: TextOverflow.ellipsis,
-                                maxLines: 1,
-                              ),
-                            ],
-                          ),
-                        )
                       ],
                     ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    mainAxisSize: MainAxisSize.max,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      SeekingButtons(positionStream: positionStream, player: player,
-                        isForward: false,),
-                      PlayButton(playerStatusProvider: playerStatusProvider),
-                      SeekingButtons(positionStream: positionStream, player: player,
-                        isForward: true,),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      IconButton(onPressed: () {
-                        context.push('/settings');
-                      }, icon: const Icon(Icons.more_vert)),
-                    ],
-                  ),
-                ],
-              ),
+                    Row(
+                      children: [
+                        IconButton(
+                            onPressed: () {
+                              context.push('/settings');
+                            },
+                            icon: const Icon(Icons.more_vert)),
+                      ],
+                    ),
+                  ],
+                ),
               ProgressBar(
-                  positionStream: positionStream,
-                  durationStream: durationStream,
-                  player: player,
-                  showPerChapter: user?.setting?.settings['progressAsChapters'] ?? false,
-                  currentChapter: currentChapter,
-                  bufferStream: bufferStream,
+                positionStream: positionStream,
+                durationStream: durationStream,
+                player: player,
+                showPerChapter:
+                    user?.setting?.settings['progressAsChapters'] ?? false,
+                currentChapter: currentChapter,
+                bufferStream: bufferStream,
               )
             ],
           ),

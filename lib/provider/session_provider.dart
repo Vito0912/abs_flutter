@@ -3,6 +3,9 @@ import 'dart:developer';
 
 import 'package:abs_api/abs_api.dart';
 import 'package:abs_flutter/globals.dart';
+import 'package:abs_flutter/provider/connection_provider.dart';
+import 'package:abs_flutter/provider/download_provider.dart';
+import 'package:abs_flutter/provider/library_item_provider.dart';
 import 'package:abs_flutter/provider/player_provider.dart';
 import 'package:abs_flutter/provider/player_status_provider.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
@@ -30,32 +33,45 @@ class PlaybackSessionNotifier
       return;
     }
 
+    final downloads = ref.read(downloadListProvider.notifier);
+    final download = downloads.getDownload(id);
+    final connection = ref.read(connectionProvider);
+
+    _session = null;
+
+    if(connection) {
+
+
     try {
       playerStatus.setLoading(id);
       CancelToken cancelToken = CancelToken();
       playerStatus.setCancelToken(cancelToken);
 
-
       //TODO: Currently always using hls
       DeviceInfoBuilder deviceInfoBuilder = DeviceInfoBuilder();
       deviceInfoBuilder.clientName = appName;
       deviceInfoBuilder.clientVersion = version;
+      deviceInfoBuilder.deviceId = currentUser?.hashCode.toString();
+
+      PlayLibraryItemRequestBuilder requestBuilder = PlayLibraryItemRequestBuilder()
+      ..mediaPlayer = 'abs_flutter w/ just_audio'
+      ..deviceInfo = deviceInfoBuilder
+      ..supportedMimeTypes = ListBuilder<String>([
+        'audio/flac',
+        'audio/mpeg',
+        'audio/mp4',
+        'audio/ogg',
+        'audio/aac'
+            'audio/webm',
+      ])
+      ..forceDirectPlay = false
+      ..forceTranscode = false;
+      ;
 
       final response = await api.getLibraryItemApi().playLibraryItem(
             id: id,
             cancelToken: cancelToken,
-            mediaPlayer: 'html5',
-            deviceInfo: deviceInfoBuilder.build(),
-            supportedMimeTypes: BuiltList<String>([
-              'audio/flac',
-              'audio/mpeg',
-              'audio/mp4',
-              'audio/ogg',
-              'audio/aac'
-                  'audio/webm',
-            ]),
-            forceDirectPlay: false,
-            forceTranscode: false,
+            playLibraryItemRequest: requestBuilder.build(),
           );
       _session = response;
 
@@ -69,11 +85,21 @@ class PlaybackSessionNotifier
         return;
       }
 
+      final streamUrl =
+          '${currentUser?.server!.url}${playback.audioTracks![0].contentUrl!}?token=${currentUser?.token!}';
+
+      String? path;
+      if (download != null) {
+        path = download.filePath;
+      } else {
+        path = streamUrl;
+      }
+
       MediaItem mediaItem = MediaItem(
-          id:
-              '${currentUser?.server!.url}${playback.audioTracks![0].contentUrl!}?token=${currentUser?.token!}',
+          id: path!,
           album: playback.mediaMetadata?.series?.toList().join(', '),
           title: playback.displayTitle!,
+          displaySubtitle: playback.mediaMetadata!.subtitle!,
           artist: playback.displayAuthor!,
           duration:
               Duration(seconds: playback.audioTracks![0].duration!.round()),
@@ -82,6 +108,7 @@ class PlaybackSessionNotifier
           extras: {
             'libraryItemId': id,
             'sessionId': playback.id,
+            'streaming': download == null,
             'chapters': playback.chapters
                 ?.map((e) => {
                       'title': e?.title,
@@ -91,7 +118,7 @@ class PlaybackSessionNotifier
                 .toList(),
           });
 
-      log('Adding to queue: ${mediaItem.title} from ${currentUser?.server!.url}${playback.audioTracks![0].contentUrl!}?token=${currentUser?.token!}');
+      log('Adding to queue: ${mediaItem.title} from ${currentUser.server!.url}${playback.audioTracks![0].contentUrl!}?token=${currentUser.token!}');
 
       await player.playMediaItem(mediaItem);
 
@@ -129,6 +156,41 @@ class PlaybackSessionNotifier
       } else {
         state = AsyncValue.error(e, StackTrace.empty);
       }
+    }
+
+    } else {
+      // Offline playback
+      final item = ref.read(itemProvider(id));
+      if(item.value == null || download == null) {
+        log('Could not create session for offline playback');
+        state = const AsyncValue.error('Item is not available', StackTrace.empty);
+        return;
+      }
+
+      MediaItem mediaItem = MediaItem(
+          id: download.filePath!,
+          album: item.value?.media?.metadata?.series?.toList().join(', '),
+          title: download.displayName,
+          displaySubtitle: item.value?.media?.metadata?.subtitle,
+          artist: item.value?.media?.metadata?.authors?.toList().join(','),
+          artUri: Uri.parse(
+              '${currentUser!.server!.url}/api/items/$id/cover?token=${currentUser.token}'),
+          duration:
+          Duration(seconds: item.value!.media!.audioFiles![0].duration!.round()),
+          extras: {
+            'libraryItemId': id,
+            'streaming': false,
+            'chapters': item.value!.media!.chapters
+                ?.map((e) => {
+              'title': e?.title,
+              'start': e?.start,
+              'end': e?.end,
+            })
+                .toList(),
+          });
+
+      await player.playMediaItem(mediaItem);
+
     }
   }
 

@@ -121,6 +121,8 @@ Class | Method | HTTP request | Description
 [*SeriesApi*](doc/SeriesApi.md) | [**getSeries**](doc/SeriesApi.md#getseries) | **GET** /api/series/{id} | Get series
 [*SeriesApi*](doc/SeriesApi.md) | [**updateSeries**](doc/SeriesApi.md#updateseries) | **PATCH** /api/series/{id} | Update series
 [*SessionApi*](doc/SessionApi.md) | [**closeSession**](doc/SessionApi.md#closesession) | **POST** /api/session/{id}/close | Close a listening session.
+[*SessionApi*](doc/SessionApi.md) | [**createLocalSession**](doc/SessionApi.md#createlocalsession) | **POST** /api/session/local | Create a local session.
+[*SessionApi*](doc/SessionApi.md) | [**createLocalSessionAll**](doc/SessionApi.md#createlocalsessionall) | **POST** /api/session/local-all | Create a local session for all users.
 [*SessionApi*](doc/SessionApi.md) | [**deleteSession**](doc/SessionApi.md#deletesession) | **DELETE** /api/sessions/{id} | Delets a listening session.
 [*SessionApi*](doc/SessionApi.md) | [**getSession**](doc/SessionApi.md#getsession) | **GET** /api/session/{id} | Get a listening session.
 [*SessionApi*](doc/SessionApi.md) | [**getSessions**](doc/SessionApi.md#getsessions) | **GET** /api/sessions | Get all listening sessions.
@@ -200,6 +202,7 @@ Class | Method | HTTP request | Description
  - [NotificationSettings](doc/NotificationSettings.md)
  - [NotificationType](doc/NotificationType.md)
  - [Permissions](doc/Permissions.md)
+ - [PlayLibraryItemRequest](doc/PlayLibraryItemRequest.md)
  - [PlaybackSession](doc/PlaybackSession.md)
  - [PlaybackSessionBase](doc/PlaybackSessionBase.md)
  - [PlaybackSessionBook](doc/PlaybackSessionBook.md)
@@ -218,6 +221,7 @@ Class | Method | HTTP request | Description
  - [SeriesSequence](doc/SeriesSequence.md)
  - [SeriesWithProgressAndRSS](doc/SeriesWithProgressAndRSS.md)
  - [SeriesWithProgressAndRSSOneOf](doc/SeriesWithProgressAndRSSOneOf.md)
+ - [SyncOpenSessionRequest](doc/SyncOpenSessionRequest.md)
  - [UpdateAuthorById200Response](doc/UpdateAuthorById200Response.md)
  - [UpdateAuthorByIdRequest](doc/UpdateAuthorByIdRequest.md)
  - [UpdateEReaderDevicesRequest](doc/UpdateEReaderDevicesRequest.md)

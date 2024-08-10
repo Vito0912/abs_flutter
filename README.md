@@ -24,18 +24,19 @@ A big thank you to [Weblate](https://weblate.org) for providing their services!
 
 ## Platform Matrix
 
-| Platform Matrix                        | Android |       iOS       | Windows | Linux |       Web       |
-|----------------------------------------|:-------:|:---------------:|:-------:|:-----:|:---------------:|
-| Playing Audio                          |    ✅    |        ✅        |    ✅    |   ✅   |        ✅        |
-| Playing Podcasts*<sup>5</sup>          |    ❌    |        ❌        |    ❌    |   ❌   |        ❌        |
-| Reading eBooks*<sup>5</sup>            |    ❌    |        ❌        |    ❌    |   ❌   |        ❌        |
-| Up-to-date Sync                        |    ✅    |        ✅        |    ✅    |   ✅   |        ✅        |
-| Advanced Player Controls*<sup>1</sup>  |    ✅    |        ✅        |    ✅    |   ✅   |        ✅        |
-| Car Support*<sup>2</sup>               |    ✅    |        ✅        |    ✅    |   ✅   |        ✅        |
-| No Extra Setup Needed                  |    ✅    | ❌*<sup>6</sup>  |    ✅    |   ✅   | ❌*<sup>3</sup>  |
-| Media Notifications                    |    ✅    |        ✅        |    ❌    |   ✅   |        ❌        |
-| Caching*<sup>4</sup>                   |    ✅    |        ✅        |    ✅    |   ✅   |        ✅        |
-| Socket Support*<sup>5</sup>            |    ❌    |        ❌        |    ❌    |   ❌   |        ❌        |
+| Platform Matrix                        | Android |       iOS       | Windows | Linux |      Web       |
+|----------------------------------------|:-------:|:---------------:|:-------:|:-----:|:--------------:|
+| Playing Audio                          |    ✅    |        ✅        |    ✅    |   ✅   |       ✅        |
+| Playing Podcasts*<sup>5</sup>          |    ❌    |        ❌        |    ❌    |   ❌   |       ❌        |
+| Reading eBooks*<sup>5</sup>            |    ❌    |        ❌        |    ❌    |   ❌   |       ❌        |
+| Up-to-date Sync                        |    ✅    |        ✅        |    ✅    |   ✅   |       ✅        |
+| Advanced Player Controls*<sup>1</sup>  |    ✅    |        ✅        |    ✅    |   ✅   |       ✅        |
+| Car Support*<sup>2</sup>               |    ✅    |        ✅        |    ✅    |   ✅   |       ✅        |
+| No Extra Setup Needed                  |    ✅    | ❌*<sup>6</sup>  |    ✅    |   ✅   | ❌*<sup>3</sup> |
+| Media Notifications                    |    ✅    |        ✅        |    ❌    |   ✅   |       ❌        |
+| Caching*<sup>4</sup>                   |    ✅    |        ✅        |    ✅    |   ✅   |       ✅        |
+| Offline Support                        |    ✅    |        ✅        |    ✅    |   ✅   | ❌*<sup>5</sup> |
+| Socket Support*<sup>5</sup>            |    ❌    |        ❌        |    ❌    |   ❌   |       ❌        |
 
 > *<sup>1</sup> Chapter support, sleep timer, playback speed, custom skip time, and more\
 > *<sup>2</sup> Android Auto and Apple CarPlay are not supported as standalone apps, but media controls are supported\
@@ -52,7 +53,10 @@ A big thank you to [Weblate](https://weblate.org) for providing their services!
 🚀 **Caching** - Caches images for faster loading times.\
 🚀 **Pagination** - Load more items when you reach the end of lists to save data.\
 📈 **Does Not Rely on a Socket** - Use the app even with an occasionally interrupted connection.\
-📅 **Up-to-date Sync** - The app stays synchronized with the server when connected to the internet.
+📅 **Up-to-date Sync** - The app stays synchronized with the server when connected to the internet.\
+🔁 **Queue Support** - Add multiple items to the queue and play them in order. Even works offline.\
+🔊 **Advanced Player Controls** - Skip chapters, set a sleep timer, adjust playback speed, and more.\
+📴 **Offline Support** - Listen to your audiobooks even when you're offline. Sync offline up to one year
 
 ### Additional to First-party App
 
@@ -60,7 +64,8 @@ A big thank you to [Weblate](https://weblate.org) for providing their services!
 > If no specific platform is mentioned, the feature is available on all platforms.
 
 🚀 **Fast Account Switching**\
-📅 **Up-to-date Sync**
+📅 **Up-to-date Sync**\
+🔁 **Queue Support**
 
 ### Missing from First-party App
 
@@ -85,6 +90,10 @@ A big thank you to [Weblate](https://weblate.org) for providing their services!
 | [iridium_reader_widget](https://github.com/Mantano/iridium_reader_widget)   | -            | [Mantano](https://github.com/Mantano)                                      | [GitHub](https://github.com/Mantano/iridium_reader_widget)   |
 | [iridium](https://github.com/Mantano/iridium)                               | -            | [Mantano](https://github.com/Mantano)                                      | [GitHub](https://github.com/Mantano/iridium)                 |
 
+> Thanks to everybody contributing to [Audiobookshelf](https://github.com/advplyr/audiobookshelf) to make this software so awesome.
+> Thanks to everybody who contributed to [Audiobookshelf-App](https://github.com/advplyr/audiobookshelf-app) to make this software so awesome.
+> Many features of this app are based on the first-party app.
+
 ### Known Bugs
 
 #### Sleep Timer
@@ -94,3 +103,8 @@ A big thank you to [Weblate](https://weblate.org) for providing their services!
 #### Sign-in
 
 - When logging in for the first time, the library may not load. Please restart the app to resolve this issue.
+
+#### Windows seeking
+
+- When seeking big jumps on Windows, the audio sometimes just continues playing without seeking, despite the progressbar moving.
+    - See [Issue](https://github.com/bdlukaa/just_audio_windows/issues/19). On next release of just_audio_windows this should be fixed.

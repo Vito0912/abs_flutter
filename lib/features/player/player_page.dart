@@ -1,5 +1,6 @@
 import 'package:abs_flutter/features/player/modules/chapter_buttons.dart';
 import 'package:abs_flutter/features/player/modules/play_button.dart';
+import 'package:abs_flutter/features/player/modules/queue_button.dart';
 import 'package:abs_flutter/features/player/modules/seeking_buttons.dart';
 import 'package:abs_flutter/features/player/modules/sleep_timer.dart';
 import 'package:abs_flutter/features/player/modules/speed_control.dart';
@@ -7,7 +8,9 @@ import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/provider/chapter_provider.dart';
 import 'package:abs_flutter/provider/player_provider.dart';
 import 'package:abs_flutter/provider/player_status_provider.dart';
+import 'package:abs_flutter/provider/queue_provider.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
+import 'package:abs_flutter/widgets/album_image.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
@@ -21,7 +24,7 @@ class PlayerPage extends ConsumerWidget {
   const PlayerPage({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context1, WidgetRef ref) {
     final playerStatus = ref.watch(playStatusProvider);
     final player = ref.watch(playerProvider);
     final user = ref.watch(currentUserProvider);
@@ -31,10 +34,14 @@ class PlayerPage extends ConsumerWidget {
     final durationStream = player.audioService.player.durationStream;
     final speedStream = player.audioService.player.speedStream;
     final bufferStream = player.audioService.player.bufferedPositionStream;
+    final libraryItemId =
+        player.audioService.mediaItem.value?.extras?['libraryItemId'];
+
+    const double size = 32.0;
 
     return PlatformScaffold(
       appBar: PlatformAppBar(
-        title: Text(S.of(context).player),
+        title: Text(S.of(context1).player),
       ),
       body: LayoutBuilder(
         builder: (context, constraints) {
@@ -59,21 +66,8 @@ class PlayerPage extends ConsumerWidget {
                             borderRadius: BorderRadius.circular(100),
                             color: Colors.grey[300],
                           ),
-                          child: CachedNetworkImage(
-                            imageUrl: player
-                                    .audioService.mediaItem.value?.artUri
-                                    .toString() ??
-                                '',
-                            placeholder: (context, url) => Shimmer.fromColors(
-                              baseColor: Colors.grey[300]!,
-                              highlightColor: Colors.grey[100]!,
-                              child: Container(
-                                color: Colors.grey[300],
-                              ),
-                            ),
-                            errorWidget: (context, url, error) =>
-                                Icon(Icons.error),
-                          ),
+                          child: AlbumImage(player.audioService.mediaItem.value!
+                              .extras!['libraryItemId']),
                         ),
                         SizedBox(height: 16),
                         SingleChildScrollView(
@@ -119,25 +113,30 @@ class PlayerPage extends ConsumerWidget {
                                     ChapterButtons(
                                       positionStream: positionStream,
                                       player: player,
+                                      size: size,
                                       isForward: false,
                                       currentChapter: currentChapter,
                                     ),
                                   SeekingButtons(
                                     positionStream: positionStream,
                                     player: player,
+                                    size: size,
                                     isForward: false,
                                   ),
                                   PlayButton(
+                                      size: size,
                                       playerStatusProvider: playerStatus),
                                   SeekingButtons(
                                     positionStream: positionStream,
                                     player: player,
+                                    size: size,
                                     isForward: true,
                                   ),
                                   if (currentChapter != null)
                                     ChapterButtons(
                                       positionStream: positionStream,
                                       player: player,
+                                      size: size,
                                       isForward: true,
                                       currentChapter: currentChapter,
                                     ),
@@ -152,21 +151,39 @@ class PlayerPage extends ConsumerWidget {
                                     false,
                                 currentChapter: currentChapter,
                                 bufferStream: bufferStream,
+                                size: size,
                               ),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   SpeedControl(
                                     player: player,
+                                    size: size,
                                     speedStream: speedStream,
                                   ),
                                   SleepTimer(
                                     player: player,
+                                    size: size,
                                     currentChapter: currentChapter,
                                   ),
+                                  const QueueButton(size: size),
+                                  if (libraryItemId != null)
+                                    PlatformIconButton(
+                                      icon: const Icon(
+                                          size: size, Icons.note_alt_outlined),
+                                      onPressed: () {
+                                        print('history/$libraryItemId');
+                                        context.push('/history/$libraryItemId');
+                                      },
+                                    ),
                                   PlatformIconButton(
-                                    icon: Icon(Icons.close),
+                                    icon: const Icon(size: size, Icons.close),
                                     onPressed: () {
+                                      final queue = ref.read(queueProvider);
+                                      queue.clear();
+                                      ref
+                                          .read(queueProvider.notifier)
+                                          .update((state) => [...queue]);
                                       playerStatus.setPlayStatus(
                                           PlayerStatus.stopped, "Close player");
                                       context.pop();

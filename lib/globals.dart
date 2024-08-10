@@ -1,5 +1,6 @@
 // globals.dart
 
+import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -26,4 +27,8 @@ final Map<String, dynamic> defaultSettings = {
   'fastForwardSeconds': 10,
   'rewindSeconds': 10,
   'progressAsChapters': false,
+  'downloadsOnlyViaWifi': true,
+  'syncInterval': 10,
+  'syncOnlyViaWifi': false,
+  'shakeResetTimer': false
 };

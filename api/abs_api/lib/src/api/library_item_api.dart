@@ -8,10 +8,9 @@ import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
 import 'package:abs_api/src/api_util.dart';
-import 'package:abs_api/src/model/device_info.dart';
 import 'package:abs_api/src/model/get_library_item200_response.dart';
+import 'package:abs_api/src/model/play_library_item_request.dart';
 import 'package:abs_api/src/model/playback_session_expanded.dart';
-import 'package:built_collection/built_collection.dart';
 
 class LibraryItemApi {
   final Dio _dio;
@@ -129,11 +128,7 @@ class LibraryItemApi {
   ///
   /// Parameters:
   /// * [id] - The ID of the library item.
-  /// * [deviceInfo] - The device information to send to the server.
-  /// * [forceDirectPlay] - Whether to force direct play of the library item.
-  /// * [forceTranscode] - Whether to force transcoding of the library item.
-  /// * [supportedMimeTypes] - The supported mime types for the device.
-  /// * [mediaPlayer] - The media player to use.
+  /// * [playLibraryItemRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -145,11 +140,7 @@ class LibraryItemApi {
   /// Throws [DioException] if API call or serialization fails
   Future<Response<PlaybackSessionExpanded>> playLibraryItem({
     required String id,
-    DeviceInfo? deviceInfo,
-    bool? forceDirectPlay,
-    bool? forceTranscode,
-    BuiltList<String>? supportedMimeTypes,
-    String? mediaPlayer,
+    required PlayLibraryItemRequest playLibraryItemRequest,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -176,35 +167,32 @@ class LibraryItemApi {
         ],
         ...?extra,
       },
+      contentType: 'application/json',
       validateStatus: validateStatus,
     );
 
-    final _queryParameters = <String, dynamic>{
-      if (deviceInfo != null)
-        r'deviceInfo': encodeQueryParameter(
-            _serializers, deviceInfo, const FullType(DeviceInfo)),
-      if (forceDirectPlay != null)
-        r'forceDirectPlay': encodeQueryParameter(
-            _serializers, forceDirectPlay, const FullType(bool)),
-      if (forceTranscode != null)
-        r'forceTranscode': encodeQueryParameter(
-            _serializers, forceTranscode, const FullType(bool)),
-      if (supportedMimeTypes != null)
-        r'supportedMimeTypes': encodeCollectionQueryParameter<String>(
-          _serializers,
-          supportedMimeTypes,
-          const FullType(BuiltList, [FullType(String)]),
-          format: ListFormat.multi,
+    dynamic _bodyData;
+
+    try {
+      const _type = FullType(PlayLibraryItemRequest);
+      _bodyData =
+          _serializers.serialize(playLibraryItemRequest, specifiedType: _type);
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _options.compose(
+          _dio.options,
+          _path,
         ),
-      if (mediaPlayer != null)
-        r'mediaPlayer': encodeQueryParameter(
-            _serializers, mediaPlayer, const FullType(String)),
-    };
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
 
     final _response = await _dio.request<Object>(
       _path,
+      data: _bodyData,
       options: _options,
-      queryParameters: _queryParameters,
       cancelToken: cancelToken,
       onSendProgress: onSendProgress,
       onReceiveProgress: onReceiveProgress,
@@ -248,11 +236,7 @@ class LibraryItemApi {
   /// Parameters:
   /// * [id] - The ID of the library item.
   /// * [episodeId] - The ID of the episode to play.
-  /// * [deviceInfo] - The device information to send to the server.
-  /// * [forceDirectPlay] - Whether to force direct play of the library item.
-  /// * [forceTranscode] - Whether to force transcoding of the library item.
-  /// * [supportedMimeTypes] - The supported mime types for the device.
-  /// * [mediaPlayer] - The media player to use.
+  /// * [playLibraryItemRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -265,11 +249,7 @@ class LibraryItemApi {
   Future<Response<PlaybackSessionExpanded>> playLibraryItemPodcastEpisode({
     required String id,
     required String episodeId,
-    DeviceInfo? deviceInfo,
-    bool? forceDirectPlay,
-    bool? forceTranscode,
-    BuiltList<String>? supportedMimeTypes,
-    String? mediaPlayer,
+    required PlayLibraryItemRequest playLibraryItemRequest,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -302,35 +282,32 @@ class LibraryItemApi {
         ],
         ...?extra,
       },
+      contentType: 'application/json',
       validateStatus: validateStatus,
     );
 
-    final _queryParameters = <String, dynamic>{
-      if (deviceInfo != null)
-        r'deviceInfo': encodeQueryParameter(
-            _serializers, deviceInfo, const FullType(DeviceInfo)),
-      if (forceDirectPlay != null)
-        r'forceDirectPlay': encodeQueryParameter(
-            _serializers, forceDirectPlay, const FullType(bool)),
-      if (forceTranscode != null)
-        r'forceTranscode': encodeQueryParameter(
-            _serializers, forceTranscode, const FullType(bool)),
-      if (supportedMimeTypes != null)
-        r'supportedMimeTypes': encodeCollectionQueryParameter<String>(
-          _serializers,
-          supportedMimeTypes,
-          const FullType(BuiltList, [FullType(String)]),
-          format: ListFormat.multi,
+    dynamic _bodyData;
+
+    try {
+      const _type = FullType(PlayLibraryItemRequest);
+      _bodyData =
+          _serializers.serialize(playLibraryItemRequest, specifiedType: _type);
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _options.compose(
+          _dio.options,
+          _path,
         ),
-      if (mediaPlayer != null)
-        r'mediaPlayer': encodeQueryParameter(
-            _serializers, mediaPlayer, const FullType(String)),
-    };
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
 
     final _response = await _dio.request<Object>(
       _path,
+      data: _bodyData,
       options: _options,
-      queryParameters: _queryParameters,
       cancelToken: cancelToken,
       onSendProgress: onSendProgress,
       onReceiveProgress: onReceiveProgress,

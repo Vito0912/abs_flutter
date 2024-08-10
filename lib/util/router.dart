@@ -1,13 +1,14 @@
 // GoRouter configuration
 import 'package:abs_flutter/features/auth/server_selection.dart';
+import 'package:abs_flutter/features/download/download_library.dart';
+import 'package:abs_flutter/features/download/download_page.dart';
 import 'package:abs_flutter/features/home/home.dart';
 import 'package:abs_flutter/features/library/item/item_view.dart';
+import 'package:abs_flutter/features/player/play_history_page.dart';
 import 'package:abs_flutter/features/player/player_page.dart';
 import 'package:abs_flutter/features/player/player_wrapper.dart';
 import 'package:abs_flutter/features/settings/setting_wrapper.dart';
 import 'package:abs_flutter/features/stats/stats_wrapper.dart';
-import 'package:abs_flutter/provider/user_provider.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 final router = GoRouter(
@@ -17,8 +18,7 @@ final router = GoRouter(
         path: '/player',
         builder: (context, state) {
           return const PlayerPage();
-        }
-    ),
+        }),
     ShellRoute(
         builder: (context, state, child) {
           return PlayerWrapper(child: child);
@@ -30,7 +30,9 @@ final router = GoRouter(
           ),
           GoRoute(
             path: '/init',
-            builder: (context, state) => const ServerSelection(initAttempted: true,),
+            builder: (context, state) => const ServerSelection(
+              initAttempted: true,
+            ),
           ),
           GoRoute(
             path: '/stats',
@@ -43,7 +45,6 @@ final router = GoRouter(
                 GoRoute(
                     path: 'view/:mediaType/:itemId',
                     builder: (context, viewState) {
-                      // mediaType must be either book or podcast
                       assert(viewState.pathParameters['mediaType'] == 'book' ||
                           viewState.pathParameters['mediaType'] == 'podcast');
                       return ItemView(
@@ -53,7 +54,31 @@ final router = GoRouter(
                 GoRoute(
                     path: 'settings',
                     builder: (context, state) => const SettingsWrapper()),
+                GoRoute(
+                    path: 'downloads',
+                    builder: (context, state) => const DownloadPage()),
+                GoRoute(
+                    path: 'downloads/:libraryId',
+                    builder: (context, state) => DownloadLibrary(
+                          libraryId: state.pathParameters['libraryId'],
+                        )),
+                GoRoute(
+                    path: 'downloads/:libraryId/:libraryName',
+                    builder: (context, state) => DownloadLibrary(
+                          libraryId: state.pathParameters['libraryId'],
+                          libraryName: state.pathParameters['libraryName'],
+                        )),
               ]),
+          GoRoute(
+              path: '/history/:itemId',
+              builder: (context, state) {
+                if(state.pathParameters['itemId'] == null) {
+                  context.go('/');
+                }
+                return PlayHistoryPage(
+                  itemId: state.pathParameters['itemId']!,
+                );
+              }),
         ]),
   ],
 );

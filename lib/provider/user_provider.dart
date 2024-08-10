@@ -4,11 +4,13 @@ import 'dart:developer';
 import 'package:abs_flutter/globals.dart';
 import 'package:abs_flutter/models/setting.dart';
 import 'package:abs_flutter/models/user.dart';
+import 'package:abs_flutter/provider/connection_provider.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:abs_api/abs_api.dart' as abs_api;
+import 'package:abs_api/src/auth/bearer_auth.dart';
 import 'package:go_router/go_router.dart';
-
 
 // StateNotifier to manage the users list and selected user
 class UserNotifier extends StateNotifier<List<User>> {
@@ -46,7 +48,7 @@ class UserNotifier extends StateNotifier<List<User>> {
   void _updateState(List<User> newState) {
     state = newState;
     for (var user in state) {
-      if(user.setting == null) {
+      if (user.setting == null) {
         user.setting ??= Setting();
         for (var setting in defaultSettings.keys) {
           user.setting!.settings[setting] = defaultSettings[setting];
@@ -57,7 +59,8 @@ class UserNotifier extends StateNotifier<List<User>> {
   }
 }
 
-final usersProvider = StateNotifierProvider<UserNotifier, List<User>>((ref) => UserNotifier());
+final usersProvider =
+    StateNotifierProvider<UserNotifier, List<User>>((ref) => UserNotifier());
 
 // StateNotifier to manage the selected user index and save it to SharedPreferences
 class SelectedUserNotifier extends StateNotifier<int> {
@@ -74,7 +77,8 @@ class SelectedUserNotifier extends StateNotifier<int> {
   }
 }
 
-final selectedUserProvider = StateNotifierProvider<SelectedUserNotifier, int>((ref) => SelectedUserNotifier());
+final selectedUserProvider = StateNotifierProvider<SelectedUserNotifier, int>(
+    (ref) => SelectedUserNotifier());
 
 class CurrentUserNotifier extends StateNotifier<User?> {
   final Ref _ref;
@@ -129,23 +133,26 @@ class CurrentUserNotifier extends StateNotifier<User?> {
       );
 
       state = updatedUser;
-      _ref.read(usersProvider.notifier).updateUserAtIndex(selectedUserIndex, updatedUser);
+      _ref
+          .read(usersProvider.notifier)
+          .updateUserAtIndex(selectedUserIndex, updatedUser);
     }
   }
 
   void removeUser(BuildContext context) {
     final allUsers = _ref.read(usersProvider.notifier);
     allUsers.removeUser(state!);
-    _ref.read(selectedUserProvider.notifier).state = (allUsers.state.length - 1) > 0 ? 0 : -1;
+    _ref.read(selectedUserProvider.notifier).state =
+        (allUsers.state.length - 1) > 0 ? 0 : -1;
     state = null;
     context.go("/");
   }
 }
 
-final currentUserProvider = StateNotifierProvider<CurrentUserNotifier, User?>((ref) {
+final currentUserProvider =
+    StateNotifierProvider<CurrentUserNotifier, User?>((ref) {
   return CurrentUserNotifier(ref);
 });
-
 
 // StateProvider to hold the overridden base path
 final basePathOverrideProvider = StateProvider<String?>((ref) => null);
@@ -161,10 +168,41 @@ final apiProvider = Provider<abs_api.AbsApi?>((ref) {
     return abs_api.AbsApi(basePathOverride: basePathOverride);
   }
 
+  List<Interceptor> interceptors = [
+    abs_api.OAuthInterceptor(),
+    abs_api.BasicAuthInterceptor(),
+    BearerAuthInterceptor(),
+    abs_api.ApiKeyAuthInterceptor(),
+  ];
+  interceptors.add(InterceptorsWrapper(
+    onError: (DioException error, ErrorInterceptorHandler handler) {
+      if (error.type == DioExceptionType.connectionTimeout ||
+          error.type == DioExceptionType.sendTimeout ||
+          error.type == DioExceptionType.receiveTimeout ||
+          error.type == DioExceptionType.connectionTimeout) {
+        ref.read(connectionProvider.notifier).setServerState(false);
+      }
+      return handler.next(error);
+    },
+    onResponse: (Response response, ResponseInterceptorHandler handler) {
+      if (response.statusCode != null &&
+          response.statusCode! >= 200 &&
+          response.statusCode! < 300) {
+        ref.read(connectionProvider.notifier).setServerState(true);
+      }
+      return handler.next(response);
+    },
+    onRequest: (RequestOptions options, RequestInterceptorHandler handler) {
+      log('Request: ${options.uri.toString()}');
+      return handler.next(options);
+    },
+  ));
+
   // Otherwise, use the user's server URL
   if (selectedUserIndex >= 0 && selectedUserIndex < users.length) {
-
-    abs_api.AbsApi api = abs_api.AbsApi(basePathOverride: users[selectedUserIndex].server?.url);
+    abs_api.AbsApi api = abs_api.AbsApi(
+        interceptors: interceptors,
+        basePathOverride: users[selectedUserIndex].server?.url);
 
     final token = users[selectedUserIndex].token;
 
@@ -188,3 +226,8 @@ void setBasePathOverride(WidgetRef ref, String? newBasePath) {
 void resetBasePathOverride(WidgetRef ref) {
   ref.read(basePathOverrideProvider.notifier).state = null;
 }
+
+final settingsProvider = Provider<Map<String, dynamic>>((ref) {
+  final user = ref.watch(currentUserProvider);
+  return user?.setting?.settings ?? defaultSettings;
+});

@@ -10,12 +10,14 @@ class ChapterButtons extends StatelessWidget {
   final PlayerProvider player;
   final bool isForward;
   final Chapter currentChapter;
+  final double? size;
+  final bool? lock;
   const ChapterButtons(
       {super.key,
       required this.positionStream,
       required this.player,
       required this.isForward,
-      required this.currentChapter});
+      required this.currentChapter, this.size, this.lock});
 
   @override
   Widget build(BuildContext context) {
@@ -25,10 +27,11 @@ class ChapterButtons extends StatelessWidget {
           if (!position.hasData) {
             return const SizedBox.shrink();
           }
+          //TODO: Implement lock
           return PlatformIconButton(
               icon: isForward
-                  ? const Icon(Icons.skip_next_outlined)
-                  : const Icon(Icons.skip_previous_outlined),
+                  ? Icon(size: size, Icons.skip_next_outlined)
+                  : Icon(size: size,Icons.skip_previous_outlined),
               onPressed: () {
                 player.audioService.seek(Duration(
                   seconds: isForward

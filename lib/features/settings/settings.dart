@@ -1,3 +1,4 @@
+import 'package:abs_flutter/features/settings/components/show_restart_info.dart';
 import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/globals.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
@@ -57,7 +58,7 @@ class SettingPage extends ConsumerWidget {
                       max: 180,
                       step: 15,
                       defaultValue: 0,
-                      eagerUpdate: true,
+                      eagerUpdate: false,
                     ),
                   ),
                   Tooltip(
@@ -72,6 +73,22 @@ class SettingPage extends ConsumerWidget {
                       defaultValue: false,
                       leading: Icon(Icons.folder_copy_outlined),
                     ),
+                  ),
+                    SwitchSettingsTile(
+                      settingKey: 'downloadsOnlyViaWifi',
+                      title: S.of(context).downloadsOnlyViaWifi,
+                      enabledLabel: S.of(context).enabled,
+                      disabledLabel: S.of(context).disabled,
+                      defaultValue: false,
+                      leading: Icon(PlatformIcons(context).wifi),
+                    ),
+                  SwitchSettingsTile(
+                    settingKey: 'syncOnlyViaWifi',
+                    title: S.of(context).syncOnlyViaWifi,
+                    enabledLabel: S.of(context).enabled,
+                    disabledLabel: S.of(context).disabled,
+                    defaultValue: false,
+                    leading: Icon(PlatformIcons(context).wifi),
                   )
                 ],
               ),
@@ -102,6 +119,14 @@ class SettingPage extends ConsumerWidget {
                         leading: Icon(PlatformIcons(context).time),
                       ),
                     ),
+                    SwitchSettingsTile(
+                      settingKey: 'shakeResetTimer',
+                      title: S.of(context).shakeResetTimer,
+                      enabledLabel: S.of(context).enabled,
+                      disabledLabel: S.of(context).disabled,
+                      defaultValue: false,
+                      leading: Icon(PlatformIcons(context).time),
+                    ),
                     Tooltip(
                       message: S.of(context).fastForwardSecondsDescription,
                       margin: const EdgeInsets.all(8),
@@ -114,7 +139,7 @@ class SettingPage extends ConsumerWidget {
                         max: 60,
                         step: 5,
                         defaultValue: 10,
-                        eagerUpdate: true,
+                        eagerUpdate: false,
                       ),
                     ),
                     Tooltip(
@@ -129,7 +154,25 @@ class SettingPage extends ConsumerWidget {
                         max: 60,
                         step: 5,
                         defaultValue: 10,
-                        eagerUpdate: true,
+                        eagerUpdate: false,
+                      ),
+                    ),
+                    Tooltip(
+                      message: S.of(context).syncIntervalDescription,
+                      margin: const EdgeInsets.all(8),
+                      verticalOffset: 48,
+                      child: SliderSettingsTile(
+                        settingKey: 'syncInterval',
+                        title: S.of(context).syncInterval,
+                        leading: Icon(PlatformIcons(context).cloudUpload),
+                        min: 10,
+                        max: 120,
+                        step: 10,
+                        defaultValue: 10,
+                        eagerUpdate: false,
+                        onChangeEnd: (value) {
+                          ShowRestartInfo.show(context);
+                        },
                       ),
                     ),
                   ]

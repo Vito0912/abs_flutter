@@ -5,7 +5,6 @@ import 'package:abs_flutter/provider/library_provider.dart';
 import 'package:abs_flutter/util/helper.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:shimmer/shimmer.dart';
@@ -17,9 +16,9 @@ class LibraryChip extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final librariesAsyncValue = ref.watch(librariesProvider);
     final selectedLibrary = ref.watch(selectedLibraryProvider);
-    final connectionState = ref.watch(connectionProvider.notifier);
+    final connectionState = ref.watch(connectionProvider);
 
-    if (connectionState.canReachServer()) {
+    if (!connectionState) {
       return Chip(
         label: Text(S.of(context).noConnection),
       );

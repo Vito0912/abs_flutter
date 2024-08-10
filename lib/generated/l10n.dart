@@ -790,11 +790,11 @@ class S {
     );
   }
 
-  /// `{count, plural, one {# second} other {{count} seconds}}`
+  /// `{count, plural, one {{count}  second} other {{count} seconds}}`
   String dateFormatSecond(int count) {
     return Intl.plural(
       count,
-      one: '# second',
+      one: '$count  second',
       other: '$count seconds',
       name: 'dateFormatSecond',
       desc: '',
@@ -802,11 +802,11 @@ class S {
     );
   }
 
-  /// `{count, plural, one {# minute} other {{count} minutes}}`
+  /// `{count, plural, one {{count} minute} other {{count} minutes}}`
   String dateFormatMinute(int count) {
     return Intl.plural(
       count,
-      one: '# minute',
+      one: '$count minute',
       other: '$count minutes',
       name: 'dateFormatMinute',
       desc: '',
@@ -814,11 +814,21 @@ class S {
     );
   }
 
-  /// `{count, plural, one {# hour} other {{count} hours}}`
+  /// `{minutes, plural, one {{minutes} minute} other {{minutes} minutes}} {seconds, plural, one {{seconds} second} other {{seconds} seconds}}`
+  String dateFormatMinuteSecond(int minutes, int seconds) {
+    return Intl.message(
+      '${Intl.plural(minutes, one: '$minutes minute', other: '$minutes minutes')} ${Intl.plural(seconds, one: '$seconds second', other: '$seconds seconds')}',
+      name: 'dateFormatMinuteSecond',
+      desc: '',
+      args: [minutes, seconds],
+    );
+  }
+
+  /// `{count, plural, one {{count} hour} other {{count} hours}}`
   String dateFormatHour(int count) {
     return Intl.plural(
       count,
-      one: '# hour',
+      one: '$count hour',
       other: '$count hours',
       name: 'dateFormatHour',
       desc: '',
@@ -836,11 +846,21 @@ class S {
     );
   }
 
-  /// `{count, plural, one {# day} other {{count} days}}`
+  /// `{hours, plural, one {{hours} hour} other {{hours} hours}} {minutes, plural, one {{minutes} minute} other {{minutes} minutes}} {seconds, plural, one {{seconds} second} other {{seconds} seconds}}`
+  String dateFormatHourMinuteSecond(int hours, int minutes, int seconds) {
+    return Intl.message(
+      '${Intl.plural(hours, one: '$hours hour', other: '$hours hours')} ${Intl.plural(minutes, one: '$minutes minute', other: '$minutes minutes')} ${Intl.plural(seconds, one: '$seconds second', other: '$seconds seconds')}',
+      name: 'dateFormatHourMinuteSecond',
+      desc: '',
+      args: [hours, minutes, seconds],
+    );
+  }
+
+  /// `{count, plural, one {{count}  day} other {{count} days}}`
   String dateFormatDay(int count) {
     return Intl.plural(
       count,
-      one: '# day',
+      one: '$count  day',
       other: '$count days',
       name: 'dateFormatDay',
       desc: '',
@@ -868,11 +888,352 @@ class S {
     );
   }
 
+  /// `{days, plural, one {{days} day} other {{days} days}} {hours, plural, one {{hours} hour} other {{hours} hours}} {minutes, plural, one {{minutes} minute} other {{minutes} minutes}} {seconds, plural, one {{seconds} second} other {{seconds} seconds}}`
+  String dateFormatDayHourMinuteSecond(
+      int days, int hours, int minutes, int seconds) {
+    return Intl.message(
+      '${Intl.plural(days, one: '$days day', other: '$days days')} ${Intl.plural(hours, one: '$hours hour', other: '$hours hours')} ${Intl.plural(minutes, one: '$minutes minute', other: '$minutes minutes')} ${Intl.plural(seconds, one: '$seconds second', other: '$seconds seconds')}',
+      name: 'dateFormatDayHourMinuteSecond',
+      desc: '',
+      args: [days, hours, minutes, seconds],
+    );
+  }
+
   /// `Today`
   String get today {
     return Intl.message(
       'Today',
       name: 'today',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Downloads only via WiFi`
+  String get downloadsOnlyViaWifi {
+    return Intl.message(
+      'Downloads only via WiFi',
+      name: 'downloadsOnlyViaWifi',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No downloads`
+  String get noDownloads {
+    return Intl.message(
+      'No downloads',
+      name: 'noDownloads',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Download complete`
+  String get downloadComplete {
+    return Intl.message(
+      'Download complete',
+      name: 'downloadComplete',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Waiting for download to start`
+  String get waitingForDownload {
+    return Intl.message(
+      'Waiting for download to start',
+      name: 'waitingForDownload',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `OK`
+  String get ok {
+    return Intl.message(
+      'OK',
+      name: 'ok',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enable notifications to receive download progress updates and be able to download files in the background.`
+  String get enableNotificationsDownload {
+    return Intl.message(
+      'Please enable notifications to receive download progress updates and be able to download files in the background.',
+      name: 'enableNotificationsDownload',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Notifications should be enabled`
+  String get notificationHeading {
+    return Intl.message(
+      'Notifications should be enabled',
+      name: 'notificationHeading',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Error downloading`
+  String get errorDownloading {
+    return Intl.message(
+      'Error downloading',
+      name: 'errorDownloading',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Downloading`
+  String get downloading {
+    return Intl.message(
+      'Downloading',
+      name: 'downloading',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Downloading '{'displayName'}'`
+  String get downloadingBody {
+    return Intl.message(
+      'Downloading \'{\'displayName\'}\'',
+      name: 'downloadingBody',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Download of '{'displayName'}' complete`
+  String get downloadCompleteBody {
+    return Intl.message(
+      'Download of \'{\'displayName\'}\' complete',
+      name: 'downloadCompleteBody',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `An error occurred while downloading '{'displayName'}'`
+  String get errorDownloadingBody {
+    return Intl.message(
+      'An error occurred while downloading \'{\'displayName\'}\'',
+      name: 'errorDownloadingBody',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Downloads`
+  String get downloads {
+    return Intl.message(
+      'Downloads',
+      name: 'downloads',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We are having trouble connecting to the server.`
+  String get noInternetDescription {
+    return Intl.message(
+      'We are having trouble connecting to the server.',
+      name: 'noInternetDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please check your internet connection and try again.`
+  String get pleaseCheckInternet {
+    return Intl.message(
+      'Please check your internet connection and try again.',
+      name: 'pleaseCheckInternet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Try Again`
+  String get tryAgain {
+    return Intl.message(
+      'Try Again',
+      name: 'tryAgain',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Open Downloads`
+  String get openDownloads {
+    return Intl.message(
+      'Open Downloads',
+      name: 'openDownloads',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sync Interval (seconds)`
+  String get syncInterval {
+    return Intl.message(
+      'Sync Interval (seconds)',
+      name: 'syncInterval',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Restart Required`
+  String get restartRequired {
+    return Intl.message(
+      'Restart Required',
+      name: 'restartRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please restart the app to apply the changes.`
+  String get restartRequiredDescription {
+    return Intl.message(
+      'Please restart the app to apply the changes.',
+      name: 'restartRequiredDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Specifies how often the app should sync with the server. Please restart the app for the changes to take effect.`
+  String get syncIntervalDescription {
+    return Intl.message(
+      'Specifies how often the app should sync with the server. Please restart the app for the changes to take effect.',
+      name: 'syncIntervalDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sync only via WiFi`
+  String get syncOnlyViaWifi {
+    return Intl.message(
+      'Sync only via WiFi',
+      name: 'syncOnlyViaWifi',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Close`
+  String get close {
+    return Intl.message(
+      'Close',
+      name: 'close',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit Queue`
+  String get editQueue {
+    return Intl.message(
+      'Edit Queue',
+      name: 'editQueue',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unknown Title`
+  String get unknownTitle {
+    return Intl.message(
+      'Unknown Title',
+      name: 'unknownTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Play History`
+  String get playHistory {
+    return Intl.message(
+      'Play History',
+      name: 'playHistory',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Play`
+  String get play {
+    return Intl.message(
+      'Play',
+      name: 'play',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pause`
+  String get pause {
+    return Intl.message(
+      'Pause',
+      name: 'pause',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Stop`
+  String get stop {
+    return Intl.message(
+      'Stop',
+      name: 'stop',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sync`
+  String get sync {
+    return Intl.message(
+      'Sync',
+      name: 'sync',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unknown`
+  String get unknown {
+    return Intl.message(
+      'Unknown',
+      name: 'unknown',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Seek`
+  String get seek {
+    return Intl.message(
+      'Seek',
+      name: 'seek',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Shake to reset sleep timer`
+  String get shakeResetTimer {
+    return Intl.message(
+      'Shake to reset sleep timer',
+      name: 'shakeResetTimer',
       desc: '',
       args: [],
     );
