@@ -14,7 +14,6 @@ class PlayerStatusProvider extends ChangeNotifier {
   late final PlayerProvider player;
   PlayerStatus _playStatus = PlayerStatus.stopped;
   String _itemId = '';
-  PlayerStatus _previousStatus = PlayerStatus.stopped;
   CancelToken? _cancelToken;
   Duration _currentPosition = Duration.zero;
   bool quite = false;
@@ -76,7 +75,6 @@ class PlayerStatusProvider extends ChangeNotifier {
 
   Future<void> setPlayStatus(PlayerStatus playStatus, String origin) async {
     log('setPlayStatus: $playStatus, origin: $origin');
-    _previousStatus = _playStatus;
     _playStatus = playStatus;
     notifyListeners();
   }
@@ -95,7 +93,6 @@ class PlayerStatusProvider extends ChangeNotifier {
   }
 
   void setPlayStatusAndItemId(PlayerStatus playStatus, String? itemId) {
-    _previousStatus = _playStatus;
     _playStatus = playStatus;
     _itemId = itemId ?? _itemId;
     notifyListeners();
@@ -134,7 +131,6 @@ class PlayerStatusProvider extends ChangeNotifier {
   }
 
   void setLoading(String itemId) {
-    _previousStatus = _playStatus;
     _playStatus = PlayerStatus.loading;
     _itemId = itemId;
     notifyListeners();

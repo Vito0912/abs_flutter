@@ -19,7 +19,6 @@ class UserNotifier extends StateNotifier<List<User>> {
   }
 
   _save(List<User> users) {
-    print('changed');
 
     secureStorage.write(key: 'users', value: jsonEncode(users));
   }

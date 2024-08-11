@@ -180,28 +180,27 @@ class FilterButton extends ConsumerWidget {
         break;
       case 'genres':
         data.genres?.forEach((genre) {
-          items[genre.toString()] = genre ?? '';
+          items[genre.toString()] = genre;
         });
         break;
       case 'tags':
         data.tags?.forEach((tag) {
-          items[tag.toString()] = tag ?? '';
+          items[tag.toString()] = tag;
         });
         break;
       case 'narrators':
         data.narrators?.forEach((narrator) {
-          items[narrator.toString()] = narrator ?? '';
+          items[narrator.toString()] = narrator;
         });
         break;
       case 'series':
         data.series?.forEach((series) {
-          items[series.id.toString()] =
-              '${series.name} (${series.numBooks})' ?? '';
+          items[series.id.toString()] = '${series.name} (${series.numBooks})';
         });
         break;
       case 'languages':
         data.languages?.forEach((language) {
-          items[language.toString()] = language ?? '';
+          items[language.toString()] = language;
         });
         break;
       case 'progress':

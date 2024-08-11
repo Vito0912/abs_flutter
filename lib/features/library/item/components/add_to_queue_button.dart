@@ -15,11 +15,13 @@ class AddQueueButton extends ConsumerWidget {
     final playerStatus = ref.watch(playStatusProvider);
     final queue = ref.watch(queueProvider);
 
-    if(playerStatus == PlayerStatus.playing) return const SizedBox.shrink();
+    if (playerStatus.playStatus == PlayerStatus.playing) {
+      return const SizedBox.shrink();
+    }
 
     return PlatformElevatedButton(
       onPressed: () {
-        if(queue.contains(item)) {
+        if (queue.contains(item)) {
           queue.remove(item);
         } else {
           queue.add(item);
@@ -27,7 +29,9 @@ class AddQueueButton extends ConsumerWidget {
 
         ref.read(queueProvider.notifier).update((state) => [...state]);
       },
-      child: queue.contains(item) ? Icon(PlatformIcons(context).remove) : Icon(PlatformIcons(context).add),
+      child: queue.contains(item)
+          ? Icon(PlatformIcons(context).remove)
+          : Icon(PlatformIcons(context).add),
     );
   }
 }

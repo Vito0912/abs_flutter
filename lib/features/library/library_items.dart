@@ -222,10 +222,6 @@ class _LibraryItemsState extends ConsumerState<LibraryItems> {
     );
   }
 
-  Widget _buildError(BuildContext context) {
-    return Center(child: Text(S.of(context).error));
-  }
-
   Widget _buildShimmerPlaceholder({bool withText = true}) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,

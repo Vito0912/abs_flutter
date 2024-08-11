@@ -52,7 +52,6 @@ class QueueButton extends ConsumerWidget {
 
   List<Widget> _buildQueueListItems(BuildContext context, List<LibraryItemBase> queue) {
     return queue.asMap().entries.map((entry) {
-      final index = entry.key;
       final item = entry.value;
       return PlatformListTile(
         key: ValueKey(item.id),

@@ -67,19 +67,21 @@ class DownloadButton extends ConsumerWidget {
       await Permission.notification.request();
     }
     if (await Permission.notification.isDenied) {
-      showDialog(
-          context: context,
-          builder: (context) => AlertDialog(
-                title: PlatformText(S.of(context).notificationHeading),
-                content:
-                    PlatformText(S.of(context).enableNotificationsDownload),
-                actions: [
-                  TextButton(
-                    onPressed: () => Navigator.of(context).pop(),
-                    child: PlatformText(S.of(context).ok),
-                  )
-                ],
-              ));
+      if(context.mounted) {
+        showDialog(
+            context: context,
+            builder: (context) => AlertDialog(
+              title: PlatformText(S.of(context).notificationHeading),
+              content:
+              PlatformText(S.of(context).enableNotificationsDownload),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.of(context).pop(),
+                  child: PlatformText(S.of(context).ok),
+                )
+              ],
+            ));
+      }
     }
 
     final downloader = ref.read(downloaderProvider);

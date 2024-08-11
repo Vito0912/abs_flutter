@@ -13,32 +13,19 @@ class UserSharedPreferences extends CacheProvider {
 
   UserSharedPreferences(this._container);
 
-
   @override
   bool containsKey(String key) {
     return true;
-    try {
-      User? user = _users?[_selectedUserIndex ?? 0];
-      if (user == null || user.setting == null) {
-        return false;
-      } else {
-        return user.setting!.settings.containsKey(key);
-      }
-    } catch (_) {
-      return false;
-    }
   }
 
   @override
   bool? getBool(String key, {bool? defaultValue}) {
-
     try {
       User? user = _users?[_selectedUserIndex ?? 0];
 
       if (user == null || user.setting == null) {
         return defaultValue;
       } else {
-
         return user.setting!.settings[key] as bool?;
       }
     } catch (_) {
@@ -77,7 +64,7 @@ class UserSharedPreferences extends CacheProvider {
   @override
   Set getKeys() {
     // Get all keys
-    try{
+    try {
       User? user = _users?[_selectedUserIndex ?? 0];
       if (user == null || user.setting == null) {
         return {};
@@ -233,16 +220,15 @@ class UserSharedPreferences extends CacheProvider {
   Future<void> setObject<T>(String key, T? value) async {
     try {
       // Get the current user notifier
-      CurrentUserNotifier currentUserNotifier = _container.read(
-          currentUserProvider.notifier);
-      print('Setting object');
+      CurrentUserNotifier currentUserNotifier =
+          _container.read(currentUserProvider.notifier);
+
       WidgetsBinding.instance.addPostFrameCallback((_) {
-        print('Setting object in post frame callback');
-        currentUserNotifier.updateUserSettings(key, value, index: _selectedUserIndex);
+        currentUserNotifier.updateUserSettings(key, value,
+            index: _selectedUserIndex);
       });
     } catch (e) {
       log(e.toString());
     }
   }
-
 }

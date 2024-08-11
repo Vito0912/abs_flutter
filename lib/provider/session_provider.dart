@@ -136,7 +136,7 @@ class PlaybackSessionNotifier
               return;
             }
             try {
-              log("Trying to delete session: " + sessionId);
+              log("Trying to delete session: $sessionId");
               await api.getSessionApi().closeSession(id: sessionId);
             } catch (e) {
               log(e.toString());

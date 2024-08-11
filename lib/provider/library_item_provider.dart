@@ -36,8 +36,7 @@ final itemProvider =
       return null;
     } catch (e) {
       if (e is DioException) {
-        print(e);
-        log(e.response!.data!.toString());
+        log(e.response!.data!.toString(), name: 'itemProvider');
         return null;
       }
 

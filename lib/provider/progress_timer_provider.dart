@@ -103,7 +103,7 @@ class TimerNotifier extends StateNotifier<DateTime?> {
               id: session.id!,
               syncOpenSessionRequest: syncSession.build(),
             )
-            .then((response) => print(response.data));
+            .then((response) => log(response.data.toString(), name: 'Sync'));
       } catch (e) {
         log(e.toString());
       }
@@ -177,13 +177,11 @@ class TimerNotifier extends StateNotifier<DateTime?> {
 
 final offlineProgressProviderHandler =
     StateNotifierProvider<OfflineProgressProvider, List<ProgressItem>>((ref) {
-  return OfflineProgressProvider(ref);
+  return OfflineProgressProvider();
 });
 
 class OfflineProgressProvider extends StateNotifier<List<ProgressItem>> {
-  final _ref;
-
-  OfflineProgressProvider(this._ref) : super([]) {
+  OfflineProgressProvider() : super([]) {
     _loadProgress();
     addListener((state) {
       _saveProgress();
@@ -201,7 +199,8 @@ class OfflineProgressProvider extends StateNotifier<List<ProgressItem>> {
   }
 
   _saveProgress() {
-    print(state.length);
+    log('Number of offline progress items: ${state.length}',
+        name: 'OfflineProgress');
     sp.setString('offlineProgress', jsonEncode(state));
   }
 

@@ -303,7 +303,7 @@ class LoginButton extends ConsumerWidget {
           Response<abs.Login200Response> res = await ref.watch(apiProvider)!.getAuthApi().login(loginRequest: loginPostRequestBuilder.build());
 
           if (res.data!.user == null) {
-            ref.read(loginStateProvider.notifier).setError(S.of(context).noUserData);
+            ref.read(loginStateProvider.notifier).setError(S.current.noUserData);
             return;
           }
 

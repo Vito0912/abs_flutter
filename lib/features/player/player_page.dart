@@ -22,7 +22,7 @@ class PlayerPage extends ConsumerWidget {
   const PlayerPage({super.key});
 
   @override
-  Widget build(BuildContext context1, WidgetRef ref) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final playerStatus = ref.watch(playStatusProvider);
     final player = ref.watch(playerProvider);
     final user = ref.watch(currentUserProvider);
@@ -39,7 +39,7 @@ class PlayerPage extends ConsumerWidget {
 
     return PlatformScaffold(
       appBar: PlatformAppBar(
-        title: Text(S.of(context1).player),
+        title: Text(S.of(context).player),
       ),
       body: LayoutBuilder(
         builder: (context, constraints) {
@@ -170,7 +170,6 @@ class PlayerPage extends ConsumerWidget {
                                       icon: const Icon(
                                           size: size, Icons.note_alt_outlined),
                                       onPressed: () {
-                                        print('history/$libraryItemId');
                                         context.push('/history/$libraryItemId');
                                       },
                                     ),

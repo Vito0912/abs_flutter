@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:abs_api/abs_api.dart';
 import 'package:abs_flutter/provider/library_provider.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
@@ -21,7 +23,7 @@ final filterProvider = FutureProvider<Response<LibraryFilterData>?>((ref) async 
     if(e is DioException) {
       return null;
     }
-    print('Exception when calling LibrariesApi->getLibraries: $e\n');
+   log('$e', name: 'filterProvider');
     return null;
   }
 });

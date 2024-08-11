@@ -80,8 +80,6 @@ class ProgressBar extends StatelessWidget {
                         return const SizedBox.shrink();
                       }
                     });
-
-                return const SizedBox.shrink();
               }),
         ),
         StreamBuilder(

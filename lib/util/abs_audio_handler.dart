@@ -130,8 +130,7 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
 
     if (progress != null && progress.progress! <= 0.95) {
       log('Seeking to ${progress.currentTime?.round()} due to progress');
-      await _player
-          .seek(Duration(seconds: progress.currentTime?.round() ?? 0));
+      await _player.seek(Duration(seconds: progress.currentTime?.round() ?? 0));
     }
   }
 
@@ -215,7 +214,8 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
   }
 
   @override
-  Future<void> skipToQueueItem(int i) => _player.seek(Duration.zero, index: i);
+  Future<void> skipToQueueItem(int index) =>
+      _player.seek(Duration.zero, index: index);
 
   Future<void> disposeAllPlayers() => _player.dispose();
 

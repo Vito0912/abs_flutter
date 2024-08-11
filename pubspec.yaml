@@ -3,7 +3,7 @@ description: "A ABS app"
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: 1.2.1
+version: 1.2.2
 
 environment:
   sdk: '>=3.4.3 <4.0.0'
@@ -47,6 +47,11 @@ dependencies:
   hooks_riverpod: ^2.5.1
   sensors_plus: ^6.0.1
   vibration: ^1.9.0
+
+  flutter_hooks: any
+  uuid: any
+  collection: any
+  built_collection: any
 
 dev_dependencies:
   flutter_test:

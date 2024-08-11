@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:abs_api/abs_api.dart';
 import 'package:abs_flutter/models/library_preview.dart';
 import 'package:abs_flutter/models/library_preview_item.dart';
@@ -26,9 +28,14 @@ class LibrariesNotifier extends StateNotifier<LibraryPreview?> {
   Response<GetLibraryItems200Response>? altResponse;
 
   int page = 0;
-  final double screenSize =
-      MediaQueryData.fromView(WidgetsBinding.instance.window).size.width *
-          MediaQueryData.fromView(WidgetsBinding.instance.window).size.height;
+  final double screenSize = MediaQueryData.fromView(
+              WidgetsBinding.instance.platformDispatcher.views.single)
+          .size
+          .width *
+      MediaQueryData.fromView(
+              WidgetsBinding.instance.platformDispatcher.views.single)
+          .size
+          .height;
 
   LibrariesNotifier(this.api, this.currentLibrary, this.sort) : super(null) {
     loadInitialData();
@@ -118,30 +125,30 @@ class LibrariesNotifier extends StateNotifier<LibraryPreview?> {
     SearchLibrary200Response libraryItem = item.data!;
 
     List<LibraryPreviewItem> previewItems = [];
-    if(libraryItem.book != null) {
+    if (libraryItem.book != null) {
       for (final item in libraryItem.book!) {
         LibraryPreviewItem previewItem = LibraryPreviewItem(
             id: item.libraryItem!.id!,
             title: item.libraryItem!.media!.metadata!.title!,
             subtitle: item.libraryItem!.media!.metadata!.subtitle ?? "",
             authors: item.libraryItem!.media!.metadata!.authors
-                ?.toList()
-                .map ((e) => e.name ?? "")
-                .toList() ?? []
-        );
+                    ?.toList()
+                    .map((e) => e.name ?? "")
+                    .toList() ??
+                []);
         previewItems.add(previewItem);
       }
-    } else if(libraryItem.podcast != null) {
+    } else if (libraryItem.podcast != null) {
       for (final item in libraryItem.podcast!) {
         LibraryPreviewItem previewItem = LibraryPreviewItem(
             id: item.libraryItem!.id!,
             title: item.libraryItem!.media!.metadata!.title!,
             subtitle: item.libraryItem!.media!.metadata!.subtitle ?? "",
             authors: item.libraryItem!.media!.metadata!.authors
-                ?.toList()
-                .map ((e) => e.name ?? "")
-                .toList() ?? []
-        );
+                    ?.toList()
+                    .map((e) => e.name ?? "")
+                    .toList() ??
+                []);
         previewItems.add(previewItem);
       }
     } else {
@@ -149,11 +156,10 @@ class LibrariesNotifier extends StateNotifier<LibraryPreview?> {
     }
 
     LibraryPreview preview = LibraryPreview(
-      items: previewItems,
-      total: libraryItem.book?.length ?? 0,
-      page: 0,
-      limit: 25
-    );
+        items: previewItems,
+        total: libraryItem.book?.length ?? 0,
+        page: 0,
+        limit: 25);
 
     return preview;
   }
@@ -167,7 +173,7 @@ class LibrariesNotifier extends StateNotifier<LibraryPreview?> {
       page += 1;
     }
 
-    print('Loading more data for page $page');
+    log('Loading more data for page $page', name: 'LibrariesNotifier');
 
     try {
       if (sort.search == null || sort.search!.isEmpty) {
@@ -186,9 +192,10 @@ class LibrariesNotifier extends StateNotifier<LibraryPreview?> {
       } else {}
     } catch (e) {
       if (e is DioException) {
-        print(e);
+        log(e.response?.data.toString() ?? '', name: 'LibrariesNotifier');
+        log(e.toString(), name: 'LibrariesNotifier');
       } else {
-        print('Exception when calling LibrariesApi->getLibraryItems: $e\n');
+        log(e.toString(), name: 'LibrariesNotifier');
       }
     }
   }

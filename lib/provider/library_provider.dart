@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:abs_api/abs_api.dart';
 import 'package:abs_flutter/globals.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
@@ -19,7 +21,7 @@ final librariesProvider = FutureProvider<Response<GetLibraries200Response>?>((re
     if(e is DioException) {
       return null;
     }
-    print('Exception when calling LibrariesApi->getLibraries: $e\n');
+    log('$e', name: 'librariesProvider');
     return null;
   }
 });

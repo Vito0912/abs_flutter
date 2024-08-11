@@ -32,8 +32,6 @@ class DownloadListNotifier extends StateNotifier<List<DownloadInfo>> {
           decodedJson.map((json) => DownloadInfo.fromJson(json)).toList();
       List<DownloadInfo> userDownload = [];
       for (var download in downloads) {
-        print(download);
-        print(userId);
         if (download.userId == userId) {
           userDownload.add(download);
         }

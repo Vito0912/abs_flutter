@@ -128,7 +128,7 @@ class _OwnStatsState extends ConsumerState<OwnStats> {
                                 const SizedBox(height: 16),
                                 _buildInfoRow(
                                     Icons.stacked_line_chart,
-                                    consecutiveDays.toString() ?? '0',
+                                    consecutiveDays.toString(),
                                     S.of(context).consecutiveDays,
                                     context),
                               ],
@@ -145,7 +145,7 @@ class _OwnStatsState extends ConsumerState<OwnStats> {
                                     context),
                                 _buildInfoRow(
                                     Icons.stacked_line_chart,
-                                    consecutiveDays.toString() ?? '0',
+                                    consecutiveDays.toString(),
                                     S.of(context).consecutiveDays,
                                     context),
                               ],
