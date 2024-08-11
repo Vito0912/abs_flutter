@@ -11,7 +11,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**closeSession**](SessionApi.md#closesession) | **POST** /api/session/{id}/close | Close a listening session.
 [**createLocalSession**](SessionApi.md#createlocalsession) | **POST** /api/session/local | Create a local session.
-[**createLocalSessionAll**](SessionApi.md#createlocalsessionall) | **POST** /api/session/local-all | Create a local session for all users.
+[**createLocalSessionAll**](SessionApi.md#createlocalsessionall) | **POST** /api/local/session/local-all | Create a local session for all users.
 [**deleteSession**](SessionApi.md#deletesession) | **DELETE** /api/sessions/{id} | Delets a listening session.
 [**getSession**](SessionApi.md#getsession) | **GET** /api/session/{id} | Get a listening session.
 [**getSessions**](SessionApi.md#getsessions) | **GET** /api/sessions | Get all listening sessions.

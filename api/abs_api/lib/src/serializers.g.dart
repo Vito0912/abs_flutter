@@ -63,6 +63,7 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(GetSeriesRequestIncludeEnum.serializer)
       ..add(GetSessions200Response.serializer)
       ..add(LibraryFile.serializer)
+      ..add(LibraryFilterData.serializer)
       ..add(LibraryItem.serializer)
       ..add(LibraryItemExpanded.serializer)
       ..add(LibraryItemMinified.serializer)
@@ -100,6 +101,7 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(SendEBookToDeviceRequest.serializer)
       ..add(Series.serializer)
       ..add(SeriesBooks.serializer)
+      ..add(SeriesNumBooks.serializer)
       ..add(SeriesProgress.serializer)
       ..add(SeriesSequence.serializer)
       ..add(SeriesWithProgressAndRSS.serializer)
@@ -141,6 +143,24 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(AuthorExpanded)]),
           () => new ListBuilder<AuthorExpanded>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(AuthorMinified)]),
+          () => new ListBuilder<AuthorMinified>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(SeriesNumBooks)]),
+          () => new ListBuilder<SeriesNumBooks>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType(EreaderDeviceObject)]),
@@ -256,6 +276,9 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(AuthorMinified)]),
           () => new ListBuilder<AuthorMinified>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
           () => new ListBuilder<String>())

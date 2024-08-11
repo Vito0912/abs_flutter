@@ -85,6 +85,7 @@ Class | Method | HTTP request | Description
 [*LibrariesApi*](doc/LibrariesApi.md) | [**getLibraries**](doc/LibrariesApi.md#getlibraries) | **GET** /api/libraries | Get all libraries on server
 [*LibrariesApi*](doc/LibrariesApi.md) | [**getLibraryAuthors**](doc/LibrariesApi.md#getlibraryauthors) | **GET** /api/libraries/{id}/authors | Get all authors in a library
 [*LibrariesApi*](doc/LibrariesApi.md) | [**getLibraryById**](doc/LibrariesApi.md#getlibrarybyid) | **GET** /api/libraries/{id} | Get a single library by ID on server
+[*LibrariesApi*](doc/LibrariesApi.md) | [**getLibraryFilterData**](doc/LibrariesApi.md#getlibraryfilterdata) | **GET** /api/libraries/{id}/filterdata | Get filter data for library
 [*LibrariesApi*](doc/LibrariesApi.md) | [**getLibraryItems**](doc/LibrariesApi.md#getlibraryitems) | **GET** /api/libraries/{id}/items | Get items in a library
 [*LibrariesApi*](doc/LibrariesApi.md) | [**getLibrarySeries**](doc/LibrariesApi.md#getlibraryseries) | **GET** /api/libraries/{id}/series | Get library series
 [*LibrariesApi*](doc/LibrariesApi.md) | [**getLibrarySeriesById**](doc/LibrariesApi.md#getlibraryseriesbyid) | **GET** /api/libraries/{id}/series/{seriesId} | Get single series in library
@@ -123,7 +124,7 @@ Class | Method | HTTP request | Description
 [*SeriesApi*](doc/SeriesApi.md) | [**updateSeries**](doc/SeriesApi.md#updateseries) | **PATCH** /api/series/{id} | Update series
 [*SessionApi*](doc/SessionApi.md) | [**closeSession**](doc/SessionApi.md#closesession) | **POST** /api/session/{id}/close | Close a listening session.
 [*SessionApi*](doc/SessionApi.md) | [**createLocalSession**](doc/SessionApi.md#createlocalsession) | **POST** /api/session/local | Create a local session.
-[*SessionApi*](doc/SessionApi.md) | [**createLocalSessionAll**](doc/SessionApi.md#createlocalsessionall) | **POST** /api/session/local-all | Create a local session for all users.
+[*SessionApi*](doc/SessionApi.md) | [**createLocalSessionAll**](doc/SessionApi.md#createlocalsessionall) | **POST** /api/local/session/local-all | Create a local session for all users.
 [*SessionApi*](doc/SessionApi.md) | [**deleteSession**](doc/SessionApi.md#deletesession) | **DELETE** /api/sessions/{id} | Delets a listening session.
 [*SessionApi*](doc/SessionApi.md) | [**getSession**](doc/SessionApi.md#getsession) | **GET** /api/session/{id} | Get a listening session.
 [*SessionApi*](doc/SessionApi.md) | [**getSessions**](doc/SessionApi.md#getsessions) | **GET** /api/sessions | Get all listening sessions.
@@ -182,6 +183,7 @@ Class | Method | HTTP request | Description
  - [GetSeriesRequest](doc/GetSeriesRequest.md)
  - [GetSessions200Response](doc/GetSessions200Response.md)
  - [LibraryFile](doc/LibraryFile.md)
+ - [LibraryFilterData](doc/LibraryFilterData.md)
  - [LibraryItem](doc/LibraryItem.md)
  - [LibraryItemBase](doc/LibraryItemBase.md)
  - [LibraryItemExpanded](doc/LibraryItemExpanded.md)
@@ -223,6 +225,7 @@ Class | Method | HTTP request | Description
  - [SendEBookToDeviceRequest](doc/SendEBookToDeviceRequest.md)
  - [Series](doc/Series.md)
  - [SeriesBooks](doc/SeriesBooks.md)
+ - [SeriesNumBooks](doc/SeriesNumBooks.md)
  - [SeriesProgress](doc/SeriesProgress.md)
  - [SeriesSequence](doc/SeriesSequence.md)
  - [SeriesWithProgressAndRSS](doc/SeriesWithProgressAndRSS.md)

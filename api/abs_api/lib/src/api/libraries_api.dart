@@ -13,6 +13,7 @@ import 'package:abs_api/src/model/get_libraries200_response.dart';
 import 'package:abs_api/src/model/get_library_authors200_response.dart';
 import 'package:abs_api/src/model/get_library_items200_response.dart';
 import 'package:abs_api/src/model/get_library_series200_response.dart';
+import 'package:abs_api/src/model/library_filter_data.dart';
 import 'package:abs_api/src/model/model_library.dart';
 import 'package:abs_api/src/model/search_library200_response.dart';
 import 'package:abs_api/src/model/series_with_progress_and_rss.dart';
@@ -557,6 +558,91 @@ class LibrariesApi {
     );
   }
 
+  /// Get filter data for library
+  /// Get filter data for library by ID on server.
+  ///
+  /// Parameters:
+  /// * [id] - The ID of the library.
+  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
+  /// * [headers] - Can be used to add additional headers to the request
+  /// * [extras] - Can be used to add flags to the request
+  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
+  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
+  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
+  ///
+  /// Returns a [Future] containing a [Response] with a [LibraryFilterData] as data
+  /// Throws [DioException] if API call or serialization fails
+  Future<Response<LibraryFilterData>> getLibraryFilterData({
+    required String id,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/api/libraries/{id}/filterdata'.replaceAll(
+        '{' r'id' '}',
+        encodeQueryParameter(_serializers, id, const FullType(String))
+            .toString());
+    final _options = Options(
+      method: r'GET',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'http',
+            'scheme': 'bearer',
+            'name': 'BearerAuth',
+          },
+        ],
+        ...?extra,
+      },
+      validateStatus: validateStatus,
+    );
+
+    final _response = await _dio.request<Object>(
+      _path,
+      options: _options,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    LibraryFilterData? _responseData;
+
+    try {
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(LibraryFilterData),
+            ) as LibraryFilterData;
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    return Response<LibraryFilterData>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
+
   /// Get items in a library
   /// Get items in a library by ID on server.
   ///
@@ -651,6 +737,8 @@ class LibrariesApi {
       onSendProgress: onSendProgress,
       onReceiveProgress: onReceiveProgress,
     );
+
+    print(_response.data);
 
     GetLibraryItems200Response? _responseData;
 

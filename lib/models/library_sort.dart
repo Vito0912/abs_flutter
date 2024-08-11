@@ -12,7 +12,8 @@ class LibrarySort with _$LibrarySort {
     @Default(0) int? page,
     @Default("media.metadata.title") String? sort,
     @Default(0) int? desc,
-    @Default("") String? filter,
+    @Default(null) String? filter,
+    @Default(null) String? filterKey,
     @Default("") String? search,
   }) = _LibrarySort;
 

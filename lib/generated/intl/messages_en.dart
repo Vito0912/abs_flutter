@@ -68,6 +68,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "attribution": MessageLookupByLibrary.simpleMessage("Attribution"),
         "author": MessageLookupByLibrary.simpleMessage("Author"),
         "authors": MessageLookupByLibrary.simpleMessage("Authors"),
+        "back": MessageLookupByLibrary.simpleMessage("Back"),
         "bookCover": MessageLookupByLibrary.simpleMessage("Book Cover"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "close": MessageLookupByLibrary.simpleMessage("Close"),
@@ -119,16 +120,21 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Fast Forward Seconds"),
         "fastForwardSecondsDescription": MessageLookupByLibrary.simpleMessage(
             "Set the number of seconds to skip forward when the fast forward button is pressed."),
+        "feedOpen": MessageLookupByLibrary.simpleMessage("Feed Open"),
+        "filter": MessageLookupByLibrary.simpleMessage("Filter"),
+        "finished": MessageLookupByLibrary.simpleMessage("Finished"),
         "general": MessageLookupByLibrary.simpleMessage("General"),
         "genres": MessageLookupByLibrary.simpleMessage("Genres"),
         "ifTheQuickAccountSwitcherShouldBeShown":
             MessageLookupByLibrary.simpleMessage(
                 "If the quick account switcher should be shown"),
+        "inProgress": MessageLookupByLibrary.simpleMessage("In Progress"),
         "itemLength": m10,
         "itemNumChapters": m11,
         "itemProgress": m12,
         "itemPublishedYear": m13,
         "language": MessageLookupByLibrary.simpleMessage("Language"),
+        "languages": MessageLookupByLibrary.simpleMessage("Languages"),
         "libraryStats": MessageLookupByLibrary.simpleMessage("Library Stats"),
         "loading": MessageLookupByLibrary.simpleMessage("Loading…"),
         "markItemsFinished":
@@ -140,6 +146,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "If you want to use multiple server addresses, you can add them later"),
         "mustEnterValidAddress": MessageLookupByLibrary.simpleMessage(
             "You must enter a valid server address"),
+        "narrators": MessageLookupByLibrary.simpleMessage("Narrators"),
         "noConnection": MessageLookupByLibrary.simpleMessage("No Connection"),
         "noDownloads": MessageLookupByLibrary.simpleMessage("No downloads"),
         "noInternetDescription": MessageLookupByLibrary.simpleMessage(
@@ -147,6 +154,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "noItemsFound": MessageLookupByLibrary.simpleMessage("No items found"),
         "noUserData": MessageLookupByLibrary.simpleMessage(
             "Login failed: No user data received"),
+        "notFinished": MessageLookupByLibrary.simpleMessage("Not Finished"),
+        "notStarted": MessageLookupByLibrary.simpleMessage("Not Started"),
         "notificationHeading": MessageLookupByLibrary.simpleMessage(
             "Notifications should be enabled"),
         "ok": MessageLookupByLibrary.simpleMessage("OK"),
@@ -163,6 +172,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "pleaseCheckInternet": MessageLookupByLibrary.simpleMessage(
             "Please check your internet connection and try again."),
         "port": MessageLookupByLibrary.simpleMessage("Port"),
+        "progress": MessageLookupByLibrary.simpleMessage("Progress"),
         "progressAsChaptersDescription": MessageLookupByLibrary.simpleMessage(
             "Enable this option to display progress in the player and notifications on a per-chapter basis. If disabled, progress will be shown based on the entire item."),
         "publisher": MessageLookupByLibrary.simpleMessage("Publisher"),
@@ -184,6 +194,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "shakeResetTimer":
             MessageLookupByLibrary.simpleMessage("Shake to reset sleep timer"),
+        "shareOpen": MessageLookupByLibrary.simpleMessage("Share Open"),
         "showAccountSwitcher":
             MessageLookupByLibrary.simpleMessage("Show Account Switcher"),
         "showAccountSwitcherDescription": MessageLookupByLibrary.simpleMessage(

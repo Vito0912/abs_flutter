@@ -49,14 +49,15 @@ A big thank you to [Weblate](https://weblate.org) for providing their services!
 
 ### Summary
 
-🚀 **Fast Account Switching** - Switch between multiple Audiobookshelf accounts with different servers in just two clicks.\
+🔀 **Fast Account Switching** - Switch between multiple Audiobookshelf accounts with different servers in just two clicks.\
 🚀 **Caching** - Caches images for faster loading times.\
-🚀 **Pagination** - Load more items when you reach the end of lists to save data.\
+📄 **Pagination** - Load more items when you reach the end of lists to save data.\
 📈 **Does Not Rely on a Socket** - Use the app even with an occasionally interrupted connection.\
 📅 **Up-to-date Sync** - The app stays synchronized with the server when connected to the internet.\
 🔁 **Queue Support** - Add multiple items to the queue and play them in order. Even works offline.\
 🔊 **Advanced Player Controls** - Skip chapters, set a sleep timer, adjust playback speed, and more.\
-📴 **Offline Support** - Listen to your audiobooks even when you're offline. Sync offline up to one year
+📴 **Offline Support** - Listen to your audiobooks even when you're offline. Sync offline up to one year\
+🔎 **Fast Search** - Search for audiobooks. Preserves query while switching library or user.\
 
 ### Additional to First-party App
 

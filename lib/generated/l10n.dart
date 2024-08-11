@@ -1248,6 +1248,116 @@ class S {
       args: [],
     );
   }
+
+  /// `Filter`
+  String get filter {
+    return Intl.message(
+      'Filter',
+      name: 'filter',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Narrators`
+  String get narrators {
+    return Intl.message(
+      'Narrators',
+      name: 'narrators',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Languages`
+  String get languages {
+    return Intl.message(
+      'Languages',
+      name: 'languages',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Back`
+  String get back {
+    return Intl.message(
+      'Back',
+      name: 'back',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Finished`
+  String get finished {
+    return Intl.message(
+      'Finished',
+      name: 'finished',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Not Started`
+  String get notStarted {
+    return Intl.message(
+      'Not Started',
+      name: 'notStarted',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Not Finished`
+  String get notFinished {
+    return Intl.message(
+      'Not Finished',
+      name: 'notFinished',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `In Progress`
+  String get inProgress {
+    return Intl.message(
+      'In Progress',
+      name: 'inProgress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Progress`
+  String get progress {
+    return Intl.message(
+      'Progress',
+      name: 'progress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Feed Open`
+  String get feedOpen {
+    return Intl.message(
+      'Feed Open',
+      name: 'feedOpen',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Share Open`
+  String get shareOpen {
+    return Intl.message(
+      'Share Open',
+      name: 'shareOpen',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

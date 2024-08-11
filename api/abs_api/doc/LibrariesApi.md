@@ -15,6 +15,7 @@ Method | HTTP request | Description
 [**getLibraries**](LibrariesApi.md#getlibraries) | **GET** /api/libraries | Get all libraries on server
 [**getLibraryAuthors**](LibrariesApi.md#getlibraryauthors) | **GET** /api/libraries/{id}/authors | Get all authors in a library
 [**getLibraryById**](LibrariesApi.md#getlibrarybyid) | **GET** /api/libraries/{id} | Get a single library by ID on server
+[**getLibraryFilterData**](LibrariesApi.md#getlibraryfilterdata) | **GET** /api/libraries/{id}/filterdata | Get filter data for library
 [**getLibraryItems**](LibrariesApi.md#getlibraryitems) | **GET** /api/libraries/{id}/items | Get items in a library
 [**getLibrarySeries**](LibrariesApi.md#getlibraryseries) | **GET** /api/libraries/{id}/series | Get library series
 [**getLibrarySeriesById**](LibrariesApi.md#getlibraryseriesbyid) | **GET** /api/libraries/{id}/series/{seriesId} | Get single series in library
@@ -268,6 +269,49 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ModelLibrary**](ModelLibrary.md)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, text/html
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getLibraryFilterData**
+> LibraryFilterData getLibraryFilterData(id)
+
+Get filter data for library
+
+Get filter data for library by ID on server.
+
+### Example
+```dart
+import 'package:abs_api/api.dart';
+
+final api = AbsApi().getLibrariesApi();
+final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | The ID of the library.
+
+try {
+    final response = api.getLibraryFilterData(id);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling LibrariesApi->getLibraryFilterData: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| The ID of the library. | 
+
+### Return type
+
+[**LibraryFilterData**](LibraryFilterData.md)
 
 ### Authorization
 

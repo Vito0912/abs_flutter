@@ -3126,7 +3126,7 @@
         }
       }
     },
-    "/api/session/local-all": {
+    "/api/local/session/local-all": {
       "post": {
         "operationId": "createLocalSessionAll",
         "summary": "Create a local session for all users.",
@@ -3258,6 +3258,42 @@
                 "schema": {
                   "type": "string",
                   "example": "Bad Request"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/library404"
+          }
+        }
+      }
+    },
+    "/api/libraries/{id}/filterdata": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "description": "The ID of the library.",
+          "required": true,
+          "schema": {
+            "$ref": "#/components/schemas/libraryId"
+          }
+        }
+      ],
+      "get": {
+        "operationId": "getLibraryFilterData",
+        "summary": "Get filter data for library",
+        "description": "Get filter data for library by ID on server.",
+        "tags": [
+          "Libraries"
+        ],
+        "responses": {
+          "200": {
+            "description": "getLibraryFilterData OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/libraryFilterData"
                 }
               }
             }
@@ -5970,6 +6006,70 @@
           "matchText": {
             "nullable": true,
             "type": "string"
+          }
+        }
+      },
+      "seriesNumBooks": {
+        "type": "object",
+        "description": "A series object which includes the name and number of books in the series.",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/seriesId"
+          },
+          "name": {
+            "$ref": "#/components/schemas/seriesName"
+          },
+          "numBooks": {
+            "description": "The number of books in the series.",
+            "type": "integer"
+          },
+          "libraryItemIds": {
+            "description": "The IDs of the library items in the series.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/libraryItemId"
+            }
+          }
+        }
+      },
+      "libraryFilterData": {
+        "type": "object",
+        "properties": {
+          "authors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/authorMinified"
+            }
+          },
+          "series": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/seriesNumBooks"
+            }
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "genres": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "narrators": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "languages": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           }
         }
       }

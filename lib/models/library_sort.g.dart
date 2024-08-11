@@ -12,7 +12,8 @@ _$LibrarySortImpl _$$LibrarySortImplFromJson(Map<String, dynamic> json) =>
       page: (json['page'] as num?)?.toInt() ?? 0,
       sort: json['sort'] as String? ?? "media.metadata.title",
       desc: (json['desc'] as num?)?.toInt() ?? 0,
-      filter: json['filter'] as String? ?? "",
+      filter: json['filter'] as String? ?? null,
+      filterKey: json['filterKey'] as String? ?? null,
       search: json['search'] as String? ?? "",
     );
 
@@ -23,5 +24,6 @@ Map<String, dynamic> _$$LibrarySortImplToJson(_$LibrarySortImpl instance) =>
       'sort': instance.sort,
       'desc': instance.desc,
       'filter': instance.filter,
+      'filterKey': instance.filterKey,
       'search': instance.search,
     };

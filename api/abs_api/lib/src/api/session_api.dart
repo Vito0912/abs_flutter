@@ -239,7 +239,7 @@ class SessionApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/session/local-all';
+    final _path = r'/api/local/session/local-all';
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{

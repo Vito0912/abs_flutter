@@ -55,6 +55,7 @@ doc/GetSeriesRequest.md
 doc/GetSessions200Response.md
 doc/LibrariesApi.md
 doc/LibraryFile.md
+doc/LibraryFilterData.md
 doc/LibraryItem.md
 doc/LibraryItemApi.md
 doc/LibraryItemBase.md
@@ -101,6 +102,7 @@ doc/SendEBookToDeviceRequest.md
 doc/Series.md
 doc/SeriesApi.md
 doc/SeriesBooks.md
+doc/SeriesNumBooks.md
 doc/SeriesProgress.md
 doc/SeriesSequence.md
 doc/SeriesWithProgressAndRSS.md
@@ -184,9 +186,9 @@ lib/src/model/get_podcast_feed_request.dart
 lib/src/model/get_series_request.dart
 lib/src/model/get_sessions200_response.dart
 lib/src/model/library_file.dart
+lib/src/model/library_filter_data.dart
 lib/src/model/library_item.dart
 lib/src/model/library_item_base.dart
-lib/src/model/library_item_expanded.dart
 lib/src/model/library_item_search_result.dart
 lib/src/model/library_item_sequence.dart
 lib/src/model/library_settings.dart
@@ -224,6 +226,7 @@ lib/src/model/search_library200_response.dart
 lib/src/model/send_e_book_to_device_request.dart
 lib/src/model/series.dart
 lib/src/model/series_books.dart
+lib/src/model/series_num_books.dart
 lib/src/model/series_progress.dart
 lib/src/model/series_sequence.dart
 lib/src/model/series_with_progress_and_rss.dart

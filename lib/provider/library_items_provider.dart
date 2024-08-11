@@ -4,6 +4,7 @@ import 'package:abs_flutter/models/library_preview_item.dart';
 import 'package:abs_flutter/models/library_sort.dart';
 import 'package:abs_flutter/provider/library_provider.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
+import 'package:abs_flutter/util/helper.dart';
 import 'package:built_collection/src/list.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -56,7 +57,7 @@ class LibrariesNotifier extends StateNotifier<LibraryPreview?> {
             page: page,
             desc: sort.desc,
             sort: sort.sort,
-            filter: sort.filter,
+            filter: Helper.sortString(sort.filterKey, sort.filter),
           );
       altResponse = response;
       state = _convertToLibraryPreview(response);

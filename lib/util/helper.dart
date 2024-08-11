@@ -16,6 +16,12 @@ class Helper {
     return urlEncoded;
   }
 
+  static String? sortString(String? key, String? value) {
+    if(key == null) return null;
+    if(value == null) return key;
+    return '$key.${base64UrlEncode(value)}';
+  }
+
   static Widget returnLibraryItem(String type) {
     switch (type) {
       case 'database':

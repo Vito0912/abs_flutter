@@ -318,5 +318,16 @@
   "unknown": "Unknown",
   "seek": "Seek",
   "shakeResetTimer": "Shake to reset sleep timer",
-  "noItemsFound": "No items found"
+  "noItemsFound": "No items found",
+  "filter": "Filter",
+  "narrators": "Narrators",
+  "languages": "Languages",
+  "back": "Back",
+  "finished": "Finished",
+  "notStarted": "Not Started",
+  "notFinished": "Not Finished",
+  "inProgress": "In Progress",
+  "progress": "Progress",
+  "feedOpen": "Feed Open",
+  "shareOpen": "Share Open"
 }

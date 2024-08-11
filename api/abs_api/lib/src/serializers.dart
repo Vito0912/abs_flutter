@@ -64,6 +64,7 @@ import 'package:abs_api/src/model/get_podcast_feed_request.dart';
 import 'package:abs_api/src/model/get_series_request.dart';
 import 'package:abs_api/src/model/get_sessions200_response.dart';
 import 'package:abs_api/src/model/library_file.dart';
+import 'package:abs_api/src/model/library_filter_data.dart';
 import 'package:abs_api/src/model/library_item.dart';
 import 'package:abs_api/src/model/library_item_base.dart';
 import 'package:abs_api/src/model/library_item_expanded.dart';
@@ -105,6 +106,7 @@ import 'package:abs_api/src/model/search_library200_response.dart';
 import 'package:abs_api/src/model/send_e_book_to_device_request.dart';
 import 'package:abs_api/src/model/series.dart';
 import 'package:abs_api/src/model/series_books.dart';
+import 'package:abs_api/src/model/series_num_books.dart';
 import 'package:abs_api/src/model/series_progress.dart';
 import 'package:abs_api/src/model/series_sequence.dart';
 import 'package:abs_api/src/model/series_with_progress_and_rss.dart';
@@ -174,6 +176,7 @@ part 'serializers.g.dart';
   GetSeriesRequest,
   GetSessions200Response,
   LibraryFile,
+  LibraryFilterData,
   LibraryItem,
   LibraryItemBase,
   $LibraryItemBase,
@@ -219,6 +222,7 @@ part 'serializers.g.dart';
   SendEBookToDeviceRequest,
   Series,
   SeriesBooks,
+  SeriesNumBooks,
   SeriesProgress,
   SeriesSequence,
   SeriesWithProgressAndRSS,

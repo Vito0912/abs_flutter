@@ -3,7 +3,7 @@ description: "A ABS app"
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: 1.1.7
+version: 1.2.0
 
 environment:
   sdk: '>=3.4.3 <4.0.0'
@@ -60,6 +60,7 @@ dev_dependencies:
   riverpod_generator: ^2.4.2
   riverpod_lint: ^2.3.12
   analyzer: ^6.5.0
+  msix: ^3.16.7
 
 dependency_overrides:
   meta: ^1.14.0
@@ -70,3 +71,11 @@ flutter:
 flutter_intl:
   enabled: true
   use-escaping: true
+
+msix_config:
+  display_name: Audiobookshelf Flutter
+  publisher_display_name: Vito0912
+  identity_name: vito0912.audiobookshelf.flutter
+  msix_version: 1.1.0.0
+  capabilities: internetClient
+  languages: en-us

@@ -30,6 +30,8 @@ mixin _$LibrarySort {
   set desc(int? value) => throw _privateConstructorUsedError;
   String? get filter => throw _privateConstructorUsedError;
   set filter(String? value) => throw _privateConstructorUsedError;
+  String? get filterKey => throw _privateConstructorUsedError;
+  set filterKey(String? value) => throw _privateConstructorUsedError;
   String? get search => throw _privateConstructorUsedError;
   set search(String? value) => throw _privateConstructorUsedError;
 
@@ -55,6 +57,7 @@ abstract class $LibrarySortCopyWith<$Res> {
       String? sort,
       int? desc,
       String? filter,
+      String? filterKey,
       String? search});
 }
 
@@ -78,6 +81,7 @@ class _$LibrarySortCopyWithImpl<$Res, $Val extends LibrarySort>
     Object? sort = freezed,
     Object? desc = freezed,
     Object? filter = freezed,
+    Object? filterKey = freezed,
     Object? search = freezed,
   }) {
     return _then(_value.copyWith(
@@ -101,6 +105,10 @@ class _$LibrarySortCopyWithImpl<$Res, $Val extends LibrarySort>
           ? _value.filter
           : filter // ignore: cast_nullable_to_non_nullable
               as String?,
+      filterKey: freezed == filterKey
+          ? _value.filterKey
+          : filterKey // ignore: cast_nullable_to_non_nullable
+              as String?,
       search: freezed == search
           ? _value.search
           : search // ignore: cast_nullable_to_non_nullable
@@ -123,6 +131,7 @@ abstract class _$$LibrarySortImplCopyWith<$Res>
       String? sort,
       int? desc,
       String? filter,
+      String? filterKey,
       String? search});
 }
 
@@ -144,6 +153,7 @@ class __$$LibrarySortImplCopyWithImpl<$Res>
     Object? sort = freezed,
     Object? desc = freezed,
     Object? filter = freezed,
+    Object? filterKey = freezed,
     Object? search = freezed,
   }) {
     return _then(_$LibrarySortImpl(
@@ -167,6 +177,10 @@ class __$$LibrarySortImplCopyWithImpl<$Res>
           ? _value.filter
           : filter // ignore: cast_nullable_to_non_nullable
               as String?,
+      filterKey: freezed == filterKey
+          ? _value.filterKey
+          : filterKey // ignore: cast_nullable_to_non_nullable
+              as String?,
       search: freezed == search
           ? _value.search
           : search // ignore: cast_nullable_to_non_nullable
@@ -183,7 +197,8 @@ class _$LibrarySortImpl with DiagnosticableTreeMixin implements _LibrarySort {
       this.page = 0,
       this.sort = "media.metadata.title",
       this.desc = 0,
-      this.filter = "",
+      this.filter = null,
+      this.filterKey = null,
       this.search = ""});
 
   factory _$LibrarySortImpl.fromJson(Map<String, dynamic> json) =>
@@ -206,11 +221,14 @@ class _$LibrarySortImpl with DiagnosticableTreeMixin implements _LibrarySort {
   String? filter;
   @override
   @JsonKey()
+  String? filterKey;
+  @override
+  @JsonKey()
   String? search;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'LibrarySort(limit: $limit, page: $page, sort: $sort, desc: $desc, filter: $filter, search: $search)';
+    return 'LibrarySort(limit: $limit, page: $page, sort: $sort, desc: $desc, filter: $filter, filterKey: $filterKey, search: $search)';
   }
 
   @override
@@ -223,6 +241,7 @@ class _$LibrarySortImpl with DiagnosticableTreeMixin implements _LibrarySort {
       ..add(DiagnosticsProperty('sort', sort))
       ..add(DiagnosticsProperty('desc', desc))
       ..add(DiagnosticsProperty('filter', filter))
+      ..add(DiagnosticsProperty('filterKey', filterKey))
       ..add(DiagnosticsProperty('search', search));
   }
 
@@ -249,6 +268,7 @@ abstract class _LibrarySort implements LibrarySort {
       String? sort,
       int? desc,
       String? filter,
+      String? filterKey,
       String? search}) = _$LibrarySortImpl;
 
   factory _LibrarySort.fromJson(Map<String, dynamic> json) =
@@ -269,6 +289,9 @@ abstract class _LibrarySort implements LibrarySort {
   @override
   String? get filter;
   set filter(String? value);
+  @override
+  String? get filterKey;
+  set filterKey(String? value);
   @override
   String? get search;
   set search(String? value);
