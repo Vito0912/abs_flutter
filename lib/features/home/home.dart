@@ -21,7 +21,7 @@ class Home extends ConsumerWidget {
     final users = ref.watch(usersProvider);
 
     if (users.isEmpty) {
-      Future.microtask(() => context.push('/init'));
+      Future.microtask(() => context.go('/init'));
     }
 
     return PlatformScaffold(

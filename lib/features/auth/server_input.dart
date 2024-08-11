@@ -44,7 +44,7 @@ class _ServerInputState extends ConsumerState<ServerInput> {
     final domainValid = domain.isNotEmpty;
     final domainRegex = RegExp(r'^(?=.{1,253}$)(?:(?!-)[A-Za-z0-9-]{1,63}(?<!-)\.?)+[A-Za-z]{2,63}$');
     final ipv4Regex = RegExp(r'^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$');
-    final ipv6Regex = RegExp(r'^(?:[A-Fa-f0-9]{1,4}:){7}[A-Fa-f0-9]{1,4}$|^(?:[A-Fa-f0-9]{1,4}:){1,7}:$|^(?:[A-Fa-f0-9]{1,4}:){1,6}:[A-Fa-f0-9]{1,4}$|^(?:[A-Fa-f0-9]{1,4}:){1,5}(?::[A-Fa-f0-9]{1,4}){1,2}$|^(?:[A-Fa-f0-9]{1,4}:){1,4}(?::[A-Fa-f0-9]{1,4}){1,3}$|^(?:[A-Fa-f0-9]{1,4}:){1,3}(?::[A-Fa-f0-9]{1,4}){1,4}$|^(?:[A-Fa-f0-9]{1,4}:){1,2}(?::[A-Fa-f0-9]{1,4}){1,5}$|^[A-Fa-f0-9]{1,4}:(?:(?::[A-Fa-f0-9]{1,4}){1,6})$|^(?::(?::[A-Fa-f0-9]{1,4}){1,7}|:)$');
+    final ipv6Regex = RegExp(r'^(?:[A-Fa-f0-9]{1,4}:){7}[A-Fa-f0-9]{1,4}$|^(?:[A-Fa-f0-9]{1,4}:){1,7}:$|^(?:[A-Fa-f0-9]{1,4}:){1,6}:[A-Fa-f0-9]{1,4}$|^(?:[A-Fa-f0-9]{1,4}:){1,5}(?::[A-Fa-f0-9]{1,4}){1,2}$|^(?:[A-Fa-f0-9]{1,4}:){1,4}(?::[A-Fa-f0-9]{1,4}){1,3}$|^(?:[A-Fa-f0-9]{1,4}:){1,3}(?::[A-Fa-f0-9]{1,4}){1,4}$|^(?:[A-Fa-f0-9]{1,4}:){1,2}(?::[A-Fa-f0-9]{1,4}){1,5}$|^[A-Fa-f0-9]{1,4}:(?::[A-Fa-f0-9]{1,4}){1,6}$|^(?::(?::[A-Fa-f0-9]{1,4}){1,7}|:)$');
 
     final domainFormatValid = domainRegex.hasMatch(domain) || ipv4Regex.hasMatch(domain) || ipv6Regex.hasMatch(domain);
 
@@ -56,6 +56,12 @@ class _ServerInputState extends ConsumerState<ServerInput> {
     }
   }
 
+  void _updatePort(String protocol) {
+    final defaultPort = protocol == 'https://' ? '443' : '80';
+    ref.read(portProvider.notifier).state = defaultPort;
+    portController.text = defaultPort;
+  }
+
   @override
   void dispose() {
     domainController.dispose();
@@ -65,12 +71,15 @@ class _ServerInputState extends ConsumerState<ServerInput> {
 
   @override
   Widget build(BuildContext context) {
+    final protocol = ref.watch(protocolProvider);
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
         ProtocolDropdown(
+          protocol: protocol,
           onChanged: (String newValue) {
             ref.read(protocolProvider.notifier).state = newValue;
+            _updatePort(newValue);
             validateInput();
           },
         ),
@@ -85,9 +94,10 @@ class _ServerInputState extends ConsumerState<ServerInput> {
 }
 
 class ProtocolDropdown extends StatelessWidget {
+  final String protocol;
   final ValueChanged<String> onChanged;
 
-  const ProtocolDropdown({super.key, required this.onChanged});
+  const ProtocolDropdown({super.key, required this.protocol, required this.onChanged});
 
   @override
   Widget build(BuildContext context) {
@@ -101,7 +111,7 @@ class ProtocolDropdown extends StatelessWidget {
       ),
       child: DropdownButtonHideUnderline(
         child: DropdownButton<String>(
-          value: 'https://',
+          value: protocol,
           items: <String>['http://', 'https://'].map((String value) {
             return DropdownMenuItem<String>(
               value: value,

@@ -66,12 +66,16 @@ dev_dependencies:
   riverpod_lint: ^2.3.12
   analyzer: ^6.5.0
   msix: ^3.16.7
+  flutter_launcher_icons: ^0.13.1
 
 dependency_overrides:
   meta: ^1.14.0
-flutter:
 
+flutter:
   uses-material-design: true
+
+  assets:
+    - assets/images/
 
 flutter_intl:
   enabled: true
@@ -84,3 +88,23 @@ msix_config:
   msix_version: 1.1.0.0
   capabilities: internetClient
   languages: en-us
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/logo/logo_blue_big_abs.png"
+  min_sdk_android: 21
+  remove_alpha_ios: true
+  adaptive_icon_background: "#2a5bb8"
+  adaptive_icon_foreground: "assets/images/logo/logo_big_abs.png"
+  web:
+    generate: true
+    image_path: "assets/images/logo/logo_big_black_abs.png"
+    background_color: "#2a5bb8"
+  windows:
+    generate: true
+    image_path: "assets/images/logo/logo_blue_big_abs.png"
+    icon_size: 256
+  macos:
+    generate: true
+    image_path: "assets/images/logo/logo_blue_big_abs.png"

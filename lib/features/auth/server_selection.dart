@@ -43,7 +43,7 @@ class LoginStateNotifier extends StateNotifier<LoginState> {
 }
 
 class ServerSelection extends ConsumerWidget {
-  final bool? initAttempted;
+  final bool initAttempted;
   const ServerSelection({super.key, this.initAttempted = false});
 
   void enableCredentialsInput(WidgetRef ref, String enteredProtocol, String enteredDomain, String enteredPort) {
@@ -68,12 +68,11 @@ class ServerSelection extends ConsumerWidget {
     final loginState = ref.watch(loginStateProvider);
 
     return PlatformScaffold(
-      appBar: (initAttempted ?? false) ? PlatformAppBar(
+      appBar: (initAttempted) ? PlatformAppBar(
         title: Text(S.of(context).serverSelection),
         leading: null
       ) : PlatformAppBar(
         title: Text(S.of(context).serverSelection),
-
       ),
 
       body: Padding(
