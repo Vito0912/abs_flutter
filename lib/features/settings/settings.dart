@@ -63,7 +63,7 @@ class SettingPage extends ConsumerWidget {
                   ),
                   Tooltip(
                     message: S.of(context).collapseSeriesDescription,
-                    margin: EdgeInsets.all(8),
+                    margin: const EdgeInsets.all(8),
                     verticalOffset: 48,
                     child: SwitchSettingsTile(
                       settingKey: 'collapseSeries',
@@ -71,7 +71,7 @@ class SettingPage extends ConsumerWidget {
                       enabledLabel: S.of(context).enabled,
                       disabledLabel: S.of(context).disabled,
                       defaultValue: false,
-                      leading: Icon(Icons.folder_copy_outlined),
+                      leading: const Icon(Icons.folder_copy_outlined),
                     ),
                   ),
                     SwitchSettingsTile(

@@ -59,12 +59,7 @@ class DownloadButton extends ConsumerWidget {
   }
 
   String getDownloadUrl(String fileId) {
-    return user.server!.url +
-        '/api/items/' +
-        libraryItem.id! +
-        '/file/' +
-        fileId +
-        '/download';
+    return '${user.server!.url}/api/items/${libraryItem.id!}/file/$fileId/download';
   }
 
   Future<void> _downloadFile(WidgetRef ref, BuildContext context) async {

@@ -7,7 +7,7 @@ import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 class DownloadItemWidget extends StatelessWidget {
   final DownloadItem downloadItem;
 
-  const DownloadItemWidget({Key? key, required this.downloadItem}) : super(key: key);
+  const DownloadItemWidget({super.key, required this.downloadItem});
 
   @override
   Widget build(BuildContext context) {

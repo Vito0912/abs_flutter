@@ -14,7 +14,7 @@ class AlbumImage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final User? user = ref.read(currentUserProvider);
     if(user == null) return const SizedBox.shrink();
-    return Container(
+    return SizedBox(
       width: size,  // Or provide specific width and height
       height: size, // Or use other constraints based on your layout
       child: AspectRatio(
@@ -40,7 +40,6 @@ class AlbumImage extends ConsumerWidget {
         ),
       ),
     );
-    ;
   }
 
   Widget _shimmerPlaceholder() {

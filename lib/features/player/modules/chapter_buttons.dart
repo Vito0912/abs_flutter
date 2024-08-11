@@ -1,9 +1,7 @@
 import 'package:abs_flutter/models/chapter.dart';
-import 'package:abs_flutter/provider/chapter_provider.dart';
 import 'package:abs_flutter/provider/player_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
-import 'package:flutter_settings_screens/flutter_settings_screens.dart';
 
 class ChapterButtons extends StatelessWidget {
   final Stream<Duration> positionStream;

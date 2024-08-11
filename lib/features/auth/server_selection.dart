@@ -1,7 +1,6 @@
 import 'package:abs_api/abs_api.dart' as abs;
 import 'package:abs_flutter/features/auth/server_input.dart';
 import 'package:abs_flutter/generated/l10n.dart';
-import 'package:abs_flutter/globals.dart' as g;
 import 'package:abs_flutter/globals.dart';
 import 'package:abs_flutter/models/permissions.dart';
 import 'package:abs_flutter/models/server.dart';
@@ -91,13 +90,13 @@ class ServerSelection extends ConsumerWidget {
                       ServerInputContainer(
                         onValidInput: (protocol, domain, port) => enableCredentialsInput(ref, protocol, domain, port),
                       ),
-                      SizedBox(height: 16),
+                      const SizedBox(height: 16),
                       UsernameInputField(isServerInputValid: isServerInputValid, showHint: () => showHint(context)),
-                      SizedBox(height: 16),
+                      const SizedBox(height: 16),
                       PasswordInputField(isServerInputValid: isServerInputValid, showHint: () => showHint(context)),
-                      SizedBox(height: 16),
+                      const SizedBox(height: 16),
                       if (loginState.isLoading) PlatformCircularProgressIndicator(),
-                      if (loginState.errorMessage.isNotEmpty) PlatformText(loginState.errorMessage, style: TextStyle(color: Colors.red)),
+                      if (loginState.errorMessage.isNotEmpty) PlatformText(loginState.errorMessage, style: const TextStyle(color: Colors.red)),
                     ],
                   ),
                 ),
@@ -117,7 +116,7 @@ class ServerSelection extends ConsumerWidget {
 class ServerInputContainer extends StatelessWidget {
   final Function(String, String, String) onValidInput;
 
-  const ServerInputContainer({Key? key, required this.onValidInput}) : super(key: key);
+  const ServerInputContainer({super.key, required this.onValidInput});
 
   @override
   Widget build(BuildContext context) {
@@ -131,7 +130,7 @@ class ServerInputContainer extends StatelessWidget {
         children: [
           PlatformText(S.of(context).serverAdressContinue),
           PlatformText(S.of(context).multipleServerAdressess),
-          SizedBox(height: 24),
+          const SizedBox(height: 24),
           ServerInput(onValidInput: onValidInput),
         ],
       ),
@@ -143,7 +142,7 @@ class UsernameInputField extends ConsumerStatefulWidget {
   final bool isServerInputValid;
   final VoidCallback showHint;
 
-  const UsernameInputField({Key? key, required this.isServerInputValid, required this.showHint}) : super(key: key);
+  const UsernameInputField({super.key, required this.isServerInputValid, required this.showHint});
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _UsernameInputFieldState();
@@ -186,11 +185,11 @@ class _UsernameInputFieldState extends ConsumerState<UsernameInputField> {
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
               ),
-              contentPadding: EdgeInsets.symmetric(horizontal: 8.0),
+              contentPadding: const EdgeInsets.symmetric(horizontal: 8.0),
             ),
           ),
           cupertino: (_, __) => CupertinoTextFieldData(
-            padding: EdgeInsets.symmetric(horizontal: 8.0),
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               border: Border.all(color: Colors.grey),
@@ -206,7 +205,7 @@ class PasswordInputField extends ConsumerStatefulWidget {
   final bool isServerInputValid;
   final VoidCallback showHint;
 
-  const PasswordInputField({Key? key, required this.isServerInputValid, required this.showHint}) : super(key: key);
+  const PasswordInputField({super.key, required this.isServerInputValid, required this.showHint});
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _PasswordInputFieldState();
@@ -250,11 +249,11 @@ class _PasswordInputFieldState extends ConsumerState<PasswordInputField> {
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
               ),
-              contentPadding: EdgeInsets.symmetric(horizontal: 8.0),
+              contentPadding: const EdgeInsets.symmetric(horizontal: 8.0),
             ),
           ),
           cupertino: (_, __) => CupertinoTextFieldData(
-            padding: EdgeInsets.symmetric(horizontal: 8.0),
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               border: Border.all(color: Colors.grey),
@@ -269,7 +268,7 @@ class _PasswordInputFieldState extends ConsumerState<PasswordInputField> {
 class LoginButton extends ConsumerWidget {
   final bool isServerInputValid;
 
-  const LoginButton({Key? key, required this.isServerInputValid}) : super(key: key);
+  const LoginButton({super.key, required this.isServerInputValid});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

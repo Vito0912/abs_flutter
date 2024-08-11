@@ -12,7 +12,7 @@ class ProgressBar extends StatelessWidget {
   final Chapter? currentChapter;
   final double size;
 
-  ProgressBar(
+  const ProgressBar(
       {super.key,
       required this.positionStream,
       required this.durationStream,

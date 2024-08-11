@@ -11,12 +11,10 @@ import 'package:abs_flutter/provider/player_status_provider.dart';
 import 'package:abs_flutter/provider/queue_provider.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
 import 'package:abs_flutter/widgets/album_image.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:shimmer/shimmer.dart';
 
 import 'modules/progress_bar.dart';
 
@@ -69,7 +67,7 @@ class PlayerPage extends ConsumerWidget {
                           child: AlbumImage(player.audioService.mediaItem.value!
                               .extras!['libraryItemId']),
                         ),
-                        SizedBox(height: 16),
+                        const SizedBox(height: 16),
                         SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
                           child: Row(
@@ -96,12 +94,12 @@ class PlayerPage extends ConsumerWidget {
                             ],
                           ),
                         ),
-                        SizedBox(height: 16),
+                        const SizedBox(height: 16),
                         PlatformText(
                           player.audioService.mediaItem.value?.artist ?? '',
                           style: const TextStyle(fontSize: 16),
                         ),
-                        SizedBox(height: 16),
+                        const SizedBox(height: 16),
                         Expanded(
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.end,

@@ -52,7 +52,7 @@ class LibraryChip extends ConsumerWidget {
       child: Chip(
         label: Container(
           constraints:
-              BoxConstraints(maxWidth: 200), // Adjust the maxWidth as needed
+              const BoxConstraints(maxWidth: 200), // Adjust the maxWidth as needed
           child: Text(
             S.of(context).loading,
             overflow: TextOverflow.ellipsis,
@@ -80,7 +80,7 @@ class LibraryChip extends ConsumerWidget {
             avatar:
                 Helper.returnLibraryItem(libraries[selectedLibrary].icon ?? ''),
             label: Container(
-              constraints: BoxConstraints(
+              constraints: const BoxConstraints(
                   maxWidth: 200), // Adjust the maxWidth as needed
               child: Text(
                 libraries[selectedLibrary].name!,

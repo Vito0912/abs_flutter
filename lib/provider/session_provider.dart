@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:developer';
 
 import 'package:abs_api/abs_api.dart';
@@ -66,7 +65,6 @@ class PlaybackSessionNotifier
       ])
       ..forceDirectPlay = false
       ..forceTranscode = false;
-      ;
 
       final response = await api.getLibraryItemApi().playLibraryItem(
             id: id,

@@ -1,7 +1,6 @@
 import 'package:abs_api/abs_api.dart';
 import 'package:abs_flutter/provider/player_status_provider.dart';
 import 'package:abs_flutter/provider/queue_provider.dart';
-import 'package:abs_flutter/provider/session_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

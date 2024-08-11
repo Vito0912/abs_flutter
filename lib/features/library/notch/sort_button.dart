@@ -5,7 +5,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
 
 class SortButton extends ConsumerWidget {
   SortButton({super.key});
@@ -29,7 +28,7 @@ class SortButton extends ConsumerWidget {
         onPressed: () {
           _showSortOptions(context, librarySortNotifier);
         },
-        icon: Icon(
+        icon: const Icon(
           Icons.sort,
         ));
   }
@@ -85,8 +84,8 @@ class SortButton extends ConsumerWidget {
                     child: Icon(isDescending
                         ? Icons.arrow_upward
                         : Icons.arrow_downward)),
-                SizedBox(width: 8),
-                Icon(Icons.check),
+                const SizedBox(width: 8),
+                const Icon(Icons.check),
               ],
             ),
         ],
@@ -112,8 +111,8 @@ class SortButton extends ConsumerWidget {
                           : CupertinoIcons.arrow_down,
                       size: 16),
                 ),
-                SizedBox(width: 8),
-                Icon(CupertinoIcons.check_mark),
+                const SizedBox(width: 8),
+                const Icon(CupertinoIcons.check_mark),
               ],
             )
           : null,

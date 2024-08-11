@@ -738,8 +738,6 @@ class LibrariesApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    print(_response.data);
-
     GetLibraryItems200Response? _responseData;
 
     try {

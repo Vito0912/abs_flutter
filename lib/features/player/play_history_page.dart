@@ -43,8 +43,7 @@ class PlayHistoryPage extends HookConsumerWidget {
                       const SizedBox(width: 16),
                       Flexible(
                         child: PlatformText(
-                          _getHistoryText(views[index].type, context) +
-                              ' (${views[index].histories.length}x)',
+                          '${_getHistoryText(views[index].type, context)} (${views[index].histories.length}x)',
                           overflow: TextOverflow.clip,
                         ),
                       ),

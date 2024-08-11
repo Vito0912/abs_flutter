@@ -10,7 +10,6 @@ import 'package:abs_flutter/provider/player_provider.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
 import 'package:abs_flutter/util/abs_audio_handler.dart';
 import 'package:abs_flutter/util/setting_cache_provider.dart';
-import 'package:abs_flutter/util/shake_handler.dart';
 import 'package:audio_service/audio_service.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -51,7 +50,7 @@ void main() async {
   final selectedLibraryNotifier = container.read(selectedLibraryProvider.notifier);
   final audioService = container.read(playerProvider.notifier);
 
-  final AbsAudioHandler _audioService = await AudioService.init(
+  final AbsAudioHandler audioService0 = await AudioService.init(
     builder: () => AbsAudioHandler(container),
     config: const AudioServiceConfig(
       androidNotificationChannelId: 'de.vito.abs_flutter.playback',
@@ -60,7 +59,7 @@ void main() async {
     ),
   );
 
-  audioService.setAudioService(_audioService);
+  audioService.setAudioService(audioService0);
 
   JustAudioMediaKit.ensureInitialized(
     windows: false

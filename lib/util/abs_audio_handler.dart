@@ -109,11 +109,11 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
     }
 
     final List<MediaProgress>? progresses = _progressProvider?.progress;
-    MediaProgress? _progress;
+    MediaProgress? progress;
     if (progresses != null) {
-      for (final progress in progresses) {
-        if (progress.libraryItemId == item.extras?['libraryItemId']) {
-          _progress = progress;
+      for (final progress1 in progresses) {
+        if (progress1.libraryItemId == item.extras?['libraryItemId']) {
+          progress = progress1;
           break;
         }
       }
@@ -128,10 +128,10 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
 
     await _player.play();
 
-    if (_progress != null && _progress.progress! <= 0.95) {
-      log('Seeking to ${_progress.currentTime?.round()} due to progress');
+    if (progress != null && progress.progress! <= 0.95) {
+      log('Seeking to ${progress.currentTime?.round()} due to progress');
       await _player
-          .seek(Duration(seconds: _progress.currentTime?.round() ?? 0));
+          .seek(Duration(seconds: progress.currentTime?.round() ?? 0));
     }
   }
 

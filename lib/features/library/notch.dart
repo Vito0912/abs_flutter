@@ -16,7 +16,7 @@ class LibraryNotch extends ConsumerStatefulWidget {
 
 class _LibraryNotchState extends ConsumerState<LibraryNotch> {
   late TextEditingController searchController;
-  Duration _debouceDuration = const Duration(milliseconds: 500);
+  final Duration _debouceDuration = const Duration(milliseconds: 500);
   Timer? _debounce;
 
   @override

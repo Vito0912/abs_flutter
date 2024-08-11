@@ -12,9 +12,7 @@ import 'package:abs_flutter/provider/user_provider.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:one_of/src/oneOf/one_of_base.dart';
 import 'package:uuid/uuid.dart';
-import 'package:built_collection/built_collection.dart';
 
 final connectionProvider =
     StateNotifierProvider<ConnectionNotifier, bool>((ref) {

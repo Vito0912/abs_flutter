@@ -30,7 +30,6 @@ class AbsApp extends ConsumerWidget {
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
         darkTheme: ThemeData.dark().copyWith(
-          useMaterial3: true,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
         themeMode: _getThemeMode(user),

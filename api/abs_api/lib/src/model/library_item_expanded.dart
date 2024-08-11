@@ -4,9 +4,6 @@
 
 // ignore_for_file: unused_element
 import 'package:abs_api/abs_api.dart';
-import 'package:abs_api/src/model/media_type.dart';
-import 'package:abs_api/src/model/library_item_base.dart';
-import 'package:abs_api/src/model/book_expanded.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 

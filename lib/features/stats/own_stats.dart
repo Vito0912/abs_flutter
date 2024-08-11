@@ -1,10 +1,8 @@
-import 'dart:math';
 import 'package:abs_flutter/features/stats/components/heatmap.dart';
 import 'package:abs_flutter/features/stats/components/listen_chart.dart';
 import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/provider/stats_provider.dart';
 import 'package:abs_flutter/util/helper.dart';
-import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -164,7 +162,7 @@ class _OwnStatsState extends ConsumerState<OwnStats> {
             spacing: 5.0,
             children: [
               ChoiceChip(
-                label: Text('Last 7 days'),
+                label: const Text('Last 7 days'),
                 selected: _is7DaysSelected,
                 onSelected: (bool selected) {
                   setState(() {
@@ -173,7 +171,7 @@ class _OwnStatsState extends ConsumerState<OwnStats> {
                 },
               ),
               ChoiceChip(
-                label: Text('Last 30 days'),
+                label: const Text('Last 30 days'),
                 selected: !_is7DaysSelected,
                 onSelected: (bool selected) {
                   setState(() {

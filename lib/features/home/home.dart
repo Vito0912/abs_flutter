@@ -1,14 +1,9 @@
-import 'dart:developer';
 
 import 'package:abs_flutter/features/home/components/library_chip.dart';
 import 'package:abs_flutter/features/home/components/user_badge.dart';
 import 'package:abs_flutter/features/home/components/user_switcher.dart';
-import 'package:abs_flutter/features/library/library_items.dart';
 import 'package:abs_flutter/features/library/library_items_wrapper.dart';
 import 'package:abs_flutter/generated/l10n.dart';
-import 'package:abs_flutter/provider/library_items_provider.dart';
-import 'package:abs_flutter/provider/library_provider.dart';
-import 'package:abs_flutter/provider/sleep_timer_provider.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
@@ -31,7 +26,7 @@ class Home extends ConsumerWidget {
 
     return PlatformScaffold(
       appBar: PlatformAppBar(
-        title: Row(
+        title: const Row(
           children: [
             UserBadge(),
             Padding(
@@ -50,7 +45,7 @@ class Home extends ConsumerWidget {
               onPressed: () => {
                 context.push('/stats')
               },
-              icon: Icon(Icons.pie_chart_outline_rounded)
+              icon: const Icon(Icons.pie_chart_outline_rounded)
           ),
           const DownloadInfoButton(),
           PlatformPopupMenu(

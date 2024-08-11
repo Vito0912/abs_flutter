@@ -87,7 +87,7 @@ class _ServerInputState extends ConsumerState<ServerInput> {
 class ProtocolDropdown extends StatelessWidget {
   final ValueChanged<String> onChanged;
 
-  const ProtocolDropdown({Key? key, required this.onChanged}) : super(key: key);
+  const ProtocolDropdown({super.key, required this.onChanged});
 
   @override
   Widget build(BuildContext context) {
@@ -123,12 +123,12 @@ class ProtocolDropdown extends StatelessWidget {
 class DomainInputField extends StatelessWidget {
   final TextEditingController controller;
 
-  const DomainInputField({Key? key, required this.controller}) : super(key: key);
+  const DomainInputField({super.key, required this.controller});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         border: Border(
           top: BorderSide(color: Colors.grey),
           bottom: BorderSide(color: Colors.grey),
@@ -138,13 +138,13 @@ class DomainInputField extends StatelessWidget {
         controller: controller,
         hintText: S.of(context).domainOrIp,
         material: (_, __) => MaterialTextFieldData(
-          decoration: InputDecoration(
+          decoration: const InputDecoration(
             border: InputBorder.none,
             contentPadding: EdgeInsets.symmetric(horizontal: 8.0),
           ),
         ),
         cupertino: (_, __) => CupertinoTextFieldData(
-          padding: EdgeInsets.symmetric(horizontal: 8.0),
+          padding: const EdgeInsets.symmetric(horizontal: 8.0),
         ),
       ),
     );
@@ -152,7 +152,7 @@ class DomainInputField extends StatelessWidget {
 }
 
 class PortSeparator extends StatelessWidget {
-  const PortSeparator({Key? key}) : super(key: key);
+  const PortSeparator({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -160,14 +160,14 @@ class PortSeparator extends StatelessWidget {
       width: 24,
       height: 50,
       alignment: Alignment.center,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         border: Border(
           left: BorderSide(color: Colors.grey),
           top: BorderSide(color: Colors.grey),
           bottom: BorderSide(color: Colors.grey),
         ),
       ),
-      child: Text(':'),
+      child: const Text(':'),
     );
   }
 }
@@ -175,14 +175,14 @@ class PortSeparator extends StatelessWidget {
 class PortInputField extends StatelessWidget {
   final TextEditingController controller;
 
-  const PortInputField({Key? key, required this.controller}) : super(key: key);
+  const PortInputField({super.key, required this.controller});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: 80,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.only(
+        borderRadius: const BorderRadius.only(
           topRight: Radius.circular(10),
           bottomRight: Radius.circular(10),
         ),
