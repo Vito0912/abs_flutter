@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:abs_api/abs_api.dart';
 import 'package:abs_flutter/models/chapter.dart';
@@ -36,6 +37,8 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
       _settingsProvider = next;
     });
 
+    _player.playbackEventStream.map(_transformEvent).pipe(playbackState);
+
     _player.playerStateStream.distinct().listen((event) {
       if (seeking == true) {
         return;
@@ -71,9 +74,6 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
     });
 
     _player.positionStream.listen((event) async {
-      playbackState.add(playbackState.value.copyWith(
-        updatePosition: event,
-      ));
       if (_player.duration != null && _player.position >= _player.duration!) {
         log('Stopping player due to position: ${_player.position} and duration: ${_player.duration}');
         await _container
@@ -136,37 +136,38 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
 
   @override
   Future<void> play() async {
+    final currentStatus = _container.read(playStatusProvider.notifier);
+    if (currentStatus.playStatus != PlayerStatus.playing) {
+      await currentStatus.setPlayStatusQuietly(PlayerStatus.playing, 'play');
+    }
+
     await _player.play();
     _container.read(timerProvider.notifier).continueTimer();
-
-    playbackState.add(playbackState.value.copyWith(
-      playing: true,
-      controls: [MediaControl.pause],
-    ));
   }
 
   @override
   Future<void> pause() async {
+    final currentStatus = _container.read(playStatusProvider.notifier);
+    if (currentStatus.playStatus != PlayerStatus.paused) {
+      await currentStatus.setPlayStatusQuietly(PlayerStatus.paused, 'pause');
+    }
     await _player.pause();
     _container.read(timerProvider.notifier).pause();
-
-    playbackState.add(playbackState.value.copyWith(
-      playing: false,
-      controls: [MediaControl.play],
-    ));
   }
 
   @override
   Future<void> stop() async {
+    final currentStatus = _container.read(playStatusProvider.notifier);
+    if (currentStatus.playStatus != PlayerStatus.stopped) {
+      await currentStatus.setPlayStatusQuietly(PlayerStatus.stopped, 'stop');
+    }
     await _player.stop();
     _container.read(timerProvider.notifier).stop();
     _container.read(sessionProvider.notifier).closeOpenSession();
     _container.read(timerProvider.notifier).stop();
 
-    playbackState.add(playbackState.value.copyWith(
-      playing: false,
-      controls: [MediaControl.play],
-    ));
+    await playbackState.firstWhere(
+        (state) => state.processingState == AudioProcessingState.idle);
   }
 
   @override
@@ -178,10 +179,6 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
       final history = _container.read(historyProviderFamily(itemId).notifier);
       history.addHistory(HistoryType.seek, position.inSeconds.toDouble());
     }
-
-    playbackState.add(playbackState.value.copyWith(
-      updatePosition: position,
-    ));
   }
 
   Future<void> setVolume(double volume) async {
@@ -220,4 +217,104 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
   Future<void> disposeAllPlayers() => _player.dispose();
 
   AudioPlayer get player => _player;
+
+  // TODO: Wrong implementation
+  @override
+  Future<void> seekForward(bool begin) async {
+    final settings = _container.read(settingsProvider);
+    final int seconds = settings['fastForwardSeconds'] ?? 10;
+    final Duration position = _player.position;
+    final Duration newPosition = position + Duration(seconds: seconds);
+    await seek(newPosition);
+  }
+
+  // TODO: Wrong implementation
+  @override
+  Future<void> seekBackward(bool begin) async {
+    final settings = _container.read(settingsProvider);
+    final int seconds = settings['rewindSeconds'] ?? 10;
+    final Duration position = _player.position;
+    final Duration newPosition = position - Duration(seconds: seconds);
+    await seek(newPosition);
+  }
+
+  @override
+  Future<void> fastForward() async {
+    final settings = _container.read(settingsProvider);
+    final seconds = settings['fastForwardSeconds'] ?? 10;
+    final Duration position = _player.position;
+    final Duration newPosition =
+        position + Duration(seconds: double.parse(seconds.toString()).toInt());
+    await seek(newPosition);
+  }
+
+  @override
+  Future<void> rewind() async {
+    final settings = _container.read(settingsProvider);
+    final seconds = settings['rewindSeconds'] ?? 10;
+    final Duration position = _player.position;
+    final Duration newPosition =
+        position - Duration(seconds: double.parse(seconds.toString()).toInt());
+    await seek(newPosition);
+  }
+
+  // Actually this should skip to next item. For us to next chapter
+  @override
+  Future<void> skipToNext() async {
+    Chapter? currentChapter = getCurrentChapter();
+    if (currentChapter != null) {
+      seek(Duration(seconds: currentChapter.end.toInt() + 1));
+    }
+  }
+
+  @override
+  Future<void> skipToPrevious() async {
+    Chapter? currentChapter = getCurrentChapter();
+    if (currentChapter != null) {
+      seek(Duration(seconds: currentChapter.start.toInt() - 1));
+    }
+  }
+
+  ///
+  ///
+  ///
+  ///
+  ///
+  ///
+
+  PlaybackState _transformEvent(PlaybackEvent event) {
+    return PlaybackState(
+      controls: [
+        if (!Platform.isAndroid) MediaControl.skipToPrevious,
+        MediaControl.rewind,
+        if (_player.playing) MediaControl.pause else MediaControl.play,
+        MediaControl.stop,
+        MediaControl.fastForward,
+        if (!Platform.isAndroid) MediaControl.skipToNext
+      ],
+      systemActions: {
+        MediaAction.skipToPrevious,
+        MediaAction.rewind,
+        if (!(_settingsProvider?['lockSeekingNotification'] ?? false))
+          MediaAction.seek,
+        MediaAction.skipToNext,
+        MediaAction.setSpeed,
+        MediaAction.fastForward
+      },
+      androidCompactActionIndices: const [0, 1, 3],
+      processingState: const {
+        ProcessingState.idle: AudioProcessingState.idle,
+        ProcessingState.loading: AudioProcessingState.loading,
+        ProcessingState.buffering: AudioProcessingState.buffering,
+        ProcessingState.ready: AudioProcessingState.ready,
+        ProcessingState.completed: AudioProcessingState.completed,
+      }[_player.processingState]!,
+      playing: _player.playing,
+      updatePosition: _player.position,
+      bufferedPosition: _player.bufferedPosition,
+      speed: _player.speed,
+      queueIndex: event.currentIndex,
+      captioningEnabled: true,
+    );
+  }
 }

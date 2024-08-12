@@ -31,7 +31,7 @@ A big thank you to [Weblate](https://weblate.org) for providing their services!
 | Reading eBooks*<sup>5</sup>            |    ❌    |        ❌        |    ❌    |   ❌   |       ❌        |
 | Up-to-date Sync                        |    ✅    |        ✅        |    ✅    |   ✅   |       ✅        |
 | Advanced Player Controls*<sup>1</sup>  |    ✅    |        ✅        |    ✅    |   ✅   |       ✅        |
-| Car Support*<sup>2</sup>               |    ✅    |        ✅        |    ✅    |   ✅   |       ✅        |
+| Car Support*<sup>2</sup>               |    ✅    |        ✅        |    ❌    |   ❌   |       ❌        |
 | No Extra Setup Needed                  |    ✅    | ❌*<sup>6</sup>  |    ✅    |   ✅   | ❌*<sup>3</sup> |
 | Media Notifications                    |    ✅    |        ✅        |    ❌    |   ✅   |       ❌        |
 | Caching*<sup>4</sup>                   |    ✅    |        ✅        |    ✅    |   ✅   |       ✅        |
@@ -47,6 +47,10 @@ A big thank you to [Weblate](https://weblate.org) for providing their services!
 
 ## Features
 
+#### Currently worked on
+
+🎙️ **Playing Podcasts** - Multiple issues with Api
+
 ### Summary
 
 🔀 **Fast Account Switching** - Switch between multiple Audiobookshelf accounts with different servers in just two clicks.\
@@ -58,6 +62,9 @@ A big thank you to [Weblate](https://weblate.org) for providing their services!
 🔊 **Advanced Player Controls** - Skip chapters, set a sleep timer, adjust playback speed, and more.\
 📴 **Offline Support** - Listen to your audiobooks even when you're offline. Sync offline up to one year\
 🔎 **Fast Search** - Search for audiobooks. Preserves query while switching library or user.\
+📖 **History** - Track where you paused, skipped, and resumed.\
+📊 **Stats** - View your listening habits over the past 365 days, including total time, frequency, and recent activity.
+⚙️ **Many Settings** - Customize the app to your liking. Head to [Settings](SETTINGS.md) to learn more.\
 
 ### Additional to First-party App
 
@@ -109,3 +116,8 @@ A big thank you to [Weblate](https://weblate.org) for providing their services!
 
 - When seeking big jumps on Windows, the audio sometimes just continues playing without seeking, despite the progressbar moving.
     - See [Issue](https://github.com/bdlukaa/just_audio_windows/issues/19). On next release of just_audio_windows this should be fixed.
+
+### Limitations
+#### Filters and search
+- The search cannot be combined with filters or sorting. This is a limitation of the Audiobookshelf API.
+- The search is limited to 25 results, because there is no pagination available. This is a limitation of the Audiobookshelf API.

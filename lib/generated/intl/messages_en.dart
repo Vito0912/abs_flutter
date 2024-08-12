@@ -137,6 +137,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "languages": MessageLookupByLibrary.simpleMessage("Languages"),
         "libraryStats": MessageLookupByLibrary.simpleMessage("Library Stats"),
         "loading": MessageLookupByLibrary.simpleMessage("Loading…"),
+        "lockProgressBar":
+            MessageLookupByLibrary.simpleMessage("Lock Media Progress Bar"),
+        "lockProgressBarDescription": MessageLookupByLibrary.simpleMessage(
+            "When enabled, this feature locks the progress bar in the media notification, if supported by the operating system"),
         "markItemsFinished":
             MessageLookupByLibrary.simpleMessage("Mark Items Finished"),
         "markItemsFinishedAfterDescription": MessageLookupByLibrary.simpleMessage(

@@ -1358,6 +1358,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Lock Media Progress Bar`
+  String get lockProgressBar {
+    return Intl.message(
+      'Lock Media Progress Bar',
+      name: 'lockProgressBar',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `When enabled, this feature locks the progress bar in the media notification, if supported by the operating system`
+  String get lockProgressBarDescription {
+    return Intl.message(
+      'When enabled, this feature locks the progress bar in the media notification, if supported by the operating system',
+      name: 'lockProgressBarDescription',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

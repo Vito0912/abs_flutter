@@ -29,8 +29,8 @@ class PlayerMinified extends ConsumerWidget {
     final Stream<Duration?> bufferStream =
         player.audioService.player.bufferedPositionStream;
 
-    if (playerStatus == PlayerStatus.hidden ||
-        playerStatus == PlayerStatus.stopped) {
+    if (playerStatus == PlayerStatus.stopped ||
+        player.audioService.mediaItem.value == null) {
       return const SizedBox
           .shrink(); // return an empty widget if the player is hidden or stopped
     }

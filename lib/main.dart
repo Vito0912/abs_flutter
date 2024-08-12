@@ -28,8 +28,8 @@ void main() async {
 
   // Secure storage - sensitive data
   AndroidOptions getAndroidOptions() => const AndroidOptions(
-    encryptedSharedPreferences: true,
-  );
+        encryptedSharedPreferences: true,
+      );
 
   initializeDateFormatting();
 
@@ -47,23 +47,26 @@ void main() async {
   final container = ProviderContainer();
   final userNotifier = container.read(usersProvider.notifier);
   final selectedUserNotifier = container.read(selectedUserProvider.notifier);
-  final selectedLibraryNotifier = container.read(selectedLibraryProvider.notifier);
+  final selectedLibraryNotifier =
+      container.read(selectedLibraryProvider.notifier);
   final audioService = container.read(playerProvider.notifier);
 
   final AbsAudioHandler audioService0 = await AudioService.init(
     builder: () => AbsAudioHandler(container),
     config: const AudioServiceConfig(
       androidNotificationChannelId: 'de.vito.abs_flutter.playback',
+      androidNotificationChannelDescription:
+          'Needed to control audio from lock screen',
       androidNotificationChannelName: 'ABSPlayback',
       preloadArtwork: true,
+      androidNotificationIcon: 'mipmap/launcher_icon',
+      androidNotificationOngoing: false,
     ),
   );
 
   audioService.setAudioService(audioService0);
 
-  JustAudioMediaKit.ensureInitialized(
-    windows: false
-  );
+  JustAudioMediaKit.ensureInitialized(windows: false);
 
   PackageInfo packageInfo = await PackageInfo.fromPlatform();
 
@@ -114,7 +117,7 @@ Future<void> _runPlatformSpecificCode() async {
       });
       break;
     default:
-      if(kIsWeb) {
+      if (kIsWeb) {
         break;
       }
   }
@@ -139,9 +142,9 @@ Future<String> _getDeviceModel() async {
       WindowsDeviceInfo windowsInfo = await deviceInfo.windowsInfo;
       return windowsInfo.productName;
     default:
-      if(kIsWeb) {
+      if (kIsWeb) {
         WebBrowserInfo webBrowserInfo = await deviceInfo.webBrowserInfo;
-        return webBrowserInfo.userAgent?? 'unknown web browser';
+        return webBrowserInfo.userAgent ?? 'unknown web browser';
       }
       return 'Unknown Device Type';
   }
@@ -179,4 +182,3 @@ void _ensureDefaultSettings(List<User>? users) {
     }
   }
 }
-

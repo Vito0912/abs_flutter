@@ -125,4 +125,8 @@ class Helper {
         return HistoryType.unknown;
     }
   }
+
+  static Future<void> launchUrl(String url) async {
+    await launchUrl(url);
+  }
 }

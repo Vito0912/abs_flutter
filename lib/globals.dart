@@ -29,5 +29,6 @@ final Map<String, dynamic> defaultSettings = {
   'downloadsOnlyViaWifi': true,
   'syncInterval': 10,
   'syncOnlyViaWifi': false,
-  'shakeResetTimer': false
+  'shakeResetTimer': false,
+  "lockSeekingNotification": false
 };
