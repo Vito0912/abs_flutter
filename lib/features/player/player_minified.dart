@@ -4,6 +4,7 @@ import 'package:abs_flutter/provider/chapter_provider.dart';
 import 'package:abs_flutter/provider/player_provider.dart';
 import 'package:abs_flutter/provider/player_status_provider.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
+import 'package:abs_flutter/util/helper.dart';
 import 'package:abs_flutter/widgets/album_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
@@ -37,7 +38,9 @@ class PlayerMinified extends ConsumerWidget {
 
     return GestureDetector(
       onTap: () {
-        context.push('/player');
+        if(Helper.getCurrentRoute(GoRouter.of(context)) != '/player') {
+          context.push('/player');
+        }
       },
       child: Material(
         child: Container(
@@ -113,7 +116,9 @@ class PlayerMinified extends ConsumerWidget {
                       children: [
                         IconButton(
                             onPressed: () {
-                              context.push('/settings');
+                              if(Helper.getCurrentRoute(GoRouter.of(context)) != '/settings') {
+                                context.push('/settings');
+                              }
                             },
                             icon: const Icon(Icons.more_vert)),
                       ],

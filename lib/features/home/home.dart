@@ -63,6 +63,12 @@ class Home extends ConsumerWidget {
                 },
               ),
               PopupMenuOption(
+                label: 'Offline Progress',
+                onTap: (PopupMenuOption option) {
+                  context.push('/offlineProgress');
+                },
+              ),
+              PopupMenuOption(
                   label: S.of(context).addUser,
                   onTap: (PopupMenuOption option) {
                     context.push('/select-server');

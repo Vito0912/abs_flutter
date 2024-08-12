@@ -331,5 +331,8 @@
   "feedOpen": "Feed Open",
   "shareOpen": "Share Open",
   "lockProgressBar": "Lock Media Progress Bar",
-  "lockProgressBarDescription": "When enabled, this feature locks the progress bar in the media notification, if supported by the operating system"
+  "lockProgressBarDescription": "When enabled, this feature locks the progress bar in the media notification, if supported by the operating system",
+  "notTriedYet": "Not tried yet",
+  "failed": "Failed",
+  "success": "Success"
 }

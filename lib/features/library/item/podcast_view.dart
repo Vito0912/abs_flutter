@@ -10,6 +10,7 @@ import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:intl/intl.dart';
 import 'package:shimmer/shimmer.dart';
 
 class PodcastView extends HookConsumerWidget {
@@ -32,11 +33,12 @@ class PodcastView extends HookConsumerWidget {
     final episodes = useState(item.value!.media!.episodes!.reversed.toList());
     final filter = useState<String>('Show All');
     final sort = useState<String>('Pub Date');
-    final isAscending = useState<bool>(true);
+    final isAscending = useState<bool>(false);
 
     List<PodcastEpisode> filteredEpisodes =
-    _filterEpisodes(episodes.value, filter.value, ref);
-    filteredEpisodes = _sortEpisodes(filteredEpisodes, sort.value, isAscending.value);
+        _filterEpisodes(episodes.value, filter.value, ref);
+    filteredEpisodes =
+        _sortEpisodes(filteredEpisodes, sort.value, isAscending.value);
 
     return PlatformScaffold(
       appBar: PlatformAppBar(
@@ -65,8 +67,12 @@ class PodcastView extends HookConsumerWidget {
                   children: [
                     DropdownButton<String>(
                       value: filter.value,
-                      items: ['Show All', 'Incomplete', 'Complete', 'In Progress']
-                          .map((String value) {
+                      items: [
+                        'Show All',
+                        'Incomplete',
+                        'Complete',
+                        'In Progress'
+                      ].map((String value) {
                         return DropdownMenuItem<String>(
                           value: value,
                           child: Text(value),
@@ -78,7 +84,8 @@ class PodcastView extends HookConsumerWidget {
                     ),
                     PlatformIconButton(
                       icon: Icon(Icons.filter_alt_outlined),
-                      onPressed: () => _showSortOptions(context, sort, isAscending),
+                      onPressed: () =>
+                          _showSortOptions(context, sort, isAscending),
                     ),
                   ],
                 ),
@@ -95,7 +102,8 @@ class PodcastView extends HookConsumerWidget {
     );
   }
 
-  void _showSortOptions(BuildContext context, ValueNotifier<String> sort, ValueNotifier<bool> isAscending) {
+  void _showSortOptions(BuildContext context, ValueNotifier<String> sort,
+      ValueNotifier<bool> isAscending) {
     showPlatformModalSheet(
       context: context,
       builder: (BuildContext context) {
@@ -112,7 +120,7 @@ class PodcastView extends HookConsumerWidget {
                 sortValue,
                 isSelected,
                 isAscending.value,
-                    () {
+                () {
                   if (isSelected) {
                     isAscending.value = !isAscending.value;
                   } else {
@@ -126,7 +134,7 @@ class PodcastView extends HookConsumerWidget {
                 sortValue,
                 isSelected,
                 isAscending.value,
-                    () {
+                () {
                   if (isSelected) {
                     isAscending.value = !isAscending.value;
                   } else {
@@ -143,7 +151,8 @@ class PodcastView extends HookConsumerWidget {
     );
   }
 
-  Widget _buildMaterialListTile(String sortValue, bool isSelected, bool isAscending, VoidCallback onTap) {
+  Widget _buildMaterialListTile(
+      String sortValue, bool isSelected, bool isAscending, VoidCallback onTap) {
     return ListTile(
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -163,7 +172,8 @@ class PodcastView extends HookConsumerWidget {
     );
   }
 
-  Widget _buildCupertinoListTile(String sortValue, bool isSelected, bool isAscending, VoidCallback onTap) {
+  Widget _buildCupertinoListTile(
+      String sortValue, bool isSelected, bool isAscending, VoidCallback onTap) {
     return CupertinoListTile(
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -172,7 +182,9 @@ class PodcastView extends HookConsumerWidget {
           if (isSelected)
             Row(
               children: [
-                Icon(isAscending ? CupertinoIcons.arrow_up : CupertinoIcons.arrow_down),
+                Icon(isAscending
+                    ? CupertinoIcons.arrow_up
+                    : CupertinoIcons.arrow_down),
                 const SizedBox(width: 8),
                 const Icon(CupertinoIcons.check_mark),
               ],
@@ -195,21 +207,29 @@ class PodcastView extends HookConsumerWidget {
     switch (filter) {
       case 'Incomplete':
         return episodes.where((episode) {
-          final progress = progresses.progress?.where(
-                  (p) => p.libraryItemId == itemId && p.episodeId == episode.id).firstOrNull;
+          final progress = progresses.progress
+              ?.where(
+                  (p) => p.libraryItemId == itemId && p.episodeId == episode.id)
+              .firstOrNull;
           return progress != null && progress.progress! < 1.0;
         }).toList();
       case 'Complete':
         return episodes.where((episode) {
-          final progress = progresses.progress?.where(
-                  (p) => p.libraryItemId == itemId && p.episodeId == episode.id).firstOrNull;
+          final progress = progresses.progress
+              ?.where(
+                  (p) => p.libraryItemId == itemId && p.episodeId == episode.id)
+              .firstOrNull;
           return progress != null && progress.progress! == 1.0;
         }).toList();
       case 'In Progress':
         return episodes.where((episode) {
-          final progress = progresses.progress?.where(
-                  (p) => p.libraryItemId == itemId && p.episodeId == episode.id).firstOrNull;
-          return progress != null && progress.progress! > 0 && progress.progress! < 1.0;
+          final progress = progresses.progress
+              ?.where(
+                  (p) => p.libraryItemId == itemId && p.episodeId == episode.id)
+              .firstOrNull;
+          return progress != null &&
+              progress.progress! > 0 &&
+              progress.progress! < 1.0;
         }).toList();
       default:
         return episodes;
@@ -234,7 +254,8 @@ class PodcastView extends HookConsumerWidget {
         break;
       case 'Pub Date':
       default:
-        episodes.sort((a, b) => compare(a.pubDate, b.pubDate));
+        episodes.sort((a, b) =>
+            compare(a.publishedAt.toString(), b.publishedAt.toString()));
         break;
     }
     return episodes;
@@ -285,7 +306,8 @@ class PodcastView extends HookConsumerWidget {
                   baseColor: Colors.grey[300]!,
                   highlightColor: Colors.grey[100]!,
                   child: Column(
-                    children: List.generate(3, (index) => _buildShimmerEpisode()),
+                    children:
+                        List.generate(3, (index) => _buildShimmerEpisode()),
                   ),
                 ),
               ],
@@ -335,7 +357,7 @@ class PodcastView extends HookConsumerWidget {
           progress.episodeId == episode.id;
     }).firstOrNull;
     final progressPercentage =
-    ((progress?.progress ?? 0) * 100).toStringAsPrecision(3);
+        ((progress?.progress ?? 0) * 100).toStringAsPrecision(3);
 
     return SelectionArea(
       child: Column(
@@ -349,22 +371,24 @@ class PodcastView extends HookConsumerWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
+                      PlatformText(
                         episode.title!,
                         style: Theme.of(context).textTheme.titleMedium,
                       ),
-                      if (episode.pubDate != null)
-                        Text(
-                          episode.pubDate!,
+                      if (episode.publishedAt != null)
+                        PlatformText(
+                          DateFormat.yMMMd().format(
+                              DateTime.fromMillisecondsSinceEpoch(
+                                  episode.publishedAt!)),
                           style: Theme.of(context).textTheme.labelSmall,
                         ),
                       if (episode.subtitle != null)
-                        Text(
+                        PlatformText(
                           episode.subtitle!,
                         ),
                       if (isExpanded.value) ...[
                         if (episode.description != null)
-                          Text(
+                          PlatformText(
                             episode.description!,
                           ),
                       ],

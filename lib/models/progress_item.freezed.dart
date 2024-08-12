@@ -26,16 +26,24 @@ mixin _$ProgressItem {
   set userId(String value) => throw _privateConstructorUsedError;
   String? get sessionId => throw _privateConstructorUsedError;
   set sessionId(String? value) => throw _privateConstructorUsedError;
+  String? get episodeId => throw _privateConstructorUsedError;
+  set episodeId(String? value) => throw _privateConstructorUsedError;
   double get currentTime => throw _privateConstructorUsedError;
   set currentTime(double value) => throw _privateConstructorUsedError;
   double get timeListened => throw _privateConstructorUsedError;
   set timeListened(double value) => throw _privateConstructorUsedError;
   double get durationOfItem => throw _privateConstructorUsedError;
   set durationOfItem(double value) => throw _privateConstructorUsedError;
+  double get startTime => throw _privateConstructorUsedError;
+  set startTime(double value) => throw _privateConstructorUsedError;
   String get type => throw _privateConstructorUsedError;
   set type(String value) => throw _privateConstructorUsedError;
   DateTime? get createdAt => throw _privateConstructorUsedError;
   set createdAt(DateTime? value) => throw _privateConstructorUsedError;
+  DateTime? get updatedAt => throw _privateConstructorUsedError;
+  set updatedAt(DateTime? value) => throw _privateConstructorUsedError;
+  bool? get success => throw _privateConstructorUsedError;
+  set success(bool? value) => throw _privateConstructorUsedError;
 
   /// Serializes this ProgressItem to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -57,11 +65,15 @@ abstract class $ProgressItemCopyWith<$Res> {
       {String itemId,
       String userId,
       String? sessionId,
+      String? episodeId,
       double currentTime,
       double timeListened,
       double durationOfItem,
+      double startTime,
       String type,
-      DateTime? createdAt});
+      DateTime? createdAt,
+      DateTime? updatedAt,
+      bool? success});
 }
 
 /// @nodoc
@@ -82,11 +94,15 @@ class _$ProgressItemCopyWithImpl<$Res, $Val extends ProgressItem>
     Object? itemId = null,
     Object? userId = null,
     Object? sessionId = freezed,
+    Object? episodeId = freezed,
     Object? currentTime = null,
     Object? timeListened = null,
     Object? durationOfItem = null,
+    Object? startTime = null,
     Object? type = null,
     Object? createdAt = freezed,
+    Object? updatedAt = freezed,
+    Object? success = freezed,
   }) {
     return _then(_value.copyWith(
       itemId: null == itemId
@@ -101,6 +117,10 @@ class _$ProgressItemCopyWithImpl<$Res, $Val extends ProgressItem>
           ? _value.sessionId
           : sessionId // ignore: cast_nullable_to_non_nullable
               as String?,
+      episodeId: freezed == episodeId
+          ? _value.episodeId
+          : episodeId // ignore: cast_nullable_to_non_nullable
+              as String?,
       currentTime: null == currentTime
           ? _value.currentTime
           : currentTime // ignore: cast_nullable_to_non_nullable
@@ -113,6 +133,10 @@ class _$ProgressItemCopyWithImpl<$Res, $Val extends ProgressItem>
           ? _value.durationOfItem
           : durationOfItem // ignore: cast_nullable_to_non_nullable
               as double,
+      startTime: null == startTime
+          ? _value.startTime
+          : startTime // ignore: cast_nullable_to_non_nullable
+              as double,
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -121,6 +145,14 @@ class _$ProgressItemCopyWithImpl<$Res, $Val extends ProgressItem>
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      updatedAt: freezed == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      success: freezed == success
+          ? _value.success
+          : success // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ) as $Val);
   }
 }
@@ -137,11 +169,15 @@ abstract class _$$ProgressItemImplCopyWith<$Res>
       {String itemId,
       String userId,
       String? sessionId,
+      String? episodeId,
       double currentTime,
       double timeListened,
       double durationOfItem,
+      double startTime,
       String type,
-      DateTime? createdAt});
+      DateTime? createdAt,
+      DateTime? updatedAt,
+      bool? success});
 }
 
 /// @nodoc
@@ -160,11 +196,15 @@ class __$$ProgressItemImplCopyWithImpl<$Res>
     Object? itemId = null,
     Object? userId = null,
     Object? sessionId = freezed,
+    Object? episodeId = freezed,
     Object? currentTime = null,
     Object? timeListened = null,
     Object? durationOfItem = null,
+    Object? startTime = null,
     Object? type = null,
     Object? createdAt = freezed,
+    Object? updatedAt = freezed,
+    Object? success = freezed,
   }) {
     return _then(_$ProgressItemImpl(
       itemId: null == itemId
@@ -179,6 +219,10 @@ class __$$ProgressItemImplCopyWithImpl<$Res>
           ? _value.sessionId
           : sessionId // ignore: cast_nullable_to_non_nullable
               as String?,
+      episodeId: freezed == episodeId
+          ? _value.episodeId
+          : episodeId // ignore: cast_nullable_to_non_nullable
+              as String?,
       currentTime: null == currentTime
           ? _value.currentTime
           : currentTime // ignore: cast_nullable_to_non_nullable
@@ -191,6 +235,10 @@ class __$$ProgressItemImplCopyWithImpl<$Res>
           ? _value.durationOfItem
           : durationOfItem // ignore: cast_nullable_to_non_nullable
               as double,
+      startTime: null == startTime
+          ? _value.startTime
+          : startTime // ignore: cast_nullable_to_non_nullable
+              as double,
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -199,6 +247,14 @@ class __$$ProgressItemImplCopyWithImpl<$Res>
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      updatedAt: freezed == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      success: freezed == success
+          ? _value.success
+          : success // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -210,11 +266,15 @@ class _$ProgressItemImpl extends _ProgressItem with DiagnosticableTreeMixin {
       {required this.itemId,
       required this.userId,
       this.sessionId,
+      this.episodeId,
       required this.currentTime,
       required this.timeListened,
       required this.durationOfItem,
+      required this.startTime,
       required this.type,
-      required this.createdAt})
+      required this.createdAt,
+      required this.updatedAt,
+      this.success})
       : super._();
 
   factory _$ProgressItemImpl.fromJson(Map<String, dynamic> json) =>
@@ -227,19 +287,27 @@ class _$ProgressItemImpl extends _ProgressItem with DiagnosticableTreeMixin {
   @override
   String? sessionId;
   @override
+  String? episodeId;
+  @override
   double currentTime;
   @override
   double timeListened;
   @override
   double durationOfItem;
   @override
+  double startTime;
+  @override
   String type;
   @override
   DateTime? createdAt;
+  @override
+  DateTime? updatedAt;
+  @override
+  bool? success;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ProgressItem(itemId: $itemId, userId: $userId, sessionId: $sessionId, currentTime: $currentTime, timeListened: $timeListened, durationOfItem: $durationOfItem, type: $type, createdAt: $createdAt)';
+    return 'ProgressItem(itemId: $itemId, userId: $userId, sessionId: $sessionId, episodeId: $episodeId, currentTime: $currentTime, timeListened: $timeListened, durationOfItem: $durationOfItem, startTime: $startTime, type: $type, createdAt: $createdAt, updatedAt: $updatedAt, success: $success)';
   }
 
   @override
@@ -250,11 +318,15 @@ class _$ProgressItemImpl extends _ProgressItem with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('itemId', itemId))
       ..add(DiagnosticsProperty('userId', userId))
       ..add(DiagnosticsProperty('sessionId', sessionId))
+      ..add(DiagnosticsProperty('episodeId', episodeId))
       ..add(DiagnosticsProperty('currentTime', currentTime))
       ..add(DiagnosticsProperty('timeListened', timeListened))
       ..add(DiagnosticsProperty('durationOfItem', durationOfItem))
+      ..add(DiagnosticsProperty('startTime', startTime))
       ..add(DiagnosticsProperty('type', type))
-      ..add(DiagnosticsProperty('createdAt', createdAt));
+      ..add(DiagnosticsProperty('createdAt', createdAt))
+      ..add(DiagnosticsProperty('updatedAt', updatedAt))
+      ..add(DiagnosticsProperty('success', success));
   }
 
   /// Create a copy of ProgressItem
@@ -278,11 +350,15 @@ abstract class _ProgressItem extends ProgressItem {
       {required String itemId,
       required String userId,
       String? sessionId,
+      String? episodeId,
       required double currentTime,
       required double timeListened,
       required double durationOfItem,
+      required double startTime,
       required String type,
-      required DateTime? createdAt}) = _$ProgressItemImpl;
+      required DateTime? createdAt,
+      required DateTime? updatedAt,
+      bool? success}) = _$ProgressItemImpl;
   _ProgressItem._() : super._();
 
   factory _ProgressItem.fromJson(Map<String, dynamic> json) =
@@ -298,6 +374,9 @@ abstract class _ProgressItem extends ProgressItem {
   String? get sessionId;
   set sessionId(String? value);
   @override
+  String? get episodeId;
+  set episodeId(String? value);
+  @override
   double get currentTime;
   set currentTime(double value);
   @override
@@ -307,11 +386,20 @@ abstract class _ProgressItem extends ProgressItem {
   double get durationOfItem;
   set durationOfItem(double value);
   @override
+  double get startTime;
+  set startTime(double value);
+  @override
   String get type;
   set type(String value);
   @override
   DateTime? get createdAt;
   set createdAt(DateTime? value);
+  @override
+  DateTime? get updatedAt;
+  set updatedAt(DateTime? value);
+  @override
+  bool? get success;
+  set success(bool? value);
 
   /// Create a copy of ProgressItem
   /// with the given fields replaced by the non-null parameter values.

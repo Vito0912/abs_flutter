@@ -116,6 +116,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Error downloading"),
         "errorDownloadingBody": MessageLookupByLibrary.simpleMessage(
             "An error occurred while downloading \'{\'displayName\'}\'"),
+        "failed": MessageLookupByLibrary.simpleMessage("Failed"),
         "fastForwardSeconds":
             MessageLookupByLibrary.simpleMessage("Fast Forward Seconds"),
         "fastForwardSecondsDescription": MessageLookupByLibrary.simpleMessage(
@@ -160,6 +161,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Login failed: No user data received"),
         "notFinished": MessageLookupByLibrary.simpleMessage("Not Finished"),
         "notStarted": MessageLookupByLibrary.simpleMessage("Not Started"),
+        "notTriedYet": MessageLookupByLibrary.simpleMessage("Not tried yet"),
         "notificationHeading": MessageLookupByLibrary.simpleMessage(
             "Notifications should be enabled"),
         "ok": MessageLookupByLibrary.simpleMessage("OK"),
@@ -214,6 +216,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Stop Player Until Sync"),
         "stopPlayerWhileSyncingDescription": MessageLookupByLibrary.simpleMessage(
             "Enable this option to prevent the player from starting until the most recent playback position has been synced. This ensures that playback resumes from the correct position. If disabled, the playback position may change shortly after starting, potentially leading to data loss. Turning this on helps conserve data usage."),
+        "success": MessageLookupByLibrary.simpleMessage("Success"),
         "sync": MessageLookupByLibrary.simpleMessage("Sync"),
         "syncInterval":
             MessageLookupByLibrary.simpleMessage("Sync Interval (seconds)"),

@@ -4,6 +4,7 @@ import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/models/history.dart';
 import 'package:abs_flutter/provider/player_status_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:url_launcher/url_launcher.dart' as launcher;
 import 'package:url_launcher/url_launcher_string.dart';
 
@@ -131,5 +132,15 @@ class Helper {
   static Future<void> launchUrl(String url) async {
     Uri uri = Uri.parse(url);
     await launcher.launchUrl(uri, mode: LaunchMode.externalApplication);
+  }
+
+  static String getCurrentRoute(GoRouter router) {
+    final RouteMatch lastMatch =
+        router.routerDelegate.currentConfiguration.last;
+    final RouteMatchList matchList = lastMatch is ImperativeRouteMatch
+        ? lastMatch.matches
+        : router.routerDelegate.currentConfiguration;
+    final String location = matchList.uri.toString();
+    return location;
   }
 }

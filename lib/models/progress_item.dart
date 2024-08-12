@@ -14,11 +14,15 @@ class ProgressItem with _$ProgressItem {
     required String itemId,
     required String userId,
     String? sessionId,
+    String? episodeId,
     required double currentTime,
     required double timeListened,
     required double durationOfItem,
+    required double startTime,
     required String type,
     required DateTime? createdAt,
+    required DateTime? updatedAt,
+    bool? success,
   }) = _ProgressItem;
 
 

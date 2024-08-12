@@ -28,7 +28,7 @@ class BookView extends ConsumerWidget {
     final item = ref.watch(itemProvider(itemId));
     final currentUser = ref.read(currentUserProvider);
     final progressNotifier = ref.watch(progressProvider.notifier);
-    progressNotifier.getProgressWithLibraryItem(itemId);
+    //progressNotifier.getProgressWithLibraryItem(itemId);
 
     log('Building item view for $itemId', name: 'item_view');
 

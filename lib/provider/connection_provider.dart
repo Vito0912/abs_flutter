@@ -46,7 +46,7 @@ class ConnectionNotifier extends StateNotifier<bool> {
     // Only update state if there's a real change in connection status
     if (state != isReachable) {
       state = isReachable;
-      if(state) {
+      if (state) {
         _syncProgressWhenOnline();
       }
       log('Server reachable: $isReachable');
@@ -147,7 +147,8 @@ class ConnectionNotifier extends StateNotifier<bool> {
     for (m.User user in allUsers) {
       List<ProgressItem> progresses = progressList.getProgressByUser(user.id!);
       List<ItemSessionKey> distinctItemSessionKeys = progresses
-          .map((item) => ItemSessionKey(item.itemId, item.sessionId))
+          .map((item) =>
+              ItemSessionKey(item.itemId, item.sessionId, item.episodeId))
           .toSet()
           .toList();
 
@@ -156,50 +157,35 @@ class ConnectionNotifier extends StateNotifier<bool> {
         final ProgressItem item = progresses
             .where((item) =>
                 item.itemId == distinctSession.itemId &&
-                item.sessionId == distinctSession.sessionId)
+                item.sessionId == distinctSession.sessionId &&
+                item.episodeId == distinctSession.episodeId)
             .first;
-        final num addedListeningTime = progresses
-            .where((item) =>
-                item.itemId == distinctSession.itemId &&
-                item.sessionId == distinctSession.sessionId)
-            .map((item) => item.timeListened)
-            .reduce((a, b) => a + b);
-        final List<ProgressItem> itemSessionItems = progresses
-            .where((item) =>
-                item.itemId == distinctSession.itemId &&
-                item.sessionId == distinctSession.sessionId)
-            .toList();
 
         final session = ref.read(sessionProvider.notifier).session;
 
-        if(item.sessionId != null && session != null) {
+        if (item.sessionId != null && session != null) {
+          log('Sending data to server from offline: ${item.timeListened}');
 
-            log('Sending data to server from offline: $addedListeningTime');
+          SyncOpenSessionRequestBuilder syncSession =
+              SyncOpenSessionRequestBuilder()
+                ..id = session.id
+                ..timeListened = item.timeListened
+                ..currentTime = item.currentTime;
 
-            SyncOpenSessionRequestBuilder syncSession =
-            SyncOpenSessionRequestBuilder()
-              ..id = session.id
-              ..timeListened = addedListeningTime
-              ..currentTime = itemSessionItems.last.currentTime;
-
-            try {
-              await api
-                  .getSessionApi()
-                  .syncOpenSession(
-                id: session.id!,
-                syncOpenSessionRequest: syncSession.build(),
-              );
-              successSessionSave = true;
-              progressList.removeListProgress(itemSessionItems);
-            } catch (e) {
-              log(e.toString());
-              successSessionSave = false;
-            }
-
-
+          try {
+            await api.getSessionApi().syncOpenSession(
+                  id: session.id!,
+                  syncOpenSessionRequest: syncSession.build(),
+                );
+            successSessionSave = true;
+            progressList.removeProgress(item);
+          } catch (e) {
+            log(e.toString());
+            successSessionSave = false;
+          }
         }
 
-        if(successSessionSave) return;
+        if (successSessionSave) return;
 
         // If it is not from a open session
 
@@ -208,26 +194,30 @@ class ConnectionNotifier extends StateNotifier<bool> {
 
         final libraryItem = await ref.read(itemProvider(item.itemId).future);
 
-        if(libraryItem == null) {
+        if (libraryItem == null) {
           log('Library item not found: ${item.itemId}');
         } else {
-          Iterable<AuthorMinified> authors = libraryItem.media?.metadata?.authors ?? [];
+          Iterable<AuthorMinified> authors =
+              libraryItem.media?.metadata?.authors ?? [];
           bookItem['displayTitle'] = libraryItem.media?.metadata?.title;
           bookItem['displayAuthor'] = authors.map((e) => e.name).join(', ');
           bookItem['libraryId'] = libraryItem.libraryId;
         }
 
-        bookItem['mediaType'] = 'book';
+        bookItem['mediaType'] = item.episodeId != null ? 'podcast' : 'book';
         bookItem['userId'] = item.userId;
         bookItem['id'] = const Uuid().v4();
         bookItem['libraryItemId'] = item.itemId;
-        bookItem['mediaItemId'] = item.itemId;
-        bookItem['currentTime'] = itemSessionItems.last.currentTime;
+        if (item.episodeId != null) {
+          bookItem['episodeId'] = item.episodeId;
+        }
+        bookItem['mediaItemId'] = item.episodeId ?? item.itemId;
+        bookItem['currentTime'] = item.currentTime;
         bookItem['duration'] = item.durationOfItem;
-        bookItem['timeListening'] = addedListeningTime;
+        bookItem['timeListening'] = item.timeListened;
         bookItem['starttime'] = item.currentTime;
         bookItem['createdAt'] = item.createdAt?.millisecondsSinceEpoch;
-        bookItem['updatedAt'] = itemSessionItems.last.createdAt?.millisecondsSinceEpoch;
+        bookItem['updatedAt'] = item.updatedAt?.millisecondsSinceEpoch;
         bookItem['deviceInfo'] = {
           'clientName': appName,
           'clientVersion': version,
@@ -239,23 +229,23 @@ class ConnectionNotifier extends StateNotifier<bool> {
 
         bool error = false;
         try {
-          await api.getSessionApi().createLocalSession(
-              playbackSession: pSession as PlaybackSession);
+          await api
+              .getSessionApi()
+              .createLocalSession(playbackSession: pSession as PlaybackSession);
         } catch (e) {
-          if(e is DioException) {
+          if (e is DioException) {
             log(e.toString());
           }
           error = true;
+          item.success = false;
+          progressList.updateProgress(item);
         }
 
-        if(!error) {
+        if (!error) {
           log('Synced progress for item: ${item.itemId}');
-          progressList.removeListProgress(itemSessionItems);
+          progressList.removeProgress(item);
         }
-
       }
-
-
     }
   }
 }
@@ -263,8 +253,9 @@ class ConnectionNotifier extends StateNotifier<bool> {
 class ItemSessionKey {
   final String itemId;
   final String? sessionId;
+  final String? episodeId;
 
-  ItemSessionKey(this.itemId, this.sessionId);
+  ItemSessionKey(this.itemId, this.sessionId, this.episodeId);
 
   // Override equals and hashCode to properly compare instances
   @override
@@ -273,9 +264,10 @@ class ItemSessionKey {
 
     return other is ItemSessionKey &&
         other.itemId == itemId &&
-        other.sessionId == sessionId;
+        other.sessionId == sessionId &&
+        other.episodeId == episodeId;
   }
 
   @override
-  int get hashCode => itemId.hashCode ^ sessionId.hashCode;
+  int get hashCode => itemId.hashCode ^ sessionId.hashCode ^ episodeId.hashCode;
 }

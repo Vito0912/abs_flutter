@@ -117,19 +117,53 @@ class TimerNotifier extends StateNotifier<DateTime?> {
       final offlineProgressProvider =
           ref.read(offlineProgressProviderHandler.notifier);
 
-      ProgressItem newProgress = ProgressItem(
-        itemId: player.audioService.mediaItem.value!.extras!['libraryItemId'],
-        userId: user.id!,
-        sessionId: bookSession?.id ?? podcastSession!.id!,
-        currentTime: shouldFinish ? duration.toDouble() : currentTime,
-        timeListened: listenedSeconds,
-        createdAt: DateTime.now(),
-        type: 'book',
-        durationOfItem:
-            player.audioService.mediaItem.value!.duration!.inSeconds.toDouble(),
-      );
+      List<ProgressItem> _progressItems = offlineProgressProvider.state;
+      ProgressItem? progressItem = _progressItems
+          .where((element) =>
+              element.itemId ==
+                  player
+                      .audioService.mediaItem.value!.extras!['libraryItemId'] &&
+              element.userId == user.id! &&
+              element.episodeId ==
+                  player.audioService.mediaItem.value!.extras!['episodeId'])
+          .firstOrNull;
 
-      offlineProgressProvider.addProgress(newProgress);
+      if (progressItem != null) {
+        log('Updating offline progress: $listenedSeconds',
+            name: 'progress_timer_provider');
+        offlineProgressProvider.updateProgress(progressItem.copyWith(
+          currentTime: shouldFinish ? duration.toDouble() : currentTime,
+          timeListened: listenedSeconds + progressItem.timeListened,
+          updatedAt: DateTime.now(),
+          durationOfItem: player
+              .audioService.mediaItem.value!.duration!.inSeconds
+              .toDouble(),
+        ));
+      } else {
+        log('Adding offline progress: $listenedSeconds',
+            name: 'progress_timer_provider');
+        final String? episodeId =
+            player.audioService.mediaItem.value!.extras!['episodeId'];
+        ProgressItem newProgress = ProgressItem(
+          itemId: player.audioService.mediaItem.value!.extras!['libraryItemId'],
+          userId: user.id!,
+          sessionId: bookSession?.id ?? podcastSession?.id,
+          episodeId: episodeId,
+          currentTime: shouldFinish ? duration.toDouble() : currentTime,
+          timeListened: listenedSeconds,
+          createdAt: DateTime.now(),
+          type: (episodeId != null || episodeId.toString().isEmpty)
+              ? 'podcast'
+              : 'book',
+          durationOfItem: player
+              .audioService.mediaItem.value!.duration!.inSeconds
+              .toDouble(),
+          startTime: currentTime,
+          updatedAt: DateTime.now(),
+        );
+
+        offlineProgressProvider.addProgress(newProgress);
+      }
     }
 
     final progressProv = ref.read(progressProvider.notifier);
@@ -230,5 +264,16 @@ class OfflineProgressProvider extends StateNotifier<List<ProgressItem>> {
 
   removeListProgress(List<ProgressItem> progresses) {
     state = state.where((element) => !progresses.contains(element)).toList();
+  }
+
+  updateProgress(ProgressItem progress) {
+    final index = state.indexWhere((element) =>
+        element.itemId == progress.itemId &&
+        element.userId == progress.userId &&
+        element.sessionId == progress.sessionId &&
+        element.episodeId == progress.episodeId);
+    if (index != -1) {
+      state[index] = progress;
+    }
   }
 }

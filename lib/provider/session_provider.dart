@@ -75,24 +75,26 @@ class PlaybackSessionNotifier
                 );
         _session = response;
 
-        if (response.data!.oneOf.value is PlaybackSessionBookExpanded) {
-          PlaybackSessionBookExpanded book =
-              response.data!.oneOf.value as PlaybackSessionBookExpanded;
-          _book = book;
-          _podcast = null;
-          await _bookSession(id, book);
+        if (response.data != null) {
+          if (response.data!.oneOf.value is PlaybackSessionBookExpanded) {
+            PlaybackSessionBookExpanded book =
+                response.data!.oneOf.value as PlaybackSessionBookExpanded;
+            _book = book;
+            _podcast = null;
+            await _bookSession(id, book);
+          } else {
+            PlaybackSessionPodcastExpanded podcast =
+                response.data!.oneOf.value as PlaybackSessionPodcastExpanded;
+            _podcast = podcast;
+            _book = null;
+            await _podcastSession(id, episodeId!, podcast);
+          }
         } else {
-          PlaybackSessionPodcastExpanded podcast =
-              response.data!.oneOf.value as PlaybackSessionPodcastExpanded;
-          _podcast = podcast;
-          _book = null;
-          await _podcastSession(id, episodeId!, podcast);
+          log('No session data created', name: 'session_provider');
         }
-
-
       } catch (e) {
         playerStatus.setPlayStatus(PlayerStatus.stopped, "Session error");
-        log(e.toString());
+        log(e.toString(), name: 'session_provider');
         if (e is DioException) {
           if (e.response != null && e.response!.data != null) {
             log(e.response!.data.toString());
@@ -175,7 +177,6 @@ class PlaybackSessionNotifier
       path = streamUrl;
     }
 
-
     MediaItem mediaItem = MediaItem(
         id: path!,
         album: playback.mediaMetadata?.title,
@@ -221,7 +222,7 @@ class PlaybackSessionNotifier
         id: path!,
         album: playback.mediaMetadata?.series?.toList().join(', '),
         title: playback.displayTitle!,
-        displaySubtitle: playback.mediaMetadata!.subtitle!,
+        displaySubtitle: playback.mediaMetadata!.subtitle,
         artist: playback.displayAuthor!,
         duration: Duration(seconds: playback.audioTracks![0].duration!.round()),
         artUri: Uri.parse(
@@ -266,7 +267,8 @@ class PlaybackSessionNotifier
     await Future.delayed(const Duration(seconds: 1), () async {
       try {
         if (_book != null) api.getSessionApi().closeSession(id: _book!.id!);
-        if (_podcast != null) api.getSessionApi().closeSession(id: _podcast!.id!);
+        if (_podcast != null)
+          api.getSessionApi().closeSession(id: _podcast!.id!);
         _session = null;
         _book = null;
         _podcast = null;

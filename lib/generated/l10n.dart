@@ -1378,6 +1378,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Not tried yet`
+  String get notTriedYet {
+    return Intl.message(
+      'Not tried yet',
+      name: 'notTriedYet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Failed`
+  String get failed {
+    return Intl.message(
+      'Failed',
+      name: 'failed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Success`
+  String get success {
+    return Intl.message(
+      'Success',
+      name: 'success',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -7,6 +7,7 @@ import 'package:abs_flutter/features/library/item/item_view.dart';
 import 'package:abs_flutter/features/player/play_history_page.dart';
 import 'package:abs_flutter/features/player/player_page.dart';
 import 'package:abs_flutter/features/player/player_wrapper.dart';
+import 'package:abs_flutter/features/progress/progress_page.dart';
 import 'package:abs_flutter/features/settings/setting_wrapper.dart';
 import 'package:abs_flutter/features/stats/stats_wrapper.dart';
 import 'package:go_router/go_router.dart';
@@ -68,11 +69,14 @@ final router = GoRouter(
                           libraryId: state.pathParameters['libraryId'],
                           libraryName: state.pathParameters['libraryName'],
                         )),
+                GoRoute(
+                    path: 'offlineProgress',
+                    builder: (context, state) => const ProgressPage()),
               ]),
           GoRoute(
               path: '/history/:itemId',
               builder: (context, state) {
-                if(state.pathParameters['itemId'] == null) {
+                if (state.pathParameters['itemId'] == null) {
                   context.go('/');
                 }
                 return PlayHistoryPage(
