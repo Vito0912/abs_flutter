@@ -13,6 +13,7 @@ part 'media_progress.g.dart';
 /// Properties:
 /// * [id] - The ID of the media progress.
 /// * [libraryItemId] - The ID of library items after 2.3.0.
+/// * [episodeId] - The ID of podcasts and podcast episodes after 2.3.0.
 /// * [duration] - The total length (in seconds) of the item or file.
 /// * [progress] - The user's progress in the media item.
 /// * [currentTime] - The user's current time in the media item.
@@ -31,6 +32,10 @@ abstract class MediaProgress
   /// The ID of library items after 2.3.0.
   @BuiltValueField(wireName: r'libraryItemId')
   String? get libraryItemId;
+
+  /// The ID of podcasts and podcast episodes after 2.3.0.
+  @BuiltValueField(wireName: r'episodeId')
+  String? get episodeId;
 
   /// The total length (in seconds) of the item or file.
   @BuiltValueField(wireName: r'duration')
@@ -100,6 +105,13 @@ class _$MediaProgressSerializer implements PrimitiveSerializer<MediaProgress> {
       yield r'libraryItemId';
       yield serializers.serialize(
         object.libraryItemId,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.episodeId != null) {
+      yield r'episodeId';
+      yield serializers.serialize(
+        object.episodeId,
         specifiedType: const FullType(String),
       );
     }
@@ -197,6 +209,13 @@ class _$MediaProgressSerializer implements PrimitiveSerializer<MediaProgress> {
             specifiedType: const FullType(String),
           ) as String;
           result.libraryItemId = valueDes;
+          break;
+        case r'episodeId':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.episodeId = valueDes;
           break;
         case r'duration':
           final valueDes = serializers.deserialize(

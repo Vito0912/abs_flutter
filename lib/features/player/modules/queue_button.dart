@@ -1,5 +1,6 @@
 import 'package:abs_api/abs_api.dart';
 import 'package:abs_flutter/generated/l10n.dart';
+import 'package:abs_flutter/models/queue.dart';
 import 'package:abs_flutter/provider/queue_provider.dart';
 import 'package:abs_flutter/widgets/album_image.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +23,7 @@ class QueueButton extends ConsumerWidget {
     );
   }
 
-  void _showQueueDialog(BuildContext context, List<LibraryItemBase> queue, WidgetRef ref) {
+  void _showQueueDialog(BuildContext context, List<Queue> queue, WidgetRef ref) {
     showPlatformDialog(
       context: context,
       builder: (_) => PlatformAlertDialog(
@@ -50,19 +51,19 @@ class QueueButton extends ConsumerWidget {
     );
   }
 
-  List<Widget> _buildQueueListItems(BuildContext context, List<LibraryItemBase> queue) {
+  List<Widget> _buildQueueListItems(BuildContext context, List<Queue> queue) {
     return queue.asMap().entries.map((entry) {
       final item = entry.value;
       return PlatformListTile(
-        key: ValueKey(item.id),
-        title: Text(item.media?.metadata?.title ?? S.of(context).unknownTitle),
-        leading: AlbumImage(item.id!),
+        key: ValueKey(item.itemId),
+        title: Text(item.title),
+        leading: AlbumImage(item.itemId),
         trailing: Icon(PlatformIcons(context).dehaze),
       );
     }).toList();
   }
 
-  void _reorderQueue(List<LibraryItemBase> queue, int oldIndex, int newIndex, WidgetRef ref) {
+  void _reorderQueue(List<Queue> queue, int oldIndex, int newIndex, WidgetRef ref) {
     if (newIndex > oldIndex) newIndex--;
 
     final item = queue.removeAt(oldIndex);

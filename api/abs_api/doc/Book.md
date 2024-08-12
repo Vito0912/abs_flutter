@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **missingParts** | **BuiltList&lt;int&gt;** | Any parts missing from the book by track index. | [optional] 
 **ebookFile** | [**EbookFile**](EbookFile.md) |  | [optional] 
 **metadata** | [**BookMetadata**](BookMetadata.md) |  | [optional] 
+**episodes** | [**BuiltList&lt;PodcastEpisode&gt;**](PodcastEpisode.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

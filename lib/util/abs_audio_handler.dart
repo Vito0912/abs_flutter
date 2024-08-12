@@ -84,9 +84,8 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
 
         final queue = _container.read(queueProvider);
         if (queue.isNotEmpty) {
-          // Delay 3 seconds
           final session = _container.read(sessionProvider.notifier);
-          session.load(queue[0].id!);
+          session.load(queue[0].itemId, null);
           queue.removeAt(0);
         }
       }
@@ -210,6 +209,22 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
     return null;
   }
 
+  bool isNextChapter() {
+    final Chapter? currentChapter = getCurrentChapter();
+    if (currentChapter == null) {
+      return false;
+    }
+    final List<Map<String, dynamic>>? jsonC =
+        mediaItem.value?.extras?['chapters'];
+    if (jsonC == null) {
+      return false;
+    }
+    final List<Chapter> chapters =
+        jsonC.map((e) => Chapter.fromJson(e)).toList();
+    final int index = chapters.indexWhere((chap) => chap.start == currentChapter.start);
+    return index < chapters.length - 1;
+  }
+
   @override
   Future<void> skipToQueueItem(int index) =>
       _player.seek(Duration.zero, index: index);
@@ -262,7 +277,7 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
   @override
   Future<void> skipToNext() async {
     Chapter? currentChapter = getCurrentChapter();
-    if (currentChapter != null) {
+    if (currentChapter != null && isNextChapter()) {
       seek(Duration(seconds: currentChapter.end.toInt() + 1));
     }
   }
@@ -285,12 +300,12 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
   PlaybackState _transformEvent(PlaybackEvent event) {
     return PlaybackState(
       controls: [
-        if (!Platform.isAndroid) MediaControl.skipToPrevious,
+        //if (!Platform.isAndroid) MediaControl.skipToPrevious,
         MediaControl.rewind,
         if (_player.playing) MediaControl.pause else MediaControl.play,
         MediaControl.stop,
         MediaControl.fastForward,
-        if (!Platform.isAndroid) MediaControl.skipToNext
+        //if (!Platform.isAndroid) MediaControl.skipToNext
       ],
       systemActions: {
         MediaAction.skipToPrevious,

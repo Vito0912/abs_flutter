@@ -27,7 +27,7 @@ A big thank you to [Weblate](https://weblate.org) for providing their services!
 | Platform Matrix                        | Android |       iOS       | Windows | Linux |      Web       |
 |----------------------------------------|:-------:|:---------------:|:-------:|:-----:|:--------------:|
 | Playing Audio                          |    ✅    |        ✅        |    ✅    |   ✅   |       ✅        |
-| Playing Podcasts*<sup>5</sup>          |    ❌    |        ❌        |    ❌    |   ❌   |       ❌        |
+| Playing Podcasts*<sup>5</sup>          |    ✅    |        ✅        |    ✅    |   ✅   |       ✅        |
 | Reading eBooks*<sup>5</sup>            |    ❌    |        ❌        |    ❌    |   ❌   |       ❌        |
 | Up-to-date Sync                        |    ✅    |        ✅        |    ✅    |   ✅   |       ✅        |
 | Advanced Player Controls*<sup>1</sup>  |    ✅    |        ✅        |    ✅    |   ✅   |       ✅        |
@@ -49,7 +49,7 @@ A big thank you to [Weblate](https://weblate.org) for providing their services!
 
 #### Currently worked on
 
-🎙️ **Playing Podcasts** - Multiple issues with Api
+🎙️ **Widgets** - Widgets!
 
 ### Summary
 

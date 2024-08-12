@@ -3972,6 +3972,13 @@
             "properties": {
               "metadata": {
                 "$ref": "#/components/schemas/bookMetadata"
+              },
+              "episodes": {
+                "type": "array",
+                "nullable": true,
+                "items": {
+                  "$ref": "#/components/schemas/PodcastEpisode"
+                }
               }
             }
           }
@@ -5342,6 +5349,9 @@
           },
           "libraryItemId": {
             "$ref": "#/components/schemas/libraryItemId"
+          },
+          "episodeId": {
+            "$ref": "#/components/schemas/podcastId"
           },
           "duration": {
             "$ref": "#/components/schemas/durationSec"

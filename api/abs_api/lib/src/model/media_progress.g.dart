@@ -12,6 +12,8 @@ class _$MediaProgress extends MediaProgress {
   @override
   final String? libraryItemId;
   @override
+  final String? episodeId;
+  @override
   final num? duration;
   @override
   final num? progress;
@@ -34,6 +36,7 @@ class _$MediaProgress extends MediaProgress {
   _$MediaProgress._(
       {this.id,
       this.libraryItemId,
+      this.episodeId,
       this.duration,
       this.progress,
       this.currentTime,
@@ -57,6 +60,7 @@ class _$MediaProgress extends MediaProgress {
     return other is MediaProgress &&
         id == other.id &&
         libraryItemId == other.libraryItemId &&
+        episodeId == other.episodeId &&
         duration == other.duration &&
         progress == other.progress &&
         currentTime == other.currentTime &&
@@ -72,6 +76,7 @@ class _$MediaProgress extends MediaProgress {
     var _$hash = 0;
     _$hash = $jc(_$hash, id.hashCode);
     _$hash = $jc(_$hash, libraryItemId.hashCode);
+    _$hash = $jc(_$hash, episodeId.hashCode);
     _$hash = $jc(_$hash, duration.hashCode);
     _$hash = $jc(_$hash, progress.hashCode);
     _$hash = $jc(_$hash, currentTime.hashCode);
@@ -89,6 +94,7 @@ class _$MediaProgress extends MediaProgress {
     return (newBuiltValueToStringHelper(r'MediaProgress')
           ..add('id', id)
           ..add('libraryItemId', libraryItemId)
+          ..add('episodeId', episodeId)
           ..add('duration', duration)
           ..add('progress', progress)
           ..add('currentTime', currentTime)
@@ -113,6 +119,10 @@ class MediaProgressBuilder
   String? get libraryItemId => _$this._libraryItemId;
   set libraryItemId(String? libraryItemId) =>
       _$this._libraryItemId = libraryItemId;
+
+  String? _episodeId;
+  String? get episodeId => _$this._episodeId;
+  set episodeId(String? episodeId) => _$this._episodeId = episodeId;
 
   num? _duration;
   num? get duration => _$this._duration;
@@ -156,6 +166,7 @@ class MediaProgressBuilder
     if ($v != null) {
       _id = $v.id;
       _libraryItemId = $v.libraryItemId;
+      _episodeId = $v.episodeId;
       _duration = $v.duration;
       _progress = $v.progress;
       _currentTime = $v.currentTime;
@@ -188,6 +199,7 @@ class MediaProgressBuilder
         new _$MediaProgress._(
             id: id,
             libraryItemId: libraryItemId,
+            episodeId: episodeId,
             duration: duration,
             progress: progress,
             currentTime: currentTime,

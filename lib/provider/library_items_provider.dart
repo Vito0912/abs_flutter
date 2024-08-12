@@ -94,11 +94,12 @@ class LibrariesNotifier extends StateNotifier<LibraryPreview?> {
       for (final item in libraryItem.data!.results!) {
         //TODO: Wrong OpenAPI spec for authors
         final previewItem = LibraryPreviewItem(
-          id: item.id!,
-          title: item.media!.metadata!.title!,
-          subtitle: item.media!.metadata!.subtitle ?? "",
-          authors: item.media!.metadata!.authors?.toList().cast<String>() ?? [],
-        );
+            id: item.id!,
+            title: item.media!.metadata!.title!,
+            subtitle: item.media!.metadata!.subtitle ?? "",
+            authors:
+                item.media!.metadata!.authors?.toList().cast<String>() ?? [],
+            mediaType: item.mediaType!.name);
         previewItems.add(previewItem);
       }
     }
@@ -135,7 +136,8 @@ class LibrariesNotifier extends StateNotifier<LibraryPreview?> {
                     ?.toList()
                     .map((e) => e.name ?? "")
                     .toList() ??
-                []);
+                [],
+            mediaType: item.libraryItem!.mediaType!.name);
         previewItems.add(previewItem);
       }
     } else if (libraryItem.podcast != null) {
@@ -148,7 +150,8 @@ class LibrariesNotifier extends StateNotifier<LibraryPreview?> {
                     ?.toList()
                     .map((e) => e.name ?? "")
                     .toList() ??
-                []);
+                [],
+            mediaType: item.libraryItem!.mediaType!.name);
         previewItems.add(previewItem);
       }
     } else {

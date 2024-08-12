@@ -8,6 +8,7 @@ import 'package:abs_api/src/model/ebook_file.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:abs_api/src/model/audio_file.dart';
 import 'package:abs_api/src/model/book_metadata.dart';
+import 'package:abs_api/src/model/podcast_episode.dart';
 import 'package:abs_api/src/model/book_base.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -26,10 +27,14 @@ part 'book.g.dart';
 /// * [missingParts] - Any parts missing from the book by track index.
 /// * [ebookFile]
 /// * [metadata]
+/// * [episodes]
 @BuiltValue()
 abstract class Book implements BookBase, Built<Book, BookBuilder> {
   @BuiltValueField(wireName: r'metadata')
   BookMetadata? get metadata;
+
+  @BuiltValueField(wireName: r'episodes')
+  BuiltList<PodcastEpisode>? get episodes;
 
   Book._();
 
@@ -102,6 +107,14 @@ class _$BookSerializer implements PrimitiveSerializer<Book> {
       yield serializers.serialize(
         object.id,
         specifiedType: const FullType(String),
+      );
+    }
+    if (object.episodes != null) {
+      yield r'episodes';
+      yield serializers.serialize(
+        object.episodes,
+        specifiedType:
+            const FullType.nullable(BuiltList, [FullType(PodcastEpisode)]),
       );
     }
     if (object.tags != null) {
@@ -194,6 +207,15 @@ class _$BookSerializer implements PrimitiveSerializer<Book> {
             specifiedType: const FullType(String),
           ) as String;
           result.id = valueDes;
+          break;
+        case r'episodes':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType:
+                const FullType.nullable(BuiltList, [FullType(PodcastEpisode)]),
+          ) as BuiltList<PodcastEpisode>?;
+          if (valueDes == null) continue;
+          result.episodes.replace(valueDes);
           break;
         case r'tags':
           final valueDes = serializers.deserialize(

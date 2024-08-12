@@ -3,6 +3,9 @@
 //
 
 // ignore_for_file: unused_element
+import 'package:abs_api/src/model/author_minified.dart';
+import 'package:built_collection/built_collection.dart';
+import 'package:abs_api/src/model/series_sequence.dart';
 import 'package:abs_api/src/model/book_metadata.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';

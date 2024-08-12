@@ -4,6 +4,8 @@ import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/models/history.dart';
 import 'package:abs_flutter/provider/player_status_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart' as launcher;
+import 'package:url_launcher/url_launcher_string.dart';
 
 class Helper {
   static String base64UrlEncode(String input) {
@@ -17,8 +19,8 @@ class Helper {
   }
 
   static String? sortString(String? key, String? value) {
-    if(key == null) return null;
-    if(value == null) return key;
+    if (key == null) return null;
+    if (value == null) return key;
     return '$key.${base64UrlEncode(value)}';
   }
 
@@ -127,6 +129,7 @@ class Helper {
   }
 
   static Future<void> launchUrl(String url) async {
-    await launchUrl(url);
+    Uri uri = Uri.parse(url);
+    await launcher.launchUrl(uri, mode: LaunchMode.externalApplication);
   }
 }

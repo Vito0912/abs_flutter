@@ -10,6 +10,8 @@ class _$Book extends Book {
   @override
   final BookMetadata? metadata;
   @override
+  final BuiltList<PodcastEpisode>? episodes;
+  @override
   final String? id;
   @override
   final String? libraryItemId;
@@ -31,6 +33,7 @@ class _$Book extends Book {
 
   _$Book._(
       {this.metadata,
+      this.episodes,
       this.id,
       this.libraryItemId,
       this.coverPath,
@@ -53,6 +56,7 @@ class _$Book extends Book {
     if (identical(other, this)) return true;
     return other is Book &&
         metadata == other.metadata &&
+        episodes == other.episodes &&
         id == other.id &&
         libraryItemId == other.libraryItemId &&
         coverPath == other.coverPath &&
@@ -67,6 +71,7 @@ class _$Book extends Book {
   int get hashCode {
     var _$hash = 0;
     _$hash = $jc(_$hash, metadata.hashCode);
+    _$hash = $jc(_$hash, episodes.hashCode);
     _$hash = $jc(_$hash, id.hashCode);
     _$hash = $jc(_$hash, libraryItemId.hashCode);
     _$hash = $jc(_$hash, coverPath.hashCode);
@@ -83,6 +88,7 @@ class _$Book extends Book {
   String toString() {
     return (newBuiltValueToStringHelper(r'Book')
           ..add('metadata', metadata)
+          ..add('episodes', episodes)
           ..add('id', id)
           ..add('libraryItemId', libraryItemId)
           ..add('coverPath', coverPath)
@@ -103,6 +109,12 @@ class BookBuilder implements Builder<Book, BookBuilder>, BookBaseBuilder {
       _$this._metadata ??= new BookMetadataBuilder();
   set metadata(covariant BookMetadataBuilder? metadata) =>
       _$this._metadata = metadata;
+
+  ListBuilder<PodcastEpisode>? _episodes;
+  ListBuilder<PodcastEpisode> get episodes =>
+      _$this._episodes ??= new ListBuilder<PodcastEpisode>();
+  set episodes(covariant ListBuilder<PodcastEpisode>? episodes) =>
+      _$this._episodes = episodes;
 
   String? _id;
   String? get id => _$this._id;
@@ -153,6 +165,7 @@ class BookBuilder implements Builder<Book, BookBuilder>, BookBaseBuilder {
     final $v = _$v;
     if ($v != null) {
       _metadata = $v.metadata?.toBuilder();
+      _episodes = $v.episodes?.toBuilder();
       _id = $v.id;
       _libraryItemId = $v.libraryItemId;
       _coverPath = $v.coverPath;
@@ -186,6 +199,7 @@ class BookBuilder implements Builder<Book, BookBuilder>, BookBaseBuilder {
       _$result = _$v ??
           new _$Book._(
               metadata: _metadata?.build(),
+              episodes: _episodes?.build(),
               id: id,
               libraryItemId: libraryItemId,
               coverPath: coverPath,
@@ -199,6 +213,8 @@ class BookBuilder implements Builder<Book, BookBuilder>, BookBaseBuilder {
       try {
         _$failedField = 'metadata';
         _metadata?.build();
+        _$failedField = 'episodes';
+        _episodes?.build();
 
         _$failedField = 'tags';
         _tags?.build();

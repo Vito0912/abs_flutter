@@ -15,6 +15,7 @@ class LibraryPreviewItem with _$LibraryPreviewItem {
     required String title,
     required String subtitle,
     required List<String> authors,
+    required String mediaType,
   }) = _LibraryPreviewItem;
 
 

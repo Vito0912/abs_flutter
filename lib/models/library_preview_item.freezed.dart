@@ -28,6 +28,8 @@ mixin _$LibraryPreviewItem {
   set subtitle(String value) => throw _privateConstructorUsedError;
   List<String> get authors => throw _privateConstructorUsedError;
   set authors(List<String> value) => throw _privateConstructorUsedError;
+  String get mediaType => throw _privateConstructorUsedError;
+  set mediaType(String value) => throw _privateConstructorUsedError;
 
   /// Serializes this LibraryPreviewItem to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -45,7 +47,12 @@ abstract class $LibraryPreviewItemCopyWith<$Res> {
           LibraryPreviewItem value, $Res Function(LibraryPreviewItem) then) =
       _$LibraryPreviewItemCopyWithImpl<$Res, LibraryPreviewItem>;
   @useResult
-  $Res call({String id, String title, String subtitle, List<String> authors});
+  $Res call(
+      {String id,
+      String title,
+      String subtitle,
+      List<String> authors,
+      String mediaType});
 }
 
 /// @nodoc
@@ -67,6 +74,7 @@ class _$LibraryPreviewItemCopyWithImpl<$Res, $Val extends LibraryPreviewItem>
     Object? title = null,
     Object? subtitle = null,
     Object? authors = null,
+    Object? mediaType = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -85,6 +93,10 @@ class _$LibraryPreviewItemCopyWithImpl<$Res, $Val extends LibraryPreviewItem>
           ? _value.authors
           : authors // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      mediaType: null == mediaType
+          ? _value.mediaType
+          : mediaType // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -97,7 +109,12 @@ abstract class _$$LibraryPreviewItemImplCopyWith<$Res>
       __$$LibraryPreviewItemImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String title, String subtitle, List<String> authors});
+  $Res call(
+      {String id,
+      String title,
+      String subtitle,
+      List<String> authors,
+      String mediaType});
 }
 
 /// @nodoc
@@ -117,6 +134,7 @@ class __$$LibraryPreviewItemImplCopyWithImpl<$Res>
     Object? title = null,
     Object? subtitle = null,
     Object? authors = null,
+    Object? mediaType = null,
   }) {
     return _then(_$LibraryPreviewItemImpl(
       id: null == id
@@ -135,6 +153,10 @@ class __$$LibraryPreviewItemImplCopyWithImpl<$Res>
           ? _value.authors
           : authors // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      mediaType: null == mediaType
+          ? _value.mediaType
+          : mediaType // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -147,7 +169,8 @@ class _$LibraryPreviewItemImpl extends _LibraryPreviewItem
       {required this.id,
       required this.title,
       required this.subtitle,
-      required this.authors})
+      required this.authors,
+      required this.mediaType})
       : super._();
 
   factory _$LibraryPreviewItemImpl.fromJson(Map<String, dynamic> json) =>
@@ -161,10 +184,12 @@ class _$LibraryPreviewItemImpl extends _LibraryPreviewItem
   String subtitle;
   @override
   List<String> authors;
+  @override
+  String mediaType;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'LibraryPreviewItem(id: $id, title: $title, subtitle: $subtitle, authors: $authors)';
+    return 'LibraryPreviewItem(id: $id, title: $title, subtitle: $subtitle, authors: $authors, mediaType: $mediaType)';
   }
 
   @override
@@ -175,7 +200,8 @@ class _$LibraryPreviewItemImpl extends _LibraryPreviewItem
       ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('title', title))
       ..add(DiagnosticsProperty('subtitle', subtitle))
-      ..add(DiagnosticsProperty('authors', authors));
+      ..add(DiagnosticsProperty('authors', authors))
+      ..add(DiagnosticsProperty('mediaType', mediaType));
   }
 
   /// Create a copy of LibraryPreviewItem
@@ -200,7 +226,8 @@ abstract class _LibraryPreviewItem extends LibraryPreviewItem {
       {required String id,
       required String title,
       required String subtitle,
-      required List<String> authors}) = _$LibraryPreviewItemImpl;
+      required List<String> authors,
+      required String mediaType}) = _$LibraryPreviewItemImpl;
   _LibraryPreviewItem._() : super._();
 
   factory _LibraryPreviewItem.fromJson(Map<String, dynamic> json) =
@@ -218,6 +245,9 @@ abstract class _LibraryPreviewItem extends LibraryPreviewItem {
   @override
   List<String> get authors;
   set authors(List<String> value);
+  @override
+  String get mediaType;
+  set mediaType(String value);
 
   /// Create a copy of LibraryPreviewItem
   /// with the given fields replaced by the non-null parameter values.

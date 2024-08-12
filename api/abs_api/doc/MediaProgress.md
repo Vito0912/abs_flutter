@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** | The ID of the media progress. | [optional] 
 **libraryItemId** | **String** | The ID of library items after 2.3.0. | [optional] 
+**episodeId** | **String** | The ID of podcasts and podcast episodes after 2.3.0. | [optional] 
 **duration** | **num** | The total length (in seconds) of the item or file. | [optional] 
 **progress** | **num** | The user's progress in the media item. | [optional] 
 **currentTime** | **num** | The user's current time in the media item. | [optional] 

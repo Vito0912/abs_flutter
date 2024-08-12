@@ -14,6 +14,7 @@ _$LibraryPreviewItemImpl _$$LibraryPreviewItemImplFromJson(
       subtitle: json['subtitle'] as String,
       authors:
           (json['authors'] as List<dynamic>).map((e) => e as String).toList(),
+      mediaType: json['mediaType'] as String,
     );
 
 Map<String, dynamic> _$$LibraryPreviewItemImplToJson(
@@ -23,4 +24,5 @@ Map<String, dynamic> _$$LibraryPreviewItemImplToJson(
       'title': instance.title,
       'subtitle': instance.subtitle,
       'authors': instance.authors,
+      'mediaType': instance.mediaType,
     };

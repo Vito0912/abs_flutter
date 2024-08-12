@@ -66,7 +66,7 @@ class TimerNotifier extends StateNotifier<DateTime?> {
           duration -
               (double.tryParse(settings['markItemsFinishedAfter'].toString()) ??
                   0);
-      log("Should finish: $shouldFinish");
+      log("Should finish: $shouldFinish", name: 'progress_timer_provider');
     }
 
     final listenedSeconds = listenedDuration.inMicroseconds / 1000000.0;
@@ -76,31 +76,32 @@ class TimerNotifier extends StateNotifier<DateTime?> {
     if (listenedSeconds <= 1 ||
         listenedSeconds > ((settings['syncInterval'] ?? 60) * 2)) return;
 
-    final PlaybackSessionBookExpanded? session =
-        ref.read(sessionProvider.notifier).session;
+    final PlaybackSessionBookExpanded? bookSession =
+        ref.read(sessionProvider.notifier).book;
+    final PlaybackSessionPodcastExpanded? podcastSession =
+        ref.read(sessionProvider.notifier).podcast;
 
     final shouldSyncOnline = (settings['syncOnlyViaWifi'] == false ||
         connection.currentConnectivity.contains(ConnectivityResult.wifi) ||
         connection.currentConnectivity.contains(ConnectivityResult.ethernet));
 
     if (connection.state &&
-        session != null &&
+        (bookSession != null || podcastSession != null) &&
         api != null &&
         shouldSyncOnline) {
       log('Sending data to server: $listenedSeconds');
 
       SyncOpenSessionRequestBuilder syncSession =
           SyncOpenSessionRequestBuilder()
-            ..id = session.id
+            ..id = bookSession?.id ?? podcastSession!.id
             ..timeListened = listenedSeconds
             ..currentTime = shouldFinish ? duration.toDouble() : currentTime;
 
-      // TODO: When no session there is no sync
       try {
         api
             .getSessionApi()
             .syncOpenSession(
-              id: session.id!,
+              id: bookSession?.id ?? podcastSession!.id!,
               syncOpenSessionRequest: syncSession.build(),
             )
             .then((response) => log(response.data.toString(), name: 'Sync'));
@@ -119,7 +120,7 @@ class TimerNotifier extends StateNotifier<DateTime?> {
       ProgressItem newProgress = ProgressItem(
         itemId: player.audioService.mediaItem.value!.extras!['libraryItemId'],
         userId: user.id!,
-        sessionId: session?.id,
+        sessionId: bookSession?.id ?? podcastSession!.id!,
         currentTime: shouldFinish ? duration.toDouble() : currentTime,
         timeListened: listenedSeconds,
         createdAt: DateTime.now(),

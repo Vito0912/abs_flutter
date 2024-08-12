@@ -120,7 +120,8 @@ class _LibraryItemsState extends ConsumerState<LibraryItems> {
       List<MediaProgress>? progress) {
     final currentUser = ref.watch(currentUserProvider);
     final itemProgress = progress
-        ?.where((element) => element.libraryItemId == item.id)
+        ?.where((element) =>
+            element.libraryItemId == item.id && element.episodeId == null)
         .firstOrNull
         ?.progress;
 
@@ -135,13 +136,13 @@ class _LibraryItemsState extends ConsumerState<LibraryItems> {
           child: PlatformWidget(
             material: (_, __) => InkWell(
               onTap: () {
-                context.push('/view/book/${item.id}');
+                context.push('/view/${item.mediaType}/${item.id}');
               },
               child: _buildCard(item, itemProgress, currentUser),
             ),
             cupertino: (_, __) => GestureDetector(
               onTap: () {
-                context.push('/view/book/${item.id}');
+                context.push('/view/${item.mediaType}/${item.id}');
               },
               child: _buildCard(item, itemProgress, currentUser),
             ),

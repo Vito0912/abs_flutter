@@ -15,7 +15,9 @@ class ChapterButtons extends StatelessWidget {
       required this.positionStream,
       required this.player,
       required this.isForward,
-      required this.currentChapter, this.size, this.lock});
+      required this.currentChapter,
+      this.size,
+      this.lock});
 
   @override
   Widget build(BuildContext context) {
@@ -27,16 +29,19 @@ class ChapterButtons extends StatelessWidget {
           }
           //TODO: Implement lock
           return PlatformIconButton(
-              icon: isForward
-                  ? Icon(size: size, Icons.skip_next_outlined)
-                  : Icon(size: size,Icons.skip_previous_outlined),
-              onPressed: () {
-                player.audioService.seek(Duration(
-                  seconds: isForward
-                      ? currentChapter.end.toInt() + 1
-                      : currentChapter.start.toInt() - 1,
-                ));
-              });
+            icon: isForward
+                ? Icon(size: size, Icons.skip_next_outlined)
+                : Icon(size: size, Icons.skip_previous_outlined),
+            onPressed: (player.audioService.isNextChapter() || !isForward)
+                ? () {
+                    player.audioService.seek(Duration(
+                      seconds: isForward
+                          ? currentChapter.end.toInt() + 1
+                          : currentChapter.start.toInt() - 1,
+                    ));
+                  }
+                : null,
+          );
         });
   }
 }
