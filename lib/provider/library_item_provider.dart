@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:abs_api/abs_api.dart';
 import 'package:abs_flutter/models/file.dart';
+import 'package:abs_flutter/provider/connection_provider.dart';
 import 'package:abs_flutter/provider/download_provider.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
 import 'package:dio/dio.dart';
@@ -44,7 +45,13 @@ final itemProvider =
     }
   } else {
     final String originalFilePath = download.filePath!;
-    final String directory = p.dirname(originalFilePath);
+    late final String directory;
+    if (download.type == MediaTypeDownload.podcast) {
+      directory = Directory(originalFilePath).parent.parent.path;
+    } else {
+      directory = Directory(originalFilePath).parent.path;
+    }
+
     final String newFilePath = p.join(directory, 'meta.json');
     final File file = File(newFilePath);
 

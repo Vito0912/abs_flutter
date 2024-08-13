@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:abs_api/abs_api.dart';
 import 'package:abs_flutter/globals.dart';
+import 'package:abs_flutter/models/file.dart';
 import 'package:abs_flutter/provider/connection_provider.dart';
 import 'package:abs_flutter/provider/download_provider.dart';
 import 'package:abs_flutter/provider/library_item_provider.dart';
@@ -34,7 +35,7 @@ class PlaybackSessionNotifier
     }
 
     final downloads = ref.read(downloadListProvider.notifier);
-    final download = downloads.getDownload(id);
+    final download = downloads.getDownload(id, episodeId);
     final connection = ref.read(connectionProvider);
 
     _session = null;
@@ -134,27 +135,48 @@ class PlaybackSessionNotifier
         return;
       }
 
-      MediaItem mediaItem = MediaItem(
-          id: download.filePath!,
-          album: item.value?.media?.metadata?.series?.toList().join(', '),
-          title: download.displayName,
-          displaySubtitle: item.value?.media?.metadata?.subtitle,
-          artist: item.value?.media?.metadata?.authors?.toList().join(','),
-          artUri: Uri.parse(
-              '${currentUser!.server!.url}/api/items/$id/cover?token=${currentUser.token}'),
-          duration: Duration(
-              seconds: item.value!.media!.audioFiles![0].duration!.round()),
-          extras: {
-            'libraryItemId': id,
-            'streaming': false,
-            'chapters': item.value!.media!.chapters
-                ?.map((e) => {
-                      'title': e?.title,
-                      'start': e?.start,
-                      'end': e?.end,
-                    })
-                .toList(),
-          });
+      late final MediaItem mediaItem;
+
+      if(download.type == MediaTypeDownload.podcast) {
+        final PodcastEpisode episode = item.value!.media!.episodes!
+            .firstWhere((element) => element.id == episodeId);
+        mediaItem = MediaItem(
+            id: download.filePath!,
+            album: item.value?.media?.metadata?.title,
+            title: download.displayName,
+            artist: item.value?.media?.metadata?.authors?.toList().join(','),
+            artUri: Uri.parse(
+                '${currentUser!.server!.url}/api/items/$id/cover?token=${currentUser.token}'),
+            duration: Duration(
+                seconds: episode.audioFile!.duration!.round()),
+            extras: {
+              'libraryItemId': id,
+              'episodeId': episodeId,
+              'streaming': false,
+            });
+      } else {
+        mediaItem = MediaItem(
+            id: download.filePath!,
+            album: item.value?.media?.metadata?.series?.toList().join(', '),
+            title: download.displayName,
+            displaySubtitle: item.value?.media?.metadata?.subtitle,
+            artist: item.value?.media?.metadata?.authors?.toList().join(','),
+            artUri: Uri.parse(
+                '${currentUser!.server!.url}/api/items/$id/cover?token=${currentUser.token}'),
+            duration: Duration(
+                seconds: item.value!.media!.audioFiles![0].duration!.round()),
+            extras: {
+              'libraryItemId': id,
+              'streaming': false,
+              'chapters': item.value!.media!.chapters
+                  ?.map((e) => {
+                'title': e?.title,
+                'start': e?.start,
+                'end': e?.end,
+              })
+                  .toList(),
+            });
+      }
 
       await player.playMediaItem(mediaItem);
     }
@@ -164,7 +186,7 @@ class PlaybackSessionNotifier
       PlaybackSessionPodcastExpanded playback) async {
     final currentUser = ref.read(currentUserProvider);
     final downloads = ref.read(downloadListProvider.notifier);
-    final download = downloads.getDownload(itemId);
+    final download = downloads.getDownload(itemId, episodeId);
     final player = ref.read(playerProvider.notifier);
 
     final streamUrl =
@@ -205,7 +227,7 @@ class PlaybackSessionNotifier
       String itemId, PlaybackSessionBookExpanded playback) async {
     final currentUser = ref.read(currentUserProvider);
     final downloads = ref.read(downloadListProvider.notifier);
-    final download = downloads.getDownload(itemId);
+    final download = downloads.getDownload(itemId, null);
     final player = ref.read(playerProvider.notifier);
 
     final streamUrl =

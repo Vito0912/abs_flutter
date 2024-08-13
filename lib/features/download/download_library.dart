@@ -1,21 +1,25 @@
+import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/models/file.dart';
 import 'package:abs_flutter/provider/download_provider.dart';
 import 'package:abs_flutter/widgets/album_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class DownloadLibrary extends ConsumerWidget {
+class DownloadLibrary extends HookConsumerWidget {
   late List<DownloadInfo>? downloads;
   final String? libraryId;
   final String? libraryName;
+
   DownloadLibrary(
       {super.key, this.downloads, this.libraryId, this.libraryName});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    downloads ??= ref.watch(downloadListProvider);
+    final selectedDownloads = useState<List<DownloadInfo>>([]);
+
     final List<DownloadInfo> libraryDownloads = [];
     if (libraryId != null) {
       libraryDownloads.addAll(
@@ -28,23 +32,36 @@ class DownloadLibrary extends ConsumerWidget {
         ? PlatformScaffold(
             appBar: libraryId != null
                 ? PlatformAppBar(
-                    title: Text(libraryName ?? 'Downloads'),
+                    title: Text(libraryName ?? S.of(context).downloads),
                   )
                 : null,
-            body: _listBuilder(libraryDownloads, context, ref),
+            body:
+                _listBuilder(libraryDownloads, context, ref, selectedDownloads),
           )
-        : _listBuilder(libraryDownloads, context, ref);
+        : _listBuilder(libraryDownloads, context, ref, selectedDownloads);
   }
 
   Widget _listBuilder(List<DownloadInfo> libraryDownloads, BuildContext context,
-      WidgetRef ref) {
-    return ListView.builder(
+      WidgetRef ref, ValueNotifier<List<DownloadInfo>> selectedDownloads) {
+    return Column(crossAxisAlignment: CrossAxisAlignment.end, children: [
+      if (selectedDownloads.value.isNotEmpty)
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: PlatformElevatedButton(
+            child: PlatformText(S.of(context).deleteSelected),
+            onPressed: () =>
+                _deleteSelectedDownloads(ref, selectedDownloads.value),
+          ),
+        ),
+      ListView.builder(
         itemCount: libraryDownloads.length,
         padding: const EdgeInsets.only(bottom: 8),
         shrinkWrap: true,
         itemBuilder: (context, index) {
           final item = libraryDownloads[index];
           final itemType = item.type.name;
+          final isSelected = selectedDownloads.value.contains(item);
+
           return ListTile(
             title: Text(item.displayName),
             subtitle: Text(item.filename),
@@ -55,6 +72,14 @@ class DownloadLibrary extends ConsumerWidget {
             trailing: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
+                PlatformIconButton(
+                  icon: Icon(
+                    isSelected
+                        ? Icons.check_box
+                        : Icons.check_box_outline_blank,
+                  ),
+                  onPressed: () => _toggleSelection(item, selectedDownloads),
+                ),
                 PlatformIconButton(
                   icon: Icon(PlatformIcons(context).deleteOutline),
                   onPressed: () {
@@ -68,6 +93,26 @@ class DownloadLibrary extends ConsumerWidget {
               ],
             ),
           );
-        });
+        },
+      ),
+    ]);
+  }
+
+  void _toggleSelection(
+      DownloadInfo item, ValueNotifier<List<DownloadInfo>> selectedDownloads) {
+    if (selectedDownloads.value.contains(item)) {
+      selectedDownloads.value = List.from(selectedDownloads.value)
+        ..remove(item);
+    } else {
+      selectedDownloads.value = List.from(selectedDownloads.value)..add(item);
+    }
+  }
+
+  void _deleteSelectedDownloads(
+      WidgetRef ref, List<DownloadInfo> selectedDownloads) {
+    for (var download in selectedDownloads) {
+      ref.read(downloadListProvider.notifier).removeDownload(download);
+    }
+    selectedDownloads.clear(); // Clear the list after deletion
   }
 }

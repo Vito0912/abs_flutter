@@ -83,7 +83,8 @@ class PlayerMinified extends ConsumerWidget {
                                   maxLines: 1,
                                 ),
                                 PlatformText(
-                                  player.audioService.mediaItem.value!.artist!,
+                                  player.audioService.mediaItem.value!.artist ??
+                                      '',
                                   style: Theme.of(context).textTheme.labelSmall,
                                   overflow: TextOverflow.ellipsis,
                                   maxLines: 1,

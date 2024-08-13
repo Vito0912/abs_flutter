@@ -1529,6 +1529,16 @@ class S {
       args: [num],
     );
   }
+
+  /// `Delete Selected`
+  String get deleteSelected {
+    return Intl.message(
+      'Delete Selected',
+      name: 'deleteSelected',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -126,6 +126,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "dateFormatSecond": m19,
         "dateFormatSecondShort": m20,
         "daysListened": MessageLookupByLibrary.simpleMessage("Days listened"),
+        "deleteSelected":
+            MessageLookupByLibrary.simpleMessage("Delete Selected"),
         "descending": MessageLookupByLibrary.simpleMessage("Descending"),
         "description": MessageLookupByLibrary.simpleMessage("Description"),
         "disabled": MessageLookupByLibrary.simpleMessage("Disabled"),

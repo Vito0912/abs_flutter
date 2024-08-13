@@ -453,5 +453,6 @@
             "type": "int"
         }
         }
-    }
+    },
+  "deleteSelected": "Delete Selected"
 }

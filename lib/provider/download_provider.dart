@@ -85,7 +85,7 @@ class DownloadListNotifier extends StateNotifier<List<DownloadInfo>> {
     sp.setString('downloads', downloadListString);
   }
 
-  DownloadInfo? getDownload(String itemId) {
+  DownloadInfo? getDownload(String itemId, String? episodeId) {
     final currentUser = _ref.read(currentUserProvider);
     if (currentUser == null) {
       return null;
@@ -95,8 +95,9 @@ class DownloadListNotifier extends StateNotifier<List<DownloadInfo>> {
       return null;
     }
     final download = downloads
-        .where((element) =>
-            (element.itemId == itemId && element.userId == currentUser.id))
+        .where((element) => (element.itemId == itemId &&
+            element.userId == currentUser.id &&
+            element.episodeId == episodeId))
         .firstOrNull;
     return download;
   }
