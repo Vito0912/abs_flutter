@@ -64,8 +64,6 @@ class _LibraryItemsState extends ConsumerState<LibraryItems> {
   @override
   Widget build(BuildContext context) {
     final connection = ref.watch(connectionProvider);
-    final progressProv = ref.watch(progressProvider);
-    final progress = progressProv.getProgress();
     final libraryItems = ref.watch(libraryItemsProvider);
 
     if (!connection) {
@@ -75,8 +73,10 @@ class _LibraryItemsState extends ConsumerState<LibraryItems> {
     if (libraryItems == null) {
       return _buildSafeArea(_buildShimmerLoading());
     } else {
+      final progressProv = ref.read(progressProvider);
+      progressProv.getAllProgress();
       _hasMore = libraryItems.total != libraryItems.items.length;
-      return _buildSafeArea(_buildItems(context, libraryItems, progress));
+      return _buildSafeArea(_buildItems(context, libraryItems));
     }
   }
 
@@ -84,8 +84,7 @@ class _LibraryItemsState extends ConsumerState<LibraryItems> {
     return SafeArea(child: child);
   }
 
-  Widget _buildItems(BuildContext context, LibraryPreview items,
-      List<MediaProgress>? progress) {
+  Widget _buildItems(BuildContext context, LibraryPreview items) {
     if (items.items.isEmpty) {
       return Center(child: PlatformText(S.of(context).noItemsFound));
     }
@@ -109,21 +108,15 @@ class _LibraryItemsState extends ConsumerState<LibraryItems> {
               return _buildShimmerPlaceholder();
             }
             final item = items.items[index];
-            return _buildItemCard(context, item, progress);
+            return _buildItemCard(context, item);
           },
         );
       },
     );
   }
 
-  Widget _buildItemCard(BuildContext context, LibraryPreviewItem item,
-      List<MediaProgress>? progress) {
+  Widget _buildItemCard(BuildContext context, LibraryPreviewItem item) {
     final currentUser = ref.watch(currentUserProvider);
-    final itemProgress = progress
-        ?.where((element) =>
-            element.libraryItemId == item.id && element.episodeId == null)
-        .firstOrNull
-        ?.progress;
 
     return MouseRegion(
       cursor: SystemMouseCursors.click,
@@ -138,13 +131,13 @@ class _LibraryItemsState extends ConsumerState<LibraryItems> {
               onTap: () {
                 context.push('/view/${item.mediaType}/${item.id}');
               },
-              child: _buildCard(item, itemProgress, currentUser),
+              child: _buildCard(item, currentUser),
             ),
             cupertino: (_, __) => GestureDetector(
               onTap: () {
                 context.push('/view/${item.mediaType}/${item.id}');
               },
-              child: _buildCard(item, itemProgress, currentUser),
+              child: _buildCard(item, currentUser),
             ),
           ),
         ),
@@ -153,7 +146,7 @@ class _LibraryItemsState extends ConsumerState<LibraryItems> {
   }
 
   Widget _buildCard(
-      LibraryPreviewItem item, num? progress, m.User? currentUser) {
+      LibraryPreviewItem item, m.User? currentUser) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -169,17 +162,20 @@ class _LibraryItemsState extends ConsumerState<LibraryItems> {
                     aspectRatio: 1.0,
                     child: AlbumImage(item.id),
                   ),
-                  if (progress != null)
-                    Align(
-                      alignment: Alignment.bottomCenter,
-                      child: LinearProgressIndicator(
-                        value: progress.toDouble(),
-                        minHeight: 5.0,
-                        valueColor:
-                            const AlwaysStoppedAnimation<Color>(Colors.green),
-                        backgroundColor: Colors.grey[300],
-                      ),
-                    ),
+                    Consumer(builder: (context, ref, child) {
+                      MediaProgress? progress = ref.watch(progressProviderWithItemId(
+                          ItemEpisodeId(item.id, null)));
+                      return Align(
+                        alignment: Alignment.bottomCenter,
+                        child: LinearProgressIndicator(
+                          value: progress?.progress?.toDouble() ?? 0,
+                          minHeight: 5.0,
+                          valueColor:
+                              const AlwaysStoppedAnimation<Color>(Colors.green),
+                          backgroundColor: Colors.grey[300],
+                        ),
+                      );
+                    }),
                 ],
               ),
             ),

@@ -5,7 +5,9 @@ import 'package:abs_flutter/models/progress_item.dart';
 import 'package:abs_flutter/provider/connection_provider.dart';
 import 'package:abs_flutter/provider/progress_timer_provider.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
+import 'package:collection/collection.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -15,25 +17,23 @@ class ProgressProvider extends ChangeNotifier {
   List<MediaProgress>? progress;
 
   ProgressProvider(this.ref) {
-    // Listen to changes in the API provider and update the API instance
     ref.listen<AbsApi?>(apiProvider, (previousApi, nextApi) {
       api = nextApi;
-      getAllProgress(); // Refresh progress whenever the API changes
     });
 
-    // Initialize the API and fetch the initial progress data
-    api = ref.read(apiProvider);
-    getAllProgress();
+    print(api);
+
+    addListener(() => print('Change'));
+
   }
 
   Future<void> getAllProgress() async {
-    if (api == null) {
-      return;
-    }
+    if (api == null) return;
+    log('getProgress', name: 'progress_provider');
 
     final offlineProgress = ref.read(offlineProgressProviderHandler);
 
-    progress ??= [];
+    List<MediaProgress>? newProgress = [];
 
     if (offlineProgress.isNotEmpty) {
       for (ProgressItem item in offlineProgress) {
@@ -41,35 +41,32 @@ class ProgressProvider extends ChangeNotifier {
           ..currentTime = item.currentTime
           ..duration = item.durationOfItem
           ..progress = item.currentTime / item.durationOfItem;
-        progress!.add(builder.build());
+        newProgress.add(builder.build());
       }
     }
 
     try {
       final response = await api!.getMeApi().getMe();
-
       User user = response.data!;
 
       if (user.mediaProgress != null) {
-        List<MediaProgress>? tmp = user.mediaProgress!.toList();
-        progress?.addAll(tmp);
+        newProgress.addAll(user.mediaProgress!.toList());
       }
     } catch (e) {
-      if (e is DioException) {
-        log(e.response?.data?.toString() ?? e.toString());
-      } else {
-        log(e.toString());
-      }
-      return;
+      log(e.toString());
     }
 
-    notifyListeners();
+    if (progress == null || !listEquals(progress, newProgress)) {
+      progress = newProgress;
+      notifyListeners();
+    }
   }
 
-  Future<void> getProgressWithLibraryItem(String id) async {
-    if (api == null) {
-      return;
-    }
+
+  Future<void> getProgressWithLibraryItem(String id,
+      {String? episodeId}) async {
+    if (api == null) return;
+
     try {
       final offlineProgress = ref.read(offlineProgressProviderHandler);
 
@@ -99,72 +96,62 @@ class ProgressProvider extends ChangeNotifier {
       if (connection) {
         final response =
             await api!.getMeApi().getProgressLibraryItem(libraryItemId: id);
+        MediaProgress fetchedProgress = response.data!;
 
-        Response<MediaProgress> progressResponse = response;
-
-        MediaProgress progress = progressResponse.data!;
-
-        // Add or update the progress data
-        if (this.progress == null) {
-          this.progress = [progress];
+        int index =
+            progress!.indexWhere((element) => element.libraryItemId == id);
+        if (index == -1) {
+          progress!.add(fetchedProgress);
         } else {
-          int index = this
-              .progress!
-              .indexWhere((element) => element.libraryItemId == id);
-          if (index == -1) {
-            this.progress!.add(progress);
-          } else {
-            this.progress![index] = progress;
-          }
+          progress![index] = fetchedProgress;
         }
-      }
 
-      notifyListeners();
-    } catch (e) {
-      if (e is DioException) {
-        log(e.response?.data?.toString() ?? e.toString());
-      } else {
-        log(e.toString());
+        // Notify listeners only if the progress of the specific item has changed
+        notifyListeners();
       }
-      return;
+    } catch (e) {
+      log(e.toString());
     }
-    return;
   }
 
-  void updateProgressForItem(String id, double currentTime) {
-    if (progress == null) {
-      return;
-    }
+  void updateProgressForItem(String id, String? episodeId, double currentTime, double percentage) {
+    if (progress == null) return;
 
-    int index = progress!.indexWhere((element) => element.libraryItemId == id);
-    if (index == -1) {
-      return;
-    }
+    int index = progress!.indexWhere((element) =>
+        element.libraryItemId == id && element.episodeId == episodeId);
+    if (index == -1) return;
 
     MediaProgressBuilder builder = progress![index].toBuilder();
     builder.currentTime = currentTime;
-
+    builder.progress = percentage;
     progress![index] = builder.build();
 
     notifyListeners();
   }
 
-  List<MediaProgress>? getProgress() {
-    return progress;
-  }
+  List<MediaProgress>? getProgress() => progress;
 }
 
 final progressProvider = ChangeNotifierProvider<ProgressProvider>((ref) {
   return ProgressProvider(ref);
 });
 
-// Separate provider for reactive watching
-final mediaProgressProvider =
-    StateNotifierProvider<MediaProgressNotifier, List<MediaProgress>>((ref) {
-  return MediaProgressNotifier(ref.read(progressProvider).getProgress());
-});
+final progressProviderWithItemId = Provider.family<MediaProgress?, ItemEpisodeId>(
+      (ref, item) {
+        final progressProviderValue = ref.watch(progressProvider);
+        final progressList = progressProviderValue.progress;
 
-class MediaProgressNotifier extends StateNotifier<List<MediaProgress>> {
-  MediaProgressNotifier(List<MediaProgress>? initialProgress)
-      : super(initialProgress ?? []);
+// Ensure this listens to changes
+        return progressList?.firstWhereOrNull(
+              (element) => element.libraryItemId == item.itemId && element.episodeId == item.episodeId,
+        );
+  },
+);
+
+
+class ItemEpisodeId {
+  final String itemId;
+  final String? episodeId;
+
+  ItemEpisodeId(this.itemId, this.episodeId);
 }

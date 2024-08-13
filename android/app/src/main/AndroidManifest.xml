@@ -30,6 +30,14 @@
             </intent-filter>
         </activity>
 
+        <meta-data
+                android:name="com.google.firebase.messaging.default_notification_icon"
+                android:resource="@mipmap/launcher_icon" />
+
+        <meta-data
+                android:name="com.google.firebase.messaging.default_notification_color"
+                android:resource="@android:color/black" />
+
         <service android:name="com.ryanheise.audioservice.AudioService"
                  android:foregroundServiceType="mediaPlayback"
                  android:exported="true" tools:ignore="Instantiatable">

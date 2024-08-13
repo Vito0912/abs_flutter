@@ -135,9 +135,9 @@ class TimerNotifier extends StateNotifier<DateTime?> {
         log('Updating offline progress: $listenedSeconds',
             name: 'progress_timer_provider');
         offlineProgressProvider.updateProgress(progressItem.copyWith(
-          currentTime:shouldFinish
+          currentTime: shouldFinish
               ? (duration.toDouble() + (settings['syncInterval'] ?? 60))
-              .toDouble()
+                  .toDouble()
               : currentTime,
           timeListened: listenedSeconds + progressItem.timeListened,
           updatedAt: DateTime.now(),
@@ -157,7 +157,7 @@ class TimerNotifier extends StateNotifier<DateTime?> {
           episodeId: episodeId,
           currentTime: shouldFinish
               ? (duration.toDouble() + (settings['syncInterval'] ?? 60))
-              .toDouble()
+                  .toDouble()
               : currentTime,
           timeListened: listenedSeconds,
           createdAt: DateTime.now(),
@@ -178,8 +178,10 @@ class TimerNotifier extends StateNotifier<DateTime?> {
     final progressProv = ref.read(progressProvider.notifier);
     final itemId =
         player.audioService.mediaItem.value!.extras!['libraryItemId'];
+    final episodeId = player.audioService.mediaItem.value!.extras!['episodeId'];
 
-    progressProv.updateProgressForItem(itemId, currentTime);
+    progressProv.updateProgressForItem(
+        itemId, episodeId, currentTime, currentTime / duration);
 
     ref
         .read(historyProviderFamily(itemId).notifier)

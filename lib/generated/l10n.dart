@@ -1539,6 +1539,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Play next episode`
+  String get playNextEpisode {
+    return Intl.message(
+      'Play next episode',
+      name: 'playNextEpisode',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

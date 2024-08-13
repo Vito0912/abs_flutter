@@ -82,7 +82,7 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
         final queue = _container.read(queueProvider);
         if (queue.isNotEmpty) {
           final session = _container.read(sessionProvider.notifier);
-          session.load(queue[0].itemId, null);
+          session.load(queue[0].itemId, queue[0].episodeId);
           queue.removeAt(0);
         }
       }
@@ -108,7 +108,8 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
     MediaProgress? progress;
     if (progresses != null) {
       for (final progress1 in progresses) {
-        if (progress1.libraryItemId == item.extras?['libraryItemId']) {
+        if (progress1.libraryItemId == item.extras?['libraryItemId'] &&
+            progress1.episodeId == item.extras?['episodeId']) {
           progress = progress1;
           break;
         }
@@ -218,7 +219,8 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
     }
     final List<Chapter> chapters =
         jsonC.map((e) => Chapter.fromJson(e)).toList();
-    final int index = chapters.indexWhere((chap) => chap.start == currentChapter.start);
+    final int index =
+        chapters.indexWhere((chap) => chap.start == currentChapter.start);
     return index < chapters.length - 1;
   }
 
@@ -297,23 +299,24 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
   PlaybackState _transformEvent(PlaybackEvent event) {
     return PlaybackState(
       controls: [
-        //if (!Platform.isAndroid) MediaControl.skipToPrevious,
+        MediaControl.skipToPrevious,
         MediaControl.rewind,
         if (_player.playing) MediaControl.pause else MediaControl.play,
         MediaControl.stop,
         MediaControl.fastForward,
-        //if (!Platform.isAndroid) MediaControl.skipToNext
+        MediaControl.skipToNext
       ],
       systemActions: {
-        MediaAction.skipToPrevious,
+        if (!Platform.isAndroid) MediaAction.skipToPrevious,
         MediaAction.rewind,
         if (!(_settingsProvider?['lockSeekingNotification'] ?? false))
           MediaAction.seek,
-        MediaAction.skipToNext,
+        MediaAction.fastForward,
+        MediaAction.stop,
         MediaAction.setSpeed,
-        MediaAction.fastForward
+        if (!Platform.isAndroid) MediaAction.skipToNext
       },
-      androidCompactActionIndices: const [0, 1, 3],
+      androidCompactActionIndices: const [1, 2, 3],
       processingState: const {
         ProcessingState.idle: AudioProcessingState.idle,
         ProcessingState.loading: AudioProcessingState.loading,

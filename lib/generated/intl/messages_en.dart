@@ -209,6 +209,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "pause": MessageLookupByLibrary.simpleMessage("Pause"),
         "play": MessageLookupByLibrary.simpleMessage("Play"),
         "playHistory": MessageLookupByLibrary.simpleMessage("Play History"),
+        "playNextEpisode":
+            MessageLookupByLibrary.simpleMessage("Play next episode"),
         "playbackSpeed": MessageLookupByLibrary.simpleMessage("Speed"),
         "player": MessageLookupByLibrary.simpleMessage("Player"),
         "playerSettings":

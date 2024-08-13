@@ -14,8 +14,8 @@ class AddQueueButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final playerStatus = ref.watch(playStatusProvider);
     final queue = ref.watch(queueProvider);
+    final playerStatus = ref.watch(playStatusProvider);
 
     Queue queueItem = Queue(
       itemId: item.id!,
@@ -24,10 +24,11 @@ class AddQueueButton extends ConsumerWidget {
     );
 
     if (queue
-        .where((element) =>
-            element.itemId == queueItem.itemId &&
-            element.episodeId == queueItem.episodeId)
-        .isNotEmpty) {
+            .where((element) =>
+                element.itemId == queueItem.itemId &&
+                element.episodeId == queueItem.episodeId)
+            .isNotEmpty ||
+        playerStatus.playStatus != PlayerStatus.playing) {
       return const SizedBox.shrink();
     }
 

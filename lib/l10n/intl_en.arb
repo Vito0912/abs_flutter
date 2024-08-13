@@ -454,5 +454,6 @@
         }
         }
     },
-  "deleteSelected": "Delete Selected"
+  "deleteSelected": "Delete Selected",
+  "playNextEpisode": "Play next episode"
 }
