@@ -104,11 +104,9 @@ class DownloadProvider extends ChangeNotifier {
       downloadItem.dispose();
     }
 
-    if(
-    update.status == TaskStatus.failed ||
-    update.status == TaskStatus.canceled ||
-    update.status == TaskStatus.notFound
-    ) {
+    if (update.status == TaskStatus.failed ||
+        update.status == TaskStatus.canceled ||
+        update.status == TaskStatus.notFound) {
       // Remove the directory if the download failed
       String path = await update.task.filePath();
       Directory(path).parent.deleteSync(recursive: true);
@@ -183,8 +181,9 @@ class DownloadProvider extends ChangeNotifier {
     downloadList.add(downloadInfo);
 
     // Save item to BaseDirectory.applicationDocuments/abs_flutter/itemId/meta.json
-    String json = api.AbsApi().serializers.toJson(api.LibraryItemBase.serializer, item);
-    if(metaPath != null) {
+    String json =
+        api.AbsApi().serializers.toJson(api.LibraryItemBase.serializer, item);
+    if (metaPath != null) {
       // Create the parent directory
       final dir = Directory(metaPath).parent;
       if (!dir.existsSync()) {
@@ -195,8 +194,65 @@ class DownloadProvider extends ChangeNotifier {
     }
   }
 
+  Future<void> downloadPodcastFile(String url, api.PodcastEpisode item,
+      api.LibraryItemBase libraryItem) async {
+    final fileName = item.audioFile!.metadata!.filename!;
+    final name = item.title;
+
+    final downloadList = ref.read(downloadListProvider);
+    final currentUser = ref.read(currentUserProvider);
+    final libraries = ref.read(librariesProvider);
+    if (currentUser == null ||
+        libraries.value == null ||
+        libraries.value!.data == null ||
+        libraries.value!.data!.libraries == null) {
+      return;
+    }
+    final userId = currentUser.id!;
+
+    final downloadInfo = DownloadInfo(
+      index: int.parse(item.audioFile!.ino!),
+      type: MediaTypeDownload.book,
+      userId: userId,
+      filename: item.audioFile!.metadata!.filename!,
+      format: item.audioFile!.metadata!.ext!,
+      libraryId: libraryItem.libraryId!,
+      itemId: item.id!,
+      size: item.audioFile!.metadata!.size!,
+      displayName: name ?? fileName,
+      libraryName: libraries.value!.data!.libraries!
+          .firstWhere((library) => library.id == libraryItem.libraryId)
+          .name!,
+      status: TaskStatus.enqueued,
+    );
+
+    String? metaPath = await _download(url, fileName, name, item.libraryItemId!,
+        episodeId: item.id);
+
+    downloadList.add(downloadInfo);
+
+    // Save item to BaseDirectory.applicationDocuments/abs_flutter/itemId/meta.json
+    String jsonLibrary = api.AbsApi()
+        .serializers
+        .toJson(api.LibraryItemBase.serializer, libraryItem);
+    String jsonEpisode =
+        api.AbsApi().serializers.toJson(api.PodcastEpisode.serializer, item);
+    if (metaPath != null) {
+      // Create the parent directory
+      final dir = Directory(metaPath).parent;
+      if (!dir.existsSync()) {
+        dir.createSync(recursive: true);
+      }
+      File file = File('${dir.parent.path}/meta.json');
+      file.writeAsString(jsonLibrary);
+      file = File(metaPath);
+      file.writeAsString(jsonEpisode);
+    }
+  }
+
   Future<String?> _download(
-      String url, String fileName, String? displayName, String itemId) async {
+      String url, String fileName, String? displayName, String itemId,
+      {String? episodeId}) async {
     final User? user = ref.read(currentUserProvider);
     if (user == null) {
       return null;
@@ -205,13 +261,20 @@ class DownloadProvider extends ChangeNotifier {
     final bool onlyWifi =
         user.setting?.settings['downloadsOnlyViaWifi'] ?? false;
 
+    late String savePath;
+    if (episodeId != null) {
+      savePath = 'abs_flutter/$itemId/$episodeId';
+    } else {
+      savePath = 'abs_flutter/$itemId';
+    }
+
     final task = DownloadTask(
       url: '$url?token=${token.toString()}',
       filename: fileName,
       updates: Updates.statusAndProgress,
       baseDirectory: BaseDirectory.applicationDocuments,
       requiresWiFi: onlyWifi,
-      directory: 'abs_flutter/$itemId',
+      directory: savePath,
       displayName: displayName ?? fileName,
     );
 

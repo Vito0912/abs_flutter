@@ -126,17 +126,20 @@ class BookView extends ConsumerWidget {
           ),
         ],
         const SizedBox(height: 8.0),
-        Row(
-          children: [
-            PlayButton(itemId: castItem.id!, mediaType: 'book'),
-            const VerticalDivider(),
-            DownloadButton(
-              libraryItem: castItem,
-              user: user,
-            ),
-            const VerticalDivider(),
-            AddQueueButton(item: castItem),
-          ],
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            children: [
+              PlayButton(itemId: castItem.id!, mediaType: 'book'),
+              const VerticalDivider(),
+              DownloadButton(
+                libraryItem: castItem,
+                user: user,
+              ),
+              const VerticalDivider(),
+              AddQueueButton(item: castItem),
+            ],
+          ),
         ),
         const SizedBox(height: 16.0),
         if (castItem.media!.metadata!.description != null) ...[

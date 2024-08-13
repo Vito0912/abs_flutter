@@ -22,6 +22,7 @@ class DownloadInfo with _$DownloadInfo {
       required String itemId,
       required TaskStatus status,
       required num size,
+      String? episodeId,
       String? filePath,
       num? duration,
       int? bitrate,

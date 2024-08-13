@@ -12,10 +12,14 @@ import 'package:permission_handler/permission_handler.dart';
 
 class DownloadButton extends ConsumerWidget {
   const DownloadButton(
-      {super.key, required this.libraryItem, required this.user});
+      {super.key,
+      required this.libraryItem,
+      required this.user,
+      this.episodeId});
 
   final LibraryItemBase libraryItem;
   final m.User user;
+  final String? episodeId;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -67,27 +71,34 @@ class DownloadButton extends ConsumerWidget {
       await Permission.notification.request();
     }
     if (await Permission.notification.isDenied) {
-      if(context.mounted) {
+      if (context.mounted) {
         showDialog(
             context: context,
             builder: (context) => AlertDialog(
-              title: PlatformText(S.of(context).notificationHeading),
-              content:
-              PlatformText(S.of(context).enableNotificationsDownload),
-              actions: [
-                TextButton(
-                  onPressed: () => Navigator.of(context).pop(),
-                  child: PlatformText(S.of(context).ok),
-                )
-              ],
-            ));
+                  title: PlatformText(S.of(context).notificationHeading),
+                  content:
+                      PlatformText(S.of(context).enableNotificationsDownload),
+                  actions: [
+                    TextButton(
+                      onPressed: () => Navigator.of(context).pop(),
+                      child: PlatformText(S.of(context).ok),
+                    )
+                  ],
+                ));
       }
     }
 
     final downloader = ref.read(downloaderProvider);
-    for (AudioFile file in libraryItem.media!.audioFiles!) {
-      downloader.downloadAudioFile(
-          getDownloadUrl(file.ino!), file, libraryItem);
+    if (libraryItem.mediaType!.name == 'book') {
+      for (AudioFile file in libraryItem.media!.audioFiles!) {
+        downloader.downloadAudioFile(
+            getDownloadUrl(file.ino!), file, libraryItem);
+      }
+    } else {
+      PodcastEpisode episode = libraryItem.media!.episodes!
+          .firstWhere((element) => element.id == episodeId);
+      downloader.downloadPodcastFile(
+          getDownloadUrl(episode.audioFile!.ino!), episode, libraryItem);
     }
   }
 }

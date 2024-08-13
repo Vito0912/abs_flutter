@@ -1,7 +1,9 @@
 import 'package:abs_api/abs_api.dart';
+import 'package:abs_flutter/features/library/item/components/download_button.dart';
 import 'package:abs_flutter/features/library/item/components/play_button.dart';
 import 'package:abs_flutter/provider/library_item_provider.dart';
 import 'package:abs_flutter/provider/progress_provider.dart';
+import 'package:abs_flutter/provider/user_provider.dart';
 import 'package:abs_flutter/widgets/album_image.dart';
 import 'package:abs_flutter/widgets/error_text.dart';
 import 'package:flutter/cupertino.dart';
@@ -92,7 +94,7 @@ class PodcastView extends HookConsumerWidget {
                 const SizedBox(height: 32),
                 ...[
                   for (var episode in filteredEpisodes)
-                    _buildEpisode(context, ref, episode),
+                    _buildEpisode(context, ref, episode, item.value),
                 ]
               ],
             ),
@@ -348,7 +350,7 @@ class PodcastView extends HookConsumerWidget {
   }
 
   Widget _buildEpisode(
-      BuildContext context, WidgetRef ref, PodcastEpisode episode) {
+      BuildContext context, WidgetRef ref, PodcastEpisode episode, LibraryItemBase? libItem) {
     final isExpanded = useState(false);
     final progresses = ref.watch(progressProvider);
 
@@ -358,7 +360,7 @@ class PodcastView extends HookConsumerWidget {
     }).firstOrNull;
     final progressPercentage =
         ((progress?.progress ?? 0) * 100).toStringAsPrecision(3);
-
+    final currentUser = ref.read(currentUserProvider);
     return SelectionArea(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -399,10 +401,16 @@ class PodcastView extends HookConsumerWidget {
             ),
           ),
           const SizedBox(height: 8),
-          PlayButton(
-            itemId: itemId,
-            mediaType: 'podcast',
-            episodeId: episode.id,
+          Row(
+            children: [
+              PlayButton(
+                itemId: itemId,
+                mediaType: 'podcast',
+                episodeId: episode.id,
+              ),
+              const SizedBox(width: 8),
+              DownloadButton(libraryItem: libItem!, user: currentUser!, episodeId: episode.id),
+            ],
           ),
           const SizedBox(height: 8),
           if (progress != null) ...[

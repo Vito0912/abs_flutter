@@ -42,6 +42,8 @@ mixin _$DownloadInfo {
   set status(TaskStatus value) => throw _privateConstructorUsedError;
   num get size => throw _privateConstructorUsedError;
   set size(num value) => throw _privateConstructorUsedError;
+  String? get episodeId => throw _privateConstructorUsedError;
+  set episodeId(String? value) => throw _privateConstructorUsedError;
   String? get filePath => throw _privateConstructorUsedError;
   set filePath(String? value) => throw _privateConstructorUsedError;
   num? get duration => throw _privateConstructorUsedError;
@@ -83,6 +85,7 @@ abstract class $DownloadInfoCopyWith<$Res> {
       String itemId,
       TaskStatus status,
       num size,
+      String? episodeId,
       String? filePath,
       num? duration,
       int? bitrate,
@@ -117,6 +120,7 @@ class _$DownloadInfoCopyWithImpl<$Res, $Val extends DownloadInfo>
     Object? itemId = null,
     Object? status = null,
     Object? size = null,
+    Object? episodeId = freezed,
     Object? filePath = freezed,
     Object? duration = freezed,
     Object? bitrate = freezed,
@@ -169,6 +173,10 @@ class _$DownloadInfoCopyWithImpl<$Res, $Val extends DownloadInfo>
           ? _value.size
           : size // ignore: cast_nullable_to_non_nullable
               as num,
+      episodeId: freezed == episodeId
+          ? _value.episodeId
+          : episodeId // ignore: cast_nullable_to_non_nullable
+              as String?,
       filePath: freezed == filePath
           ? _value.filePath
           : filePath // ignore: cast_nullable_to_non_nullable
@@ -217,6 +225,7 @@ abstract class _$$DownloadInfoImplCopyWith<$Res>
       String itemId,
       TaskStatus status,
       num size,
+      String? episodeId,
       String? filePath,
       num? duration,
       int? bitrate,
@@ -249,6 +258,7 @@ class __$$DownloadInfoImplCopyWithImpl<$Res>
     Object? itemId = null,
     Object? status = null,
     Object? size = null,
+    Object? episodeId = freezed,
     Object? filePath = freezed,
     Object? duration = freezed,
     Object? bitrate = freezed,
@@ -301,6 +311,10 @@ class __$$DownloadInfoImplCopyWithImpl<$Res>
           ? _value.size
           : size // ignore: cast_nullable_to_non_nullable
               as num,
+      episodeId: freezed == episodeId
+          ? _value.episodeId
+          : episodeId // ignore: cast_nullable_to_non_nullable
+              as String?,
       filePath: freezed == filePath
           ? _value.filePath
           : filePath // ignore: cast_nullable_to_non_nullable
@@ -344,6 +358,7 @@ class _$DownloadInfoImpl extends _DownloadInfo with DiagnosticableTreeMixin {
       required this.itemId,
       required this.status,
       required this.size,
+      this.episodeId,
       this.filePath,
       this.duration,
       this.bitrate,
@@ -378,6 +393,8 @@ class _$DownloadInfoImpl extends _DownloadInfo with DiagnosticableTreeMixin {
   @override
   num size;
   @override
+  String? episodeId;
+  @override
   String? filePath;
   @override
   num? duration;
@@ -392,7 +409,7 @@ class _$DownloadInfoImpl extends _DownloadInfo with DiagnosticableTreeMixin {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'DownloadInfo(index: $index, type: $type, userId: $userId, displayName: $displayName, filename: $filename, format: $format, libraryId: $libraryId, libraryName: $libraryName, itemId: $itemId, status: $status, size: $size, filePath: $filePath, duration: $duration, bitrate: $bitrate, codec: $codec, mimeType: $mimeType, embeddedCoverArt: $embeddedCoverArt)';
+    return 'DownloadInfo(index: $index, type: $type, userId: $userId, displayName: $displayName, filename: $filename, format: $format, libraryId: $libraryId, libraryName: $libraryName, itemId: $itemId, status: $status, size: $size, episodeId: $episodeId, filePath: $filePath, duration: $duration, bitrate: $bitrate, codec: $codec, mimeType: $mimeType, embeddedCoverArt: $embeddedCoverArt)';
   }
 
   @override
@@ -411,6 +428,7 @@ class _$DownloadInfoImpl extends _DownloadInfo with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('itemId', itemId))
       ..add(DiagnosticsProperty('status', status))
       ..add(DiagnosticsProperty('size', size))
+      ..add(DiagnosticsProperty('episodeId', episodeId))
       ..add(DiagnosticsProperty('filePath', filePath))
       ..add(DiagnosticsProperty('duration', duration))
       ..add(DiagnosticsProperty('bitrate', bitrate))
@@ -448,6 +466,7 @@ abstract class _DownloadInfo extends DownloadInfo {
       required String itemId,
       required TaskStatus status,
       required num size,
+      String? episodeId,
       String? filePath,
       num? duration,
       int? bitrate,
@@ -492,6 +511,9 @@ abstract class _DownloadInfo extends DownloadInfo {
   @override
   num get size;
   set size(num value);
+  @override
+  String? get episodeId;
+  set episodeId(String? value);
   @override
   String? get filePath;
   set filePath(String? value);
