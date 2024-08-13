@@ -63,8 +63,9 @@ A big thank you to [Weblate](https://weblate.org) for providing their services!
 📴 **Offline Support** - Listen to your audiobooks even when you're offline. Sync offline up to one year\
 🔎 **Fast Search** - Search for audiobooks. Preserves query while switching library or user.\
 📖 **History** - Track where you paused, skipped, and resumed.\
-📊 **Stats** - View your listening habits over the past 365 days, including total time, frequency, and recent activity.
-⚙️ **Many Settings** - Customize the app to your liking. Head to [Settings](SETTINGS.md) to learn more.\
+📊 **Stats** - View your listening habits over the past 365 days, including total time, frequency, and recent activity.\
+   **HTML Support** - Converts HTML in descriptions and makes links clickable.\
+⚙️ **Many Settings** - Customize the app to your liking. Head to [Settings](SETTINGS.md) to learn more.
 
 ### Additional to First-party App
 
@@ -73,7 +74,8 @@ A big thank you to [Weblate](https://weblate.org) for providing their services!
 
 🚀 **Fast Account Switching**\
 📅 **Up-to-date Sync**\
-🔁 **Queue Support**
+🔁 **Queue Support**\
+**HTML Support**
 
 ### Missing from First-party App
 
@@ -81,8 +83,7 @@ A big thank you to [Weblate](https://weblate.org) for providing their services!
 > The goal is to eventually include all first-party features.
 
 🚗 **Car Support** - Currently limited to media controls.\
-📖 **Reading eBooks**\
-🎙️ **Playing Podcasts**
+📖 **Reading eBooks**
 
 ### Attribution
 > The following attributions highlight contributions that were essential to this project.\

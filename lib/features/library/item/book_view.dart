@@ -2,13 +2,11 @@ import 'dart:developer';
 
 import 'package:abs_api/abs_api.dart';
 import 'package:abs_flutter/features/home/components/download_info_button.dart';
+import 'package:abs_flutter/features/library/item/book/metainfo.dart';
+import 'package:abs_flutter/features/library/item/book/tags_description.dart';
 import 'package:abs_flutter/features/library/item/components/add_to_queue_button.dart';
-import 'package:abs_flutter/features/library/item/components/chip_section.dart';
 import 'package:abs_flutter/features/library/item/components/download_button.dart';
-import 'package:abs_flutter/features/library/item/components/expandable_description.dart';
 import 'package:abs_flutter/features/library/item/components/play_button.dart';
-import 'package:abs_flutter/features/player/modules/chapters.dart';
-import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/provider/library_item_provider.dart';
 import 'package:abs_flutter/provider/progress_provider.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
@@ -19,6 +17,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'book/expandable_description.dart';
+
 class BookView extends ConsumerWidget {
   const BookView({super.key, required this.itemId});
 
@@ -28,13 +28,13 @@ class BookView extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final item = ref.watch(itemProvider(itemId));
     final currentUser = ref.read(currentUserProvider);
-    final progressNotifier = ref.read(progressProvider.notifier);
-    //progressNotifier.getProgressWithLibraryItem(itemId);
 
     log('Building item view for $itemId', name: 'item_view');
 
     return item.when(
       data: (item) {
+        final progressNotifier = ref.read(progressProvider.notifier);
+        progressNotifier.getProgressWithLibraryItem(itemId);
         final mediaProgress = progressNotifier.progress ?? [];
         return item == null
             ? const ErrorText('Error: Item not found')
@@ -69,38 +69,20 @@ class BookView extends ConsumerWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  _buildImage(currentUser, castItem),
+                  AlbumImage(
+                    castItem.id!,
+                    size: 150,
+                  ),
                   const SizedBox(height: 16.0),
                   _buildTextContent(
                       context, castItem, mediaProgress, currentUser),
                   const SizedBox(height: 16.0),
-                  _buildChipSections(context, castItem),
+                  TagsDescription(castItem: castItem),
                 ],
               ),
             ),
           ),
         ),
-      ),
-    );
-  }
-
-  Widget _buildImage(m.User currentUser, LibraryItemBase castItem) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(16.0),
-        boxShadow: const [
-          BoxShadow(
-            color: Colors.black26,
-            blurRadius: 10.0,
-            spreadRadius: 5.0,
-          ),
-        ],
-      ),
-      width: 150,
-      height: 150,
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(16.0),
-        child: AlbumImage(castItem.id!),
       ),
     );
   }
@@ -112,13 +94,12 @@ class BookView extends ConsumerWidget {
       children: [
         PlatformText(
           castItem.media!.metadata!.title!,
-          style: const TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
+          style: Theme.of(context).textTheme.titleLarge,
         ),
         if (castItem.media!.metadata!.subtitle != null) ...[
-          const SizedBox(height: 8.0),
           PlatformText(
             castItem.media!.metadata!.subtitle!,
-            style: const TextStyle(fontSize: 18.0, fontWeight: FontWeight.w500),
+            style: Theme.of(context).textTheme.labelLarge,
           ),
         ],
         const SizedBox(height: 8.0),
@@ -142,101 +123,8 @@ class BookView extends ConsumerWidget {
           ExpandableDescription(
               description: castItem.media!.metadata!.description!),
         ],
-        const SizedBox(height: 8.0),
-        if (castItem.media?.audioFiles != null) ...[
-          PlatformText(
-            S.of(context).itemLength(
-                  _totalHours(castItem.media!.audioFiles!.toList()).toString(),
-                  _totalMinutes(castItem.media!.audioFiles!.toList())
-                      .toString(),
-                ),
-            style: const TextStyle(fontSize: 16.0),
-          ),
-        ],
-        const SizedBox(height: 8.0),
-        PlatformText(
-          S.of(context).itemProgress(
-              _progressPercentage(mediaProgress, castItem.id!).toString()),
-          style: const TextStyle(fontSize: 16.0),
-        ),
-        const SizedBox(height: 8.0),
-        if (castItem.media!.metadata!.publishedYear != null) ...[
-          PlatformText(
-            S.of(context).itemPublishedYear(
-                castItem.media!.metadata!.publishedYear.toString()),
-            style: const TextStyle(fontSize: 16.0),
-          ),
-        ],
-        if (castItem.media!.chapters != null &&
-            castItem.media!.chapters!.isNotEmpty) ...[
-          const SizedBox(height: 8.0),
-          PlatformText(
-            S
-                .of(context)
-                .itemNumChapters(castItem.media!.chapters!.length.toString()),
-            style: const TextStyle(fontSize: 16.0),
-          ),
-          const SizedBox(height: 8.0),
-          Chapters(
-              chapters: castItem.media!.chapters!
-                  .map((e) => {
-                        'title': e?.title,
-                        'start': e?.start,
-                        'end': e?.end,
-                      })
-                  .toList(),
-              child: PlatformText('View Chapters'))
-        ],
+        Metainfo(castItem: castItem),
       ],
     );
-  }
-
-  Widget _buildChipSections(BuildContext context, LibraryItemBase castItem) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        ChipSection(
-          label: S.of(context).authors,
-          items: _mapNames(castItem.media!.metadata!.authors?.toList()),
-        ),
-        ChipSection(
-            label: S.of(context).genres,
-            items: castItem.media!.metadata!.genres!.toList()),
-        ChipSection(
-            label: S.of(context).tags, items: castItem.media!.tags!.toList()),
-        if (castItem.mediaType != null && castItem.mediaType == MediaType.book)
-          ChipSection(
-            label: S.of(context).series,
-            items: castItem.media!.metadata!.series!
-                .map((s) => '${s.name} #${s.sequence}')
-                .toList(),
-          )
-      ],
-    );
-  }
-
-  List<String> _mapNames(List<AuthorMinified>? authors) {
-    if (authors == null) return [];
-    return authors.map((author) => author.name!).toList();
-  }
-
-  int _totalHours(List<AudioFile> audioFiles) {
-    return audioFiles.fold(0, (sum, file) => sum + file.duration!.toInt()) ~/
-        3600;
-  }
-
-  int _totalMinutes(List<AudioFile> audioFiles) {
-    return (audioFiles.fold(0, (sum, file) => sum + file.duration!.toInt()) %
-            3600) ~/
-        60;
-  }
-
-  double _progressPercentage(List<MediaProgress> mediaProgress, String itemId) {
-    return (mediaProgress
-                .firstWhere((element) => element.libraryItemId == itemId,
-                    orElse: () => MediaProgress())
-                .progress ??
-            0) *
-        100;
   }
 }

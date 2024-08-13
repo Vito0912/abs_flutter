@@ -164,9 +164,10 @@ class Helper {
     }
   }
 
-  static Future<void> launchUrl(String url) async {
+  static Future<bool> launchUrl(String url) async {
     Uri uri = Uri.parse(url);
     await launcher.launchUrl(uri, mode: LaunchMode.externalApplication);
+    return true;
   }
 
   static String getCurrentRoute(GoRouter router) {

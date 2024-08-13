@@ -24,7 +24,6 @@ class ProgressProvider extends ChangeNotifier {
     print(api);
 
     addListener(() => print('Change'));
-
   }
 
   Future<void> getAllProgress() async {
@@ -53,7 +52,7 @@ class ProgressProvider extends ChangeNotifier {
         newProgress.addAll(user.mediaProgress!.toList());
       }
     } catch (e) {
-      log(e.toString());
+      log(e.toString(), name: 'progress_provider');
     }
 
     if (progress == null || !listEquals(progress, newProgress)) {
@@ -61,7 +60,6 @@ class ProgressProvider extends ChangeNotifier {
       notifyListeners();
     }
   }
-
 
   Future<void> getProgressWithLibraryItem(String id,
       {String? episodeId}) async {
@@ -110,11 +108,12 @@ class ProgressProvider extends ChangeNotifier {
         notifyListeners();
       }
     } catch (e) {
-      log(e.toString());
+      // No progress found
     }
   }
 
-  void updateProgressForItem(String id, String? episodeId, double currentTime, double percentage) {
+  void updateProgressForItem(
+      String id, String? episodeId, double currentTime, double percentage) {
     if (progress == null) return;
 
     int index = progress!.indexWhere((element) =>
@@ -136,18 +135,20 @@ final progressProvider = ChangeNotifierProvider<ProgressProvider>((ref) {
   return ProgressProvider(ref);
 });
 
-final progressProviderWithItemId = Provider.family<MediaProgress?, ItemEpisodeId>(
-      (ref, item) {
-        final progressProviderValue = ref.watch(progressProvider);
-        final progressList = progressProviderValue.progress;
+final progressProviderWithItemId =
+    Provider.family<MediaProgress?, ItemEpisodeId>(
+  (ref, item) {
+    final progressProviderValue = ref.watch(progressProvider);
+    final progressList = progressProviderValue.progress;
 
 // Ensure this listens to changes
-        return progressList?.firstWhereOrNull(
-              (element) => element.libraryItemId == item.itemId && element.episodeId == item.episodeId,
-        );
+    return progressList?.firstWhereOrNull(
+      (element) =>
+          element.libraryItemId == item.itemId &&
+          element.episodeId == item.episodeId,
+    );
   },
 );
-
 
 class ItemEpisodeId {
   final String itemId;
