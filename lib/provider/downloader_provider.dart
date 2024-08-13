@@ -18,6 +18,7 @@ class DownloadItem {
   final StreamController<TaskStatusUpdate> statusController;
   final String itemId;
   final String userId;
+  final String? episodeId;
 
   DownloadItem({
     required this.task,
@@ -25,6 +26,7 @@ class DownloadItem {
     required this.statusController,
     required this.userId,
     required this.itemId,
+    required this.episodeId,
   });
 
   Stream<TaskProgressUpdate> get progressStream => progressController.stream;
@@ -82,6 +84,7 @@ class DownloadProvider extends ChangeNotifier {
     final DownloadInfo? currentDownload = downloadList.firstWhereOrNull(
       (download) => (download.filename == downloadItem.task.filename &&
           download.itemId == downloadItem.itemId &&
+          download.episodeId == downloadItem.episodeId &&
           download.userId == downloadItem.userId),
     );
 
@@ -136,6 +139,7 @@ class DownloadProvider extends ChangeNotifier {
         progressController: dummyProgressController,
         statusController: dummyStatusController,
         itemId: '',
+        episodeId: null,
         userId: '');
   }
 
@@ -212,12 +216,13 @@ class DownloadProvider extends ChangeNotifier {
 
     final downloadInfo = DownloadInfo(
       index: int.parse(item.audioFile!.ino!),
-      type: MediaTypeDownload.book,
+      type: MediaTypeDownload.podcast,
       userId: userId,
       filename: item.audioFile!.metadata!.filename!,
       format: item.audioFile!.metadata!.ext!,
       libraryId: libraryItem.libraryId!,
-      itemId: item.id!,
+      itemId: libraryItem.id!,
+      episodeId: item.id,
       size: item.audioFile!.metadata!.size!,
       displayName: name ?? fileName,
       libraryName: libraries.value!.data!.libraries!
@@ -288,6 +293,7 @@ class DownloadProvider extends ChangeNotifier {
       progressController: progressController,
       statusController: statusController,
       itemId: itemId,
+      episodeId: episodeId,
       userId: user.id!,
     );
 

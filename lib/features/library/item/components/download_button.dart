@@ -26,10 +26,12 @@ class DownloadButton extends ConsumerWidget {
     final downloader = ref.watch(downloaderProvider);
     final downloads = ref.watch(downloadListProvider);
     final currentDownload = downloader.downloads
-        .where((element) => element.itemId == libraryItem.id)
+        .where((element) =>
+            element.itemId == libraryItem.id && element.episodeId == episodeId)
         .firstOrNull;
     final DownloadInfo? downloadedItem = downloads
-        .where((element) => element.itemId == libraryItem.id)
+        .where((element) =>
+            element.itemId == libraryItem.id && element.episodeId == episodeId)
         .firstOrNull;
 
     return PlatformElevatedButton(

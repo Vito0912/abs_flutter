@@ -44,9 +44,7 @@ class DownloadLibrary extends ConsumerWidget {
         shrinkWrap: true,
         itemBuilder: (context, index) {
           final item = libraryDownloads[index];
-          final itemType = item.type
-              .toString()
-              .split('.')[item.type.toString().split('.').length - 1];
+          final itemType = item.type.name;
           return ListTile(
             title: Text(item.displayName),
             subtitle: Text(item.filename),

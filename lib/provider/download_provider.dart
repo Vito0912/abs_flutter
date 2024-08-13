@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:abs_flutter/globals.dart';
@@ -51,9 +52,16 @@ class DownloadListNotifier extends StateNotifier<List<DownloadInfo>> {
       final folder = Directory(download.filePath!).parent;
       // For windows support / and \ in path
       final folderName = folder.path.replaceAll('\\', '/').split('/').last;
-      if (folderName == download.itemId) {
+      if (folderName == download.itemId || folderName == download.episodeId) {
+        log('Deleting folder: ${folder.path}', name: 'removeDownload');
         try {
-          folder.deleteSync(recursive: true);
+          if (folderName == download.episodeId &&
+              // Folder itself + meta.json
+              folder.parent.listSync().length <= 2) {
+            folder.parent.deleteSync(recursive: true);
+          } else {
+            folder.deleteSync(recursive: true);
+          }
         } catch (e) {
           if (e is! PathNotFoundException) {
             rethrow;
