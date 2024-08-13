@@ -899,6 +899,107 @@ class S {
     );
   }
 
+  /// `{count}s`
+  String dateFormatSecondShort(int count) {
+    return Intl.message(
+      '${count}s',
+      name: 'dateFormatSecondShort',
+      desc: '',
+      args: [count],
+    );
+  }
+
+  /// `{count}m`
+  String dateFormatMinuteShort(int count) {
+    return Intl.message(
+      '${count}m',
+      name: 'dateFormatMinuteShort',
+      desc: '',
+      args: [count],
+    );
+  }
+
+  /// `{minutes}m {seconds}s`
+  String dateFormatMinuteSecondShort(int minutes, int seconds) {
+    return Intl.message(
+      '${minutes}m ${seconds}s',
+      name: 'dateFormatMinuteSecondShort',
+      desc: '',
+      args: [minutes, seconds],
+    );
+  }
+
+  /// `{count}h`
+  String dateFormatHourShort(int count) {
+    return Intl.message(
+      '${count}h',
+      name: 'dateFormatHourShort',
+      desc: '',
+      args: [count],
+    );
+  }
+
+  /// `{hours}h {minutes}m`
+  String dateFormatHourMinuteShort(int hours, int minutes) {
+    return Intl.message(
+      '${hours}h ${minutes}m',
+      name: 'dateFormatHourMinuteShort',
+      desc: '',
+      args: [hours, minutes],
+    );
+  }
+
+  /// `{hours}h {minutes}m {seconds}s`
+  String dateFormatHourMinuteSecondShort(int hours, int minutes, int seconds) {
+    return Intl.message(
+      '${hours}h ${minutes}m ${seconds}s',
+      name: 'dateFormatHourMinuteSecondShort',
+      desc: '',
+      args: [hours, minutes, seconds],
+    );
+  }
+
+  /// `{count}d`
+  String dateFormatDayShort(int count) {
+    return Intl.message(
+      '${count}d',
+      name: 'dateFormatDayShort',
+      desc: '',
+      args: [count],
+    );
+  }
+
+  /// `{days}d {hours}h`
+  String dateFormatDayHourShort(int days, int hours) {
+    return Intl.message(
+      '${days}d ${hours}h',
+      name: 'dateFormatDayHourShort',
+      desc: '',
+      args: [days, hours],
+    );
+  }
+
+  /// `{days}d {hours}h {minutes}m`
+  String dateFormatDayHourMinuteShort(int days, int hours, int minutes) {
+    return Intl.message(
+      '${days}d ${hours}h ${minutes}m',
+      name: 'dateFormatDayHourMinuteShort',
+      desc: '',
+      args: [days, hours, minutes],
+    );
+  }
+
+  /// `{days}d {hours}h {minutes}m {seconds}s`
+  String dateFormatDayHourMinuteSecondShort(
+      int days, int hours, int minutes, int seconds) {
+    return Intl.message(
+      '${days}d ${hours}h ${minutes}m ${seconds}s',
+      name: 'dateFormatDayHourMinuteSecondShort',
+      desc: '',
+      args: [days, hours, minutes, seconds],
+    );
+  }
+
   /// `Today`
   String get today {
     return Intl.message(
@@ -1406,6 +1507,26 @@ class S {
       name: 'success',
       desc: '',
       args: [],
+    );
+  }
+
+  /// `Chapters`
+  String get chapters {
+    return Intl.message(
+      'Chapters',
+      name: 'chapters',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Chapters ({num})`
+  String chaptersNum(int num) {
+    return Intl.message(
+      'Chapters ($num)',
+      name: 'chaptersNum',
+      desc: '',
+      args: [num],
     );
   }
 }

@@ -7,6 +7,7 @@ import 'package:abs_flutter/features/library/item/components/chip_section.dart';
 import 'package:abs_flutter/features/library/item/components/download_button.dart';
 import 'package:abs_flutter/features/library/item/components/expandable_description.dart';
 import 'package:abs_flutter/features/library/item/components/play_button.dart';
+import 'package:abs_flutter/features/player/modules/chapters.dart';
 import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/provider/library_item_provider.dart';
 import 'package:abs_flutter/provider/progress_provider.dart';
@@ -37,12 +38,7 @@ class BookView extends ConsumerWidget {
         final mediaProgress = progressNotifier.progress ?? [];
         return item == null
             ? const ErrorText('Error: Item not found')
-            : _buildContent(
-            context,
-            ref,
-            item,
-            currentUser!,
-            mediaProgress);
+            : _buildContent(context, ref, item, currentUser!, mediaProgress);
       },
       loading: () => Center(child: PlatformCircularProgressIndicator()),
       error: (error, _) => ErrorText('Error: $error'),
@@ -150,10 +146,10 @@ class BookView extends ConsumerWidget {
         if (castItem.media?.audioFiles != null) ...[
           PlatformText(
             S.of(context).itemLength(
-              _totalHours(castItem.media!.audioFiles!.toList()).toString(),
-              _totalMinutes(castItem.media!.audioFiles!.toList())
-                  .toString(),
-            ),
+                  _totalHours(castItem.media!.audioFiles!.toList()).toString(),
+                  _totalMinutes(castItem.media!.audioFiles!.toList())
+                      .toString(),
+                ),
             style: const TextStyle(fontSize: 16.0),
           ),
         ],
@@ -171,7 +167,8 @@ class BookView extends ConsumerWidget {
             style: const TextStyle(fontSize: 16.0),
           ),
         ],
-        if (castItem.media!.chapters != null) ...[
+        if (castItem.media!.chapters != null &&
+            castItem.media!.chapters!.isNotEmpty) ...[
           const SizedBox(height: 8.0),
           PlatformText(
             S
@@ -179,6 +176,16 @@ class BookView extends ConsumerWidget {
                 .itemNumChapters(castItem.media!.chapters!.length.toString()),
             style: const TextStyle(fontSize: 16.0),
           ),
+          const SizedBox(height: 8.0),
+          Chapters(
+              chapters: castItem.media!.chapters!
+                  .map((e) => {
+                        'title': e?.title,
+                        'start': e?.start,
+                        'end': e?.end,
+                      })
+                  .toList(),
+              child: PlatformText('View Chapters'))
         ],
       ],
     );
@@ -197,12 +204,13 @@ class BookView extends ConsumerWidget {
             items: castItem.media!.metadata!.genres!.toList()),
         ChipSection(
             label: S.of(context).tags, items: castItem.media!.tags!.toList()),
-        if(castItem.mediaType != null && castItem.mediaType == MediaType.book)ChipSection(
-          label: S.of(context).series,
-          items: castItem.media!.metadata!.series!
-              .map((s) => '${s.name} #${s.sequence}')
-              .toList(),
-        )
+        if (castItem.mediaType != null && castItem.mediaType == MediaType.book)
+          ChipSection(
+            label: S.of(context).series,
+            items: castItem.media!.metadata!.series!
+                .map((s) => '${s.name} #${s.sequence}')
+                .toList(),
+          )
       ],
     );
   }
@@ -219,16 +227,16 @@ class BookView extends ConsumerWidget {
 
   int _totalMinutes(List<AudioFile> audioFiles) {
     return (audioFiles.fold(0, (sum, file) => sum + file.duration!.toInt()) %
-        3600) ~/
+            3600) ~/
         60;
   }
 
   double _progressPercentage(List<MediaProgress> mediaProgress, String itemId) {
     return (mediaProgress
-        .firstWhere((element) => element.libraryItemId == itemId,
-        orElse: () => MediaProgress())
-        .progress ??
-        0) *
+                .firstWhere((element) => element.libraryItemId == itemId,
+                    orElse: () => MediaProgress())
+                .progress ??
+            0) *
         100;
   }
 }

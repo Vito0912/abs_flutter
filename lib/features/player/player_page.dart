@@ -1,4 +1,5 @@
 import 'package:abs_flutter/features/player/modules/chapter_buttons.dart';
+import 'package:abs_flutter/features/player/modules/chapters.dart';
 import 'package:abs_flutter/features/player/modules/play_button.dart';
 import 'package:abs_flutter/features/player/modules/queue_button.dart';
 import 'package:abs_flutter/features/player/modules/seeking_buttons.dart';
@@ -164,6 +165,17 @@ class PlayerPage extends ConsumerWidget {
                                     size: size,
                                     currentChapter: currentChapter,
                                   ),
+                                  if (player.audioService.mediaItem.value
+                                          ?.extras?['chapters'] !=
+                                      null)
+                                    Chapters(
+                                      chapters: player.audioService.mediaItem
+                                          .value!.extras!['chapters'],
+                                      child: Icon(
+                                          PlatformIcons(context).book,
+                                        size: size,
+                                      ),
+                                    ),
                                   const QueueButton(size: size),
                                   if (libraryItemId != null)
                                     PlatformIconButton(

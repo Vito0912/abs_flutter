@@ -87,7 +87,10 @@ class Helper {
     return formattedTime(Duration(seconds: seconds.toInt()));
   }
 
-  static String formatTimeToReadable(num? seconds, {bool precise = false}) {
+  static String formatTimeToReadable(num? seconds,
+      {bool precise = false, bool short = false}) {
+    if (short) return formatTimeToReadableShort(seconds, precise: precise);
+
     seconds ??= 0;
 
     int days = seconds ~/ 86400;
@@ -112,6 +115,38 @@ class Helper {
             .dateFormatHourMinuteSecond(hours, minutes, timeSeconds.toInt());
       }
       return S.current.dateFormatDayHourMinuteSecond(
+          days, hours, minutes, timeSeconds.toInt());
+    }
+  }
+
+  static formatTimeToReadableShort(num? seconds, {bool precise = false}) {
+    seconds ??= 0;
+
+    int days = seconds ~/ 86400;
+    int hours = (seconds % 86400) ~/ 3600;
+    int minutes = (seconds % 3600) ~/ 60;
+
+    if (!precise) {
+      if (seconds < 60) return S.current.dateFormatSecondShort(seconds.toInt());
+      if (seconds < 3600) return S.current.dateFormatMinuteShort(minutes);
+      if (seconds < 86400) {
+        return S.current.dateFormatHourMinuteShort(hours, minutes);
+      }
+      return S.current.dateFormatDayHourMinuteShort(days, hours, minutes);
+    } else {
+      num timeSeconds = seconds % 60;
+      if (seconds < 60) {
+        return S.current.dateFormatSecondShort(timeSeconds.toInt());
+      }
+      if (seconds < 3600) {
+        return S.current
+            .dateFormatMinuteSecondShort(minutes, timeSeconds.toInt());
+      }
+      if (seconds < 86400) {
+        return S.current.dateFormatHourMinuteSecondShort(
+            hours, minutes, timeSeconds.toInt());
+      }
+      return S.current.dateFormatDayHourMinuteSecondShort(
           days, hours, minutes, timeSeconds.toInt());
     }
   }

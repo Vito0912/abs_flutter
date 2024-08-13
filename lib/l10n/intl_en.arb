@@ -284,6 +284,116 @@
         }
       }
   },
+  "dateFormatSecondShort": "{count}s",
+  "@dateFormatSecondShort": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatMinuteShort": "{count}m",
+  "@dateFormatMinuteShort": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatMinuteSecondShort": "{minutes}m {seconds}s",
+  "@dateFormatMinuteSecondShort": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      },
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatHourShort": "{count}h",
+  "@dateFormatHourShort": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatHourMinuteShort": "{hours}h {minutes}m",
+  "@dateFormatHourMinuteShort": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatHourMinuteSecondShort": "{hours}h {minutes}m {seconds}s",
+  "@dateFormatHourMinuteSecondShort": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      },
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatDayShort": "{count}d",
+  "@dateFormatDayShort": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatDayHourShort": "{days}d {hours}h",
+  "@dateFormatDayHourShort": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatDayHourMinuteShort": "{days}d {hours}h {minutes}m",
+  "@dateFormatDayHourMinuteShort": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatDayHourMinuteSecondShort": "{days}d {hours}h {minutes}m {seconds}s",
+  "@dateFormatDayHourMinuteSecondShort": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      },
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
   "today": "Today",
   "downloadsOnlyViaWifi": "Downloads only via WiFi",
   "noDownloads": "No downloads",
@@ -334,5 +444,14 @@
   "lockProgressBarDescription": "When enabled, this feature locks the progress bar in the media notification, if supported by the operating system",
   "notTriedYet": "Not tried yet",
   "failed": "Failed",
-  "success": "Success"
+  "success": "Success",
+  "chapters": "Chapters",
+  "chaptersNum": "Chapters ({num})",
+    "@chaptersNum": {
+        "placeholders": {
+        "num": {
+            "type": "int"
+        }
+        }
+    }
 }

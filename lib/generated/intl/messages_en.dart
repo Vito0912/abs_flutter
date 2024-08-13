@@ -20,45 +20,69 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
-  static String m0(count) =>
+  static String m0(num) => "Chapters (${num})";
+
+  static String m1(count) =>
       "${Intl.plural(count, one: '${count}  day', other: '${count} days')}";
 
-  static String m1(days, hours) =>
+  static String m2(days, hours) =>
       "${Intl.plural(days, one: '${days} day', other: '${days} days')} ${Intl.plural(hours, one: '${hours} hour', other: '${hours} hours')}";
 
-  static String m2(days, hours, minutes) =>
+  static String m3(days, hours, minutes) =>
       "${Intl.plural(days, one: '${days} day', other: '${days} days')} ${Intl.plural(hours, one: '${hours} hour', other: '${hours} hours')} ${Intl.plural(minutes, one: '${minutes} minute', other: '${minutes} minutes')}";
 
-  static String m3(days, hours, minutes, seconds) =>
+  static String m4(days, hours, minutes, seconds) =>
       "${Intl.plural(days, one: '${days} day', other: '${days} days')} ${Intl.plural(hours, one: '${hours} hour', other: '${hours} hours')} ${Intl.plural(minutes, one: '${minutes} minute', other: '${minutes} minutes')} ${Intl.plural(seconds, one: '${seconds} second', other: '${seconds} seconds')}";
 
-  static String m4(count) =>
-      "${Intl.plural(count, one: '${count} hour', other: '${count} hours')}";
+  static String m5(days, hours, minutes, seconds) =>
+      "${days}d ${hours}h ${minutes}m ${seconds}s";
 
-  static String m5(hours, minutes) =>
-      "${Intl.plural(hours, one: '${hours} hour', other: '${hours} hours')} ${Intl.plural(minutes, one: '${minutes} minute', other: '${minutes} minutes')}";
+  static String m6(days, hours, minutes) => "${days}d ${hours}h ${minutes}m";
 
-  static String m6(hours, minutes, seconds) =>
-      "${Intl.plural(hours, one: '${hours} hour', other: '${hours} hours')} ${Intl.plural(minutes, one: '${minutes} minute', other: '${minutes} minutes')} ${Intl.plural(seconds, one: '${seconds} second', other: '${seconds} seconds')}";
+  static String m7(days, hours) => "${days}d ${hours}h";
 
-  static String m7(count) =>
-      "${Intl.plural(count, one: '${count} minute', other: '${count} minutes')}";
-
-  static String m8(minutes, seconds) =>
-      "${Intl.plural(minutes, one: '${minutes} minute', other: '${minutes} minutes')} ${Intl.plural(seconds, one: '${seconds} second', other: '${seconds} seconds')}";
+  static String m8(count) => "${count}d";
 
   static String m9(count) =>
+      "${Intl.plural(count, one: '${count} hour', other: '${count} hours')}";
+
+  static String m10(hours, minutes) =>
+      "${Intl.plural(hours, one: '${hours} hour', other: '${hours} hours')} ${Intl.plural(minutes, one: '${minutes} minute', other: '${minutes} minutes')}";
+
+  static String m11(hours, minutes, seconds) =>
+      "${Intl.plural(hours, one: '${hours} hour', other: '${hours} hours')} ${Intl.plural(minutes, one: '${minutes} minute', other: '${minutes} minutes')} ${Intl.plural(seconds, one: '${seconds} second', other: '${seconds} seconds')}";
+
+  static String m12(hours, minutes, seconds) =>
+      "${hours}h ${minutes}m ${seconds}s";
+
+  static String m13(hours, minutes) => "${hours}h ${minutes}m";
+
+  static String m14(count) => "${count}h";
+
+  static String m15(count) =>
+      "${Intl.plural(count, one: '${count} minute', other: '${count} minutes')}";
+
+  static String m16(minutes, seconds) =>
+      "${Intl.plural(minutes, one: '${minutes} minute', other: '${minutes} minutes')} ${Intl.plural(seconds, one: '${seconds} second', other: '${seconds} seconds')}";
+
+  static String m17(minutes, seconds) => "${minutes}m ${seconds}s";
+
+  static String m18(count) => "${count}m";
+
+  static String m19(count) =>
       "${Intl.plural(count, one: '${count}  second', other: '${count} seconds')}";
 
-  static String m10(hours, minutes) => "Length: ${hours}:${minutes}";
+  static String m20(count) => "${count}s";
 
-  static String m11(numChapters) => "Number of Chapters: ${numChapters}";
+  static String m21(hours, minutes) => "Length: ${hours}:${minutes}";
 
-  static String m12(progress) => "Progress: ${progress}%";
+  static String m22(numChapters) => "Number of Chapters: ${numChapters}";
 
-  static String m13(year) => "Published Year: ${year}";
+  static String m23(progress) => "Progress: ${progress}%";
 
-  static String m14(time) => "${time} min";
+  static String m24(year) => "Published Year: ${year}";
+
+  static String m25(time) => "${time} min";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -71,6 +95,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "back": MessageLookupByLibrary.simpleMessage("Back"),
         "bookCover": MessageLookupByLibrary.simpleMessage("Book Cover"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+        "chapters": MessageLookupByLibrary.simpleMessage("Chapters"),
+        "chaptersNum": m0,
         "close": MessageLookupByLibrary.simpleMessage("Close"),
         "collapseSeries":
             MessageLookupByLibrary.simpleMessage("Collapse Series"),
@@ -79,16 +105,26 @@ class MessageLookup extends MessageLookupByLibrary {
         "consecutiveDays":
             MessageLookupByLibrary.simpleMessage("Consecutive days"),
         "darkMode": MessageLookupByLibrary.simpleMessage("Dark Mode"),
-        "dateFormatDay": m0,
-        "dateFormatDayHour": m1,
-        "dateFormatDayHourMinute": m2,
-        "dateFormatDayHourMinuteSecond": m3,
-        "dateFormatHour": m4,
-        "dateFormatHourMinute": m5,
-        "dateFormatHourMinuteSecond": m6,
-        "dateFormatMinute": m7,
-        "dateFormatMinuteSecond": m8,
-        "dateFormatSecond": m9,
+        "dateFormatDay": m1,
+        "dateFormatDayHour": m2,
+        "dateFormatDayHourMinute": m3,
+        "dateFormatDayHourMinuteSecond": m4,
+        "dateFormatDayHourMinuteSecondShort": m5,
+        "dateFormatDayHourMinuteShort": m6,
+        "dateFormatDayHourShort": m7,
+        "dateFormatDayShort": m8,
+        "dateFormatHour": m9,
+        "dateFormatHourMinute": m10,
+        "dateFormatHourMinuteSecond": m11,
+        "dateFormatHourMinuteSecondShort": m12,
+        "dateFormatHourMinuteShort": m13,
+        "dateFormatHourShort": m14,
+        "dateFormatMinute": m15,
+        "dateFormatMinuteSecond": m16,
+        "dateFormatMinuteSecondShort": m17,
+        "dateFormatMinuteShort": m18,
+        "dateFormatSecond": m19,
+        "dateFormatSecondShort": m20,
         "daysListened": MessageLookupByLibrary.simpleMessage("Days listened"),
         "descending": MessageLookupByLibrary.simpleMessage("Descending"),
         "description": MessageLookupByLibrary.simpleMessage("Description"),
@@ -130,10 +166,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage(
                 "If the quick account switcher should be shown"),
         "inProgress": MessageLookupByLibrary.simpleMessage("In Progress"),
-        "itemLength": m10,
-        "itemNumChapters": m11,
-        "itemProgress": m12,
-        "itemPublishedYear": m13,
+        "itemLength": m21,
+        "itemNumChapters": m22,
+        "itemProgress": m23,
+        "itemPublishedYear": m24,
         "language": MessageLookupByLibrary.simpleMessage("Language"),
         "languages": MessageLookupByLibrary.simpleMessage("Languages"),
         "libraryStats": MessageLookupByLibrary.simpleMessage("Library Stats"),
@@ -225,7 +261,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "syncOnlyViaWifi":
             MessageLookupByLibrary.simpleMessage("Sync only via WiFi"),
         "tags": MessageLookupByLibrary.simpleMessage("Tags"),
-        "timerText": m14,
+        "timerText": m25,
         "title": MessageLookupByLibrary.simpleMessage("Title"),
         "today": MessageLookupByLibrary.simpleMessage("Today"),
         "totalTimeListened":

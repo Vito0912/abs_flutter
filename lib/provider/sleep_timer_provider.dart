@@ -50,6 +50,7 @@ class TimerNotifier extends StateNotifier<double?> {
   bool _isPaused = false;
   bool _isRunning = false;
   bool _isDisposed = false;
+  FadeOutHandler? fadeOutController;
 
   bool get isRunning => _isRunning;
   bool get isPaused => _isPaused;
@@ -71,7 +72,6 @@ class TimerNotifier extends StateNotifier<double?> {
 
     // When the timer starts to volume down the player
     const int durationInSeconds = 30;
-    FadeOutHandler? fadeOutController;
 
     _timer = Timer.periodic(const Duration(milliseconds: 500), (timer) {
       if (_isDisposed || _isPaused) {
@@ -81,20 +81,19 @@ class TimerNotifier extends StateNotifier<double?> {
       state ??=
           ref.read(sleepTimerProvider); // Get the current sleep timer duration
 
+      final audioService = ref.read(playerProvider).audioService;
       if (state! <= durationInSeconds &&
           (fadeOutController == null || !fadeOutController!.isActive)) {
-        final audioService = ref.read(playerProvider).audioService;
         log('Starting fade out', name: 'SleepTimer');
         fadeOutController = FadeOutHandler.fadeOutAndStop(
           startVolume: audioService.player.volume,
           player: audioService,
           durationInMilliseconds: (state! * 1000).toInt(),
         );
-      } else if (state! > durationInSeconds &&
-          fadeOutController != null &&
-          !fadeOutController!.isActive) {
+      } else if (state! > durationInSeconds && fadeOutController != null) {
         log('Cancelling fade out due to timer reset', name: 'SleepTimer');
         fadeOutController?.cancel();
+        audioService.setVolume(fadeOutController!.startVolume!);
       }
 
       if (state! <= 0) {
@@ -122,6 +121,14 @@ class TimerNotifier extends StateNotifier<double?> {
     // Restart the timer with the new duration
     state = newDuration;
     _duration = newDuration;
+    final audioService = ref.read(playerProvider).audioService;
+    
+    if(fadeOutController != null) {
+      log('Cancelling fade out due to timer reset', name: 'SleepTimer');
+      fadeOutController?.cancel();
+      audioService.setVolume(fadeOutController!.startVolume!);
+    }
+
     if (_isRunning && !_isPaused) {
       _timer?.cancel();
       _startTimer();

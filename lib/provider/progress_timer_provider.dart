@@ -62,7 +62,7 @@ class TimerNotifier extends StateNotifier<DateTime?> {
     bool shouldFinish = false;
     if (duration >= 0) {
       final settings = ref.read(settingsProvider);
-      shouldFinish = currentTime >=
+      shouldFinish = (currentTime + 1) >=
           duration -
               (double.tryParse(settings['markItemsFinishedAfter'].toString()) ??
                   0);
@@ -95,7 +95,10 @@ class TimerNotifier extends StateNotifier<DateTime?> {
           SyncOpenSessionRequestBuilder()
             ..id = bookSession?.id ?? podcastSession!.id
             ..timeListened = listenedSeconds
-            ..currentTime = shouldFinish ? duration.toDouble() : currentTime;
+            ..currentTime = shouldFinish
+                ? (duration.toDouble() + (settings['syncInterval'] ?? 60))
+                    .toDouble()
+                : currentTime;
 
       try {
         api
@@ -132,7 +135,10 @@ class TimerNotifier extends StateNotifier<DateTime?> {
         log('Updating offline progress: $listenedSeconds',
             name: 'progress_timer_provider');
         offlineProgressProvider.updateProgress(progressItem.copyWith(
-          currentTime: shouldFinish ? duration.toDouble() : currentTime,
+          currentTime:shouldFinish
+              ? (duration.toDouble() + (settings['syncInterval'] ?? 60))
+              .toDouble()
+              : currentTime,
           timeListened: listenedSeconds + progressItem.timeListened,
           updatedAt: DateTime.now(),
           durationOfItem: player
@@ -149,7 +155,10 @@ class TimerNotifier extends StateNotifier<DateTime?> {
           userId: user.id!,
           sessionId: bookSession?.id ?? podcastSession?.id,
           episodeId: episodeId,
-          currentTime: shouldFinish ? duration.toDouble() : currentTime,
+          currentTime: shouldFinish
+              ? (duration.toDouble() + (settings['syncInterval'] ?? 60))
+              .toDouble()
+              : currentTime,
           timeListened: listenedSeconds,
           createdAt: DateTime.now(),
           type: (episodeId != null || episodeId.toString().isEmpty)

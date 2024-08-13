@@ -63,9 +63,6 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
             event.processingState != ProcessingState.buffering &&
             _container.read(playStatusProvider).playStatus ==
                 PlayerStatus.playing) {
-          // Needed for windows
-          log('Force play');
-          _player.play();
         } else {
           log('Stop sending');
           _container.read(progressTimerProvider.notifier).stopSending();

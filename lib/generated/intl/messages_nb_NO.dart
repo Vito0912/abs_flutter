@@ -20,15 +20,15 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'nb_NO';
 
-  static String m10(hours, minutes) => "Varighet: ${hours}:${minutes}";
+  static String m21(hours, minutes) => "Varighet: ${hours}:${minutes}";
 
-  static String m11(numChapters) => "Antall kapitler: ${numChapters}";
+  static String m22(numChapters) => "Antall kapitler: ${numChapters}";
 
-  static String m12(progress) => "Framdrift: ${progress}%";
+  static String m23(progress) => "Framdrift: ${progress}%";
 
-  static String m13(year) => "Publisert år: ${year}";
+  static String m24(year) => "Publisert år: ${year}";
 
-  static String m14(time) => "${time} min";
+  static String m25(time) => "${time} min";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -64,10 +64,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "ifTheQuickAccountSwitcherShouldBeShown":
             MessageLookupByLibrary.simpleMessage(
                 "Hvorvidt hurtigkontobytting skal være tilgjengelig"),
-        "itemLength": m10,
-        "itemNumChapters": m11,
-        "itemProgress": m12,
-        "itemPublishedYear": m13,
+        "itemLength": m21,
+        "itemNumChapters": m22,
+        "itemProgress": m23,
+        "itemPublishedYear": m24,
         "language": MessageLookupByLibrary.simpleMessage("Språk"),
         "loading": MessageLookupByLibrary.simpleMessage("Laster inn …"),
         "markItemsFinished": MessageLookupByLibrary.simpleMessage(
@@ -118,7 +118,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "stopPlayerWhileSyncingDescription": MessageLookupByLibrary.simpleMessage(
             "Alternativ for å forhindre avspilleren fra å starte til mest nylige avspillingsposisjon er nådd. Forsikrer at avspilling starter fra rett posisjon. Ellers kan posisjonen endres kort tid etter oppstart, noe som kan medføre datatap. Å skru dette på bruker mindre data."),
         "tags": MessageLookupByLibrary.simpleMessage("Etiketter"),
-        "timerText": m14,
+        "timerText": m25,
         "title": MessageLookupByLibrary.simpleMessage("Navn"),
         "updatedAt": MessageLookupByLibrary.simpleMessage("Oppdatert"),
         "user": MessageLookupByLibrary.simpleMessage("Bruker"),
