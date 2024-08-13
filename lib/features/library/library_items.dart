@@ -73,8 +73,10 @@ class _LibraryItemsState extends ConsumerState<LibraryItems> {
     if (libraryItems == null) {
       return _buildSafeArea(_buildShimmerLoading());
     } else {
-      final progressProv = ref.read(progressProvider);
-      progressProv.getAllProgress();
+      if(libraryItems.page <= 0) {
+        final progressProv = ref.read(progressProvider);
+        progressProv.getAllProgress();
+      }
       _hasMore = libraryItems.total != libraryItems.items.length;
       return _buildSafeArea(_buildItems(context, libraryItems));
     }
