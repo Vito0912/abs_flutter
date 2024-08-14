@@ -137,7 +137,7 @@ class PlaybackSessionNotifier
 
       late final MediaItem mediaItem;
 
-      if(download.type == MediaTypeDownload.podcast) {
+      if (download.type == MediaTypeDownload.podcast) {
         final PodcastEpisode episode = item.value!.media!.episodes!
             .firstWhere((element) => element.id == episodeId);
         mediaItem = MediaItem(
@@ -147,8 +147,7 @@ class PlaybackSessionNotifier
             artist: item.value?.media?.metadata?.authors?.toList().join(','),
             artUri: Uri.parse(
                 '${currentUser!.server!.url}/api/items/$id/cover?token=${currentUser.token}'),
-            duration: Duration(
-                seconds: episode.audioFile!.duration!.round()),
+            duration: Duration(seconds: episode.audioFile!.duration!.round()),
             extras: {
               'libraryItemId': id,
               'episodeId': episodeId,
@@ -170,10 +169,10 @@ class PlaybackSessionNotifier
               'streaming': false,
               'chapters': item.value!.media!.chapters
                   ?.map((e) => {
-                'title': e?.title,
-                'start': e?.start,
-                'end': e?.end,
-              })
+                        'title': e?.title,
+                        'start': e?.start,
+                        'end': e?.end,
+                      })
                   .toList(),
             });
       }
@@ -274,7 +273,6 @@ class PlaybackSessionNotifier
   Future<bool> closeOpenSession() async {
     final AbsApi? api = ref.read(apiProvider);
     final currentUser = ref.read(currentUserProvider);
-    final playerStatus = ref.read(playStatusProvider.notifier);
 
     if (api == null ||
         _session == null ||
@@ -283,14 +281,17 @@ class PlaybackSessionNotifier
       return false;
     }
 
+    final playerStatus = ref.read(playStatusProvider.notifier);
+
     bool returnValue = false;
 
     // Delay the closing of the session to allow the player to send the last progress
     await Future.delayed(const Duration(seconds: 1), () async {
       try {
         if (_book != null) api.getSessionApi().closeSession(id: _book!.id!);
-        if (_podcast != null)
+        if (_podcast != null) {
           api.getSessionApi().closeSession(id: _podcast!.id!);
+        }
         _session = null;
         _book = null;
         _podcast = null;
