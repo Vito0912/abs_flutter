@@ -21,6 +21,7 @@ final Map<String, dynamic> defaultSettings = {
   'isDarkMode': true,
   'showAccountSwitcher': true,
   'stopPlayerWhileSyncing': true,
+  'jumpToLastPosition': true,
   'markItemsFinishedAfter': 0.0,
   'collapseSeries': false,
   'fastForwardSeconds': 10,

@@ -1,4 +1,5 @@
 import 'package:abs_api/abs_api.dart';
+import 'package:abs_flutter/features/library/item/book/progress.dart';
 import 'package:abs_flutter/features/player/modules/chapters.dart';
 import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/util/helper.dart';
@@ -15,7 +16,10 @@ class Metainfo extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const SizedBox(height: 8.0),
+        Progress(
+          item: castItem,
+        ),
+        const SizedBox(height: 16.0),
         if (castItem.media?.audioFiles != null) ...[
           PlatformText(
             Helper.formatTimeToReadable(

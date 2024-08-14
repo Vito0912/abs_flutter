@@ -108,6 +108,18 @@ class SettingPage extends ConsumerWidget {
                   ),
                 ),
                 Tooltip(
+                  message: S.of(context).jumpToLastPositionDescription,
+                  margin: const EdgeInsets.all(8),
+                  child: SwitchSettingsTile(
+                    settingKey: 'jumpToLastPosition',
+                    title: S.of(context).jumpToLastPosition,
+                    enabledLabel: S.of(context).enabled,
+                    disabledLabel: S.of(context).disabled,
+                    defaultValue: true,
+                    leading: Icon(PlatformIcons(context).clockSolid),
+                  ),
+                ),
+                Tooltip(
                   message: S.of(context).progressAsChaptersDescription,
                   margin: const EdgeInsets.all(8),
                   child: SwitchSettingsTile(

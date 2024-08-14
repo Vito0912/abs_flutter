@@ -179,4 +179,14 @@ class Helper {
     final String location = matchList.uri.toString();
     return location;
   }
+
+  static String formatPercentage(double progress) {
+    progress = progress * 100;
+    String formatted = progress.toStringAsFixed(2); // Format auf 2 Dezimalstellen
+    if (formatted.endsWith('.00')) {
+      formatted = formatted.substring(0, formatted.length - 3); // Entferne ".00"
+    }
+    return '$formatted';
+  }
+
 }

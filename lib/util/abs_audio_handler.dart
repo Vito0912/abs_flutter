@@ -1,5 +1,6 @@
 import 'dart:developer';
 import 'dart:io';
+import 'package:collection/collection.dart';
 
 import 'package:abs_api/abs_api.dart';
 import 'package:abs_flutter/models/chapter.dart';
@@ -97,6 +98,8 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
 
   @override
   Future<void> playMediaItem(MediaItem item) async {
+    _isNewSession = true;
+
     late AudioSource source;
     if (item.extras?['streaming'] == true) {
       source = AudioSource.uri(Uri.parse(item.id));
@@ -104,42 +107,67 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
       source = AudioSource.file(item.id);
     }
 
-    final List<MediaProgress>? progresses = _progressProvider?.progress;
-    MediaProgress? progress;
-    if (progresses != null) {
-      for (final progress1 in progresses) {
-        if (progress1.libraryItemId == item.extras?['libraryItemId'] &&
-            progress1.episodeId == item.extras?['episodeId']) {
-          progress = progress1;
-          break;
-        }
-      }
-    }
-
     mediaItem.add(item);
 
     await _player.setAudioSource(source);
 
-    await _playerStatusProvider.setPlayStatus(
-        PlayerStatus.playing, 'playMediaItem');
-
-    await _player.play();
-
-    if (progress != null && progress.progress! <= 0.95) {
-      log('Seeking to ${progress.currentTime?.round()} due to progress');
-      await _player.seek(Duration(seconds: progress.currentTime?.round() ?? 0));
-    }
+    await play();
   }
+
+  bool _isNewSession = false;
 
   @override
   Future<void> play() async {
+    print(_isNewSession);
     final currentStatus = _container.read(playStatusProvider.notifier);
+    await currentStatus.setPlayStatusQuietly(PlayerStatus.loading, 'play');
+    try {
+      final shouldJump = _settingsProvider?['jumpToLastPosition'] ?? true;
+      if (shouldJump || _isNewSession) {
+        final shouldWait = _settingsProvider?['stopPlayerWhileSyncing'] ?? true;
+        if (shouldWait || _isNewSession) {
+          await _seekOnProgress();
+        } else {
+          _seekOnProgress();
+        }
+      }
+    } catch (e) {
+      log(e.toString());
+    }
+
+    _isNewSession = false;
+
     if (currentStatus.playStatus != PlayerStatus.playing) {
       await currentStatus.setPlayStatusQuietly(PlayerStatus.playing, 'play');
     }
 
     await _player.play();
     _container.read(timerProvider.notifier).continueTimer();
+  }
+
+  Future<void> _seekOnProgress() async {
+    final String? id = mediaItem.value?.extras?['libraryItemId'] as String?;
+    final String? episodeId =
+        mediaItem.value?.extras?['libraryItemId'] as String?;
+    if (id != null) {
+      final progressProv = _container.read(progressProvider);
+
+      await progressProv.getProgressWithLibraryItem(id);
+      final progresses = _container.read(progressProvider).progress;
+      final progress = progresses?.firstWhereOrNull((element) =>
+          element.libraryItemId == id && element.episodeId == episodeId);
+      if (progress != null &&
+          !progress.isFinished! &&
+          progress.progress! <= 0.99) {
+        log('Now seeking to ${(progress.duration! * progress.progress!).toInt()}',
+            name: 'seeking');
+        seek(Duration(
+          seconds: (progress.duration! * progress.progress!).toInt(),
+        ));
+      }
+    } else {
+      log('Not able to get id', name: 'seeking');
+    }
   }
 
   @override
@@ -299,12 +327,12 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
   PlaybackState _transformEvent(PlaybackEvent event) {
     return PlaybackState(
       controls: [
-        MediaControl.skipToPrevious,
+        if (!Platform.isAndroid) MediaControl.skipToPrevious,
         MediaControl.rewind,
         if (_player.playing) MediaControl.pause else MediaControl.play,
         MediaControl.stop,
         MediaControl.fastForward,
-        MediaControl.skipToNext
+        if (!Platform.isAndroid) MediaControl.skipToNext
       ],
       systemActions: {
         if (!Platform.isAndroid) MediaAction.skipToPrevious,
@@ -329,7 +357,7 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
       bufferedPosition: _player.bufferedPosition,
       speed: _player.speed,
       queueIndex: event.currentIndex,
-      captioningEnabled: true,
+      captioningEnabled: false,
     );
   }
 }

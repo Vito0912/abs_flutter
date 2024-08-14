@@ -22,67 +22,73 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m0(num) => "Chapters (${num})";
 
-  static String m1(count) =>
+  static String m1(position) => "Current Position: ${position}";
+
+  static String m2(count) =>
       "${Intl.plural(count, one: '${count}  day', other: '${count} days')}";
 
-  static String m2(days, hours) =>
+  static String m3(days, hours) =>
       "${Intl.plural(days, one: '${days} day', other: '${days} days')} ${Intl.plural(hours, one: '${hours} hour', other: '${hours} hours')}";
 
-  static String m3(days, hours, minutes) =>
+  static String m4(days, hours, minutes) =>
       "${Intl.plural(days, one: '${days} day', other: '${days} days')} ${Intl.plural(hours, one: '${hours} hour', other: '${hours} hours')} ${Intl.plural(minutes, one: '${minutes} minute', other: '${minutes} minutes')}";
 
-  static String m4(days, hours, minutes, seconds) =>
+  static String m5(days, hours, minutes, seconds) =>
       "${Intl.plural(days, one: '${days} day', other: '${days} days')} ${Intl.plural(hours, one: '${hours} hour', other: '${hours} hours')} ${Intl.plural(minutes, one: '${minutes} minute', other: '${minutes} minutes')} ${Intl.plural(seconds, one: '${seconds} second', other: '${seconds} seconds')}";
 
-  static String m5(days, hours, minutes, seconds) =>
+  static String m6(days, hours, minutes, seconds) =>
       "${days}d ${hours}h ${minutes}m ${seconds}s";
 
-  static String m6(days, hours, minutes) => "${days}d ${hours}h ${minutes}m";
+  static String m7(days, hours, minutes) => "${days}d ${hours}h ${minutes}m";
 
-  static String m7(days, hours) => "${days}d ${hours}h";
+  static String m8(days, hours) => "${days}d ${hours}h";
 
-  static String m8(count) => "${count}d";
+  static String m9(count) => "${count}d";
 
-  static String m9(count) =>
+  static String m10(count) =>
       "${Intl.plural(count, one: '${count} hour', other: '${count} hours')}";
 
-  static String m10(hours, minutes) =>
+  static String m11(hours, minutes) =>
       "${Intl.plural(hours, one: '${hours} hour', other: '${hours} hours')} ${Intl.plural(minutes, one: '${minutes} minute', other: '${minutes} minutes')}";
 
-  static String m11(hours, minutes, seconds) =>
+  static String m12(hours, minutes, seconds) =>
       "${Intl.plural(hours, one: '${hours} hour', other: '${hours} hours')} ${Intl.plural(minutes, one: '${minutes} minute', other: '${minutes} minutes')} ${Intl.plural(seconds, one: '${seconds} second', other: '${seconds} seconds')}";
 
-  static String m12(hours, minutes, seconds) =>
+  static String m13(hours, minutes, seconds) =>
       "${hours}h ${minutes}m ${seconds}s";
 
-  static String m13(hours, minutes) => "${hours}h ${minutes}m";
+  static String m14(hours, minutes) => "${hours}h ${minutes}m";
 
-  static String m14(count) => "${count}h";
+  static String m15(count) => "${count}h";
 
-  static String m15(count) =>
+  static String m16(count) =>
       "${Intl.plural(count, one: '${count} minute', other: '${count} minutes')}";
 
-  static String m16(minutes, seconds) =>
+  static String m17(minutes, seconds) =>
       "${Intl.plural(minutes, one: '${minutes} minute', other: '${minutes} minutes')} ${Intl.plural(seconds, one: '${seconds} second', other: '${seconds} seconds')}";
 
-  static String m17(minutes, seconds) => "${minutes}m ${seconds}s";
+  static String m18(minutes, seconds) => "${minutes}m ${seconds}s";
 
-  static String m18(count) => "${count}m";
+  static String m19(count) => "${count}m";
 
-  static String m19(count) =>
+  static String m20(count) =>
       "${Intl.plural(count, one: '${count}  second', other: '${count} seconds')}";
 
-  static String m20(count) => "${count}s";
+  static String m21(count) => "${count}s";
 
-  static String m21(hours, minutes) => "Length: ${hours}:${minutes}";
+  static String m22(hours, minutes) => "Length: ${hours}:${minutes}";
 
-  static String m22(numChapters) => "Number of Chapters: ${numChapters}";
+  static String m23(numChapters) => "Number of Chapters: ${numChapters}";
 
-  static String m23(progress) => "Progress: ${progress}%";
+  static String m24(progress) => "Progress: ${progress}%";
 
-  static String m24(year) => "Published Year: ${year}";
+  static String m25(year) => "Published Year: ${year}";
 
-  static String m25(time) => "${time} min";
+  static String m26(progress) => "Current Progress: ${progress} %";
+
+  static String m27(time) => "Time Remaining: ${time}";
+
+  static String m28(time) => "${time} min";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -104,27 +110,28 @@ class MessageLookup extends MessageLookupByLibrary {
             "When enabled, items in a series will be grouped together in the library view, displaying only a single item to represent the entire series."),
         "consecutiveDays":
             MessageLookupByLibrary.simpleMessage("Consecutive days"),
+        "currentPositionNum": m1,
         "darkMode": MessageLookupByLibrary.simpleMessage("Dark Mode"),
-        "dateFormatDay": m1,
-        "dateFormatDayHour": m2,
-        "dateFormatDayHourMinute": m3,
-        "dateFormatDayHourMinuteSecond": m4,
-        "dateFormatDayHourMinuteSecondShort": m5,
-        "dateFormatDayHourMinuteShort": m6,
-        "dateFormatDayHourShort": m7,
-        "dateFormatDayShort": m8,
-        "dateFormatHour": m9,
-        "dateFormatHourMinute": m10,
-        "dateFormatHourMinuteSecond": m11,
-        "dateFormatHourMinuteSecondShort": m12,
-        "dateFormatHourMinuteShort": m13,
-        "dateFormatHourShort": m14,
-        "dateFormatMinute": m15,
-        "dateFormatMinuteSecond": m16,
-        "dateFormatMinuteSecondShort": m17,
-        "dateFormatMinuteShort": m18,
-        "dateFormatSecond": m19,
-        "dateFormatSecondShort": m20,
+        "dateFormatDay": m2,
+        "dateFormatDayHour": m3,
+        "dateFormatDayHourMinute": m4,
+        "dateFormatDayHourMinuteSecond": m5,
+        "dateFormatDayHourMinuteSecondShort": m6,
+        "dateFormatDayHourMinuteShort": m7,
+        "dateFormatDayHourShort": m8,
+        "dateFormatDayShort": m9,
+        "dateFormatHour": m10,
+        "dateFormatHourMinute": m11,
+        "dateFormatHourMinuteSecond": m12,
+        "dateFormatHourMinuteSecondShort": m13,
+        "dateFormatHourMinuteShort": m14,
+        "dateFormatHourShort": m15,
+        "dateFormatMinute": m16,
+        "dateFormatMinuteSecond": m17,
+        "dateFormatMinuteSecondShort": m18,
+        "dateFormatMinuteShort": m19,
+        "dateFormatSecond": m20,
+        "dateFormatSecondShort": m21,
         "daysListened": MessageLookupByLibrary.simpleMessage("Days listened"),
         "deleteSelected":
             MessageLookupByLibrary.simpleMessage("Delete Selected"),
@@ -168,10 +175,14 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage(
                 "If the quick account switcher should be shown"),
         "inProgress": MessageLookupByLibrary.simpleMessage("In Progress"),
-        "itemLength": m21,
-        "itemNumChapters": m22,
-        "itemProgress": m23,
-        "itemPublishedYear": m24,
+        "itemLength": m22,
+        "itemNumChapters": m23,
+        "itemProgress": m24,
+        "itemPublishedYear": m25,
+        "jumpToLastPosition":
+            MessageLookupByLibrary.simpleMessage("Jump to last position"),
+        "jumpToLastPositionDescription": MessageLookupByLibrary.simpleMessage(
+            "When enabled, the player will jump to the last position when pressing play"),
         "language": MessageLookupByLibrary.simpleMessage("Language"),
         "languages": MessageLookupByLibrary.simpleMessage("Languages"),
         "libraryStats": MessageLookupByLibrary.simpleMessage("Library Stats"),
@@ -221,6 +232,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "progress": MessageLookupByLibrary.simpleMessage("Progress"),
         "progressAsChaptersDescription": MessageLookupByLibrary.simpleMessage(
             "Enable this option to display progress in the player and notifications on a per-chapter basis. If disabled, progress will be shown based on the entire item."),
+        "progressNum": m26,
         "publisher": MessageLookupByLibrary.simpleMessage("Publisher"),
         "readLess": MessageLookupByLibrary.simpleMessage("Read less"),
         "readMore": MessageLookupByLibrary.simpleMessage("Read more"),
@@ -265,7 +277,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "syncOnlyViaWifi":
             MessageLookupByLibrary.simpleMessage("Sync only via WiFi"),
         "tags": MessageLookupByLibrary.simpleMessage("Tags"),
-        "timerText": m25,
+        "timeRemainingNum": m27,
+        "timerText": m28,
         "title": MessageLookupByLibrary.simpleMessage("Title"),
         "today": MessageLookupByLibrary.simpleMessage("Today"),
         "totalTimeListened":

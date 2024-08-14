@@ -455,5 +455,31 @@
         }
     },
   "deleteSelected": "Delete Selected",
-  "playNextEpisode": "Play next episode"
+  "playNextEpisode": "Play next episode",
+  "progressNum": "Current Progress: {progress} %",
+    "@progressNum": {
+        "placeholders": {
+        "progress": {
+            "type": "String"
+        }
+        }
+    },
+  "currentPositionNum": "Current Position: {position}",
+    "@currentPositionNum": {
+        "placeholders": {
+        "position": {
+            "type": "String"
+        }
+        }
+    },
+  "timeRemainingNum": "Time Remaining: {time}",
+    "@timeRemainingNum": {
+        "placeholders": {
+        "time": {
+            "type": "String"
+        }
+        }
+    },
+  "jumpToLastPosition": "Jump to last position",
+  "jumpToLastPositionDescription": "When enabled, the player will jump to the last position when pressing play"
 }

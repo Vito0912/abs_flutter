@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:developer';
 
 import 'package:abs_api/abs_api.dart';
@@ -61,16 +62,17 @@ class ProgressProvider extends ChangeNotifier {
     }
   }
 
-  Future<void> getProgressWithLibraryItem(String id,
-      {String? episodeId}) async {
+  Future<void> getProgressWithLibraryItem(String id, {String? episodeId}) async {
     if (api == null) return;
+
+    final Completer<void> progressChanged = Completer<void>();
+    List<MediaProgress>? previousProgress = List.from(progress ?? []);
 
     try {
       final offlineProgress = ref.read(offlineProgressProviderHandler);
 
       if (offlineProgress.isNotEmpty) {
-        int index =
-            offlineProgress.indexWhere((element) => element.itemId == id);
+        int index = offlineProgress.indexWhere((element) => element.itemId == id);
         if (index != -1) {
           ProgressItem item = offlineProgress[index];
           MediaProgressBuilder builder = MediaProgressBuilder()
@@ -80,7 +82,7 @@ class ProgressProvider extends ChangeNotifier {
           progress ??= [];
 
           int indexInList =
-              progress!.indexWhere((element) => element.libraryItemId == id);
+          progress!.indexWhere((element) => element.libraryItemId == id);
           if (indexInList == -1) {
             progress!.add(builder.build());
           } else {
@@ -93,11 +95,11 @@ class ProgressProvider extends ChangeNotifier {
 
       if (connection) {
         final response =
-            await api!.getMeApi().getProgressLibraryItem(libraryItemId: id);
+        await api!.getMeApi().getProgressLibraryItem(libraryItemId: id);
         MediaProgress fetchedProgress = response.data!;
 
         int index =
-            progress!.indexWhere((element) => element.libraryItemId == id);
+        progress!.indexWhere((element) => element.libraryItemId == id);
         if (index == -1) {
           progress!.add(fetchedProgress);
         } else {
@@ -105,19 +107,28 @@ class ProgressProvider extends ChangeNotifier {
         }
 
         // Notify listeners only if the progress of the specific item has changed
-        notifyListeners();
+        if (!listEquals(previousProgress, progress)) {
+          notifyListeners();
+        }
       }
     } catch (e) {
-      // No progress found
+      progressChanged.completeError(e);
+    } finally {
+      if (!progressChanged.isCompleted) {
+        progressChanged.complete();
+      }
     }
+
+    return progressChanged.future;
   }
+
 
   void updateProgressForItem(
       String id, String? episodeId, double currentTime, double percentage) {
     if (progress == null) return;
 
     int index = progress!.indexWhere((element) =>
-        element.libraryItemId == id && element.episodeId == episodeId);
+    element.libraryItemId == id && element.episodeId == episodeId);
     if (index == -1) return;
 
     MediaProgressBuilder builder = progress![index].toBuilder();
@@ -130,6 +141,7 @@ class ProgressProvider extends ChangeNotifier {
 
   List<MediaProgress>? getProgress() => progress;
 }
+
 
 final progressProvider = ChangeNotifierProvider<ProgressProvider>((ref) {
   return ProgressProvider(ref);

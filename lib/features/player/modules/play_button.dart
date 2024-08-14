@@ -30,19 +30,22 @@ class PlayButton extends StatelessWidget {
     }
   }
 
-  void _actionButtonPressed(
-      PlayerStatus playerStatus, PlayerStatusProvider playerStatusProvider) {
+  void _actionButtonPressed(PlayerStatus playerStatus,
+      PlayerStatusProvider playerStatusProvider) async {
     switch (playerStatus) {
       case PlayerStatus.playing:
-        playerStatusProvider.setPlayStatus(PlayerStatus.paused, "Pause button pressed");
+        playerStatusProvider.setPlayStatus(
+            PlayerStatus.paused, "Pause button pressed");
         break;
       case PlayerStatus.paused:
-        playerStatusProvider.setPlayStatus(PlayerStatus.playing, "Play button pressed");
+        playerStatusProvider.setPlayStatus(
+            PlayerStatus.playing, "Play button pressed");
         break;
       case PlayerStatus.loading:
         break;
       default:
-        playerStatusProvider.setPlayStatus(PlayerStatus.playing, "Play button pressed");
+        playerStatusProvider.setPlayStatus(
+            PlayerStatus.playing, "Play button pressed");
     }
   }
 }

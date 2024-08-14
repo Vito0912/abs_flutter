@@ -1549,6 +1549,56 @@ class S {
       args: [],
     );
   }
+
+  /// `Current Progress: {progress} %`
+  String progressNum(String progress) {
+    return Intl.message(
+      'Current Progress: $progress %',
+      name: 'progressNum',
+      desc: '',
+      args: [progress],
+    );
+  }
+
+  /// `Current Position: {position}`
+  String currentPositionNum(String position) {
+    return Intl.message(
+      'Current Position: $position',
+      name: 'currentPositionNum',
+      desc: '',
+      args: [position],
+    );
+  }
+
+  /// `Time Remaining: {time}`
+  String timeRemainingNum(String time) {
+    return Intl.message(
+      'Time Remaining: $time',
+      name: 'timeRemainingNum',
+      desc: '',
+      args: [time],
+    );
+  }
+
+  /// `Jump to last position`
+  String get jumpToLastPosition {
+    return Intl.message(
+      'Jump to last position',
+      name: 'jumpToLastPosition',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `When enabled, the player will jump to the last position when pressing play`
+  String get jumpToLastPositionDescription {
+    return Intl.message(
+      'When enabled, the player will jump to the last position when pressing play',
+      name: 'jumpToLastPositionDescription',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
