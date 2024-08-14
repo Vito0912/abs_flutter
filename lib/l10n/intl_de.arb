@@ -2,5 +2,21 @@
   "port": "Port",
   "@port": {},
   "noUserData": "Login fehlgeschlagen: Keine Daten erhalten",
-  "@noUserData": {}
+  "@noUserData": {},
+  "domainOrIp": "Serveradresse oder IP",
+  "@domainOrIp": {},
+  "serverSelection": "Serverauswahl",
+  "@serverSelection": {},
+  "usernameOrPasswordNotEmpty": "Der Nutzername und das Passwort dürfen nicht leer sein",
+  "@usernameOrPasswordNotEmpty": {},
+  "mustEnterValidAddress": "Du musst eine valide Serveradresse eingeben",
+  "@mustEnterValidAddress": {},
+  "password": "Passwort",
+  "@password": {},
+  "username": "Nutzername",
+  "@username": {},
+  "serverAdressContinue": "Gib eine Serveradresse ein, um fortzufahren",
+  "@serverAdressContinue": {},
+  "multipleServerAdressess": "Wenn du mehrere Server verwenden willst, kannst du diese später hinzufügen",
+  "@multipleServerAdressess": {}
 }
