@@ -22,8 +22,22 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "domainOrIp":
+            MessageLookupByLibrary.simpleMessage("Serveradresse oder IP"),
+        "multipleServerAdressess": MessageLookupByLibrary.simpleMessage(
+            "Wenn du mehrere Server verwenden willst, kannst du diese später hinzufügen"),
+        "mustEnterValidAddress": MessageLookupByLibrary.simpleMessage(
+            "Du musst eine valide Serveradresse eingeben"),
         "noUserData": MessageLookupByLibrary.simpleMessage(
             "Login fehlgeschlagen: Keine Daten erhalten"),
-        "port": MessageLookupByLibrary.simpleMessage("Port")
+        "password": MessageLookupByLibrary.simpleMessage("Passwort"),
+        "port": MessageLookupByLibrary.simpleMessage("Port"),
+        "serverAdressContinue": MessageLookupByLibrary.simpleMessage(
+            "Gib eine Serveradresse ein, um fortzufahren"),
+        "serverSelection":
+            MessageLookupByLibrary.simpleMessage("Serverauswahl"),
+        "username": MessageLookupByLibrary.simpleMessage("Nutzername"),
+        "usernameOrPasswordNotEmpty": MessageLookupByLibrary.simpleMessage(
+            "Der Nutzername und das Passwort dürfen nicht leer sein")
       };
 }
