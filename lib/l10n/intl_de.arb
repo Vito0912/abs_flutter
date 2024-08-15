@@ -18,5 +18,160 @@
   "serverAdressContinue": "Gib eine Serveradresse ein, um fortzufahren",
   "@serverAdressContinue": {},
   "multipleServerAdressess": "Wenn du mehrere Server verwenden willst, kannst du diese später hinzufügen",
-  "@multipleServerAdressess": {}
+  "@multipleServerAdressess": {},
+  "today": "Heute",
+  "@today": {},
+  "downloadComplete": "Herunterladen abgeschlossen",
+  "@downloadComplete": {},
+  "ok": "OK",
+  "@ok": {},
+  "errorDownloading": "Fehler beim Herunterladen",
+  "@errorDownloading": {},
+  "downloadingBody": "'{'displayName'}' wird heruntergeladen",
+  "@downloadingBody": {},
+  "tryAgain": "Erneut versuchen",
+  "@tryAgain": {},
+  "syncOnlyViaWifi": "Nur über WiFi synchronisieren",
+  "@syncOnlyViaWifi": {},
+  "editQueue": "Warteschlange bearbeiten",
+  "@editQueue": {},
+  "unknownTitle": "Unbekannter Titel",
+  "@unknownTitle": {},
+  "pause": "Pause",
+  "@pause": {},
+  "stop": "Stopp",
+  "@stop": {},
+  "play": "Wiedergabe",
+  "@play": {},
+  "unknown": "Unbekannt",
+  "@unknown": {},
+  "languages": "Sprachen",
+  "@languages": {},
+  "back": "Zurück",
+  "@back": {},
+  "notStarted": "Nicht gestartet",
+  "@notStarted": {},
+  "inProgress": "In Bearbeitung",
+  "@inProgress": {},
+  "downloading": "Wird heruntergeladen",
+  "@downloading": {},
+  "downloadCompleteBody": "Herunterladen von '{'displayName'}' abgeschlossen",
+  "@downloadCompleteBody": {},
+  "restartRequired": "Neustart erforderlich",
+  "@restartRequired": {},
+  "filter": "Filter",
+  "@filter": {},
+  "close": "Schließen",
+  "@close": {},
+  "noItemsFound": "Keine Elemente gefunden",
+  "@noItemsFound": {},
+  "progress": "Fortschritt",
+  "@progress": {},
+  "error": "Fehler",
+  "@error": {},
+  "noConnection": "Keine Verbindung",
+  "@noConnection": {},
+  "settings": "Einstellungen",
+  "@settings": {},
+  "addUser": "Benutzer hinzufügen",
+  "@addUser": {},
+  "cancel": "Abbrechen",
+  "@cancel": {},
+  "loading": "Wird geladen …",
+  "@loading": {},
+  "authors": "Autoren",
+  "@authors": {},
+  "tags": "Schlagwörter",
+  "@tags": {},
+  "series": "Serien",
+  "@series": {},
+  "readMore": "Mehr lesen",
+  "@readMore": {},
+  "readLess": "Weniger lesen",
+  "@readLess": {},
+  "playbackSpeed": "Geschwindigkeit",
+  "@playbackSpeed": {},
+  "general": "Allgemein",
+  "@general": {},
+  "darkMode": "Dunkler Modus",
+  "@darkMode": {},
+  "enabled": "Aktiviert",
+  "@enabled": {},
+  "disabled": "Deaktiviert",
+  "@disabled": {},
+  "showAccountSwitcher": "Kontowechsler anzeigen",
+  "@showAccountSwitcher": {},
+  "collapseSeries": "Serien einklappen",
+  "@collapseSeries": {},
+  "signOut": "Abmelden",
+  "@signOut": {},
+  "miscellaneous": "Verschiedenes",
+  "@miscellaneous": {},
+  "itemPublishedYear": "Erscheinungsjahr: {year}",
+  "@itemPublishedYear": {
+    "placeholders": {
+      "year": {
+        "type": "String"
+      }
+    }
+  },
+  "itemNumChapters": "Anzahl der Kapitel: {numChapters}",
+  "@itemNumChapters": {
+    "placeholders": {
+      "numChapters": {
+        "type": "String"
+      }
+    }
+  },
+  "user": "Benutzer",
+  "@user": {},
+  "description": "Beschreibung",
+  "@description": {},
+  "timerText": "{time} min",
+  "@timerText": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "itemLength": "Länge: {hours}:{minutes}",
+  "@itemLength": {
+    "placeholders": {
+      "hours": {
+        "type": "String"
+      },
+      "minutes": {
+        "type": "String"
+      }
+    }
+  },
+  "itemProgress": "Fortschritt: {progress}%",
+  "@itemProgress": {
+    "placeholders": {
+      "progress": {
+        "type": "String"
+      }
+    }
+  },
+  "year": "Jahr",
+  "@year": {},
+  "title": "Titel",
+  "@title": {},
+  "author": "Autor",
+  "@author": {},
+  "updatedAt": "Aktualisiert am",
+  "@updatedAt": {},
+  "publisher": "Herausgeber",
+  "@publisher": {},
+  "size": "Größe",
+  "@size": {},
+  "duration": "Dauer",
+  "@duration": {},
+  "language": "Sprache",
+  "@language": {},
+  "descending": "Absteigend",
+  "@descending": {},
+  "ascending": "Aufsteigend",
+  "@ascending": {}
 }
