@@ -173,5 +173,369 @@
   "usernameOrPasswordNotEmpty": "Der Nutzername und das Passwort dürfen nicht leer sein",
   "@usernameOrPasswordNotEmpty": {},
   "year": "Jahr",
-  "@year": {}
+  "@year": {},
+  "dateFormatHour": "{count, plural, one {{count} Stunde} other {{count} Stunden}}",
+  "@dateFormatHour": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatHourMinute": "{hours, plural, one {{hours} Stunde} other {{hours} Stunden}} {minutes, plural, one {{minutes} Minute} other {{minutes} Minuten}}",
+  "@dateFormatHourMinute": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatDay": "{count, plural, one {{count}  Tag} other {{count} Tage}}",
+  "@dateFormatDay": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatDayHour": "{days, plural, one {{days} Tag} other {{days} Tage}} {hours, plural, one {{hours} Stunde} other {{hours} Stunden}}",
+  "@dateFormatDayHour": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatDayHourMinute": "{days, plural, one {{days} Tag} other {{days} Tage}} {hours, plural, one {{hours} Stunde} other {{hours} Stunden}} {minutes, plural, one {{minutes} Minute} other {{minutes} Minuten}}",
+  "@dateFormatDayHourMinute": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatHourShort": "{count}h",
+  "@dateFormatHourShort": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatMinuteSecondShort": "{minutes}m {seconds}s",
+  "@dateFormatMinuteSecondShort": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      },
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatMinuteShort": "{count}m",
+  "@dateFormatMinuteShort": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatSecondShort": "{count}s",
+  "@dateFormatSecondShort": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatDayHourMinuteSecondShort": "{days}d {hours}h {minutes}m {seconds}s",
+  "@dateFormatDayHourMinuteSecondShort": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      },
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "noInternetDescription": "Wir haben Probleme, eine Verbindung zum Server herzustellen.",
+  "@noInternetDescription": {},
+  "restartRequiredDescription": "Bitte starte die App neu, um diese Änderung zu speichern.",
+  "@restartRequiredDescription": {},
+  "seek": "Springen",
+  "@seek": {},
+  "sync": "Syncronisation",
+  "@sync": {},
+  "narrators": "Erzähler",
+  "@narrators": {},
+  "shakeResetTimer": "Schütteln um Sleeptimer zurückzusetzten",
+  "@shakeResetTimer": {},
+  "feedOpen": "Feed offen",
+  "@feedOpen": {},
+  "finished": "Fertig",
+  "@finished": {},
+  "notFinished": "Nicht fertig",
+  "@notFinished": {},
+  "shareOpen": "Freigegeben",
+  "@shareOpen": {},
+  "chapters": "Kapitel",
+  "@chapters": {},
+  "consecutiveDays": "Aufeinanderfolgende Tage",
+  "@consecutiveDays": {},
+  "dateFormatDayHourMinuteShort": "{days}d {hours}h {minutes}m",
+  "@dateFormatDayHourMinuteShort": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatDayHourShort": "{days}d {hours}h",
+  "@dateFormatDayHourShort": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatDayShort": "{count}d",
+  "@dateFormatDayShort": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatHourMinuteSecondShort": "{hours}h {minutes}m {seconds}s",
+  "@dateFormatHourMinuteSecondShort": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      },
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatHourMinuteShort": "{hours}h {minutes}m",
+  "@dateFormatHourMinuteShort": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "downloadsOnlyViaWifi": "Nur über W-Lan herunterladen",
+  "@downloadsOnlyViaWifi": {},
+  "jumpToLastPosition": "Zur letzten Position springen",
+  "@jumpToLastPosition": {},
+  "libraryStats": "Bibliotekstatistik",
+  "@libraryStats": {},
+  "lockProgressBar": "Sperre die Medienbenachrichtigung",
+  "@lockProgressBar": {},
+  "lockProgressBarDescription": "Wenn aktiviert, sperrt diese Funktion die Fortschrittsleiste in der Medienbenachrichtigung, sofern das Betriebssystem dies unterstützt",
+  "@lockProgressBarDescription": {},
+  "notTriedYet": "Nicht versucht",
+  "@notTriedYet": {},
+  "notificationHeading": "Benachrichtigungen sollten aktiviert sein",
+  "@notificationHeading": {},
+  "ownStats": "Eigene Statistik",
+  "@ownStats": {},
+  "playHistory": "Wiedergabeverlauf",
+  "@playHistory": {},
+  "playNextEpisode": "Spiele nächste Episode",
+  "@playNextEpisode": {},
+  "pleaseCheckInternet": "Bitte überprüfe deine Internetverbindung und versuche es erneut.",
+  "@pleaseCheckInternet": {},
+  "showProgressPerChapters": "Zeige Fortschritt pro Kapitel",
+  "@showProgressPerChapters": {},
+  "sleepTimer": "Sleeptimer",
+  "@sleepTimer": {},
+  "stats": "Statistiken",
+  "@stats": {},
+  "stopPlayerUntilSync": "Pausiere Player bis Sync",
+  "@stopPlayerUntilSync": {},
+  "success": "Erfolgreich",
+  "@success": {},
+  "syncInterval": "Sync Interval (Sekunden)",
+  "@syncInterval": {},
+  "timeRemainingNum": "Übrige Zeit: {time}",
+  "@timeRemainingNum": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "syncIntervalDescription": "Gibt an, wie oft die App mit dem Server synchronisiert werden soll. Bitte starte die App neu, damit die Änderungen wirksam werden.",
+  "@syncIntervalDescription": {},
+  "totalTimeListened": "Gesamthörzeit",
+  "@totalTimeListened": {},
+  "chaptersNum": "Kapitel ({num})",
+  "@chaptersNum": {
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "currentPositionNum": "Aktuelle Position: {position}",
+  "@currentPositionNum": {
+    "placeholders": {
+      "position": {
+        "type": "String"
+      }
+    }
+  },
+  "dateFormatDayHourMinuteSecond": "{days, plural, one {{days} Tag} other {{days} Tage}} {hours, plural, one {{hours} Stunde} other {{hours} Stunden}} {minutes, plural, one {{minutes} Minute} other {{minutes} Minuten}} {seconds, plural, one {{seconds} Sekunde} other {{seconds} Sekunden}}",
+  "@dateFormatDayHourMinuteSecond": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      },
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatMinute": "{count, plural, one {{count} Minute} other {{count} Minuten}}",
+  "@dateFormatMinute": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatSecond": "{count, plural, one {{count} Sekunde} other {{count} Sekunden}}",
+  "@dateFormatSecond": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "daysListened": "Tage gehört",
+  "@daysListened": {},
+  "deleteSelected": "Lösche auswahl",
+  "@deleteSelected": {},
+  "dateFormatHourMinuteSecond": "{hours, plural, one {{hours} Stunde} other {{hours} Stunden}} {minutes, plural, one {{minutes} Minute} other {{minutes} Minuten}} {seconds, plural, one {{seconds} Sekunde} other {{seconds} Sekunden}}",
+  "@dateFormatHourMinuteSecond": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      },
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatMinuteSecond": "{minutes, plural, one {{minutes} Minute} other {{minutes} Minuten}} {seconds, plural, one {{seconds} Sekunde} other {{seconds} Sekunden}}",
+  "@dateFormatMinuteSecond": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      },
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "jumpToLastPositionDescription": "Wenn aktiviert, springt der Player beim Drücken der Wiedergabetaste zur letzten Position",
+  "@jumpToLastPositionDescription": {},
+  "noDownloads": "Nichts heruntergeladen",
+  "@noDownloads": {},
+  "progressNum": "Aktueller Fortschritt: {progress} %",
+  "@progressNum": {
+    "placeholders": {
+      "progress": {
+        "type": "String"
+      }
+    }
+  },
+  "waitingForDownload": "Warten auf den Beginn des Downloads",
+  "@waitingForDownload": {},
+  "showAccountSwitcherDescription": "Aktiviere diese Option, um der App-Leiste eine Symbolschaltfläche für den schnellen Userwechsel hinzuzufügen.",
+  "@showAccountSwitcherDescription": {},
+  "enableNotificationsDownload": "Bitte aktiviere die Benachrichtigungen, um Fortschrittsupdates zum Download zu erhalten und Dateien im Hintergrund herunterladen zu können.",
+  "@enableNotificationsDownload": {},
+  "errorDownloadingBody": "Es ist ein Fehler beim Herunterladen von '{'displayName'}' aufgetreten",
+  "@errorDownloadingBody": {},
+  "failed": "Fehlgeschlagen",
+  "@failed": {},
+  "addANewUser": "Füge einen Nutzer hinzu",
+  "@addANewUser": {},
+  "attribution": "Anerkennungen",
+  "@attribution": {},
+  "bookCover": "Buch Cover",
+  "@bookCover": {},
+  "enterValidUsernameOrPassword": "Bitte gib eine gültige IP/Domain und einen Port ein, bevor du deinen Benutzernamen und dein Passwort eingibst.",
+  "@enterValidUsernameOrPassword": {},
+  "fastForwardSeconds": "Sekunden vorspulen",
+  "@fastForwardSeconds": {},
+  "genres": "",
+  "@genres": {},
+  "ifTheQuickAccountSwitcherShouldBeShown": "Ob der schnelle Nutzerwechsel angezeigt werden soll",
+  "@ifTheQuickAccountSwitcherShouldBeShown": {},
+  "markItemsFinished": "Makiere Element als fertig",
+  "@markItemsFinished": {},
+  "markItemsFinishedAfterDescription": "Gib die Zeit in Sekunden an, bevor ein Element endet, ab der es als abgeschlossen markiert werden soll. Wenn dieser Wert auf 0 gesetzt wird, wird das Element nur als abgeschlossen markiert, wenn der Player das Ende erreicht. Wenn ein positiver Wert festgelegt wird, wird das Element als abgeschlossen markiert, wenn der Player diese Zeit vor dem Ende erreicht.",
+  "@markItemsFinishedAfterDescription": {},
+  "player": "Player",
+  "@player": {},
+  "stopPlayerWhileSyncingDescription": "Aktiviere diese Option, um zu verhindern, dass der Player startet, bevor die letzte Wiedergabeposition synchronisiert wurde. Dies stellt sicher, dass die Wiedergabe an der richtigen Stelle fortgesetzt wird. Wenn diese Option deaktiviert ist, kann sich die Wiedergabeposition kurz nach dem Start ändern, was möglicherweise zu Datenverlust führen kann. Das Aktivieren dieser Option hilft, den Datenverbrauch zu reduzieren.",
+  "@stopPlayerWhileSyncingDescription": {},
+  "collapseSeriesDescription": "Wenn aktiviert, werden Elemente einer Serie in der Bibliotheksansicht zusammengefasst und es wird nur ein einzelnes Element angezeigt, das die gesamte Serie repräsentiert.",
+  "@collapseSeriesDescription": {},
+  "fastForwardSecondsDescription": "Lege die Anzahl der Sekunden fest, die beim Drücken der Vorspultaste übersprungen werden sollen.",
+  "@fastForwardSecondsDescription": {},
+  "playerSettings": "Playereinstellungen",
+  "@playerSettings": {},
+  "progressAsChaptersDescription": "Aktiviere diese Option, um den Fortschritt im Player kapitelweise anzuzeigen. Wenn diese Option deaktiviert ist, wird der Fortschritt basierend auf dem gesamten Element angezeigt.",
+  "@progressAsChaptersDescription": {},
+  "rewindSecondsDescription": "Lege die Anzahl der Sekunden fest, die beim Drücken der Rückspultaste zurückgesprungen werden sollen.",
+  "@rewindSecondsDescription": {}
 }
