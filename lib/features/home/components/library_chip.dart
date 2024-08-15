@@ -51,8 +51,8 @@ class LibraryChip extends ConsumerWidget {
       highlightColor: Colors.grey[100]!,
       child: Chip(
         label: Container(
-          constraints:
-              const BoxConstraints(maxWidth: 200), // Adjust the maxWidth as needed
+          constraints: const BoxConstraints(
+              maxWidth: 200), // Adjust the maxWidth as needed
           child: Text(
             S.of(context).loading,
             overflow: TextOverflow.ellipsis,
@@ -77,8 +77,8 @@ class LibraryChip extends ConsumerWidget {
           highlightColor: Colors.blue.withAlpha(50),
           onTap: () => _showMenu(context, libraries, ref),
           child: Chip(
-            avatar:
-                Helper.returnLibraryItem(libraries[selectedLibrary].icon ?? ''),
+            avatar: Helper.returnLibraryItem(
+                libraries[selectedLibrary].icon ?? '', context),
             label: Container(
               constraints: const BoxConstraints(
                   maxWidth: 200), // Adjust the maxWidth as needed
@@ -127,7 +127,7 @@ class LibraryChip extends ConsumerWidget {
           mainAxisSize: MainAxisSize.min,
           children: libraries.map((library) {
             return ListTile(
-              leading: Helper.returnLibraryItem(library.icon ?? ''),
+              leading: Helper.returnLibraryItem(library.icon ?? '', context),
               title: Text(library.name!),
               onTap: () {
                 int index =
