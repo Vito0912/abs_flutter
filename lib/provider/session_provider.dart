@@ -34,6 +34,8 @@ class PlaybackSessionNotifier
       return;
     }
 
+    await closeOpenSession(stop: false);
+
     final downloads = ref.read(downloadListProvider.notifier);
     final download = downloads.getDownload(id, episodeId);
     final connection = ref.read(connectionProvider);
@@ -270,14 +272,14 @@ class PlaybackSessionNotifier
     log('Playing: ${mediaItem.title}');
   }
 
-  Future<bool> closeOpenSession() async {
+  Future<bool> closeOpenSession({bool stop = true}) async {
     final AbsApi? api = ref.read(apiProvider);
     final currentUser = ref.read(currentUserProvider);
 
     if (api == null ||
-        _session == null ||
+        (_session == null && _book == null && _podcast == null)||
         currentUser == null ||
-        _session!.data == null) {
+       ( _session!.data == null)) {
       return false;
     }
 
@@ -296,7 +298,7 @@ class PlaybackSessionNotifier
         _book = null;
         _podcast = null;
         returnValue = true;
-        playerStatus.setPlayStatus(PlayerStatus.stopped, "Close session");
+        if(stop) playerStatus.setPlayStatus(PlayerStatus.stopped, "Close session");
         return true;
       } catch (e) {
         log(e.toString());

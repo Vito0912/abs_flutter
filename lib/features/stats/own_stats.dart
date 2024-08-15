@@ -72,14 +72,15 @@ class _OwnStatsState extends ConsumerState<OwnStats> {
                                 _buildInfoRow(
                                     Icons.timer_sharp,
                                     Helper.formatTimeToReadable(
-                                        ownStats.totalTime),
+                                        ownStats.totalTime,
+                                        short: true),
                                     S.of(context).totalTimeListened,
                                     context),
                                 const SizedBox(height: 16),
                                 _buildInfoRow(
                                     Icons.today,
-                                    Helper.formatTimeToReadable(
-                                        ownStats.today),
+                                    Helper.formatTimeToReadable(ownStats.today,
+                                        short: true, precise: true),
                                     S.of(context).today,
                                     context),
                               ],
@@ -92,13 +93,14 @@ class _OwnStatsState extends ConsumerState<OwnStats> {
                                 _buildInfoRow(
                                     Icons.timer_sharp,
                                     Helper.formatTimeToReadable(
-                                        ownStats.totalTime),
+                                        ownStats.totalTime,
+                                        short: true),
                                     S.of(context).totalTimeListened,
                                     context),
                                 _buildInfoRow(
                                     Icons.today,
-                                    Helper.formatTimeToReadable(
-                                        ownStats.today),
+                                    Helper.formatTimeToReadable(ownStats.today,
+                                        short: true, precise: true),
                                     S.of(context).today,
                                     context),
                               ],
