@@ -16,7 +16,7 @@ class UserBadge extends ConsumerWidget {
         message: user?.username ?? 'N/A',
         child: Chip(
           label: PlatformText(
-            'VERYVERYLONGUSERNAME',
+            user?.username ?? 'N/A',
             overflow: TextOverflow.ellipsis,
             maxLines: 1,
           ),
