@@ -1,14 +1,14 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'library_item.dart';
+part of 'library_item_shelf.dart';
 
 // **************************************************************************
 // BuiltValueGenerator
 // **************************************************************************
 
-abstract class LibraryItemBuilder implements LibraryItemBaseBuilder {
-  void replace(covariant LibraryItem other);
-  void update(void Function(LibraryItemBuilder) updates);
+abstract class LibraryItemShelfBuilder implements LibraryItemBuilder {
+  void replace(covariant LibraryItemShelf other);
+  void update(void Function(LibraryItemShelfBuilder) updates);
   ListBuilder<LibraryFile> get libraryFiles;
   set libraryFiles(covariant ListBuilder<LibraryFile>? libraryFiles);
 
@@ -64,7 +64,7 @@ abstract class LibraryItemBuilder implements LibraryItemBaseBuilder {
   set media(covariant BookBuilder? media);
 }
 
-class _$$LibraryItem extends $LibraryItem {
+class _$$LibraryItemShelf extends $LibraryItemShelf {
   @override
   final BuiltList<LibraryFile>? libraryFiles;
   @override
@@ -102,10 +102,11 @@ class _$$LibraryItem extends $LibraryItem {
   @override
   final Book? media;
 
-  factory _$$LibraryItem([void Function($LibraryItemBuilder)? updates]) =>
-      (new $LibraryItemBuilder()..update(updates))._build();
+  factory _$$LibraryItemShelf(
+          [void Function($LibraryItemShelfBuilder)? updates]) =>
+      (new $LibraryItemShelfBuilder()..update(updates))._build();
 
-  _$$LibraryItem._(
+  _$$LibraryItemShelf._(
       {this.libraryFiles,
       this.id,
       this.oldLibraryItemId,
@@ -127,16 +128,17 @@ class _$$LibraryItem extends $LibraryItem {
       : super._();
 
   @override
-  $LibraryItem rebuild(void Function($LibraryItemBuilder) updates) =>
+  $LibraryItemShelf rebuild(void Function($LibraryItemShelfBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  $LibraryItemBuilder toBuilder() => new $LibraryItemBuilder()..replace(this);
+  $LibraryItemShelfBuilder toBuilder() =>
+      new $LibraryItemShelfBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is $LibraryItem &&
+    return other is $LibraryItemShelf &&
         libraryFiles == other.libraryFiles &&
         id == other.id &&
         oldLibraryItemId == other.oldLibraryItemId &&
@@ -184,7 +186,7 @@ class _$$LibraryItem extends $LibraryItem {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'$LibraryItem')
+    return (newBuiltValueToStringHelper(r'$LibraryItemShelf')
           ..add('libraryFiles', libraryFiles)
           ..add('id', id)
           ..add('oldLibraryItemId', oldLibraryItemId)
@@ -207,9 +209,11 @@ class _$$LibraryItem extends $LibraryItem {
   }
 }
 
-class $LibraryItemBuilder
-    implements Builder<$LibraryItem, $LibraryItemBuilder>, LibraryItemBuilder {
-  _$$LibraryItem? _$v;
+class $LibraryItemShelfBuilder
+    implements
+        Builder<$LibraryItemShelf, $LibraryItemShelfBuilder>,
+        LibraryItemShelfBuilder {
+  _$$LibraryItemShelf? _$v;
 
   ListBuilder<LibraryFile>? _libraryFiles;
   ListBuilder<LibraryFile> get libraryFiles =>
@@ -288,11 +292,11 @@ class $LibraryItemBuilder
   BookBuilder get media => _$this._media ??= new BookBuilder();
   set media(covariant BookBuilder? media) => _$this._media = media;
 
-  $LibraryItemBuilder() {
-    $LibraryItem._defaults(this);
+  $LibraryItemShelfBuilder() {
+    $LibraryItemShelf._defaults(this);
   }
 
-  $LibraryItemBuilder get _$this {
+  $LibraryItemShelfBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _libraryFiles = $v.libraryFiles?.toBuilder();
@@ -319,24 +323,24 @@ class $LibraryItemBuilder
   }
 
   @override
-  void replace(covariant $LibraryItem other) {
+  void replace(covariant $LibraryItemShelf other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$$LibraryItem;
+    _$v = other as _$$LibraryItemShelf;
   }
 
   @override
-  void update(void Function($LibraryItemBuilder)? updates) {
+  void update(void Function($LibraryItemShelfBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  $LibraryItem build() => _build();
+  $LibraryItemShelf build() => _build();
 
-  _$$LibraryItem _build() {
-    _$$LibraryItem _$result;
+  _$$LibraryItemShelf _build() {
+    _$$LibraryItemShelf _$result;
     try {
       _$result = _$v ??
-          new _$$LibraryItem._(
+          new _$$LibraryItemShelf._(
               libraryFiles: _libraryFiles?.build(),
               id: id,
               oldLibraryItemId: oldLibraryItemId,
@@ -365,7 +369,7 @@ class $LibraryItemBuilder
         _media?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            r'$LibraryItem', _$failedField, e.toString());
+            r'$LibraryItemShelf', _$failedField, e.toString());
       }
       rethrow;
     }

@@ -580,5 +580,11 @@
   "@year": {},
   "libraries": "Libraries",
   "allDownloads": "All Downloads",
-  "offlineSavedProgress": "Offline saved progress"
+  "offlineSavedProgress": "Offline saved progress",
+  "continueListening": "Continue Listening",
+  "personalizedLibrary": "Personalized Library",
+  "recentlyAdded": "Recently Added",
+  "discover": "Discover",
+  "recentSeries": "Recent Series",
+  "listenAgain": "Listen again"
 }

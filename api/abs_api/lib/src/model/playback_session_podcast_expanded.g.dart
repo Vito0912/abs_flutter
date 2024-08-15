@@ -212,10 +212,9 @@ class PlaybackSessionPodcastExpandedBuilder
   set videoTrack(covariant JsonObject? videoTrack) =>
       _$this._videoTrack = videoTrack;
 
-  LibraryItemBuilder? _libraryItem;
-  LibraryItemBuilder get libraryItem =>
-      _$this._libraryItem ??= new LibraryItemBuilder();
-  set libraryItem(covariant LibraryItemBuilder? libraryItem) =>
+  LibraryItem? _libraryItem;
+  LibraryItem? get libraryItem => _$this._libraryItem;
+  set libraryItem(covariant LibraryItem? libraryItem) =>
       _$this._libraryItem = libraryItem;
 
   PodcastMetadataBuilder? _mediaMetadata;
@@ -327,7 +326,7 @@ class PlaybackSessionPodcastExpandedBuilder
     if ($v != null) {
       _audioTracks = $v.audioTracks?.toBuilder();
       _videoTrack = $v.videoTrack;
-      _libraryItem = $v.libraryItem?.toBuilder();
+      _libraryItem = $v.libraryItem;
       _mediaMetadata = $v.mediaMetadata?.toBuilder();
       _episodeId = $v.episodeId;
       _id = $v.id;
@@ -376,7 +375,7 @@ class PlaybackSessionPodcastExpandedBuilder
           new _$PlaybackSessionPodcastExpanded._(
               audioTracks: _audioTracks?.build(),
               videoTrack: videoTrack,
-              libraryItem: _libraryItem?.build(),
+              libraryItem: libraryItem,
               mediaMetadata: _mediaMetadata?.build(),
               episodeId: episodeId,
               id: id,
@@ -405,8 +404,6 @@ class PlaybackSessionPodcastExpandedBuilder
         _$failedField = 'audioTracks';
         _audioTracks?.build();
 
-        _$failedField = 'libraryItem';
-        _libraryItem?.build();
         _$failedField = 'mediaMetadata';
         _mediaMetadata?.build();
 

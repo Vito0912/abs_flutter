@@ -4,16 +4,16 @@
 
 // ignore_for_file: unused_element
 import 'package:abs_api/src/model/media_type.dart';
-import 'package:abs_api/src/model/library_item_base.dart';
 import 'package:abs_api/src/model/library_file.dart';
 import 'package:built_collection/built_collection.dart';
+import 'package:abs_api/src/model/library_item.dart';
 import 'package:abs_api/src/model/book.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
-part 'library_item.g.dart';
+part 'library_item_shelf.g.dart';
 
-/// A single item on the server, like a book or podcast.
+/// A single episode of a podcast.
 ///
 /// Properties:
 /// * [id] - The ID of library items after 2.3.0.
@@ -35,24 +35,23 @@ part 'library_item.g.dart';
 /// * [media]
 /// * [libraryFiles]
 @BuiltValue(instantiable: false)
-abstract class LibraryItem implements LibraryItemBase {
-  @BuiltValueField(wireName: r'libraryFiles')
-  BuiltList<LibraryFile>? get libraryFiles;
-
+abstract class LibraryItemShelf implements LibraryItem {
   @BuiltValueSerializer(custom: true)
-  static Serializer<LibraryItem> get serializer => _$LibraryItemSerializer();
+  static Serializer<LibraryItemShelf> get serializer =>
+      _$LibraryItemShelfSerializer();
 }
 
-class _$LibraryItemSerializer implements PrimitiveSerializer<LibraryItem> {
+class _$LibraryItemShelfSerializer
+    implements PrimitiveSerializer<LibraryItemShelf> {
   @override
-  final Iterable<Type> types = const [LibraryItem];
+  final Iterable<Type> types = const [LibraryItemShelf];
 
   @override
-  final String wireName = r'LibraryItem';
+  final String wireName = r'LibraryItemShelf';
 
   Iterable<Object?> _serializeProperties(
     Serializers serializers,
-    LibraryItem object, {
+    LibraryItemShelf object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
     if (object.oldLibraryItemId != null) {
@@ -186,7 +185,7 @@ class _$LibraryItemSerializer implements PrimitiveSerializer<LibraryItem> {
   @override
   Object serialize(
     Serializers serializers,
-    LibraryItem object, {
+    LibraryItemShelf object, {
     FullType specifiedType = FullType.unspecified,
   }) {
     return _serializeProperties(serializers, object,
@@ -195,46 +194,51 @@ class _$LibraryItemSerializer implements PrimitiveSerializer<LibraryItem> {
   }
 
   @override
-  LibraryItem deserialize(
+  LibraryItemShelf deserialize(
     Serializers serializers,
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
   }) {
     return serializers.deserialize(serialized,
-        specifiedType: FullType($LibraryItem)) as $LibraryItem;
+        specifiedType: FullType($LibraryItemShelf)) as $LibraryItemShelf;
   }
 }
 
-/// a concrete implementation of [LibraryItem], since [LibraryItem] is not instantiable
+/// a concrete implementation of [LibraryItemShelf], since [LibraryItemShelf] is not instantiable
 @BuiltValue(instantiable: true)
-abstract class $LibraryItem
-    implements LibraryItem, Built<$LibraryItem, $LibraryItemBuilder> {
-  $LibraryItem._();
+abstract class $LibraryItemShelf
+    implements
+        LibraryItemShelf,
+        Built<$LibraryItemShelf, $LibraryItemShelfBuilder> {
+  $LibraryItemShelf._();
 
-  factory $LibraryItem([void Function($LibraryItemBuilder)? updates]) =
-      _$$LibraryItem;
+  factory $LibraryItemShelf(
+      [void Function($LibraryItemShelfBuilder)? updates]) = _$$LibraryItemShelf;
 
   @BuiltValueHook(initializeBuilder: true)
-  static void _defaults($LibraryItemBuilder b) => b;
+  static void _defaults($LibraryItemShelfBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<$LibraryItem> get serializer => _$$LibraryItemSerializer();
+  static Serializer<$LibraryItemShelf> get serializer =>
+      _$$LibraryItemShelfSerializer();
 }
 
-class _$$LibraryItemSerializer implements PrimitiveSerializer<$LibraryItem> {
+class _$$LibraryItemShelfSerializer
+    implements PrimitiveSerializer<$LibraryItemShelf> {
   @override
-  final Iterable<Type> types = const [$LibraryItem, _$$LibraryItem];
+  final Iterable<Type> types = const [$LibraryItemShelf, _$$LibraryItemShelf];
 
   @override
-  final String wireName = r'$LibraryItem';
+  final String wireName = r'$LibraryItemShelf';
 
   @override
   Object serialize(
     Serializers serializers,
-    $LibraryItem object, {
+    $LibraryItemShelf object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return serializers.serialize(object, specifiedType: FullType(LibraryItem))!;
+    return serializers.serialize(object,
+        specifiedType: FullType(LibraryItemShelf))!;
   }
 
   void _deserializeProperties(
@@ -242,7 +246,7 @@ class _$$LibraryItemSerializer implements PrimitiveSerializer<$LibraryItem> {
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
     required List<Object?> serializedList,
-    required LibraryItemBuilder result,
+    required LibraryItemShelfBuilder result,
     required List<Object?> unhandled,
   }) {
     for (var i = 0; i < serializedList.length; i += 2) {
@@ -385,12 +389,12 @@ class _$$LibraryItemSerializer implements PrimitiveSerializer<$LibraryItem> {
   }
 
   @override
-  $LibraryItem deserialize(
+  $LibraryItemShelf deserialize(
     Serializers serializers,
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final result = $LibraryItemBuilder();
+    final result = $LibraryItemShelfBuilder();
     final serializedList = (serialized as Iterable<Object?>).toList();
     final unhandled = <Object?>[];
     _deserializeProperties(

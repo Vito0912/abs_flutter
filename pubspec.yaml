@@ -56,6 +56,7 @@ dependencies:
   uuid: any
   collection: any
   built_collection: any
+  built_value: any
 
 dev_dependencies:
   flutter_test:

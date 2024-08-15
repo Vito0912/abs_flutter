@@ -3303,6 +3303,56 @@
           }
         }
       }
+    },
+    "/api/libraries/{id}/personalized": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "description": "The ID of the library.",
+          "required": true,
+          "schema": {
+            "$ref": "#/components/schemas/libraryId"
+          }
+        },
+        {
+          "name": "include",
+          "in": "query",
+          "description": "A comma separated list of what to include with the library item. The only current option is filterdata.",
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "$ref": "#/components/parameters/limit"
+        }
+      ],
+      "get": {
+        "operationId": "getPersonalizedLibrary",
+        "summary": "Get personalized library (home page).",
+        "description": "Get personalized library (home page).",
+        "tags": [
+          "Libraries"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/libraryShelf"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/library404"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -3885,6 +3935,17 @@
             "description": "Whether the book is abridged.",
             "type": "boolean",
             "example": false
+          },
+          "authorName": {
+            "$ref": "#/components/schemas/authorName"
+          },
+          "narratorName": {
+            "description": "The name of the book's narrator(s).",
+            "type": "string",
+            "example": "Sam Tsoutsouvas"
+          },
+          "seriesName": {
+            "$ref": "#/components/schemas/seriesName"
           }
         }
       },
@@ -6079,6 +6140,110 @@
             "type": "array",
             "items": {
               "type": "string"
+            }
+          }
+        }
+      },
+      "seriesShelf": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/series"
+          },
+          {
+            "type": "object",
+            "nullable": true,
+            "properties": {
+              "books": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/libraryItemMinified"
+                }
+              },
+              "inProgress": {
+                "type": "boolean",
+                "description": "Whether the user has started listening to the series.",
+                "nullable": true
+              },
+              "hasActiveBook": {
+                "type": "boolean",
+                "description": "Whether the user has started listening to the series, but has not finished it.",
+                "nullable": true
+              },
+              "hideFromContinueListening": {
+                "type": "boolean",
+                "description": "Whether the series should be hidden from the continue listening section.",
+                "nullable": true
+              },
+              "bookInProgressLastUpdate": {
+                "description": "An Integer, the time (in ms since POSIX epoch) when the book's progress was last updated.",
+                "type": "integer",
+                "example": 1612345678901,
+                "nullable": true
+              },
+              "firstBookUnread": {
+                "$ref": "#/components/schemas/libraryItemMinified"
+              }
+            }
+          }
+        ]
+      },
+      "libraryItemShelf": {
+        "type": "object",
+        "description": "A single episode of a podcast.",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/libraryItem"
+          }
+        ]
+      },
+      "libraryShelf": {
+        "description": "A library shelf",
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "The ID (Name) of the shelf.",
+            "type": "string",
+            "example": "continue-listening"
+          },
+          "label": {
+            "description": "The label of the shelf.",
+            "type": "string",
+            "example": "Continue Listening"
+          },
+          "labelStringKey": {
+            "description": "The localization key for the label.",
+            "type": "string",
+            "example": "LabelContinueListening"
+          },
+          "type": {
+            "description": "The type of items the shelf contains.",
+            "type": "string",
+            "example": "book",
+            "enum": [
+              "book",
+              "podcast",
+              "series",
+              "authors",
+              "episode"
+            ]
+          },
+          "category": {
+            "description": "The category of the shelf.",
+            "type": "string",
+            "example": "recentlyListened"
+          },
+          "entities": {
+            "description": "TODO! I use allOf, because of my programming language , buts a oneOf. It still works with allOf but you will have entries that are not always available.",
+            "type": "array",
+            "items": {
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/libraryItemShelf"
+                },
+                {
+                  "$ref": "#/components/schemas/seriesShelf"
+                }
+              ]
             }
           }
         }

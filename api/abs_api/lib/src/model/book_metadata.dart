@@ -27,6 +27,9 @@ part 'book_metadata.g.dart';
 /// * [language] - The language of the book. Will be null if unknown.
 /// * [explicit] - Whether the book has been marked as explicit.
 /// * [abridged] - Whether the book is abridged.
+/// * [authorName] - The name of the author.
+/// * [narratorName] - The name of the book's narrator(s).
+/// * [seriesName] - The name of the series.
 /// * [authors]
 /// * [narrators]
 /// * [series]
@@ -65,6 +68,13 @@ class _$BookMetadataSerializer implements PrimitiveSerializer<BookMetadata> {
     BookMetadata object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
+    if (object.seriesName != null) {
+      yield r'seriesName';
+      yield serializers.serialize(
+        object.seriesName,
+        specifiedType: const FullType(String),
+      );
+    }
     if (object.isbn != null) {
       yield r'isbn';
       yield serializers.serialize(
@@ -107,6 +117,13 @@ class _$BookMetadataSerializer implements PrimitiveSerializer<BookMetadata> {
         specifiedType: const FullType(bool),
       );
     }
+    if (object.narratorName != null) {
+      yield r'narratorName';
+      yield serializers.serialize(
+        object.narratorName,
+        specifiedType: const FullType(String),
+      );
+    }
     if (object.series != null) {
       yield r'series';
       yield serializers.serialize(
@@ -119,6 +136,13 @@ class _$BookMetadataSerializer implements PrimitiveSerializer<BookMetadata> {
       yield serializers.serialize(
         object.genres,
         specifiedType: const FullType(BuiltList, [FullType(String)]),
+      );
+    }
+    if (object.authorName != null) {
+      yield r'authorName';
+      yield serializers.serialize(
+        object.authorName,
+        specifiedType: const FullType(String),
       );
     }
     if (object.subtitle != null) {
@@ -195,6 +219,13 @@ class _$BookMetadataSerializer implements PrimitiveSerializer<BookMetadata> {
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
+        case r'seriesName':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.seriesName = valueDes;
+          break;
         case r'isbn':
           final valueDes = serializers.deserialize(
             value,
@@ -241,6 +272,13 @@ class _$BookMetadataSerializer implements PrimitiveSerializer<BookMetadata> {
           ) as bool;
           result.explicit = valueDes;
           break;
+        case r'narratorName':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.narratorName = valueDes;
+          break;
         case r'series':
           final valueDes = serializers.deserialize(
             value,
@@ -255,6 +293,13 @@ class _$BookMetadataSerializer implements PrimitiveSerializer<BookMetadata> {
             specifiedType: const FullType(BuiltList, [FullType(String)]),
           ) as BuiltList<String>;
           result.genres.replace(valueDes);
+          break;
+        case r'authorName':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.authorName = valueDes;
           break;
         case r'subtitle':
           final valueDes = serializers.deserialize(

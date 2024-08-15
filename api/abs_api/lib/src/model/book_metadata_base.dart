@@ -24,6 +24,9 @@ part 'book_metadata_base.g.dart';
 /// * [language] - The language of the book. Will be null if unknown.
 /// * [explicit] - Whether the book has been marked as explicit.
 /// * [abridged] - Whether the book is abridged.
+/// * [authorName] - The name of the author.
+/// * [narratorName] - The name of the book's narrator(s).
+/// * [seriesName] - The name of the series.
 @BuiltValue(instantiable: false)
 abstract class BookMetadataBase {
   /// The title of the book. Will be null if unknown.
@@ -73,6 +76,18 @@ abstract class BookMetadataBase {
   /// Whether the book is abridged.
   @BuiltValueField(wireName: r'abridged')
   bool? get abridged;
+
+  /// The name of the author.
+  @BuiltValueField(wireName: r'authorName')
+  String? get authorName;
+
+  /// The name of the book's narrator(s).
+  @BuiltValueField(wireName: r'narratorName')
+  String? get narratorName;
+
+  /// The name of the series.
+  @BuiltValueField(wireName: r'seriesName')
+  String? get seriesName;
 
   @BuiltValueSerializer(custom: true)
   static Serializer<BookMetadataBase> get serializer =>
@@ -174,6 +189,27 @@ class _$BookMetadataBaseSerializer
       yield serializers.serialize(
         object.abridged,
         specifiedType: const FullType(bool),
+      );
+    }
+    if (object.authorName != null) {
+      yield r'authorName';
+      yield serializers.serialize(
+        object.authorName,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.narratorName != null) {
+      yield r'narratorName';
+      yield serializers.serialize(
+        object.narratorName,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.seriesName != null) {
+      yield r'seriesName';
+      yield serializers.serialize(
+        object.seriesName,
+        specifiedType: const FullType(String),
       );
     }
   }
@@ -341,6 +377,27 @@ class _$$BookMetadataBaseSerializer
             specifiedType: const FullType(bool),
           ) as bool;
           result.abridged = valueDes;
+          break;
+        case r'authorName':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.authorName = valueDes;
+          break;
+        case r'narratorName':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.narratorName = valueDes;
+          break;
+        case r'seriesName':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.seriesName = valueDes;
           break;
         default:
           unhandled.add(key);

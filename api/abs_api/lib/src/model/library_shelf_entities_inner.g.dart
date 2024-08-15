@@ -1,70 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'library_item.dart';
+part of 'library_shelf_entities_inner.dart';
 
 // **************************************************************************
 // BuiltValueGenerator
 // **************************************************************************
 
-abstract class LibraryItemBuilder implements LibraryItemBaseBuilder {
-  void replace(covariant LibraryItem other);
-  void update(void Function(LibraryItemBuilder) updates);
-  ListBuilder<LibraryFile> get libraryFiles;
-  set libraryFiles(covariant ListBuilder<LibraryFile>? libraryFiles);
-
-  String? get id;
-  set id(covariant String? id);
-
-  String? get oldLibraryItemId;
-  set oldLibraryItemId(covariant String? oldLibraryItemId);
-
-  String? get ino;
-  set ino(covariant String? ino);
-
-  String? get libraryId;
-  set libraryId(covariant String? libraryId);
-
-  String? get folderId;
-  set folderId(covariant String? folderId);
-
-  String? get path;
-  set path(covariant String? path);
-
-  String? get relPath;
-  set relPath(covariant String? relPath);
-
-  bool? get isFile;
-  set isFile(covariant bool? isFile);
-
-  int? get mtimeMs;
-  set mtimeMs(covariant int? mtimeMs);
-
-  int? get ctimeMs;
-  set ctimeMs(covariant int? ctimeMs);
-
-  int? get birthtimeMs;
-  set birthtimeMs(covariant int? birthtimeMs);
-
-  int? get addedAt;
-  set addedAt(covariant int? addedAt);
-
-  int? get updatedAt;
-  set updatedAt(covariant int? updatedAt);
-
-  bool? get isMissing;
-  set isMissing(covariant bool? isMissing);
-
-  bool? get isInvalid;
-  set isInvalid(covariant bool? isInvalid);
-
-  MediaType? get mediaType;
-  set mediaType(covariant MediaType? mediaType);
-
-  BookBuilder get media;
-  set media(covariant BookBuilder? media);
-}
-
-class _$$LibraryItem extends $LibraryItem {
+class _$LibraryShelfEntitiesInner extends LibraryShelfEntitiesInner {
   @override
   final BuiltList<LibraryFile>? libraryFiles;
   @override
@@ -101,11 +43,28 @@ class _$$LibraryItem extends $LibraryItem {
   final MediaType? mediaType;
   @override
   final Book? media;
+  @override
+  final BuiltList<LibraryItemMinified>? books;
+  @override
+  final bool? inProgress;
+  @override
+  final int? bookInProgressLastUpdate;
+  @override
+  final bool? hideFromContinueListening;
+  @override
+  final LibraryItemMinified? firstBookUnread;
+  @override
+  final bool? hasActiveBook;
+  @override
+  final String? name;
+  @override
+  final String? description;
 
-  factory _$$LibraryItem([void Function($LibraryItemBuilder)? updates]) =>
-      (new $LibraryItemBuilder()..update(updates))._build();
+  factory _$LibraryShelfEntitiesInner(
+          [void Function(LibraryShelfEntitiesInnerBuilder)? updates]) =>
+      (new LibraryShelfEntitiesInnerBuilder()..update(updates))._build();
 
-  _$$LibraryItem._(
+  _$LibraryShelfEntitiesInner._(
       {this.libraryFiles,
       this.id,
       this.oldLibraryItemId,
@@ -123,20 +82,30 @@ class _$$LibraryItem extends $LibraryItem {
       this.isMissing,
       this.isInvalid,
       this.mediaType,
-      this.media})
+      this.media,
+      this.books,
+      this.inProgress,
+      this.bookInProgressLastUpdate,
+      this.hideFromContinueListening,
+      this.firstBookUnread,
+      this.hasActiveBook,
+      this.name,
+      this.description})
       : super._();
 
   @override
-  $LibraryItem rebuild(void Function($LibraryItemBuilder) updates) =>
+  LibraryShelfEntitiesInner rebuild(
+          void Function(LibraryShelfEntitiesInnerBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  $LibraryItemBuilder toBuilder() => new $LibraryItemBuilder()..replace(this);
+  LibraryShelfEntitiesInnerBuilder toBuilder() =>
+      new LibraryShelfEntitiesInnerBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is $LibraryItem &&
+    return other is LibraryShelfEntitiesInner &&
         libraryFiles == other.libraryFiles &&
         id == other.id &&
         oldLibraryItemId == other.oldLibraryItemId &&
@@ -154,7 +123,15 @@ class _$$LibraryItem extends $LibraryItem {
         isMissing == other.isMissing &&
         isInvalid == other.isInvalid &&
         mediaType == other.mediaType &&
-        media == other.media;
+        media == other.media &&
+        books == other.books &&
+        inProgress == other.inProgress &&
+        bookInProgressLastUpdate == other.bookInProgressLastUpdate &&
+        hideFromContinueListening == other.hideFromContinueListening &&
+        firstBookUnread == other.firstBookUnread &&
+        hasActiveBook == other.hasActiveBook &&
+        name == other.name &&
+        description == other.description;
   }
 
   @override
@@ -178,13 +155,21 @@ class _$$LibraryItem extends $LibraryItem {
     _$hash = $jc(_$hash, isInvalid.hashCode);
     _$hash = $jc(_$hash, mediaType.hashCode);
     _$hash = $jc(_$hash, media.hashCode);
+    _$hash = $jc(_$hash, books.hashCode);
+    _$hash = $jc(_$hash, inProgress.hashCode);
+    _$hash = $jc(_$hash, bookInProgressLastUpdate.hashCode);
+    _$hash = $jc(_$hash, hideFromContinueListening.hashCode);
+    _$hash = $jc(_$hash, firstBookUnread.hashCode);
+    _$hash = $jc(_$hash, hasActiveBook.hashCode);
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, description.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'$LibraryItem')
+    return (newBuiltValueToStringHelper(r'LibraryShelfEntitiesInner')
           ..add('libraryFiles', libraryFiles)
           ..add('id', id)
           ..add('oldLibraryItemId', oldLibraryItemId)
@@ -202,14 +187,25 @@ class _$$LibraryItem extends $LibraryItem {
           ..add('isMissing', isMissing)
           ..add('isInvalid', isInvalid)
           ..add('mediaType', mediaType)
-          ..add('media', media))
+          ..add('media', media)
+          ..add('books', books)
+          ..add('inProgress', inProgress)
+          ..add('bookInProgressLastUpdate', bookInProgressLastUpdate)
+          ..add('hideFromContinueListening', hideFromContinueListening)
+          ..add('firstBookUnread', firstBookUnread)
+          ..add('hasActiveBook', hasActiveBook)
+          ..add('name', name)
+          ..add('description', description))
         .toString();
   }
 }
 
-class $LibraryItemBuilder
-    implements Builder<$LibraryItem, $LibraryItemBuilder>, LibraryItemBuilder {
-  _$$LibraryItem? _$v;
+class LibraryShelfEntitiesInnerBuilder
+    implements
+        Builder<LibraryShelfEntitiesInner, LibraryShelfEntitiesInnerBuilder>,
+        LibraryItemShelfBuilder,
+        SeriesShelfBuilder {
+  _$LibraryShelfEntitiesInner? _$v;
 
   ListBuilder<LibraryFile>? _libraryFiles;
   ListBuilder<LibraryFile> get libraryFiles =>
@@ -288,11 +284,51 @@ class $LibraryItemBuilder
   BookBuilder get media => _$this._media ??= new BookBuilder();
   set media(covariant BookBuilder? media) => _$this._media = media;
 
-  $LibraryItemBuilder() {
-    $LibraryItem._defaults(this);
+  ListBuilder<LibraryItemMinified>? _books;
+  ListBuilder<LibraryItemMinified> get books =>
+      _$this._books ??= new ListBuilder<LibraryItemMinified>();
+  set books(covariant ListBuilder<LibraryItemMinified>? books) =>
+      _$this._books = books;
+
+  bool? _inProgress;
+  bool? get inProgress => _$this._inProgress;
+  set inProgress(covariant bool? inProgress) => _$this._inProgress = inProgress;
+
+  int? _bookInProgressLastUpdate;
+  int? get bookInProgressLastUpdate => _$this._bookInProgressLastUpdate;
+  set bookInProgressLastUpdate(covariant int? bookInProgressLastUpdate) =>
+      _$this._bookInProgressLastUpdate = bookInProgressLastUpdate;
+
+  bool? _hideFromContinueListening;
+  bool? get hideFromContinueListening => _$this._hideFromContinueListening;
+  set hideFromContinueListening(covariant bool? hideFromContinueListening) =>
+      _$this._hideFromContinueListening = hideFromContinueListening;
+
+  LibraryItemMinifiedBuilder? _firstBookUnread;
+  LibraryItemMinifiedBuilder get firstBookUnread =>
+      _$this._firstBookUnread ??= new LibraryItemMinifiedBuilder();
+  set firstBookUnread(covariant LibraryItemMinifiedBuilder? firstBookUnread) =>
+      _$this._firstBookUnread = firstBookUnread;
+
+  bool? _hasActiveBook;
+  bool? get hasActiveBook => _$this._hasActiveBook;
+  set hasActiveBook(covariant bool? hasActiveBook) =>
+      _$this._hasActiveBook = hasActiveBook;
+
+  String? _name;
+  String? get name => _$this._name;
+  set name(covariant String? name) => _$this._name = name;
+
+  String? _description;
+  String? get description => _$this._description;
+  set description(covariant String? description) =>
+      _$this._description = description;
+
+  LibraryShelfEntitiesInnerBuilder() {
+    LibraryShelfEntitiesInner._defaults(this);
   }
 
-  $LibraryItemBuilder get _$this {
+  LibraryShelfEntitiesInnerBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _libraryFiles = $v.libraryFiles?.toBuilder();
@@ -313,30 +349,39 @@ class $LibraryItemBuilder
       _isInvalid = $v.isInvalid;
       _mediaType = $v.mediaType;
       _media = $v.media?.toBuilder();
+      _books = $v.books?.toBuilder();
+      _inProgress = $v.inProgress;
+      _bookInProgressLastUpdate = $v.bookInProgressLastUpdate;
+      _hideFromContinueListening = $v.hideFromContinueListening;
+      _firstBookUnread = $v.firstBookUnread?.toBuilder();
+      _hasActiveBook = $v.hasActiveBook;
+      _name = $v.name;
+      _description = $v.description;
       _$v = null;
     }
     return this;
   }
 
   @override
-  void replace(covariant $LibraryItem other) {
+// ignore: override_on_non_overriding_method
+  void replace(covariant LibraryShelfEntitiesInner other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$$LibraryItem;
+    _$v = other as _$LibraryShelfEntitiesInner;
   }
 
   @override
-  void update(void Function($LibraryItemBuilder)? updates) {
+  void update(void Function(LibraryShelfEntitiesInnerBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  $LibraryItem build() => _build();
+  LibraryShelfEntitiesInner build() => _build();
 
-  _$$LibraryItem _build() {
-    _$$LibraryItem _$result;
+  _$LibraryShelfEntitiesInner _build() {
+    _$LibraryShelfEntitiesInner _$result;
     try {
       _$result = _$v ??
-          new _$$LibraryItem._(
+          new _$LibraryShelfEntitiesInner._(
               libraryFiles: _libraryFiles?.build(),
               id: id,
               oldLibraryItemId: oldLibraryItemId,
@@ -354,7 +399,15 @@ class $LibraryItemBuilder
               isMissing: isMissing,
               isInvalid: isInvalid,
               mediaType: mediaType,
-              media: _media?.build());
+              media: _media?.build(),
+              books: _books?.build(),
+              inProgress: inProgress,
+              bookInProgressLastUpdate: bookInProgressLastUpdate,
+              hideFromContinueListening: hideFromContinueListening,
+              firstBookUnread: _firstBookUnread?.build(),
+              hasActiveBook: hasActiveBook,
+              name: name,
+              description: description);
     } catch (_) {
       late String _$failedField;
       try {
@@ -363,9 +416,14 @@ class $LibraryItemBuilder
 
         _$failedField = 'media';
         _media?.build();
+        _$failedField = 'books';
+        _books?.build();
+
+        _$failedField = 'firstBookUnread';
+        _firstBookUnread?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            r'$LibraryItem', _$failedField, e.toString());
+            r'LibraryShelfEntitiesInner', _$failedField, e.toString());
       }
       rethrow;
     }

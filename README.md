@@ -29,19 +29,19 @@ A big thank you to [Weblate](https://weblate.org) for providing their services!
 
 ## Platform Matrix
 
-| Platform Matrix                        | Android |       iOS       | Windows | Linux |      Web       |
-|----------------------------------------|:-------:|:---------------:|:-------:|:-----:|:--------------:|
-| Playing Audio                          |    ✅    |        ✅        |    ✅    |   ✅   |       ✅        |
-| Playing Podcasts*<sup>5</sup>          |    ✅    |        ✅        |    ✅    |   ✅   |       ✅        |
-| Reading eBooks*<sup>5</sup>            |    ❌    |        ❌        |    ❌    |   ❌   |       ❌        |
-| Up-to-date Sync                        |    ✅    |        ✅        |    ✅    |   ✅   |       ✅        |
-| Advanced Player Controls*<sup>1</sup>  |    ✅    |        ✅        |    ✅    |   ✅   |       ✅        |
-| Car Support*<sup>2</sup>               |    ✅    |        ✅        |    ❌    |   ❌   |       ❌        |
-| No Extra Setup Needed                  |    ✅    | ❌*<sup>6</sup>  |    ✅    |   ✅   | ❌*<sup>3</sup> |
-| Media Notifications                    |    ✅    |        ✅        |    ❌    |   ✅   |       ❌        |
-| Caching*<sup>4</sup>                   |    ✅    |        ✅        |    ✅    |   ✅   |       ✅        |
-| Offline Support                        |    ✅    |        ✅        |    ✅    |   ✅   | ❌*<sup>5</sup> |
-| Socket Support*<sup>5</sup>            |    ❌    |        ❌        |    ❌    |   ❌   |       ❌        |
+| Platform Matrix                       | Android |      iOS       | Windows | Linux |      Web       |
+|---------------------------------------|:-------:|:--------------:|:-------:|:-----:|:--------------:|
+| Playing Audio                         |    ✅    |       ✅        |    ✅    |   ✅   |       ✅        |
+| Playing Podcasts*<sup>5</sup>         |    ✅    |       ✅        |    ✅    |   ✅   |       ✅        |
+| Reading eBooks*<sup>5</sup>           |    ❌    |       ❌        |    ❌    |   ❌   |       ❌        |
+| Up-to-date Sync                       |    ✅    |       ✅        |    ✅    |   ✅   |       ✅        |
+| Advanced Player Controls*<sup>1</sup> |    ✅    |       ✅        |    ✅    |   ✅   |       ✅        |
+| Car Support*<sup>2</sup>              |   🟨    |       🟨       |    ❌    |   ❌   |       ❌        |
+| No Extra Setup Needed                 |    ✅    | ❌*<sup>6</sup> |    ✅    |   ✅   | ❌*<sup>3</sup> |
+| Media Notifications                   |    ✅    |       ✅        |    ❌    |   ✅   |       ❌        |
+| Caching*<sup>4</sup>                  |    ✅    |       ✅        |    ✅    |   ✅   |       ✅        |
+| Offline Support                       |    ✅    |       ✅        |    ✅    |   ✅   | ❌*<sup>5</sup> |
+| Socket Support*<sup>5</sup>           |    ❌    |       ❌        |    ❌    |   ❌   |       ❌        |
 
 > *<sup>1</sup> Chapter support, sleep timer, playback speed, custom skip time, and more\
 > *<sup>2</sup> Android Auto and Apple CarPlay are not supported as standalone apps, but media controls are supported\

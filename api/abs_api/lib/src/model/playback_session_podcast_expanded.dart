@@ -325,7 +325,7 @@ class _$PlaybackSessionPodcastExpandedSerializer
             value,
             specifiedType: const FullType(LibraryItem),
           ) as LibraryItem;
-          result.libraryItem.replace(valueDes);
+          result.libraryItem = valueDes;
           break;
         case r'episodeId':
           final valueDes = serializers.deserialize(

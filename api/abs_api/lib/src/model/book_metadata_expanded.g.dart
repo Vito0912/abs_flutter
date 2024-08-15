@@ -8,13 +8,7 @@ part of 'book_metadata_expanded.dart';
 
 class _$BookMetadataExpanded extends BookMetadataExpanded {
   @override
-  final String? narratorName;
-  @override
-  final String? authorName;
-  @override
   final String? authorNameLF;
-  @override
-  final String? seriesName;
   @override
   final String? titleIgnorePrefix;
   @override
@@ -41,16 +35,19 @@ class _$BookMetadataExpanded extends BookMetadataExpanded {
   final bool? explicit;
   @override
   final bool? abridged;
+  @override
+  final String? authorName;
+  @override
+  final String? narratorName;
+  @override
+  final String? seriesName;
 
   factory _$BookMetadataExpanded(
           [void Function(BookMetadataExpandedBuilder)? updates]) =>
       (new BookMetadataExpandedBuilder()..update(updates))._build();
 
   _$BookMetadataExpanded._(
-      {this.narratorName,
-      this.authorName,
-      this.authorNameLF,
-      this.seriesName,
+      {this.authorNameLF,
       this.titleIgnorePrefix,
       this.title,
       this.subtitle,
@@ -63,7 +60,10 @@ class _$BookMetadataExpanded extends BookMetadataExpanded {
       this.asin,
       this.language,
       this.explicit,
-      this.abridged})
+      this.abridged,
+      this.authorName,
+      this.narratorName,
+      this.seriesName})
       : super._();
 
   @override
@@ -79,10 +79,7 @@ class _$BookMetadataExpanded extends BookMetadataExpanded {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is BookMetadataExpanded &&
-        narratorName == other.narratorName &&
-        authorName == other.authorName &&
         authorNameLF == other.authorNameLF &&
-        seriesName == other.seriesName &&
         titleIgnorePrefix == other.titleIgnorePrefix &&
         title == other.title &&
         subtitle == other.subtitle &&
@@ -95,16 +92,16 @@ class _$BookMetadataExpanded extends BookMetadataExpanded {
         asin == other.asin &&
         language == other.language &&
         explicit == other.explicit &&
-        abridged == other.abridged;
+        abridged == other.abridged &&
+        authorName == other.authorName &&
+        narratorName == other.narratorName &&
+        seriesName == other.seriesName;
   }
 
   @override
   int get hashCode {
     var _$hash = 0;
-    _$hash = $jc(_$hash, narratorName.hashCode);
-    _$hash = $jc(_$hash, authorName.hashCode);
     _$hash = $jc(_$hash, authorNameLF.hashCode);
-    _$hash = $jc(_$hash, seriesName.hashCode);
     _$hash = $jc(_$hash, titleIgnorePrefix.hashCode);
     _$hash = $jc(_$hash, title.hashCode);
     _$hash = $jc(_$hash, subtitle.hashCode);
@@ -118,6 +115,9 @@ class _$BookMetadataExpanded extends BookMetadataExpanded {
     _$hash = $jc(_$hash, language.hashCode);
     _$hash = $jc(_$hash, explicit.hashCode);
     _$hash = $jc(_$hash, abridged.hashCode);
+    _$hash = $jc(_$hash, authorName.hashCode);
+    _$hash = $jc(_$hash, narratorName.hashCode);
+    _$hash = $jc(_$hash, seriesName.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -125,10 +125,7 @@ class _$BookMetadataExpanded extends BookMetadataExpanded {
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'BookMetadataExpanded')
-          ..add('narratorName', narratorName)
-          ..add('authorName', authorName)
           ..add('authorNameLF', authorNameLF)
-          ..add('seriesName', seriesName)
           ..add('titleIgnorePrefix', titleIgnorePrefix)
           ..add('title', title)
           ..add('subtitle', subtitle)
@@ -141,7 +138,10 @@ class _$BookMetadataExpanded extends BookMetadataExpanded {
           ..add('asin', asin)
           ..add('language', language)
           ..add('explicit', explicit)
-          ..add('abridged', abridged))
+          ..add('abridged', abridged)
+          ..add('authorName', authorName)
+          ..add('narratorName', narratorName)
+          ..add('seriesName', seriesName))
         .toString();
   }
 }
@@ -152,25 +152,10 @@ class BookMetadataExpandedBuilder
         BookMetadataBaseBuilder {
   _$BookMetadataExpanded? _$v;
 
-  String? _narratorName;
-  String? get narratorName => _$this._narratorName;
-  set narratorName(covariant String? narratorName) =>
-      _$this._narratorName = narratorName;
-
-  String? _authorName;
-  String? get authorName => _$this._authorName;
-  set authorName(covariant String? authorName) =>
-      _$this._authorName = authorName;
-
   String? _authorNameLF;
   String? get authorNameLF => _$this._authorNameLF;
   set authorNameLF(covariant String? authorNameLF) =>
       _$this._authorNameLF = authorNameLF;
-
-  String? _seriesName;
-  String? get seriesName => _$this._seriesName;
-  set seriesName(covariant String? seriesName) =>
-      _$this._seriesName = seriesName;
 
   String? _titleIgnorePrefix;
   String? get titleIgnorePrefix => _$this._titleIgnorePrefix;
@@ -229,6 +214,21 @@ class BookMetadataExpandedBuilder
   bool? get abridged => _$this._abridged;
   set abridged(covariant bool? abridged) => _$this._abridged = abridged;
 
+  String? _authorName;
+  String? get authorName => _$this._authorName;
+  set authorName(covariant String? authorName) =>
+      _$this._authorName = authorName;
+
+  String? _narratorName;
+  String? get narratorName => _$this._narratorName;
+  set narratorName(covariant String? narratorName) =>
+      _$this._narratorName = narratorName;
+
+  String? _seriesName;
+  String? get seriesName => _$this._seriesName;
+  set seriesName(covariant String? seriesName) =>
+      _$this._seriesName = seriesName;
+
   BookMetadataExpandedBuilder() {
     BookMetadataExpanded._defaults(this);
   }
@@ -236,10 +236,7 @@ class BookMetadataExpandedBuilder
   BookMetadataExpandedBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _narratorName = $v.narratorName;
-      _authorName = $v.authorName;
       _authorNameLF = $v.authorNameLF;
-      _seriesName = $v.seriesName;
       _titleIgnorePrefix = $v.titleIgnorePrefix;
       _title = $v.title;
       _subtitle = $v.subtitle;
@@ -253,6 +250,9 @@ class BookMetadataExpandedBuilder
       _language = $v.language;
       _explicit = $v.explicit;
       _abridged = $v.abridged;
+      _authorName = $v.authorName;
+      _narratorName = $v.narratorName;
+      _seriesName = $v.seriesName;
       _$v = null;
     }
     return this;
@@ -277,10 +277,7 @@ class BookMetadataExpandedBuilder
     try {
       _$result = _$v ??
           new _$BookMetadataExpanded._(
-              narratorName: narratorName,
-              authorName: authorName,
               authorNameLF: authorNameLF,
-              seriesName: seriesName,
               titleIgnorePrefix: titleIgnorePrefix,
               title: title,
               subtitle: subtitle,
@@ -293,7 +290,10 @@ class BookMetadataExpandedBuilder
               asin: asin,
               language: language,
               explicit: explicit,
-              abridged: abridged);
+              abridged: abridged,
+              authorName: authorName,
+              narratorName: narratorName,
+              seriesName: seriesName);
     } catch (_) {
       late String _$failedField;
       try {

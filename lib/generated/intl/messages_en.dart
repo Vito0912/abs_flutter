@@ -115,6 +115,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "When enabled, items in a series will be grouped together in the library view, displaying only a single item to represent the entire series."),
         "consecutiveDays":
             MessageLookupByLibrary.simpleMessage("Consecutive days"),
+        "continueListening":
+            MessageLookupByLibrary.simpleMessage("Continue Listening"),
         "currentDownloads":
             MessageLookupByLibrary.simpleMessage("Current Downloads"),
         "currentPositionNum": m1,
@@ -146,6 +148,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "description": MessageLookupByLibrary.simpleMessage("Description"),
         "deviceInfo": m29,
         "disabled": MessageLookupByLibrary.simpleMessage("Disabled"),
+        "discover": MessageLookupByLibrary.simpleMessage("Discover"),
         "domainOrIp": MessageLookupByLibrary.simpleMessage("Domain or IP"),
         "downloadComplete":
             MessageLookupByLibrary.simpleMessage("Download complete"),
@@ -198,6 +201,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "libraries": MessageLookupByLibrary.simpleMessage("Libraries"),
         "library": MessageLookupByLibrary.simpleMessage("Library"),
         "libraryStats": MessageLookupByLibrary.simpleMessage("Library Stats"),
+        "listenAgain": MessageLookupByLibrary.simpleMessage("Listen again"),
         "listeningInTheLastYear":
             MessageLookupByLibrary.simpleMessage("Listening in the last year"),
         "loading": MessageLookupByLibrary.simpleMessage("Loading…"),
@@ -237,6 +241,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "ownStats": MessageLookupByLibrary.simpleMessage("Own Stats"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "pause": MessageLookupByLibrary.simpleMessage("Pause"),
+        "personalizedLibrary":
+            MessageLookupByLibrary.simpleMessage("Personalized Library"),
         "play": MessageLookupByLibrary.simpleMessage("Play"),
         "playHistory": MessageLookupByLibrary.simpleMessage("Play History"),
         "playNextEpisode":
@@ -255,6 +261,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "publisher": MessageLookupByLibrary.simpleMessage("Publisher"),
         "readLess": MessageLookupByLibrary.simpleMessage("Read less"),
         "readMore": MessageLookupByLibrary.simpleMessage("Read more"),
+        "recentSeries": MessageLookupByLibrary.simpleMessage("Recent Series"),
+        "recentlyAdded": MessageLookupByLibrary.simpleMessage("Recently Added"),
         "reportAnIssue":
             MessageLookupByLibrary.simpleMessage("Report an issue"),
         "restartRequired":
