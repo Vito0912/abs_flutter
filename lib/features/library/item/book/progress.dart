@@ -22,7 +22,7 @@ class Progress extends ConsumerWidget {
     final currentProgress =
         Helper.formatPercentage(progress.progress!.toDouble());
     final currentPosition = Helper.formatTimeToReadable(
-        progress.progress! * progress.duration!,
+        progress.currentTime!,
         precise: true,
         short: true);
     final toGoSeconds =
@@ -48,7 +48,7 @@ class Progress extends ConsumerWidget {
             S.of(context).currentPositionNum(currentPosition),
             style: Theme.of(context).textTheme.bodySmall,
           ),
-          PlatformText(
+          if(progress.duration != null && progress.duration! > 0) PlatformText(
             S.of(context).timeRemainingNum(timeRemaining),
             style: Theme.of(context).textTheme.bodySmall,
           ),

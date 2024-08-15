@@ -1,6 +1,7 @@
 import 'package:abs_flutter/features/home/components/download_item.dart';
 import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/provider/downloader_provider.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -10,6 +11,8 @@ class DownloadInfoButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // TODO: Browser Support
+    if(kIsWeb) return const SizedBox.shrink();
     final downloader = ref.watch(downloaderProvider);
 
     if(!downloader.isDownloading && !show) {

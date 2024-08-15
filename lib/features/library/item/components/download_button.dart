@@ -5,6 +5,7 @@ import 'package:abs_flutter/models/user.dart' as m;
 import 'package:abs_flutter/provider/download_provider.dart';
 import 'package:abs_flutter/provider/downloader_provider.dart';
 import 'package:background_downloader/background_downloader.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -23,6 +24,8 @@ class DownloadButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // TODO: Browser Support
+    if(kIsWeb) return const SizedBox.shrink();
     final downloader = ref.watch(downloaderProvider);
     final downloads = ref.watch(downloadListProvider);
     final currentDownload = downloader.downloads

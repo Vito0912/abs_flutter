@@ -13,6 +13,7 @@ import 'package:abs_flutter/provider/queue_provider.dart';
 import 'package:abs_flutter/provider/session_provider.dart';
 import 'package:abs_flutter/provider/sleep_timer_provider.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:audio_service/audio_service.dart';
@@ -149,20 +150,19 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
     final String? id = mediaItem.value?.extras?['libraryItemId'] as String?;
     final String? episodeId =
         mediaItem.value?.extras?['episodeId'] as String?;
-    print(id);
     if (id != null) {
       final progressProv = _container.read(progressProvider);
 
       await progressProv.getProgressWithLibraryItem(id);
       final progresses = _container.read(progressProvider).progress;
-      final progress = progresses?['$id${episodeId ?? ''}'];
+      final progress = progresses?['${id}${episodeId ?? ''}'];
       if (progress != null &&
           !progress.isFinished! &&
           progress.progress! <= 0.99) {
-        log('Now seeking to ${(progress.duration! * progress.progress!).toInt()}',
+        log('Now seeking to ${(progress.currentTime!).toInt()}',
             name: 'seeking');
         seek(Duration(
-          seconds: (progress.duration! * progress.progress!).toInt(),
+          seconds: (progress.currentTime!).toInt(),
         ));
       }
     } else {
@@ -327,22 +327,22 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
   PlaybackState _transformEvent(PlaybackEvent event) {
     return PlaybackState(
       controls: [
-        if (!Platform.isAndroid) MediaControl.skipToPrevious,
+        if (kIsWeb || !Platform.isAndroid) MediaControl.skipToPrevious,
         MediaControl.rewind,
         if (_player.playing) MediaControl.pause else MediaControl.play,
         MediaControl.stop,
         MediaControl.fastForward,
-        if (!Platform.isAndroid) MediaControl.skipToNext
+        if (kIsWeb || !Platform.isAndroid) MediaControl.skipToNext
       ],
       systemActions: {
-        if (!Platform.isAndroid) MediaAction.skipToPrevious,
+        if (kIsWeb || !Platform.isAndroid) MediaAction.skipToPrevious,
         MediaAction.rewind,
         if (!(_settingsProvider?['lockSeekingNotification'] ?? false))
           MediaAction.seek,
         MediaAction.fastForward,
         MediaAction.stop,
         MediaAction.setSpeed,
-        if (!Platform.isAndroid) MediaAction.skipToNext
+        if (kIsWeb || !Platform.isAndroid) MediaAction.skipToNext
       },
       androidCompactActionIndices: const [1, 2, 3],
       processingState: const {

@@ -96,6 +96,7 @@ void main() async {
 }
 
 Future<void> _runPlatformSpecificCode() async {
+  if(kIsWeb) return;
   switch (Platform.operatingSystem) {
     case 'android':
       break;
@@ -119,13 +120,12 @@ Future<void> _runPlatformSpecificCode() async {
       });
       break;
     default:
-      if (kIsWeb) {
-        break;
-      }
+      break;
   }
 }
 
 Future<String> _getDeviceModel() async {
+  if(kIsWeb) return 'Browser';
   DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
   switch (Platform.operatingSystem) {
     case 'android':
@@ -153,6 +153,7 @@ Future<String> _getDeviceModel() async {
 }
 
 Future<String> _getOSModel() async {
+  if(kIsWeb) return 'Browser';
   DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
   switch (Platform.operatingSystem) {
     case 'android':

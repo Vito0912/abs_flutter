@@ -36,7 +36,7 @@ dependencies:
   package_info_plus: ^8.0.1
   just_audio_windows: ^0.2.1
   audio_service_mpris: ^0.1.5
-  just_audio_media_kit: ^2.0.4
+  just_audio_media_kit: 2.0.3
   flutter_settings_screens: ^0.3.4
   device_info_plus: ^10.1.1
   window_manager: ^0.3.9
@@ -74,6 +74,7 @@ dev_dependencies:
 
 dependency_overrides:
   meta: ^1.14.0
+  media_kit: 1.1.9
 
 flutter:
   uses-material-design: true
