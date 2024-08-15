@@ -5,6 +5,11 @@
 
 For Android, iOS*<sup>1</sup>, Windows, Linux, and Web*<sup>2</sup>
 
+## Important
+> If you're interested in trying out the Android version of this app, please reach out to me via [email](mailto:cedar-onyx-feast@duck.com). I'll add you to the beta testing group on the Google Play Store. It is currently private. Your participation is crucial, as I need testers to be able to create a public beta.
+>
+> Alternatively, you can download the APK from the release section. However, joining the beta would greatly assist in bringing the app to the Play Store sooner.
+
 This is a third-party app for the Audiobookshelf server, designed to maintain a single codebase for multiple OS platforms.\
 The app is written in Dart and utilizes the Flutter framework.\
 While the current version may not include all the features of the first-party app, it is a work in progress with ongoing development.
@@ -44,6 +49,10 @@ A big thank you to [Weblate](https://weblate.org) for providing their services!
 > *<sup>4</sup> Currently only caches images\
 > *<sup>5</sup> Will be added in the future\
 > *<sup>6</sup> A secure SSL connection is needed.
+
+iOS requires some additional setup to configure the necessary plugins. Unfortunately, I’m unable to test, build, or fix errors on iOS since I don’t have access to a Mac. However, I’ve only used packages and libraries that are compatible with Apple, so once the setup is complete, there shouldn't be any issues building the app for iOS.
+
+As for Linux, the app hasn’t been tested on that platform yet.
 
 ## Features
 
@@ -102,6 +111,73 @@ A big thank you to [Weblate](https://weblate.org) for providing their services!
 > Thanks to everybody contributing to [Audiobookshelf](https://github.com/advplyr/audiobookshelf) to make this software so awesome.
 > Thanks to everybody who contributed to [Audiobookshelf-App](https://github.com/advplyr/audiobookshelf-app) to make this software so awesome.
 > Many features of this app are based on the first-party app.
+
+## Images
+
+#### Guided Login
+> The login screen allows users to easily toggle between `https://` and `http://`. 
+> 
+> This ensures that you can enter your server address correctly and avoid any connection issues.
+
+<img src="/images/login.png" alt="Guided Login Screen" style="width: 300px">
+
+#### Rich Player
+> The player interface is packed with features designed to enhance your listening experience. 
+> 
+> It includes a history tracker so you can easily resume from where you left off, speed control to adjust playback to your preference, and volume control for a seamless audio experience. 
+> 
+> Additionally, the chapter view allows you to navigate through your audiobook easily, and the sleep timer can be reset simply by shaking your device.
+
+<img src="/images/player.png" alt="Rich Player Interface" style="width: 300px">
+<img src="/images/player_small.png" alt="Player Compact View" style="width: 300px">
+
+#### Listen Offline!
+> With offline listening, you can enjoy your audiobooks even when you’re off the grid, whether traveling, commuting, or in an area with limited connectivity. 
+> 
+> The app provides clear indicators of what has been downloaded and what remains to be synced, ensuring you never lose track of your progress. 
+> 
+> Once connected to the internet, your offline progress will automatically sync with the server.
+
+<img src="/images/download_view.png" alt="Download View" style="width: 300px">
+<img src="/images/download_see.png" alt="Downloaded Files View" style="width: 300px">
+<img src="/images/download.png" alt="Download Button" style="width: 300px">
+<img src="/images/no_internet.png" alt="No Internet Connection" style="width: 300px">
+
+#### Rich Settings
+> The settings section offers a comprehensive range of customization options, allowing you to tailor the app to your specific needs. 
+>
+> From enabling dark mode to setting download preferences, you have full control over your listening experience.
+>
+> Jump to [Settings](SETTINGS.md)
+
+<img src="/images/settings.png" alt="Settings Screen" style="width: 300px">
+
+#### History
+> The history feature keeps a detailed log of your listening activities, including when you paused, skipped, or resumed playback. 
+> 
+> This makes it easy to track your progress and revisit previous sections of your audiobooks.
+
+<img src="/images/history.png" alt="Listening History" style="width: 300px">
+
+#### Item View
+> The item view screen provides details about each audiobook. 
+> 
+> Here you can access the book's description, which supports clickable HTML links, allowing for easy navigation to related content. 
+> 
+> You can also view important metadata such as the current position, overall progress, remaining time, and more. 
+> 
+> Additionally, the item view allows you to filter content by author, narrator, or genre, helping you find related titles quickly.
+
+<img src="/images/item_view.png" alt="Book Item View" style="width: 300px">
+
+#### Detailed Stats View
+> The stats view gives you a detailed breakdown of your listening over time. 
+> 
+> You can track how much time you've spent listening each day, view your progress over the last seven or thirty days, and analyze your overall listening trends.
+
+<img src="/images/stats_1.png" alt="Listening Stats" style="width: 300px">
+<img src="/images/stats_2.png" alt="Additional Listening Stats" style="width: 300px">
+
 
 ### Known Bugs
 
