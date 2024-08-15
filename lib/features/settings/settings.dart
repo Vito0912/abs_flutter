@@ -14,7 +14,7 @@ class SettingPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final user = ref.watch(currentUserProvider);
+    final settings = ref.read(settingsProvider);
 
     return PlatformScaffold(
         appBar: PlatformAppBar(
@@ -34,6 +34,11 @@ class SettingPage extends ConsumerWidget {
                     defaultValue: true,
                     leading: Icon(PlatformIcons(context).brightness),
                   ),
+                  DropDownSettingsTile(
+                      title: S.of(context).language,
+                      settingKey: 'language',
+                      selected: settings['language'],
+                      values: supportedLocales),
                   Tooltip(
                     message: S.of(context).showAccountSwitcherDescription,
                     margin: const EdgeInsets.all(8),
@@ -213,7 +218,6 @@ class SettingPage extends ConsumerWidget {
                 ..._getOtherUsers(ref, context),
                 SimpleSettingsTile(
                     title: S.of(context).signOut,
-                    subtitle: user?.username ?? '',
                     onTap: () {
                       ref
                           .watch(currentUserProvider.notifier)
@@ -225,15 +229,15 @@ class SettingPage extends ConsumerWidget {
                   title: S.of(context).miscellaneous,
                   children: [
                     SimpleSettingsTile(
-                        title: 'View on GitHub',
+                        title: S.of(context).viewOnGithub,
                         onTap: () => Helper.launchUrl(
                             'https://github.com/vito0912/abs_flutter')),
                     SimpleSettingsTile(
-                        title: 'Report an issue',
+                        title: S.of(context).reportAnIssue,
                         onTap: () => Helper.launchUrl(
                             'https://github.com/Vito0912/abs_flutter/issues/new')),
                     SimpleSettingsTile(
-                        title: 'Audiobookshelf/Server',
+                        title: S.of(context).openProjectLink,
                         onTap: () => Helper.launchUrl(
                             'https://www.audiobookshelf.org/')),
                     SimpleSettingsTile(
@@ -248,7 +252,9 @@ class SettingPage extends ConsumerWidget {
                           );
                         }),
                     SimpleSettingsTile(
-                        title: _getDeviceInfoString(),
+                        title: S
+                            .of(context)
+                            .deviceInfo(deviceName, osVersion, version),
                         leading: Icon(PlatformIcons(context).info)),
                   ])
             ],
@@ -257,8 +263,8 @@ class SettingPage extends ConsumerWidget {
   }
 
   List<Widget> _getOtherUsers(WidgetRef ref, BuildContext context) {
-    final users = ref.watch(usersProvider);
-    final selectedUser = ref.watch(selectedUserProvider);
+    final users = ref.read(usersProvider);
+    final selectedUser = ref.read(selectedUserProvider);
 
     return users.asMap().entries.map((entry) {
       final index = entry.key;
@@ -274,13 +280,5 @@ class SettingPage extends ConsumerWidget {
         },
       );
     }).toList();
-  }
-
-  /*
-  * Get the device information as a string
-  * Returns the current device model, OS version, and app version
-   */
-  String _getDeviceInfoString() {
-    return 'Device: $deviceName\nOS Version: $osVersion\nApp Version: $version';
   }
 }

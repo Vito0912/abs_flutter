@@ -29,20 +29,23 @@ class FilterButton extends ConsumerWidget {
 
   Widget _buildFilterButton(IconData icon,
       {LibraryFilterData? data, BuildContext? context, WidgetRef? ref}) {
-    return PlatformIconButton(
-      onPressed: () {
-        if (data != null) {
-          final sortNotifier = ref!.read(libraryItemSearchProvider.notifier);
-          if (sortNotifier.state.filterKey != null &&
-              sortNotifier.state.filterKey!.isNotEmpty) {
-            sortNotifier.state =
-                sortNotifier.state.copyWith(filter: null, filterKey: null);
-          } else {
-            _showFilterDialog(context!, data, ref);
+    return Tooltip(
+      message: context != null ? S.of(context).filter : S.current.filter,
+      child: PlatformIconButton(
+        onPressed: () {
+          if (data != null) {
+            final sortNotifier = ref!.read(libraryItemSearchProvider.notifier);
+            if (sortNotifier.state.filterKey != null &&
+                sortNotifier.state.filterKey!.isNotEmpty) {
+              sortNotifier.state =
+                  sortNotifier.state.copyWith(filter: null, filterKey: null);
+            } else {
+              _showFilterDialog(context!, data, ref);
+            }
           }
-        }
-      },
-      icon: Icon(icon),
+        },
+        icon: Icon(icon),
+      ),
     );
   }
 

@@ -140,6 +140,16 @@ class S {
     );
   }
 
+  /// `Change Library`
+  String get changeLibrary {
+    return Intl.message(
+      'Change Library',
+      name: 'changeLibrary',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Chapters`
   String get chapters {
     return Intl.message(
@@ -195,6 +205,16 @@ class S {
     return Intl.message(
       'Consecutive days',
       name: 'consecutiveDays',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Current Downloads`
+  String get currentDownloads {
+    return Intl.message(
+      'Current Downloads',
+      name: 'currentDownloads',
       desc: '',
       args: [],
     );
@@ -467,6 +487,16 @@ class S {
       name: 'description',
       desc: '',
       args: [],
+    );
+  }
+
+  /// `Device: {device}\nOS: {os}\nApp Version: {version}`
+  String deviceInfo(String device, String os, String version) {
+    return Intl.message(
+      'Device: $device\nOS: $os\nApp Version: $version',
+      name: 'deviceInfo',
+      desc: '',
+      args: [device, os, version],
     );
   }
 
@@ -810,11 +840,51 @@ class S {
     );
   }
 
+  /// `Last 30 days`
+  String get last30Days {
+    return Intl.message(
+      'Last 30 days',
+      name: 'last30Days',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Last 7 days`
+  String get last7Days {
+    return Intl.message(
+      'Last 7 days',
+      name: 'last7Days',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Library`
+  String get library {
+    return Intl.message(
+      'Library',
+      name: 'library',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Library Stats`
   String get libraryStats {
     return Intl.message(
       'Library Stats',
       name: 'libraryStats',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Listening in the last year`
+  String get listeningInTheLastYear {
+    return Intl.message(
+      'Listening in the last year',
+      name: 'listeningInTheLastYear',
       desc: '',
       args: [],
     );
@@ -875,6 +945,16 @@ class S {
     return Intl.message(
       'Miscellaneous',
       name: 'miscellaneous',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `More options`
+  String get moreOptions {
+    return Intl.message(
+      'More options',
+      name: 'moreOptions',
       desc: '',
       args: [],
     );
@@ -1015,6 +1095,16 @@ class S {
     return Intl.message(
       'Open Downloads',
       name: 'openDownloads',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Audiobookshelf/Server`
+  String get openProjectLink {
+    return Intl.message(
+      'Audiobookshelf/Server',
+      name: 'openProjectLink',
       desc: '',
       args: [],
     );
@@ -1190,6 +1280,16 @@ class S {
     );
   }
 
+  /// `Report an issue`
+  String get reportAnIssue {
+    return Intl.message(
+      'Report an issue',
+      name: 'reportAnIssue',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Restart Required`
   String get restartRequired {
     return Intl.message(
@@ -1355,6 +1455,16 @@ class S {
     return Intl.message(
       'Sleep Timer',
       name: 'sleepTimer',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sort`
+  String get sort {
+    return Intl.message(
+      'Sort',
+      name: 'sort',
       desc: '',
       args: [],
     );
@@ -1575,6 +1685,16 @@ class S {
     return Intl.message(
       'Username and password cannot be empty',
       name: 'usernameOrPasswordNotEmpty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `View on GitHub`
+  String get viewOnGithub {
+    return Intl.message(
+      'View on GitHub',
+      name: 'viewOnGithub',
       desc: '',
       args: [],
     );

@@ -7,6 +7,7 @@ import 'package:abs_flutter/provider/user_provider.dart';
 import 'package:abs_flutter/util/router.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -21,7 +22,6 @@ class AbsApp extends ConsumerStatefulWidget {
 }
 
 class _AbsAppState extends ConsumerState<AbsApp> with WidgetsBindingObserver {
-
   @override
   void initState() {
     super.initState();
@@ -37,17 +37,16 @@ class _AbsAppState extends ConsumerState<AbsApp> with WidgetsBindingObserver {
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     // Closed window on Windows
-    if(Platform.isWindows && state == AppLifecycleState.hidden) {
+    if (Platform.isWindows && state == AppLifecycleState.hidden) {
       ref.read(sessionProvider.notifier).closeOpenSession();
-    } else if(Platform.isAndroid && state == AppLifecycleState.detached) {
+    } else if (Platform.isAndroid && state == AppLifecycleState.detached) {
       log('Detached', name: 'AppLifecycleState');
       ref.read(sessionProvider.notifier).closeOpenSession();
-    } else if(state == AppLifecycleState.detached) {
+    } else if (state == AppLifecycleState.detached) {
       ref.read(sessionProvider.notifier).closeOpenSession();
     }
     // TODO: Find behaviours for other platforms
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -55,9 +54,9 @@ class _AbsAppState extends ConsumerState<AbsApp> with WidgetsBindingObserver {
 
     return PlatformApp.router(
       localizationsDelegates: const <LocalizationsDelegate<dynamic>>[
-        DefaultMaterialLocalizations.delegate,
-        DefaultWidgetsLocalizations.delegate,
-        DefaultCupertinoLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
         S.delegate
       ],
       material: (_, __) => MaterialAppRouterData(
@@ -71,9 +70,9 @@ class _AbsAppState extends ConsumerState<AbsApp> with WidgetsBindingObserver {
         ),
         themeMode: _getThemeMode(user),
       ),
-      supportedLocales: const <Locale>[
-        Locale('en', ''),
-      ],
+      supportedLocales:
+          supportedLocales.entries.map((e) => Locale(e.key, '')).toList(),
+      locale: Locale(user?.setting?.settings['language'] ?? 'en'),
       showPerformanceOverlay: false,
       debugShowCheckedModeBanner: false,
       title: appTitle,
@@ -83,7 +82,9 @@ class _AbsAppState extends ConsumerState<AbsApp> with WidgetsBindingObserver {
 
   _getThemeMode(User? user) {
     if (user != null && user.setting != null) {
-      return user.setting!.settings['isDarkMode'] ? ThemeMode.dark : ThemeMode.light;
+      return user.setting!.settings['isDarkMode']
+          ? ThemeMode.dark
+          : ThemeMode.light;
     }
     return ThemeMode.system;
   }

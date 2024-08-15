@@ -1,4 +1,5 @@
 {
+  "@@locale": "de",
   "addUser": "Benutzer hinzufügen",
   "@addUser": {},
   "ascending": "Aufsteigend",
@@ -516,7 +517,7 @@
   "@enterValidUsernameOrPassword": {},
   "fastForwardSeconds": "Sekunden vorspulen",
   "@fastForwardSeconds": {},
-  "genres": "",
+  "genres": "Genres",
   "@genres": {},
   "ifTheQuickAccountSwitcherShouldBeShown": "Ob der schnelle Nutzerwechsel angezeigt werden soll",
   "@ifTheQuickAccountSwitcherShouldBeShown": {},

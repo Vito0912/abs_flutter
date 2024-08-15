@@ -76,6 +76,9 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m21(count) => "${count}s";
 
+  static String m29(device, os, version) =>
+      "Device: ${device}\nOS: ${os}\nApp Version: ${version}";
+
   static String m22(hours, minutes) => "Length: ${hours}:${minutes}";
 
   static String m23(numChapters) => "Number of Chapters: ${numChapters}";
@@ -101,6 +104,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "back": MessageLookupByLibrary.simpleMessage("Back"),
         "bookCover": MessageLookupByLibrary.simpleMessage("Book Cover"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+        "changeLibrary": MessageLookupByLibrary.simpleMessage("Change Library"),
         "chapters": MessageLookupByLibrary.simpleMessage("Chapters"),
         "chaptersNum": m0,
         "close": MessageLookupByLibrary.simpleMessage("Close"),
@@ -110,6 +114,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "When enabled, items in a series will be grouped together in the library view, displaying only a single item to represent the entire series."),
         "consecutiveDays":
             MessageLookupByLibrary.simpleMessage("Consecutive days"),
+        "currentDownloads":
+            MessageLookupByLibrary.simpleMessage("Current Downloads"),
         "currentPositionNum": m1,
         "darkMode": MessageLookupByLibrary.simpleMessage("Dark Mode"),
         "dateFormatDay": m2,
@@ -137,6 +143,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Delete Selected"),
         "descending": MessageLookupByLibrary.simpleMessage("Descending"),
         "description": MessageLookupByLibrary.simpleMessage("Description"),
+        "deviceInfo": m29,
         "disabled": MessageLookupByLibrary.simpleMessage("Disabled"),
         "domainOrIp": MessageLookupByLibrary.simpleMessage("Domain or IP"),
         "downloadComplete":
@@ -185,7 +192,12 @@ class MessageLookup extends MessageLookupByLibrary {
             "When enabled, the player will jump to the last position when pressing play"),
         "language": MessageLookupByLibrary.simpleMessage("Language"),
         "languages": MessageLookupByLibrary.simpleMessage("Languages"),
+        "last30Days": MessageLookupByLibrary.simpleMessage("Last 30 days"),
+        "last7Days": MessageLookupByLibrary.simpleMessage("Last 7 days"),
+        "library": MessageLookupByLibrary.simpleMessage("Library"),
         "libraryStats": MessageLookupByLibrary.simpleMessage("Library Stats"),
+        "listeningInTheLastYear":
+            MessageLookupByLibrary.simpleMessage("Listening in the last year"),
         "loading": MessageLookupByLibrary.simpleMessage("Loading…"),
         "lockProgressBar":
             MessageLookupByLibrary.simpleMessage("Lock Media Progress Bar"),
@@ -196,6 +208,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "markItemsFinishedAfterDescription": MessageLookupByLibrary.simpleMessage(
             "Specify the time in seconds before the end of an item at which it should be marked as finished. Setting this to 0 marks the item as finished only when the player reaches the very end. If a positive value is set, the item is marked as finished when the player reaches that time before the end."),
         "miscellaneous": MessageLookupByLibrary.simpleMessage("Miscellaneous"),
+        "moreOptions": MessageLookupByLibrary.simpleMessage("More options"),
         "multipleServerAdressess": MessageLookupByLibrary.simpleMessage(
             "If you want to use multiple server addresses, you can add them later"),
         "mustEnterValidAddress": MessageLookupByLibrary.simpleMessage(
@@ -215,6 +228,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Notifications should be enabled"),
         "ok": MessageLookupByLibrary.simpleMessage("OK"),
         "openDownloads": MessageLookupByLibrary.simpleMessage("Open Downloads"),
+        "openProjectLink":
+            MessageLookupByLibrary.simpleMessage("Audiobookshelf/Server"),
         "ownStats": MessageLookupByLibrary.simpleMessage("Own Stats"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "pause": MessageLookupByLibrary.simpleMessage("Pause"),
@@ -236,6 +251,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "publisher": MessageLookupByLibrary.simpleMessage("Publisher"),
         "readLess": MessageLookupByLibrary.simpleMessage("Read less"),
         "readMore": MessageLookupByLibrary.simpleMessage("Read more"),
+        "reportAnIssue":
+            MessageLookupByLibrary.simpleMessage("Report an issue"),
         "restartRequired":
             MessageLookupByLibrary.simpleMessage("Restart Required"),
         "restartRequiredDescription": MessageLookupByLibrary.simpleMessage(
@@ -262,6 +279,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "signOut": MessageLookupByLibrary.simpleMessage("Sign Out"),
         "size": MessageLookupByLibrary.simpleMessage("Size"),
         "sleepTimer": MessageLookupByLibrary.simpleMessage("Sleep Timer"),
+        "sort": MessageLookupByLibrary.simpleMessage("Sort"),
         "stats": MessageLookupByLibrary.simpleMessage("Stats"),
         "stop": MessageLookupByLibrary.simpleMessage("Stop"),
         "stopPlayerUntilSync":
@@ -291,6 +309,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "username": MessageLookupByLibrary.simpleMessage("Username"),
         "usernameOrPasswordNotEmpty": MessageLookupByLibrary.simpleMessage(
             "Username and password cannot be empty"),
+        "viewOnGithub": MessageLookupByLibrary.simpleMessage("View on GitHub"),
         "waitingForDownload": MessageLookupByLibrary.simpleMessage(
             "Waiting for download to start"),
         "year": MessageLookupByLibrary.simpleMessage("Year")

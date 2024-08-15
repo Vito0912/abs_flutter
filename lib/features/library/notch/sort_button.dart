@@ -24,13 +24,16 @@ class SortButton extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final librarySortNotifier = ref.watch(libraryItemSearchProvider.notifier);
 
-    return PlatformIconButton(
-        onPressed: () {
-          _showSortOptions(context, librarySortNotifier);
-        },
-        icon: const Icon(
-          Icons.sort,
-        ));
+    return Tooltip(
+      message: S.of(context).sort,
+      child: PlatformIconButton(
+          onPressed: () {
+            _showSortOptions(context, librarySortNotifier);
+          },
+          icon: const Icon(
+            Icons.sort,
+          )),
+    );
   }
 
   void _showSortOptions(

@@ -33,40 +33,48 @@ class Home extends ConsumerWidget {
               users[user].setting != null &&
               users[user].setting!.settings['showAccountSwitcher'] == true)
             const UserSwitcher(),
-          IconButton(
-              onPressed: () => {
-                context.push('/stats')
-              },
-              icon: const Icon(Icons.pie_chart_outline_rounded)
+          Tooltip(
+            message: S.of(context).stats,
+            child: IconButton(
+                onPressed: () => {
+                  context.push('/stats')
+                },
+                icon: const Icon(Icons.pie_chart_outline_rounded)
+            ),
           ),
-          const DownloadInfoButton(),
-          PlatformPopupMenu(
-            options: [
-              PopupMenuOption(
-                label: S.of(context).settings,
-                onTap: (PopupMenuOption option) {
-                  context.push('/settings');
-                },
-              ),
-              PopupMenuOption(
-                label: S.of(context).downloads,
-                onTap: (PopupMenuOption option) {
-                  context.push('/downloads');
-                },
-              ),
-              PopupMenuOption(
-                label: 'Offline Progress',
-                onTap: (PopupMenuOption option) {
-                  context.push('/offlineProgress');
-                },
-              ),
-              PopupMenuOption(
-                  label: S.of(context).addUser,
+          Tooltip(
+              message: S.of(context).currentDownloads,
+              child: const DownloadInfoButton()),
+          Tooltip(
+            message: S.of(context).moreOptions,
+            child: PlatformPopupMenu(
+              options: [
+                PopupMenuOption(
+                  label: S.of(context).settings,
                   onTap: (PopupMenuOption option) {
-                    context.push('/select-server');
-                  })
-            ],
-            icon: Icon(PlatformIcons(context).ellipsis),
+                    context.push('/settings');
+                  },
+                ),
+                PopupMenuOption(
+                  label: S.of(context).downloads,
+                  onTap: (PopupMenuOption option) {
+                    context.push('/downloads');
+                  },
+                ),
+                PopupMenuOption(
+                  label: 'Offline Progress',
+                  onTap: (PopupMenuOption option) {
+                    context.push('/offlineProgress');
+                  },
+                ),
+                PopupMenuOption(
+                    label: S.of(context).addUser,
+                    onTap: (PopupMenuOption option) {
+                      context.push('/select-server');
+                    })
+              ],
+              icon: Icon(PlatformIcons(context).ellipsis),
+            ),
           )
         ],
       ),
@@ -84,7 +92,7 @@ class Home extends ConsumerWidget {
         items: [
           BottomNavigationBarItem(
             icon: Icon(context.platformIcons.home),
-            label: "Library",
+            label: S.of(context).library,
           ),
           BottomNavigationBarItem(
             icon: Icon(context.platformIcons.home),

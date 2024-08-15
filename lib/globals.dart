@@ -31,5 +31,12 @@ final Map<String, dynamic> defaultSettings = {
   'syncInterval': 10,
   'syncOnlyViaWifi': false,
   'shakeResetTimer': false,
-  "lockSeekingNotification": false
+  "lockSeekingNotification": false,
+  "language": "en"
+};
+
+final Map<String, String> supportedLocales = {
+  'en': 'English',
+  'de': 'Deutsch',
+  'nb': 'Norsk Bokmål'
 };

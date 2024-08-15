@@ -173,7 +173,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "filter": MessageLookupByLibrary.simpleMessage("Filter"),
         "finished": MessageLookupByLibrary.simpleMessage("Fertig"),
         "general": MessageLookupByLibrary.simpleMessage("Allgemein"),
-        "genres": MessageLookupByLibrary.simpleMessage(""),
+        "genres": MessageLookupByLibrary.simpleMessage("Genres"),
         "ifTheQuickAccountSwitcherShouldBeShown":
             MessageLookupByLibrary.simpleMessage(
                 "Ob der schnelle Nutzerwechsel angezeigt werden soll"),

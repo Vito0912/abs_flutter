@@ -164,7 +164,7 @@ class _OwnStatsState extends ConsumerState<OwnStats> {
             spacing: 5.0,
             children: [
               ChoiceChip(
-                label: const Text('Last 7 days'),
+                label: PlatformText(S.of(context).last7Days),
                 selected: _is7DaysSelected,
                 onSelected: (bool selected) {
                   setState(() {
@@ -173,7 +173,7 @@ class _OwnStatsState extends ConsumerState<OwnStats> {
                 },
               ),
               ChoiceChip(
-                label: const Text('Last 30 days'),
+                label: PlatformText(S.of(context).last30Days),
                 selected: !_is7DaysSelected,
                 onSelected: (bool selected) {
                   setState(() {
@@ -184,15 +184,18 @@ class _OwnStatsState extends ConsumerState<OwnStats> {
             ],
           ),
           const SizedBox(height: 16),
-          Container(
-            constraints: const BoxConstraints(maxWidth: 1000),
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: SizedBox(
-                height: 200, // Height for the chart
-                child: ListenChart(
-                  lastDays: lastDays,
-                  lastDaysLabels: lastDaysLabels,
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 48),
+            child: Container(
+              constraints: const BoxConstraints(maxWidth: 1000),
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: SizedBox(
+                  height: 200, // Height for the chart
+                  child: ListenChart(
+                    lastDays: lastDays,
+                    lastDaysLabels: lastDaysLabels,
+                  ),
                 ),
               ),
             ),
@@ -200,7 +203,7 @@ class _OwnStatsState extends ConsumerState<OwnStats> {
           const SizedBox(height: 16),
           Center(
             child: PlatformText(
-              'Listening in the last year',
+              S.of(context).listeningInTheLastYear,
               style: Theme.of(context).textTheme.titleLarge,
             ),
           ),

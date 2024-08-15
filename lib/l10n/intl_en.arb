@@ -1,4 +1,5 @@
 {
+  "@@locale": "en",
   "addANewUser": "Add a New User",
   "@addANewUser": {},
   "addUser": "Add User",
@@ -17,6 +18,8 @@
   "@bookCover": {},
   "cancel": "Cancel",
   "@cancel": {},
+  "changeLibrary": "Change Library",
+  "@changeLibrary": {},
   "chapters": "Chapters",
   "@chapters": {},
   "chaptersNum": "Chapters ({num})",
@@ -35,6 +38,8 @@
   "@collapseSeriesDescription": {},
   "consecutiveDays": "Consecutive days",
   "@consecutiveDays": {},
+  "currentDownloads": "Current Downloads",
+  "@currentDownloads": {},
   "currentPositionNum": "Current Position: {position}",
   "@currentPositionNum": {
     "placeholders": {
@@ -273,6 +278,20 @@
   "@descending": {},
   "description": "Description",
   "@description": {},
+  "deviceInfo": "Device: {device}\nOS: {os}\nApp Version: {version}",
+  "@deviceInfo": {
+    "placeholders": {
+      "device": {
+        "type": "String"
+      },
+      "os": {
+        "type": "String"
+      },
+      "version": {
+        "type": "String"
+      }
+    }
+  },
   "disabled": "Disabled",
   "@disabled": {},
   "domainOrIp": "Domain or IP",
@@ -368,8 +387,16 @@
   "@language": {},
   "languages": "Languages",
   "@languages": {},
+  "last30Days": "Last 30 days",
+  "@last30Days": {},
+  "last7Days": "Last 7 days",
+  "@last7Days": {},
+  "library": "Library",
+  "@library": {},
   "libraryStats": "Library Stats",
   "@libraryStats": {},
+  "listeningInTheLastYear": "Listening in the last year",
+  "@listeningInTheLastYear": {},
   "loading": "Loading…",
   "@loading": {},
   "lockProgressBar": "Lock Media Progress Bar",
@@ -382,6 +409,8 @@
   "@markItemsFinishedAfterDescription": {},
   "miscellaneous": "Miscellaneous",
   "@miscellaneous": {},
+  "moreOptions": "More options",
+  "@moreOptions": {},
   "multipleServerAdressess": "If you want to use multiple server addresses, you can add them later",
   "@multipleServerAdressess": {},
   "mustEnterValidAddress": "You must enter a valid server address",
@@ -410,6 +439,8 @@
   "@ok": {},
   "openDownloads": "Open Downloads",
   "@openDownloads": {},
+  "openProjectLink": "Audiobookshelf/Server",
+  "@openProjectLink": {},
   "ownStats": "Own Stats",
   "@ownStats": {},
   "password": "Password",
@@ -450,6 +481,8 @@
   "@readLess": {},
   "readMore": "Read more",
   "@readMore": {},
+  "reportAnIssue": "Report an issue",
+  "@reportAnIssue": {},
   "restartRequired": "Restart Required",
   "@restartRequired": {},
   "restartRequiredDescription": "Please restart the app to apply the changes.",
@@ -484,6 +517,8 @@
   "@size": {},
   "sleepTimer": "Sleep Timer",
   "@sleepTimer": {},
+  "sort": "Sort",
+  "@sort": {},
   "stats": "Stats",
   "@stats": {},
   "stop": "Stop",
@@ -540,6 +575,8 @@
   "@username": {},
   "usernameOrPasswordNotEmpty": "Username and password cannot be empty",
   "@usernameOrPasswordNotEmpty": {},
+  "viewOnGithub": "View on GitHub",
+  "@viewOnGithub": {},
   "waitingForDownload": "Waiting for download to start",
   "@waitingForDownload": {},
   "year": "Year",

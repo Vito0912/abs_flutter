@@ -49,6 +49,8 @@ dependencies:
   vibration: ^1.9.0
   url_launcher: ^6.3.0
   flutter_widget_from_html_core: ^0.15.1
+  flutter_localizations:
+    sdk: flutter
 
   flutter_hooks: any
   uuid: any
@@ -83,6 +85,8 @@ flutter:
 flutter_intl:
   enabled: true
   use-escaping: true
+  main_locale: en
+  class_name: S
 
 msix_config:
   display_name: Audiobookshelf Flutter

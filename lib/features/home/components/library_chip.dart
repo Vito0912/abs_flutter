@@ -31,8 +31,11 @@ class LibraryChip extends ConsumerWidget {
             libraries.data!.libraries == null) {
           return _error(context);
         }
-        return _buildChip(
-            context, libraries.data!.libraries!.toList(), selectedLibrary, ref);
+        return Tooltip(
+          message: S.of(context).changeLibrary,
+          child: _buildChip(context, libraries.data!.libraries!.toList(),
+              selectedLibrary, ref),
+        );
       },
       loading: () => _buildLoadingChip(context),
       error: (error, stack) => Text('Error: $error'),
