@@ -7,7 +7,7 @@
 
 
     <application
-        android:label="Audiobookshelf Flutter"
+        android:label="Audiobookshelfly"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
         <activity

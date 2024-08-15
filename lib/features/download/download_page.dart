@@ -40,7 +40,7 @@ class DownloadPage extends ConsumerWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 PlatformText(
-                  'Libraries',
+                  S.of(context).libraries,
                   style: Theme.of(context).textTheme.titleLarge,
                 ),
                 const Divider(),
@@ -60,7 +60,7 @@ class DownloadPage extends ConsumerWidget {
                       );
                     }),
                 PlatformText(
-                  'All Downloads',
+                  S.of(context).allDownloads,
                   style: Theme.of(context).textTheme.titleLarge,
                 ),
                 const Divider(),

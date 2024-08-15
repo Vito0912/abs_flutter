@@ -760,13 +760,13 @@ class S {
     );
   }
 
-  /// `Length: {hours}:{minutes}`
-  String itemLength(String hours, String minutes) {
+  /// `Length: {length}`
+  String itemLength(String length) {
     return Intl.message(
-      'Length: $hours:$minutes',
+      'Length: $length',
       name: 'itemLength',
       desc: '',
-      args: [hours, minutes],
+      args: [length],
     );
   }
 
@@ -1715,6 +1715,36 @@ class S {
     return Intl.message(
       'Year',
       name: 'year',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Libraries`
+  String get libraries {
+    return Intl.message(
+      'Libraries',
+      name: 'libraries',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `All Downloads`
+  String get allDownloads {
+    return Intl.message(
+      'All Downloads',
+      name: 'allDownloads',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Offline saved progress`
+  String get offlineSavedProgress {
+    return Intl.message(
+      'Offline saved progress',
+      name: 'offlineSavedProgress',
       desc: '',
       args: [],
     );

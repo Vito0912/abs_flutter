@@ -76,7 +76,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m21(count) => "${count}s";
 
-  static String m22(hours, minutes) => "Länge: ${hours}:${minutes}";
+  static String m22(length) => "Länge: ${length}";
 
   static String m23(numChapters) => "Anzahl der Kapitel: ${numChapters}";
 

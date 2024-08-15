@@ -22,13 +22,13 @@ class Metainfo extends StatelessWidget {
         const SizedBox(height: 16.0),
         if (castItem.media?.audioFiles != null) ...[
           PlatformText(
-            Helper.formatTimeToReadable(
-                _totalDuration(castItem.media!.audioFiles!.toList())),
+            S.of(context).itemLength(Helper.formatTimeToReadable(
+                _totalDuration(castItem.media!.audioFiles!.toList()
+            ))),
             style: const TextStyle(fontSize: 16.0),
           ),
         ],
-        const SizedBox(height: 8.0),
-        const SizedBox(height: 8.0),
+        const SizedBox(height:4.0),
         if (castItem.media!.metadata!.publishedYear != null) ...[
           PlatformText(
             S.of(context).itemPublishedYear(
@@ -38,14 +38,14 @@ class Metainfo extends StatelessWidget {
         ],
         if (castItem.media!.chapters != null &&
             castItem.media!.chapters!.isNotEmpty) ...[
-          const SizedBox(height: 8.0),
+          const SizedBox(height: 4.0),
           PlatformText(
             S
                 .of(context)
                 .itemNumChapters(castItem.media!.chapters!.length.toString()),
             style: const TextStyle(fontSize: 16.0),
           ),
-          const SizedBox(height: 8.0),
+          const SizedBox(height: 4.0),
           Chapters(
               chapters: castItem.media!.chapters!
                   .map((e) => {

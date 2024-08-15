@@ -16,7 +16,7 @@ class ProgressPage extends ConsumerWidget {
     final progressNotifier = ref.watch(offlineProgressProviderHandler);
     return PlatformScaffold(
         appBar: PlatformAppBar(
-          title: PlatformText(S.of(context).progress),
+          title: PlatformText(S.of(context).offlineSavedProgress),
         ),
         body: ListView.builder(
           itemCount: progressNotifier.length,

@@ -110,6 +110,8 @@ Future<void> _runPlatformSpecificCode() async {
 
       WindowOptions windowOptions = const WindowOptions(
         minimumSize: Size(400, 400),
+        title: appTitle,
+        windowButtonVisibility: true
       );
       windowManager.waitUntilReadyToShow(windowOptions, () async {
         await windowManager.show();

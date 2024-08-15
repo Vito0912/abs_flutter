@@ -50,13 +50,10 @@
   "@general": {},
   "inProgress": "In Bearbeitung",
   "@inProgress": {},
-  "itemLength": "Länge: {hours}:{minutes}",
+  "itemLength": "Länge: {length}",
   "@itemLength": {
     "placeholders": {
-      "hours": {
-        "type": "String"
-      },
-      "minutes": {
+      "length": {
         "type": "String"
       }
     }

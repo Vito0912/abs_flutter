@@ -20,7 +20,7 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'nb';
 
-  static String m22(hours, minutes) => "Varighet: ${hours}:${minutes}";
+  static String m22(length) => "Varighet: ${length}";
 
   static String m23(numChapters) => "Antall kapitler: ${numChapters}";
 

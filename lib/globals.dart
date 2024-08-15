@@ -3,7 +3,7 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-const appTitle = 'ABS Flutter';
+const appTitle = 'Audiobookshelfly';
 late final String appName;
 late final String packageName;
 late final String version;

@@ -52,13 +52,10 @@
   "@descending": {},
   "ascending": "Stigende",
   "@ascending": {},
-  "itemLength": "Varighet: {hours}:{minutes}",
+  "itemLength": "Varighet: {length}",
   "@itemLength": {
     "placeholders": {
-      "hours": {
-        "type": "String"
-      },
-      "minutes": {
+      "length": {
         "type": "String"
       }
     }

@@ -70,6 +70,11 @@ class _LibraryItemsState extends ConsumerState<LibraryItems> {
       return _buildSafeArea(const NoConnection());
     }
 
+    if(_scrollController.hasClients && _scrollController.position.pixels >=
+        _scrollController.position.maxScrollExtent) {
+      _loadMoreData();
+    }
+
     if (libraryItems == null) {
       return _buildSafeArea(_buildShimmerLoading());
     } else {

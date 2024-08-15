@@ -344,13 +344,10 @@
   "@ifTheQuickAccountSwitcherShouldBeShown": {},
   "inProgress": "In Progress",
   "@inProgress": {},
-  "itemLength": "Length: {hours}:{minutes}",
+  "itemLength": "Length: {length}",
   "@itemLength": {
     "placeholders": {
-      "hours": {
-        "type": "String"
-      },
-      "minutes": {
+      "length": {
         "type": "String"
       }
     }
@@ -580,5 +577,8 @@
   "waitingForDownload": "Waiting for download to start",
   "@waitingForDownload": {},
   "year": "Year",
-  "@year": {}
+  "@year": {},
+  "libraries": "Libraries",
+  "allDownloads": "All Downloads",
+  "offlineSavedProgress": "Offline saved progress"
 }

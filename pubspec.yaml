@@ -3,7 +3,7 @@ description: "A ABS app"
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: 1.3.6
+version: 1.3.7
 
 environment:
   sdk: '>=3.4.3 <4.0.0'
@@ -89,7 +89,7 @@ flutter_intl:
   class_name: S
 
 msix_config:
-  display_name: Audiobookshelf Flutter
+  display_name: Audiobookshelfly
   publisher_display_name: Vito0912
   identity_name: vito0912.audiobookshelf.flutter
   msix_version: 1.1.0.0

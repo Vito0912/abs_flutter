@@ -79,7 +79,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static String m29(device, os, version) =>
       "Device: ${device}\nOS: ${os}\nApp Version: ${version}";
 
-  static String m22(hours, minutes) => "Length: ${hours}:${minutes}";
+  static String m22(length) => "Length: ${length}";
 
   static String m23(numChapters) => "Number of Chapters: ${numChapters}";
 
@@ -97,6 +97,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "addANewUser": MessageLookupByLibrary.simpleMessage("Add a New User"),
         "addUser": MessageLookupByLibrary.simpleMessage("Add User"),
+        "allDownloads": MessageLookupByLibrary.simpleMessage("All Downloads"),
         "ascending": MessageLookupByLibrary.simpleMessage("Ascending"),
         "attribution": MessageLookupByLibrary.simpleMessage("Attribution"),
         "author": MessageLookupByLibrary.simpleMessage("Author"),
@@ -194,6 +195,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "languages": MessageLookupByLibrary.simpleMessage("Languages"),
         "last30Days": MessageLookupByLibrary.simpleMessage("Last 30 days"),
         "last7Days": MessageLookupByLibrary.simpleMessage("Last 7 days"),
+        "libraries": MessageLookupByLibrary.simpleMessage("Libraries"),
         "library": MessageLookupByLibrary.simpleMessage("Library"),
         "libraryStats": MessageLookupByLibrary.simpleMessage("Library Stats"),
         "listeningInTheLastYear":
@@ -226,6 +228,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "notTriedYet": MessageLookupByLibrary.simpleMessage("Not tried yet"),
         "notificationHeading": MessageLookupByLibrary.simpleMessage(
             "Notifications should be enabled"),
+        "offlineSavedProgress":
+            MessageLookupByLibrary.simpleMessage("Offline saved progress"),
         "ok": MessageLookupByLibrary.simpleMessage("OK"),
         "openDownloads": MessageLookupByLibrary.simpleMessage("Open Downloads"),
         "openProjectLink":
