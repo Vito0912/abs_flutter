@@ -6,23 +6,18 @@ import 'package:abs_flutter/models/progress_item.dart';
 import 'package:abs_flutter/provider/connection_provider.dart';
 import 'package:abs_flutter/provider/progress_timer_provider.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
-import 'package:collection/collection.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class ProgressProvider extends ChangeNotifier {
   final Ref ref;
   AbsApi? api;
-  List<MediaProgress>? progress;
+  Map<String, MediaProgress>? progress;
 
   ProgressProvider(this.ref) {
     ref.listen<AbsApi?>(apiProvider, (previousApi, nextApi) {
       api = nextApi;
     });
-
-    print(api);
 
     addListener(() => print('Change'));
   }
@@ -33,7 +28,7 @@ class ProgressProvider extends ChangeNotifier {
 
     final offlineProgress = ref.read(offlineProgressProviderHandler);
 
-    List<MediaProgress>? newProgress = [];
+    Map<String, MediaProgress>? newProgress = {};
 
     if (offlineProgress.isNotEmpty) {
       for (ProgressItem item in offlineProgress) {
@@ -41,7 +36,7 @@ class ProgressProvider extends ChangeNotifier {
           ..currentTime = item.currentTime
           ..duration = item.durationOfItem
           ..progress = item.currentTime / item.durationOfItem;
-        newProgress.add(builder.build());
+        newProgress['${item.itemId}${item.episodeId ?? ''}'] = builder.build();
       }
     }
 
@@ -50,44 +45,45 @@ class ProgressProvider extends ChangeNotifier {
       User user = response.data!;
 
       if (user.mediaProgress != null) {
-        newProgress.addAll(user.mediaProgress!.toList());
+        for (var media in user.mediaProgress!) {
+          newProgress['${media.libraryItemId!}${media.episodeId ?? ''}'] =
+              media;
+        }
       }
     } catch (e) {
       log(e.toString(), name: 'progress_provider');
     }
 
-    if (progress == null || !listEquals(progress, newProgress)) {
+    if (progress == null || !mapEquals(progress, newProgress)) {
       progress = newProgress;
       notifyListeners();
     }
   }
 
-  Future<void> getProgressWithLibraryItem(String id, {String? episodeId}) async {
+  Future<void> getProgressWithLibraryItem(String id,
+      {String? episodeId}) async {
     if (api == null) return;
 
     final Completer<void> progressChanged = Completer<void>();
-    List<MediaProgress>? previousProgress = List.from(progress ?? []);
+    Map<String, MediaProgress>? previousProgress = Map.from(progress ?? {});
 
     try {
       final offlineProgress = ref.read(offlineProgressProviderHandler);
 
       if (offlineProgress.isNotEmpty) {
-        int index = offlineProgress.indexWhere((element) => element.itemId == id);
+        int index =
+            offlineProgress.indexWhere((element) => element.itemId == id);
         if (index != -1) {
           ProgressItem item = offlineProgress[index];
           MediaProgressBuilder builder = MediaProgressBuilder()
             ..currentTime = item.currentTime
             ..duration = item.durationOfItem
             ..progress = item.currentTime / item.durationOfItem;
-          progress ??= [];
 
-          int indexInList =
-          progress!.indexWhere((element) => element.libraryItemId == id);
-          if (indexInList == -1) {
-            progress!.add(builder.build());
-          } else {
-            progress![indexInList] = builder.build();
-          }
+          String key = id + (episodeId ?? '');
+          progress ??= {};
+
+          progress![key] = builder.build();
         }
       }
 
@@ -95,19 +91,14 @@ class ProgressProvider extends ChangeNotifier {
 
       if (connection) {
         final response =
-        await api!.getMeApi().getProgressLibraryItem(libraryItemId: id);
+            await api!.getMeApi().getProgressLibraryItem(libraryItemId: id);
         MediaProgress fetchedProgress = response.data!;
 
-        int index =
-        progress!.indexWhere((element) => element.libraryItemId == id);
-        if (index == -1) {
-          progress!.add(fetchedProgress);
-        } else {
-          progress![index] = fetchedProgress;
-        }
+        String key = id + (episodeId ?? '');
+        progress![key] = fetchedProgress;
 
         // Notify listeners only if the progress of the specific item has changed
-        if (!listEquals(previousProgress, progress)) {
+        if (!mapEquals(previousProgress, progress)) {
           notifyListeners();
         }
       }
@@ -122,26 +113,25 @@ class ProgressProvider extends ChangeNotifier {
     return progressChanged.future;
   }
 
-
   void updateProgressForItem(
       String id, String? episodeId, double currentTime, double percentage) {
     if (progress == null) return;
 
-    int index = progress!.indexWhere((element) =>
-    element.libraryItemId == id && element.episodeId == episodeId);
-    if (index == -1) return;
+    String key = id + (episodeId ?? '');
 
-    MediaProgressBuilder builder = progress![index].toBuilder();
+    MediaProgress? existingProgress = progress![key];
+    if (existingProgress == null) return;
+
+    MediaProgressBuilder builder = existingProgress.toBuilder();
     builder.currentTime = currentTime;
     builder.progress = percentage;
-    progress![index] = builder.build();
+    progress![key] = builder.build();
 
     notifyListeners();
   }
 
-  List<MediaProgress>? getProgress() => progress;
+  Map<String, MediaProgress>? getProgress() => progress;
 }
-
 
 final progressProvider = ChangeNotifierProvider<ProgressProvider>((ref) {
   return ProgressProvider(ref);
@@ -151,14 +141,12 @@ final progressProviderWithItemId =
     Provider.family<MediaProgress?, ItemEpisodeId>(
   (ref, item) {
     final progressProviderValue = ref.watch(progressProvider);
-    final progressList = progressProviderValue.progress;
+    final progressMap = progressProviderValue.progress;
 
-// Ensure this listens to changes
-    return progressList?.firstWhereOrNull(
-      (element) =>
-          element.libraryItemId == item.itemId &&
-          element.episodeId == item.episodeId,
-    );
+    if (progressMap == null) return null;
+
+    String key = '${item.itemId}${item.episodeId ?? ''}';
+    return progressMap[key];
   },
 );
 

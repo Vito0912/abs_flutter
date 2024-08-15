@@ -73,7 +73,7 @@ class _LibraryItemsState extends ConsumerState<LibraryItems> {
     if (libraryItems == null) {
       return _buildSafeArea(_buildShimmerLoading());
     } else {
-      if(libraryItems.page <= 0) {
+      if (libraryItems.page <= 0) {
         final progressProv = ref.read(progressProvider);
         progressProv.getAllProgress();
       }
@@ -147,8 +147,7 @@ class _LibraryItemsState extends ConsumerState<LibraryItems> {
     );
   }
 
-  Widget _buildCard(
-      LibraryPreviewItem item, m.User? currentUser) {
+  Widget _buildCard(LibraryPreviewItem item, m.User? currentUser) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -164,9 +163,11 @@ class _LibraryItemsState extends ConsumerState<LibraryItems> {
                     aspectRatio: 1.0,
                     child: AlbumImage(item.id),
                   ),
+                  if (item.mediaType == 'book')
                     Consumer(builder: (context, ref, child) {
-                      MediaProgress? progress = ref.watch(progressProviderWithItemId(
-                          ItemEpisodeId(item.id, null)));
+                      MediaProgress? progress = ref.watch(
+                          progressProviderWithItemId(
+                              ItemEpisodeId(item.id, null)));
                       return Align(
                         alignment: Alignment.bottomCenter,
                         child: LinearProgressIndicator(

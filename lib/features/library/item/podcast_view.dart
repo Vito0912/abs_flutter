@@ -45,7 +45,7 @@ class PodcastView extends HookConsumerWidget {
 
     final nextEpisode = findLastProgressEpisode(
       filteredEpisodes,
-      ref.read(progressProvider).progress ?? [],
+      ref.read(progressProvider).progress ?? {},
     );
 
     return PlatformScaffold(
@@ -92,7 +92,7 @@ class PodcastView extends HookConsumerWidget {
 
   PodcastEpisode? findLastProgressEpisode(
     List<PodcastEpisode> podcastEpisodes,
-    List<MediaProgress> mediaProgressList, {
+    Map<String, MediaProgress> mediaProgressList, {
     bool reverse = false,
   }) {
     final range = reverse
@@ -111,13 +111,12 @@ class PodcastView extends HookConsumerWidget {
       }
       final episode = podcastEpisodes[i];
       // Find matching MediaProgress for this episodeId
-      final matchingProgress = mediaProgressList
-          .where((progress) =>
-              progress.episodeId == episode.id &&
-              (progress.isFinished! || progress.progress! >= 0.99))
-          .lastOrNull;
-
-      if (matchingProgress != null && i != range.length) {
+      final matchingProgress =
+          mediaProgressList['${episode.libraryItemId}${episode.id ?? ''}'];
+      if (matchingProgress != null &&
+          i != range.length &&
+          matchingProgress.progress! <= 0.95 &&
+          !matchingProgress.isFinished!) {
         found = true;
       }
     }

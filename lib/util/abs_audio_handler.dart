@@ -76,7 +76,7 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
         log('Stopping player due to position: ${_player.position} and duration: ${_player.duration}');
         await _container
             .read(playStatusProvider)
-            .setPlayStatus(PlayerStatus.completed, 'Audio completed');
+            .setPlayStatus(PlayerStatus.paused, 'Audio completed');
 
         _container.read(progressTimerProvider.notifier).stopSending();
 
@@ -148,14 +148,14 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
   Future<void> _seekOnProgress() async {
     final String? id = mediaItem.value?.extras?['libraryItemId'] as String?;
     final String? episodeId =
-        mediaItem.value?.extras?['libraryItemId'] as String?;
+        mediaItem.value?.extras?['episodeId'] as String?;
+    print(id);
     if (id != null) {
       final progressProv = _container.read(progressProvider);
 
       await progressProv.getProgressWithLibraryItem(id);
       final progresses = _container.read(progressProvider).progress;
-      final progress = progresses?.firstWhereOrNull((element) =>
-          element.libraryItemId == id && element.episodeId == episodeId);
+      final progress = progresses?['$id${episodeId ?? ''}'];
       if (progress != null &&
           !progress.isFinished! &&
           progress.progress! <= 0.99) {

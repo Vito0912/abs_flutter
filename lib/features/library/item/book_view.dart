@@ -35,10 +35,9 @@ class BookView extends ConsumerWidget {
       data: (item) {
         final progressNotifier = ref.read(progressProvider.notifier);
         progressNotifier.getProgressWithLibraryItem(itemId);
-        final mediaProgress = progressNotifier.progress ?? [];
         return item == null
             ? const ErrorText('Error: Item not found')
-            : _buildContent(context, ref, item, currentUser!, mediaProgress);
+            : _buildContent(context, ref, item, currentUser!);
       },
       loading: () => Center(child: PlatformCircularProgressIndicator()),
       error: (error, _) => ErrorText('Error: $error'),
@@ -49,8 +48,7 @@ class BookView extends ConsumerWidget {
       BuildContext context,
       WidgetRef ref,
       LibraryItemBase castItem,
-      m.User currentUser,
-      List<MediaProgress> mediaProgress) {
+      m.User currentUser) {
     return PlatformScaffold(
       appBar: PlatformAppBar(
         title: PlatformText(castItem.media!.metadata!.title!),
@@ -75,7 +73,7 @@ class BookView extends ConsumerWidget {
                   ),
                   const SizedBox(height: 16.0),
                   _buildTextContent(
-                      context, castItem, mediaProgress, currentUser),
+                      context, castItem, currentUser),
                   const SizedBox(height: 16.0),
                   TagsDescription(castItem: castItem),
                 ],
@@ -87,8 +85,7 @@ class BookView extends ConsumerWidget {
     );
   }
 
-  Widget _buildTextContent(BuildContext context, LibraryItemBase castItem,
-      List<MediaProgress> mediaProgress, m.User user) {
+  Widget _buildTextContent(BuildContext context, LibraryItemBase castItem, m.User user) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
