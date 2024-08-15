@@ -122,3 +122,22 @@ A big thank you to [Weblate](https://weblate.org) for providing their services!
 #### Filters and search
 - The search cannot be combined with filters or sorting. This is a limitation of the Audiobookshelf API.
 - The search is limited to 25 results, because there is no pagination available. This is a limitation of the Audiobookshelf API.
+
+# Contributing
+Please sort the keys in the `en.json` file (and other edited) alphabetically before submitting a pull request.\
+You can use the following command to sort the keys:
+```bash
+dart pub global activate arb_utils
+```
+```bash
+arb_utils generate-meta .\lib\l10n\intl_en.arb
+```
+```bash
+arb_utils sort .\lib\l10n\intl_en.arb
+```
+Or for an IDE that supports running code from a README, you can use the following Dart code:
+
+```bash
+arb_utils generate-meta .\lib\l10n\intl_en.arb
+arb_utils sort .\lib\l10n\intl_en.arb
+```

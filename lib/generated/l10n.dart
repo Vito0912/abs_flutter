@@ -50,121 +50,11 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
-  /// `Port`
-  String get port {
+  /// `Add a New User`
+  String get addANewUser {
     return Intl.message(
-      'Port',
-      name: 'port',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Domain or IP`
-  String get domainOrIp {
-    return Intl.message(
-      'Domain or IP',
-      name: 'domainOrIp',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Server Selection`
-  String get serverSelection {
-    return Intl.message(
-      'Server Selection',
-      name: 'serverSelection',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Login failed: No user data received`
-  String get noUserData {
-    return Intl.message(
-      'Login failed: No user data received',
-      name: 'noUserData',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Username and password cannot be empty`
-  String get usernameOrPasswordNotEmpty {
-    return Intl.message(
-      'Username and password cannot be empty',
-      name: 'usernameOrPasswordNotEmpty',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `You must enter a valid server address`
-  String get mustEnterValidAddress {
-    return Intl.message(
-      'You must enter a valid server address',
-      name: 'mustEnterValidAddress',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Password`
-  String get password {
-    return Intl.message(
-      'Password',
-      name: 'password',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Username`
-  String get username {
-    return Intl.message(
-      'Username',
-      name: 'username',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Enter your server address to continue`
-  String get serverAdressContinue {
-    return Intl.message(
-      'Enter your server address to continue',
-      name: 'serverAdressContinue',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `If you want to use multiple server addresses, you can add them later`
-  String get multipleServerAdressess {
-    return Intl.message(
-      'If you want to use multiple server addresses, you can add them later',
-      name: 'multipleServerAdressess',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Please enter a valid IP/Domain and port before entering your username and password.`
-  String get enterValidUsernameOrPassword {
-    return Intl.message(
-      'Please enter a valid IP/Domain and port before entering your username and password.',
-      name: 'enterValidUsernameOrPassword',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Settings`
-  String get settings {
-    return Intl.message(
-      'Settings',
-      name: 'settings',
+      'Add a New User',
+      name: 'addANewUser',
       desc: '',
       args: [],
     );
@@ -180,281 +70,11 @@ class S {
     );
   }
 
-  /// `Cancel`
-  String get cancel {
+  /// `Ascending`
+  String get ascending {
     return Intl.message(
-      'Cancel',
-      name: 'cancel',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Loading…`
-  String get loading {
-    return Intl.message(
-      'Loading…',
-      name: 'loading',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Error`
-  String get error {
-    return Intl.message(
-      'Error',
-      name: 'error',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `No Connection`
-  String get noConnection {
-    return Intl.message(
-      'No Connection',
-      name: 'noConnection',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Authors`
-  String get authors {
-    return Intl.message(
-      'Authors',
-      name: 'authors',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Genres`
-  String get genres {
-    return Intl.message(
-      'Genres',
-      name: 'genres',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Tags`
-  String get tags {
-    return Intl.message(
-      'Tags',
-      name: 'tags',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Series`
-  String get series {
-    return Intl.message(
-      'Series',
-      name: 'series',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Read more`
-  String get readMore {
-    return Intl.message(
-      'Read more',
-      name: 'readMore',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Read less`
-  String get readLess {
-    return Intl.message(
-      'Read less',
-      name: 'readLess',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Book Cover`
-  String get bookCover {
-    return Intl.message(
-      'Book Cover',
-      name: 'bookCover',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Sleep Timer`
-  String get sleepTimer {
-    return Intl.message(
-      'Sleep Timer',
-      name: 'sleepTimer',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Speed`
-  String get playbackSpeed {
-    return Intl.message(
-      'Speed',
-      name: 'playbackSpeed',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Player`
-  String get player {
-    return Intl.message(
-      'Player',
-      name: 'player',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `General`
-  String get general {
-    return Intl.message(
-      'General',
-      name: 'general',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Dark Mode`
-  String get darkMode {
-    return Intl.message(
-      'Dark Mode',
-      name: 'darkMode',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Enabled`
-  String get enabled {
-    return Intl.message(
-      'Enabled',
-      name: 'enabled',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Disabled`
-  String get disabled {
-    return Intl.message(
-      'Disabled',
-      name: 'disabled',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Show Account Switcher`
-  String get showAccountSwitcher {
-    return Intl.message(
-      'Show Account Switcher',
-      name: 'showAccountSwitcher',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `If the quick account switcher should be shown`
-  String get ifTheQuickAccountSwitcherShouldBeShown {
-    return Intl.message(
-      'If the quick account switcher should be shown',
-      name: 'ifTheQuickAccountSwitcherShouldBeShown',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Mark Items Finished`
-  String get markItemsFinished {
-    return Intl.message(
-      'Mark Items Finished',
-      name: 'markItemsFinished',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Collapse Series`
-  String get collapseSeries {
-    return Intl.message(
-      'Collapse Series',
-      name: 'collapseSeries',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Stop Player Until Sync`
-  String get stopPlayerUntilSync {
-    return Intl.message(
-      'Stop Player Until Sync',
-      name: 'stopPlayerUntilSync',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Show Progress per Chapter`
-  String get showProgressPerChapters {
-    return Intl.message(
-      'Show Progress per Chapter',
-      name: 'showProgressPerChapters',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Fast Forward Seconds`
-  String get fastForwardSeconds {
-    return Intl.message(
-      'Fast Forward Seconds',
-      name: 'fastForwardSeconds',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Rewind Seconds`
-  String get rewindSeconds {
-    return Intl.message(
-      'Rewind Seconds',
-      name: 'rewindSeconds',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Add a New User`
-  String get addANewUser {
-    return Intl.message(
-      'Add a New User',
-      name: 'addANewUser',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Sign Out`
-  String get signOut {
-    return Intl.message(
-      'Sign Out',
-      name: 'signOut',
+      'Ascending',
+      name: 'ascending',
       desc: '',
       args: [],
     );
@@ -470,31 +90,91 @@ class S {
     );
   }
 
-  /// `Miscellaneous`
-  String get miscellaneous {
+  /// `Author`
+  String get author {
     return Intl.message(
-      'Miscellaneous',
-      name: 'miscellaneous',
+      'Author',
+      name: 'author',
       desc: '',
       args: [],
     );
   }
 
-  /// `Enable this option to add an icon button to the app bar for quick account switching. This will reduce the size of the app bar.`
-  String get showAccountSwitcherDescription {
+  /// `Authors`
+  String get authors {
     return Intl.message(
-      'Enable this option to add an icon button to the app bar for quick account switching. This will reduce the size of the app bar.',
-      name: 'showAccountSwitcherDescription',
+      'Authors',
+      name: 'authors',
       desc: '',
       args: [],
     );
   }
 
-  /// `Specify the time in seconds before the end of an item at which it should be marked as finished. Setting this to 0 marks the item as finished only when the player reaches the very end. If a positive value is set, the item is marked as finished when the player reaches that time before the end.`
-  String get markItemsFinishedAfterDescription {
+  /// `Back`
+  String get back {
     return Intl.message(
-      'Specify the time in seconds before the end of an item at which it should be marked as finished. Setting this to 0 marks the item as finished only when the player reaches the very end. If a positive value is set, the item is marked as finished when the player reaches that time before the end.',
-      name: 'markItemsFinishedAfterDescription',
+      'Back',
+      name: 'back',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Book Cover`
+  String get bookCover {
+    return Intl.message(
+      'Book Cover',
+      name: 'bookCover',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancel`
+  String get cancel {
+    return Intl.message(
+      'Cancel',
+      name: 'cancel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Chapters`
+  String get chapters {
+    return Intl.message(
+      'Chapters',
+      name: 'chapters',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Chapters ({num})`
+  String chaptersNum(int num) {
+    return Intl.message(
+      'Chapters ($num)',
+      name: 'chaptersNum',
+      desc: '',
+      args: [num],
+    );
+  }
+
+  /// `Close`
+  String get close {
+    return Intl.message(
+      'Close',
+      name: 'close',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Collapse Series`
+  String get collapseSeries {
+    return Intl.message(
+      'Collapse Series',
+      name: 'collapseSeries',
       desc: '',
       args: [],
     );
@@ -510,276 +190,6 @@ class S {
     );
   }
 
-  /// `Player Settings`
-  String get playerSettings {
-    return Intl.message(
-      'Player Settings',
-      name: 'playerSettings',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Enable this option to prevent the player from starting until the most recent playback position has been synced. This ensures that playback resumes from the correct position. If disabled, the playback position may change shortly after starting, potentially leading to data loss. Turning this on helps conserve data usage.`
-  String get stopPlayerWhileSyncingDescription {
-    return Intl.message(
-      'Enable this option to prevent the player from starting until the most recent playback position has been synced. This ensures that playback resumes from the correct position. If disabled, the playback position may change shortly after starting, potentially leading to data loss. Turning this on helps conserve data usage.',
-      name: 'stopPlayerWhileSyncingDescription',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Enable this option to display progress in the player and notifications on a per-chapter basis. If disabled, progress will be shown based on the entire item.`
-  String get progressAsChaptersDescription {
-    return Intl.message(
-      'Enable this option to display progress in the player and notifications on a per-chapter basis. If disabled, progress will be shown based on the entire item.',
-      name: 'progressAsChaptersDescription',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Set the number of seconds to skip forward when the fast forward button is pressed.`
-  String get fastForwardSecondsDescription {
-    return Intl.message(
-      'Set the number of seconds to skip forward when the fast forward button is pressed.',
-      name: 'fastForwardSecondsDescription',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Set the number of seconds to skip backward when the rewind button is pressed.`
-  String get rewindSecondsDescription {
-    return Intl.message(
-      'Set the number of seconds to skip backward when the rewind button is pressed.',
-      name: 'rewindSecondsDescription',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `User`
-  String get user {
-    return Intl.message(
-      'User',
-      name: 'user',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Description`
-  String get description {
-    return Intl.message(
-      'Description',
-      name: 'description',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `{time} min`
-  String timerText(String time) {
-    return Intl.message(
-      '$time min',
-      name: 'timerText',
-      desc: '',
-      args: [time],
-    );
-  }
-
-  /// `Length: {hours}:{minutes}`
-  String itemLength(String hours, String minutes) {
-    return Intl.message(
-      'Length: $hours:$minutes',
-      name: 'itemLength',
-      desc: '',
-      args: [hours, minutes],
-    );
-  }
-
-  /// `Progress: {progress}%`
-  String itemProgress(String progress) {
-    return Intl.message(
-      'Progress: $progress%',
-      name: 'itemProgress',
-      desc: '',
-      args: [progress],
-    );
-  }
-
-  /// `Published Year: {year}`
-  String itemPublishedYear(String year) {
-    return Intl.message(
-      'Published Year: $year',
-      name: 'itemPublishedYear',
-      desc: '',
-      args: [year],
-    );
-  }
-
-  /// `Number of Chapters: {numChapters}`
-  String itemNumChapters(String numChapters) {
-    return Intl.message(
-      'Number of Chapters: $numChapters',
-      name: 'itemNumChapters',
-      desc: '',
-      args: [numChapters],
-    );
-  }
-
-  /// `Title`
-  String get title {
-    return Intl.message(
-      'Title',
-      name: 'title',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Author`
-  String get author {
-    return Intl.message(
-      'Author',
-      name: 'author',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Updated At`
-  String get updatedAt {
-    return Intl.message(
-      'Updated At',
-      name: 'updatedAt',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Year`
-  String get year {
-    return Intl.message(
-      'Year',
-      name: 'year',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Publisher`
-  String get publisher {
-    return Intl.message(
-      'Publisher',
-      name: 'publisher',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Size`
-  String get size {
-    return Intl.message(
-      'Size',
-      name: 'size',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Duration`
-  String get duration {
-    return Intl.message(
-      'Duration',
-      name: 'duration',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Language`
-  String get language {
-    return Intl.message(
-      'Language',
-      name: 'language',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Descending`
-  String get descending {
-    return Intl.message(
-      'Descending',
-      name: 'descending',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Ascending`
-  String get ascending {
-    return Intl.message(
-      'Ascending',
-      name: 'ascending',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Own Stats`
-  String get ownStats {
-    return Intl.message(
-      'Own Stats',
-      name: 'ownStats',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Library Stats`
-  String get libraryStats {
-    return Intl.message(
-      'Library Stats',
-      name: 'libraryStats',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Stats`
-  String get stats {
-    return Intl.message(
-      'Stats',
-      name: 'stats',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Total time listened`
-  String get totalTimeListened {
-    return Intl.message(
-      'Total time listened',
-      name: 'totalTimeListened',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Days listened`
-  String get daysListened {
-    return Intl.message(
-      'Days listened',
-      name: 'daysListened',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Consecutive days`
   String get consecutiveDays {
     return Intl.message(
@@ -790,69 +200,23 @@ class S {
     );
   }
 
-  /// `{count, plural, one {{count}  second} other {{count} seconds}}`
-  String dateFormatSecond(int count) {
-    return Intl.plural(
-      count,
-      one: '$count  second',
-      other: '$count seconds',
-      name: 'dateFormatSecond',
-      desc: '',
-      args: [count],
-    );
-  }
-
-  /// `{count, plural, one {{count} minute} other {{count} minutes}}`
-  String dateFormatMinute(int count) {
-    return Intl.plural(
-      count,
-      one: '$count minute',
-      other: '$count minutes',
-      name: 'dateFormatMinute',
-      desc: '',
-      args: [count],
-    );
-  }
-
-  /// `{minutes, plural, one {{minutes} minute} other {{minutes} minutes}} {seconds, plural, one {{seconds} second} other {{seconds} seconds}}`
-  String dateFormatMinuteSecond(int minutes, int seconds) {
+  /// `Current Position: {position}`
+  String currentPositionNum(String position) {
     return Intl.message(
-      '${Intl.plural(minutes, one: '$minutes minute', other: '$minutes minutes')} ${Intl.plural(seconds, one: '$seconds second', other: '$seconds seconds')}',
-      name: 'dateFormatMinuteSecond',
+      'Current Position: $position',
+      name: 'currentPositionNum',
       desc: '',
-      args: [minutes, seconds],
+      args: [position],
     );
   }
 
-  /// `{count, plural, one {{count} hour} other {{count} hours}}`
-  String dateFormatHour(int count) {
-    return Intl.plural(
-      count,
-      one: '$count hour',
-      other: '$count hours',
-      name: 'dateFormatHour',
-      desc: '',
-      args: [count],
-    );
-  }
-
-  /// `{hours, plural, one {{hours} hour} other {{hours} hours}} {minutes, plural, one {{minutes} minute} other {{minutes} minutes}}`
-  String dateFormatHourMinute(int hours, int minutes) {
+  /// `Dark Mode`
+  String get darkMode {
     return Intl.message(
-      '${Intl.plural(hours, one: '$hours hour', other: '$hours hours')} ${Intl.plural(minutes, one: '$minutes minute', other: '$minutes minutes')}',
-      name: 'dateFormatHourMinute',
+      'Dark Mode',
+      name: 'darkMode',
       desc: '',
-      args: [hours, minutes],
-    );
-  }
-
-  /// `{hours, plural, one {{hours} hour} other {{hours} hours}} {minutes, plural, one {{minutes} minute} other {{minutes} minutes}} {seconds, plural, one {{seconds} second} other {{seconds} seconds}}`
-  String dateFormatHourMinuteSecond(int hours, int minutes, int seconds) {
-    return Intl.message(
-      '${Intl.plural(hours, one: '$hours hour', other: '$hours hours')} ${Intl.plural(minutes, one: '$minutes minute', other: '$minutes minutes')} ${Intl.plural(seconds, one: '$seconds second', other: '$seconds seconds')}',
-      name: 'dateFormatHourMinuteSecond',
-      desc: '',
-      args: [hours, minutes, seconds],
+      args: [],
     );
   }
 
@@ -899,83 +263,14 @@ class S {
     );
   }
 
-  /// `{count}s`
-  String dateFormatSecondShort(int count) {
+  /// `{days}d {hours}h {minutes}m {seconds}s`
+  String dateFormatDayHourMinuteSecondShort(
+      int days, int hours, int minutes, int seconds) {
     return Intl.message(
-      '${count}s',
-      name: 'dateFormatSecondShort',
+      '${days}d ${hours}h ${minutes}m ${seconds}s',
+      name: 'dateFormatDayHourMinuteSecondShort',
       desc: '',
-      args: [count],
-    );
-  }
-
-  /// `{count}m`
-  String dateFormatMinuteShort(int count) {
-    return Intl.message(
-      '${count}m',
-      name: 'dateFormatMinuteShort',
-      desc: '',
-      args: [count],
-    );
-  }
-
-  /// `{minutes}m {seconds}s`
-  String dateFormatMinuteSecondShort(int minutes, int seconds) {
-    return Intl.message(
-      '${minutes}m ${seconds}s',
-      name: 'dateFormatMinuteSecondShort',
-      desc: '',
-      args: [minutes, seconds],
-    );
-  }
-
-  /// `{count}h`
-  String dateFormatHourShort(int count) {
-    return Intl.message(
-      '${count}h',
-      name: 'dateFormatHourShort',
-      desc: '',
-      args: [count],
-    );
-  }
-
-  /// `{hours}h {minutes}m`
-  String dateFormatHourMinuteShort(int hours, int minutes) {
-    return Intl.message(
-      '${hours}h ${minutes}m',
-      name: 'dateFormatHourMinuteShort',
-      desc: '',
-      args: [hours, minutes],
-    );
-  }
-
-  /// `{hours}h {minutes}m {seconds}s`
-  String dateFormatHourMinuteSecondShort(int hours, int minutes, int seconds) {
-    return Intl.message(
-      '${hours}h ${minutes}m ${seconds}s',
-      name: 'dateFormatHourMinuteSecondShort',
-      desc: '',
-      args: [hours, minutes, seconds],
-    );
-  }
-
-  /// `{count}d`
-  String dateFormatDayShort(int count) {
-    return Intl.message(
-      '${count}d',
-      name: 'dateFormatDayShort',
-      desc: '',
-      args: [count],
-    );
-  }
-
-  /// `{days}d {hours}h`
-  String dateFormatDayHourShort(int days, int hours) {
-    return Intl.message(
-      '${days}d ${hours}h',
-      name: 'dateFormatDayHourShort',
-      desc: '',
-      args: [days, hours],
+      args: [days, hours, minutes, seconds],
     );
   }
 
@@ -989,42 +284,207 @@ class S {
     );
   }
 
-  /// `{days}d {hours}h {minutes}m {seconds}s`
-  String dateFormatDayHourMinuteSecondShort(
-      int days, int hours, int minutes, int seconds) {
+  /// `{days}d {hours}h`
+  String dateFormatDayHourShort(int days, int hours) {
     return Intl.message(
-      '${days}d ${hours}h ${minutes}m ${seconds}s',
-      name: 'dateFormatDayHourMinuteSecondShort',
+      '${days}d ${hours}h',
+      name: 'dateFormatDayHourShort',
       desc: '',
-      args: [days, hours, minutes, seconds],
+      args: [days, hours],
     );
   }
 
-  /// `Today`
-  String get today {
+  /// `{count}d`
+  String dateFormatDayShort(int count) {
     return Intl.message(
-      'Today',
-      name: 'today',
+      '${count}d',
+      name: 'dateFormatDayShort',
+      desc: '',
+      args: [count],
+    );
+  }
+
+  /// `{count, plural, one {{count} hour} other {{count} hours}}`
+  String dateFormatHour(int count) {
+    return Intl.plural(
+      count,
+      one: '$count hour',
+      other: '$count hours',
+      name: 'dateFormatHour',
+      desc: '',
+      args: [count],
+    );
+  }
+
+  /// `{hours, plural, one {{hours} hour} other {{hours} hours}} {minutes, plural, one {{minutes} minute} other {{minutes} minutes}}`
+  String dateFormatHourMinute(int hours, int minutes) {
+    return Intl.message(
+      '${Intl.plural(hours, one: '$hours hour', other: '$hours hours')} ${Intl.plural(minutes, one: '$minutes minute', other: '$minutes minutes')}',
+      name: 'dateFormatHourMinute',
+      desc: '',
+      args: [hours, minutes],
+    );
+  }
+
+  /// `{hours, plural, one {{hours} hour} other {{hours} hours}} {minutes, plural, one {{minutes} minute} other {{minutes} minutes}} {seconds, plural, one {{seconds} second} other {{seconds} seconds}}`
+  String dateFormatHourMinuteSecond(int hours, int minutes, int seconds) {
+    return Intl.message(
+      '${Intl.plural(hours, one: '$hours hour', other: '$hours hours')} ${Intl.plural(minutes, one: '$minutes minute', other: '$minutes minutes')} ${Intl.plural(seconds, one: '$seconds second', other: '$seconds seconds')}',
+      name: 'dateFormatHourMinuteSecond',
+      desc: '',
+      args: [hours, minutes, seconds],
+    );
+  }
+
+  /// `{hours}h {minutes}m {seconds}s`
+  String dateFormatHourMinuteSecondShort(int hours, int minutes, int seconds) {
+    return Intl.message(
+      '${hours}h ${minutes}m ${seconds}s',
+      name: 'dateFormatHourMinuteSecondShort',
+      desc: '',
+      args: [hours, minutes, seconds],
+    );
+  }
+
+  /// `{hours}h {minutes}m`
+  String dateFormatHourMinuteShort(int hours, int minutes) {
+    return Intl.message(
+      '${hours}h ${minutes}m',
+      name: 'dateFormatHourMinuteShort',
+      desc: '',
+      args: [hours, minutes],
+    );
+  }
+
+  /// `{count}h`
+  String dateFormatHourShort(int count) {
+    return Intl.message(
+      '${count}h',
+      name: 'dateFormatHourShort',
+      desc: '',
+      args: [count],
+    );
+  }
+
+  /// `{count, plural, one {{count} minute} other {{count} minutes}}`
+  String dateFormatMinute(int count) {
+    return Intl.plural(
+      count,
+      one: '$count minute',
+      other: '$count minutes',
+      name: 'dateFormatMinute',
+      desc: '',
+      args: [count],
+    );
+  }
+
+  /// `{minutes, plural, one {{minutes} minute} other {{minutes} minutes}} {seconds, plural, one {{seconds} second} other {{seconds} seconds}}`
+  String dateFormatMinuteSecond(int minutes, int seconds) {
+    return Intl.message(
+      '${Intl.plural(minutes, one: '$minutes minute', other: '$minutes minutes')} ${Intl.plural(seconds, one: '$seconds second', other: '$seconds seconds')}',
+      name: 'dateFormatMinuteSecond',
+      desc: '',
+      args: [minutes, seconds],
+    );
+  }
+
+  /// `{minutes}m {seconds}s`
+  String dateFormatMinuteSecondShort(int minutes, int seconds) {
+    return Intl.message(
+      '${minutes}m ${seconds}s',
+      name: 'dateFormatMinuteSecondShort',
+      desc: '',
+      args: [minutes, seconds],
+    );
+  }
+
+  /// `{count}m`
+  String dateFormatMinuteShort(int count) {
+    return Intl.message(
+      '${count}m',
+      name: 'dateFormatMinuteShort',
+      desc: '',
+      args: [count],
+    );
+  }
+
+  /// `{count, plural, one {{count}  second} other {{count} seconds}}`
+  String dateFormatSecond(int count) {
+    return Intl.plural(
+      count,
+      one: '$count  second',
+      other: '$count seconds',
+      name: 'dateFormatSecond',
+      desc: '',
+      args: [count],
+    );
+  }
+
+  /// `{count}s`
+  String dateFormatSecondShort(int count) {
+    return Intl.message(
+      '${count}s',
+      name: 'dateFormatSecondShort',
+      desc: '',
+      args: [count],
+    );
+  }
+
+  /// `Days listened`
+  String get daysListened {
+    return Intl.message(
+      'Days listened',
+      name: 'daysListened',
       desc: '',
       args: [],
     );
   }
 
-  /// `Downloads only via WiFi`
-  String get downloadsOnlyViaWifi {
+  /// `Delete Selected`
+  String get deleteSelected {
     return Intl.message(
-      'Downloads only via WiFi',
-      name: 'downloadsOnlyViaWifi',
+      'Delete Selected',
+      name: 'deleteSelected',
       desc: '',
       args: [],
     );
   }
 
-  /// `No downloads`
-  String get noDownloads {
+  /// `Descending`
+  String get descending {
     return Intl.message(
-      'No downloads',
-      name: 'noDownloads',
+      'Descending',
+      name: 'descending',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Description`
+  String get description {
+    return Intl.message(
+      'Description',
+      name: 'description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Disabled`
+  String get disabled {
+    return Intl.message(
+      'Disabled',
+      name: 'disabled',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Domain or IP`
+  String get domainOrIp {
+    return Intl.message(
+      'Domain or IP',
+      name: 'domainOrIp',
       desc: '',
       args: [],
     );
@@ -1040,51 +500,11 @@ class S {
     );
   }
 
-  /// `Waiting for download to start`
-  String get waitingForDownload {
+  /// `Download of '{'displayName'}' complete`
+  String get downloadCompleteBody {
     return Intl.message(
-      'Waiting for download to start',
-      name: 'waitingForDownload',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `OK`
-  String get ok {
-    return Intl.message(
-      'OK',
-      name: 'ok',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Please enable notifications to receive download progress updates and be able to download files in the background.`
-  String get enableNotificationsDownload {
-    return Intl.message(
-      'Please enable notifications to receive download progress updates and be able to download files in the background.',
-      name: 'enableNotificationsDownload',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Notifications should be enabled`
-  String get notificationHeading {
-    return Intl.message(
-      'Notifications should be enabled',
-      name: 'notificationHeading',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Error downloading`
-  String get errorDownloading {
-    return Intl.message(
-      'Error downloading',
-      name: 'errorDownloading',
+      'Download of \'{\'displayName\'}\' complete',
+      name: 'downloadCompleteBody',
       desc: '',
       args: [],
     );
@@ -1110,26 +530,6 @@ class S {
     );
   }
 
-  /// `Download of '{'displayName'}' complete`
-  String get downloadCompleteBody {
-    return Intl.message(
-      'Download of \'{\'displayName\'}\' complete',
-      name: 'downloadCompleteBody',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `An error occurred while downloading '{'displayName'}'`
-  String get errorDownloadingBody {
-    return Intl.message(
-      'An error occurred while downloading \'{\'displayName\'}\'',
-      name: 'errorDownloadingBody',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Downloads`
   String get downloads {
     return Intl.message(
@@ -1140,101 +540,21 @@ class S {
     );
   }
 
-  /// `We are having trouble connecting to the server.`
-  String get noInternetDescription {
+  /// `Downloads only via WiFi`
+  String get downloadsOnlyViaWifi {
     return Intl.message(
-      'We are having trouble connecting to the server.',
-      name: 'noInternetDescription',
+      'Downloads only via WiFi',
+      name: 'downloadsOnlyViaWifi',
       desc: '',
       args: [],
     );
   }
 
-  /// `Please check your internet connection and try again.`
-  String get pleaseCheckInternet {
+  /// `Duration`
+  String get duration {
     return Intl.message(
-      'Please check your internet connection and try again.',
-      name: 'pleaseCheckInternet',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Try Again`
-  String get tryAgain {
-    return Intl.message(
-      'Try Again',
-      name: 'tryAgain',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Open Downloads`
-  String get openDownloads {
-    return Intl.message(
-      'Open Downloads',
-      name: 'openDownloads',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Sync Interval (seconds)`
-  String get syncInterval {
-    return Intl.message(
-      'Sync Interval (seconds)',
-      name: 'syncInterval',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Restart Required`
-  String get restartRequired {
-    return Intl.message(
-      'Restart Required',
-      name: 'restartRequired',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Please restart the app to apply the changes.`
-  String get restartRequiredDescription {
-    return Intl.message(
-      'Please restart the app to apply the changes.',
-      name: 'restartRequiredDescription',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Specifies how often the app should sync with the server. Please restart the app for the changes to take effect.`
-  String get syncIntervalDescription {
-    return Intl.message(
-      'Specifies how often the app should sync with the server. Please restart the app for the changes to take effect.',
-      name: 'syncIntervalDescription',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Sync only via WiFi`
-  String get syncOnlyViaWifi {
-    return Intl.message(
-      'Sync only via WiFi',
-      name: 'syncOnlyViaWifi',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Close`
-  String get close {
-    return Intl.message(
-      'Close',
-      name: 'close',
+      'Duration',
+      name: 'duration',
       desc: '',
       args: [],
     );
@@ -1250,191 +570,91 @@ class S {
     );
   }
 
-  /// `Unknown Title`
-  String get unknownTitle {
+  /// `Please enable notifications to receive download progress updates and be able to download files in the background.`
+  String get enableNotificationsDownload {
     return Intl.message(
-      'Unknown Title',
-      name: 'unknownTitle',
+      'Please enable notifications to receive download progress updates and be able to download files in the background.',
+      name: 'enableNotificationsDownload',
       desc: '',
       args: [],
     );
   }
 
-  /// `Play History`
-  String get playHistory {
+  /// `Enabled`
+  String get enabled {
     return Intl.message(
-      'Play History',
-      name: 'playHistory',
+      'Enabled',
+      name: 'enabled',
       desc: '',
       args: [],
     );
   }
 
-  /// `Play`
-  String get play {
+  /// `Please enter a valid IP/Domain and port before entering your username and password.`
+  String get enterValidUsernameOrPassword {
     return Intl.message(
-      'Play',
-      name: 'play',
+      'Please enter a valid IP/Domain and port before entering your username and password.',
+      name: 'enterValidUsernameOrPassword',
       desc: '',
       args: [],
     );
   }
 
-  /// `Pause`
-  String get pause {
+  /// `Error`
+  String get error {
     return Intl.message(
-      'Pause',
-      name: 'pause',
+      'Error',
+      name: 'error',
       desc: '',
       args: [],
     );
   }
 
-  /// `Stop`
-  String get stop {
+  /// `Error downloading`
+  String get errorDownloading {
     return Intl.message(
-      'Stop',
-      name: 'stop',
+      'Error downloading',
+      name: 'errorDownloading',
       desc: '',
       args: [],
     );
   }
 
-  /// `Sync`
-  String get sync {
+  /// `An error occurred while downloading '{'displayName'}'`
+  String get errorDownloadingBody {
     return Intl.message(
-      'Sync',
-      name: 'sync',
+      'An error occurred while downloading \'{\'displayName\'}\'',
+      name: 'errorDownloadingBody',
       desc: '',
       args: [],
     );
   }
 
-  /// `Unknown`
-  String get unknown {
+  /// `Failed`
+  String get failed {
     return Intl.message(
-      'Unknown',
-      name: 'unknown',
+      'Failed',
+      name: 'failed',
       desc: '',
       args: [],
     );
   }
 
-  /// `Seek`
-  String get seek {
+  /// `Fast Forward Seconds`
+  String get fastForwardSeconds {
     return Intl.message(
-      'Seek',
-      name: 'seek',
+      'Fast Forward Seconds',
+      name: 'fastForwardSeconds',
       desc: '',
       args: [],
     );
   }
 
-  /// `Shake to reset sleep timer`
-  String get shakeResetTimer {
+  /// `Set the number of seconds to skip forward when the fast forward button is pressed.`
+  String get fastForwardSecondsDescription {
     return Intl.message(
-      'Shake to reset sleep timer',
-      name: 'shakeResetTimer',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `No items found`
-  String get noItemsFound {
-    return Intl.message(
-      'No items found',
-      name: 'noItemsFound',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Filter`
-  String get filter {
-    return Intl.message(
-      'Filter',
-      name: 'filter',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Narrators`
-  String get narrators {
-    return Intl.message(
-      'Narrators',
-      name: 'narrators',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Languages`
-  String get languages {
-    return Intl.message(
-      'Languages',
-      name: 'languages',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Back`
-  String get back {
-    return Intl.message(
-      'Back',
-      name: 'back',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Finished`
-  String get finished {
-    return Intl.message(
-      'Finished',
-      name: 'finished',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Not Started`
-  String get notStarted {
-    return Intl.message(
-      'Not Started',
-      name: 'notStarted',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Not Finished`
-  String get notFinished {
-    return Intl.message(
-      'Not Finished',
-      name: 'notFinished',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `In Progress`
-  String get inProgress {
-    return Intl.message(
-      'In Progress',
-      name: 'inProgress',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Progress`
-  String get progress {
-    return Intl.message(
-      'Progress',
-      name: 'progress',
+      'Set the number of seconds to skip forward when the fast forward button is pressed.',
+      name: 'fastForwardSecondsDescription',
       desc: '',
       args: [],
     );
@@ -1450,11 +670,161 @@ class S {
     );
   }
 
-  /// `Share Open`
-  String get shareOpen {
+  /// `Filter`
+  String get filter {
     return Intl.message(
-      'Share Open',
-      name: 'shareOpen',
+      'Filter',
+      name: 'filter',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Finished`
+  String get finished {
+    return Intl.message(
+      'Finished',
+      name: 'finished',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `General`
+  String get general {
+    return Intl.message(
+      'General',
+      name: 'general',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Genres`
+  String get genres {
+    return Intl.message(
+      'Genres',
+      name: 'genres',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `If the quick account switcher should be shown`
+  String get ifTheQuickAccountSwitcherShouldBeShown {
+    return Intl.message(
+      'If the quick account switcher should be shown',
+      name: 'ifTheQuickAccountSwitcherShouldBeShown',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `In Progress`
+  String get inProgress {
+    return Intl.message(
+      'In Progress',
+      name: 'inProgress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Length: {hours}:{minutes}`
+  String itemLength(String hours, String minutes) {
+    return Intl.message(
+      'Length: $hours:$minutes',
+      name: 'itemLength',
+      desc: '',
+      args: [hours, minutes],
+    );
+  }
+
+  /// `Number of Chapters: {numChapters}`
+  String itemNumChapters(String numChapters) {
+    return Intl.message(
+      'Number of Chapters: $numChapters',
+      name: 'itemNumChapters',
+      desc: '',
+      args: [numChapters],
+    );
+  }
+
+  /// `Progress: {progress}%`
+  String itemProgress(String progress) {
+    return Intl.message(
+      'Progress: $progress%',
+      name: 'itemProgress',
+      desc: '',
+      args: [progress],
+    );
+  }
+
+  /// `Published Year: {year}`
+  String itemPublishedYear(String year) {
+    return Intl.message(
+      'Published Year: $year',
+      name: 'itemPublishedYear',
+      desc: '',
+      args: [year],
+    );
+  }
+
+  /// `Jump to last position`
+  String get jumpToLastPosition {
+    return Intl.message(
+      'Jump to last position',
+      name: 'jumpToLastPosition',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `When enabled, the player will jump to the last position when pressing play`
+  String get jumpToLastPositionDescription {
+    return Intl.message(
+      'When enabled, the player will jump to the last position when pressing play',
+      name: 'jumpToLastPositionDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Language`
+  String get language {
+    return Intl.message(
+      'Language',
+      name: 'language',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Languages`
+  String get languages {
+    return Intl.message(
+      'Languages',
+      name: 'languages',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Library Stats`
+  String get libraryStats {
+    return Intl.message(
+      'Library Stats',
+      name: 'libraryStats',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Loading…`
+  String get loading {
+    return Intl.message(
+      'Loading…',
+      name: 'loading',
       desc: '',
       args: [],
     );
@@ -1480,6 +850,136 @@ class S {
     );
   }
 
+  /// `Mark Items Finished`
+  String get markItemsFinished {
+    return Intl.message(
+      'Mark Items Finished',
+      name: 'markItemsFinished',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Specify the time in seconds before the end of an item at which it should be marked as finished. Setting this to 0 marks the item as finished only when the player reaches the very end. If a positive value is set, the item is marked as finished when the player reaches that time before the end.`
+  String get markItemsFinishedAfterDescription {
+    return Intl.message(
+      'Specify the time in seconds before the end of an item at which it should be marked as finished. Setting this to 0 marks the item as finished only when the player reaches the very end. If a positive value is set, the item is marked as finished when the player reaches that time before the end.',
+      name: 'markItemsFinishedAfterDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Miscellaneous`
+  String get miscellaneous {
+    return Intl.message(
+      'Miscellaneous',
+      name: 'miscellaneous',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `If you want to use multiple server addresses, you can add them later`
+  String get multipleServerAdressess {
+    return Intl.message(
+      'If you want to use multiple server addresses, you can add them later',
+      name: 'multipleServerAdressess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You must enter a valid server address`
+  String get mustEnterValidAddress {
+    return Intl.message(
+      'You must enter a valid server address',
+      name: 'mustEnterValidAddress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Narrators`
+  String get narrators {
+    return Intl.message(
+      'Narrators',
+      name: 'narrators',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No Connection`
+  String get noConnection {
+    return Intl.message(
+      'No Connection',
+      name: 'noConnection',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No downloads`
+  String get noDownloads {
+    return Intl.message(
+      'No downloads',
+      name: 'noDownloads',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We are having trouble connecting to the server.`
+  String get noInternetDescription {
+    return Intl.message(
+      'We are having trouble connecting to the server.',
+      name: 'noInternetDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No items found`
+  String get noItemsFound {
+    return Intl.message(
+      'No items found',
+      name: 'noItemsFound',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Login failed: No user data received`
+  String get noUserData {
+    return Intl.message(
+      'Login failed: No user data received',
+      name: 'noUserData',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Not Finished`
+  String get notFinished {
+    return Intl.message(
+      'Not Finished',
+      name: 'notFinished',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Not Started`
+  String get notStarted {
+    return Intl.message(
+      'Not Started',
+      name: 'notStarted',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Not tried yet`
   String get notTriedYet {
     return Intl.message(
@@ -1490,51 +990,81 @@ class S {
     );
   }
 
-  /// `Failed`
-  String get failed {
+  /// `Notifications should be enabled`
+  String get notificationHeading {
     return Intl.message(
-      'Failed',
-      name: 'failed',
+      'Notifications should be enabled',
+      name: 'notificationHeading',
       desc: '',
       args: [],
     );
   }
 
-  /// `Success`
-  String get success {
+  /// `OK`
+  String get ok {
     return Intl.message(
-      'Success',
-      name: 'success',
+      'OK',
+      name: 'ok',
       desc: '',
       args: [],
     );
   }
 
-  /// `Chapters`
-  String get chapters {
+  /// `Open Downloads`
+  String get openDownloads {
     return Intl.message(
-      'Chapters',
-      name: 'chapters',
+      'Open Downloads',
+      name: 'openDownloads',
       desc: '',
       args: [],
     );
   }
 
-  /// `Chapters ({num})`
-  String chaptersNum(int num) {
+  /// `Own Stats`
+  String get ownStats {
     return Intl.message(
-      'Chapters ($num)',
-      name: 'chaptersNum',
+      'Own Stats',
+      name: 'ownStats',
       desc: '',
-      args: [num],
+      args: [],
     );
   }
 
-  /// `Delete Selected`
-  String get deleteSelected {
+  /// `Password`
+  String get password {
     return Intl.message(
-      'Delete Selected',
-      name: 'deleteSelected',
+      'Password',
+      name: 'password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pause`
+  String get pause {
+    return Intl.message(
+      'Pause',
+      name: 'pause',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Play`
+  String get play {
+    return Intl.message(
+      'Play',
+      name: 'play',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Play History`
+  String get playHistory {
+    return Intl.message(
+      'Play History',
+      name: 'playHistory',
       desc: '',
       args: [],
     );
@@ -1550,6 +1080,76 @@ class S {
     );
   }
 
+  /// `Speed`
+  String get playbackSpeed {
+    return Intl.message(
+      'Speed',
+      name: 'playbackSpeed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Player`
+  String get player {
+    return Intl.message(
+      'Player',
+      name: 'player',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Player Settings`
+  String get playerSettings {
+    return Intl.message(
+      'Player Settings',
+      name: 'playerSettings',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please check your internet connection and try again.`
+  String get pleaseCheckInternet {
+    return Intl.message(
+      'Please check your internet connection and try again.',
+      name: 'pleaseCheckInternet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Port`
+  String get port {
+    return Intl.message(
+      'Port',
+      name: 'port',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Progress`
+  String get progress {
+    return Intl.message(
+      'Progress',
+      name: 'progress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enable this option to display progress in the player and notifications on a per-chapter basis. If disabled, progress will be shown based on the entire item.`
+  String get progressAsChaptersDescription {
+    return Intl.message(
+      'Enable this option to display progress in the player and notifications on a per-chapter basis. If disabled, progress will be shown based on the entire item.',
+      name: 'progressAsChaptersDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Current Progress: {progress} %`
   String progressNum(String progress) {
     return Intl.message(
@@ -1560,13 +1160,303 @@ class S {
     );
   }
 
-  /// `Current Position: {position}`
-  String currentPositionNum(String position) {
+  /// `Publisher`
+  String get publisher {
     return Intl.message(
-      'Current Position: $position',
-      name: 'currentPositionNum',
+      'Publisher',
+      name: 'publisher',
       desc: '',
-      args: [position],
+      args: [],
+    );
+  }
+
+  /// `Read less`
+  String get readLess {
+    return Intl.message(
+      'Read less',
+      name: 'readLess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Read more`
+  String get readMore {
+    return Intl.message(
+      'Read more',
+      name: 'readMore',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Restart Required`
+  String get restartRequired {
+    return Intl.message(
+      'Restart Required',
+      name: 'restartRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please restart the app to apply the changes.`
+  String get restartRequiredDescription {
+    return Intl.message(
+      'Please restart the app to apply the changes.',
+      name: 'restartRequiredDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Rewind Seconds`
+  String get rewindSeconds {
+    return Intl.message(
+      'Rewind Seconds',
+      name: 'rewindSeconds',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Set the number of seconds to skip backward when the rewind button is pressed.`
+  String get rewindSecondsDescription {
+    return Intl.message(
+      'Set the number of seconds to skip backward when the rewind button is pressed.',
+      name: 'rewindSecondsDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Seek`
+  String get seek {
+    return Intl.message(
+      'Seek',
+      name: 'seek',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Series`
+  String get series {
+    return Intl.message(
+      'Series',
+      name: 'series',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter your server address to continue`
+  String get serverAdressContinue {
+    return Intl.message(
+      'Enter your server address to continue',
+      name: 'serverAdressContinue',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Server Selection`
+  String get serverSelection {
+    return Intl.message(
+      'Server Selection',
+      name: 'serverSelection',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Settings`
+  String get settings {
+    return Intl.message(
+      'Settings',
+      name: 'settings',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Shake to reset sleep timer`
+  String get shakeResetTimer {
+    return Intl.message(
+      'Shake to reset sleep timer',
+      name: 'shakeResetTimer',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Share Open`
+  String get shareOpen {
+    return Intl.message(
+      'Share Open',
+      name: 'shareOpen',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Show Account Switcher`
+  String get showAccountSwitcher {
+    return Intl.message(
+      'Show Account Switcher',
+      name: 'showAccountSwitcher',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enable this option to add an icon button to the app bar for quick account switching. This will reduce the size of the app bar.`
+  String get showAccountSwitcherDescription {
+    return Intl.message(
+      'Enable this option to add an icon button to the app bar for quick account switching. This will reduce the size of the app bar.',
+      name: 'showAccountSwitcherDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Show Progress per Chapter`
+  String get showProgressPerChapters {
+    return Intl.message(
+      'Show Progress per Chapter',
+      name: 'showProgressPerChapters',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign Out`
+  String get signOut {
+    return Intl.message(
+      'Sign Out',
+      name: 'signOut',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Size`
+  String get size {
+    return Intl.message(
+      'Size',
+      name: 'size',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sleep Timer`
+  String get sleepTimer {
+    return Intl.message(
+      'Sleep Timer',
+      name: 'sleepTimer',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Stats`
+  String get stats {
+    return Intl.message(
+      'Stats',
+      name: 'stats',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Stop`
+  String get stop {
+    return Intl.message(
+      'Stop',
+      name: 'stop',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Stop Player Until Sync`
+  String get stopPlayerUntilSync {
+    return Intl.message(
+      'Stop Player Until Sync',
+      name: 'stopPlayerUntilSync',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enable this option to prevent the player from starting until the most recent playback position has been synced. This ensures that playback resumes from the correct position. If disabled, the playback position may change shortly after starting, potentially leading to data loss. Turning this on helps conserve data usage.`
+  String get stopPlayerWhileSyncingDescription {
+    return Intl.message(
+      'Enable this option to prevent the player from starting until the most recent playback position has been synced. This ensures that playback resumes from the correct position. If disabled, the playback position may change shortly after starting, potentially leading to data loss. Turning this on helps conserve data usage.',
+      name: 'stopPlayerWhileSyncingDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Success`
+  String get success {
+    return Intl.message(
+      'Success',
+      name: 'success',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sync`
+  String get sync {
+    return Intl.message(
+      'Sync',
+      name: 'sync',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sync Interval (seconds)`
+  String get syncInterval {
+    return Intl.message(
+      'Sync Interval (seconds)',
+      name: 'syncInterval',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Specifies how often the app should sync with the server. Please restart the app for the changes to take effect.`
+  String get syncIntervalDescription {
+    return Intl.message(
+      'Specifies how often the app should sync with the server. Please restart the app for the changes to take effect.',
+      name: 'syncIntervalDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sync only via WiFi`
+  String get syncOnlyViaWifi {
+    return Intl.message(
+      'Sync only via WiFi',
+      name: 'syncOnlyViaWifi',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tags`
+  String get tags {
+    return Intl.message(
+      'Tags',
+      name: 'tags',
+      desc: '',
+      args: [],
     );
   }
 
@@ -1580,21 +1470,131 @@ class S {
     );
   }
 
-  /// `Jump to last position`
-  String get jumpToLastPosition {
+  /// `{time} min`
+  String timerText(String time) {
     return Intl.message(
-      'Jump to last position',
-      name: 'jumpToLastPosition',
+      '$time min',
+      name: 'timerText',
+      desc: '',
+      args: [time],
+    );
+  }
+
+  /// `Title`
+  String get title {
+    return Intl.message(
+      'Title',
+      name: 'title',
       desc: '',
       args: [],
     );
   }
 
-  /// `When enabled, the player will jump to the last position when pressing play`
-  String get jumpToLastPositionDescription {
+  /// `Today`
+  String get today {
     return Intl.message(
-      'When enabled, the player will jump to the last position when pressing play',
-      name: 'jumpToLastPositionDescription',
+      'Today',
+      name: 'today',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total time listened`
+  String get totalTimeListened {
+    return Intl.message(
+      'Total time listened',
+      name: 'totalTimeListened',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Try Again`
+  String get tryAgain {
+    return Intl.message(
+      'Try Again',
+      name: 'tryAgain',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unknown`
+  String get unknown {
+    return Intl.message(
+      'Unknown',
+      name: 'unknown',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unknown Title`
+  String get unknownTitle {
+    return Intl.message(
+      'Unknown Title',
+      name: 'unknownTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Updated At`
+  String get updatedAt {
+    return Intl.message(
+      'Updated At',
+      name: 'updatedAt',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `User`
+  String get user {
+    return Intl.message(
+      'User',
+      name: 'user',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Username`
+  String get username {
+    return Intl.message(
+      'Username',
+      name: 'username',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Username and password cannot be empty`
+  String get usernameOrPasswordNotEmpty {
+    return Intl.message(
+      'Username and password cannot be empty',
+      name: 'usernameOrPasswordNotEmpty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Waiting for download to start`
+  String get waitingForDownload {
+    return Intl.message(
+      'Waiting for download to start',
+      name: 'waitingForDownload',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Year`
+  String get year {
+    return Intl.message(
+      'Year',
+      name: 'year',
       desc: '',
       args: [],
     );
