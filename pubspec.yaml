@@ -77,7 +77,8 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/images/
+    - assets/images/logo/
+    - assets/images/library_icons/
 
 flutter_intl:
   enabled: true

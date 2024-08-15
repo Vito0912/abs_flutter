@@ -10,17 +10,16 @@ class UserBadge extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final user = ref.watch(currentUserProvider);
 
-    return Tooltip(
-      message: user?.username ?? 'N/A',
-      child: Chip(
-        label: Row(
-          children: [
-            PlatformText(
-              user?.username ?? 'N/A',
-              overflow: TextOverflow.ellipsis,
-              maxLines: 1,
-            ),
-          ],
+    return Padding(
+      padding: const EdgeInsets.only(right: 24.0),
+      child: Tooltip(
+        message: user?.username ?? 'N/A',
+        child: Chip(
+          label: PlatformText(
+            'VERYVERYLONGUSERNAME',
+            overflow: TextOverflow.ellipsis,
+            maxLines: 1,
+          ),
         ),
       ),
     );

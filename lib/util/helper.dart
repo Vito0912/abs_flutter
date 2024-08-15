@@ -25,44 +25,16 @@ class Helper {
     return '$key.${base64UrlEncode(value)}';
   }
 
-  static Widget returnLibraryItem(String type) {
-    switch (type) {
-      case 'database':
-        return const Icon(Icons.book);
-      case 'audiobookshelf':
-        return const Icon(Icons.mic);
-      case 'books-1':
-        return const Icon(Icons.music_note);
-      case 'books-2':
-        return const Icon(Icons.music_note);
-      case 'book-1':
-        return const Icon(Icons.music_note);
-      case 'microphone-1':
-        return const Icon(Icons.book);
-      case 'microphone-3':
-        return const Icon(Icons.mic);
-      case 'radio':
-        return const Icon(Icons.music_note);
-      case 'podcast':
-        return const Icon(Icons.music_note);
-      case 'rss':
-        return const Icon(Icons.music_note);
-      case 'headphones':
-        return const Icon(Icons.mic);
-      case 'music':
-        return const Icon(Icons.music_note);
-      case 'file-picture':
-        return const Icon(Icons.music_note);
-      case 'rocket':
-        return const Icon(Icons.music_note);
-      case 'power':
-        return const Icon(Icons.book);
-      case 'star':
-        return const Icon(Icons.mic);
-      case 'heart':
-        return const Icon(Icons.music_note);
-      default:
-        return const Icon(Icons.question_mark_rounded);
+  static Widget returnLibraryItem(String type, BuildContext context) {
+    try {
+      return Semantics(
+        label: 'Icon of $type',
+        child: Image.asset('assets/images/library_icons/icon-$type.png',
+            width: 24, height: 24,
+        color: Theme.of(context).colorScheme.onSurface,),
+      );
+    } catch (e) {
+      return const Icon(Icons.error);
     }
   }
 
@@ -182,11 +154,12 @@ class Helper {
 
   static String formatPercentage(double progress) {
     progress = progress * 100;
-    String formatted = progress.toStringAsFixed(2); // Format auf 2 Dezimalstellen
+    String formatted =
+        progress.toStringAsFixed(2); // Format auf 2 Dezimalstellen
     if (formatted.endsWith('.00')) {
-      formatted = formatted.substring(0, formatted.length - 3); // Entferne ".00"
+      formatted =
+          formatted.substring(0, formatted.length - 3); // Entferne ".00"
     }
     return '$formatted';
   }
-
 }

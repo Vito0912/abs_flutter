@@ -26,15 +26,7 @@ class Home extends ConsumerWidget {
 
     return PlatformScaffold(
       appBar: PlatformAppBar(
-        title: const Row(
-          children: [
-            UserBadge(),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 8.0),
-              child: Text('ABS'),
-            ),
-          ],
-        ),
+        title: const UserBadge(),
         trailingActions: [
           const LibraryChip(),
           if (users.length > 1 &&
