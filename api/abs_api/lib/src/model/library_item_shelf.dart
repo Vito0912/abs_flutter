@@ -8,6 +8,7 @@ import 'package:abs_api/src/model/library_file.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:abs_api/src/model/library_item.dart';
 import 'package:abs_api/src/model/book.dart';
+import 'package:abs_api/src/model/podcast_episode.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -34,8 +35,12 @@ part 'library_item_shelf.g.dart';
 /// * [mediaType]
 /// * [media]
 /// * [libraryFiles]
+/// * [recentEpisode]
 @BuiltValue(instantiable: false)
 abstract class LibraryItemShelf implements LibraryItem {
+  @BuiltValueField(wireName: r'recentEpisode')
+  PodcastEpisode? get recentEpisode;
+
   @BuiltValueSerializer(custom: true)
   static Serializer<LibraryItemShelf> get serializer =>
       _$LibraryItemShelfSerializer();
@@ -157,6 +162,13 @@ class _$LibraryItemShelfSerializer
       yield serializers.serialize(
         object.isMissing,
         specifiedType: const FullType(bool),
+      );
+    }
+    if (object.recentEpisode != null) {
+      yield r'recentEpisode';
+      yield serializers.serialize(
+        object.recentEpisode,
+        specifiedType: const FullType(PodcastEpisode),
       );
     }
     if (object.mtimeMs != null) {
@@ -358,6 +370,13 @@ class _$$LibraryItemShelfSerializer
             specifiedType: const FullType(bool),
           ) as bool;
           result.isMissing = valueDes;
+          break;
+        case r'recentEpisode':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(PodcastEpisode),
+          ) as PodcastEpisode;
+          result.recentEpisode.replace(valueDes);
           break;
         case r'mtimeMs':
           final valueDes = serializers.deserialize(

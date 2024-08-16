@@ -1,6 +1,8 @@
 import 'package:abs_api/abs_api.dart';
+import 'package:abs_flutter/util/helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
+import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
 import 'package:intl/intl.dart';
 
 class EpisodeHeader extends StatelessWidget {
@@ -46,10 +48,13 @@ class EpisodeHeader extends StatelessWidget {
           PlatformText(
             episode.subtitle!,
           ),
-        if (isExpanded && episode.description != null)
-          PlatformText(
+        if (isExpanded && episode.description != null) ...[
+          const Divider(),
+          HtmlWidget(
+            onTapUrl: (url) => Helper.launchUrl(url),
             episode.description!,
           ),
+        ]
       ],
     );
   }

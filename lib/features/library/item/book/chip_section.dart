@@ -33,7 +33,7 @@ class ChipSection extends ConsumerWidget {
         const SizedBox(height: 8.0),
         Wrap(
           spacing: 8.0,
-          runSpacing: 4.0,
+          runSpacing: 0.0,
           children: items.entries
               .map((value) => MouseRegion(
                     cursor: SystemMouseCursors.click,

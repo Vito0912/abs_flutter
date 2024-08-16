@@ -14,9 +14,9 @@ class AlbumImage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final User? user = ref.read(currentUserProvider);
     if(user == null) return const SizedBox.shrink();
-    return SizedBox(
+    return SizedBox( // TODO: find the right constraint for "the layout"
       width: size,  // Or provide specific width and height
-      height: size, // Or use other constraints based on your layout
+      height: size, // Or use other constraints based on the layout
       child: AspectRatio(
         aspectRatio: 1,
         child: CachedNetworkImage(

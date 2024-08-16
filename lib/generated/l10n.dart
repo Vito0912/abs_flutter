@@ -1809,6 +1809,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Offline Progress`
+  String get offlineProgress {
+    return Intl.message(
+      'Offline Progress',
+      name: 'offlineProgress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Newest Episodes`
+  String get newestEpisodes {
+    return Intl.message(
+      'Newest Episodes',
+      name: 'newestEpisodes',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

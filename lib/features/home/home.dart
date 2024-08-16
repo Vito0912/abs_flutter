@@ -3,8 +3,10 @@ import 'package:abs_flutter/features/home/components/library_chip.dart';
 import 'package:abs_flutter/features/home/components/user_badge.dart';
 import 'package:abs_flutter/features/home/components/user_switcher.dart';
 import 'package:abs_flutter/features/library/library_items_wrapper.dart';
+import 'package:abs_flutter/features/library/series/series_view.dart';
 import 'package:abs_flutter/features/library/shelf_items.dart';
 import 'package:abs_flutter/generated/l10n.dart';
+import 'package:abs_flutter/globals.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
@@ -63,7 +65,7 @@ class Home extends ConsumerWidget {
                   },
                 ),
                 PopupMenuOption(
-                  label: 'Offline Progress',
+                  label: S.of(context).offlineProgress,
                   onTap: (PopupMenuOption option) {
                     context.push('/offlineProgress');
                   },
@@ -80,14 +82,15 @@ class Home extends ConsumerWidget {
         ],
       ),
       body: PlatformTabScaffold(
-        tabController: PlatformTabController(
-          initialIndex: 0,
-        ),
+        navBarHeight: 64,
+        tabController: tabController,
         bodyBuilder: (context, index) {
           if (index == 0) {
             return const LibraryItemsWrapper();
-          } else {
+          } else if (index == 1) {
             return const ShelfItems();
+          } else {
+            return const SeriesView();
           }
         },
         items: [
@@ -96,8 +99,12 @@ class Home extends ConsumerWidget {
             label: S.of(context).library,
           ),
           BottomNavigationBarItem(
-            icon: Icon(context.platformIcons.home),
+            icon: Icon(Icons.shelves),
             label: S.of(context).personalizedLibrary,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home_outlined),
+            label: S.of(context).series,
           ),
         ],
       ),

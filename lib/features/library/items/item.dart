@@ -14,7 +14,7 @@ class LibraryItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      radius: 16,
+        radius: 16,
         onTap: () {
           context.push('/view/${item.mediaType}/${item.id}');
         },
@@ -25,6 +25,7 @@ class LibraryItemWidget extends StatelessWidget {
     return Container(
       constraints: const BoxConstraints(maxWidth: 175),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(8.0),
@@ -32,46 +33,49 @@ class LibraryItemWidget extends StatelessWidget {
               aspectRatio: 1,
               child: Stack(children: [
                 AlbumImage(item.id),
-                Consumer(
-                  builder: (BuildContext context, WidgetRef ref, Widget? child) {
-                    final progress =
-                    ref.watch(progressProviderWithItemId(ItemEpisodeId(item.id)));
+                if (item.mediaType != 'podcast' || item.episodeId != null)
+                  Consumer(
+                    builder:
+                        (BuildContext context, WidgetRef ref, Widget? child) {
+                      final progress = ref.watch(progressProviderWithItemId(
+                          ItemEpisodeId(item.id, item.episodeId)));
+                      num progressValue = progress?.progress ?? 0.0;
 
-                    num progressValue = progress?.progress ?? 0.0;
-
-                    return Align(
-                      alignment: Alignment.bottomCenter,
-                      child: LinearProgressIndicator(
-                        value: progressValue.toDouble(),
-                        semanticsValue: progressValue.toStringAsFixed(2),
-                        semanticsLabel:
-                        S.of(context).progressNum(progressValue.toStringAsFixed(2)),
-                        minHeight: 5.0,
-                        valueColor:
-                        const AlwaysStoppedAnimation<Color>(Colors.green),
-                        backgroundColor: Colors.grey[500],
-                      ),
-                    );
-                  },
-                )
+                      return Align(
+                        alignment: Alignment.bottomCenter,
+                        child: LinearProgressIndicator(
+                          value: progressValue.toDouble(),
+                          semanticsValue: progressValue.toStringAsFixed(2),
+                          semanticsLabel: S
+                              .of(context)
+                              .progressNum(progressValue.toStringAsFixed(2)),
+                          minHeight: 5.0,
+                          valueColor:
+                              const AlwaysStoppedAnimation<Color>(Colors.green),
+                          backgroundColor: Colors.white.withOpacity(0.3),
+                        ),
+                      );
+                    },
+                  )
               ]),
             ),
           ),
           const SizedBox(height: 4.0),
-          PlatformText(
-              item.title,
+          PlatformText(item.title,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
-              style: Theme.of(context).textTheme.labelLarge
-          ),
-          const SizedBox(height: 4.0),
-          if(item.authors.isNotEmpty)
-            PlatformText(
-                item.authors.join(", "),
+              style: Theme.of(context).textTheme.labelLarge),
+          if (item.subtitle.isNotEmpty)
+            PlatformText(item.subtitle,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
-                style: Theme.of(context).textTheme.bodySmall
-            )
+                style: Theme.of(context).textTheme.bodySmall),
+          const SizedBox(height: 4.0),
+          if (item.authors.isNotEmpty)
+            PlatformText(item.authors.join(", "),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: Theme.of(context).textTheme.bodySmall)
         ],
       ),
     );
