@@ -6,7 +6,65 @@ part of 'library_item.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
-class _$LibraryItem extends LibraryItem {
+abstract class LibraryItemBuilder implements LibraryItemBaseBuilder {
+  void replace(covariant LibraryItem other);
+  void update(void Function(LibraryItemBuilder) updates);
+  ListBuilder<LibraryFile> get libraryFiles;
+  set libraryFiles(covariant ListBuilder<LibraryFile>? libraryFiles);
+
+  String? get id;
+  set id(covariant String? id);
+
+  String? get oldLibraryItemId;
+  set oldLibraryItemId(covariant String? oldLibraryItemId);
+
+  String? get ino;
+  set ino(covariant String? ino);
+
+  String? get libraryId;
+  set libraryId(covariant String? libraryId);
+
+  String? get folderId;
+  set folderId(covariant String? folderId);
+
+  String? get path;
+  set path(covariant String? path);
+
+  String? get relPath;
+  set relPath(covariant String? relPath);
+
+  bool? get isFile;
+  set isFile(covariant bool? isFile);
+
+  int? get mtimeMs;
+  set mtimeMs(covariant int? mtimeMs);
+
+  int? get ctimeMs;
+  set ctimeMs(covariant int? ctimeMs);
+
+  int? get birthtimeMs;
+  set birthtimeMs(covariant int? birthtimeMs);
+
+  int? get addedAt;
+  set addedAt(covariant int? addedAt);
+
+  int? get updatedAt;
+  set updatedAt(covariant int? updatedAt);
+
+  bool? get isMissing;
+  set isMissing(covariant bool? isMissing);
+
+  bool? get isInvalid;
+  set isInvalid(covariant bool? isInvalid);
+
+  MediaType? get mediaType;
+  set mediaType(covariant MediaType? mediaType);
+
+  BookBuilder get media;
+  set media(covariant BookBuilder? media);
+}
+
+class _$$LibraryItem extends $LibraryItem {
   @override
   final BuiltList<LibraryFile>? libraryFiles;
   @override
@@ -44,10 +102,10 @@ class _$LibraryItem extends LibraryItem {
   @override
   final Book? media;
 
-  factory _$LibraryItem([void Function(LibraryItemBuilder)? updates]) =>
-      (new LibraryItemBuilder()..update(updates))._build();
+  factory _$$LibraryItem([void Function($LibraryItemBuilder)? updates]) =>
+      (new $LibraryItemBuilder()..update(updates))._build();
 
-  _$LibraryItem._(
+  _$$LibraryItem._(
       {this.libraryFiles,
       this.id,
       this.oldLibraryItemId,
@@ -69,16 +127,16 @@ class _$LibraryItem extends LibraryItem {
       : super._();
 
   @override
-  LibraryItem rebuild(void Function(LibraryItemBuilder) updates) =>
+  $LibraryItem rebuild(void Function($LibraryItemBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  LibraryItemBuilder toBuilder() => new LibraryItemBuilder()..replace(this);
+  $LibraryItemBuilder toBuilder() => new $LibraryItemBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is LibraryItem &&
+    return other is $LibraryItem &&
         libraryFiles == other.libraryFiles &&
         id == other.id &&
         oldLibraryItemId == other.oldLibraryItemId &&
@@ -126,7 +184,7 @@ class _$LibraryItem extends LibraryItem {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'LibraryItem')
+    return (newBuiltValueToStringHelper(r'$LibraryItem')
           ..add('libraryFiles', libraryFiles)
           ..add('id', id)
           ..add('oldLibraryItemId', oldLibraryItemId)
@@ -149,11 +207,9 @@ class _$LibraryItem extends LibraryItem {
   }
 }
 
-class LibraryItemBuilder
-    implements
-        Builder<LibraryItem, LibraryItemBuilder>,
-        LibraryItemBaseBuilder {
-  _$LibraryItem? _$v;
+class $LibraryItemBuilder
+    implements Builder<$LibraryItem, $LibraryItemBuilder>, LibraryItemBuilder {
+  _$$LibraryItem? _$v;
 
   ListBuilder<LibraryFile>? _libraryFiles;
   ListBuilder<LibraryFile> get libraryFiles =>
@@ -232,11 +288,11 @@ class LibraryItemBuilder
   BookBuilder get media => _$this._media ??= new BookBuilder();
   set media(covariant BookBuilder? media) => _$this._media = media;
 
-  LibraryItemBuilder() {
-    LibraryItem._defaults(this);
+  $LibraryItemBuilder() {
+    $LibraryItem._defaults(this);
   }
 
-  LibraryItemBuilder get _$this {
+  $LibraryItemBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _libraryFiles = $v.libraryFiles?.toBuilder();
@@ -263,24 +319,24 @@ class LibraryItemBuilder
   }
 
   @override
-  void replace(covariant LibraryItem other) {
+  void replace(covariant $LibraryItem other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$LibraryItem;
+    _$v = other as _$$LibraryItem;
   }
 
   @override
-  void update(void Function(LibraryItemBuilder)? updates) {
+  void update(void Function($LibraryItemBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  LibraryItem build() => _build();
+  $LibraryItem build() => _build();
 
-  _$LibraryItem _build() {
-    _$LibraryItem _$result;
+  _$$LibraryItem _build() {
+    _$$LibraryItem _$result;
     try {
       _$result = _$v ??
-          new _$LibraryItem._(
+          new _$$LibraryItem._(
               libraryFiles: _libraryFiles?.build(),
               id: id,
               oldLibraryItemId: oldLibraryItemId,
@@ -309,7 +365,7 @@ class LibraryItemBuilder
         _media?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            r'LibraryItem', _$failedField, e.toString());
+            r'$LibraryItem', _$failedField, e.toString());
       }
       rethrow;
     }

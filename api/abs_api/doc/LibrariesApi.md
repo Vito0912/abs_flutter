@@ -19,6 +19,7 @@ Method | HTTP request | Description
 [**getLibraryItems**](LibrariesApi.md#getlibraryitems) | **GET** /api/libraries/{id}/items | Get items in a library
 [**getLibrarySeries**](LibrariesApi.md#getlibraryseries) | **GET** /api/libraries/{id}/series | Get library series
 [**getLibrarySeriesById**](LibrariesApi.md#getlibraryseriesbyid) | **GET** /api/libraries/{id}/series/{seriesId} | Get single series in library
+[**getPersonalizedLibrary**](LibrariesApi.md#getpersonalizedlibrary) | **GET** /api/libraries/{id}/personalized | Get personalized library (home page).
 [**searchLibrary**](LibrariesApi.md#searchlibrary) | **GET** /api/libraries/{id}/search | Search library
 [**updateLibraryById**](LibrariesApi.md#updatelibrarybyid) | **PATCH** /api/libraries/{id} | Update a single library by ID on server
 
@@ -487,6 +488,53 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**SeriesWithProgressAndRSS**](SeriesWithProgressAndRSS.md)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, text/html
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getPersonalizedLibrary**
+> BuiltList<LibraryShelf> getPersonalizedLibrary(id, include, limit)
+
+Get personalized library (home page).
+
+Get personalized library (home page).
+
+### Example
+```dart
+import 'package:abs_api/api.dart';
+
+final api = AbsApi().getLibrariesApi();
+final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | The ID of the library.
+final String include = include_example; // String | A comma separated list of what to include with the library item. The only current option is filterdata.
+final int limit = 10; // int | The number of items to return. This the size of a single page for the optional `page` query.
+
+try {
+    final response = api.getPersonalizedLibrary(id, include, limit);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling LibrariesApi->getPersonalizedLibrary: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| The ID of the library. | 
+ **include** | **String**| A comma separated list of what to include with the library item. The only current option is filterdata. | [optional] 
+ **limit** | **int**| The number of items to return. This the size of a single page for the optional `page` query. | [optional] [default to 0]
+
+### Return type
+
+[**BuiltList&lt;LibraryShelf&gt;**](LibraryShelf.md)
 
 ### Authorization
 

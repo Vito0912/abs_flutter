@@ -89,6 +89,7 @@ Class | Method | HTTP request | Description
 [*LibrariesApi*](doc/LibrariesApi.md) | [**getLibraryItems**](doc/LibrariesApi.md#getlibraryitems) | **GET** /api/libraries/{id}/items | Get items in a library
 [*LibrariesApi*](doc/LibrariesApi.md) | [**getLibrarySeries**](doc/LibrariesApi.md#getlibraryseries) | **GET** /api/libraries/{id}/series | Get library series
 [*LibrariesApi*](doc/LibrariesApi.md) | [**getLibrarySeriesById**](doc/LibrariesApi.md#getlibraryseriesbyid) | **GET** /api/libraries/{id}/series/{seriesId} | Get single series in library
+[*LibrariesApi*](doc/LibrariesApi.md) | [**getPersonalizedLibrary**](doc/LibrariesApi.md#getpersonalizedlibrary) | **GET** /api/libraries/{id}/personalized | Get personalized library (home page).
 [*LibrariesApi*](doc/LibrariesApi.md) | [**searchLibrary**](doc/LibrariesApi.md#searchlibrary) | **GET** /api/libraries/{id}/search | Search library
 [*LibrariesApi*](doc/LibrariesApi.md) | [**updateLibraryById**](doc/LibrariesApi.md#updatelibrarybyid) | **PATCH** /api/libraries/{id} | Update a single library by ID on server
 [*LibraryItemApi*](doc/LibraryItemApi.md) | [**getLibraryItem**](doc/LibraryItemApi.md#getlibraryitem) | **GET** /api/items/{id} | Get a single library item by ID on server.
@@ -190,7 +191,10 @@ Class | Method | HTTP request | Description
  - [LibraryItemMinified](doc/LibraryItemMinified.md)
  - [LibraryItemSearchResult](doc/LibraryItemSearchResult.md)
  - [LibraryItemSequence](doc/LibraryItemSequence.md)
+ - [LibraryItemShelf](doc/LibraryItemShelf.md)
  - [LibrarySettings](doc/LibrarySettings.md)
+ - [LibraryShelf](doc/LibraryShelf.md)
+ - [LibraryShelfEntitiesInner](doc/LibraryShelfEntitiesInner.md)
  - [Login200Response](doc/Login200Response.md)
  - [LoginRequest](doc/LoginRequest.md)
  - [Logout200Response](doc/Logout200Response.md)
@@ -228,6 +232,7 @@ Class | Method | HTTP request | Description
  - [SeriesNumBooks](doc/SeriesNumBooks.md)
  - [SeriesProgress](doc/SeriesProgress.md)
  - [SeriesSequence](doc/SeriesSequence.md)
+ - [SeriesShelf](doc/SeriesShelf.md)
  - [SeriesWithProgressAndRSS](doc/SeriesWithProgressAndRSS.md)
  - [SeriesWithProgressAndRSSOneOf](doc/SeriesWithProgressAndRSSOneOf.md)
  - [SyncOpenSessionRequest](doc/SyncOpenSessionRequest.md)

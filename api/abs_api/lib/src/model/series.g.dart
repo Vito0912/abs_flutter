@@ -6,7 +6,26 @@ part of 'series.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
-class _$Series extends Series {
+abstract class SeriesBuilder {
+  void replace(Series other);
+  void update(void Function(SeriesBuilder) updates);
+  String? get id;
+  set id(String? id);
+
+  String? get name;
+  set name(String? name);
+
+  String? get description;
+  set description(String? description);
+
+  int? get addedAt;
+  set addedAt(int? addedAt);
+
+  int? get updatedAt;
+  set updatedAt(int? updatedAt);
+}
+
+class _$$Series extends $Series {
   @override
   final String? id;
   @override
@@ -18,24 +37,24 @@ class _$Series extends Series {
   @override
   final int? updatedAt;
 
-  factory _$Series([void Function(SeriesBuilder)? updates]) =>
-      (new SeriesBuilder()..update(updates))._build();
+  factory _$$Series([void Function($SeriesBuilder)? updates]) =>
+      (new $SeriesBuilder()..update(updates))._build();
 
-  _$Series._(
+  _$$Series._(
       {this.id, this.name, this.description, this.addedAt, this.updatedAt})
       : super._();
 
   @override
-  Series rebuild(void Function(SeriesBuilder) updates) =>
+  $Series rebuild(void Function($SeriesBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  SeriesBuilder toBuilder() => new SeriesBuilder()..replace(this);
+  $SeriesBuilder toBuilder() => new $SeriesBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is Series &&
+    return other is $Series &&
         id == other.id &&
         name == other.name &&
         description == other.description &&
@@ -57,7 +76,7 @@ class _$Series extends Series {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'Series')
+    return (newBuiltValueToStringHelper(r'$Series')
           ..add('id', id)
           ..add('name', name)
           ..add('description', description)
@@ -67,34 +86,36 @@ class _$Series extends Series {
   }
 }
 
-class SeriesBuilder implements Builder<Series, SeriesBuilder> {
-  _$Series? _$v;
+class $SeriesBuilder
+    implements Builder<$Series, $SeriesBuilder>, SeriesBuilder {
+  _$$Series? _$v;
 
   String? _id;
   String? get id => _$this._id;
-  set id(String? id) => _$this._id = id;
+  set id(covariant String? id) => _$this._id = id;
 
   String? _name;
   String? get name => _$this._name;
-  set name(String? name) => _$this._name = name;
+  set name(covariant String? name) => _$this._name = name;
 
   String? _description;
   String? get description => _$this._description;
-  set description(String? description) => _$this._description = description;
+  set description(covariant String? description) =>
+      _$this._description = description;
 
   int? _addedAt;
   int? get addedAt => _$this._addedAt;
-  set addedAt(int? addedAt) => _$this._addedAt = addedAt;
+  set addedAt(covariant int? addedAt) => _$this._addedAt = addedAt;
 
   int? _updatedAt;
   int? get updatedAt => _$this._updatedAt;
-  set updatedAt(int? updatedAt) => _$this._updatedAt = updatedAt;
+  set updatedAt(covariant int? updatedAt) => _$this._updatedAt = updatedAt;
 
-  SeriesBuilder() {
-    Series._defaults(this);
+  $SeriesBuilder() {
+    $Series._defaults(this);
   }
 
-  SeriesBuilder get _$this {
+  $SeriesBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _id = $v.id;
@@ -108,22 +129,22 @@ class SeriesBuilder implements Builder<Series, SeriesBuilder> {
   }
 
   @override
-  void replace(Series other) {
+  void replace(covariant $Series other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$Series;
+    _$v = other as _$$Series;
   }
 
   @override
-  void update(void Function(SeriesBuilder)? updates) {
+  void update(void Function($SeriesBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  Series build() => _build();
+  $Series build() => _build();
 
-  _$Series _build() {
+  _$$Series _build() {
     final _$result = _$v ??
-        new _$Series._(
+        new _$$Series._(
             id: id,
             name: name,
             description: description,

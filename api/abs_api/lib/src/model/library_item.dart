@@ -34,18 +34,10 @@ part 'library_item.g.dart';
 /// * [mediaType]
 /// * [media]
 /// * [libraryFiles]
-@BuiltValue()
-abstract class LibraryItem
-    implements LibraryItemBase, Built<LibraryItem, LibraryItemBuilder> {
+@BuiltValue(instantiable: false)
+abstract class LibraryItem implements LibraryItemBase {
   @BuiltValueField(wireName: r'libraryFiles')
   BuiltList<LibraryFile>? get libraryFiles;
-
-  LibraryItem._();
-
-  factory LibraryItem([void updates(LibraryItemBuilder b)]) = _$LibraryItem;
-
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(LibraryItemBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
   static Serializer<LibraryItem> get serializer => _$LibraryItemSerializer();
@@ -53,7 +45,7 @@ abstract class LibraryItem
 
 class _$LibraryItemSerializer implements PrimitiveSerializer<LibraryItem> {
   @override
-  final Iterable<Type> types = const [LibraryItem, _$LibraryItem];
+  final Iterable<Type> types = const [LibraryItem];
 
   @override
   final String wireName = r'LibraryItem';
@@ -200,6 +192,49 @@ class _$LibraryItemSerializer implements PrimitiveSerializer<LibraryItem> {
     return _serializeProperties(serializers, object,
             specifiedType: specifiedType)
         .toList();
+  }
+
+  @override
+  LibraryItem deserialize(
+    Serializers serializers,
+    Object serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    return serializers.deserialize(serialized,
+        specifiedType: FullType($LibraryItem)) as $LibraryItem;
+  }
+}
+
+/// a concrete implementation of [LibraryItem], since [LibraryItem] is not instantiable
+@BuiltValue(instantiable: true)
+abstract class $LibraryItem
+    implements LibraryItem, Built<$LibraryItem, $LibraryItemBuilder> {
+  $LibraryItem._();
+
+  factory $LibraryItem([void Function($LibraryItemBuilder)? updates]) =
+      _$$LibraryItem;
+
+  @BuiltValueHook(initializeBuilder: true)
+  static void _defaults($LibraryItemBuilder b) => b;
+
+  @BuiltValueSerializer(custom: true)
+  static Serializer<$LibraryItem> get serializer => _$$LibraryItemSerializer();
+}
+
+class _$$LibraryItemSerializer implements PrimitiveSerializer<$LibraryItem> {
+  @override
+  final Iterable<Type> types = const [$LibraryItem, _$$LibraryItem];
+
+  @override
+  final String wireName = r'$LibraryItem';
+
+  @override
+  Object serialize(
+    Serializers serializers,
+    $LibraryItem object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    return serializers.serialize(object, specifiedType: FullType(LibraryItem))!;
   }
 
   void _deserializeProperties(
@@ -350,12 +385,12 @@ class _$LibraryItemSerializer implements PrimitiveSerializer<LibraryItem> {
   }
 
   @override
-  LibraryItem deserialize(
+  $LibraryItem deserialize(
     Serializers serializers,
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final result = LibraryItemBuilder();
+    final result = $LibraryItemBuilder();
     final serializedList = (serialized as Iterable<Object?>).toList();
     final unhandled = <Object?>[];
     _deserializeProperties(

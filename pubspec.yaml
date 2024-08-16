@@ -56,6 +56,7 @@ dependencies:
   uuid: any
   collection: any
   built_collection: any
+  built_value: any
 
 dev_dependencies:
   flutter_test:
@@ -96,6 +97,7 @@ msix_config:
   msix_version: 1.1.0.0
   capabilities: internetClient
   languages: en-us
+  install_certificate: false
 
 flutter_launcher_icons:
   android: "launcher_icon"

@@ -71,7 +71,10 @@ import 'package:abs_api/src/model/library_item_expanded.dart';
 import 'package:abs_api/src/model/library_item_minified.dart';
 import 'package:abs_api/src/model/library_item_search_result.dart';
 import 'package:abs_api/src/model/library_item_sequence.dart';
+import 'package:abs_api/src/model/library_item_shelf.dart';
 import 'package:abs_api/src/model/library_settings.dart';
+import 'package:abs_api/src/model/library_shelf.dart';
+import 'package:abs_api/src/model/library_shelf_entities_inner.dart';
 import 'package:abs_api/src/model/login200_response.dart';
 import 'package:abs_api/src/model/login_request.dart';
 import 'package:abs_api/src/model/logout200_response.dart';
@@ -109,6 +112,7 @@ import 'package:abs_api/src/model/series_books.dart';
 import 'package:abs_api/src/model/series_num_books.dart';
 import 'package:abs_api/src/model/series_progress.dart';
 import 'package:abs_api/src/model/series_sequence.dart';
+import 'package:abs_api/src/model/series_shelf.dart';
 import 'package:abs_api/src/model/series_with_progress_and_rss.dart';
 import 'package:abs_api/src/model/series_with_progress_and_rss_one_of.dart';
 import 'package:abs_api/src/model/sync_open_session_request.dart';
@@ -178,13 +182,18 @@ part 'serializers.g.dart';
   LibraryFile,
   LibraryFilterData,
   LibraryItem,
+  $LibraryItem,
   LibraryItemBase,
   $LibraryItemBase,
   LibraryItemExpanded,
   LibraryItemMinified,
   LibraryItemSearchResult,
   LibraryItemSequence,
+  LibraryItemShelf,
+  $LibraryItemShelf,
   LibrarySettings,
+  LibraryShelf,
+  LibraryShelfEntitiesInner,
   Login200Response,
   LoginRequest,
   Logout200Response,
@@ -221,10 +230,13 @@ part 'serializers.g.dart';
   SearchLibrary200Response,
   SendEBookToDeviceRequest,
   Series,
+  $Series,
   SeriesBooks,
   SeriesNumBooks,
   SeriesProgress,
   SeriesSequence,
+  SeriesShelf,
+  $SeriesShelf,
   SeriesWithProgressAndRSS,
   SeriesWithProgressAndRSSOneOf,
   SyncOpenSessionRequest,
@@ -238,6 +250,10 @@ part 'serializers.g.dart';
 ])
 Serializers serializers = (_$serializers.toBuilder()
       ..addBuilderFactory(
+        const FullType(BuiltList, [FullType(LibraryShelf)]),
+        () => ListBuilder<LibraryShelf>(),
+      )
+      ..addBuilderFactory(
         const FullType(BuiltList, [FullType(String)]),
         () => ListBuilder<String>(),
       )
@@ -248,10 +264,14 @@ Serializers serializers = (_$serializers.toBuilder()
       ..add(Author.serializer)
       ..add(BookBase.serializer)
       ..add(BookMetadataBase.serializer)
+      ..add(LibraryItem.serializer)
       ..add(LibraryItemBase.serializer)
+      ..add(LibraryItemShelf.serializer)
       ..add(PlaybackSessionBase.serializer)
       ..add(PlaybackSessionBook.serializer)
       ..add(PlaybackSessionPodcast.serializer)
+      ..add(Series.serializer)
+      ..add(SeriesShelf.serializer)
       ..add(const OneOfSerializer())
       ..add(const AnyOfSerializer())
       ..add(const DateSerializer())

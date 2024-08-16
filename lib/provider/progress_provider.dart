@@ -154,5 +154,5 @@ class ItemEpisodeId {
   final String itemId;
   final String? episodeId;
 
-  ItemEpisodeId(this.itemId, this.episodeId);
+  ItemEpisodeId(this.itemId, [this.episodeId]);
 }

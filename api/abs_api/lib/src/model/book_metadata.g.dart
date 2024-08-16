@@ -37,6 +37,12 @@ class _$BookMetadata extends BookMetadata {
   final bool? explicit;
   @override
   final bool? abridged;
+  @override
+  final String? authorName;
+  @override
+  final String? narratorName;
+  @override
+  final String? seriesName;
 
   factory _$BookMetadata([void Function(BookMetadataBuilder)? updates]) =>
       (new BookMetadataBuilder()..update(updates))._build();
@@ -56,7 +62,10 @@ class _$BookMetadata extends BookMetadata {
       this.asin,
       this.language,
       this.explicit,
-      this.abridged})
+      this.abridged,
+      this.authorName,
+      this.narratorName,
+      this.seriesName})
       : super._();
 
   @override
@@ -84,7 +93,10 @@ class _$BookMetadata extends BookMetadata {
         asin == other.asin &&
         language == other.language &&
         explicit == other.explicit &&
-        abridged == other.abridged;
+        abridged == other.abridged &&
+        authorName == other.authorName &&
+        narratorName == other.narratorName &&
+        seriesName == other.seriesName;
   }
 
   @override
@@ -105,6 +117,9 @@ class _$BookMetadata extends BookMetadata {
     _$hash = $jc(_$hash, language.hashCode);
     _$hash = $jc(_$hash, explicit.hashCode);
     _$hash = $jc(_$hash, abridged.hashCode);
+    _$hash = $jc(_$hash, authorName.hashCode);
+    _$hash = $jc(_$hash, narratorName.hashCode);
+    _$hash = $jc(_$hash, seriesName.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -126,7 +141,10 @@ class _$BookMetadata extends BookMetadata {
           ..add('asin', asin)
           ..add('language', language)
           ..add('explicit', explicit)
-          ..add('abridged', abridged))
+          ..add('abridged', abridged)
+          ..add('authorName', authorName)
+          ..add('narratorName', narratorName)
+          ..add('seriesName', seriesName))
         .toString();
   }
 }
@@ -207,6 +225,21 @@ class BookMetadataBuilder
   bool? get abridged => _$this._abridged;
   set abridged(covariant bool? abridged) => _$this._abridged = abridged;
 
+  String? _authorName;
+  String? get authorName => _$this._authorName;
+  set authorName(covariant String? authorName) =>
+      _$this._authorName = authorName;
+
+  String? _narratorName;
+  String? get narratorName => _$this._narratorName;
+  set narratorName(covariant String? narratorName) =>
+      _$this._narratorName = narratorName;
+
+  String? _seriesName;
+  String? get seriesName => _$this._seriesName;
+  set seriesName(covariant String? seriesName) =>
+      _$this._seriesName = seriesName;
+
   BookMetadataBuilder() {
     BookMetadata._defaults(this);
   }
@@ -229,6 +262,9 @@ class BookMetadataBuilder
       _language = $v.language;
       _explicit = $v.explicit;
       _abridged = $v.abridged;
+      _authorName = $v.authorName;
+      _narratorName = $v.narratorName;
+      _seriesName = $v.seriesName;
       _$v = null;
     }
     return this;
@@ -267,7 +303,10 @@ class BookMetadataBuilder
               asin: asin,
               language: language,
               explicit: explicit,
-              abridged: abridged);
+              abridged: abridged,
+              authorName: authorName,
+              narratorName: narratorName,
+              seriesName: seriesName);
     } catch (_) {
       late String _$failedField;
       try {

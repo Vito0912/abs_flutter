@@ -3,6 +3,7 @@ import 'package:abs_flutter/features/home/components/library_chip.dart';
 import 'package:abs_flutter/features/home/components/user_badge.dart';
 import 'package:abs_flutter/features/home/components/user_switcher.dart';
 import 'package:abs_flutter/features/library/library_items_wrapper.dart';
+import 'package:abs_flutter/features/library/shelf_items.dart';
 import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
 import 'package:flutter/material.dart';
@@ -86,7 +87,7 @@ class Home extends ConsumerWidget {
           if (index == 0) {
             return const LibraryItemsWrapper();
           } else {
-            return const Center(child: Text('Not Implemented'));
+            return const ShelfItems();
           }
         },
         items: [
@@ -96,7 +97,7 @@ class Home extends ConsumerWidget {
           ),
           BottomNavigationBarItem(
             icon: Icon(context.platformIcons.home),
-            label: "Home",
+            label: S.of(context).personalizedLibrary,
           ),
         ],
       ),

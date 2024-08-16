@@ -63,7 +63,10 @@ doc/LibraryItemExpanded.md
 doc/LibraryItemMinified.md
 doc/LibraryItemSearchResult.md
 doc/LibraryItemSequence.md
+doc/LibraryItemShelf.md
 doc/LibrarySettings.md
+doc/LibraryShelf.md
+doc/LibraryShelfEntitiesInner.md
 doc/Login200Response.md
 doc/LoginRequest.md
 doc/Logout200Response.md
@@ -105,6 +108,7 @@ doc/SeriesBooks.md
 doc/SeriesNumBooks.md
 doc/SeriesProgress.md
 doc/SeriesSequence.md
+doc/SeriesShelf.md
 doc/SeriesWithProgressAndRSS.md
 doc/SeriesWithProgressAndRSSOneOf.md
 doc/SessionApi.md
@@ -191,7 +195,10 @@ lib/src/model/library_item.dart
 lib/src/model/library_item_base.dart
 lib/src/model/library_item_search_result.dart
 lib/src/model/library_item_sequence.dart
+lib/src/model/library_item_shelf.dart
 lib/src/model/library_settings.dart
+lib/src/model/library_shelf.dart
+lib/src/model/library_shelf_entities_inner.dart
 lib/src/model/login200_response.dart
 lib/src/model/login_request.dart
 lib/src/model/logout200_response.dart
@@ -229,6 +236,7 @@ lib/src/model/series_books.dart
 lib/src/model/series_num_books.dart
 lib/src/model/series_progress.dart
 lib/src/model/series_sequence.dart
+lib/src/model/series_shelf.dart
 lib/src/model/series_with_progress_and_rss.dart
 lib/src/model/series_with_progress_and_rss_one_of.dart
 lib/src/model/sync_open_session_request.dart

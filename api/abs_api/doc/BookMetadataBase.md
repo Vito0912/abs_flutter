@@ -20,6 +20,9 @@ Name | Type | Description | Notes
 **language** | **String** | The language of the book. Will be null if unknown. | [optional] 
 **explicit** | **bool** | Whether the book has been marked as explicit. | [optional] 
 **abridged** | **bool** | Whether the book is abridged. | [optional] 
+**authorName** | **String** | The name of the author. | [optional] 
+**narratorName** | **String** | The name of the book's narrator(s). | [optional] 
+**seriesName** | **String** | The name of the series. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

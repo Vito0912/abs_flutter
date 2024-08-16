@@ -28,6 +28,9 @@ part 'get_listening_stats200_response_items_value_media_metadata.g.dart';
 /// * [language] - The language of the book. Will be null if unknown.
 /// * [explicit] - Whether the book has been marked as explicit.
 /// * [abridged] - Whether the book is abridged.
+/// * [authorName] - The name of the author.
+/// * [narratorName] - The name of the book's narrator(s).
+/// * [seriesName] - The name of the series.
 /// * [authors]
 /// * [narrators]
 /// * [series]

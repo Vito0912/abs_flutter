@@ -334,7 +334,7 @@ class _$PlaybackSessionBookExpandedSerializer
             value,
             specifiedType: const FullType(LibraryItem),
           ) as LibraryItem;
-          result.libraryItem.replace(valueDes);
+          result.libraryItem = valueDes;
           break;
         case r'timeListening':
           final valueDes = serializers.deserialize(

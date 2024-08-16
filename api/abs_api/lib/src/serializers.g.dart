@@ -10,10 +10,14 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add($Author.serializer)
       ..add($BookBase.serializer)
       ..add($BookMetadataBase.serializer)
+      ..add($LibraryItem.serializer)
       ..add($LibraryItemBase.serializer)
+      ..add($LibraryItemShelf.serializer)
       ..add($PlaybackSessionBase.serializer)
       ..add($PlaybackSessionBook.serializer)
       ..add($PlaybackSessionPodcast.serializer)
+      ..add($Series.serializer)
+      ..add($SeriesShelf.serializer)
       ..add(AudioFile.serializer)
       ..add(AudioMetaTags.serializer)
       ..add(AudioTrack.serializer)
@@ -64,12 +68,14 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(GetSessions200Response.serializer)
       ..add(LibraryFile.serializer)
       ..add(LibraryFilterData.serializer)
-      ..add(LibraryItem.serializer)
       ..add(LibraryItemExpanded.serializer)
       ..add(LibraryItemMinified.serializer)
       ..add(LibraryItemSearchResult.serializer)
       ..add(LibraryItemSequence.serializer)
       ..add(LibrarySettings.serializer)
+      ..add(LibraryShelf.serializer)
+      ..add(LibraryShelfEntitiesInner.serializer)
+      ..add(LibraryShelfTypeEnum.serializer)
       ..add(Login200Response.serializer)
       ..add(LoginRequest.serializer)
       ..add(Logout200Response.serializer)
@@ -99,7 +105,6 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(QuickMatchEpisodes200Response.serializer)
       ..add(SearchLibrary200Response.serializer)
       ..add(SendEBookToDeviceRequest.serializer)
-      ..add(Series.serializer)
       ..add(SeriesBooks.serializer)
       ..add(SeriesNumBooks.serializer)
       ..add(SeriesProgress.serializer)
@@ -187,6 +192,16 @@ Serializers _$serializers = (new Serializers().toBuilder()
           const FullType(BuiltList, const [const FullType(LibraryFile)]),
           () => new ListBuilder<LibraryFile>())
       ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(LibraryFile)]),
+          () => new ListBuilder<LibraryFile>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(LibraryFile)]),
+          () => new ListBuilder<LibraryFile>())
+      ..addBuilderFactory(
+          const FullType(
+              BuiltList, const [const FullType(LibraryItemMinified)]),
+          () => new ListBuilder<LibraryItemMinified>())
+      ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(LibraryItemBase)]),
           () => new ListBuilder<LibraryItemBase>())
       ..addBuilderFactory(
@@ -195,6 +210,10 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(PlaybackSession)]),
           () => new ListBuilder<PlaybackSession>())
+      ..addBuilderFactory(
+          const FullType(
+              BuiltList, const [const FullType(LibraryItemMinified)]),
+          () => new ListBuilder<LibraryItemMinified>())
       ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType(LibraryItemMinified)]),
@@ -234,6 +253,10 @@ Serializers _$serializers = (new Serializers().toBuilder()
           const FullType(
               BuiltList, const [const FullType(LibraryItemSequence)]),
           () => new ListBuilder<LibraryItemSequence>())
+      ..addBuilderFactory(
+          const FullType(
+              BuiltList, const [const FullType(LibraryShelfEntitiesInner)]),
+          () => new ListBuilder<LibraryShelfEntitiesInner>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(MediaProgress)]),
           () => new ListBuilder<MediaProgress>())

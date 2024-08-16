@@ -16,8 +16,8 @@ part 'series.g.dart';
 /// * [description] - A description for the series. Will be null if there is none.
 /// * [addedAt] - The time (in ms since POSIX epoch) when added to the server.
 /// * [updatedAt] - The time (in ms since POSIX epoch) when last updated.
-@BuiltValue()
-abstract class Series implements Built<Series, SeriesBuilder> {
+@BuiltValue(instantiable: false)
+abstract class Series {
   /// The ID of the series.
   @BuiltValueField(wireName: r'id')
   String? get id;
@@ -38,20 +38,13 @@ abstract class Series implements Built<Series, SeriesBuilder> {
   @BuiltValueField(wireName: r'updatedAt')
   int? get updatedAt;
 
-  Series._();
-
-  factory Series([void updates(SeriesBuilder b)]) = _$Series;
-
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(SeriesBuilder b) => b;
-
   @BuiltValueSerializer(custom: true)
   static Serializer<Series> get serializer => _$SeriesSerializer();
 }
 
 class _$SeriesSerializer implements PrimitiveSerializer<Series> {
   @override
-  final Iterable<Type> types = const [Series, _$Series];
+  final Iterable<Type> types = const [Series];
 
   @override
   final String wireName = r'Series';
@@ -107,6 +100,47 @@ class _$SeriesSerializer implements PrimitiveSerializer<Series> {
     return _serializeProperties(serializers, object,
             specifiedType: specifiedType)
         .toList();
+  }
+
+  @override
+  Series deserialize(
+    Serializers serializers,
+    Object serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    return serializers.deserialize(serialized, specifiedType: FullType($Series))
+        as $Series;
+  }
+}
+
+/// a concrete implementation of [Series], since [Series] is not instantiable
+@BuiltValue(instantiable: true)
+abstract class $Series implements Series, Built<$Series, $SeriesBuilder> {
+  $Series._();
+
+  factory $Series([void Function($SeriesBuilder)? updates]) = _$$Series;
+
+  @BuiltValueHook(initializeBuilder: true)
+  static void _defaults($SeriesBuilder b) => b;
+
+  @BuiltValueSerializer(custom: true)
+  static Serializer<$Series> get serializer => _$$SeriesSerializer();
+}
+
+class _$$SeriesSerializer implements PrimitiveSerializer<$Series> {
+  @override
+  final Iterable<Type> types = const [$Series, _$$Series];
+
+  @override
+  final String wireName = r'$Series';
+
+  @override
+  Object serialize(
+    Serializers serializers,
+    $Series object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    return serializers.serialize(object, specifiedType: FullType(Series))!;
   }
 
   void _deserializeProperties(
@@ -166,12 +200,12 @@ class _$SeriesSerializer implements PrimitiveSerializer<Series> {
   }
 
   @override
-  Series deserialize(
+  $Series deserialize(
     Serializers serializers,
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final result = SeriesBuilder();
+    final result = $SeriesBuilder();
     final serializedList = (serialized as Iterable<Object?>).toList();
     final unhandled = <Object?>[];
     _deserializeProperties(
