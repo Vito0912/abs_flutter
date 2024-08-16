@@ -76,7 +76,7 @@ jobs:
 
       - name: Change base href for GitHub Pages
         run: |
-          sed -i 's|<base href="/">|<base href="/abs_flutter">|' build/web/index.html
+          sed -i 's|<base href="/">|<base href="/abs_flutter/">|' build/web/index.html
 
       - name: upload page artifact
         uses: actions/upload-pages-artifact@v3
@@ -134,7 +134,7 @@ jobs:
 
       - name: Zip the Release folder
         run: |
-          Compress-Archive -Path "build/windows/x64/runner/Release" -DestinationPath "Release-${{ env.VERSION }}.zip"
+          Compress-Archive -Path "build/windows/x64/runner/Release" -DestinationPath "windows-Release-${{ env.VERSION }}.zip"
 
       - name: Create MSIX package
         run: dart run msix:create
@@ -142,7 +142,7 @@ jobs:
       - name: Move MSIX file
         run: |
           $sourcePath = "build/windows/x64/runner/Release/abs_flutter.msix"
-          $destinationPath = "release-${{ env.VERSION }}.msix"
+          $destinationPath = "windows-installer-release-${{ env.VERSION }}.msix"
           Move-Item -Path $sourcePath -Destination $destinationPath
         shell: pwsh
 
@@ -151,8 +151,8 @@ jobs:
         with:
           name: windows-build-artifacts
           path: |
-            Release-${{ env.VERSION }}.zip
-            release-${{ env.VERSION }}.msix
+            windows-Release-${{ env.VERSION }}.zip
+            windows-installer-release-${{ env.VERSION }}.msix
 
   create-release:
     runs-on: ubuntu-latest
@@ -181,6 +181,12 @@ jobs:
           VERSION=$(grep '^version:' pubspec.yaml | sed 's/version: //;s/+.*//')
           echo "VERSION=$VERSION" >> $GITHUB_ENV
 
+      - name: Rename app-release.apk
+        run: | 
+          mv linux-artifacts/app-release.apk linux-artifacts/android-release-${{ env.VERSION }}.apk
+          mv linux-artifacts/app-release.aab linux-artifacts/android-release-${{ env.VERSION }}.aab
+          mv linux-artifacts/web-release.zip linux-artifacts/web-release-${{ env.VERSION }}.zip
+
       - name: Create GitHub Release
         id: create_release
         uses: softprops/action-gh-release@v2
@@ -188,13 +194,14 @@ jobs:
           tag_name: v${{ env.VERSION }}
           name: Release v${{ env.VERSION }}
           draft: false
+          generate_release_notes: true
           prerelease: true
           files: |
-            linux-artifacts/app-release.apk
-            linux-artifacts/app-release.aab
-            linux-artifacts/web-release.zip
-            windows-artifacts/Release-${{ env.VERSION }}.zip
-            windows-artifacts/release-${{ env.VERSION }}.msix
+            linux-artifacts/android-release-${{ env.VERSION }}.apk
+            linux-artifacts/android-release-${{ env.VERSION }}.aab
+            linux-artifacts/web-release-${{ env.VERSION }}.zip
+            windows-artifacts/windows-Release-${{ env.VERSION }}.zip
+            windows-artifacts/windows-installer-release-${{ env.VERSION }}.msix
 
   deploy:
     runs-on: ubuntu-latest
