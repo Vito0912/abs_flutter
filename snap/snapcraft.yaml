@@ -1,0 +1,38 @@
+name: audiobookshelfly
+version: 1.4.0
+summary: An ABS app
+description: Client for Audiobookshelf
+
+confinement: strict
+base: core22
+grade: stable
+
+slots:
+  dbus-audiobookshelfly:
+    interface: dbus
+    bus: session
+    name: org.bar.audiobookshelfly
+
+apps:
+  audiobookshelfly:
+    command: audiobookshelfly
+    extensions: [gnome]
+    plugs:
+      - network
+    slots:
+      - dbus-super-cool-app
+parts:
+  audiobookshelfly:
+    source: .
+    plugin: flutter
+    flutter-target: lib/main.dart
+  uet-lms:
+    source: .
+    plugin: flutter
+    flutter-target: lib/main.dart
+    build-packages:
+      - libsecret-1-dev
+      - libjsoncpp-dev
+    stage-packages:
+      - libsecret-1-0
+      - libjsoncpp-dev
