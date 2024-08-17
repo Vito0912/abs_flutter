@@ -1829,6 +1829,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Sequence`
+  String get sequence {
+    return Intl.message(
+      'Sequence',
+      name: 'sequence',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Search`
+  String get search {
+    return Intl.message(
+      'Search',
+      name: 'search',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -5,7 +5,6 @@
 // ignore_for_file: unused_element
 import 'package:abs_api/src/model/series_with_progress_and_rss_one_of.dart';
 import 'package:abs_api/src/model/series.dart';
-import 'package:abs_api/src/model/series_progress.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:one_of/one_of.dart';

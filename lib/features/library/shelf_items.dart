@@ -122,7 +122,7 @@ class ShelfItems extends ConsumerWidget {
     final section = shelf.firstWhereOrNull((element) => element.id == id);
     if (section == null) return null;
 
-    late final content;
+    late final List<Widget> content;
 
     switch (id) {
       case 'newest-episodes':

@@ -588,5 +588,7 @@
   "recentSeries": "Recent Series",
   "listenAgain": "Listen again",
   "offlineProgress": "Offline Progress",
-  "newestEpisodes": "Newest Episodes"
+  "newestEpisodes": "Newest Episodes",
+  "sequence": "Sequence",
+  "search": "Search"
 }

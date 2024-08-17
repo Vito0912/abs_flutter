@@ -1,34 +1,69 @@
+import 'dart:math';
+
 import 'package:abs_api/abs_api.dart';
 import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/provider/filter_provider.dart';
 import 'package:abs_flutter/provider/library_items_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class FilterButton extends ConsumerWidget {
+class FilterButton extends HookConsumerWidget {
   const FilterButton({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final filter = ref.watch(filterProvider);
     final sort = ref.watch(libraryItemSearchProvider);
+
+    final filterString = useState<String?>(null);
+
+    useEffect(() {
+      if (sort.filterKey != null && sort.filterKey!.isNotEmpty) {
+        filterString.value =
+            _getSelectedFilterLabel(sort.filterKey!, sort.filter, ref);
+      } else {
+        filterString.value = null;
+      }
+      return null;
+    }, [sort.filterKey, sort.filter]);
+
     return filter.when(
       data: (data) {
-        IconData icon = Icons.filter_alt_off_outlined;
-        if (sort.filterKey == null || sort.filterKey!.isEmpty) {
+        IconData icon = Icons.filter_alt_outlined;
+        if (sort.filterKey != null && sort.filterKey!.isNotEmpty) {
+          icon = Icons.filter_alt_off_outlined;
+        } else {
           icon = Icons.filter_alt_outlined;
         }
-        return _buildFilterButton(icon,
-            data: data?.data, context: context, ref: ref);
+        return Row(
+          children: [
+            if (filterString.value != null)
+              Container(
+                  constraints: BoxConstraints(
+                      maxWidth: max(
+                          MediaQuery.of(context).size.width * 0.5 - 100, 50)),
+                  child: PlatformText(
+                      overflow: TextOverflow.ellipsis, filterString.value!)),
+            _buildFilterButton(icon,
+                data: data?.data,
+                context: context,
+                ref: ref,
+                filterString: filterString),
+          ],
+        );
       },
       error: (e, s) => _buildFilterButton(Icons.filter_alt_off_outlined),
-      loading: () => _buildFilterButton(Icons.filter_alt_off_outlined),
+      loading: () => _buildFilterButton(Icons.filter_alt_outlined),
     );
   }
 
   Widget _buildFilterButton(IconData icon,
-      {LibraryFilterData? data, BuildContext? context, WidgetRef? ref}) {
+      {LibraryFilterData? data,
+      BuildContext? context,
+      WidgetRef? ref,
+      ValueNotifier<String?>? filterString}) {
     return Tooltip(
       message: context != null ? S.of(context).filter : S.current.filter,
       child: PlatformIconButton(
@@ -39,6 +74,7 @@ class FilterButton extends ConsumerWidget {
                 sortNotifier.state.filterKey!.isNotEmpty) {
               sortNotifier.state =
                   sortNotifier.state.copyWith(filter: null, filterKey: null);
+              filterString?.value = null;
             } else {
               _showFilterDialog(context!, data, ref);
             }
@@ -47,6 +83,45 @@ class FilterButton extends ConsumerWidget {
         icon: Icon(icon),
       ),
     );
+  }
+
+  String? _getSelectedFilterLabel(
+      String filterKey, String? filterValue, WidgetRef ref) {
+    final filter = ref.read(filterProvider);
+    final data = filter.maybeWhen(
+      data: (data) => data?.data,
+      orElse: () => null,
+    );
+
+    if (filterKey == 'series' && data != null) {
+      return data.series
+          ?.firstWhere((series) => series.id.toString() == filterValue)
+          .name;
+    } else if (filterKey == 'authors' && data != null) {
+      return data.authors
+          ?.firstWhere((author) => author.id.toString() == filterValue)
+          .name;
+    } else if (filterKey == 'genres' && data != null) {
+      return filterValue;
+    } else if (filterKey == 'tags' && data != null) {
+      return filterValue;
+    } else if (filterKey == 'narrators' && data != null) {
+      return data.narrators?.firstWhere((narrator) => narrator == filterValue);
+    } else if (filterKey == 'languages' && data != null) {
+      return filterValue;
+    } else if (filterKey == 'progress') {
+      switch (filterValue) {
+        case 'finished':
+          return S.current.finished;
+        case 'not-started':
+          return S.current.notStarted;
+        case 'not-finished':
+          return S.current.notFinished;
+        case 'in-progress':
+          return S.current.inProgress;
+      }
+    }
+    return null;
   }
 
   void _showFilterDialog(
@@ -108,10 +183,19 @@ class FilterButton extends ConsumerWidget {
           child: ListTile(
             title: PlatformText(item),
             onTap: () {
-              sortNotifier.state = sortNotifier.state.copyWith(
-                filter: entry.key,
-                filterKey: selectedKey,
-              );
+              if (selectedKey == 'series') {
+                sortNotifier.state = sortNotifier.state.copyWith(
+                  filter: entry.key,
+                  filterKey: selectedKey,
+                  sort: 'sequence',
+                  desc: 1,
+                );
+              } else {
+                sortNotifier.state = sortNotifier.state.copyWith(
+                  filter: entry.key,
+                  filterKey: selectedKey,
+                );
+              }
               Navigator.pop(context);
             },
           ),
@@ -198,7 +282,7 @@ class FilterButton extends ConsumerWidget {
         break;
       case 'series':
         data.series?.forEach((series) {
-          items[series.id.toString()] = '${series.name} (${series.numBooks})';
+          items[series.id.toString()] = '${series.name}';
         });
         break;
       case 'languages':

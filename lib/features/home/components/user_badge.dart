@@ -11,7 +11,7 @@ class UserBadge extends ConsumerWidget {
     final user = ref.watch(currentUserProvider);
 
     return Padding(
-      padding: const EdgeInsets.only(right: 24.0),
+      padding: const EdgeInsets.only(right: 16.0),
       child: Tooltip(
         message: user?.username ?? 'N/A',
         child: Chip(

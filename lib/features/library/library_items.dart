@@ -26,6 +26,7 @@ class _LibraryItemsState extends ConsumerState<LibraryItems> {
   late ScrollController _scrollController;
   bool _isLoadingMore = false;
   bool _hasMore = true;
+  double abovePadding = 0;
 
   @override
   void initState() {
@@ -70,8 +71,13 @@ class _LibraryItemsState extends ConsumerState<LibraryItems> {
       return _buildSafeArea(const NoConnection());
     }
 
-    if(_scrollController.hasClients && _scrollController.position.pixels >=
-        _scrollController.position.maxScrollExtent) {
+    (MediaQuery.of(context).size.width < 900)
+        ? abovePadding = 80
+        : abovePadding = 16;
+
+    if (_scrollController.hasClients &&
+        _scrollController.position.pixels >=
+            _scrollController.position.maxScrollExtent) {
       _loadMoreData();
     }
 
@@ -101,8 +107,8 @@ class _LibraryItemsState extends ConsumerState<LibraryItems> {
         final crossAxisCount = (constraints.maxWidth / 200).floor();
         return GridView.builder(
           controller: _scrollController,
-          padding: const EdgeInsets.only(
-              left: 8.0, right: 8.0, top: 80, bottom: 8.0),
+          padding: EdgeInsets.only(
+              left: 8.0, right: 8.0, top: abovePadding, bottom: 8.0),
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: crossAxisCount,
             crossAxisSpacing: 8.0,
@@ -173,15 +179,32 @@ class _LibraryItemsState extends ConsumerState<LibraryItems> {
                       MediaProgress? progress = ref.watch(
                           progressProviderWithItemId(
                               ItemEpisodeId(item.id, null)));
-                      return Align(
-                        alignment: Alignment.bottomCenter,
-                        child: LinearProgressIndicator(
-                          value: progress?.progress?.toDouble() ?? 0,
-                          minHeight: 5.0,
-                          valueColor:
-                              const AlwaysStoppedAnimation<Color>(Colors.green),
-                          backgroundColor: Colors.grey[300],
-                        ),
+                      return Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          item.seriesLabel != null
+                              ? Align(
+                                  alignment: Alignment.topRight,
+                                  child: Padding(
+                                      padding: const EdgeInsets.all(4.0),
+                                      child: Chip(
+                                          visualDensity: const VisualDensity(
+                                              horizontal:
+                                                  VisualDensity.minimumDensity,
+                                              vertical:
+                                                  VisualDensity.minimumDensity),
+                                          label: PlatformText(
+                                              '#${item.seriesLabel!}'))),
+                                )
+                              : const SizedBox.shrink(),
+                          LinearProgressIndicator(
+                            value: progress?.progress?.toDouble() ?? 0,
+                            minHeight: 5.0,
+                            valueColor: const AlwaysStoppedAnimation<Color>(
+                                Colors.green),
+                            backgroundColor: Colors.grey[300],
+                          ),
+                        ],
                       );
                     }),
                 ],
@@ -212,8 +235,8 @@ class _LibraryItemsState extends ConsumerState<LibraryItems> {
       builder: (context, constraints) {
         final crossAxisCount = (constraints.maxWidth / 200).floor();
         return GridView.builder(
-          padding: const EdgeInsets.only(
-              left: 8.0, right: 8.0, top: 80, bottom: 8.0),
+          padding: EdgeInsets.only(
+              left: 8.0, right: 8.0, top: abovePadding, bottom: 8.0),
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: crossAxisCount,
             crossAxisSpacing: 8.0,

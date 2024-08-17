@@ -1,8 +1,6 @@
 import 'dart:developer';
 import 'dart:io';
-import 'package:collection/collection.dart';
 
-import 'package:abs_api/abs_api.dart';
 import 'package:abs_flutter/models/chapter.dart';
 import 'package:abs_flutter/models/history.dart';
 import 'package:abs_flutter/provider/history_provider.dart';
@@ -155,7 +153,7 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
 
       await progressProv.getProgressWithLibraryItem(id);
       final progresses = _container.read(progressProvider).progress;
-      final progress = progresses?['${id}${episodeId ?? ''}'];
+      final progress = progresses?['$id${episodeId ?? ''}'];
       if (progress != null &&
           !progress.isFinished! &&
           progress.progress! <= 0.99) {

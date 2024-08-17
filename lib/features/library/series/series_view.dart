@@ -25,37 +25,42 @@ class SeriesView extends ConsumerWidget {
       return const Center(child: Text('No series found'));
     }
 
-    return ListView.builder(
-      itemCount: ignoredEmpty.length,
-      itemBuilder: (BuildContext context, int index) {
-        final SeriesBooks currentSeries = ignoredEmpty[index];
-        final List<LibraryPreviewItem> books = [];
-        String? libraryId;
+    return Center(
+      child: SizedBox(
+        width: 180 * 2,
+        child: ListView.builder(
+          itemCount: ignoredEmpty.length,
+          itemBuilder: (BuildContext context, int index) {
+            final SeriesBooks currentSeries = ignoredEmpty[index];
+            final List<LibraryPreviewItem> books = [];
+            String? libraryId;
 
-        for (LibraryItemSequence bookItem in currentSeries.books ?? []) {
-          if (bookItem.libraryId != null) libraryId = bookItem.libraryId!;
-          final LibraryPreviewItem book = LibraryPreviewItem(
-              id: bookItem.id!,
-              title: bookItem.media!.metadata!.title!,
-              subtitle: bookItem.media!.metadata!.subtitle ?? '',
-              authors: bookItem.media!.metadata!.authors
-                      ?.map((e) => e.name!)
-                      .toList() ??
-                  [],
-              mediaType: bookItem.mediaType!.name);
-          books.add(book);
-        }
+            for (LibraryItemSequence bookItem in currentSeries.books ?? []) {
+              if (bookItem.libraryId != null) libraryId = bookItem.libraryId!;
+              final LibraryPreviewItem book = LibraryPreviewItem(
+                  id: bookItem.id!,
+                  title: bookItem.media!.metadata!.title!,
+                  subtitle: bookItem.media!.metadata!.subtitle ?? '',
+                  authors: bookItem.media!.metadata!.authors
+                          ?.map((e) => e.name!)
+                          .toList() ??
+                      [],
+                  mediaType: bookItem.mediaType!.name);
+              books.add(book);
+            }
 
-        final LibrarySeriesPreview seriesItem = LibrarySeriesPreview(
-            books: books,
-            total: series.value!.total ?? 0,
-            page: series.value!.page ?? 0,
-            id: currentSeries.id!,
-            libraryId: libraryId!,
-            name: currentSeries.name!);
+            final LibrarySeriesPreview seriesItem = LibrarySeriesPreview(
+                books: books,
+                total: series.value!.total ?? 0,
+                page: series.value!.page ?? 0,
+                id: currentSeries.id!,
+                libraryId: libraryId!,
+                name: currentSeries.name!);
 
-        return ItemSeries(series: seriesItem);
-      },
+            return ItemSeries(series: seriesItem);
+          },
+        ),
+      ),
     );
   }
 }

@@ -13,6 +13,7 @@ class ProgressProvider extends ChangeNotifier {
   final Ref ref;
   AbsApi? api;
   Map<String, MediaProgress>? progress;
+  DateTime? lastUpdated;
 
   ProgressProvider(this.ref) {
     ref.listen<AbsApi?>(apiProvider, (previousApi, nextApi) {
@@ -24,6 +25,11 @@ class ProgressProvider extends ChangeNotifier {
 
   Future<void> getAllProgress() async {
     if (api == null) return;
+    if (lastUpdated != null &&
+        DateTime.now().difference(lastUpdated!).inSeconds < 1) {
+      return;
+    }
+    lastUpdated = DateTime.now();
     log('getProgress', name: 'progress_provider');
 
     final offlineProgress = ref.read(offlineProgressProviderHandler);

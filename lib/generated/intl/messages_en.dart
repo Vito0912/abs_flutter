@@ -276,7 +276,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "rewindSeconds": MessageLookupByLibrary.simpleMessage("Rewind Seconds"),
         "rewindSecondsDescription": MessageLookupByLibrary.simpleMessage(
             "Set the number of seconds to skip backward when the rewind button is pressed."),
+        "search": MessageLookupByLibrary.simpleMessage("Search"),
         "seek": MessageLookupByLibrary.simpleMessage("Seek"),
+        "sequence": MessageLookupByLibrary.simpleMessage("Sequence"),
         "series": MessageLookupByLibrary.simpleMessage("Series"),
         "serverAdressContinue": MessageLookupByLibrary.simpleMessage(
             "Enter your server address to continue"),

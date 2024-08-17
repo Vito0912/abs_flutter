@@ -120,8 +120,8 @@ class TimerNotifier extends StateNotifier<DateTime?> {
       final offlineProgressProvider =
           ref.read(offlineProgressProviderHandler.notifier);
 
-      List<ProgressItem> _progressItems = offlineProgressProvider.state;
-      ProgressItem? progressItem = _progressItems
+      List<ProgressItem> progressItems = offlineProgressProvider.state;
+      ProgressItem? progressItem = progressItems
           .where((element) =>
               element.itemId ==
                   player
