@@ -1,9 +1,9 @@
 name: abs_flutter
-description: "A ABS app"
+description: "An ABS app"
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: 1.4.2
+version: 1.4.3
 
 environment:
   sdk: '>=3.4.3 <4.0.0'
