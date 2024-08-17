@@ -9,13 +9,14 @@ import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/globals.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'components/download_info_button.dart';
 
-class Home extends ConsumerWidget {
+class Home extends HookConsumerWidget {
   const Home({super.key});
 
   @override
@@ -26,6 +27,8 @@ class Home extends ConsumerWidget {
     if (users.isEmpty) {
       Future.microtask(() => context.go('/init'));
     }
+
+    final currentIndex = useState(1);
 
     return PlatformScaffold(
       appBar: PlatformAppBar(
@@ -41,9 +44,10 @@ class Home extends ConsumerWidget {
                 ),
               )
             ],
-            if (MediaQuery.of(context).size.width >= 900 && tabController.index(context) == 0) ...[
+            if (MediaQuery.of(context).size.width >= 900 &&
+                currentIndex.value == 0) ...[
               const Expanded(
-                flex: 3,
+                  flex: 3,
                   child: Padding(
                     padding: EdgeInsets.only(left: 16),
                     child: Padding(
@@ -104,6 +108,9 @@ class Home extends ConsumerWidget {
       body: PlatformTabScaffold(
         navBarHeight: 64,
         tabController: tabController,
+        itemChanged: (index) {
+          currentIndex.value = index;
+        },
         bodyBuilder: (context, index) {
           if (index == 0) {
             return const LibraryItemsWrapper();

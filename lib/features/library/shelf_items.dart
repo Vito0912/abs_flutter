@@ -31,6 +31,7 @@ class ShelfItems extends ConsumerWidget {
 
     final sections = {
       'continue-listening': S.of(context).continueListening,
+      'continue-series': S.of(context).continueSeries,
       'newest-episodes': S.of(context).newestEpisodes,
       'recently-added': S.of(context).recentlyAdded,
       'recent-series': S.of(context).recentSeries,

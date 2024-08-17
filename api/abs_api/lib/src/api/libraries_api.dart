@@ -5,9 +5,6 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:built_value/serializer.dart';
-import 'package:dio/dio.dart';
-
 import 'package:abs_api/src/api_util.dart';
 import 'package:abs_api/src/model/create_library_request.dart';
 import 'package:abs_api/src/model/get_libraries200_response.dart';
@@ -21,6 +18,8 @@ import 'package:abs_api/src/model/search_library200_response.dart';
 import 'package:abs_api/src/model/series_with_progress_and_rss.dart';
 import 'package:abs_api/src/model/update_library_by_id_request.dart';
 import 'package:built_collection/built_collection.dart';
+import 'package:built_value/serializer.dart';
+import 'package:dio/dio.dart';
 
 class LibrariesApi {
   final Dio _dio;
@@ -745,12 +744,13 @@ class LibrariesApi {
 
     try {
       var rawResponse = _response.data;
-      if(rawResponse != null) {
+      if (rawResponse != null) {
         final results = jsonDecode(jsonEncode(rawResponse));
-        for(var result in results['results']) {
+        for (var result in results['results']) {
           final series = result['media']['metadata']['series'];
-          if(series != null) {
-            result['media']['metadata']['series'] = [result['media']['metadata']['series']];
+          if (series != null) {
+            result['media']['metadata']
+                ['series'] = [result['media']['metadata']['series']];
             rawResponse = results;
           }
         }
@@ -1105,7 +1105,24 @@ class LibrariesApi {
     BuiltList<LibraryShelf>? _responseData;
 
     try {
-      final rawResponse = _response.data;
+      var rawResponse = _response.data;
+      if (rawResponse != null) {
+        final results = jsonDecode(jsonEncode(rawResponse));
+        for (var result in results) {
+          if (result['id'] == 'continue-series') {
+            for (int i = 0; i < result['entities'].length; i++) {
+              final series =
+                  result['entities'][i]['media']['metadata']['series'];
+              if (series != null) {
+                result['entities'][i]['media']['metadata']['series'] = [
+                  result['entities'][i]['media']['metadata']['series']
+                ];
+                rawResponse = results;
+              }
+            }
+          }
+        }
+      }
       _responseData = rawResponse == null
           ? null
           : _serializers.deserialize(
