@@ -7,7 +7,6 @@ part 'library_preview_item.g.dart';
 
 @unfreezed
 class LibraryPreviewItem with _$LibraryPreviewItem {
-
   LibraryPreviewItem._();
 
   factory LibraryPreviewItem({
@@ -16,8 +15,10 @@ class LibraryPreviewItem with _$LibraryPreviewItem {
     required String subtitle,
     required List<String> authors,
     required String mediaType,
+    String? episodeId,
+    String? seriesLabel
   }) = _LibraryPreviewItem;
 
-
-  factory LibraryPreviewItem.fromJson(Map<String, dynamic> json) => _$LibraryPreviewItemFromJson(json);
+  factory LibraryPreviewItem.fromJson(Map<String, dynamic> json) =>
+      _$LibraryPreviewItemFromJson(json);
 }

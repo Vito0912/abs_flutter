@@ -3,7 +3,6 @@ import 'package:abs_flutter/features/library/item/podcast/episode_action.dart';
 import 'package:abs_flutter/features/library/item/podcast/episode_header.dart';
 import 'package:abs_flutter/provider/progress_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class EpisodeList extends StatelessWidget {

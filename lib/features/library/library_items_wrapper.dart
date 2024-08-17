@@ -8,10 +8,10 @@ class LibraryItemsWrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Stack(
+    return Stack(
       children: [
-        LibraryItems(),
-        LibraryNotch(),
+        const LibraryItems(),
+        if(MediaQuery.of(context).size.width < 900) const LibraryNotch(),
       ],
     );
   }

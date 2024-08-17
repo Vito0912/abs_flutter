@@ -13,11 +13,10 @@ class SortButton extends ConsumerWidget {
     "media.metadata.title": S.current.title,
     "media.metadata.seriesName": S.current.series,
     "media.metadata.authorName": S.current.author,
-    "media.metadata.publishedYear": S.current.year,
     "media.metadata.publisher": S.current.publisher,
     "media.metadata.language": S.current.language,
     "media.duration": S.current.duration,
-    "media.size": S.current.size
+    "sequence": S.current.sequence,
   };
 
   @override

@@ -160,6 +160,6 @@ class Helper {
       formatted =
           formatted.substring(0, formatted.length - 3); // Entferne ".00"
     }
-    return '$formatted';
+    return formatted;
   }
 }

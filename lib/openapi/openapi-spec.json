@@ -6193,6 +6193,14 @@
         "allOf": [
           {
             "$ref": "#/components/schemas/libraryItem"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "recentEpisode": {
+                "$ref": "#/components/schemas/PodcastEpisode"
+              }
+            }
           }
         ]
       },

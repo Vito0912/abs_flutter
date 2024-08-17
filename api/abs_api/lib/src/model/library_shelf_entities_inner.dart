@@ -10,6 +10,7 @@ import 'package:abs_api/src/model/library_file.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:abs_api/src/model/book.dart';
 import 'package:abs_api/src/model/library_item_minified.dart';
+import 'package:abs_api/src/model/podcast_episode.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -36,6 +37,7 @@ part 'library_shelf_entities_inner.g.dart';
 /// * [mediaType]
 /// * [media]
 /// * [libraryFiles]
+/// * [recentEpisode]
 /// * [name] - The name of the series.
 /// * [description] - A description for the series. Will be null if there is none.
 /// * [books]
@@ -141,6 +143,13 @@ class _$LibraryShelfEntitiesInnerSerializer
       yield serializers.serialize(
         object.path,
         specifiedType: const FullType(String),
+      );
+    }
+    if (object.recentEpisode != null) {
+      yield r'recentEpisode';
+      yield serializers.serialize(
+        object.recentEpisode,
+        specifiedType: const FullType(PodcastEpisode),
       );
     }
     if (object.id != null) {
@@ -353,6 +362,13 @@ class _$LibraryShelfEntitiesInnerSerializer
             specifiedType: const FullType(String),
           ) as String;
           result.path = valueDes;
+          break;
+        case r'recentEpisode':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(PodcastEpisode),
+          ) as PodcastEpisode;
+          result.recentEpisode.replace(valueDes);
           break;
         case r'id':
           final valueDes = serializers.deserialize(

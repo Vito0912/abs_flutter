@@ -3,10 +3,7 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:abs_api/src/model/author_series.dart';
-import 'package:built_collection/built_collection.dart';
 import 'package:abs_api/src/model/author.dart';
-import 'package:abs_api/src/model/library_item_minified.dart';
 import 'dart:core';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';

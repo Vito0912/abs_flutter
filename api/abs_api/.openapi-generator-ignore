@@ -22,9 +22,9 @@
 # Then explicitly reverse the ignore rule for a single file:
 #!docs/README.md
 
-library_item_minified.dart
-library_item_minified.g.dart
 lib/src/model/library_item_minified.dart
 lib/src/model/library_item_minified.g.dart
 lib/src/model/library_item_expanded.g.dart
 lib/src/model/library_item_expanded.dart
+lib/src/model/libraries_api.dart
+lib/src/api/libraries_api.g.dart

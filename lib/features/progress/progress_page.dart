@@ -1,12 +1,10 @@
 import 'package:abs_flutter/generated/l10n.dart';
-import 'package:abs_flutter/provider/progress_provider.dart';
 import 'package:abs_flutter/provider/progress_timer_provider.dart';
 import 'package:abs_flutter/util/helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
-import 'package:permission_handler/permission_handler.dart';
 
 class ProgressPage extends ConsumerWidget {
   const ProgressPage({super.key});

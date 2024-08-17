@@ -8,6 +8,8 @@ part of 'library_shelf_entities_inner.dart';
 
 class _$LibraryShelfEntitiesInner extends LibraryShelfEntitiesInner {
   @override
+  final PodcastEpisode? recentEpisode;
+  @override
   final BuiltList<LibraryFile>? libraryFiles;
   @override
   final String? id;
@@ -65,7 +67,8 @@ class _$LibraryShelfEntitiesInner extends LibraryShelfEntitiesInner {
       (new LibraryShelfEntitiesInnerBuilder()..update(updates))._build();
 
   _$LibraryShelfEntitiesInner._(
-      {this.libraryFiles,
+      {this.recentEpisode,
+      this.libraryFiles,
       this.id,
       this.oldLibraryItemId,
       this.ino,
@@ -106,6 +109,7 @@ class _$LibraryShelfEntitiesInner extends LibraryShelfEntitiesInner {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is LibraryShelfEntitiesInner &&
+        recentEpisode == other.recentEpisode &&
         libraryFiles == other.libraryFiles &&
         id == other.id &&
         oldLibraryItemId == other.oldLibraryItemId &&
@@ -137,6 +141,7 @@ class _$LibraryShelfEntitiesInner extends LibraryShelfEntitiesInner {
   @override
   int get hashCode {
     var _$hash = 0;
+    _$hash = $jc(_$hash, recentEpisode.hashCode);
     _$hash = $jc(_$hash, libraryFiles.hashCode);
     _$hash = $jc(_$hash, id.hashCode);
     _$hash = $jc(_$hash, oldLibraryItemId.hashCode);
@@ -170,6 +175,7 @@ class _$LibraryShelfEntitiesInner extends LibraryShelfEntitiesInner {
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'LibraryShelfEntitiesInner')
+          ..add('recentEpisode', recentEpisode)
           ..add('libraryFiles', libraryFiles)
           ..add('id', id)
           ..add('oldLibraryItemId', oldLibraryItemId)
@@ -206,6 +212,12 @@ class LibraryShelfEntitiesInnerBuilder
         LibraryItemShelfBuilder,
         SeriesShelfBuilder {
   _$LibraryShelfEntitiesInner? _$v;
+
+  PodcastEpisodeBuilder? _recentEpisode;
+  PodcastEpisodeBuilder get recentEpisode =>
+      _$this._recentEpisode ??= new PodcastEpisodeBuilder();
+  set recentEpisode(covariant PodcastEpisodeBuilder? recentEpisode) =>
+      _$this._recentEpisode = recentEpisode;
 
   ListBuilder<LibraryFile>? _libraryFiles;
   ListBuilder<LibraryFile> get libraryFiles =>
@@ -331,6 +343,7 @@ class LibraryShelfEntitiesInnerBuilder
   LibraryShelfEntitiesInnerBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
+      _recentEpisode = $v.recentEpisode?.toBuilder();
       _libraryFiles = $v.libraryFiles?.toBuilder();
       _id = $v.id;
       _oldLibraryItemId = $v.oldLibraryItemId;
@@ -382,6 +395,7 @@ class LibraryShelfEntitiesInnerBuilder
     try {
       _$result = _$v ??
           new _$LibraryShelfEntitiesInner._(
+              recentEpisode: _recentEpisode?.build(),
               libraryFiles: _libraryFiles?.build(),
               id: id,
               oldLibraryItemId: oldLibraryItemId,
@@ -411,6 +425,8 @@ class LibraryShelfEntitiesInnerBuilder
     } catch (_) {
       late String _$failedField;
       try {
+        _$failedField = 'recentEpisode';
+        _recentEpisode?.build();
         _$failedField = 'libraryFiles';
         _libraryFiles?.build();
 

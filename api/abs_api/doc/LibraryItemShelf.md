@@ -26,6 +26,7 @@ Name | Type | Description | Notes
 **mediaType** | [**MediaType**](MediaType.md) |  | [optional] 
 **media** | [**Book**](Book.md) |  | [optional] 
 **libraryFiles** | [**BuiltList&lt;LibraryFile&gt;**](LibraryFile.md) |  | [optional] 
+**recentEpisode** | [**PodcastEpisode**](PodcastEpisode.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

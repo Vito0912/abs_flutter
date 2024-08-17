@@ -3,14 +3,12 @@ import 'dart:io';
 
 import 'package:abs_api/abs_api.dart';
 import 'package:abs_flutter/models/file.dart';
-import 'package:abs_flutter/provider/connection_provider.dart';
 import 'package:abs_flutter/provider/download_provider.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:path/path.dart' as p;
 
-// Define your librariesProvider using FutureProvider.family
 final itemProvider =
     FutureProvider.family<LibraryItemBase?, String>((ref, id) async {
   final api = ref.watch(apiProvider);

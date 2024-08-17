@@ -220,6 +220,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "mustEnterValidAddress": MessageLookupByLibrary.simpleMessage(
             "You must enter a valid server address"),
         "narrators": MessageLookupByLibrary.simpleMessage("Narrators"),
+        "newestEpisodes":
+            MessageLookupByLibrary.simpleMessage("Newest Episodes"),
         "noConnection": MessageLookupByLibrary.simpleMessage("No Connection"),
         "noDownloads": MessageLookupByLibrary.simpleMessage("No downloads"),
         "noInternetDescription": MessageLookupByLibrary.simpleMessage(
@@ -232,6 +234,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "notTriedYet": MessageLookupByLibrary.simpleMessage("Not tried yet"),
         "notificationHeading": MessageLookupByLibrary.simpleMessage(
             "Notifications should be enabled"),
+        "offlineProgress":
+            MessageLookupByLibrary.simpleMessage("Offline Progress"),
         "offlineSavedProgress":
             MessageLookupByLibrary.simpleMessage("Offline saved progress"),
         "ok": MessageLookupByLibrary.simpleMessage("OK"),
@@ -272,7 +276,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "rewindSeconds": MessageLookupByLibrary.simpleMessage("Rewind Seconds"),
         "rewindSecondsDescription": MessageLookupByLibrary.simpleMessage(
             "Set the number of seconds to skip backward when the rewind button is pressed."),
+        "search": MessageLookupByLibrary.simpleMessage("Search"),
         "seek": MessageLookupByLibrary.simpleMessage("Seek"),
+        "sequence": MessageLookupByLibrary.simpleMessage("Sequence"),
         "series": MessageLookupByLibrary.simpleMessage("Series"),
         "serverAdressContinue": MessageLookupByLibrary.simpleMessage(
             "Enter your server address to continue"),

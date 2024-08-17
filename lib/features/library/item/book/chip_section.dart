@@ -1,4 +1,3 @@
-import 'package:abs_flutter/features/auth/server_selection.dart';
 import 'package:abs_flutter/provider/library_items_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
@@ -33,7 +32,7 @@ class ChipSection extends ConsumerWidget {
         const SizedBox(height: 8.0),
         Wrap(
           spacing: 8.0,
-          runSpacing: 4.0,
+          runSpacing: 0.0,
           children: items.entries
               .map((value) => MouseRegion(
                     cursor: SystemMouseCursors.click,
