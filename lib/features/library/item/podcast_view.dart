@@ -1,7 +1,4 @@
 import 'package:abs_api/abs_api.dart';
-import 'package:abs_flutter/features/library/item/components/add_to_queue_button.dart';
-import 'package:abs_flutter/features/library/item/components/download_button.dart';
-import 'package:abs_flutter/features/library/item/components/play_button.dart';
 import 'package:abs_flutter/features/library/item/podcast/episode_filter_sort.dart';
 import 'package:abs_flutter/features/library/item/podcast/episode_list.dart';
 import 'package:abs_flutter/features/library/item/podcast/shimmer_loading.dart';
@@ -18,7 +15,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 
 class PodcastView extends HookConsumerWidget {
-  PodcastView({super.key, required this.itemId});
+  const PodcastView({super.key, required this.itemId});
 
   final String itemId;
 

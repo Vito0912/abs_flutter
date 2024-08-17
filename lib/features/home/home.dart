@@ -1,10 +1,12 @@
-
 import 'package:abs_flutter/features/home/components/library_chip.dart';
 import 'package:abs_flutter/features/home/components/user_badge.dart';
 import 'package:abs_flutter/features/home/components/user_switcher.dart';
 import 'package:abs_flutter/features/library/library_items_wrapper.dart';
+import 'package:abs_flutter/features/library/notch/notch_content.dart';
+import 'package:abs_flutter/features/library/series/series_view.dart';
 import 'package:abs_flutter/features/library/shelf_items.dart';
 import 'package:abs_flutter/generated/l10n.dart';
+import 'package:abs_flutter/globals.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
@@ -27,7 +29,30 @@ class Home extends ConsumerWidget {
 
     return PlatformScaffold(
       appBar: PlatformAppBar(
-        title: const UserBadge(),
+        title: Row(
+          children: [
+            const UserBadge(),
+            if (MediaQuery.of(context).size.width > 450) ...[
+              Flexible(
+                fit: FlexFit.tight,
+                child: PlatformText(
+                  'Audiobookshelfy',
+                  overflow: TextOverflow.ellipsis,
+                ),
+              )
+            ],
+            if (MediaQuery.of(context).size.width >= 900 && tabController.index(context) == 0) ...[
+              const Expanded(
+                flex: 3,
+                  child: Padding(
+                    padding: EdgeInsets.only(left: 16),
+                    child: Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 32),
+                        child: Center(child: NotchContent())),
+                  ))
+            ]
+          ],
+        ),
         trailingActions: [
           const LibraryChip(),
           if (users.length > 1 &&
@@ -37,11 +62,8 @@ class Home extends ConsumerWidget {
           Tooltip(
             message: S.of(context).stats,
             child: IconButton(
-                onPressed: () => {
-                  context.push('/stats')
-                },
-                icon: const Icon(Icons.pie_chart_outline_rounded)
-            ),
+                onPressed: () => {context.push('/stats')},
+                icon: const Icon(Icons.pie_chart_outline_rounded)),
           ),
           Tooltip(
               message: S.of(context).currentDownloads,
@@ -63,7 +85,7 @@ class Home extends ConsumerWidget {
                   },
                 ),
                 PopupMenuOption(
-                  label: 'Offline Progress',
+                  label: S.of(context).offlineProgress,
                   onTap: (PopupMenuOption option) {
                     context.push('/offlineProgress');
                   },
@@ -80,14 +102,15 @@ class Home extends ConsumerWidget {
         ],
       ),
       body: PlatformTabScaffold(
-        tabController: PlatformTabController(
-          initialIndex: 0,
-        ),
+        navBarHeight: 64,
+        tabController: tabController,
         bodyBuilder: (context, index) {
           if (index == 0) {
             return const LibraryItemsWrapper();
-          } else {
+          } else if (index == 1) {
             return const ShelfItems();
+          } else {
+            return const SeriesView();
           }
         },
         items: [
@@ -96,8 +119,12 @@ class Home extends ConsumerWidget {
             label: S.of(context).library,
           ),
           BottomNavigationBarItem(
-            icon: Icon(context.platformIcons.home),
+            icon: const Icon(Icons.shelves),
             label: S.of(context).personalizedLibrary,
+          ),
+          BottomNavigationBarItem(
+            icon: const Icon(Icons.home_outlined),
+            label: S.of(context).series,
           ),
         ],
       ),

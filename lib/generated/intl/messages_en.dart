@@ -76,22 +76,22 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m21(count) => "${count}s";
 
-  static String m29(device, os, version) =>
+  static String m22(device, os, version) =>
       "Device: ${device}\nOS: ${os}\nApp Version: ${version}";
 
-  static String m22(length) => "Length: ${length}";
+  static String m23(length) => "Length: ${length}";
 
-  static String m23(numChapters) => "Number of Chapters: ${numChapters}";
+  static String m24(numChapters) => "Number of Chapters: ${numChapters}";
 
-  static String m24(progress) => "Progress: ${progress}%";
+  static String m25(progress) => "Progress: ${progress}%";
 
-  static String m25(year) => "Published Year: ${year}";
+  static String m26(year) => "Published Year: ${year}";
 
-  static String m26(progress) => "Current Progress: ${progress} %";
+  static String m27(progress) => "Current Progress: ${progress} %";
 
-  static String m27(time) => "Time Remaining: ${time}";
+  static String m28(time) => "Time Remaining: ${time}";
 
-  static String m28(time) => "${time} min";
+  static String m29(time) => "${time} min";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -146,7 +146,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Delete Selected"),
         "descending": MessageLookupByLibrary.simpleMessage("Descending"),
         "description": MessageLookupByLibrary.simpleMessage("Description"),
-        "deviceInfo": m29,
+        "deviceInfo": m22,
         "disabled": MessageLookupByLibrary.simpleMessage("Disabled"),
         "discover": MessageLookupByLibrary.simpleMessage("Discover"),
         "domainOrIp": MessageLookupByLibrary.simpleMessage("Domain or IP"),
@@ -186,10 +186,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage(
                 "If the quick account switcher should be shown"),
         "inProgress": MessageLookupByLibrary.simpleMessage("In Progress"),
-        "itemLength": m22,
-        "itemNumChapters": m23,
-        "itemProgress": m24,
-        "itemPublishedYear": m25,
+        "itemLength": m23,
+        "itemNumChapters": m24,
+        "itemProgress": m25,
+        "itemPublishedYear": m26,
         "jumpToLastPosition":
             MessageLookupByLibrary.simpleMessage("Jump to last position"),
         "jumpToLastPositionDescription": MessageLookupByLibrary.simpleMessage(
@@ -220,6 +220,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "mustEnterValidAddress": MessageLookupByLibrary.simpleMessage(
             "You must enter a valid server address"),
         "narrators": MessageLookupByLibrary.simpleMessage("Narrators"),
+        "newestEpisodes":
+            MessageLookupByLibrary.simpleMessage("Newest Episodes"),
         "noConnection": MessageLookupByLibrary.simpleMessage("No Connection"),
         "noDownloads": MessageLookupByLibrary.simpleMessage("No downloads"),
         "noInternetDescription": MessageLookupByLibrary.simpleMessage(
@@ -232,6 +234,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "notTriedYet": MessageLookupByLibrary.simpleMessage("Not tried yet"),
         "notificationHeading": MessageLookupByLibrary.simpleMessage(
             "Notifications should be enabled"),
+        "offlineProgress":
+            MessageLookupByLibrary.simpleMessage("Offline Progress"),
         "offlineSavedProgress":
             MessageLookupByLibrary.simpleMessage("Offline saved progress"),
         "ok": MessageLookupByLibrary.simpleMessage("OK"),
@@ -257,7 +261,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "progress": MessageLookupByLibrary.simpleMessage("Progress"),
         "progressAsChaptersDescription": MessageLookupByLibrary.simpleMessage(
             "Enable this option to display progress in the player and notifications on a per-chapter basis. If disabled, progress will be shown based on the entire item."),
-        "progressNum": m26,
+        "progressNum": m27,
         "publisher": MessageLookupByLibrary.simpleMessage("Publisher"),
         "readLess": MessageLookupByLibrary.simpleMessage("Read less"),
         "readMore": MessageLookupByLibrary.simpleMessage("Read more"),
@@ -272,7 +276,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "rewindSeconds": MessageLookupByLibrary.simpleMessage("Rewind Seconds"),
         "rewindSecondsDescription": MessageLookupByLibrary.simpleMessage(
             "Set the number of seconds to skip backward when the rewind button is pressed."),
+        "search": MessageLookupByLibrary.simpleMessage("Search"),
         "seek": MessageLookupByLibrary.simpleMessage("Seek"),
+        "sequence": MessageLookupByLibrary.simpleMessage("Sequence"),
         "series": MessageLookupByLibrary.simpleMessage("Series"),
         "serverAdressContinue": MessageLookupByLibrary.simpleMessage(
             "Enter your server address to continue"),
@@ -307,8 +313,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "syncOnlyViaWifi":
             MessageLookupByLibrary.simpleMessage("Sync only via WiFi"),
         "tags": MessageLookupByLibrary.simpleMessage("Tags"),
-        "timeRemainingNum": m27,
-        "timerText": m28,
+        "timeRemainingNum": m28,
+        "timerText": m29,
         "title": MessageLookupByLibrary.simpleMessage("Title"),
         "today": MessageLookupByLibrary.simpleMessage("Today"),
         "totalTimeListened":

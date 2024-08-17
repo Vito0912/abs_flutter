@@ -1,5 +1,6 @@
 // globals.dart
 
+import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -13,6 +14,10 @@ late final String osVersion;
 
 late final FlutterSecureStorage secureStorage;
 late final SharedPreferences sp;
+
+final PlatformTabController tabController = PlatformTabController(
+  initialIndex: 1
+);
 
 double maxWidth = 800;
 const String mediaPlayer = 'just_audio /w audio_service @ abs_flutter';

@@ -44,11 +44,8 @@ class BookView extends ConsumerWidget {
     );
   }
 
-  Widget _buildContent(
-      BuildContext context,
-      WidgetRef ref,
-      LibraryItemBase castItem,
-      m.User currentUser) {
+  Widget _buildContent(BuildContext context, WidgetRef ref,
+      LibraryItemBase castItem, m.User currentUser) {
     return PlatformScaffold(
       appBar: PlatformAppBar(
         title: PlatformText(castItem.media!.metadata!.title!),
@@ -67,13 +64,19 @@ class BookView extends ConsumerWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  AlbumImage(
-                    castItem.id!,
-                    size: 150,
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(8.0),
+                    child: Stack(children: [
+                      AlbumImage(
+                        castItem.id!,
+                        size: 200,
+                        withProgress: true,
+                        barHeight: 6,
+                      ),
+                    ]),
                   ),
                   const SizedBox(height: 16.0),
-                  _buildTextContent(
-                      context, castItem, currentUser),
+                  _buildTextContent(context, castItem, currentUser),
                   const SizedBox(height: 16.0),
                   TagsDescription(castItem: castItem),
                 ],
@@ -85,7 +88,8 @@ class BookView extends ConsumerWidget {
     );
   }
 
-  Widget _buildTextContent(BuildContext context, LibraryItemBase castItem, m.User user) {
+  Widget _buildTextContent(
+      BuildContext context, LibraryItemBase castItem, m.User user) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

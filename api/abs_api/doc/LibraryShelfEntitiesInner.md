@@ -26,6 +26,7 @@ Name | Type | Description | Notes
 **mediaType** | [**MediaType**](MediaType.md) |  | [optional] 
 **media** | [**Book**](Book.md) |  | [optional] 
 **libraryFiles** | [**BuiltList&lt;LibraryFile&gt;**](LibraryFile.md) |  | [optional] 
+**recentEpisode** | [**PodcastEpisode**](PodcastEpisode.md) |  | [optional] 
 **name** | **String** | The name of the series. | [optional] 
 **description** | **String** | A description for the series. Will be null if there is none. | [optional] 
 **books** | [**BuiltList&lt;LibraryItemMinified&gt;**](LibraryItemMinified.md) |  | [optional] 

@@ -535,5 +535,43 @@
   "progressAsChaptersDescription": "Aktiviere diese Option, um den Fortschritt im Player kapitelweise anzuzeigen. Wenn diese Option deaktiviert ist, wird der Fortschritt basierend auf dem gesamten Element angezeigt.",
   "@progressAsChaptersDescription": {},
   "rewindSecondsDescription": "Lege die Anzahl der Sekunden fest, die beim Drücken der Rückspultaste zurückgesprungen werden sollen.",
-  "@rewindSecondsDescription": {}
+  "@rewindSecondsDescription": {},
+  "changeLibrary": "Bibliothek wechseln",
+  "@changeLibrary": {},
+  "last30Days": "Letzte 30 Tage",
+  "@last30Days": {},
+  "last7Days": "Letzte 7 Tage",
+  "@last7Days": {},
+  "library": "Bibliothek",
+  "@library": {},
+  "listeningInTheLastYear": "In diesem Jahr gehört",
+  "@listeningInTheLastYear": {},
+  "moreOptions": "Mehr Optionen",
+  "@moreOptions": {},
+  "openProjectLink": "Audiobookshelf/Server",
+  "@openProjectLink": {},
+  "reportAnIssue": "Einen Fehler melden",
+  "@reportAnIssue": {},
+  "sort": "Sortieren",
+  "@sort": {},
+  "currentDownloads": "Aktuell heruntergeladen",
+  "@currentDownloads": {},
+  "deviceInfo": "Gerät: {device}\nOS: {os}\nApp Version: {version}",
+  "@deviceInfo": {
+    "placeholders": {
+      "device": {
+        "type": "String"
+      },
+      "os": {
+        "type": "String"
+      },
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "viewOnGithub": "Auf GitHub ansehen",
+  "@viewOnGithub": {},
+  "libraries": "Bibliotheken",
+  "@libraries": {}
 }

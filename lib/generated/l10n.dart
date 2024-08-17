@@ -1809,6 +1809,46 @@ class S {
       args: [],
     );
   }
+
+  /// `Offline Progress`
+  String get offlineProgress {
+    return Intl.message(
+      'Offline Progress',
+      name: 'offlineProgress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Newest Episodes`
+  String get newestEpisodes {
+    return Intl.message(
+      'Newest Episodes',
+      name: 'newestEpisodes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sequence`
+  String get sequence {
+    return Intl.message(
+      'Sequence',
+      name: 'sequence',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Search`
+  String get search {
+    return Intl.message(
+      'Search',
+      name: 'search',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

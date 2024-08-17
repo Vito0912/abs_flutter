@@ -99,6 +99,10 @@ class LibrariesNotifier extends StateNotifier<LibraryPreview?> {
             subtitle: item.media!.metadata!.subtitle ?? "",
             authors:
                 item.media!.metadata!.authors?.toList().cast<String>() ?? [],
+            seriesLabel: (item.media!.metadata!.series != null &&
+                    item.media!.metadata!.series!.isNotEmpty)
+                ? item.media!.metadata!.series![0].sequence
+                : null,
             mediaType: item.mediaType!.name);
         previewItems.add(previewItem);
       }
@@ -137,6 +141,10 @@ class LibrariesNotifier extends StateNotifier<LibraryPreview?> {
                     .map((e) => e.name ?? "")
                     .toList() ??
                 [],
+            seriesLabel: (item.libraryItem!.media!.metadata!.series != null &&
+                    item.libraryItem!.media!.metadata!.series!.isNotEmpty)
+                ? item.libraryItem!.media!.metadata!.series![0].sequence
+                : null,
             mediaType: item.libraryItem!.mediaType!.name);
         previewItems.add(previewItem);
       }
@@ -151,6 +159,10 @@ class LibrariesNotifier extends StateNotifier<LibraryPreview?> {
                     .map((e) => e.name ?? "")
                     .toList() ??
                 [],
+            seriesLabel: (item.libraryItem!.media!.metadata!.series != null &&
+                    item.libraryItem!.media!.metadata!.series!.isNotEmpty)
+                ? item.libraryItem!.media!.metadata!.series![0].sequence
+                : null,
             mediaType: item.libraryItem!.mediaType!.name);
         previewItems.add(previewItem);
       }
@@ -186,7 +198,7 @@ class LibrariesNotifier extends StateNotifier<LibraryPreview?> {
               page: page,
               desc: sort.desc,
               sort: sort.sort,
-              filter: sort.filter,
+              filter: Helper.sortString(sort.filterKey, sort.filter),
             );
 
         state =

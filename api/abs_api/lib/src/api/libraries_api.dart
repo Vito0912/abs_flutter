@@ -3,6 +3,7 @@
 //
 
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
@@ -743,7 +744,17 @@ class LibrariesApi {
     GetLibraryItems200Response? _responseData;
 
     try {
-      final rawResponse = _response.data;
+      var rawResponse = _response.data;
+      if(rawResponse != null) {
+        final results = jsonDecode(jsonEncode(rawResponse));
+        for(var result in results['results']) {
+          final series = result['media']['metadata']['series'];
+          if(series != null) {
+            result['media']['metadata']['series'] = [result['media']['metadata']['series']];
+            rawResponse = results;
+          }
+        }
+      }
       _responseData = rawResponse == null
           ? null
           : _serializers.deserialize(
@@ -1192,7 +1203,7 @@ class LibrariesApi {
     SearchLibrary200Response? _responseData;
 
     try {
-      final rawResponse = _response.data;
+      var rawResponse = _response.data;
       _responseData = rawResponse == null
           ? null
           : _serializers.deserialize(
@@ -1200,6 +1211,7 @@ class LibrariesApi {
               specifiedType: const FullType(SearchLibrary200Response),
             ) as SearchLibrary200Response;
     } catch (error, stackTrace) {
+      print(error);
       throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
