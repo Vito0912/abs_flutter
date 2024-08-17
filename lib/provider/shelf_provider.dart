@@ -23,7 +23,7 @@ final shelfProvider = FutureProvider<BuiltList<LibraryShelf>?>((ref) async {
   } catch (e) {
     if (e is DioException) {
       log(e.error.toString(), name: 'shelfProvider');
-      //log(e.response!.data!.toString(), name: 'shelfProvider');
+      log(e.stackTrace.toString(), name: 'shelfProvider');
 
       return null;
     }

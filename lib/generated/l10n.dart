@@ -1849,6 +1849,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Continue Series`
+  String get continueSeries {
+    return Intl.message(
+      'Continue Series',
+      name: 'continueSeries',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

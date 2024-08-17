@@ -117,6 +117,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Consecutive days"),
         "continueListening":
             MessageLookupByLibrary.simpleMessage("Continue Listening"),
+        "continueSeries":
+            MessageLookupByLibrary.simpleMessage("Continue Series"),
         "currentDownloads":
             MessageLookupByLibrary.simpleMessage("Current Downloads"),
         "currentPositionNum": m1,

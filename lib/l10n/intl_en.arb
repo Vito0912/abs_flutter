@@ -590,5 +590,6 @@
   "offlineProgress": "Offline Progress",
   "newestEpisodes": "Newest Episodes",
   "sequence": "Sequence",
-  "search": "Search"
+  "search": "Search",
+  "continueSeries": "Continue Series"
 }
