@@ -90,9 +90,9 @@ class _LibraryItemsState extends ConsumerState<LibraryItems> {
     return LayoutBuilder(
       builder: (BuildContext context, BoxConstraints constraints) {
         return AlignedGridView.count(
-          crossAxisCount: constraints.maxWidth ~/ 175,
+          crossAxisCount: constraints.maxWidth ~/ 190,
           mainAxisSpacing: 12,
-          crossAxisSpacing: 8,
+          crossAxisSpacing: 12,
           padding: EdgeInsets.only(top: abovePadding, left: 8, right: 8),
           itemCount: libraryItems.items.length,
           controller: _scrollController,
