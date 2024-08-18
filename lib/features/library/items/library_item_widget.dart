@@ -64,19 +64,40 @@ class LibraryItemWidget extends StatelessWidget {
                         ItemEpisodeId(item!.id, item!.episodeId)));
                     num progressValue = progress?.progress ?? 0.0;
 
-                    return Align(
-                      alignment: Alignment.bottomCenter,
-                      child: LinearProgressIndicator(
-                        value: progressValue.toDouble(),
-                        semanticsValue: progressValue.toStringAsFixed(2),
-                        semanticsLabel: S
-                            .of(context)
-                            .progressNum(progressValue.toStringAsFixed(2)),
-                        minHeight: 5.0,
-                        valueColor:
-                            const AlwaysStoppedAnimation<Color>(Colors.green),
-                        backgroundColor: Colors.white.withOpacity(0.3),
-                      ),
+                    return Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisSize: MainAxisSize.max,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        item?.seriesLabel == null
+                            ? const SizedBox.shrink()
+                            : Container(
+                                padding: const EdgeInsets.all(4.0),
+                                decoration: BoxDecoration(
+                                  color: Theme.of(context)
+                                      .colorScheme
+                                      .surfaceContainer
+                                      .withOpacity(0.5),
+                                  borderRadius: const BorderRadius.only(
+                                    bottomLeft: Radius.circular(8.0),
+                                  ),
+                                ),
+                                child: PlatformText(
+                                  item!.seriesLabel!,
+                                ),
+                              ),
+                        LinearProgressIndicator(
+                          value: progressValue.toDouble(),
+                          semanticsValue: progressValue.toStringAsFixed(2),
+                          semanticsLabel: S
+                              .of(context)
+                              .progressNum(progressValue.toStringAsFixed(2)),
+                          minHeight: 5.0,
+                          valueColor:
+                              const AlwaysStoppedAnimation<Color>(Colors.green),
+                          backgroundColor: Colors.white.withOpacity(0.3),
+                        ),
+                      ],
                     );
                   },
                 ),
