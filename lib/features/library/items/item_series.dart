@@ -85,7 +85,9 @@ class ItemSeries extends ConsumerWidget {
                   style: Theme.of(context).textTheme.labelLarge,
                 ),
                 PlatformText(
-                  series.books.length.toString(),
+                  S
+                      .of(context)
+                      .numBooksInSeries(series.books.length.toString()),
                   style: Theme.of(context).textTheme.bodySmall,
                 )
               ],

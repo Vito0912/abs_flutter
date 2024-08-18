@@ -446,7 +446,7 @@
   "@notTriedYet": {},
   "notificationHeading": "Notifications should be enabled",
   "@notificationHeading": {},
-  "numBooksInSeries": "Books in Series: {numBooks}",
+  "numBooksInSeries": "Books: {numBooks}",
   "@numBooksInSeries": {
     "placeholders": {
       "numBooks": {

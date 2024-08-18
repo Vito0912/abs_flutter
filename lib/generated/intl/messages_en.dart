@@ -87,7 +87,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m26(year) => "Published Year: ${year}";
 
-  static String m30(numBooks) => "Books in Series: ${numBooks}";
+  static String m30(numBooks) => "Books: ${numBooks}";
 
   static String m27(progress) => "Current Progress: ${progress} %";
 

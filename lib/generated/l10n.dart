@@ -1150,10 +1150,10 @@ class S {
     );
   }
 
-  /// `Books in Series: {numBooks}`
+  /// `Books: {numBooks}`
   String numBooksInSeries(String numBooks) {
     return Intl.message(
-      'Books in Series: $numBooks',
+      'Books: $numBooks',
       name: 'numBooksInSeries',
       desc: '',
       args: [numBooks],
