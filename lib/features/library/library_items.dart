@@ -3,7 +3,6 @@ import 'package:abs_flutter/models/library_preview.dart';
 import 'package:abs_flutter/provider/connection_provider.dart';
 import 'package:abs_flutter/provider/library_items_provider.dart';
 import 'package:abs_flutter/provider/progress_provider.dart';
-import 'package:abs_flutter/widgets/error_text.dart';
 import 'package:abs_flutter/widgets/no_connection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -76,18 +75,18 @@ class _LibraryItemsState extends ConsumerState<LibraryItems> {
     }
 
     if (libraryItems == null) {
-      return const ErrorText('No library items found');
+      return _buildLoading();
     } else {
       if (libraryItems.page <= 0) {
         final progressProv = ref.read(progressProvider);
         progressProv.getAllProgress();
       }
       _hasMore = libraryItems.total != libraryItems.items.length;
-      return _buildItems(context, libraryItems);
+      return _buildItems(libraryItems);
     }
   }
 
-  Widget _buildItems(BuildContext context, LibraryPreview libraryItems) {
+  Widget _buildItems(LibraryPreview libraryItems) {
     return LayoutBuilder(
       builder: (BuildContext context, BoxConstraints constraints) {
         return AlignedGridView.count(
@@ -99,6 +98,23 @@ class _LibraryItemsState extends ConsumerState<LibraryItems> {
           controller: _scrollController,
           itemBuilder: (context, index) {
             return LibraryItemWidget(item: libraryItems.items[index]);
+          },
+        );
+      },
+    );
+  }
+
+  Widget _buildLoading() {
+    return LayoutBuilder(
+      builder: (BuildContext context, BoxConstraints constraints) {
+        return AlignedGridView.count(
+          crossAxisCount: constraints.maxWidth ~/ 175,
+          mainAxisSpacing: 12,
+          crossAxisSpacing: 8,
+          padding: EdgeInsets.only(top: abovePadding, left: 8, right: 8),
+          controller: _scrollController,
+          itemBuilder: (context, index) {
+            return LibraryItemWidget.loading();
           },
         );
       },
