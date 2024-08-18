@@ -1,8 +1,8 @@
 import 'dart:ui';
 
 import 'package:abs_api/abs_api.dart';
-import 'package:abs_flutter/features/library/items/item.dart';
 import 'package:abs_flutter/features/library/items/item_series.dart';
+import 'package:abs_flutter/features/library/items/library_item_widget.dart';
 import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/models/library_preview_item.dart';
 import 'package:abs_flutter/models/library_series_preview.dart';
