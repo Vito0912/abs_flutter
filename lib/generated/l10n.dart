@@ -70,6 +70,16 @@ class S {
     );
   }
 
+  /// `All Downloads`
+  String get allDownloads {
+    return Intl.message(
+      'All Downloads',
+      name: 'allDownloads',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Ascending`
   String get ascending {
     return Intl.message(
@@ -205,6 +215,26 @@ class S {
     return Intl.message(
       'Consecutive days',
       name: 'consecutiveDays',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Continue Listening`
+  String get continueListening {
+    return Intl.message(
+      'Continue Listening',
+      name: 'continueListening',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Continue Series`
+  String get continueSeries {
+    return Intl.message(
+      'Continue Series',
+      name: 'continueSeries',
       desc: '',
       args: [],
     );
@@ -505,6 +535,16 @@ class S {
     return Intl.message(
       'Disabled',
       name: 'disabled',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Discover`
+  String get discover {
+    return Intl.message(
+      'Discover',
+      name: 'discover',
       desc: '',
       args: [],
     );
@@ -860,6 +900,16 @@ class S {
     );
   }
 
+  /// `Libraries`
+  String get libraries {
+    return Intl.message(
+      'Libraries',
+      name: 'libraries',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Library`
   String get library {
     return Intl.message(
@@ -875,6 +925,16 @@ class S {
     return Intl.message(
       'Library Stats',
       name: 'libraryStats',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Listen again`
+  String get listenAgain {
+    return Intl.message(
+      'Listen again',
+      name: 'listenAgain',
       desc: '',
       args: [],
     );
@@ -990,6 +1050,16 @@ class S {
     );
   }
 
+  /// `Newest Episodes`
+  String get newestEpisodes {
+    return Intl.message(
+      'Newest Episodes',
+      name: 'newestEpisodes',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `No Connection`
   String get noConnection {
     return Intl.message(
@@ -1080,6 +1150,36 @@ class S {
     );
   }
 
+  /// `Books: {numBooks}`
+  String numBooksInSeries(String numBooks) {
+    return Intl.message(
+      'Books: $numBooks',
+      name: 'numBooksInSeries',
+      desc: '',
+      args: [numBooks],
+    );
+  }
+
+  /// `Offline Progress`
+  String get offlineProgress {
+    return Intl.message(
+      'Offline Progress',
+      name: 'offlineProgress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Offline saved progress`
+  String get offlineSavedProgress {
+    return Intl.message(
+      'Offline saved progress',
+      name: 'offlineSavedProgress',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `OK`
   String get ok {
     return Intl.message(
@@ -1135,6 +1235,16 @@ class S {
     return Intl.message(
       'Pause',
       name: 'pause',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Personalized Library`
+  String get personalizedLibrary {
+    return Intl.message(
+      'Personalized Library',
+      name: 'personalizedLibrary',
       desc: '',
       args: [],
     );
@@ -1280,6 +1390,26 @@ class S {
     );
   }
 
+  /// `Recent Series`
+  String get recentSeries {
+    return Intl.message(
+      'Recent Series',
+      name: 'recentSeries',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Recently Added`
+  String get recentlyAdded {
+    return Intl.message(
+      'Recently Added',
+      name: 'recentlyAdded',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Report an issue`
   String get reportAnIssue {
     return Intl.message(
@@ -1330,11 +1460,31 @@ class S {
     );
   }
 
+  /// `Search`
+  String get search {
+    return Intl.message(
+      'Search',
+      name: 'search',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Seek`
   String get seek {
     return Intl.message(
       'Seek',
       name: 'seek',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sequence`
+  String get sequence {
+    return Intl.message(
+      'Sequence',
+      name: 'sequence',
       desc: '',
       args: [],
     );
@@ -1715,146 +1865,6 @@ class S {
     return Intl.message(
       'Year',
       name: 'year',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Libraries`
-  String get libraries {
-    return Intl.message(
-      'Libraries',
-      name: 'libraries',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `All Downloads`
-  String get allDownloads {
-    return Intl.message(
-      'All Downloads',
-      name: 'allDownloads',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Offline saved progress`
-  String get offlineSavedProgress {
-    return Intl.message(
-      'Offline saved progress',
-      name: 'offlineSavedProgress',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Continue Listening`
-  String get continueListening {
-    return Intl.message(
-      'Continue Listening',
-      name: 'continueListening',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Personalized Library`
-  String get personalizedLibrary {
-    return Intl.message(
-      'Personalized Library',
-      name: 'personalizedLibrary',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Recently Added`
-  String get recentlyAdded {
-    return Intl.message(
-      'Recently Added',
-      name: 'recentlyAdded',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Discover`
-  String get discover {
-    return Intl.message(
-      'Discover',
-      name: 'discover',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Recent Series`
-  String get recentSeries {
-    return Intl.message(
-      'Recent Series',
-      name: 'recentSeries',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Listen again`
-  String get listenAgain {
-    return Intl.message(
-      'Listen again',
-      name: 'listenAgain',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Offline Progress`
-  String get offlineProgress {
-    return Intl.message(
-      'Offline Progress',
-      name: 'offlineProgress',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Newest Episodes`
-  String get newestEpisodes {
-    return Intl.message(
-      'Newest Episodes',
-      name: 'newestEpisodes',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Sequence`
-  String get sequence {
-    return Intl.message(
-      'Sequence',
-      name: 'sequence',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Search`
-  String get search {
-    return Intl.message(
-      'Search',
-      name: 'search',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Continue Series`
-  String get continueSeries {
-    return Intl.message(
-      'Continue Series',
-      name: 'continueSeries',
       desc: '',
       args: [],
     );

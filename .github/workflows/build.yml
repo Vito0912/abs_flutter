@@ -106,6 +106,12 @@ jobs:
             app-release.aab
             web-release.zip
 
+      - name: Clean up
+        if: always()
+        run: |
+          sudo rm -rf build
+          sudo rm -rf android/keystore.jks
+
   build-windows:
     runs-on: windows-latest
 

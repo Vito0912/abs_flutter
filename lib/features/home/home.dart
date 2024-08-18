@@ -113,11 +113,11 @@ class Home extends HookConsumerWidget {
         },
         bodyBuilder: (context, index) {
           if (index == 0) {
-            return const LibraryItemsWrapper();
+            return const SafeArea(child: LibraryItemsWrapper());
           } else if (index == 1) {
-            return const ShelfItems();
+            return const SafeArea(child: ShelfItems());
           } else {
-            return const SeriesView();
+            return const SafeArea(child: SeriesView());
           }
         },
         items: [

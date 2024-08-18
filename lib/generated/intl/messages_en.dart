@@ -87,6 +87,8 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m26(year) => "Published Year: ${year}";
 
+  static String m30(numBooks) => "Books: ${numBooks}";
+
   static String m27(progress) => "Current Progress: ${progress} %";
 
   static String m28(time) => "Time Remaining: ${time}";
@@ -236,6 +238,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "notTriedYet": MessageLookupByLibrary.simpleMessage("Not tried yet"),
         "notificationHeading": MessageLookupByLibrary.simpleMessage(
             "Notifications should be enabled"),
+        "numBooksInSeries": m30,
         "offlineProgress":
             MessageLookupByLibrary.simpleMessage("Offline Progress"),
         "offlineSavedProgress":
