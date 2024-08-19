@@ -158,6 +158,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "dateFormatSecond": m20,
         "dateFormatSecondShort": m21,
         "daysListened": MessageLookupByLibrary.simpleMessage("Days listened"),
+        "debugLogs": MessageLookupByLibrary.simpleMessage("Debug Logs"),
         "deleteSelected":
             MessageLookupByLibrary.simpleMessage("Delete Selected"),
         "descending": MessageLookupByLibrary.simpleMessage("Descending"),
@@ -225,6 +226,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Lock Media Progress Bar"),
         "lockProgressBarDescription": MessageLookupByLibrary.simpleMessage(
             "When enabled, this feature locks the progress bar in the media notification, if supported by the operating system"),
+        "logging": MessageLookupByLibrary.simpleMessage("Logging"),
+        "logs": MessageLookupByLibrary.simpleMessage("Logs"),
         "markItemsFinished":
             MessageLookupByLibrary.simpleMessage("Mark Items Finished"),
         "markItemsFinishedAfterDescription": MessageLookupByLibrary.simpleMessage(

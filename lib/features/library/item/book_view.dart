@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:abs_api/abs_api.dart';
 import 'package:abs_flutter/features/home/components/download_info_button.dart';
 import 'package:abs_flutter/features/library/item/book/metainfo.dart';
@@ -7,10 +5,11 @@ import 'package:abs_flutter/features/library/item/book/tags_description.dart';
 import 'package:abs_flutter/features/library/item/components/add_to_queue_button.dart';
 import 'package:abs_flutter/features/library/item/components/download_button.dart';
 import 'package:abs_flutter/features/library/item/components/play_button.dart';
+import 'package:abs_flutter/models/user.dart' as m;
 import 'package:abs_flutter/provider/library_item_provider.dart';
+import 'package:abs_flutter/provider/log_provider.dart';
 import 'package:abs_flutter/provider/progress_provider.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
-import 'package:abs_flutter/models/user.dart' as m;
 import 'package:abs_flutter/widgets/album_image.dart';
 import 'package:abs_flutter/widgets/error_text.dart';
 import 'package:flutter/material.dart';

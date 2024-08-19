@@ -1,6 +1,7 @@
 // globals.dart
 
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:sembast/sembast.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -17,6 +18,7 @@ late final FlutterSecureStorage secureStorage;
 late final SharedPreferences sp;
 late final String appDir;
 late Database db;
+late ProviderContainer provContainer;
 
 final PlatformTabController tabController =
     PlatformTabController(initialIndex: 1);
@@ -42,7 +44,8 @@ final Map<String, dynamic> defaultSettings = {
   "language": "en",
   "cachingEnabled": true,
   "aggressiveCaching": true,
-  "boostLoading": true
+  "boostLoading": true,
+  "loggingEnabled": true
 };
 
 final Map<String, String> supportedLocales = {

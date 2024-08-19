@@ -1,11 +1,11 @@
 import 'dart:convert';
-import 'dart:developer';
 import 'dart:io';
 
 import 'package:abs_flutter/app.dart';
 import 'package:abs_flutter/globals.dart';
 import 'package:abs_flutter/models/user.dart';
 import 'package:abs_flutter/provider/library_provider.dart';
+import 'package:abs_flutter/provider/log_provider.dart';
 import 'package:abs_flutter/provider/player_provider.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
 import 'package:abs_flutter/util/abs_audio_handler.dart';
@@ -37,6 +37,9 @@ void main() async {
 
   initializeDateFormatting();
 
+  final container = ProviderContainer();
+  provContainer = container;
+
   if (!kIsWeb) {
     appDir =
         '${(await getApplicationDocumentsDirectory()).path.replaceAll('\\', '/')}/abs_flutter';
@@ -60,7 +63,6 @@ void main() async {
   final int currentUser = sp.getInt('currentUser') ?? -1;
   final int currentLibrary = sp.getInt('currentLibrary') ?? 0;
 
-  final container = ProviderContainer();
   final userNotifier = container.read(usersProvider.notifier);
   final selectedUserNotifier = container.read(selectedUserProvider.notifier);
   final selectedLibraryNotifier =

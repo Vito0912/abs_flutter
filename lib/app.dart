@@ -1,7 +1,7 @@
-import 'dart:developer';
 import 'dart:io';
 
 import 'package:abs_flutter/generated/l10n.dart';
+import 'package:abs_flutter/provider/log_provider.dart';
 import 'package:abs_flutter/provider/session_provider.dart';
 import 'package:abs_flutter/provider/settings_provider.dart';
 import 'package:abs_flutter/provider/user_provider.dart';

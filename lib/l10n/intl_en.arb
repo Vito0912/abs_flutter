@@ -630,5 +630,8 @@
   "@waitingForDownload": {},
   "year": "Year",
   "@year": {},
-  "waitTillRedirect": "Please wait for redirect to /init. You are currently not logged in."
+  "waitTillRedirect": "Please wait for redirect to /init. You are currently not logged in.",
+  "debugLogs": "Debug Logs",
+  "logs": "Logs",
+  "logging": "Logging"
 }

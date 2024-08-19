@@ -17,4 +17,5 @@ class Constants {
   static const String CACHING_ENABLED = 'cachingEnabled';
   static const String AGGRESSIVE_CACHING = 'aggressiveCaching';
   static const String BOOST_LOADING = 'boostLoading';
+  static const String LOGGING_ENABLED = 'loggingEnabled';
 }

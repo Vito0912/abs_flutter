@@ -1,18 +1,17 @@
-import 'dart:developer';
-
 import 'package:abs_api/abs_api.dart';
 import 'package:abs_flutter/globals.dart';
 import 'package:abs_flutter/models/file.dart';
 import 'package:abs_flutter/provider/connection_provider.dart';
 import 'package:abs_flutter/provider/download_provider.dart';
 import 'package:abs_flutter/provider/library_item_provider.dart';
+import 'package:abs_flutter/provider/log_provider.dart';
 import 'package:abs_flutter/provider/player_provider.dart';
 import 'package:abs_flutter/provider/player_status_provider.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
 import 'package:audio_service/audio_service.dart';
+import 'package:built_collection/built_collection.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:built_collection/built_collection.dart';
 
 class PlaybackSessionNotifier
     extends StateNotifier<AsyncValue<Response<PlaybackSessionExpanded>?>> {
@@ -277,9 +276,9 @@ class PlaybackSessionNotifier
     final currentUser = ref.read(currentUserProvider);
 
     if (api == null ||
-        (_session == null && _book == null && _podcast == null)||
+        (_session == null && _book == null && _podcast == null) ||
         currentUser == null ||
-       ( _session!.data == null)) {
+        (_session!.data == null)) {
       return false;
     }
 
@@ -298,7 +297,8 @@ class PlaybackSessionNotifier
         _book = null;
         _podcast = null;
         returnValue = true;
-        if(stop) playerStatus.setPlayStatus(PlayerStatus.stopped, "Close session");
+        if (stop)
+          playerStatus.setPlayStatus(PlayerStatus.stopped, "Close session");
         return true;
       } catch (e) {
         log(e.toString());
