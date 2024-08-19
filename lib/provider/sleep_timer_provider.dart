@@ -1,8 +1,10 @@
 import 'dart:async';
 import 'dart:developer';
+
 import 'package:abs_flutter/provider/player_provider.dart';
 import 'package:abs_flutter/provider/player_status_provider.dart';
-import 'package:abs_flutter/provider/user_provider.dart';
+import 'package:abs_flutter/provider/settings_provider.dart';
+import 'package:abs_flutter/util/constants.dart';
 import 'package:abs_flutter/util/fade_out_handler.dart';
 import 'package:abs_flutter/util/shake_handler.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -68,7 +70,7 @@ class TimerNotifier extends StateNotifier<double?> {
   void _startTimer() {
     _timer?.cancel(); // Cancel any existing timer before starting a new one
     final settings = ref.read(settingsProvider);
-    if (settings['shakeResetTimer']) _shakeHandler.start();
+    if (settings[Constants.SHAKE_RESET_TIMER]) _shakeHandler.start();
 
     // When the timer starts to volume down the player
     const int durationInSeconds = 30;
@@ -122,8 +124,8 @@ class TimerNotifier extends StateNotifier<double?> {
     state = newDuration;
     _duration = newDuration;
     final audioService = ref.read(playerProvider).audioService;
-    
-    if(fadeOutController != null) {
+
+    if (fadeOutController != null) {
       log('Cancelling fade out due to timer reset', name: 'SleepTimer');
       fadeOutController?.cancel();
       audioService.setVolume(fadeOutController!.startVolume!);

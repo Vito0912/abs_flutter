@@ -1,10 +1,12 @@
 import 'dart:convert';
 
 import 'package:abs_flutter/generated/l10n.dart';
+import 'package:abs_flutter/globals.dart';
 import 'package:abs_flutter/models/history.dart';
 import 'package:abs_flutter/provider/player_status_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:sembast/sembast_io.dart';
 import 'package:url_launcher/url_launcher.dart' as launcher;
 import 'package:url_launcher/url_launcher_string.dart';
 
@@ -29,9 +31,12 @@ class Helper {
     try {
       return Semantics(
         label: 'Icon of $type',
-        child: Image.asset('assets/images/library_icons/icon-$type.png',
-            width: 24, height: 24,
-        color: Theme.of(context).colorScheme.onSurface,),
+        child: Image.asset(
+          'assets/images/library_icons/icon-$type.png',
+          width: 24,
+          height: 24,
+          color: Theme.of(context).colorScheme.onSurface,
+        ),
       );
     } catch (e) {
       return const Icon(Icons.error);
@@ -154,12 +159,16 @@ class Helper {
 
   static String formatPercentage(double progress) {
     progress = progress * 100;
-    String formatted =
-        progress.toStringAsFixed(2); // Format auf 2 Dezimalstellen
+    String formatted = progress.toStringAsFixed(2); // 2 decimal places
     if (formatted.endsWith('.00')) {
-      formatted =
-          formatted.substring(0, formatted.length - 3); // Entferne ".00"
+      formatted = formatted.substring(0, formatted.length - 3); // Remove ".00"
     }
     return formatted;
+  }
+
+  static Future<void> clearCache() async {
+    final pathToDb = db.path;
+    await databaseFactoryIo.deleteDatabase(pathToDb);
+    db = await databaseFactoryIo.openDatabase(pathToDb);
   }
 }

@@ -4,6 +4,10 @@
   "@addANewUser": {},
   "addUser": "Add User",
   "@addUser": {},
+  "aggressiveCaching": "Aggressive Caching",
+  "@aggressiveCaching": {},
+  "aggressiveCachingDescription": "When enabled, the app will enable more aggressive caching. This includes caching routes that might contain data needing regular updates, such as fetching the progress of all items. In these cases, the last known position will be used unless you specifically open and request a single item. These routes will have a shorter cache duration.",
+  "@aggressiveCachingDescription": {},
   "allDownloads": "All Downloads",
   "@allDownloads": {},
   "ascending": "Ascending",
@@ -18,6 +22,16 @@
   "@back": {},
   "bookCover": "Book Cover",
   "@bookCover": {},
+  "boostLoading": "Boost loading",
+  "@boostLoading": {},
+  "boostLoadingDescription": "When this feature is enabled, the app effectively bypasses real-time caching. It will always attempt to fetch the latest data from the server while using cached data to load content immediately. Once the updated data is retrieved, it replaces the old cache, ensuring that the most recent data is displayed the next time you load the app. As a result, you will always see the data from one fetch cycle behind the server's current data.",
+  "@boostLoadingDescription": {},
+  "boostLoadingSubtitle": "Please read the description to understand this feature.",
+  "@boostLoadingSubtitle": {},
+  "caching": "Caching",
+  "@caching": {},
+  "cachingHeader": "Caching",
+  "@cachingHeader": {},
   "cancel": "Cancel",
   "@cancel": {},
   "changeLibrary": "Change Library",
@@ -32,6 +46,8 @@
       }
     }
   },
+  "clearCache": "Clear Cache",
+  "@clearCache": {},
   "close": "Close",
   "@close": {},
   "collapseSeries": "Collapse Series",
@@ -613,5 +629,6 @@
   "waitingForDownload": "Waiting for download to start",
   "@waitingForDownload": {},
   "year": "Year",
-  "@year": {}
+  "@year": {},
+  "waitTillRedirect": "Please wait for redirect to /init. You are currently not logged in."
 }

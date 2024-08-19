@@ -1,7 +1,9 @@
 import 'package:abs_flutter/features/settings/components/show_restart_info.dart';
 import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/globals.dart';
+import 'package:abs_flutter/provider/settings_provider.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
+import 'package:abs_flutter/util/constants.dart';
 import 'package:abs_flutter/util/helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
@@ -14,7 +16,8 @@ class SettingPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final settings = ref.read(settingsProvider);
+    final settings = ref.watch(specificKeysSettingsProvider(
+        [Constants.CACHING_ENABLED, Constants.LANGUAGE]));
 
     return PlatformScaffold(
         appBar: PlatformAppBar(
@@ -37,7 +40,7 @@ class SettingPage extends ConsumerWidget {
                   DropDownSettingsTile(
                       title: S.of(context).language,
                       settingKey: 'language',
-                      selected: settings['language'],
+                      selected: settings?[Constants.LANGUAGE] ?? 'en',
                       values: supportedLocales),
                   Tooltip(
                     message: S.of(context).showAccountSwitcherDescription,
@@ -206,6 +209,47 @@ class SettingPage extends ConsumerWidget {
                     },
                   ),
                 ),
+              ]),
+              SettingsGroup(title: S.of(context).cachingHeader, children: [
+                SwitchSettingsTile(
+                  settingKey: 'cachingEnabled',
+                  title: S.of(context).caching,
+                  enabledLabel: S.of(context).enabled,
+                  disabledLabel: S.of(context).disabled,
+                  defaultValue: true,
+                  leading: const Icon(Icons.cached_outlined),
+                ),
+                Tooltip(
+                  message: S.of(context).aggressiveCachingDescription,
+                  child: SwitchSettingsTile(
+                    settingKey: 'aggressiveCaching',
+                    title: S.of(context).aggressiveCaching,
+                    enabledLabel: S.of(context).enabled,
+                    disabledLabel: S.of(context).disabled,
+                    defaultValue: true,
+                    leading: const Icon(Icons.rocket_launch_outlined),
+                  ),
+                ),
+                Tooltip(
+                  message: S.of(context).boostLoadingDescription,
+                  child: SwitchSettingsTile(
+                    settingKey: 'boostLoading',
+                    title: S.of(context).boostLoading,
+                    subtitle: S.of(context).boostLoadingSubtitle,
+                    enabledLabel: S.of(context).enabled,
+                    disabledLabel: S.of(context).disabled,
+                    defaultValue: false,
+                    enabled:
+                        (settings?[Constants.CACHING_ENABLED] ?? true) == true,
+                    leading: const Icon(Icons.rocket_outlined),
+                  ),
+                ),
+                SimpleSettingsTile(
+                    title: S.of(context).clearCache,
+                    onTap: () {
+                      Helper.clearCache();
+                    },
+                    leading: Icon(PlatformIcons(context).delete)),
               ]),
               SettingsGroup(title: S.of(context).user, children: [
                 SimpleSettingsTile(
