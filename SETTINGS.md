@@ -39,3 +39,13 @@
 
 ### Sync Interval
 > Sets the interval in seconds to sync the local progress with the server. A recommended setting is 10 seconds to keep progress up to date. If no connection is available or an error occurs, the sync will be saved locally and sent the next time a connection is established.
+
+## Caching
+
+### Caching
+> Enable or disable caching. If enabled, the app will cache items for faster use.
+
+### Agressive Caching
+> When enabled, the app will enable more aggressive caching. This includes caching routes that might contain data needing regular updates, such as fetching the progress of all items. In these cases, the last known position will be used unless you specifically open and request a single item. These routes will have a shorter cache duration.
+### Fast Loading
+> When this feature is enabled, the app effectively bypasses real-time caching. It will always attempt to fetch the latest data from the server while using cached data to load content immediately. Once the updated data is retrieved, it replaces the old cache, ensuring that the most recent data is displayed the next time you load the app. As a result, you will always see the data from one fetch cycle behind the server's current data.

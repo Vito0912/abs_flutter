@@ -99,6 +99,10 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "addANewUser": MessageLookupByLibrary.simpleMessage("Add a New User"),
         "addUser": MessageLookupByLibrary.simpleMessage("Add User"),
+        "aggressiveCaching":
+            MessageLookupByLibrary.simpleMessage("Aggressive Caching"),
+        "aggressiveCachingDescription": MessageLookupByLibrary.simpleMessage(
+            "When enabled, the app will enable more aggressive caching. This includes caching routes that might contain data needing regular updates, such as fetching the progress of all items. In these cases, the last known position will be used unless you specifically open and request a single item. These routes will have a shorter cache duration."),
         "allDownloads": MessageLookupByLibrary.simpleMessage("All Downloads"),
         "ascending": MessageLookupByLibrary.simpleMessage("Ascending"),
         "attribution": MessageLookupByLibrary.simpleMessage("Attribution"),
@@ -106,10 +110,18 @@ class MessageLookup extends MessageLookupByLibrary {
         "authors": MessageLookupByLibrary.simpleMessage("Authors"),
         "back": MessageLookupByLibrary.simpleMessage("Back"),
         "bookCover": MessageLookupByLibrary.simpleMessage("Book Cover"),
+        "boostLoading": MessageLookupByLibrary.simpleMessage("Boost loading"),
+        "boostLoadingDescription": MessageLookupByLibrary.simpleMessage(
+            "When this feature is enabled, the app effectively bypasses real-time caching. It will always attempt to fetch the latest data from the server while using cached data to load content immediately. Once the updated data is retrieved, it replaces the old cache, ensuring that the most recent data is displayed the next time you load the app. As a result, you will always see the data from one fetch cycle behind the server\'s current data."),
+        "boostLoadingSubtitle": MessageLookupByLibrary.simpleMessage(
+            "Please read the description to understand this feature."),
+        "caching": MessageLookupByLibrary.simpleMessage("Caching"),
+        "cachingHeader": MessageLookupByLibrary.simpleMessage("Caching"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "changeLibrary": MessageLookupByLibrary.simpleMessage("Change Library"),
         "chapters": MessageLookupByLibrary.simpleMessage("Chapters"),
         "chaptersNum": m0,
+        "clearCache": MessageLookupByLibrary.simpleMessage("Clear Cache"),
         "close": MessageLookupByLibrary.simpleMessage("Close"),
         "collapseSeries":
             MessageLookupByLibrary.simpleMessage("Collapse Series"),
@@ -333,6 +345,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "usernameOrPasswordNotEmpty": MessageLookupByLibrary.simpleMessage(
             "Username and password cannot be empty"),
         "viewOnGithub": MessageLookupByLibrary.simpleMessage("View on GitHub"),
+        "waitTillRedirect": MessageLookupByLibrary.simpleMessage(
+            "Please wait for redirect to /init. You are currently not logged in."),
         "waitingForDownload": MessageLookupByLibrary.simpleMessage(
             "Waiting for download to start"),
         "year": MessageLookupByLibrary.simpleMessage("Year")
