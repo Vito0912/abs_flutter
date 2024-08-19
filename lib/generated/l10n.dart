@@ -1959,6 +1959,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Debug Logs`
+  String get debugLogs {
+    return Intl.message(
+      'Debug Logs',
+      name: 'debugLogs',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Logs`
+  String get logs {
+    return Intl.message(
+      'Logs',
+      name: 'logs',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Logging`
+  String get logging {
+    return Intl.message(
+      'Logging',
+      name: 'logging',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

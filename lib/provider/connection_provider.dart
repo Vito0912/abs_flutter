@@ -1,11 +1,12 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:developer';
+
 import 'package:abs_api/abs_api.dart';
 import 'package:abs_flutter/globals.dart';
 import 'package:abs_flutter/models/progress_item.dart';
 import 'package:abs_flutter/models/user.dart' as m;
 import 'package:abs_flutter/provider/library_item_provider.dart';
+import 'package:abs_flutter/provider/log_provider.dart';
 import 'package:abs_flutter/provider/progress_timer_provider.dart';
 import 'package:abs_flutter/provider/session_provider.dart';
 import 'package:abs_flutter/provider/user_provider.dart';

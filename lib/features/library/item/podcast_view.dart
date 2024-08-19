@@ -11,8 +11,8 @@ import 'package:abs_flutter/widgets/album_image.dart';
 import 'package:abs_flutter/widgets/error_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class PodcastView extends HookConsumerWidget {
   const PodcastView({super.key, required this.itemId});
@@ -45,12 +45,15 @@ class PodcastView extends HookConsumerWidget {
       ref.read(progressProvider).progress ?? {},
     );
 
+    final _scrollController = ScrollController();
+
     return PlatformScaffold(
       appBar: PlatformAppBar(
         title: PlatformText(item.value!.media!.metadata!.title!),
       ),
       body: SafeArea(
         child: SingleChildScrollView(
+          controller: _scrollController,
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
@@ -78,7 +81,10 @@ class PodcastView extends HookConsumerWidget {
                 SortOptions(
                     filter: filter, sort: sort, isAscending: isAscending),
                 const SizedBox(height: 32),
-                EpisodeList(episodes: filteredEpisodes, itemId: itemId),
+                EpisodeList(
+                    episodes: filteredEpisodes,
+                    itemId: itemId,
+                    scrollController: _scrollController),
               ],
             ),
           ),

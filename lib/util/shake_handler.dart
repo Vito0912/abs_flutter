@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:math';
-import 'dart:developer' as dev;
 
+import 'package:abs_flutter/provider/log_provider.dart' as dev;
 import 'package:sensors_plus/sensors_plus.dart';
 
 typedef ShakeCallback = void Function();

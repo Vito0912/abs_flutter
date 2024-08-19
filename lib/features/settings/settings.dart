@@ -250,6 +250,13 @@ class SettingPage extends ConsumerWidget {
                       Helper.clearCache();
                     },
                     leading: Icon(PlatformIcons(context).delete)),
+                SwitchSettingsTile(
+                    title: S.of(context).logging,
+                    settingKey: 'loggingEnabled',
+                    defaultValue: true,
+                    enabledLabel: S.of(context).enabled,
+                    disabledLabel: S.of(context).disabled,
+                    leading: const Icon(Icons.developer_mode)),
               ]),
               SettingsGroup(title: S.of(context).user, children: [
                 SimpleSettingsTile(

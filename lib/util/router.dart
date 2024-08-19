@@ -4,6 +4,7 @@ import 'package:abs_flutter/features/download/download_library.dart';
 import 'package:abs_flutter/features/download/download_page.dart';
 import 'package:abs_flutter/features/home/home.dart';
 import 'package:abs_flutter/features/library/item/item_view.dart';
+import 'package:abs_flutter/features/logging/log_view.dart';
 import 'package:abs_flutter/features/player/play_history_page.dart';
 import 'package:abs_flutter/features/player/player_page.dart';
 import 'package:abs_flutter/features/player/player_wrapper.dart';
@@ -38,6 +39,10 @@ final router = GoRouter(
           GoRoute(
             path: '/stats',
             builder: (context, state) => const StatsWrapper(),
+          ),
+          GoRoute(
+            path: '/logs',
+            builder: (context, state) => const LogView(),
           ),
           GoRoute(
               path: '/',

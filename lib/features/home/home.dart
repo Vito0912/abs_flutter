@@ -101,6 +101,11 @@ class Home extends HookConsumerWidget {
                     label: S.of(context).addUser,
                     onTap: (PopupMenuOption option) {
                       context.push('/select-server');
+                    }),
+                PopupMenuOption(
+                    label: S.of(context).debugLogs,
+                    onTap: (PopupMenuOption option) {
+                      context.push('/logs');
                     })
               ],
               icon: Icon(PlatformIcons(context).ellipsis),

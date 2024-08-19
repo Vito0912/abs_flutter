@@ -1,16 +1,16 @@
-import 'dart:developer';
-
 import 'package:abs_api/abs_api.dart';
 import 'package:abs_flutter/globals.dart';
+import 'package:abs_flutter/provider/log_provider.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 // Fetch the libraries and provide the response
-final librariesProvider = FutureProvider<Response<GetLibraries200Response>?>((ref) async {
+final librariesProvider =
+    FutureProvider<Response<GetLibraries200Response>?>((ref) async {
   final api = ref.watch(apiProvider);
 
-  if (api == null ) {
+  if (api == null) {
     return null;
   }
 
@@ -18,7 +18,7 @@ final librariesProvider = FutureProvider<Response<GetLibraries200Response>?>((re
     final response = await api.getLibrariesApi().getLibraries();
     return response;
   } catch (e) {
-    if(e is DioException) {
+    if (e is DioException) {
       return null;
     }
     log('$e', name: 'librariesProvider');
@@ -42,7 +42,9 @@ class SelectedLibraryNotifier extends StateNotifier<int> {
 }
 
 // Provider for the selected library index
-final selectedLibraryProvider = StateNotifierProvider<SelectedLibraryNotifier, int>((ref) => SelectedLibraryNotifier());
+final selectedLibraryProvider =
+    StateNotifierProvider<SelectedLibraryNotifier, int>(
+        (ref) => SelectedLibraryNotifier());
 
 // Computed provider to get the current library based on the selected index
 final currentLibraryProvider = Provider<ModelLibrary?>((ref) {
@@ -51,7 +53,9 @@ final currentLibraryProvider = Provider<ModelLibrary?>((ref) {
 
   if (librariesResponse != null && librariesResponse.data != null) {
     final libraries = librariesResponse.data!.libraries;
-    if (libraries != null && selectedLibraryIndex >= 0 && selectedLibraryIndex < libraries.length) {
+    if (libraries != null &&
+        selectedLibraryIndex >= 0 &&
+        selectedLibraryIndex < libraries.length) {
       return libraries[selectedLibraryIndex];
     }
   }
