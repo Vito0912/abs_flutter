@@ -38,7 +38,7 @@ class PlayerMinified extends ConsumerWidget {
 
     return GestureDetector(
       onTap: () {
-        if(Helper.getCurrentRoute(GoRouter.of(context)) != '/player') {
+        if (Helper.getCurrentRoute(GoRouter.of(context)) != '/player') {
           context.push('/player');
         }
       },
@@ -117,7 +117,9 @@ class PlayerMinified extends ConsumerWidget {
                       children: [
                         IconButton(
                             onPressed: () {
-                              if(Helper.getCurrentRoute(GoRouter.of(context)) != '/settings') {
+                              if (Helper.getCurrentRoute(
+                                      GoRouter.of(context)) !=
+                                  '/settings') {
                                 context.push('/settings');
                               }
                             },

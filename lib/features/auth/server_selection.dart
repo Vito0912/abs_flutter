@@ -16,14 +16,17 @@ import 'package:quickalert/quickalert.dart';
 
 final usernameProvider = StateProvider<String>((ref) => '');
 final passwordProvider = StateProvider<String>((ref) => '');
-final loginStateProvider = StateNotifierProvider<LoginStateNotifier, LoginState>((ref) => LoginStateNotifier());
+final loginStateProvider =
+    StateNotifierProvider<LoginStateNotifier, LoginState>(
+        (ref) => LoginStateNotifier());
 
 class LoginState {
   final bool isLoading;
   final bool isSuccess;
   final String errorMessage;
 
-  LoginState({this.isLoading = false, this.isSuccess = false, this.errorMessage = ''});
+  LoginState(
+      {this.isLoading = false, this.isSuccess = false, this.errorMessage = ''});
 }
 
 class LoginStateNotifier extends StateNotifier<LoginState> {
@@ -46,7 +49,8 @@ class ServerSelection extends ConsumerWidget {
   final bool initAttempted;
   const ServerSelection({super.key, this.initAttempted = false});
 
-  void enableCredentialsInput(WidgetRef ref, String enteredProtocol, String enteredDomain, String enteredPort) {
+  void enableCredentialsInput(WidgetRef ref, String enteredProtocol,
+      String enteredDomain, String enteredPort) {
     ref.read(isInputValidProvider.notifier).state = true;
     ref.read(protocolProvider.notifier).state = enteredProtocol;
     ref.read(domainProvider.notifier).state = enteredDomain;
@@ -63,48 +67,61 @@ class ServerSelection extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-
     final isServerInputValid = ref.watch(isInputValidProvider);
     final loginState = ref.watch(loginStateProvider);
 
     return PlatformScaffold(
-      appBar: (initAttempted) ? PlatformAppBar(
-        title: Text(S.of(context).serverSelection),
-        leading: null
-      ) : PlatformAppBar(
-        title: Text(S.of(context).serverSelection),
-      ),
-
-      body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 24),
-        child: Form(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Expanded(
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      SizedBox(height: MediaQuery.of(context).size.height * 0.1),
-                      ServerInputContainer(
-                        onValidInput: (protocol, domain, port) => enableCredentialsInput(ref, protocol, domain, port),
+      appBar: (initAttempted)
+          ? PlatformAppBar(
+              title: Text(S.of(context).serverSelection), leading: null)
+          : PlatformAppBar(
+              title: Text(S.of(context).serverSelection),
+            ),
+      body: Center(
+        child: Container(
+          constraints: const BoxConstraints(maxWidth: 1000),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 24),
+            child: Form(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Expanded(
+                    child: SingleChildScrollView(
+                      child: Column(
+                        children: [
+                          SizedBox(
+                              height: MediaQuery.of(context).size.height * 0.1),
+                          ServerInputContainer(
+                            onValidInput: (protocol, domain, port) =>
+                                enableCredentialsInput(
+                                    ref, protocol, domain, port),
+                          ),
+                          const SizedBox(height: 16),
+                          UsernameInputField(
+                              isServerInputValid: isServerInputValid,
+                              showHint: () => showHint(context)),
+                          const SizedBox(height: 16),
+                          PasswordInputField(
+                              isServerInputValid: isServerInputValid,
+                              showHint: () => showHint(context)),
+                          const SizedBox(height: 16),
+                          if (loginState.isLoading)
+                            PlatformCircularProgressIndicator(),
+                          if (loginState.errorMessage.isNotEmpty)
+                            PlatformText(loginState.errorMessage,
+                                style: const TextStyle(color: Colors.red)),
+                        ],
                       ),
-                      const SizedBox(height: 16),
-                      UsernameInputField(isServerInputValid: isServerInputValid, showHint: () => showHint(context)),
-                      const SizedBox(height: 16),
-                      PasswordInputField(isServerInputValid: isServerInputValid, showHint: () => showHint(context)),
-                      const SizedBox(height: 16),
-                      if (loginState.isLoading) PlatformCircularProgressIndicator(),
-                      if (loginState.errorMessage.isNotEmpty) PlatformText(loginState.errorMessage, style: const TextStyle(color: Colors.red)),
-                    ],
+                    ),
                   ),
-                ),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 8),
+                    child: LoginButton(isServerInputValid: isServerInputValid),
+                  ),
+                ],
               ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 8),
-                child: LoginButton(isServerInputValid: isServerInputValid),
-              ),
-            ],
+            ),
           ),
         ),
       ),
@@ -141,10 +158,12 @@ class UsernameInputField extends ConsumerStatefulWidget {
   final bool isServerInputValid;
   final VoidCallback showHint;
 
-  const UsernameInputField({super.key, required this.isServerInputValid, required this.showHint});
+  const UsernameInputField(
+      {super.key, required this.isServerInputValid, required this.showHint});
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _UsernameInputFieldState();
+  ConsumerState<ConsumerStatefulWidget> createState() =>
+      _UsernameInputFieldState();
 }
 
 class _UsernameInputFieldState extends ConsumerState<UsernameInputField> {
@@ -153,7 +172,8 @@ class _UsernameInputFieldState extends ConsumerState<UsernameInputField> {
   @override
   void initState() {
     super.initState();
-    usernameController = TextEditingController(text: ref.read(usernameProvider));
+    usernameController =
+        TextEditingController(text: ref.read(usernameProvider));
 
     usernameController.addListener(() {
       ref.read(usernameProvider.notifier).state = usernameController.text;
@@ -204,10 +224,12 @@ class PasswordInputField extends ConsumerStatefulWidget {
   final bool isServerInputValid;
   final VoidCallback showHint;
 
-  const PasswordInputField({super.key, required this.isServerInputValid, required this.showHint});
+  const PasswordInputField(
+      {super.key, required this.isServerInputValid, required this.showHint});
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _PasswordInputFieldState();
+  ConsumerState<ConsumerStatefulWidget> createState() =>
+      _PasswordInputFieldState();
 }
 
 class _PasswordInputFieldState extends ConsumerState<PasswordInputField> {
@@ -216,7 +238,8 @@ class _PasswordInputFieldState extends ConsumerState<PasswordInputField> {
   @override
   void initState() {
     super.initState();
-    passwordController = TextEditingController(text: ref.read(passwordProvider));
+    passwordController =
+        TextEditingController(text: ref.read(passwordProvider));
 
     passwordController.addListener(() {
       ref.read(passwordProvider.notifier).state = passwordController.text;
@@ -274,14 +297,20 @@ class LoginButton extends ConsumerWidget {
     return PlatformElevatedButton(
       onPressed: () async {
         if (!isServerInputValid) {
-          QuickAlert.show(context: context, type: QuickAlertType.warning, title: S.of(context).mustEnterValidAddress);
+          QuickAlert.show(
+              context: context,
+              type: QuickAlertType.warning,
+              title: S.of(context).mustEnterValidAddress);
           return;
         }
 
         final username = ref.read(usernameProvider).trim();
         final password = ref.read(passwordProvider).trim();
         if (username.isEmpty || password.isEmpty) {
-          QuickAlert.show(context: context, type: QuickAlertType.warning, title: S.of(context).usernameOrPasswordNotEmpty);
+          QuickAlert.show(
+              context: context,
+              type: QuickAlertType.warning,
+              title: S.of(context).usernameOrPasswordNotEmpty);
           return;
         }
 
@@ -291,18 +320,25 @@ class LoginButton extends ConsumerWidget {
         final domain = ref.read(domainProvider);
         final port = ref.read(portProvider);
 
-        Server server = Server(ssl: protocol == 'https://', host: domain, port: int.parse(port));
+        Server server = Server(
+            ssl: protocol == 'https://', host: domain, port: int.parse(port));
         setBasePathOverride(ref, server.url);
 
-        abs.LoginRequestBuilder loginPostRequestBuilder = abs.LoginRequestBuilder();
+        abs.LoginRequestBuilder loginPostRequestBuilder =
+            abs.LoginRequestBuilder();
         loginPostRequestBuilder.username = username;
         loginPostRequestBuilder.password = password;
 
         try {
-          Response<abs.Login200Response> res = await ref.watch(apiProvider)!.getAuthApi().login(loginRequest: loginPostRequestBuilder.build());
+          Response<abs.Login200Response> res = await ref
+              .watch(apiProvider)!
+              .getAuthApi()
+              .login(loginRequest: loginPostRequestBuilder.build());
 
           if (res.data!.user == null) {
-            ref.read(loginStateProvider.notifier).setError(S.current.noUserData);
+            ref
+                .read(loginStateProvider.notifier)
+                .setError(S.current.noUserData);
             return;
           }
 
@@ -340,22 +376,26 @@ class LoginButton extends ConsumerWidget {
           List<User> updatedUsers = List.from(users);
 
           // Delete the user if it already exists
-          updatedUsers.removeWhere((user) => user.id == apiUser.id && user.server?.url == server.url);
+          updatedUsers.removeWhere((user) =>
+              user.id == apiUser.id && user.server?.url == server.url);
 
           updatedUsers.add(user);
 
           usersNotifier.setUsers(updatedUsers);
 
-          ref.read(selectedUserProvider.notifier).state = updatedUsers.length - 1;
+          ref.read(selectedUserProvider.notifier).state =
+              updatedUsers.length - 1;
 
           ref.read(loginStateProvider.notifier).setSuccess();
 
+          resetBasePathOverride(ref);
 
           // Go to the home screen
-          if(context.mounted) {
+          if (context.mounted) {
             context.go('/');
           } else {
-            ref.read(loginStateProvider.notifier).setError('There was an error while trying to navigate to the home screen');
+            ref.read(loginStateProvider.notifier).setError(
+                'There was an error while trying to navigate to the home screen');
           }
         } catch (e) {
           String errorMessage = 'Login failed';
@@ -363,7 +403,9 @@ class LoginButton extends ConsumerWidget {
             if (e.response?.statusCode == 401) {
               errorMessage = 'Invalid username or password';
             } else {
-              errorMessage = e.response?.data ?? e.message ?? 'Login failed with no error message';
+              errorMessage = e.response?.data ??
+                  e.message ??
+                  'Login failed with no error message';
             }
           } else {
             errorMessage = e.toString();

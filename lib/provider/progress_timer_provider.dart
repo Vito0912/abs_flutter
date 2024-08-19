@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
+
 import 'package:abs_api/abs_api.dart';
 import 'package:abs_flutter/globals.dart';
 import 'package:abs_flutter/models/history.dart';
@@ -10,7 +11,9 @@ import 'package:abs_flutter/provider/history_provider.dart';
 import 'package:abs_flutter/provider/player_provider.dart';
 import 'package:abs_flutter/provider/progress_provider.dart';
 import 'package:abs_flutter/provider/session_provider.dart';
+import 'package:abs_flutter/provider/settings_provider.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
+import 'package:abs_flutter/util/constants.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -61,10 +64,12 @@ class TimerNotifier extends StateNotifier<DateTime?> {
         (player.audioService.player.duration?.inMicroseconds ?? -1) / 1000000;
     bool shouldFinish = false;
     if (duration >= 0) {
-      final settings = ref.read(settingsProvider);
+      final settings = ref.read(
+          specificKeysSettingsProvider([Constants.MARK_ITEMS_FINISHED_AFTER]));
       shouldFinish = (currentTime + 1) >=
           duration -
-              (double.tryParse(settings['markItemsFinishedAfter'].toString()) ??
+              (double.tryParse(settings[Constants.MARK_ITEMS_FINISHED_AFTER]
+                      .toString()) ??
                   0);
       log("Should finish: $shouldFinish", name: 'progress_timer_provider');
     }
@@ -74,14 +79,15 @@ class TimerNotifier extends StateNotifier<DateTime?> {
 
     // Everything under 1 second is considered a fault (like seeking)
     if (listenedSeconds <= 1 ||
-        listenedSeconds > ((settings['syncInterval'] ?? 60) * 2)) return;
+        listenedSeconds > ((settings[Constants.SYNC_INTERVAL] ?? 60) * 2))
+      return;
 
     final PlaybackSessionBookExpanded? bookSession =
         ref.read(sessionProvider.notifier).book;
     final PlaybackSessionPodcastExpanded? podcastSession =
         ref.read(sessionProvider.notifier).podcast;
 
-    final shouldSyncOnline = (settings['syncOnlyViaWifi'] == false ||
+    final shouldSyncOnline = (settings[Constants.SYNC_ONLY_VIA_WIFI] == false ||
         connection.currentConnectivity.contains(ConnectivityResult.wifi) ||
         connection.currentConnectivity.contains(ConnectivityResult.ethernet));
 
@@ -96,7 +102,8 @@ class TimerNotifier extends StateNotifier<DateTime?> {
             ..id = bookSession?.id ?? podcastSession!.id
             ..timeListened = listenedSeconds
             ..currentTime = shouldFinish
-                ? (duration.toDouble() + (settings['syncInterval'] ?? 60))
+                ? (duration.toDouble() +
+                        (settings[Constants.SYNC_INTERVAL] ?? 60))
                     .toDouble()
                 : currentTime;
 
@@ -136,7 +143,8 @@ class TimerNotifier extends StateNotifier<DateTime?> {
             name: 'progress_timer_provider');
         offlineProgressProvider.updateProgress(progressItem.copyWith(
           currentTime: shouldFinish
-              ? (duration.toDouble() + (settings['syncInterval'] ?? 60))
+              ? (duration.toDouble() +
+                      (settings[Constants.SYNC_INTERVAL] ?? 60))
                   .toDouble()
               : currentTime,
           timeListened: listenedSeconds + progressItem.timeListened,
@@ -156,7 +164,8 @@ class TimerNotifier extends StateNotifier<DateTime?> {
           sessionId: bookSession?.id ?? podcastSession?.id,
           episodeId: episodeId,
           currentTime: shouldFinish
-              ? (duration.toDouble() + (settings['syncInterval'] ?? 60))
+              ? (duration.toDouble() +
+                      (settings[Constants.SYNC_INTERVAL] ?? 60))
                   .toDouble()
               : currentTime,
           timeListened: listenedSeconds,

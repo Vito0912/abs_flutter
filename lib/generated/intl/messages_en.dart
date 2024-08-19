@@ -345,6 +345,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "usernameOrPasswordNotEmpty": MessageLookupByLibrary.simpleMessage(
             "Username and password cannot be empty"),
         "viewOnGithub": MessageLookupByLibrary.simpleMessage("View on GitHub"),
+        "waitTillRedirect": MessageLookupByLibrary.simpleMessage(
+            "Please wait for redirect to /init. You are currently not logged in."),
         "waitingForDownload": MessageLookupByLibrary.simpleMessage(
             "Waiting for download to start"),
         "year": MessageLookupByLibrary.simpleMessage("Year")

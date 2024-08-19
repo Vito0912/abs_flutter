@@ -42,7 +42,7 @@ final Map<String, dynamic> defaultSettings = {
   "language": "en",
   "cachingEnabled": true,
   "aggressiveCaching": true,
-  "boostLoading": false
+  "boostLoading": true
 };
 
 final Map<String, String> supportedLocales = {

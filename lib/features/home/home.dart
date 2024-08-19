@@ -7,7 +7,10 @@ import 'package:abs_flutter/features/library/series/series_view.dart';
 import 'package:abs_flutter/features/library/shelf_items.dart';
 import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/globals.dart';
+import 'package:abs_flutter/provider/settings_provider.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
+import 'package:abs_flutter/util/constants.dart';
+import 'package:abs_flutter/widgets/error_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
@@ -21,15 +24,17 @@ class Home extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final user = ref.watch(selectedUserProvider);
-    final users = ref.watch(usersProvider);
+    final settings =
+        ref.watch(specificKeysSettingsProvider([Constants.ACCOUNT_SWITCHER]));
+    final selectedUserIndex = ref.watch(selectedUserProvider);
+    final users = ref.read(usersProvider);
 
-    if (users.isEmpty) {
+    if (users.isEmpty || selectedUserIndex < 0) {
       Future.microtask(() => context.go('/init'));
+      return Scaffold(body: ErrorText(S.of(context).waitTillRedirect));
     }
 
     final currentIndex = useState(1);
-
     return PlatformScaffold(
       appBar: PlatformAppBar(
         title: Row(
@@ -59,9 +64,7 @@ class Home extends HookConsumerWidget {
         ),
         trailingActions: [
           const LibraryChip(),
-          if (users.length > 1 &&
-              users[user].setting != null &&
-              users[user].setting!.settings['showAccountSwitcher'] == true)
+          if ((settings[Constants.ACCOUNT_SWITCHER] ?? false) == true)
             const UserSwitcher(),
           Tooltip(
             message: S.of(context).stats,

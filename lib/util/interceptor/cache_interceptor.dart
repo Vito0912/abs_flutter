@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:abs_flutter/globals.dart';
+import 'package:abs_flutter/provider/user_provider.dart';
 import 'package:dio/dio.dart';
 import 'package:sembast/sembast.dart';
 
@@ -17,6 +18,10 @@ class CacheInterceptor extends Interceptor {
   ];
 
   final StoreRef<String, dynamic> _store = StoreRef.main();
+
+  final ref;
+
+  CacheInterceptor(this.ref);
 
   @override
   void onRequest(
@@ -151,7 +156,8 @@ class CacheInterceptor extends Interceptor {
   }
 
   String _getCacheKey(Uri uri) {
-    return uri.toString();
+    final user = ref.read(currentUserProvider);
+    return '${user?.id}${uri.toString()}';
   }
 }
 

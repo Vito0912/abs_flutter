@@ -23,6 +23,7 @@ import 'package:package_info_plus/package_info_plus.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sembast/sembast_io.dart';
+import 'package:sembast_web/sembast_web.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:window_manager/window_manager.dart';
 
@@ -36,12 +37,17 @@ void main() async {
 
   initializeDateFormatting();
 
-  appDir =
-      '${(await getApplicationDocumentsDirectory()).path.replaceAll('\\', '/')}/abs_flutter';
+  if (!kIsWeb) {
+    appDir =
+        '${(await getApplicationDocumentsDirectory()).path.replaceAll('\\', '/')}/abs_flutter';
 
-  await Directory(appDir).create(recursive: true);
+    await Directory(appDir).create(recursive: true);
 
-  db = await databaseFactoryIo.openDatabase(join(appDir, 'cache.db'));
+    db = await databaseFactoryIo.openDatabase(join(appDir, 'cache.db'));
+  } else {
+    var factory = databaseFactoryWeb;
+    db = await factory.openDatabase('test');
+  }
 
   secureStorage = FlutterSecureStorage(aOptions: getAndroidOptions());
   sp = await SharedPreferences.getInstance();
@@ -90,7 +96,15 @@ void main() async {
   if (users != null) {
     userNotifier.setUsers(users);
   }
-  selectedUserNotifier.state = currentUser;
+  if (currentUser < 0 && users != null && users.length > 0) {
+    selectedUserNotifier.state = 0;
+  } else {
+    selectedUserNotifier.state = currentUser;
+  }
+  if (users == null || users.isEmpty) {
+    selectedUserNotifier.state = -1;
+  }
+
   selectedLibraryNotifier.state = currentLibrary;
 
   log((users?.length ?? 0).toString(), name: 'init @ number of users');

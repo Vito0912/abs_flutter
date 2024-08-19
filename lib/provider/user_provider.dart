@@ -35,7 +35,6 @@ class UserNotifier extends StateNotifier<List<User>> {
   }
 
   void updateUserAtIndex(int index, User user, {bool? notify = false}) {
-    // TODO: Currently everything connected with the user will be refreshed when changing any setting.
     if (index >= 0 && index < state.length) {
       final updatedUsers = [...state];
       updatedUsers[index] = user;
@@ -82,28 +81,12 @@ class CurrentUserNotifier extends StateNotifier<User?> {
   final Ref _ref;
 
   CurrentUserNotifier(this._ref) : super(null) {
-    // Initialize the current user when the class is instantiated
     _initializeCurrentUser();
-
-    // Listen to changes in usersProvider
-    _ref.listen<List<User>>(usersProvider, (previous, next) {
-      _updateCurrentUser();
-    });
-
-    // Listen to changes in selectedUserProvider
-    _ref.listen<int>(selectedUserProvider, (previous, next) {
-      _updateCurrentUser();
-    });
   }
 
   void _initializeCurrentUser() {
-    _updateCurrentUser();
-  }
-
-  void _updateCurrentUser() {
-    final users = _ref.read(usersProvider);
-    final selectedUserIndex = _ref.read(selectedUserProvider);
-
+    final users = _ref.watch(usersProvider);
+    final selectedUserIndex = _ref.watch(selectedUserProvider);
     if (selectedUserIndex >= 0 && selectedUserIndex < users.length) {
       cachingEnabled =
           users[selectedUserIndex].setting?.settings['cachingEnabled'] ?? true;
@@ -146,10 +129,9 @@ class CurrentUserNotifier extends StateNotifier<User?> {
 
   void removeUser(BuildContext context) {
     final allUsers = _ref.read(usersProvider.notifier);
+    if (allUsers == null || allUsers.mounted == false) return;
+
     allUsers.removeUser(state!);
-    _ref.read(selectedUserProvider.notifier).state =
-        (allUsers.state.length - 1) > 0 ? 0 : -1;
-    state = null;
     context.go("/");
   }
 }
@@ -164,13 +146,14 @@ final basePathOverrideProvider = StateProvider<String?>((ref) => null);
 
 // Provider to manage the API client
 final apiProvider = Provider<abs_api.AbsApi?>((ref) {
-  final users = ref.watch(usersProvider);
-  final selectedUserIndex = ref.watch(selectedUserProvider);
+  final users = ref.read(usersProvider);
+  final index = ref.watch(selectedUserProvider);
   final basePathOverride = ref.watch(basePathOverrideProvider);
 
   // If there is an overridden base path, use it
   if (basePathOverride != null) {
-    return abs_api.AbsApi(basePathOverride: basePathOverride);
+    abs_api.AbsApi res = abs_api.AbsApi(basePathOverride: basePathOverride);
+    return res;
   }
 
   List<Interceptor> interceptors = [
@@ -178,17 +161,16 @@ final apiProvider = Provider<abs_api.AbsApi?>((ref) {
     abs_api.BasicAuthInterceptor(),
     BearerAuthInterceptor(),
     abs_api.ApiKeyAuthInterceptor(),
-    CacheInterceptor(),
+    CacheInterceptor(ref),
     ABSInterceptor(ref),
   ];
 
   // Otherwise, use the user's server URL
-  if (selectedUserIndex >= 0 && selectedUserIndex < users.length) {
+  if (index >= 0) {
     abs_api.AbsApi api = abs_api.AbsApi(
-        interceptors: interceptors,
-        basePathOverride: users[selectedUserIndex].server?.url);
+        interceptors: interceptors, basePathOverride: users[index].server?.url);
 
-    final token = users[selectedUserIndex].token;
+    final token = users[index].token;
 
     // Set up Bearer authentication
     if (token != null) {
@@ -201,17 +183,10 @@ final apiProvider = Provider<abs_api.AbsApi?>((ref) {
   return null;
 });
 
-// Function to set the base path override
 void setBasePathOverride(WidgetRef ref, String? newBasePath) {
   ref.read(basePathOverrideProvider.notifier).state = newBasePath;
 }
 
-// Function to reset the base path override
 void resetBasePathOverride(WidgetRef ref) {
   ref.read(basePathOverrideProvider.notifier).state = null;
 }
-
-final settingsProvider = Provider<Map<String, dynamic>>((ref) {
-  final user = ref.watch(currentUserProvider);
-  return user?.setting?.settings ?? defaultSettings;
-});

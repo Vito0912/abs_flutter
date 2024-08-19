@@ -1949,6 +1949,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Please wait for redirect to /init. You are currently not logged in.`
+  String get waitTillRedirect {
+    return Intl.message(
+      'Please wait for redirect to /init. You are currently not logged in.',
+      name: 'waitTillRedirect',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -186,10 +186,6 @@ As for Linux, the app hasn’t been tested on that platform yet.
 
 - If you select the sleep timer to stop at the end of the chapter, it will stop at the actual time. Skipping the chapter will not adjust the timer.
 
-#### Sign-in
-
-- When logging in for the first time, the library may not load. Please restart the app to resolve this issue.
-
 #### Windows seeking
 
 - When seeking big jumps on Windows, the audio sometimes just continues playing without seeking, despite the progressbar moving.

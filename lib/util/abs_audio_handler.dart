@@ -9,12 +9,12 @@ import 'package:abs_flutter/provider/progress_provider.dart';
 import 'package:abs_flutter/provider/progress_timer_provider.dart';
 import 'package:abs_flutter/provider/queue_provider.dart';
 import 'package:abs_flutter/provider/session_provider.dart';
+import 'package:abs_flutter/provider/settings_provider.dart';
 import 'package:abs_flutter/provider/sleep_timer_provider.dart';
-import 'package:abs_flutter/provider/user_provider.dart';
+import 'package:audio_service/audio_service.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:just_audio/just_audio.dart';
-import 'package:audio_service/audio_service.dart';
 
 class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
   final AudioPlayer _player = AudioPlayer();
@@ -117,7 +117,6 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
 
   @override
   Future<void> play() async {
-    print(_isNewSession);
     final currentStatus = _container.read(playStatusProvider.notifier);
     await currentStatus.setPlayStatusQuietly(PlayerStatus.loading, 'play');
     try {
@@ -146,8 +145,7 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
 
   Future<void> _seekOnProgress() async {
     final String? id = mediaItem.value?.extras?['libraryItemId'] as String?;
-    final String? episodeId =
-        mediaItem.value?.extras?['episodeId'] as String?;
+    final String? episodeId = mediaItem.value?.extras?['episodeId'] as String?;
     if (id != null) {
       final progressProv = _container.read(progressProvider);
 
