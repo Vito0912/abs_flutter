@@ -21,6 +21,8 @@ class CacheInterceptor extends Interceptor {
   @override
   void onRequest(
       RequestOptions options, RequestInterceptorHandler handler) async {
+    if (options.extra['noCache'] == true) return handler.next(options);
+
     final matchingRoute = _getMatchingRoute(options);
 
     if (matchingRoute != null) {
@@ -44,13 +46,33 @@ class CacheInterceptor extends Interceptor {
           });
 
           log('Cache hit: ${options.uri.toString()}', name: 'CacheInterceptor');
-          return handler.resolve(Response(
+          handler.resolve(Response(
             requestOptions: options,
             data: cachedData['data'],
             statusCode: cachedData['statusCode'],
             statusMessage: cachedData['statusMessage'],
             headers: Headers.fromMap(headers),
           ));
+
+          if (boostLoading) {
+            final newOptions = Options(
+              method: options.method,
+              headers: options.headers,
+              responseType: options.responseType,
+              extra: options.extra,
+            );
+            newOptions.extra?['noCache'] = true;
+
+            final refreshedOptions = options.copyWith(
+              extra: newOptions.extra,
+            );
+
+            final Dio dio = Dio();
+            dio.interceptors.add(this);
+
+            dio.fetch(refreshedOptions);
+          }
+          return;
         } else {
           log('Cache expired: ${options.uri.toString()}',
               name: 'CacheInterceptor');

@@ -174,12 +174,12 @@ final apiProvider = Provider<abs_api.AbsApi?>((ref) {
   }
 
   List<Interceptor> interceptors = [
-    CacheInterceptor(),
     abs_api.OAuthInterceptor(),
     abs_api.BasicAuthInterceptor(),
     BearerAuthInterceptor(),
     abs_api.ApiKeyAuthInterceptor(),
-    ABSInterceptor(ref)
+    CacheInterceptor(),
+    ABSInterceptor(ref),
   ];
 
   // Otherwise, use the user's server URL
