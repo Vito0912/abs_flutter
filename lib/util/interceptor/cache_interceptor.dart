@@ -6,27 +6,35 @@ import 'package:dio/dio.dart';
 import 'package:sembast/sembast.dart';
 
 class CacheInterceptor extends Interceptor {
-  final Set<String> _domains = <String>{'/api/libraries', '/api/items'};
+  final List<RoutePattern> _cacheableRoutes = [
+    RoutePattern('/api/libraries', const Duration(days: 7)),
+    RoutePattern('/api/libraries/{uuidv4}', const Duration(days: 7)),
+    RoutePattern(
+        '/api/libraries/{uuidv4}/personalized', const Duration(days: 7)),
+    RoutePattern('/api/libraries/{uuidv4}/items', const Duration(days: 7)),
+    RoutePattern('/api/libraries/{uuidv4}/filterdata', const Duration(days: 7)),
+    RoutePattern('/api/me', const Duration(days: 1), aggressiveCache: true),
+  ];
 
   final StoreRef<String, dynamic> _store = StoreRef.main();
-
-  final Duration cacheDuration = const Duration(seconds: 100000);
 
   @override
   void onRequest(
       RequestOptions options, RequestInterceptorHandler handler) async {
-    if (_shouldCache(options)) {
-      final cachedData = await _store.record(options.uri.toString()).get(db);
+    final matchingRoute = _getMatchingRoute(options);
+
+    if (matchingRoute != null) {
+      final String cacheKey = _getCacheKey(options.uri);
+      final cachedData = await _store.record(cacheKey).get(db);
 
       if (cachedData != null) {
         final DateTime cachedTime = DateTime.parse(cachedData['timestamp']);
         final DateTime now = DateTime.now();
 
-        if (now.difference(cachedTime) < cacheDuration) {
-          var decodedHeaders =
+        if (now.difference(cachedTime) < matchingRoute.cacheDuration) {
+          final decodedHeaders =
               jsonDecode(cachedData['headers']) as Map<String, dynamic>;
-
-          var headers =
+          final headers =
               decodedHeaders.map<String, List<String>>((key, dynamic value) {
             if (value is List) {
               return MapEntry(key, value.cast<String>());
@@ -34,6 +42,8 @@ class CacheInterceptor extends Interceptor {
               throw Exception("Expected a List<String> but got something else");
             }
           });
+
+          log('Cache hit: ${options.uri.toString()}', name: 'CacheInterceptor');
           return handler.resolve(Response(
             requestOptions: options,
             data: cachedData['data'],
@@ -53,13 +63,16 @@ class CacheInterceptor extends Interceptor {
 
   @override
   void onResponse(Response response, ResponseInterceptorHandler handler) async {
-    if (_shouldCache(response.requestOptions) &&
+    final matchingRoute = _getMatchingRoute(response.requestOptions);
+
+    if (matchingRoute != null &&
         response.statusCode != null &&
         response.statusCode! >= 200 &&
         response.statusCode! < 300) {
+      final String cacheKey = _getCacheKey(response.requestOptions.uri);
       log('Caching: ${response.requestOptions.uri.toString()}',
           name: 'CacheInterceptor');
-      await _store.record(response.requestOptions.uri.toString()).put(db, {
+      await _store.record(cacheKey).put(db, {
         'data': response.data,
         'statusCode': response.statusCode,
         'statusMessage': response.statusMessage,
@@ -73,12 +86,11 @@ class CacheInterceptor extends Interceptor {
 
   @override
   void onError(DioException err, ErrorInterceptorHandler handler) {
-    // If there is an error, check if the request is cached and return the cached data if found
-    if (_shouldCache(err.requestOptions)) {
-      _store
-          .record(err.requestOptions.uri.toString())
-          .get(db)
-          .then((cachedData) {
+    final matchingRoute = _getMatchingRoute(err.requestOptions);
+
+    if (matchingRoute != null) {
+      final String cacheKey = _getCacheKey(err.requestOptions.uri);
+      _store.record(cacheKey).get(db).then((cachedData) {
         if (cachedData != null) {
           return handler.resolve(Response(
             requestOptions: err.requestOptions,
@@ -103,7 +115,46 @@ class CacheInterceptor extends Interceptor {
     }
   }
 
-  bool _shouldCache(RequestOptions options) {
-    return _domains.any(options.path.contains) && options.method == 'GET';
+  RoutePattern? _getMatchingRoute(RequestOptions options) {
+    for (var routePattern in _cacheableRoutes) {
+      if (routePattern.matches(options.path) && options.method == 'GET') {
+        return routePattern;
+      }
+    }
+    return null;
+  }
+
+  String _getCacheKey(Uri uri) {
+    return uri.toString();
+  }
+}
+
+class RoutePattern {
+  final String pattern;
+  final Duration cacheDuration;
+  final bool aggressiveCache;
+
+  RoutePattern(this.pattern, this.cacheDuration,
+      {this.aggressiveCache = false});
+
+  bool matches(String path) {
+    final patternSegments = pattern.split('/');
+    final pathSegments = path.split('/');
+
+    if (patternSegments.length != pathSegments.length) {
+      return false;
+    }
+
+    for (var i = 0; i < patternSegments.length; i++) {
+      if (patternSegments[i].startsWith('{') &&
+          patternSegments[i].endsWith('}')) {
+        continue;
+      }
+      if (patternSegments[i] != pathSegments[i]) {
+        return false;
+      }
+    }
+
+    return true;
   }
 }

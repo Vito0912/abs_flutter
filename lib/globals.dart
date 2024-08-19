@@ -39,7 +39,10 @@ final Map<String, dynamic> defaultSettings = {
   'syncOnlyViaWifi': false,
   'shakeResetTimer': false,
   "lockSeekingNotification": false,
-  "language": "en"
+  "language": "en",
+  "cachingEnabled": true,
+  "aggressiveCaching": true,
+  "boostLoading": false
 };
 
 final Map<String, String> supportedLocales = {
