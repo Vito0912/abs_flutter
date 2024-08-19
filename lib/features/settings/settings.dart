@@ -225,6 +225,14 @@ class SettingPage extends ConsumerWidget {
                     },
                     leading: Icon(PlatformIcons(context).exitToApp)),
               ]),
+              SettingsGroup(title: 'Caching', children: [
+                SimpleSettingsTile(
+                    title: 'Clear Cache',
+                    onTap: () {
+                      Helper.clearCache();
+                    },
+                    leading: Icon(PlatformIcons(context).delete)),
+              ]),
               ExpandableSettingsTile(
                   title: S.of(context).miscellaneous,
                   children: [

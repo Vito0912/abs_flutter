@@ -11,16 +11,19 @@ import 'package:abs_flutter/provider/user_provider.dart';
 import 'package:abs_flutter/util/abs_audio_handler.dart';
 import 'package:abs_flutter/util/setting_cache_provider.dart';
 import 'package:audio_service/audio_service.dart';
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:flutter_settings_screens/flutter_settings_screens.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:just_audio_media_kit/just_audio_media_kit.dart';
 import 'package:package_info_plus/package_info_plus.dart';
+import 'package:path/path.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:sembast/sembast_io.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:device_info_plus/device_info_plus.dart';
-import 'package:flutter_settings_screens/flutter_settings_screens.dart';
 import 'package:window_manager/window_manager.dart';
 
 void main() async {
@@ -32,6 +35,13 @@ void main() async {
       );
 
   initializeDateFormatting();
+
+  appDir =
+      '${(await getApplicationDocumentsDirectory()).path.replaceAll('\\', '/')}/abs_flutter';
+
+  await Directory(appDir).create(recursive: true);
+
+  db = await databaseFactoryIo.openDatabase(join(appDir, 'cache.db'));
 
   secureStorage = FlutterSecureStorage(aOptions: getAndroidOptions());
   sp = await SharedPreferences.getInstance();
@@ -96,7 +106,7 @@ void main() async {
 }
 
 Future<void> _runPlatformSpecificCode() async {
-  if(kIsWeb) return;
+  if (kIsWeb) return;
   switch (Platform.operatingSystem) {
     case 'android':
       break;
@@ -110,10 +120,9 @@ Future<void> _runPlatformSpecificCode() async {
       await windowManager.ensureInitialized();
 
       WindowOptions windowOptions = const WindowOptions(
-        minimumSize: Size(400, 400),
-        title: appTitle,
-        windowButtonVisibility: true
-      );
+          minimumSize: Size(400, 400),
+          title: appTitle,
+          windowButtonVisibility: true);
       windowManager.waitUntilReadyToShow(windowOptions, () async {
         await windowManager.show();
         await windowManager.focus();
@@ -125,7 +134,7 @@ Future<void> _runPlatformSpecificCode() async {
 }
 
 Future<String> _getDeviceModel() async {
-  if(kIsWeb) return 'Browser';
+  if (kIsWeb) return 'Browser';
   DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
   switch (Platform.operatingSystem) {
     case 'android':
@@ -153,7 +162,7 @@ Future<String> _getDeviceModel() async {
 }
 
 Future<String> _getOSModel() async {
-  if(kIsWeb) return 'Browser';
+  if (kIsWeb) return 'Browser';
   DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
   switch (Platform.operatingSystem) {
     case 'android':

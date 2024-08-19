@@ -962,7 +962,7 @@ packages:
     source: hosted
     version: "1.9.0"
   path_provider:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: path_provider
       sha256: fec0d61223fba3154d87759e3cc27fe2c8dc498f6386c6d6fc80d1afdd1bf378
@@ -1193,6 +1193,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.1.9"
+  sembast:
+    dependency: "direct main"
+    description:
+      name: sembast
+      sha256: a49ce14fb0d81bee9f8941061a38f4b790d19c0ab01abe35a529c1fcef0512a1
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.7.2"
   sensors_plus:
     dependency: "direct main"
     description:

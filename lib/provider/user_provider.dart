@@ -1,15 +1,15 @@
 import 'dart:convert';
-import 'dart:developer';
 
+import 'package:abs_api/abs_api.dart' as abs_api;
+import 'package:abs_api/src/auth/bearer_auth.dart';
 import 'package:abs_flutter/globals.dart';
 import 'package:abs_flutter/models/setting.dart';
 import 'package:abs_flutter/models/user.dart';
-import 'package:abs_flutter/provider/connection_provider.dart';
+import 'package:abs_flutter/util/interceptor/abs_interceptor.dart';
+import 'package:abs_flutter/util/interceptor/cache_interceptor.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:abs_api/abs_api.dart' as abs_api;
-import 'package:abs_api/src/auth/bearer_auth.dart';
 import 'package:go_router/go_router.dart';
 
 // StateNotifier to manage the users list and selected user
@@ -19,7 +19,6 @@ class UserNotifier extends StateNotifier<List<User>> {
   }
 
   _save(List<User> users) {
-
     secureStorage.write(key: 'users', value: jsonEncode(users));
   }
 
@@ -168,34 +167,13 @@ final apiProvider = Provider<abs_api.AbsApi?>((ref) {
   }
 
   List<Interceptor> interceptors = [
+    CacheInterceptor(),
     abs_api.OAuthInterceptor(),
     abs_api.BasicAuthInterceptor(),
     BearerAuthInterceptor(),
     abs_api.ApiKeyAuthInterceptor(),
+    ABSInterceptor(ref)
   ];
-  interceptors.add(InterceptorsWrapper(
-    onError: (DioException error, ErrorInterceptorHandler handler) {
-      if (error.type == DioExceptionType.connectionTimeout ||
-          error.type == DioExceptionType.sendTimeout ||
-          error.type == DioExceptionType.receiveTimeout ||
-          error.type == DioExceptionType.connectionTimeout) {
-        ref.read(connectionProvider.notifier).setServerState(false);
-      }
-      return handler.next(error);
-    },
-    onResponse: (Response response, ResponseInterceptorHandler handler) {
-      if (response.statusCode != null &&
-          response.statusCode! >= 200 &&
-          response.statusCode! < 300) {
-        ref.read(connectionProvider.notifier).setServerState(true);
-      }
-      return handler.next(response);
-    },
-    onRequest: (RequestOptions options, RequestInterceptorHandler handler) {
-      log('Request: ${options.uri.toString()}');
-      return handler.next(options);
-    },
-  ));
 
   // Otherwise, use the user's server URL
   if (selectedUserIndex >= 0 && selectedUserIndex < users.length) {

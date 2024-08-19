@@ -51,6 +51,8 @@ dependencies:
   flutter_widget_from_html_core: ^0.15.1
   flutter_localizations:
     sdk: flutter
+  sembast: ^3.7.2
+  path_provider: ^2.1.4
 
   flutter_hooks: any
   uuid: any
