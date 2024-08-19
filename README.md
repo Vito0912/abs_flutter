@@ -63,7 +63,7 @@ As for Linux, the app hasn’t been tested on that platform yet.
 ### Summary
 
 🔀 **Fast Account Switching** - Switch between multiple Audiobookshelf accounts with different servers in just two clicks.\
-🚀 **Caching** - Caches images for faster loading times.\
+🚀 **Advanced Caching** - Caches items, libraries and more to save a ton of mobile data\
 📄 **Pagination** - Load more items when you reach the end of lists to save data.\
 📈 **Does Not Rely on a Socket** - Use the app even with an occasionally interrupted connection.\
 📅 **Up-to-date Sync** - The app stays synchronized with the server when connected to the internet.\
@@ -74,6 +74,7 @@ As for Linux, the app hasn’t been tested on that platform yet.
 📖 **History** - Track where you paused, skipped, and resumed.\
 📊 **Stats** - View your listening habits over the past 365 days, including total time, frequency, and recent activity.\
    **HTML Support** - Converts HTML in descriptions and makes links clickable.\
+🚀 **Fast Loading** - Option to enable fast loading that loads even the biggest libraries in a fraction of time.\
 ⚙️ **Many Settings** - Customize the app to your liking. Head to [Settings](SETTINGS.md) to learn more.
 
 ### Additional to First-party App
