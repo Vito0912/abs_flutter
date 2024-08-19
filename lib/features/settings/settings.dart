@@ -207,6 +207,46 @@ class SettingPage extends ConsumerWidget {
                   ),
                 ),
               ]),
+              SettingsGroup(title: S.of(context).cachingHeader, children: [
+                SwitchSettingsTile(
+                  settingKey: 'cachingEnabled',
+                  title: S.of(context).caching,
+                  enabledLabel: S.of(context).enabled,
+                  disabledLabel: S.of(context).disabled,
+                  defaultValue: true,
+                  leading: const Icon(Icons.cached_outlined),
+                ),
+                Tooltip(
+                  message: S.of(context).aggressiveCachingDescription,
+                  child: SwitchSettingsTile(
+                    settingKey: 'aggressiveCaching',
+                    title: S.of(context).aggressiveCaching,
+                    enabledLabel: S.of(context).enabled,
+                    disabledLabel: S.of(context).disabled,
+                    defaultValue: true,
+                    leading: const Icon(Icons.rocket_launch_outlined),
+                  ),
+                ),
+                Tooltip(
+                  message: S.of(context).boostLoadingDescription,
+                  child: SwitchSettingsTile(
+                    settingKey: 'boostLoading',
+                    title: S.of(context).boostLoading,
+                    subtitle: S.of(context).boostLoadingSubtitle,
+                    enabledLabel: S.of(context).enabled,
+                    disabledLabel: S.of(context).disabled,
+                    defaultValue: false,
+                    enabled: settings['cachingEnabled'] == true,
+                    leading: const Icon(Icons.rocket_outlined),
+                  ),
+                ),
+                SimpleSettingsTile(
+                    title: S.of(context).clearCache,
+                    onTap: () {
+                      Helper.clearCache();
+                    },
+                    leading: Icon(PlatformIcons(context).delete)),
+              ]),
               SettingsGroup(title: S.of(context).user, children: [
                 SimpleSettingsTile(
                   title: S.of(context).addANewUser,
@@ -224,55 +264,6 @@ class SettingPage extends ConsumerWidget {
                           .removeUser(context);
                     },
                     leading: Icon(PlatformIcons(context).exitToApp)),
-              ]),
-              SettingsGroup(title: S.of(context).cachingHeader, children: [
-                SwitchSettingsTile(
-                  settingKey: 'cachingEnabled',
-                  title: S.of(context).caching,
-                  enabledLabel: S.of(context).enabled,
-                  disabledLabel: S.of(context).disabled,
-                  defaultValue: true,
-                  leading: const Icon(Icons.cached_outlined),
-                  onChange: (value) {
-                    ShowRestartInfo.show(context);
-                  },
-                ),
-                Tooltip(
-                  message: S.of(context).aggressiveCachingDescription,
-                  child: SwitchSettingsTile(
-                    settingKey: 'aggressiveCaching',
-                    title: S.of(context).aggressiveCaching,
-                    enabledLabel: S.of(context).enabled,
-                    disabledLabel: S.of(context).disabled,
-                    defaultValue: true,
-                    leading: const Icon(Icons.rocket_launch_outlined),
-                    onChange: (value) {
-                      ShowRestartInfo.show(context);
-                    },
-                  ),
-                ),
-                Tooltip(
-                  message: S.of(context).boostLoadingDescription,
-                  child: SwitchSettingsTile(
-                    settingKey: 'boostLoading',
-                    title: S.of(context).boostLoading,
-                    subtitle: S.of(context).boostLoadingSubtitle,
-                    enabledLabel: S.of(context).enabled,
-                    disabledLabel: S.of(context).disabled,
-                    defaultValue: false,
-                    enabled: settings['cachingEnabled'] == true,
-                    leading: const Icon(Icons.rocket_outlined),
-                    onChange: (value) {
-                      ShowRestartInfo.show(context);
-                    },
-                  ),
-                ),
-                SimpleSettingsTile(
-                    title: S.of(context).clearCache,
-                    onTap: () {
-                      Helper.clearCache();
-                    },
-                    leading: Icon(PlatformIcons(context).delete)),
               ]),
               ExpandableSettingsTile(
                   title: S.of(context).miscellaneous,

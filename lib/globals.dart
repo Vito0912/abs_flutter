@@ -50,3 +50,7 @@ final Map<String, String> supportedLocales = {
   'de': 'Deutsch',
   'nb': 'Norsk Bokmål'
 };
+
+bool cachingEnabled = true;
+bool aggressiveCaching = true;
+bool boostLoading = false;

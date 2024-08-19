@@ -116,8 +116,12 @@ class CacheInterceptor extends Interceptor {
   }
 
   RoutePattern? _getMatchingRoute(RequestOptions options) {
+    if (!cachingEnabled) return null;
     for (var routePattern in _cacheableRoutes) {
       if (routePattern.matches(options.path) && options.method == 'GET') {
+        if (routePattern.aggressiveCache && !aggressiveCaching) {
+          return null;
+        }
         return routePattern;
       }
     }

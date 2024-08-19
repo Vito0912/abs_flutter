@@ -105,6 +105,13 @@ class CurrentUserNotifier extends StateNotifier<User?> {
     final selectedUserIndex = _ref.read(selectedUserProvider);
 
     if (selectedUserIndex >= 0 && selectedUserIndex < users.length) {
+      cachingEnabled =
+          users[selectedUserIndex].setting?.settings['cachingEnabled'] ?? true;
+      aggressiveCaching =
+          users[selectedUserIndex].setting?.settings['aggressiveCaching'] ??
+              true;
+      boostLoading =
+          users[selectedUserIndex].setting?.settings['boostLoading'] ?? false;
       state = users[selectedUserIndex];
     } else {
       state = null;
