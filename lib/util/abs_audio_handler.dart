@@ -1,9 +1,9 @@
-import 'package:abs_flutter/provider/log_provider.dart';
 import 'dart:io';
 
 import 'package:abs_flutter/models/chapter.dart';
 import 'package:abs_flutter/models/history.dart';
 import 'package:abs_flutter/provider/history_provider.dart';
+import 'package:abs_flutter/provider/log_provider.dart';
 import 'package:abs_flutter/provider/player_status_provider.dart';
 import 'package:abs_flutter/provider/progress_provider.dart';
 import 'package:abs_flutter/provider/progress_timer_provider.dart';
@@ -52,8 +52,6 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
           interval =
               double.parse(_settingsProvider!['syncInterval'].toString());
         }
-
-        log('Sync interval now $interval');
 
         _container
             .read(progressTimerProvider.notifier)
@@ -178,14 +176,13 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
 
   @override
   Future<void> stop() async {
+    _container.read(timerProvider.notifier).stop();
+    _container.read(sessionProvider.notifier).closeOpenSession();
     final currentStatus = _container.read(playStatusProvider.notifier);
     if (currentStatus.playStatus != PlayerStatus.stopped) {
       await currentStatus.setPlayStatusQuietly(PlayerStatus.stopped, 'stop');
     }
     await _player.stop();
-    _container.read(timerProvider.notifier).stop();
-    _container.read(sessionProvider.notifier).closeOpenSession();
-    _container.read(timerProvider.notifier).stop();
 
     await playbackState.firstWhere(
         (state) => state.processingState == AudioProcessingState.idle);

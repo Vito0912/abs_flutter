@@ -5,6 +5,7 @@ import 'package:abs_flutter/features/player/modules/queue_button.dart';
 import 'package:abs_flutter/features/player/modules/seeking_buttons.dart';
 import 'package:abs_flutter/features/player/modules/sleep_timer.dart';
 import 'package:abs_flutter/features/player/modules/speed_control.dart';
+import 'package:abs_flutter/features/player/modules/volume.dart';
 import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/provider/chapter_provider.dart';
 import 'package:abs_flutter/provider/player_provider.dart';
@@ -41,6 +42,12 @@ class PlayerPage extends ConsumerWidget {
     return PlatformScaffold(
       appBar: PlatformAppBar(
         title: Text(S.of(context).player),
+        trailingActions: [
+          PlatformIconButton(
+            icon: Icon(context.platformIcons.car),
+            onPressed: () => context.replace('/car-player'),
+          )
+        ],
       ),
       body: LayoutBuilder(
         builder: (context, constraints) {
@@ -79,19 +86,7 @@ class PlayerPage extends ConsumerWidget {
                                 player.audioService.mediaItem.value?.title ??
                                     '',
                                 style: Theme.of(context).textTheme.titleLarge,
-                              ),
-                              if (currentChapter != null)
-                                PlatformText(
-                                  '  -  ',
-                                  style:
-                                      Theme.of(context).textTheme.titleMedium,
-                                ),
-                              if (currentChapter != null)
-                                PlatformText(
-                                  currentChapter.title,
-                                  style:
-                                      Theme.of(context).textTheme.titleMedium,
-                                ),
+                              )
                             ],
                           ),
                         ),
@@ -152,6 +147,7 @@ class PlayerPage extends ConsumerWidget {
                                 bufferStream: bufferStream,
                                 size: size,
                               ),
+                              const SizedBox(height: 16),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
@@ -172,7 +168,7 @@ class PlayerPage extends ConsumerWidget {
                                       chapters: player.audioService.mediaItem
                                           .value!.extras!['chapters'],
                                       child: Icon(
-                                          PlatformIcons(context).book,
+                                        PlatformIcons(context).book,
                                         size: size,
                                       ),
                                     ),
@@ -200,21 +196,14 @@ class PlayerPage extends ConsumerWidget {
                                   )
                                 ],
                               ),
-                              StreamBuilder(
-                                stream: volumeStream,
-                                builder: (BuildContext context,
-                                    AsyncSnapshot<double> snapshot) {
-                                  return Slider(
-                                    value: snapshot.data ?? 0.0,
-                                    onChanged: (double value) {
-                                      player.audioService.setVolume(value);
-                                    },
-                                  );
-                                },
-                              ),
                             ],
                           ),
                         ),
+                        Volume(
+                          volumeStream: volumeStream,
+                          player: player,
+                          size: size,
+                        )
                       ],
                     ),
                   ),

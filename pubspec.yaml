@@ -3,7 +3,7 @@ description: "An ABS app"
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: 1.4.6
+version: 1.4.7
 
 environment:
   sdk: '>=3.4.3 <4.0.0'
@@ -34,7 +34,8 @@ dependencies:
   just_audio: ^0.9.39
   audio_service: ^0.18.15
   package_info_plus: ^8.0.1
-  just_audio_windows: ^0.2.1
+  just_audio_windows: # ^0.2.1 Waiting for update
+    path: ./modules/just_audio_windows
   audio_service_mpris: ^0.1.5
   just_audio_media_kit: 2.0.3
   flutter_settings_screens: ^0.3.4

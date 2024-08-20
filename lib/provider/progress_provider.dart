@@ -1,9 +1,9 @@
 import 'dart:async';
-import 'package:abs_flutter/provider/log_provider.dart';
 
 import 'package:abs_api/abs_api.dart';
 import 'package:abs_flutter/models/progress_item.dart';
 import 'package:abs_flutter/provider/connection_provider.dart';
+import 'package:abs_flutter/provider/log_provider.dart';
 import 'package:abs_flutter/provider/progress_timer_provider.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
 import 'package:flutter/foundation.dart';

@@ -37,6 +37,7 @@ A big thank you to [Weblate](https://weblate.org) for providing their services!
 | Up-to-date Sync                       |    ✅    |       ✅        |    ✅    |   ✅   |       ✅        |
 | Advanced Player Controls*<sup>1</sup> |    ✅    |       ✅        |    ✅    |   ✅   |       ✅        |
 | Car Support*<sup>2</sup>              |   🟨    |       🟨       |    ❌    |   ❌   |       ❌        |
+| Car Mode (Big Buttons for Car)        |    ✅    |       ✅        |    ✅    |   ✅   |       ✅        |
 | No Extra Setup Needed                 |    ✅    | ❌*<sup>6</sup> |    ✅    |   ✅   | ❌*<sup>3</sup> |
 | Media Notifications                   |    ✅    |       ✅        |    ❌    |   ✅   |       ❌        |
 | Caching*<sup>4</sup>                  |    ✅    |       ✅        |    ✅    |   ✅   |       ✅        |
@@ -75,6 +76,7 @@ As for Linux, the app hasn’t been tested on that platform yet.
 📊 **Stats** - View your listening habits over the past 365 days, including total time, frequency, and recent activity.\
    **HTML Support** - Converts HTML in descriptions and makes links clickable.\
 🚀 **Fast Loading** - Option to enable fast loading that loads even the biggest libraries in a fraction of time.\
+🚗 **Car Player Mode (Big Buttons)** - Big buttons for easy control while driving.\
 ⚙️ **Many Settings** - Customize the app to your liking. Head to [Settings](SETTINGS.md) to learn more.
 
 ### Additional to First-party App
@@ -85,7 +87,9 @@ As for Linux, the app hasn’t been tested on that platform yet.
 🚀 **Fast Account Switching**\
 📅 **Up-to-date Sync**\
 🔁 **Queue Support**\
-**HTML Support**
+**HTML Support**\
+🚀 **Advanced Caching**\
+🚗 **Car Player Mode (Big Buttons)**
 
 ### Missing from First-party App
 
@@ -185,11 +189,6 @@ As for Linux, the app hasn’t been tested on that platform yet.
 #### Sleep Timer
 
 - If you select the sleep timer to stop at the end of the chapter, it will stop at the actual time. Skipping the chapter will not adjust the timer.
-
-#### Windows seeking
-
-- When seeking big jumps on Windows, the audio sometimes just continues playing without seeking, despite the progressbar moving.
-    - See [Issue](https://github.com/bdlukaa/just_audio_windows/issues/19). On next release of just_audio_windows this should be fixed.
 
 ### Limitations
 #### Filters and search

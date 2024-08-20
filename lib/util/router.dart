@@ -5,6 +5,7 @@ import 'package:abs_flutter/features/download/download_page.dart';
 import 'package:abs_flutter/features/home/home.dart';
 import 'package:abs_flutter/features/library/item/item_view.dart';
 import 'package:abs_flutter/features/logging/log_view.dart';
+import 'package:abs_flutter/features/player/car_player_page.dart';
 import 'package:abs_flutter/features/player/play_history_page.dart';
 import 'package:abs_flutter/features/player/player_page.dart';
 import 'package:abs_flutter/features/player/player_wrapper.dart';
@@ -20,6 +21,11 @@ final router = GoRouter(
         path: '/player',
         builder: (context, state) {
           return const PlayerPage();
+        }),
+    GoRoute(
+        path: '/car-player',
+        builder: (context, state) {
+          return const CarPlayerPage();
         }),
     ShellRoute(
         builder: (context, state, child) {

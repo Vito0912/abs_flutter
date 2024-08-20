@@ -297,8 +297,9 @@ class PlaybackSessionNotifier
         _book = null;
         _podcast = null;
         returnValue = true;
-        if (stop)
+        if (stop) {
           playerStatus.setPlayStatus(PlayerStatus.stopped, "Close session");
+        }
         return true;
       } catch (e) {
         log(e.toString());

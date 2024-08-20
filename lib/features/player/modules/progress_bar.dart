@@ -11,6 +11,8 @@ class ProgressBar extends StatelessWidget {
   final bool showPerChapter;
   final Chapter? currentChapter;
   final double size;
+  final bool disabled;
+  final bool hideChapter;
 
   const ProgressBar(
       {super.key,
@@ -20,103 +22,120 @@ class ProgressBar extends StatelessWidget {
       required this.showPerChapter,
       required this.currentChapter,
       required this.bufferStream,
-      this.size = 32});
+      this.size = 32,
+      this.disabled = false,
+      this.hideChapter = false});
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return Column(
       children: [
-        StreamBuilder(
-            stream: positionStream,
-            builder: (BuildContext context, AsyncSnapshot<Duration?> position) {
-              if (position.hasData) {
-                return SizedBox(
-                    height: size / 1.5,
-                    child: FittedBox(
-                        fit: BoxFit.fitWidth,
-                        alignment: Alignment.center,
-                        child: PlatformText(_formattedTime(position.data!))));
-              } else {
-                return const SizedBox.shrink();
-              }
-            }),
-        Expanded(
-          child: StreamBuilder(
-              stream: durationStream,
-              builder:
-                  (BuildContext context, AsyncSnapshot<Duration?> duration) {
-                return StreamBuilder(
-                    stream: positionStream,
-                    builder: (BuildContext context,
-                        AsyncSnapshot<Duration?> position) {
-                      if (duration.hasData && position.hasData) {
-                        double min = _getMinValue(currentChapter);
-                        double max =
-                            _getMaxValue(currentChapter, duration.data!);
-                        double currentValue = _maxBoundaries(
-                            position.data!.inMilliseconds.toDouble(),
-                            min,
-                            max);
-                        return SliderTheme(
-                          data: SliderTheme.of(context).copyWith(
-                            thumbShape: RoundSliderThumbShape(
-                                enabledThumbRadius: (size / 5)),
-                            overlayShape: RoundSliderOverlayShape(
-                                overlayRadius: (size / 2)),
-                            trackHeight: size /
-                                6, // Ensure track height matches the buffered indicator
-                          ),
-                          child: Slider(
-                            value: currentValue,
-                            min: min,
-                            max: max,
-                            onChanged: (double value) {
-                              player.audioService.seek(
-                                  Duration(milliseconds: value.toInt()));
-                            },
-                          ),
-                        );
-                      } else {
-                        return const SizedBox.shrink();
-                      }
-                    });
-              }),
-        ),
         StreamBuilder(
             stream: durationStream,
             builder: (BuildContext context, AsyncSnapshot<Duration?> duration) {
-              if (duration.hasData) {
-                return (showPerChapter && currentChapter != null)
-                    ? StreamBuilder<Duration>(
-                        stream: positionStream,
-                        builder: (BuildContext context,
-                            AsyncSnapshot<Duration?> position) {
-                          if (!position.hasData) {
-                            return const SizedBox.shrink();
-                          }
-                          return SizedBox(
-                            height: size / 1.5,
-                            child: FittedBox(
-                              fit: BoxFit.fitWidth,
-                              alignment: Alignment.center,
-                              child: PlatformText(_formattedTime(Duration(
-                                  seconds: (currentChapter!.end -
-                                          position.data!.inSeconds)
-                                      .toInt()))),
-                            ),
-                          );
-                        })
-                    : SizedBox(
-                    height: size / 1.5,
+              return StreamBuilder(
+                  stream: positionStream,
+                  builder: (BuildContext context,
+                      AsyncSnapshot<Duration?> position) {
+                    if (duration.hasData && position.hasData) {
+                      double min = _getMinValue(currentChapter);
+                      double max = _getMaxValue(currentChapter, duration.data!);
+                      double currentValue = _maxBoundaries(
+                          position.data!.inMilliseconds.toDouble(), min, max);
+                      return SliderTheme(
+                        data: SliderTheme.of(context).copyWith(
+                          thumbShape: RoundSliderThumbShape(
+                              enabledThumbRadius: (size / 5)),
+                          overlayShape: RoundSliderOverlayShape(
+                              overlayRadius: (size / 2)),
+                          trackHeight: size / 6,
+                          trackShape: ProgressBarTrack(),
+                        ),
+                        child: Slider(
+                          value: currentValue,
+                          min: min,
+                          max: max,
+                          onChanged: disabled
+                              ? null
+                              : (double value) {
+                                  player.audioService.seek(
+                                      Duration(milliseconds: value.toInt()));
+                                },
+                        ),
+                      );
+                    } else {
+                      return const SizedBox.shrink();
+                    }
+                  });
+            }),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            StreamBuilder(
+                stream: positionStream,
+                builder:
+                    (BuildContext context, AsyncSnapshot<Duration?> position) {
+                  if (position.hasData) {
+                    return SizedBox(
+                        height: size / 1.5,
                         child: FittedBox(
                             fit: BoxFit.fitWidth,
                             alignment: Alignment.center,
                             child:
-                                PlatformText(_formattedTime(duration.data!))));
-              } else {
-                return const SizedBox.shrink();
-              }
-            }),
+                                PlatformText(_formattedTime(position.data!))));
+                  } else {
+                    return const SizedBox.shrink();
+                  }
+                }),
+            if (currentChapter != null && !hideChapter)
+              Expanded(
+                  child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 32),
+                child: Center(
+                  child: PlatformText(
+                    currentChapter!.title,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+              )),
+            StreamBuilder(
+                stream: durationStream,
+                builder:
+                    (BuildContext context, AsyncSnapshot<Duration?> duration) {
+                  if (duration.hasData) {
+                    return (showPerChapter && currentChapter != null)
+                        ? StreamBuilder<Duration>(
+                            stream: positionStream,
+                            builder: (BuildContext context,
+                                AsyncSnapshot<Duration?> position) {
+                              if (!position.hasData) {
+                                return const SizedBox.shrink();
+                              }
+                              return SizedBox(
+                                height: size / 1.5,
+                                child: FittedBox(
+                                  fit: BoxFit.fitWidth,
+                                  alignment: Alignment.center,
+                                  child: PlatformText(_formattedTime(Duration(
+                                      seconds: (currentChapter!.end -
+                                              position.data!.inSeconds)
+                                          .toInt()))),
+                                ),
+                              );
+                            })
+                        : SizedBox(
+                            height: size / 1.5,
+                            child: FittedBox(
+                                fit: BoxFit.fitWidth,
+                                alignment: Alignment.center,
+                                child: PlatformText(
+                                    _formattedTime(duration.data!))));
+                  } else {
+                    return const SizedBox.shrink();
+                  }
+                }),
+          ],
+        ),
       ],
     );
   }
@@ -159,5 +178,22 @@ class ProgressBar extends StatelessWidget {
       return max;
     }
     return current;
+  }
+}
+
+class ProgressBarTrack extends RoundedRectSliderTrackShape {
+  @override
+  Rect getPreferredRect({
+    required RenderBox parentBox,
+    Offset offset = Offset.zero,
+    required SliderThemeData sliderTheme,
+    bool isEnabled = false,
+    bool isDiscrete = false,
+  }) {
+    final trackHeight = sliderTheme.trackHeight;
+    final trackLeft = offset.dx;
+    final trackTop = offset.dy + (parentBox.size.height - trackHeight!) / 2;
+    final trackWidth = parentBox.size.width;
+    return Rect.fromLTWH(trackLeft, trackTop, trackWidth, trackHeight);
   }
 }
