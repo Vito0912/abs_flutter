@@ -53,8 +53,6 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
               double.parse(_settingsProvider!['syncInterval'].toString());
         }
 
-        log('Sync interval now $interval');
-
         _container
             .read(progressTimerProvider.notifier)
             .startSending(Duration(seconds: interval.toInt()));
