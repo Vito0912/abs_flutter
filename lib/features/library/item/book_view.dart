@@ -32,13 +32,15 @@ class BookView extends ConsumerWidget {
 
     return item.when(
       data: (item) {
-        final progressNotifier = ref.read(progressProvider.notifier);
-        progressNotifier.getProgressWithLibraryItem(itemId);
         return item == null
             ? const ErrorText('Error: Item not found')
             : _buildContent(context, ref, item, currentUser!);
       },
-      loading: () => Center(child: PlatformCircularProgressIndicator()),
+      loading: () {
+        final progressNotifier = ref.read(progressProvider.notifier);
+        progressNotifier.getProgressWithLibraryItem(itemId);
+        return Center(child: PlatformCircularProgressIndicator());
+      },
       error: (error, _) => ErrorText('Error: $error'),
     );
   }
