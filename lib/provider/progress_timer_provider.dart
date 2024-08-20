@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:convert';
-import 'package:abs_flutter/provider/log_provider.dart';
 
 import 'package:abs_api/abs_api.dart';
 import 'package:abs_flutter/globals.dart';
@@ -8,6 +7,7 @@ import 'package:abs_flutter/models/history.dart';
 import 'package:abs_flutter/models/progress_item.dart';
 import 'package:abs_flutter/provider/connection_provider.dart';
 import 'package:abs_flutter/provider/history_provider.dart';
+import 'package:abs_flutter/provider/log_provider.dart';
 import 'package:abs_flutter/provider/player_provider.dart';
 import 'package:abs_flutter/provider/progress_provider.dart';
 import 'package:abs_flutter/provider/session_provider.dart';

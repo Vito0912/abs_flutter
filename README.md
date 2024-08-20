@@ -186,11 +186,6 @@ As for Linux, the app hasn’t been tested on that platform yet.
 
 - If you select the sleep timer to stop at the end of the chapter, it will stop at the actual time. Skipping the chapter will not adjust the timer.
 
-#### Windows seeking
-
-- When seeking big jumps on Windows, the audio sometimes just continues playing without seeking, despite the progressbar moving.
-    - See [Issue](https://github.com/bdlukaa/just_audio_windows/issues/19). On next release of just_audio_windows this should be fixed.
-
 ### Limitations
 #### Filters and search
 - The search cannot be combined with filters or sorting. This is a limitation of the Audiobookshelf API.
