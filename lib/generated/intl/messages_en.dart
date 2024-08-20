@@ -118,6 +118,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "caching": MessageLookupByLibrary.simpleMessage("Caching"),
         "cachingHeader": MessageLookupByLibrary.simpleMessage("Caching"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+        "carPlayer": MessageLookupByLibrary.simpleMessage("Car Player"),
         "changeLibrary": MessageLookupByLibrary.simpleMessage("Change Library"),
         "chapters": MessageLookupByLibrary.simpleMessage("Chapters"),
         "chaptersNum": m0,

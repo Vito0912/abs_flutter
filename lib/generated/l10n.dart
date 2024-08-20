@@ -220,6 +220,16 @@ class S {
     );
   }
 
+  /// `Car Player`
+  String get carPlayer {
+    return Intl.message(
+      'Car Player',
+      name: 'carPlayer',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Change Library`
   String get changeLibrary {
     return Intl.message(
@@ -565,6 +575,16 @@ class S {
     return Intl.message(
       'Days listened',
       name: 'daysListened',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Debug Logs`
+  String get debugLogs {
+    return Intl.message(
+      'Debug Logs',
+      name: 'debugLogs',
       desc: '',
       args: [],
     );
@@ -1055,6 +1075,26 @@ class S {
     return Intl.message(
       'When enabled, this feature locks the progress bar in the media notification, if supported by the operating system',
       name: 'lockProgressBarDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Logging`
+  String get logging {
+    return Intl.message(
+      'Logging',
+      name: 'logging',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Logs`
+  String get logs {
+    return Intl.message(
+      'Logs',
+      name: 'logs',
       desc: '',
       args: [],
     );
@@ -1930,6 +1970,16 @@ class S {
     );
   }
 
+  /// `Please wait for redirect to /init. You are currently not logged in.`
+  String get waitTillRedirect {
+    return Intl.message(
+      'Please wait for redirect to /init. You are currently not logged in.',
+      name: 'waitTillRedirect',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Waiting for download to start`
   String get waitingForDownload {
     return Intl.message(
@@ -1945,46 +1995,6 @@ class S {
     return Intl.message(
       'Year',
       name: 'year',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Please wait for redirect to /init. You are currently not logged in.`
-  String get waitTillRedirect {
-    return Intl.message(
-      'Please wait for redirect to /init. You are currently not logged in.',
-      name: 'waitTillRedirect',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Debug Logs`
-  String get debugLogs {
-    return Intl.message(
-      'Debug Logs',
-      name: 'debugLogs',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Logs`
-  String get logs {
-    return Intl.message(
-      'Logs',
-      name: 'logs',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Logging`
-  String get logging {
-    return Intl.message(
-      'Logging',
-      name: 'logging',
       desc: '',
       args: [],
     );
