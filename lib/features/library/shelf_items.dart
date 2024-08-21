@@ -6,7 +6,6 @@ import 'package:abs_flutter/features/library/items/library_item_widget.dart';
 import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/models/library_preview_item.dart';
 import 'package:abs_flutter/models/library_series_preview.dart';
-import 'package:abs_flutter/provider/progress_provider.dart';
 import 'package:abs_flutter/provider/shelf_provider.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:collection/collection.dart';
@@ -25,9 +24,6 @@ class ShelfItems extends ConsumerWidget {
     if (shelf.value == null) {
       return _buildShimmerLoading(context);
     }
-
-    final progressProv = ref.read(progressProvider);
-    progressProv.getAllProgress();
 
     final sections = {
       'continue-listening': S.of(context).continueListening,

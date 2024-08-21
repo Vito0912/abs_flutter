@@ -1220,6 +1220,16 @@ class S {
     );
   }
 
+  /// `No series selected`
+  String get noSeriesSelected {
+    return Intl.message(
+      'No series selected',
+      name: 'noSeriesSelected',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Login failed: No user data received`
   String get noUserData {
     return Intl.message(
@@ -1585,6 +1595,16 @@ class S {
     return Intl.message(
       'Search',
       name: 'search',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Search disabled`
+  String get searchDisabled {
+    return Intl.message(
+      'Search disabled',
+      name: 'searchDisabled',
       desc: '',
       args: [],
     );

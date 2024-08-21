@@ -1,7 +1,7 @@
 import 'dart:convert';
-import 'package:abs_flutter/provider/log_provider.dart';
 
 import 'package:abs_flutter/globals.dart';
+import 'package:abs_flutter/provider/log_provider.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
 import 'package:dio/dio.dart';
 import 'package:sembast/sembast.dart';
@@ -14,6 +14,7 @@ class CacheInterceptor extends Interceptor {
         '/api/libraries/{uuidv4}/personalized', const Duration(days: 7)),
     RoutePattern('/api/libraries/{uuidv4}/items', const Duration(days: 7)),
     RoutePattern('/api/libraries/{uuidv4}/filterdata', const Duration(days: 7)),
+    RoutePattern('/api/libraries/{uuidv4}/series', const Duration(days: 7)),
     RoutePattern('/api/me', const Duration(days: 1), aggressiveCache: true),
   ];
 

@@ -1,10 +1,9 @@
-import 'package:abs_flutter/provider/log_provider.dart';
-
 import 'package:abs_api/abs_api.dart';
 import 'package:abs_flutter/models/library_preview.dart';
 import 'package:abs_flutter/models/library_preview_item.dart';
 import 'package:abs_flutter/models/library_sort.dart';
 import 'package:abs_flutter/provider/library_provider.dart';
+import 'package:abs_flutter/provider/log_provider.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
 import 'package:abs_flutter/util/helper.dart';
 import 'package:dio/dio.dart';
@@ -42,7 +41,7 @@ class LibrariesNotifier extends StateNotifier<LibraryPreview?> {
   }
 
   int _calculateLoadLimit() {
-    double dividedValue = screenSize / (150 * 400);
+    double dividedValue = screenSize / (150 * 300);
     int ceilValue = dividedValue.ceil();
     int remainder = ceilValue % 5;
     if (remainder == 0) {

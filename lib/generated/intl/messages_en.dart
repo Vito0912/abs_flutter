@@ -247,6 +247,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "noInternetDescription": MessageLookupByLibrary.simpleMessage(
             "We are having trouble connecting to the server."),
         "noItemsFound": MessageLookupByLibrary.simpleMessage("No items found"),
+        "noSeriesSelected":
+            MessageLookupByLibrary.simpleMessage("No series selected"),
         "noUserData": MessageLookupByLibrary.simpleMessage(
             "Login failed: No user data received"),
         "notFinished": MessageLookupByLibrary.simpleMessage("Not Finished"),
@@ -298,6 +300,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "rewindSecondsDescription": MessageLookupByLibrary.simpleMessage(
             "Set the number of seconds to skip backward when the rewind button is pressed."),
         "search": MessageLookupByLibrary.simpleMessage("Search"),
+        "searchDisabled":
+            MessageLookupByLibrary.simpleMessage("Search disabled"),
         "seek": MessageLookupByLibrary.simpleMessage("Seek"),
         "sequence": MessageLookupByLibrary.simpleMessage("Sequence"),
         "series": MessageLookupByLibrary.simpleMessage("Series"),

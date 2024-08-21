@@ -9,7 +9,10 @@ import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class NotchContent extends ConsumerStatefulWidget {
-  const NotchContent({super.key});
+  final bool disableFilter;
+  final bool disableSearch;
+  const NotchContent(
+      {super.key, this.disableFilter = false, this.disableSearch = false});
 
   @override
   _NotchContentState createState() => _NotchContentState();
@@ -45,37 +48,66 @@ class _NotchContentState extends ConsumerState<NotchContent> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Expanded(
-          child: SearchBar(
-            hintText: S.of(context).search,
-            controller: searchController,
-            trailing: [
-              SortButton(),
-              const FilterButton(),
-              if (librarySort.search == null ||
-                  librarySort.search!.isNotEmpty)
-                PlatformIconButton(
-                  icon: Icon(PlatformIcons(context).clear),
-                  onPressed: () {
-                    searchController.clear();
-                    librarySortNotifier.state =
-                        librarySortNotifier.state.copyWith(
+          child: Container(
+            decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.surfaceContainer,
+              borderRadius: const BorderRadius.all(Radius.circular(24.0)),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: TextField(
+                      controller: searchController,
+                      enabled: !widget.disableSearch,
+                      keyboardType: TextInputType.text,
+                      decoration: InputDecoration(
+                        prefixIcon: Icon(PlatformIcons(context).search),
+                        border: InputBorder.none,
+                        contentPadding: const EdgeInsets.only(top: 12),
+                        hintText: !widget.disableSearch
+                            ? S.of(context).search
+                            : S.of(context).searchDisabled,
+                        hintStyle: !widget.disableSearch
+                            ? Theme.of(context).textTheme.bodyLarge
+                            : Theme.of(context).textTheme.bodyLarge?.copyWith(
+                                  color: Theme.of(context).colorScheme.error,
+                                ),
+                        disabledBorder: InputBorder.none,
+                      ),
+                      autofocus: false,
+                      onChanged: widget.disableSearch
+                          ? null // Disable onChanged if disableSearch is true
+                          : (value) {
+                              if (_debounce?.isActive ?? false)
+                                _debounce?.cancel();
+                              _debounce = Timer(_debouceDuration, () async {
+                                librarySortNotifier.state =
+                                    librarySortNotifier.state.copyWith(
+                                  search: value,
+                                );
+                              });
+                            },
+                    ),
+                  ),
+                  SortButton(),
+                  if (!widget.disableFilter) const FilterButton(),
+                  if (librarySort.search == null ||
+                      librarySort.search!.isNotEmpty)
+                    PlatformIconButton(
+                      icon: Icon(PlatformIcons(context).clear),
+                      onPressed: () {
+                        searchController.clear();
+                        librarySortNotifier.state =
+                            librarySortNotifier.state.copyWith(
                           search: "",
                         );
-                  },
-                )
-            ],
-            keyboardType: TextInputType.text,
-            leading: Icon(PlatformIcons(context).search),
-            autoFocus: false,
-            onChanged: (value) {
-              if (_debounce?.isActive ?? false) _debounce?.cancel();
-              _debounce = Timer(_debouceDuration, () async {
-                librarySortNotifier.state =
-                    librarySortNotifier.state.copyWith(
-                      search: value,
-                    );
-              });
-            },
+                      },
+                    ),
+                ],
+              ),
+            ),
           ),
         ),
       ],
