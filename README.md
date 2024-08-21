@@ -1,4 +1,4 @@
-# Audiobookshelf Flutter App
+# Audiobookshelfly
 <a href="https://hosted.weblate.org/engage/audiobookshelf-flutter-client/">
 <img src="https://hosted.weblate.org/widget/audiobookshelf-flutter-client/app/svg-badge.svg" alt="Translation status" />
 </a>
