@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/provider/log_provider.dart';
+import 'package:abs_flutter/provider/progress_provider.dart';
 import 'package:abs_flutter/provider/session_provider.dart';
 import 'package:abs_flutter/provider/settings_provider.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
@@ -58,6 +59,10 @@ class _AbsAppState extends ConsumerState<AbsApp> with WidgetsBindingObserver {
     final settings = ref.watch(specificKeysSettingsProvider(
         [Constants.DARK_MODE, Constants.LANGUAGE]));
     final userIndex = ref.watch(selectedUserProvider);
+    if (userIndex >= 0) {
+      final progressProv = ref.read(progressProvider);
+      progressProv.getAllProgress();
+    }
 
     return PlatformApp.router(
       localizationsDelegates: const <LocalizationsDelegate<dynamic>>[

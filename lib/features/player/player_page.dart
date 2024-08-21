@@ -17,6 +17,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:icons_plus/icons_plus.dart';
 
 import 'modules/progress_bar.dart';
 
@@ -167,8 +168,8 @@ class PlayerPage extends ConsumerWidget {
                                     Chapters(
                                       chapters: player.audioService.mediaItem
                                           .value!.extras!['chapters'],
-                                      child: Icon(
-                                        PlatformIcons(context).book,
+                                      child: const Icon(
+                                        EvaIcons.book_open_outline,
                                         size: size,
                                       ),
                                     ),
@@ -176,7 +177,9 @@ class PlayerPage extends ConsumerWidget {
                                   if (libraryItemId != null)
                                     PlatformIconButton(
                                       icon: const Icon(
-                                          size: size, Icons.note_alt_outlined),
+                                        size: size,
+                                        AntDesign.history_outline,
+                                      ),
                                       onPressed: () {
                                         context.push('/history/$libraryItemId');
                                       },

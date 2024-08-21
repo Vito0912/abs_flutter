@@ -77,7 +77,7 @@ class LibraryItemWidget extends StatelessWidget {
                                   color: Theme.of(context)
                                       .colorScheme
                                       .surfaceContainer
-                                      .withOpacity(0.5),
+                                      .withOpacity(0.9),
                                   borderRadius: const BorderRadius.only(
                                     bottomLeft: Radius.circular(8.0),
                                   ),

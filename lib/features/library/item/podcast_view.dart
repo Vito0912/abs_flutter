@@ -38,8 +38,6 @@ class PodcastView extends HookConsumerWidget {
         filterEpisodes(episodes.value, filter.value, ref);
     filteredEpisodes =
         sortEpisodes(filteredEpisodes, sort.value, isAscending.value);
-    final progress = ref.read(progressProvider.notifier).getAllProgress();
-
     final nextEpisode = findLastProgressEpisode(
       filteredEpisodes,
       ref.read(progressProvider).progress ?? {},

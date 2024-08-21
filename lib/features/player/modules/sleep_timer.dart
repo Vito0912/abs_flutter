@@ -1,4 +1,3 @@
-
 import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/models/chapter.dart';
 import 'package:abs_flutter/provider/player_provider.dart';
@@ -6,6 +5,7 @@ import 'package:abs_flutter/provider/sleep_timer_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:icons_plus/icons_plus.dart';
 
 class SleepTimer extends ConsumerWidget {
   final PlayerProvider player;
@@ -51,7 +51,7 @@ class SleepTimer extends ConsumerWidget {
                     ? PlatformText(S
                         .of(context)
                         .timerText((timer / 60).toStringAsFixed(0)))
-                    : Icon(size: size, Icons.timer_outlined);
+                    : Icon(size: size, MingCute.bed_2_line);
               },
             ),
           ),

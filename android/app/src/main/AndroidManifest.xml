@@ -9,7 +9,8 @@
     <application
         android:label="Audiobookshelfly"
         android:name="${applicationName}"
-        android:icon="@mipmap/launcher_icon"
+        android:icon="@mipmap/ic_launcher"
+		android:roundIcon="@mipmap/ic_launcher_rounded"
         android:usesCleartextTraffic="true">
         <activity
             android:name="com.ryanheise.audioservice.AudioServiceActivity"

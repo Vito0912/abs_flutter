@@ -77,7 +77,6 @@ void main() async {
           'Needed to control audio from lock screen',
       androidNotificationChannelName: 'ABSPlayback',
       preloadArtwork: true,
-      androidNotificationIcon: 'mipmap/launcher_icon',
       androidNotificationOngoing: false,
     ),
   );

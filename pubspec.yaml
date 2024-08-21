@@ -3,7 +3,7 @@ description: "An ABS app"
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: 1.4.7
+version: 1.4.8
 
 environment:
   sdk: '>=3.4.3 <4.0.0'
@@ -55,6 +55,7 @@ dependencies:
   sembast: ^3.7.2
   path_provider: ^2.1.4
   sembast_web: ^2.4.0+2
+  icons_plus: ^5.0.0
 
   flutter_hooks: any
   uuid: any
@@ -75,7 +76,7 @@ dev_dependencies:
   riverpod_lint: ^2.3.12
   analyzer: ^6.5.0
   msix: ^3.16.7
-  flutter_launcher_icons: ^0.13.1
+  icons_launcher: ^2.1.7
 
 dependency_overrides:
   meta: ^1.14.0
@@ -105,23 +106,31 @@ msix_config:
   capabilities: internetClient
   languages: en-us
   install_certificate: false
+  logo_path: assets/images/logo/logo_blue_big_abs.png
 
-flutter_launcher_icons:
-  android: "launcher_icon"
-  ios: true
+icons_launcher:
   image_path: "assets/images/logo/logo_blue_big_abs.png"
-  min_sdk_android: 21
-  remove_alpha_ios: true
-  adaptive_icon_background: "#2a5bb8"
-  adaptive_icon_foreground: "assets/images/logo/logo_abs.png"
-  web:
-    generate: true
-    image_path: "assets/images/logo/logo_big_black_abs.png"
-    background_color: "#2a5bb8"
-  windows:
-    generate: true
-    image_path: "assets/images/logo/logo_blue_big_abs.png"
-    icon_size: 256
-  macos:
-    generate: true
-    image_path: "assets/images/logo/logo_blue_big_abs.png"
+  platforms:
+    android:
+      enable: true
+      image_path: "assets/images/logo/logo_blue_big_abs.png"
+      adaptive_background_color: "#2a5bb8"
+      adaptive_foreground_image: "assets/images/logo/logo_abs.png"
+      adaptive_round_image: "assets/images/logo/logo_abs.png"
+      adaptive_monochrome_image: "assets/images/logo/logo_black_abs.png"
+    ios:
+      enable: true
+      image_path: "assets/images/logo/logo_blue_big_abs.png"
+    web:
+      enable: true
+      image_path: "assets/images/logo/logo_big_black_abs.png"
+      favicon_path: "assets/images/logo/logo_big_black_abs.png"
+    macos:
+      enable: true
+      image_path: "assets/images/logo/logo_blue_big_abs.png"
+    windows:
+      enable: true
+      image_path: "assets/images/logo/logo_blue_big_abs.png"
+    linux:
+      enable: true
+      image_path: "assets/images/logo/logo_blue_big_abs.png"

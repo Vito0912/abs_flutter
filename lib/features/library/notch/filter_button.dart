@@ -45,7 +45,12 @@ class FilterButton extends HookConsumerWidget {
                       maxWidth: max(
                           MediaQuery.of(context).size.width * 0.5 - 100, 50)),
                   child: PlatformText(
-                      overflow: TextOverflow.ellipsis, filterString.value!)),
+                    overflow: TextOverflow.ellipsis,
+                    filterString.value!,
+                    style: Theme.of(context).textTheme.labelMedium?.copyWith(
+                          fontWeight: FontWeight.w400,
+                        ),
+                  )),
             _buildFilterButton(icon,
                 data: data?.data,
                 context: context,

@@ -2,7 +2,6 @@ import 'package:abs_flutter/features/library/items/library_item_widget.dart';
 import 'package:abs_flutter/models/library_preview.dart';
 import 'package:abs_flutter/provider/connection_provider.dart';
 import 'package:abs_flutter/provider/library_items_provider.dart';
-import 'package:abs_flutter/provider/progress_provider.dart';
 import 'package:abs_flutter/widgets/no_connection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -49,9 +48,11 @@ class _LibraryItemsState extends ConsumerState<LibraryItems> {
             .loadMoreData(libraryItems.page + 1);
       }
 
-      setState(() {
-        _isLoadingMore = false;
-      });
+      if (mounted) {
+        setState(() {
+          _isLoadingMore = false;
+        });
+      }
     }
   }
 
@@ -77,10 +78,6 @@ class _LibraryItemsState extends ConsumerState<LibraryItems> {
     if (libraryItems == null) {
       return _buildLoading();
     } else {
-      if (libraryItems.page <= 0) {
-        final progressProv = ref.read(progressProvider);
-        progressProv.getAllProgress();
-      }
       _hasMore = libraryItems.total != libraryItems.items.length;
       return _buildItems(libraryItems);
     }
