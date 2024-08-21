@@ -138,7 +138,7 @@ class Home extends HookConsumerWidget {
             label: S.of(context).personalizedLibrary,
           ),
           BottomNavigationBarItem(
-            icon: const Icon(Icons.home_outlined),
+            icon: const Icon(Icons.my_library_books_outlined),
             label: S.of(context).series,
           ),
         ],
