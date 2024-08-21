@@ -1,7 +1,10 @@
 import 'package:abs_flutter/features/stats/own_stats.dart';
 import 'package:abs_flutter/generated/l10n.dart';
+import 'package:abs_flutter/provider/stats_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:icons_plus/icons_plus.dart';
 
 class StatsWrapper extends StatelessWidget {
   const StatsWrapper({super.key});
@@ -15,8 +18,20 @@ class StatsWrapper extends StatelessWidget {
       ),
       appBarBuilder: (_, index) {
         return PlatformAppBar(
-          title: Text(S.of(context).stats),
-        );
+            title: Text(S.of(context).stats),
+            trailingActions: [
+              Padding(
+                padding: const EdgeInsets.only(right: 8.0),
+                child: Consumer(builder: (context, ref, child) {
+                  return PlatformIconButton(
+                    icon: const Icon(EvaIcons.refresh_outline),
+                    onPressed: () {
+                      ref.read(ownStatsProvider.notifier).refreshStats();
+                    },
+                  );
+                }),
+              )
+            ]);
       },
       bodyBuilder: (_, index) {
         if (index == 0) return const OwnStats();
