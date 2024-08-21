@@ -10,6 +10,7 @@ import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_settings_screens/flutter_settings_screens.dart';
 import 'package:go_router/go_router.dart';
+import 'package:icons_plus/icons_plus.dart';
 
 class SettingPage extends ConsumerWidget {
   const SettingPage({super.key});
@@ -40,8 +41,9 @@ class SettingPage extends ConsumerWidget {
                   DropDownSettingsTile(
                       title: S.of(context).language,
                       settingKey: 'language',
-                      selected: settings?[Constants.LANGUAGE] ?? 'en',
-                      values: supportedLocales),
+                      selected: settings[Constants.LANGUAGE] ?? 'en',
+                      values: supportedLocales,
+                      leading: const Icon(Clarity.language_line)),
                   Tooltip(
                     message: S.of(context).showAccountSwitcherDescription,
                     margin: const EdgeInsets.all(8),
@@ -53,7 +55,7 @@ class SettingPage extends ConsumerWidget {
                       enabledLabel: S.of(context).enabled,
                       disabledLabel: S.of(context).disabled,
                       defaultValue: true,
-                      leading: Icon(PlatformIcons(context).refresh),
+                      leading: Icon(Clarity.switch_line),
                     ),
                   ),
                   Tooltip(
@@ -63,7 +65,7 @@ class SettingPage extends ConsumerWidget {
                     child: SliderSettingsTile(
                       settingKey: 'markItemsFinishedAfter',
                       title: S.of(context).markItemsFinished,
-                      leading: Icon(PlatformIcons(context).time),
+                      leading: Icon(Clarity.clock_line),
                       min: 0,
                       max: 180,
                       step: 15,
@@ -81,7 +83,10 @@ class SettingPage extends ConsumerWidget {
                       enabledLabel: S.of(context).enabled,
                       disabledLabel: S.of(context).disabled,
                       defaultValue: false,
-                      leading: const Icon(Icons.folder_copy_outlined),
+                      leading: const Icon(
+                        OctIcons.sidebar_collapse,
+                        size: 18,
+                      ),
                     ),
                   ),
                   SwitchSettingsTile(
@@ -90,7 +95,7 @@ class SettingPage extends ConsumerWidget {
                     enabledLabel: S.of(context).enabled,
                     disabledLabel: S.of(context).disabled,
                     defaultValue: false,
-                    leading: Icon(PlatformIcons(context).wifi),
+                    leading: Icon(Clarity.wifi_line),
                   ),
                   SwitchSettingsTile(
                     settingKey: 'syncOnlyViaWifi',
@@ -98,7 +103,7 @@ class SettingPage extends ConsumerWidget {
                     enabledLabel: S.of(context).enabled,
                     disabledLabel: S.of(context).disabled,
                     defaultValue: false,
-                    leading: Icon(PlatformIcons(context).wifi),
+                    leading: Icon(Clarity.sync_line),
                   )
                 ],
               ),
@@ -112,7 +117,7 @@ class SettingPage extends ConsumerWidget {
                     enabledLabel: S.of(context).enabled,
                     disabledLabel: S.of(context).disabled,
                     defaultValue: true,
-                    leading: Icon(PlatformIcons(context).clockSolid),
+                    leading: Icon(Iconsax.stop_outline),
                   ),
                 ),
                 Tooltip(
@@ -136,7 +141,7 @@ class SettingPage extends ConsumerWidget {
                     enabledLabel: S.of(context).enabled,
                     disabledLabel: S.of(context).disabled,
                     defaultValue: false,
-                    leading: Icon(PlatformIcons(context).time),
+                    leading: Icon(FontAwesome.bars_progress_solid),
                   ),
                 ),
                 SwitchSettingsTile(
@@ -145,7 +150,7 @@ class SettingPage extends ConsumerWidget {
                   enabledLabel: S.of(context).enabled,
                   disabledLabel: S.of(context).disabled,
                   defaultValue: false,
-                  leading: Icon(PlatformIcons(context).time),
+                  leading: Icon(AntDesign.shake_outline),
                 ),
                 Tooltip(
                   message: S.of(context).lockProgressBarDescription,
@@ -156,7 +161,7 @@ class SettingPage extends ConsumerWidget {
                     enabledLabel: S.of(context).enabled,
                     disabledLabel: S.of(context).disabled,
                     defaultValue: false,
-                    leading: const Icon(Icons.horizontal_rule_rounded),
+                    leading: const Icon(OctIcons.lock),
                     onChange: (value) {
                       ShowRestartInfo.show(context);
                     },

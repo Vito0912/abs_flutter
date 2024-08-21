@@ -55,6 +55,7 @@ dependencies:
   sembast: ^3.7.2
   path_provider: ^2.1.4
   sembast_web: ^2.4.0+2
+  icons_plus: ^5.0.0
 
   flutter_hooks: any
   uuid: any
@@ -105,6 +106,7 @@ msix_config:
   capabilities: internetClient
   languages: en-us
   install_certificate: false
+  logo_path: assets/images/logo/logo_blue_big_abs.png
 
 icons_launcher:
   image_path: "assets/images/logo/logo_blue_big_abs.png"
