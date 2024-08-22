@@ -75,9 +75,6 @@ class TimerNotifier extends StateNotifier<DateTime?> {
     }
 
     log('Current time: $currentTime', name: 'progress_timer_provider');
-    log('Current time (MediaItem): ${player.audioService}',
-        name: 'progress_timer_provider');
-    log('Duration: $duration', name: 'progress_timer_provider');
 
     final listenedSeconds = listenedDuration.inMicroseconds / 1000000.0;
     final settings = ref.read(settingsProvider);
