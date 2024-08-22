@@ -53,7 +53,7 @@ class TimerNotifier extends StateNotifier<DateTime?> {
     });
   }
 
-  void _sendDataToServer(Duration listenedDuration) {
+  Future<void> _sendDataToServer(Duration listenedDuration) async {
     final AbsApi? api = ref.read(apiProvider);
     final connection = ref.read(connectionProvider.notifier);
     final player = ref.read(playerProvider.notifier);
@@ -113,7 +113,7 @@ class TimerNotifier extends StateNotifier<DateTime?> {
                 : currentTime;
 
       try {
-        api
+        await api
             .getSessionApi()
             .syncOpenSession(
               id: bookSession?.id ?? podcastSession!.id!,
@@ -210,7 +210,7 @@ class TimerNotifier extends StateNotifier<DateTime?> {
     }
   }
 
-  void stopSending() {
+  Future<void> stopSending() async {
     if (_timer != null && _timer!.isActive) {
       _timer?.cancel();
 
@@ -219,7 +219,7 @@ class TimerNotifier extends StateNotifier<DateTime?> {
         final elapsed = now.difference(_lastSentTimestamp!);
 
         // Send the last elapsed time
-        _sendDataToServer(elapsed);
+        await _sendDataToServer(elapsed);
 
         // Clean up
         _lastSentTimestamp = null;

@@ -176,12 +176,15 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
 
   @override
   Future<void> stop() async {
-    _container.read(timerProvider.notifier).stop();
-    _container.read(sessionProvider.notifier).closeOpenSession();
     final currentStatus = _container.read(playStatusProvider.notifier);
     if (currentStatus.playStatus != PlayerStatus.stopped) {
       await currentStatus.setPlayStatusQuietly(PlayerStatus.stopped, 'stop');
     }
+
+    _container.read(timerProvider.notifier).stop();
+    await _container.read(sessionProvider.notifier).closeOpenSession();
+    await _container.read(progressTimerProvider.notifier).stopSending();
+
     await _player.stop();
 
     await playbackState.firstWhere(
