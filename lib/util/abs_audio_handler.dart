@@ -84,7 +84,6 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
           queue.removeAt(0);
         }
       }
-      print(event.inSeconds);
     });
   }
 
