@@ -114,6 +114,7 @@ class _SingleSeriesViewState extends ConsumerState<SingleSeriesView> {
                   ),
                   LayoutBuilder(builder: (context, constraints) {
                     return AlignedGridView.count(
+                      physics: const NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
                       crossAxisCount: constraints.maxWidth ~/ 180,
                       mainAxisSpacing: 12,
