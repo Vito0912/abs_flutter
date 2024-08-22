@@ -3,7 +3,7 @@ description: "An ABS app"
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: 1.4.8
+version: 1.5.0
 
 environment:
   sdk: '>=3.4.3 <4.0.0'
@@ -102,11 +102,12 @@ msix_config:
   display_name: Audiobookshelfly
   publisher_display_name: Vito0912
   identity_name: vito0912.audiobookshelf.flutter
-  msix_version: 1.1.0.0
+  msix_version: 1.5.0.0
   capabilities: internetClient
   languages: en-us
   install_certificate: false
-  logo_path: assets/images/logo/logo_blue_big_abs.png
+  logo_path: assets\images\logo\logo_big_black_abs.png
+  publisher: CN=Vito0912
 
 icons_launcher:
   image_path: "assets/images/logo/logo_blue_big_abs.png"

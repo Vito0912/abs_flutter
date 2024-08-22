@@ -3,7 +3,7 @@
 <img src="https://hosted.weblate.org/widget/audiobookshelf-flutter-client/app/svg-badge.svg" alt="Translation status" />
 </a>
 
-For Android, iOS*<sup>1</sup>, Windows, Linux, and Web*<sup>2</sup>
+For Android, iOS*<sup>1,2</sup>, macOS*<sup>1,2</sup>, Windows, Linux, and Web*<sup>3</sup>
 
 ## Important
 > If you're interested in trying out the Android version of this app, please reach out to me via [email](mailto:cedar-onyx-feast@duck.com). I'll add you to the beta testing group on the Google Play Store. It is currently private. Your participation is crucial, as I need testers to be able to create a public beta.
@@ -15,7 +15,8 @@ The app is written in Dart and utilizes the Flutter framework.\
 While the current version may not include all the features of the first-party app, it is a work in progress with ongoing development.
 
 *<sup>1</sup> iOS functionality requires additional work. Since I do not own a Mac, I cannot fully test it. However, I have only used libraries compatible with iOS.\
-*<sup>2</sup> The Audiobookshelf server must be accessible via SSL, so you need a domain with a valid SSL certificate.
+*<sup>2</sup> The Audiobookshelf server must be accessible via SSL, so you need a domain with a valid SSL certificate.\
+*<sup>3</sup> The web version requires the server to allow CORS.
 
 ## Translation
 For more details and to contribute, please refer to [TRANSLATION.md](TRANSLATION.md).  
