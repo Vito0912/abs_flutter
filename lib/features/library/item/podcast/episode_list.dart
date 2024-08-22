@@ -1,6 +1,7 @@
 import 'package:abs_api/abs_api.dart';
 import 'package:abs_flutter/features/library/item/podcast/episode_action.dart';
 import 'package:abs_flutter/features/library/item/podcast/episode_header.dart';
+import 'package:abs_flutter/provider/log_provider.dart';
 import 'package:abs_flutter/provider/progress_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -25,7 +26,7 @@ class EpisodeList extends StatefulWidget {
 
 class _EpisodeListState extends State<EpisodeList> {
   List<PodcastEpisode> _displayedEpisodes = [];
-  int _currentPage = 1;
+  int _currentPage = 0;
   bool _isLoadingMore = false;
 
   @override
@@ -38,8 +39,9 @@ class _EpisodeListState extends State<EpisodeList> {
   }
 
   void _loadMoreEpisodes() {
+    log('Loading more episodes', name: 'episode_list');
     setState(() {
-      final startIndex = (_currentPage - 1) * widget.itemsPerPage;
+      final startIndex = (_currentPage) * widget.itemsPerPage;
       final endIndex = startIndex + widget.itemsPerPage;
       final max =
           endIndex > widget.episodes.length ? widget.episodes.length : endIndex;
@@ -51,8 +53,8 @@ class _EpisodeListState extends State<EpisodeList> {
   }
 
   void _onScroll() {
-    if (widget.scrollController.position.pixels >=
-            widget.scrollController.position.maxScrollExtent - 200 &&
+    if (widget.scrollController.position.pixels + 200 >=
+            widget.scrollController.position.maxScrollExtent &&
         !_isLoadingMore) {
       if (_currentPage * widget.itemsPerPage >= widget.episodes.length) {
         return;
@@ -70,16 +72,16 @@ class _EpisodeListState extends State<EpisodeList> {
 
   @override
   Widget build(BuildContext context) {
-    print('EpisodeList rebuilt');
     return ListView.builder(
       shrinkWrap: true,
       itemCount:
           _displayedEpisodes.length + 1, // Add one for the loading indicator
+      physics: const NeverScrollableScrollPhysics(),
       itemBuilder: (context, index) {
         if (index == _displayedEpisodes.length) {
           return _isLoadingMore
-              ? Center(child: CircularProgressIndicator())
-              : SizedBox.shrink();
+              ? const Center(child: CircularProgressIndicator())
+              : const SizedBox.shrink();
         }
         return EpisodeItem(
           episode: _displayedEpisodes[index],

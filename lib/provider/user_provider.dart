@@ -168,7 +168,15 @@ final apiProvider = Provider<abs_api.AbsApi?>((ref) {
   // Otherwise, use the user's server URL
   if (index >= 0) {
     abs_api.AbsApi api = abs_api.AbsApi(
-        interceptors: interceptors, basePathOverride: users[index].server?.url);
+        dio: Dio(
+          BaseOptions(
+            connectTimeout: const Duration(seconds: 3),
+            receiveTimeout: const Duration(seconds: 20),
+            baseUrl: users[index].server?.url ?? r'http://localhost:3000',
+          ),
+        ),
+        interceptors: interceptors,
+        basePathOverride: users[index].server?.url);
 
     final token = users[index].token;
 
