@@ -1,3 +1,4 @@
+import 'package:abs_flutter/features/library/item_components/top_label.dart';
 import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/models/library_preview_item.dart';
 import 'package:abs_flutter/provider/progress_provider.dart';
@@ -71,21 +72,7 @@ class LibraryItemWidget extends StatelessWidget {
                       children: [
                         item?.seriesLabel == null
                             ? const SizedBox.shrink()
-                            : Container(
-                                padding: const EdgeInsets.all(4.0),
-                                decoration: BoxDecoration(
-                                  color: Theme.of(context)
-                                      .colorScheme
-                                      .surfaceContainer
-                                      .withOpacity(0.9),
-                                  borderRadius: const BorderRadius.only(
-                                    bottomLeft: Radius.circular(8.0),
-                                  ),
-                                ),
-                                child: PlatformText(
-                                  item!.seriesLabel!,
-                                ),
-                              ),
+                            : TopLabel(item!.seriesLabel!),
                         LinearProgressIndicator(
                           value: progressValue.toDouble(),
                           semanticsValue: progressValue.toStringAsFixed(2),
