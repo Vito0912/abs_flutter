@@ -1,4 +1,4 @@
-import 'package:abs_flutter/features/library/items/item_series.dart';
+import 'package:abs_flutter/features/library/item_components/item_series.dart';
 import 'package:abs_flutter/models/library_preview_item.dart';
 import 'package:abs_flutter/models/library_series_preview.dart';
 import 'package:abs_flutter/provider/series_provider.dart';

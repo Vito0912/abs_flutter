@@ -2,6 +2,7 @@ import 'dart:math';
 import 'dart:ui';
 
 import 'package:abs_api/abs_api.dart';
+import 'package:abs_flutter/features/library/item_components/top_label.dart';
 import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/models/library_series_preview.dart';
 import 'package:abs_flutter/provider/library_items_provider.dart';
@@ -47,6 +48,12 @@ class ItemSeries extends ConsumerWidget {
                     child: Stack(
                       children: [
                         ..._buildItems(width),
+                        Align(
+                          alignment: Alignment.topRight,
+                          child: TopLabel(S
+                              .of(context)
+                              .numBooksInSeries(series.books.length)),
+                        ),
                         Consumer(
                           builder: (BuildContext context, WidgetRef ref,
                               Widget? child) {
@@ -87,12 +94,6 @@ class ItemSeries extends ConsumerWidget {
                 PlatformText(
                   series.name,
                   style: Theme.of(context).textTheme.labelLarge,
-                ),
-                PlatformText(
-                  S
-                      .of(context)
-                      .numBooksInSeries(series.books.length.toString()),
-                  style: Theme.of(context).textTheme.bodySmall,
                 )
               ],
             ),

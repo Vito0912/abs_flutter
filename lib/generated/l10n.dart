@@ -1280,10 +1280,13 @@ class S {
     );
   }
 
-  /// `Books: {numBooks}`
-  String numBooksInSeries(String numBooks) {
-    return Intl.message(
-      'Books: $numBooks',
+  /// `{numBooks, plural, =0 {No Books} =1 {1 Book} other {{numBooks} Books}}`
+  String numBooksInSeries(num numBooks) {
+    return Intl.plural(
+      numBooks,
+      zero: 'No Books',
+      one: '1 Book',
+      other: '$numBooks Books',
       name: 'numBooksInSeries',
       desc: '',
       args: [numBooks],

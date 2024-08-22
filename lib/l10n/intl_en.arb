@@ -472,11 +472,11 @@
   "@notTriedYet": {},
   "notificationHeading": "Notifications should be enabled",
   "@notificationHeading": {},
-  "numBooksInSeries": "Books: {numBooks}",
+  "numBooksInSeries": "{numBooks, plural, =0 {No Books} =1 {1 Book} other {{numBooks} Books}}",
   "@numBooksInSeries": {
     "placeholders": {
       "numBooks": {
-        "type": "String"
+        "type": "num"
       }
     }
   },
