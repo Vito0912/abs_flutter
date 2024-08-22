@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'dart:ui';
 
 import 'package:abs_api/abs_api.dart';
 import 'package:abs_flutter/generated/l10n.dart';
@@ -103,14 +104,53 @@ class ItemSeries extends ConsumerWidget {
 
   List<Widget> _buildItems(double width) {
     List<Widget> items = [];
-    for (var i = 0; i < min(series.books.length, 6); i++) {
+
+    int booksCount = series.books.length;
+    int maxBooksToShow = min(booksCount, 6);
+
+    if (booksCount == 1) {
       items.add(
-        Padding(
-            padding: EdgeInsets.only(
-                left: ((width) / (min(series.books.length, 6) - 1)) * i),
-            child: AlbumImage(series.books[i].id, size: width)),
+        Center(
+          child: AlbumImage(series.books[0].id, size: width),
+        ),
       );
+
+      for (int j = 0; j < 2; j++) {
+        items.add(
+          Positioned.fill(
+            child: Padding(
+              padding: EdgeInsets.only(left: width * j),
+              child: Stack(
+                children: [
+                  SizedBox(
+                    width: width,
+                    height: width,
+                    child: AlbumImage(series.books[0].id, size: width),
+                  ),
+                  BackdropFilter(
+                    filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+                    child: Container(
+                      color: Colors.black.withOpacity(0),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        );
+      }
+    } else {
+      for (int i = 0; i < maxBooksToShow; i++) {
+        double paddingLeft = (width / (maxBooksToShow - 1)) * i;
+        items.add(
+          Padding(
+            padding: EdgeInsets.only(left: paddingLeft),
+            child: AlbumImage(series.books[i].id, size: width),
+          ),
+        );
+      }
     }
+
     return items.reversed.toList();
   }
 }
