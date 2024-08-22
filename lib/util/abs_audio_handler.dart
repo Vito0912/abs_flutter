@@ -84,6 +84,7 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
           queue.removeAt(0);
         }
       }
+      print(event.inSeconds);
     });
   }
 
@@ -170,7 +171,9 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
     if (currentStatus.playStatus != PlayerStatus.paused) {
       await currentStatus.setPlayStatusQuietly(PlayerStatus.paused, 'pause');
     }
-    await _player.pause();
+    _player.pause();
+    await _container.read(progressTimerProvider.notifier).stopSending();
+    if (_player.playerState.playing) await player.pause();
     _container.read(timerProvider.notifier).pause();
   }
 
@@ -181,6 +184,7 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
       await currentStatus.setPlayStatusQuietly(PlayerStatus.stopped, 'stop');
     }
 
+    _player.pause();
     _container.read(timerProvider.notifier).stop();
     await _container.read(sessionProvider.notifier).closeOpenSession();
     await _container.read(progressTimerProvider.notifier).stopSending();
