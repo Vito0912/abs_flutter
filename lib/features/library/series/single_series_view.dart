@@ -1,5 +1,5 @@
-import 'package:abs_flutter/features/library/items/item_series.dart';
-import 'package:abs_flutter/features/library/items/library_item_widget.dart';
+import 'package:abs_flutter/features/library/item_components/item_series.dart';
+import 'package:abs_flutter/features/library/item_components/library_item_widget.dart';
 import 'package:abs_flutter/features/library/notch/notch_content.dart';
 import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/models/library_series_preview.dart';
@@ -114,6 +114,7 @@ class _SingleSeriesViewState extends ConsumerState<SingleSeriesView> {
                   ),
                   LayoutBuilder(builder: (context, constraints) {
                     return AlignedGridView.count(
+                      physics: const NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
                       crossAxisCount: constraints.maxWidth ~/ 180,
                       mainAxisSpacing: 12,
