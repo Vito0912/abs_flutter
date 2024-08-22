@@ -43,6 +43,8 @@ class PodcastView extends HookConsumerWidget {
       ref.read(progressProvider).progress ?? {},
     );
 
+    print(filteredEpisodes);
+
     final _scrollController = ScrollController();
 
     return PlatformScaffold(
@@ -80,6 +82,7 @@ class PodcastView extends HookConsumerWidget {
                     filter: filter, sort: sort, isAscending: isAscending),
                 const SizedBox(height: 32),
                 EpisodeList(
+                    key: UniqueKey(), // Force rebuilts the stateful widget TODO
                     episodes: filteredEpisodes,
                     itemId: itemId,
                     scrollController: _scrollController),
@@ -100,28 +103,22 @@ class PodcastView extends HookConsumerWidget {
         ? Iterable<int>.generate(podcastEpisodes.length).toList().reversed
         : Iterable<int>.generate(podcastEpisodes.length);
 
-    bool found = false;
+    PodcastEpisode? lastValidEpisode;
+
     for (var i in range) {
-      if (found && (!reverse ? i - 2 >= 0 : i + 2 < range.length)) {
-        return podcastEpisodes[reverse ? i + 2 : i - 2];
-      } else {
-        if (found) {
-          return null;
-        }
-        found = false;
-      }
       final episode = podcastEpisodes[i];
-      // Find matching MediaProgress for this episodeId
       final matchingProgress =
           mediaProgressList['${episode.libraryItemId}${episode.id ?? ''}'];
+
       if (matchingProgress != null &&
-          i != range.length &&
-          matchingProgress.progress! <= 0.95 &&
-          !matchingProgress.isFinished!) {
-        found = true;
+          ((matchingProgress.isFinished ?? false) ||
+              matchingProgress.progress! > 0.95)) {
+        return lastValidEpisode ?? podcastEpisodes.last;
       }
+
+      lastValidEpisode = episode;
     }
 
-    return null;
+    return podcastEpisodes.last;
   }
 }
