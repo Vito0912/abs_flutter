@@ -606,7 +606,7 @@
   "@newestEpisodes": {},
   "noSeriesSelected": "Keine Serie ausgewählt",
   "@noSeriesSelected": {},
-  "numBooksInSeries": "Bücher: {numBooks}",
+  "numBooksInSeries": "{numBooks, plural, =0 {Keine Bücher} =1 {1 Buch} other {{numBooks} Bücher}}",
   "@numBooksInSeries": {
     "placeholders": {
       "numBooks": {
@@ -631,5 +631,11 @@
   "sequence": "Reihenfolge",
   "@sequence": {},
   "waitTillRedirect": "Bitte warte bis du weitergeleitet wirst. Du bist aktuell nicht eingeloggt.",
-  "@waitTillRedirect": {}
+  "@waitTillRedirect": {},
+  "logging": "Protokollierung",
+  "@logging": {},
+  "logs": "Protokolle",
+  "@logs": {},
+  "rewindSeconds": "Sekunden zurückspulen",
+  "@rewindSeconds": {}
 }
