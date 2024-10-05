@@ -64,7 +64,7 @@ class ListenStats extends StatelessWidget {
               short: true),
           'Average last week',
           context,
-          padding: 4),
+          padding: 8),
     ];
 
     final crossCount = min((1000 / 250).floor(),
@@ -92,7 +92,7 @@ class ListenStats extends StatelessWidget {
 
   Widget _buildInfoRow(
       IconData icon, String mainText, String subText, BuildContext context,
-      {double? padding}) {
+      {double? padding = 2}) {
     return Row(
       children: [
         Padding(

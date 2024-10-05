@@ -16,7 +16,7 @@ class SeriesNotifier
 
   Future<void> fetchSeries({required int page, bool loadMore = false}) async {
     final api = ref.read(apiProvider);
-    final currentLibrary = ref.read(currentLibraryProvider);
+    final currentLibrary = ref.watch(currentLibraryProvider);
 
     if (api == null || currentLibrary?.id == null) {
       state =
