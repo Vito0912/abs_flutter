@@ -2,6 +2,7 @@ import 'package:abs_flutter/features/library/item_components/library_item_widget
 import 'package:abs_flutter/models/library_preview.dart';
 import 'package:abs_flutter/provider/connection_provider.dart';
 import 'package:abs_flutter/provider/library_items_provider.dart';
+import 'package:abs_flutter/provider/progress_provider.dart';
 import 'package:abs_flutter/widgets/no_connection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -79,7 +80,14 @@ class _LibraryItemsState extends ConsumerState<LibraryItems> {
       return _buildLoading();
     } else {
       _hasMore = libraryItems.total != libraryItems.items.length;
-      return _buildItems(libraryItems);
+      return RefreshIndicator(
+          onRefresh: () {
+            return Future.wait([
+              ref.read(libraryItemsProvider.notifier).reloadData(),
+              ref.read(progressProvider).getAllProgress()
+            ]);
+          },
+          child: _buildItems(libraryItems));
     }
   }
 

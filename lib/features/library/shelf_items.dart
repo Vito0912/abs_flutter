@@ -6,6 +6,7 @@ import 'package:abs_flutter/features/library/item_components/library_item_widget
 import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/models/library_preview_item.dart';
 import 'package:abs_flutter/models/library_series_preview.dart';
+import 'package:abs_flutter/provider/progress_provider.dart';
 import 'package:abs_flutter/provider/shelf_provider.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:collection/collection.dart';
@@ -35,15 +36,23 @@ class ShelfItems extends ConsumerWidget {
       'listen-again': S.of(context).listenAgain,
     };
 
-    return SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: sections.entries
-            .map((entry) =>
-                _buildSection(context, shelf.value!, entry.key, entry.value))
-            .where((widget) => widget != null)
-            .cast<Widget>()
-            .toList(),
+    return RefreshIndicator.adaptive(
+      onRefresh: () {
+        return Future.wait([
+          ref.refresh(shelfProvider.future),
+          ref.read(progressProvider).getAllProgress()
+        ]);
+      },
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: sections.entries
+              .map((entry) =>
+                  _buildSection(context, shelf.value!, entry.key, entry.value))
+              .where((widget) => widget != null)
+              .cast<Widget>()
+              .toList(),
+        ),
       ),
     );
   }
