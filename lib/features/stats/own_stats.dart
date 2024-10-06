@@ -1,8 +1,8 @@
 import 'package:abs_flutter/features/stats/components/heatmap.dart';
 import 'package:abs_flutter/features/stats/components/listen_chart.dart';
+import 'package:abs_flutter/features/stats/components/listen_stats.dart';
 import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/provider/stats_provider.dart';
-import 'package:abs_flutter/util/helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -39,126 +39,12 @@ class _OwnStatsState extends ConsumerState<OwnStats> {
         ? _getLastDaysLabels(today, 7, context)
         : _getLastDaysLabels(today, 30, context);
 
-    final int consecutiveDays =
-        _calculateConsecutiveDays(ownStats.days?.toMap());
-
     return SingleChildScrollView(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Container(
-            padding: const EdgeInsets.all(20),
-            margin: const EdgeInsets.all(20),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: Theme.of(context).colorScheme.surfaceContainer,
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: Container(
-                      constraints: const BoxConstraints(maxWidth: 700),
-                      child: LayoutBuilder(
-                        builder: (context, constraints) {
-                          // Check if the available width is less than a certain threshold
-                          if (constraints.maxWidth < 700) {
-                            // If the width is less than 600, switch to a column layout
-                            return Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                _buildInfoRow(
-                                    Icons.timer_sharp,
-                                    Helper.formatTimeToReadable(
-                                        ownStats.totalTime,
-                                        short: true),
-                                    S.of(context).totalTimeListened,
-                                    context),
-                                const SizedBox(height: 16),
-                                _buildInfoRow(
-                                    Icons.today,
-                                    Helper.formatTimeToReadable(ownStats.today,
-                                        short: true, precise: true),
-                                    S.of(context).today,
-                                    context),
-                              ],
-                            );
-                          } else {
-                            // If the width is sufficient, use a row layout
-                            return Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                _buildInfoRow(
-                                    Icons.timer_sharp,
-                                    Helper.formatTimeToReadable(
-                                        ownStats.totalTime,
-                                        short: true),
-                                    S.of(context).totalTimeListened,
-                                    context),
-                                _buildInfoRow(
-                                    Icons.today,
-                                    Helper.formatTimeToReadable(ownStats.today,
-                                        short: true, precise: true),
-                                    S.of(context).today,
-                                    context),
-                              ],
-                            );
-                          }
-                        },
-                      )),
-                ),
-                const SizedBox(height: 16),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: Container(
-                      constraints: const BoxConstraints(maxWidth: 700),
-                      child: LayoutBuilder(
-                        builder: (context, constraints) {
-                          // Check if the available width is less than a certain threshold
-                          if (constraints.maxWidth < 700) {
-                            // If the width is less than 600, switch to a column layout
-                            return Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                _buildInfoRow(
-                                    Icons.date_range_outlined,
-                                    ownStats.days?.length.toString() ?? '0',
-                                    S.of(context).daysListened,
-                                    context),
-                                const SizedBox(height: 16),
-                                _buildInfoRow(
-                                    Icons.stacked_line_chart,
-                                    consecutiveDays.toString(),
-                                    S.of(context).consecutiveDays,
-                                    context),
-                              ],
-                            );
-                          } else {
-                            // If the width is sufficient, use a row layout
-                            return Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                _buildInfoRow(
-                                    Icons.date_range_outlined,
-                                    ownStats.days?.length.toString() ?? '0',
-                                    S.of(context).daysListened,
-                                    context),
-                                _buildInfoRow(
-                                    Icons.stacked_line_chart,
-                                    consecutiveDays.toString(),
-                                    S.of(context).consecutiveDays,
-                                    context),
-                              ],
-                            );
-                          }
-                        },
-                      )),
-                ),
-              ],
-            ),
-          ),
+          ListenStats(ownStats: ownStats),
           const SizedBox(height: 16),
           Wrap(
             spacing: 5.0,
@@ -253,70 +139,5 @@ class _OwnStatsState extends ConsumerState<OwnStats> {
           .format(day);
     });
     return lastDaysLabels;
-  }
-
-  int _calculateConsecutiveDays(Map<String, num>? map) {
-    if (map == null || map.isEmpty) {
-      return 0;
-    }
-
-    // Get the current date
-    DateTime today = DateTime.now();
-    DateTime yesterday = today.subtract(const Duration(days: 1));
-    String todayFormatted = DateFormat('yyyy-MM-dd').format(today);
-    String yesterdayFormatted = DateFormat('yyyy-MM-dd').format(yesterday);
-
-    // Check if the user listened yesterday
-    if (map[yesterdayFormatted] == null || map[yesterdayFormatted] == 0) {
-      return 0;
-    }
-
-    // Check if the user listened today
-    if (map[todayFormatted] == null || map[todayFormatted] == 0) {
-      return 0;
-    }
-
-    // Calculate the consecutive days
-    int consecutiveDays = 2;
-    DateTime previousDay = yesterday;
-    while (true) {
-      DateTime day = previousDay.subtract(const Duration(days: 1));
-      String dayFormatted = DateFormat('yyyy-MM-dd').format(day);
-      if (map[dayFormatted] == null || map[dayFormatted] == 0) {
-        break;
-      }
-      consecutiveDays++;
-      previousDay = day;
-    }
-
-    return consecutiveDays;
-  }
-
-  Widget _buildInfoRow(
-      IconData icon, String mainText, String subText, BuildContext context) {
-    return Row(
-      children: [
-        Icon(
-          icon,
-          size: 48,
-        ),
-        const SizedBox(width: 8),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // TODO: Fix overflow
-            PlatformText(
-              mainText,
-              overflow: TextOverflow.clip,
-              style: Theme.of(context).textTheme.titleLarge,
-            ),
-            PlatformText(
-              subText,
-              style: Theme.of(context).textTheme.labelLarge,
-            ),
-          ],
-        ),
-      ],
-    );
   }
 }

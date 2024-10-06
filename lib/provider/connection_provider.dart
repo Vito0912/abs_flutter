@@ -75,9 +75,12 @@ class ConnectionNotifier extends StateNotifier<bool> {
     }
   }
 
-  void _checkServerReachability() {
+  Future<void> _checkServerReachability() async {
     _serverReachabilityTimer?.cancel();
-    log('Triggering server reachability check');
+    final isReachable = await _isServerReachable();
+    if (state != isReachable) {
+      state = isReachable;
+    }
     _serverReachabilityTimer =
         Timer.periodic(const Duration(minutes: 1), (timer) async {
       final isReachable = await _isServerReachable();
@@ -111,7 +114,7 @@ class ConnectionNotifier extends StateNotifier<bool> {
   void setServerState(bool isReachable) {
     if (state != isReachable) {
       state = isReachable;
-      log('Server reachable: $isReachable');
+      log('Server reachable: $isReachable', name: 'ConnectionNotifier');
 
       // Immediately start or stop reachability checks based on the new state
       if (isReachable) {

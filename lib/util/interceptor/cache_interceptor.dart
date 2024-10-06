@@ -120,20 +120,25 @@ class CacheInterceptor extends Interceptor {
       final String cacheKey = _getCacheKey(err.requestOptions.uri);
       _store.record(cacheKey).get(db).then((cachedData) {
         if (cachedData != null) {
-          return handler.resolve(Response(
-            requestOptions: err.requestOptions,
-            data: cachedData['data'],
-            statusCode: cachedData['statusCode'],
-            statusMessage: cachedData['statusMessage'],
-            headers: Headers.fromMap(
-              cachedData['headers'].map<String, List<String>>(
-                (key, value) => MapEntry(
-                  key,
-                  List<String>.from(value),
+          try {
+            return handler.resolve(Response(
+              requestOptions: err.requestOptions,
+              data: cachedData['data'],
+              statusCode: cachedData['statusCode'],
+              statusMessage: cachedData['statusMessage'],
+              headers: Headers.fromMap(
+                cachedData['headers'].map<String, List<String>>(
+                  (key, value) => MapEntry(
+                    key,
+                    List<String>.from(value),
+                  ),
                 ),
               ),
-            ),
-          ));
+            ));
+          } catch (e) {
+            log('Error while serving from cache: $e', name: 'CacheInterceptor');
+            return handler.next(err);
+          }
         } else {
           return handler.next(err);
         }

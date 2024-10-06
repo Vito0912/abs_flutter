@@ -37,7 +37,16 @@ class LibrariesNotifier extends StateNotifier<LibraryPreview?> {
           .height;
 
   LibrariesNotifier(this.api, this.currentLibrary, this.sort) : super(null) {
+    limit = _calculateLoadLimit();
     loadInitialData();
+  }
+
+  Future<void> reloadData() async {
+    state = null;
+    page = 0;
+    altResponse = null;
+
+    await loadInitialData();
   }
 
   int _calculateLoadLimit() {
@@ -52,7 +61,6 @@ class LibrariesNotifier extends StateNotifier<LibraryPreview?> {
   }
 
   Future<void> loadInitialData() async {
-    limit = _calculateLoadLimit();
     if (api == null || currentLibrary == null) return;
 
     if (sort.search == null || sort.search!.isEmpty) {

@@ -3,7 +3,7 @@ description: "An ABS app"
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: 1.5.2
+version: 1.5.3
 
 environment:
   sdk: '>=3.4.3 <4.0.0'
@@ -34,8 +34,7 @@ dependencies:
   just_audio: ^0.9.39
   audio_service: ^0.18.15
   package_info_plus: ^8.0.1
-  just_audio_windows: # ^0.2.1 Waiting for update
-    path: ./modules/just_audio_windows
+  just_audio_windows: ^0.2.2
   audio_service_mpris: ^0.1.5
   just_audio_media_kit: 2.0.3
   flutter_settings_screens: ^0.3.4
@@ -102,7 +101,7 @@ msix_config:
   display_name: Audiobookshelfly
   publisher_display_name: Vito0912
   identity_name: vito0912.audiobookshelf.flutter
-  msix_version: 1.5.0.0
+  msix_version: 1.5.3.0
   capabilities: internetClient
   languages: en-us
   install_certificate: false

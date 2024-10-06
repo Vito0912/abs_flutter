@@ -92,8 +92,19 @@ class _SingleSeriesViewState extends ConsumerState<SingleSeriesView> {
 
     return PlatformScaffold(
       appBar: PlatformAppBar(
-        title: PlatformText(seriesPreview.name),
-      ),
+          title: PlatformText(seriesPreview.name),
+          leading: PlatformIconButton(
+            icon: const Icon(Icons.arrow_back),
+            onPressed: () {
+              // Reset filter on back
+              final sortNotifier = ref.read(libraryItemSearchProvider.notifier);
+              sortNotifier.state = sortNotifier.state.copyWith(
+                filter: null,
+                filterKey: null,
+              );
+              Navigator.pop(context);
+            },
+          )),
       body: SingleChildScrollView(
         controller: _scrollController,
         child: Center(

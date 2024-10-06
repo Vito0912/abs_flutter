@@ -1,6 +1,7 @@
 import 'package:abs_api/abs_api.dart';
 import 'package:abs_flutter/provider/library_items_provider.dart';
 import 'package:abs_flutter/provider/library_provider.dart';
+import 'package:abs_flutter/provider/log_provider.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -19,6 +20,7 @@ class SeriesNotifier
     final currentLibrary = ref.read(currentLibraryProvider);
 
     if (api == null || currentLibrary?.id == null) {
+      log('Library or API not available', name: 'seriesProvider');
       state =
           AsyncValue.error('Library or API not available', StackTrace.current);
       return;
@@ -48,5 +50,10 @@ class SeriesNotifier
     } catch (e, stack) {
       state = AsyncValue.error(e, stack);
     }
+  }
+
+  Future<void> resetSeries() async {
+    state = const AsyncValue.loading();
+    await fetchSeries(page: 0);
   }
 }
