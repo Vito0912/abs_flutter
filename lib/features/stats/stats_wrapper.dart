@@ -41,14 +41,21 @@ class StatsWrapper extends StatelessWidget {
       },
       items: [
         BottomNavigationBarItem(
-          icon: Icon(context.platformIcons.accountCircle),
+          icon: Icon(
+            context.platformIcons.accountCircle,
+            color: Theme.of(context).colorScheme.onSurface,
+          ),
           label: S.of(context).ownStats,
         ),
         BottomNavigationBarItem(
-          icon: Icon(context.platformIcons.book),
+          icon: Icon(
+            context.platformIcons.book,
+            color: Theme.of(context).colorScheme.onSurface,
+          ),
           label: S.of(context).libraryStats,
         ),
       ],
+      tabsBackgroundColor: Theme.of(context).colorScheme.surface,
     );
   }
 }

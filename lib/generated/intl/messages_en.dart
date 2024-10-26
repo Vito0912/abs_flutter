@@ -105,6 +105,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "aggressiveCachingDescription": MessageLookupByLibrary.simpleMessage(
             "When enabled, the app will enable more aggressive caching. This includes caching routes that might contain data needing regular updates, such as fetching the progress of all items. In these cases, the last known position will be used unless you specifically open and request a single item. These routes will have a shorter cache duration."),
         "allDownloads": MessageLookupByLibrary.simpleMessage("All Downloads"),
+        "amoledMode": MessageLookupByLibrary.simpleMessage("AMOLED Mode"),
         "ascending": MessageLookupByLibrary.simpleMessage("Ascending"),
         "attribution": MessageLookupByLibrary.simpleMessage("Attribution"),
         "author": MessageLookupByLibrary.simpleMessage("Author"),
@@ -205,6 +206,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage(
                 "If the quick account switcher should be shown"),
         "inProgress": MessageLookupByLibrary.simpleMessage("In Progress"),
+        "information": MessageLookupByLibrary.simpleMessage("Information"),
         "itemLength": m23,
         "itemNumChapters": m24,
         "itemProgress": m25,

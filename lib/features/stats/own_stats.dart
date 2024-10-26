@@ -52,6 +52,8 @@ class _OwnStatsState extends ConsumerState<OwnStats> {
               ChoiceChip(
                 label: PlatformText(S.of(context).last7Days),
                 selected: _is7DaysSelected,
+                showCheckmark: true,
+                checkmarkColor: Theme.of(context).colorScheme.onSurface,
                 onSelected: (bool selected) {
                   setState(() {
                     _is7DaysSelected = true;
@@ -61,6 +63,8 @@ class _OwnStatsState extends ConsumerState<OwnStats> {
               ChoiceChip(
                 label: PlatformText(S.of(context).last30Days),
                 selected: !_is7DaysSelected,
+                showCheckmark: true,
+                checkmarkColor: Theme.of(context).colorScheme.onSurface,
                 onSelected: (bool selected) {
                   setState(() {
                     _is7DaysSelected = false;

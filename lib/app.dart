@@ -8,6 +8,7 @@ import 'package:abs_flutter/provider/settings_provider.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
 import 'package:abs_flutter/util/constants.dart';
 import 'package:abs_flutter/util/router.dart';
+import 'package:abs_flutter/util/theme.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -57,7 +58,7 @@ class _AbsAppState extends ConsumerState<AbsApp> with WidgetsBindingObserver {
   @override
   Widget build(BuildContext context) {
     final settings = ref.watch(specificKeysSettingsProvider(
-        [Constants.DARK_MODE, Constants.LANGUAGE]));
+        [Constants.DARK_MODE, Constants.LANGUAGE, Constants.AMOLED_MODE]));
     final userIndex = ref.watch(selectedUserProvider);
     if (userIndex >= 0) {
       final progressProv = ref.read(progressProvider);
@@ -72,19 +73,14 @@ class _AbsAppState extends ConsumerState<AbsApp> with WidgetsBindingObserver {
         S.delegate
       ],
       material: (_, __) => MaterialAppRouterData(
-        theme: ThemeData(
-          useMaterial3: true,
-          primarySwatch: Colors.blue,
-          visualDensity: VisualDensity.adaptivePlatformDensity,
-        ),
-        darkTheme: ThemeData.dark().copyWith(
-          visualDensity: VisualDensity.adaptivePlatformDensity,
-        ),
-        themeMode: _getThemeMode(settings?[Constants.DARK_MODE]),
+        theme: lightModeTheme,
+        darkTheme:
+            settings[Constants.AMOLED_MODE] ? amoledTheme : darkModeTheme,
+        themeMode: _getThemeMode(settings[Constants.DARK_MODE]),
       ),
       supportedLocales:
           supportedLocales.entries.map((e) => Locale(e.key, '')).toList(),
-      locale: Locale(settings?[Constants.LANGUAGE] ?? 'en'),
+      locale: Locale(settings[Constants.LANGUAGE] ?? 'en'),
       showPerformanceOverlay: false,
       debugShowCheckedModeBanner: false,
       title: appTitle,
