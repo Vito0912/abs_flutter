@@ -36,6 +36,12 @@ class Home extends HookConsumerWidget {
       return Scaffold(body: ErrorText(S.of(context).waitTillRedirect));
     }
 
+    if (currentLibrary != null &&
+        currentLibrary.mediaType != 'book' &&
+        tabController.index(context) > 1) {
+      tabController.setIndex(context, 1);
+    }
+
     final currentIndex = useState(1);
     return PlatformScaffold(
       appBar: PlatformAppBar(
@@ -145,13 +151,14 @@ class Home extends HookConsumerWidget {
             ),
             label: S.of(context).personalizedLibrary,
           ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.my_library_books_outlined,
-              color: Theme.of(context).colorScheme.onSurface,
+          if (currentLibrary?.mediaType == 'book')
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.my_library_books_outlined,
+                color: Theme.of(context).colorScheme.onSurface,
+              ),
+              label: S.of(context).series,
             ),
-            label: S.of(context).series,
-          ),
         ],
         tabsBackgroundColor: Theme.of(context).colorScheme.surface,
       ),
