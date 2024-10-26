@@ -1,5 +1,6 @@
 // globals.dart
 
+import 'package:abs_flutter/util/setting_cache_provider.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -57,3 +58,5 @@ final Map<String, String> supportedLocales = {
 bool cachingEnabled = true;
 bool aggressiveCaching = true;
 bool boostLoading = false;
+
+late UserSharedPreferences userSharedPreferences;
