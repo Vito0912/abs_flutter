@@ -138,6 +138,8 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
     }
 
     await _player.play();
+    if (Platform.isWindows) await player.pause();
+    if (Platform.isWindows) await player.play();
     _container.read(timerProvider.notifier).continueTimer();
   }
 
