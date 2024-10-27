@@ -62,17 +62,6 @@ class TimerNotifier extends StateNotifier<DateTime?> {
         player.audioService.player.position.inMicroseconds / 1000000;
     final duration =
         (player.audioService.player.duration?.inMicroseconds ?? -1) / 1000000;
-    bool shouldFinish = false;
-    if (duration >= 0) {
-      final settings = ref.read(
-          specificKeysSettingsProvider([Constants.MARK_ITEMS_FINISHED_AFTER]));
-      shouldFinish = (currentTime + 1) >=
-          duration -
-              (double.tryParse(settings[Constants.MARK_ITEMS_FINISHED_AFTER]
-                      .toString()) ??
-                  0);
-      log("Should finish: $shouldFinish", name: 'progress_timer_provider');
-    }
 
     log('Current time: $currentTime', name: 'progress_timer_provider');
 
@@ -103,11 +92,7 @@ class TimerNotifier extends StateNotifier<DateTime?> {
           SyncOpenSessionRequestBuilder()
             ..id = bookSession?.id ?? podcastSession!.id
             ..timeListened = listenedSeconds
-            ..currentTime = shouldFinish
-                ? (duration.toDouble() +
-                        (settings[Constants.SYNC_INTERVAL] ?? 60))
-                    .toDouble()
-                : currentTime;
+            ..currentTime = currentTime;
 
       try {
         await api
@@ -144,11 +129,7 @@ class TimerNotifier extends StateNotifier<DateTime?> {
         log('Updating offline progress: $listenedSeconds',
             name: 'progress_timer_provider');
         offlineProgressProvider.updateProgress(progressItem.copyWith(
-          currentTime: shouldFinish
-              ? (duration.toDouble() +
-                      (settings[Constants.SYNC_INTERVAL] ?? 60))
-                  .toDouble()
-              : currentTime,
+          currentTime: currentTime,
           timeListened: listenedSeconds + progressItem.timeListened,
           updatedAt: DateTime.now(),
           durationOfItem: player
@@ -165,11 +146,7 @@ class TimerNotifier extends StateNotifier<DateTime?> {
           userId: user.id!,
           sessionId: bookSession?.id ?? podcastSession?.id,
           episodeId: episodeId,
-          currentTime: shouldFinish
-              ? (duration.toDouble() +
-                      (settings[Constants.SYNC_INTERVAL] ?? 60))
-                  .toDouble()
-              : currentTime,
+          currentTime: currentTime,
           timeListened: listenedSeconds,
           createdAt: DateTime.now(),
           type: (episodeId != null || episodeId.toString().isEmpty)

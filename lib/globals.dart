@@ -34,7 +34,6 @@ final Map<String, dynamic> defaultSettings = {
   Constants.ACCOUNT_SWITCHER: true,
   Constants.STOP_PLAYER_WHILE_SYNCING: true,
   Constants.JUMP_TO_LAST_POSITION: true,
-  Constants.MARK_ITEMS_FINISHED_AFTER: 0.0,
   Constants.COLLAPSE_SERIES: false,
   Constants.FAST_FORWARD_SECONDS: 10.0,
   Constants.REWIND_SECONDS: 10.0,

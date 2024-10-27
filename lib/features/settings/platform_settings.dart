@@ -63,14 +63,13 @@ class PlatformSettings extends ConsumerWidget {
                 defaultValue: true,
                 toolTipText: S.of(context).showAccountSwitcherDescription,
               ),
-              SliderTile(
-                  leading: const Icon(Clarity.clock_line),
-                  title: S.of(context).markItemsFinished,
-                  toolTipText: S.of(context).markItemsFinishedAfterDescription,
-                  min: 0,
-                  max: 180,
-                  steps: 15,
-                  keyValue: Constants.MARK_ITEMS_FINISHED_AFTER),
+              NavigationTile(
+                (context) => null,
+                leading: const Icon(Bootstrap.info),
+                title: S.of(context).markItemsFinished,
+                description:
+                    'This setting is deprecated as of server version above 2.15.1 and is now managed by the server. To change this value, go to the library settings.',
+              ),
               SwitchTile(
                 leading: const Icon(
                   OctIcons.sidebar_collapse,
