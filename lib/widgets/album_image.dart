@@ -2,10 +2,10 @@ import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/models/user.dart';
 import 'package:abs_flutter/provider/progress_provider.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
+import 'package:abs_flutter/widgets/shimmer_placeholder.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:shimmer/shimmer.dart';
 
 class AlbumImage extends ConsumerWidget {
   final String itemId;
@@ -46,7 +46,7 @@ class AlbumImage extends ConsumerWidget {
               fadeInDuration: const Duration(milliseconds: 150),
               fadeOutDuration: const Duration(milliseconds: 150),
               fit: BoxFit.cover,
-              placeholder: (context, url) => _shimmerPlaceholder(),
+              placeholder: (context, url) => const ShimmerPlaceholder(),
               errorWidget: (context, url, error) => const Icon(Icons.error),
             ),
           ),
@@ -74,16 +74,6 @@ class AlbumImage extends ConsumerWidget {
               },
             )
         ],
-      ),
-    );
-  }
-
-  Widget _shimmerPlaceholder() {
-    return Shimmer.fromColors(
-      baseColor: Colors.grey[300]!,
-      highlightColor: Colors.grey[100]!,
-      child: Container(
-        color: Colors.white,
       ),
     );
   }

@@ -1,3 +1,4 @@
+import 'package:abs_flutter/features/settings/components/drop_down_tile.dart';
 import 'package:abs_flutter/features/settings/components/navigation_tile.dart';
 import 'package:abs_flutter/features/settings/components/slider_tile.dart';
 import 'package:abs_flutter/features/settings/components/switch_tile.dart';
@@ -50,7 +51,11 @@ class PlatformSettings extends ConsumerWidget {
                     title: S.of(context).amoledMode,
                     keyValue: Constants.AMOLED_MODE,
                     defaultValue: true),
-              //TODO: Language
+              DropDownTile(
+                  leading: const Icon(Icons.language),
+                  title: S.of(context).language,
+                  items: supportedLocales,
+                  keyValue: Constants.LANGUAGE),
               SwitchTile(
                 leading: const Icon(Clarity.switch_line),
                 title: S.of(context).showAccountSwitcher,

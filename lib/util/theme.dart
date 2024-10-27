@@ -82,4 +82,10 @@ final ThemeData amoledTheme = ThemeData.dark(useMaterial3: true).copyWith(
       surfaceTintColor: Colors.black,
       shadowColor: Colors.black),
   popupMenuTheme: const PopupMenuThemeData(color: black),
+  dropdownMenuTheme: DropdownMenuThemeData(
+    menuStyle: MenuStyle(
+      backgroundColor: WidgetStateProperty.all(black),
+      surfaceTintColor: WidgetStateProperty.all(Colors.black),
+    ),
+  ),
 );

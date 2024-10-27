@@ -8,12 +8,12 @@ import 'package:abs_flutter/models/library_preview_item.dart';
 import 'package:abs_flutter/models/library_series_preview.dart';
 import 'package:abs_flutter/provider/progress_provider.dart';
 import 'package:abs_flutter/provider/shelf_provider.dart';
+import 'package:abs_flutter/widgets/shimmer_placeholder.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:shimmer/shimmer.dart';
 
 class ShelfItems extends ConsumerWidget {
   const ShelfItems({super.key});
@@ -73,18 +73,12 @@ class ShelfItems extends ConsumerWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 8.0),
-            child: Shimmer.fromColors(
-              baseColor: Colors.grey[300]!,
-              highlightColor: Colors.grey[100]!,
-              child: Container(
-                width: 250,
+          const Padding(
+              padding: EdgeInsets.only(left: 8.0),
+              child: ShimmerPlaceholder(
                 height: 24.0,
-                color: Colors.grey[300],
-              ),
-            ),
-          ),
+                width: 250,
+              )),
           const SizedBox(height: 8.0),
           ScrollConfiguration(
             behavior: const MaterialScrollBehavior().copyWith(
@@ -99,7 +93,8 @@ class ShelfItems extends ConsumerWidget {
               scrollDirection: Axis.horizontal,
               child: Row(
                 children:
-                    List.generate(5, (index) => _buildShimmerItem()).toList(),
+                    List.generate(5, (index) => _buildShimmerItem(context))
+                        .toList(),
               ),
             ),
           ),
@@ -108,19 +103,13 @@ class ShelfItems extends ConsumerWidget {
     );
   }
 
-  Widget _buildShimmerItem() {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Shimmer.fromColors(
-        baseColor: Colors.grey[300]!,
-        highlightColor: Colors.grey[100]!,
-        child: Container(
+  Widget _buildShimmerItem(BuildContext context) {
+    return const Padding(
+        padding: EdgeInsets.all(8.0),
+        child: ShimmerPlaceholder(
           width: 175,
           height: 200,
-          color: Colors.grey[300],
-        ),
-      ),
-    );
+        ));
   }
 
   Widget? _buildSection(BuildContext context, BuiltList<LibraryShelf> shelf,
