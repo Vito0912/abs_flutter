@@ -23,14 +23,27 @@ const BottomNavigationBarThemeData bottomNavigation =
 );
 
 final ThemeData lightModeTheme = ThemeData(
-    brightness: Brightness.light,
-    colorScheme: lightColorScheme,
-    bottomNavigationBarTheme: bottomNavigation);
+  brightness: Brightness.light,
+  colorScheme: lightColorScheme,
+  bottomNavigationBarTheme: bottomNavigation,
+  sliderTheme: SliderThemeData(
+    activeTrackColor: primaryContainerColor,
+    inactiveTrackColor: lightColorScheme.primary.withOpacity(0.25),
+    thumbColor: primaryContainerColor,
+    overlayColor: primaryContainerColor.withOpacity(0.3),
+  ),
+);
 
 final ThemeData darkModeTheme = ThemeData.dark(useMaterial3: true).copyWith(
     brightness: Brightness.dark,
     colorScheme: darkColorScheme,
-    bottomNavigationBarTheme: bottomNavigation);
+    bottomNavigationBarTheme: bottomNavigation,
+    sliderTheme: SliderThemeData(
+      activeTrackColor: primaryContainerColor,
+      inactiveTrackColor: darkColorScheme.primary.withOpacity(0.15),
+      thumbColor: primaryContainerColor,
+      overlayColor: primaryContainerColor.withOpacity(0.3),
+    ));
 
 ////////////////////////////
 

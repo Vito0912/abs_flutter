@@ -1,8 +1,6 @@
 import 'package:abs_flutter/globals.dart';
-import 'package:abs_flutter/provider/settings_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:settings_ui/settings_ui.dart';
 
 class SliderTile extends AbstractSettingsTile {
@@ -41,22 +39,25 @@ class SliderTile extends AbstractSettingsTile {
   }
 
   Widget _slider(BuildContext context) {
-    return Consumer(
-        builder: (BuildContext context, WidgetRef ref, Widget? child) {
-      final settings = ref.watch(specificKeysSettingsProvider([keyValue]));
+    double initValue = userSharedPreferences.getDouble(keyValue) ?? 0;
+    return StatefulBuilder(builder: (context, setState) {
       return SettingsTile.navigation(
         leading: leading,
         title: PlatformText(title),
         description: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            PlatformText(userSharedPreferences.getDouble(keyValue).toString()),
+            PlatformText(initValue.toString()),
             PlatformSlider(
-              value: userSharedPreferences.getDouble(keyValue) ?? min,
+              value: initValue,
               min: min,
               max: max,
               divisions: ((max - min) / steps).round(),
-              onChanged: (value) {},
+              onChanged: (value) {
+                setState(() {
+                  initValue = value;
+                });
+              },
               onChangeEnd: (value) {
                 userSharedPreferences.setDouble(keyValue, value);
               },
