@@ -1,4 +1,5 @@
 import 'package:abs_flutter/features/settings/components/navigation_tile.dart';
+import 'package:abs_flutter/features/settings/components/slider_tile.dart';
 import 'package:abs_flutter/features/settings/components/switch_tile.dart';
 import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/globals.dart';
@@ -57,7 +58,14 @@ class PlatformSettings extends ConsumerWidget {
                 defaultValue: true,
                 toolTipText: S.of(context).showAccountSwitcherDescription,
               ),
-              //TODO: markItemsFInished (SLider)
+              SliderTile(
+                  leading: const Icon(Clarity.clock_line),
+                  title: S.of(context).markItemsFinished,
+                  toolTipText: S.of(context).markItemsFinishedAfterDescription,
+                  min: 0,
+                  max: 180,
+                  steps: 15,
+                  keyValue: Constants.MARK_ITEMS_FINISHED_AFTER),
               SwitchTile(
                 leading: const Icon(
                   OctIcons.sidebar_collapse,
@@ -114,6 +122,30 @@ class PlatformSettings extends ConsumerWidget {
                 defaultValue: false,
                 toolTipText: S.of(context).lockProgressBarDescription,
               ), // TODO: Show Restart Info
+              SliderTile(
+                  leading: Icon(PlatformIcons(context).forward),
+                  title: S.of(context).fastForwardSeconds,
+                  toolTipText: S.of(context).fastForwardSecondsDescription,
+                  min: 5,
+                  max: 60,
+                  steps: 5,
+                  keyValue: Constants.FAST_FORWARD_SECONDS),
+              SliderTile(
+                  leading: Icon(PlatformIcons(context).back),
+                  title: S.of(context).rewindSeconds,
+                  toolTipText: S.of(context).rewindSecondsDescription,
+                  min: 5,
+                  max: 60,
+                  steps: 5,
+                  keyValue: Constants.REWIND_SECONDS),
+              SliderTile(
+                  leading: Icon(PlatformIcons(context).cloudUpload),
+                  title: S.of(context).syncInterval,
+                  toolTipText: S.of(context).syncIntervalDescription,
+                  min: 10,
+                  max: 120,
+                  steps: 10,
+                  keyValue: Constants.SYNC_INTERVAL),
             ],
           ),
           SettingsSection(
