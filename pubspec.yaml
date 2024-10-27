@@ -3,7 +3,7 @@ description: "An ABS app"
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: 1.5.3
+version: 1.5.4
 
 environment:
   sdk: '>=3.4.3 <4.0.0'
@@ -55,6 +55,7 @@ dependencies:
   path_provider: ^2.1.4
   sembast_web: ^2.4.0+2
   icons_plus: ^5.0.0
+  settings_ui: ^2.0.2
 
   flutter_hooks: any
   uuid: any
@@ -101,7 +102,7 @@ msix_config:
   display_name: Audiobookshelfly
   publisher_display_name: Vito0912
   identity_name: vito0912.audiobookshelf.flutter
-  msix_version: 1.5.3.0
+  msix_version: 1.5.4.0
   capabilities: internetClient
   languages: en-us
   install_certificate: false

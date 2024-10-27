@@ -2022,6 +2022,26 @@ class S {
       args: [],
     );
   }
+
+  /// `AMOLED Mode`
+  String get amoledMode {
+    return Intl.message(
+      'AMOLED Mode',
+      name: 'amoledMode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Information`
+  String get information {
+    return Intl.message(
+      'Information',
+      name: 'information',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

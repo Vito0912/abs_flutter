@@ -1,5 +1,7 @@
 // globals.dart
 
+import 'package:abs_flutter/util/constants.dart';
+import 'package:abs_flutter/util/setting_cache_provider.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -27,25 +29,26 @@ double maxWidth = 800;
 const String mediaPlayer = 'just_audio /w audio_service @ abs_flutter';
 
 final Map<String, dynamic> defaultSettings = {
-  'isDarkMode': true,
-  'showAccountSwitcher': true,
-  'stopPlayerWhileSyncing': true,
-  'jumpToLastPosition': true,
-  'markItemsFinishedAfter': 0.0,
-  'collapseSeries': false,
-  'fastForwardSeconds': 10,
-  'rewindSeconds': 10,
-  'progressAsChapters': false,
-  'downloadsOnlyViaWifi': true,
-  'syncInterval': 10,
-  'syncOnlyViaWifi': false,
-  'shakeResetTimer': false,
-  "lockSeekingNotification": false,
-  "language": "en",
-  "cachingEnabled": true,
-  "aggressiveCaching": true,
-  "boostLoading": true,
-  "loggingEnabled": true
+  Constants.DARK_MODE: true,
+  Constants.AMOLED_MODE: true,
+  Constants.ACCOUNT_SWITCHER: true,
+  Constants.STOP_PLAYER_WHILE_SYNCING: true,
+  Constants.JUMP_TO_LAST_POSITION: true,
+  Constants.MARK_ITEMS_FINISHED_AFTER: 0.0,
+  Constants.COLLAPSE_SERIES: false,
+  Constants.FAST_FORWARD_SECONDS: 10.0,
+  Constants.REWIND_SECONDS: 10.0,
+  Constants.PROGRESS_AS_CHAPTERS: false,
+  Constants.DOWNLOADS_ONLY_VIA_WIFI: true,
+  Constants.SYNC_INTERVAL: 10.0,
+  Constants.SYNC_ONLY_VIA_WIFI: false,
+  Constants.SHAKE_RESET_TIMER: false,
+  Constants.LOCK_SEEKING_NOTIFICATION: false,
+  Constants.LANGUAGE: 'en',
+  Constants.CACHING_ENABLED: true,
+  Constants.AGGRESSIVE_CACHING: true,
+  Constants.BOOST_LOADING: true,
+  Constants.LOGGING_ENABLED: true
 };
 
 final Map<String, String> supportedLocales = {
@@ -57,3 +60,5 @@ final Map<String, String> supportedLocales = {
 bool cachingEnabled = true;
 bool aggressiveCaching = true;
 bool boostLoading = false;
+
+late UserSharedPreferences userSharedPreferences;

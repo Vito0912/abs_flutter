@@ -3,11 +3,11 @@ import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/provider/connection_provider.dart';
 import 'package:abs_flutter/provider/library_provider.dart';
 import 'package:abs_flutter/util/helper.dart';
+import 'package:abs_flutter/widgets/shimmer_placeholder.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:shimmer/shimmer.dart';
 
 class LibraryChip extends ConsumerWidget {
   const LibraryChip({super.key});
@@ -49,9 +49,7 @@ class LibraryChip extends ConsumerWidget {
   }
 
   Widget _buildLoadingChip(BuildContext context) {
-    return Shimmer.fromColors(
-      baseColor: Colors.grey[300]!,
-      highlightColor: Colors.grey[100]!,
+    return ShimmerPlaceholder(
       child: Chip(
         label: Container(
           constraints: const BoxConstraints(

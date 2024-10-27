@@ -643,5 +643,7 @@
   "waitingForDownload": "Waiting for download to start",
   "@waitingForDownload": {},
   "year": "Year",
-  "@year": {}
+  "@year": {},
+  "amoledMode": "AMOLED Mode",
+  "information": "Information"
 }

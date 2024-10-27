@@ -1,6 +1,6 @@
+import 'package:abs_flutter/widgets/shimmer_placeholder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
-import 'package:shimmer/shimmer.dart';
 
 class ShimmerLoading extends StatelessWidget {
   const ShimmerLoading({super.key});
@@ -9,16 +9,10 @@ class ShimmerLoading extends StatelessWidget {
   Widget build(BuildContext context) {
     return PlatformScaffold(
       appBar: PlatformAppBar(
-        title: Shimmer.fromColors(
-          baseColor: Colors.grey[300]!,
-          highlightColor: Colors.grey[100]!,
-          child: Container(
-            width: 200,
-            height: 24,
-            color: Colors.white,
-          ),
-        ),
-      ),
+          title: const ShimmerPlaceholder(
+        height: 24,
+        width: 200,
+      )),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
@@ -27,29 +21,19 @@ class ShimmerLoading extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(height: 16),
-                Shimmer.fromColors(
-                  baseColor: Colors.grey[300]!,
-                  highlightColor: Colors.grey[100]!,
-                  child: Container(
-                    width: 200,
-                    height: 200,
-                    color: Colors.white,
-                  ),
+                const ShimmerPlaceholder(
+                  height: 200,
+                  width: 200,
                 ),
                 const SizedBox(height: 16),
-                Shimmer.fromColors(
-                  baseColor: Colors.grey[300]!,
-                  highlightColor: Colors.grey[100]!,
-                  child: Container(
-                    width: double.infinity,
-                    height: 24,
-                    color: Colors.white,
-                  ),
+                const ShimmerPlaceholder(
+                  height: 24,
+                  width: double.infinity,
                 ),
                 const SizedBox(height: 32),
-                Shimmer.fromColors(
-                  baseColor: Colors.grey[300]!,
-                  highlightColor: Colors.grey[100]!,
+                ShimmerPlaceholder(
+                  height: 24,
+                  width: double.infinity,
                   child: Column(
                     children:
                         List.generate(3, (index) => _buildShimmerEpisode()),

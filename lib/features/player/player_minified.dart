@@ -43,102 +43,120 @@ class PlayerMinified extends ConsumerWidget {
         }
       },
       child: Material(
-        child: Container(
-          color: Theme.of(context).colorScheme.surfaceContainer,
-          padding:
-              const EdgeInsets.only(bottom: 8.0, left: 8.0, right: 8.0, top: 4),
-          child: Column(
-            children: [
-              if (player.audioService.mediaItem.value != null)
-                Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Flexible(
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          AlbumImage(
-                            player.audioService.mediaItem.value!
-                                .extras!['libraryItemId'],
-                            size: 40,
-                          ),
-                          const SizedBox(
-                            width: 8.0,
-                          ),
-                          Flexible(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                PlatformText(
-                                  player.audioService.mediaItem.value!.title +
-                                      (currentChapter != null
-                                          ? ' - ${currentChapter.title}'
-                                          : ''),
-                                  style: Theme.of(context).textTheme.labelSmall,
-                                  overflow: TextOverflow.ellipsis,
-                                  maxLines: 1,
-                                ),
-                                PlatformText(
-                                  player.audioService.mediaItem.value!.artist ??
-                                      '',
-                                  style: Theme.of(context).textTheme.labelSmall,
-                                  overflow: TextOverflow.ellipsis,
-                                  maxLines: 1,
-                                ),
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
+        child: Column(
+          children: [
+            Divider(
+              color: Theme.of(context).colorScheme.onSurface.withOpacity(0.1),
+              indent: 0,
+              endIndent: 0,
+              thickness: 1,
+              height: 0,
+            ),
+            Container(
+              color: Theme.of(context).colorScheme.surface,
+              padding: const EdgeInsets.only(
+                  bottom: 8.0, left: 8.0, right: 8.0, top: 4),
+              child: Column(
+                children: [
+                  if (player.audioService.mediaItem.value != null)
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
                       mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        SeekingButtons(
-                          positionStream: positionStream,
-                          player: player,
-                          isForward: false,
+                        Flexible(
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              AlbumImage(
+                                player.audioService.mediaItem.value!
+                                    .extras!['libraryItemId'],
+                                size: 40,
+                              ),
+                              const SizedBox(
+                                width: 8.0,
+                              ),
+                              Flexible(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    PlatformText(
+                                      player.audioService.mediaItem.value!
+                                              .title +
+                                          (currentChapter != null
+                                              ? ' - ${currentChapter.title}'
+                                              : ''),
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .labelSmall,
+                                      overflow: TextOverflow.ellipsis,
+                                      maxLines: 1,
+                                    ),
+                                    PlatformText(
+                                      player.audioService.mediaItem.value!
+                                              .artist ??
+                                          '',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .labelSmall,
+                                      overflow: TextOverflow.ellipsis,
+                                      maxLines: 1,
+                                    ),
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
                         ),
-                        PlayButton(playerStatusProvider: playerStatusProvider),
-                        SeekingButtons(
-                          positionStream: positionStream,
-                          player: player,
-                          isForward: true,
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisSize: MainAxisSize.max,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            SeekingButtons(
+                              positionStream: positionStream,
+                              player: player,
+                              isForward: false,
+                            ),
+                            PlayButton(
+                                playerStatusProvider: playerStatusProvider),
+                            SeekingButtons(
+                              positionStream: positionStream,
+                              player: player,
+                              isForward: true,
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            IconButton(
+                                onPressed: () {
+                                  if (Helper.getCurrentRoute(
+                                          GoRouter.of(context)) !=
+                                      '/settings') {
+                                    context.push('/settings');
+                                  }
+                                },
+                                icon: const Icon(Icons.more_vert)),
+                          ],
                         ),
                       ],
                     ),
-                    Row(
-                      children: [
-                        IconButton(
-                            onPressed: () {
-                              if (Helper.getCurrentRoute(
-                                      GoRouter.of(context)) !=
-                                  '/settings') {
-                                context.push('/settings');
-                              }
-                            },
-                            icon: const Icon(Icons.more_vert)),
-                      ],
-                    ),
-                  ],
-                ),
-              ProgressBar(
-                positionStream: positionStream,
-                durationStream: durationStream,
-                player: player,
-                showPerChapter:
-                    user?.setting?.settings['progressAsChapters'] ?? false,
-                currentChapter: currentChapter,
-                bufferStream: bufferStream,
-              )
-            ],
-          ),
+                  ProgressBar(
+                    positionStream: positionStream,
+                    durationStream: durationStream,
+                    player: player,
+                    showPerChapter:
+                        user?.setting?.settings['progressAsChapters'] ?? false,
+                    currentChapter: currentChapter,
+                    bufferStream: bufferStream,
+                  )
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );

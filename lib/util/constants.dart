@@ -1,9 +1,10 @@
 class Constants {
   static const String DARK_MODE = 'isDarkMode';
+  static const String AMOLED_MODE = 'isAmoledMode';
   static const String ACCOUNT_SWITCHER = 'showAccountSwitcher';
   static const String STOP_PLAYER_WHILE_SYNCING = 'stopPlayerWhileSyncing';
   static const String JUMP_TO_LAST_POSITION = 'jumpToLastPosition';
-  static const String MARK_ITEMS_FINISHED_AFTER = 'markItems';
+  static const String MARK_ITEMS_FINISHED_AFTER = 'markItemsFinishedAfter';
   static const String COLLAPSE_SERIES = 'collapseSeries';
   static const String FAST_FORWARD_SECONDS = 'fastForwardSeconds';
   static const String REWIND_SECONDS = 'rewindSeconds';

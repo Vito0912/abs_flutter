@@ -7,6 +7,7 @@ import 'package:abs_flutter/features/library/series/series_view.dart';
 import 'package:abs_flutter/features/library/shelf_items.dart';
 import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/globals.dart';
+import 'package:abs_flutter/provider/library_provider.dart';
 import 'package:abs_flutter/provider/settings_provider.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
 import 'package:abs_flutter/util/constants.dart';
@@ -28,10 +29,17 @@ class Home extends HookConsumerWidget {
         ref.watch(specificKeysSettingsProvider([Constants.ACCOUNT_SWITCHER]));
     final selectedUserIndex = ref.watch(selectedUserProvider);
     final users = ref.read(usersProvider);
+    final currentLibrary = ref.watch(currentLibraryProvider);
 
     if (users.isEmpty || selectedUserIndex < 0) {
       Future.microtask(() => context.go('/init'));
       return Scaffold(body: ErrorText(S.of(context).waitTillRedirect));
+    }
+
+    if (currentLibrary != null &&
+        currentLibrary.mediaType != 'book' &&
+        tabController.index(context) > 1) {
+      tabController.setIndex(context, 1);
     }
 
     final currentIndex = useState(1);
@@ -130,18 +138,29 @@ class Home extends HookConsumerWidget {
         },
         items: [
           BottomNavigationBarItem(
-            icon: Icon(context.platformIcons.home),
+            icon: Icon(
+              context.platformIcons.home,
+              color: Theme.of(context).colorScheme.onSurface,
+            ),
             label: S.of(context).library,
           ),
           BottomNavigationBarItem(
-            icon: const Icon(Icons.shelves),
+            icon: Icon(
+              Icons.shelves,
+              color: Theme.of(context).colorScheme.onSurface,
+            ),
             label: S.of(context).personalizedLibrary,
           ),
-          BottomNavigationBarItem(
-            icon: const Icon(Icons.my_library_books_outlined),
-            label: S.of(context).series,
-          ),
+          if (currentLibrary?.mediaType == 'book')
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.my_library_books_outlined,
+                color: Theme.of(context).colorScheme.onSurface,
+              ),
+              label: S.of(context).series,
+            ),
         ],
+        tabsBackgroundColor: Theme.of(context).colorScheme.surface,
       ),
     );
   }

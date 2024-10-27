@@ -41,14 +41,13 @@ A big thank you to [Weblate](https://weblate.org) for providing their services!
 | Car Mode (Big Buttons for Car)        |    ✅    |       ✅        |    ✅    |   ✅   |       ✅        |
 | No Extra Setup Needed                 |    ✅    | ❌*<sup>6</sup> |    ✅    |   ✅   | ❌*<sup>3</sup> |
 | Media Notifications                   |    ✅    |       ✅        |    ❌    |   ✅   |       ❌        |
-| Caching*<sup>4</sup>                  |    ✅    |       ✅        |    ✅    |   ✅   |       ✅        |
+| Caching                               |    ✅    |       ✅        |    ✅    |   ✅   |       ✅        |
 | Offline Support                       |    ✅    |       ✅        |    ✅    |   ✅   | ❌*<sup>5</sup> |
 | Socket Support*<sup>5</sup>           |    ❌    |       ❌        |    ❌    |   ❌   |       ❌        |
 
 > *<sup>1</sup> Chapter support, sleep timer, playback speed, custom skip time, and more\
 > *<sup>2</sup> Android Auto and Apple CarPlay are not supported as standalone apps, but media controls are supported\
 > *<sup>3</sup> You need to allow CORS on the server so the web app can access it\
-> *<sup>4</sup> Currently only caches images\
 > *<sup>5</sup> Will be added in the future\
 > *<sup>6</sup> A secure SSL connection is needed.
 

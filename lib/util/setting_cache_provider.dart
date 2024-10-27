@@ -1,3 +1,4 @@
+import 'package:abs_flutter/models/setting.dart';
 import 'package:abs_flutter/provider/log_provider.dart';
 
 import 'package:abs_flutter/models/user.dart';
@@ -10,6 +11,7 @@ class UserSharedPreferences extends CacheProvider {
   final ProviderContainer _container;
   int? _selectedUserIndex;
   List<User>? _users;
+  late CurrentUserNotifier _userNotifier;
 
   UserSharedPreferences(this._container);
 
@@ -115,6 +117,12 @@ class UserSharedPreferences extends CacheProvider {
     _container.listen<List<User>>(usersProvider, (previousUsers, newUsers) {
       _users = newUsers;
     });
+
+    _userNotifier = _container.read(currentUserProvider.notifier);
+    _container.listen<User?>(currentUserProvider, (previousUser, newUser) {
+      _userNotifier = _container.read(currentUserProvider.notifier);
+    });
+
     return Future.value();
   }
 
@@ -155,9 +163,7 @@ class UserSharedPreferences extends CacheProvider {
       if (user == null || user.setting == null) {
         return Future.value();
       } else {
-        user.setting = user.setting!.copyWith(
-          settings: {...user.setting!.settings, key: value},
-        );
+        _updateUser(key, value, user);
       }
     } catch (e) {
       log(e.toString());
@@ -172,12 +178,10 @@ class UserSharedPreferences extends CacheProvider {
       if (user == null || user.setting == null) {
         return Future.value();
       } else {
-        user.setting = user.setting!.copyWith(
-          settings: {...user.setting!.settings, key: value},
-        );
+        _updateUser(key, value, user);
       }
     } catch (e) {
-      log(e.toString());
+      log(e.toString(), name: 'setBool @ UserSharedPreferences');
     }
     return Future.value();
   }
@@ -189,9 +193,7 @@ class UserSharedPreferences extends CacheProvider {
       if (user == null || user.setting == null) {
         return Future.value();
       } else {
-        user.setting = user.setting!.copyWith(
-          settings: {...user.setting!.settings, key: value},
-        );
+        _updateUser(key, value, user);
       }
     } catch (e) {
       log(e.toString());
@@ -206,9 +208,7 @@ class UserSharedPreferences extends CacheProvider {
       if (user == null || user.setting == null) {
         return Future.value();
       } else {
-        user.setting = user.setting!.copyWith(
-          settings: {...user.setting!.settings, key: value},
-        );
+        _updateUser(key, value, user);
       }
     } catch (e) {
       log(e.toString());
@@ -230,5 +230,18 @@ class UserSharedPreferences extends CacheProvider {
     } catch (e) {
       log(e.toString());
     }
+  }
+
+  void _updateUser(String key, dynamic value, User user) {
+    user.setting ??= Setting();
+    final updatedUser = user.copyWith(
+      setting: user.setting!.copyWith(
+        settings: {...user.setting!.settings, key: value},
+      ),
+    );
+
+    _container
+        .read(usersProvider.notifier)
+        .updateUserAtIndex(_selectedUserIndex ?? 0, updatedUser);
   }
 }

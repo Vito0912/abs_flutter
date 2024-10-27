@@ -3,11 +3,11 @@ import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/models/library_preview_item.dart';
 import 'package:abs_flutter/provider/progress_provider.dart';
 import 'package:abs_flutter/widgets/album_image.dart';
+import 'package:abs_flutter/widgets/shimmer_placeholder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:shimmer/shimmer.dart';
 
 class LibraryItemWidget extends StatelessWidget {
   final LibraryPreviewItem? item;
@@ -115,44 +115,25 @@ class LibraryItemWidget extends StatelessWidget {
     return [
       ClipRRect(
         borderRadius: BorderRadius.circular(8.0),
-        child: AspectRatio(
+        child: const AspectRatio(
           aspectRatio: 1,
-          child: Shimmer.fromColors(
-            baseColor: Colors.grey[300]!,
-            highlightColor: Colors.grey[100]!,
-            child: Container(color: Colors.grey[300]),
-          ),
+          child: ShimmerPlaceholder(),
         ),
       ),
       const SizedBox(height: 4.0),
-      Shimmer.fromColors(
-        baseColor: Colors.grey[300]!,
-        highlightColor: Colors.grey[100]!,
-        child: Container(
-          height: 16.0,
-          width: 150.0,
-          color: Colors.grey[300],
-        ),
+      const ShimmerPlaceholder(
+        height: 16.0,
+        width: 150.0,
       ),
       const SizedBox(height: 4.0),
-      Shimmer.fromColors(
-        baseColor: Colors.grey[300]!,
-        highlightColor: Colors.grey[100]!,
-        child: Container(
-          height: 14.0,
-          width: 80.0,
-          color: Colors.grey[300],
-        ),
+      const ShimmerPlaceholder(
+        height: 14.0,
+        width: 80.0,
       ),
       const SizedBox(height: 4.0),
-      Shimmer.fromColors(
-        baseColor: Colors.grey[300]!,
-        highlightColor: Colors.grey[100]!,
-        child: Container(
-          height: 14.0,
-          width: 50.0,
-          color: Colors.grey[300],
-        ),
+      const ShimmerPlaceholder(
+        height: 14.0,
+        width: 50.0,
       ),
     ];
   }
