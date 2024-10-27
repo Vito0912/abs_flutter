@@ -192,7 +192,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Error downloading"),
         "errorDownloadingBody": MessageLookupByLibrary.simpleMessage(
             "An error occurred while downloading \'{\'displayName\'}\'"),
+        "exit": MessageLookupByLibrary.simpleMessage("Exit"),
         "failed": MessageLookupByLibrary.simpleMessage("Failed"),
+        "fastForward": MessageLookupByLibrary.simpleMessage("Fast forward"),
         "fastForwardSeconds":
             MessageLookupByLibrary.simpleMessage("Fast Forward Seconds"),
         "fastForwardSecondsDescription": MessageLookupByLibrary.simpleMessage(
@@ -202,6 +204,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "finished": MessageLookupByLibrary.simpleMessage("Finished"),
         "general": MessageLookupByLibrary.simpleMessage("General"),
         "genres": MessageLookupByLibrary.simpleMessage("Genres"),
+        "hide": MessageLookupByLibrary.simpleMessage("Hide"),
         "ifTheQuickAccountSwitcherShouldBeShown":
             MessageLookupByLibrary.simpleMessage(
                 "If the quick account switcher should be shown"),
@@ -236,6 +239,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Mark Items Finished"),
         "markItemsFinishedAfterDescription": MessageLookupByLibrary.simpleMessage(
             "Specify the time in seconds before the end of an item at which it should be marked as finished. Setting this to 0 marks the item as finished only when the player reaches the very end. If a positive value is set, the item is marked as finished when the player reaches that time before the end."),
+        "minimizeToTray":
+            MessageLookupByLibrary.simpleMessage("Minimize to tray"),
+        "minimizeToTrayDescription": MessageLookupByLibrary.simpleMessage(
+            "This option hides the app from the taskbar and moves it to the system tray."),
         "miscellaneous": MessageLookupByLibrary.simpleMessage("Miscellaneous"),
         "moreOptions": MessageLookupByLibrary.simpleMessage("More options"),
         "multipleServerAdressess": MessageLookupByLibrary.simpleMessage(
@@ -245,6 +252,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "narrators": MessageLookupByLibrary.simpleMessage("Narrators"),
         "newestEpisodes":
             MessageLookupByLibrary.simpleMessage("Newest Episodes"),
+        "next": MessageLookupByLibrary.simpleMessage("Next"),
+        "nextChapter": MessageLookupByLibrary.simpleMessage("Next Chapter"),
         "noConnection": MessageLookupByLibrary.simpleMessage("No Connection"),
         "noDownloads": MessageLookupByLibrary.simpleMessage("No downloads"),
         "noInternetDescription": MessageLookupByLibrary.simpleMessage(
@@ -284,6 +293,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "pleaseCheckInternet": MessageLookupByLibrary.simpleMessage(
             "Please check your internet connection and try again."),
         "port": MessageLookupByLibrary.simpleMessage("Port"),
+        "previous": MessageLookupByLibrary.simpleMessage("Previous"),
+        "previousChapter":
+            MessageLookupByLibrary.simpleMessage("Previous Chapter"),
         "progress": MessageLookupByLibrary.simpleMessage("Progress"),
         "progressAsChaptersDescription": MessageLookupByLibrary.simpleMessage(
             "Enable this option to display progress in the player and notifications on a per-chapter basis. If disabled, progress will be shown based on the entire item."),
@@ -299,6 +311,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Restart Required"),
         "restartRequiredDescription": MessageLookupByLibrary.simpleMessage(
             "Please restart the app to apply the changes."),
+        "rewind": MessageLookupByLibrary.simpleMessage("Rewind"),
         "rewindSeconds": MessageLookupByLibrary.simpleMessage("Rewind Seconds"),
         "rewindSecondsDescription": MessageLookupByLibrary.simpleMessage(
             "Set the number of seconds to skip backward when the rewind button is pressed."),
@@ -316,6 +329,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "shakeResetTimer":
             MessageLookupByLibrary.simpleMessage("Shake to reset sleep timer"),
         "shareOpen": MessageLookupByLibrary.simpleMessage("Share Open"),
+        "show": MessageLookupByLibrary.simpleMessage("Show"),
         "showAccountSwitcher":
             MessageLookupByLibrary.simpleMessage("Show Account Switcher"),
         "showAccountSwitcherDescription": MessageLookupByLibrary.simpleMessage(

@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/globals.dart';
@@ -170,5 +171,9 @@ class Helper {
     final pathToDb = db.path;
     await databaseFactoryIo.deleteDatabase(pathToDb);
     db = await databaseFactoryIo.openDatabase(pathToDb);
+  }
+
+  static bool isDesktop() {
+    return Platform.isWindows || Platform.isLinux || Platform.isMacOS;
   }
 }

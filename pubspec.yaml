@@ -56,6 +56,7 @@ dependencies:
   sembast_web: ^2.4.0+2
   icons_plus: ^5.0.0
   settings_ui: ^2.0.2
+  tray_manager: ^0.2.4
 
   flutter_hooks: any
   uuid: any

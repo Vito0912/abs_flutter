@@ -9,6 +9,7 @@ import 'package:abs_flutter/provider/log_provider.dart';
 import 'package:abs_flutter/provider/player_provider.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
 import 'package:abs_flutter/util/abs_audio_handler.dart';
+import 'package:abs_flutter/util/constants.dart';
 import 'package:abs_flutter/util/setting_cache_provider.dart';
 import 'package:audio_service/audio_service.dart';
 import 'package:device_info_plus/device_info_plus.dart';
@@ -25,6 +26,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:sembast/sembast_io.dart';
 import 'package:sembast_web/sembast_web.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:tray_manager/tray_manager.dart';
 import 'package:window_manager/window_manager.dart';
 
 void main() async {
@@ -136,10 +138,16 @@ Future<void> _runPlatformSpecificCode() async {
     case 'windows':
       await windowManager.ensureInitialized();
 
-      WindowOptions windowOptions = const WindowOptions(
-          minimumSize: Size(400, 400),
-          title: appTitle,
-          windowButtonVisibility: true);
+      WindowOptions windowOptions = WindowOptions(
+        minimumSize: const Size(400, 400),
+        title: appTitle,
+        skipTaskbar:
+            userSharedPreferences.getBool(Constants.WINDOWS_MINIMIZE_TO_TRAY) ??
+                false,
+      );
+
+      await trayManager.setIcon('assets/images/logo/logo_blue_big_abs.ico');
+
       windowManager.waitUntilReadyToShow(windowOptions, () async {
         await windowManager.show();
         await windowManager.focus();

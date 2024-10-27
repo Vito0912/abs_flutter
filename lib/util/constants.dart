@@ -18,4 +18,5 @@ class Constants {
   static const String AGGRESSIVE_CACHING = 'aggressiveCaching';
   static const String BOOST_LOADING = 'boostLoading';
   static const String LOGGING_ENABLED = 'loggingEnabled';
+  static const String WINDOWS_MINIMIZE_TO_TRAY = 'windowsMinimizeToTray';
 }
