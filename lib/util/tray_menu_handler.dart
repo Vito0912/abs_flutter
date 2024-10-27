@@ -1,4 +1,6 @@
 import 'package:abs_flutter/generated/l10n.dart';
+import 'package:abs_flutter/util/helper.dart';
+import 'package:flutter/foundation.dart';
 import 'package:tray_manager/tray_manager.dart';
 import 'package:window_manager/window_manager.dart';
 
@@ -85,9 +87,13 @@ Menu playerMenu() {
 }
 
 void setStandardMenu() {
+  if (kIsWeb) return;
+  if (!Helper.isDesktop()) return;
   trayManager.setContextMenu(standardMenu());
 }
 
 void setPlayerMenu() {
+  if (kIsWeb) return;
+  if (!Helper.isDesktop()) return;
   trayManager.setContextMenu(playerMenu());
 }
