@@ -450,6 +450,8 @@
   "@markItemsFinished": {},
   "markItemsFinishedAfterDescription": "Specify the time in seconds before the end of an item at which it should be marked as finished. Setting this to 0 marks the item as finished only when the player reaches the very end. If a positive value is set, the item is marked as finished when the player reaches that time before the end.",
   "@markItemsFinishedAfterDescription": {},
+  "minimize": "Minimize",
+  "@minimize": {},
   "minimizeToTray": "Minimize to tray",
   "@minimizeToTray": {},
   "minimizeToTrayDescription": "This option hides the app from the taskbar and moves it to the system tray.",

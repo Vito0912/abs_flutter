@@ -1,4 +1,6 @@
 import 'package:abs_flutter/generated/l10n.dart';
+import 'package:abs_flutter/util/helper.dart';
+import 'package:flutter/foundation.dart';
 import 'package:tray_manager/tray_manager.dart';
 import 'package:window_manager/window_manager.dart';
 
@@ -19,6 +21,13 @@ Menu standardMenu() {
           windowManager.hide();
         },
       ),
+      MenuItem(
+        key: 'minimize',
+        label: S.current.minimize,
+        onClick: (item) {
+          windowManager.minimize();
+        },
+      ),
       MenuItem.separator(),
       MenuItem(
         key: 'exit',
@@ -36,6 +45,7 @@ Menu playerMenu() {
     items: [
       standardMenu().items![0],
       standardMenu().items![1],
+      standardMenu().items![2],
       MenuItem.separator(),
       MenuItem(
         key: 'fast_forward',
@@ -71,15 +81,19 @@ Menu playerMenu() {
         ),
       ),
       MenuItem.separator(),
-      standardMenu().items![3],
+      standardMenu().items![4],
     ],
   );
 }
 
 void setStandardMenu() {
+  if (kIsWeb) return;
+  if (!Helper.isDesktop()) return;
   trayManager.setContextMenu(standardMenu());
 }
 
 void setPlayerMenu() {
+  if (kIsWeb) return;
+  if (!Helper.isDesktop()) return;
   trayManager.setContextMenu(playerMenu());
 }
