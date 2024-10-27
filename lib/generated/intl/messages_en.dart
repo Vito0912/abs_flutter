@@ -239,6 +239,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Mark Items Finished"),
         "markItemsFinishedAfterDescription": MessageLookupByLibrary.simpleMessage(
             "Specify the time in seconds before the end of an item at which it should be marked as finished. Setting this to 0 marks the item as finished only when the player reaches the very end. If a positive value is set, the item is marked as finished when the player reaches that time before the end."),
+        "minimize": MessageLookupByLibrary.simpleMessage("Minimize"),
         "minimizeToTray":
             MessageLookupByLibrary.simpleMessage("Minimize to tray"),
         "minimizeToTrayDescription": MessageLookupByLibrary.simpleMessage(

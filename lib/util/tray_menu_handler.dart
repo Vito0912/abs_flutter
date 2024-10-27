@@ -19,6 +19,13 @@ Menu standardMenu() {
           windowManager.hide();
         },
       ),
+      MenuItem(
+        key: 'minimize',
+        label: S.current.minimize,
+        onClick: (item) {
+          windowManager.minimize();
+        },
+      ),
       MenuItem.separator(),
       MenuItem(
         key: 'exit',
@@ -36,6 +43,7 @@ Menu playerMenu() {
     items: [
       standardMenu().items![0],
       standardMenu().items![1],
+      standardMenu().items![2],
       MenuItem.separator(),
       MenuItem(
         key: 'fast_forward',
@@ -71,7 +79,7 @@ Menu playerMenu() {
         ),
       ),
       MenuItem.separator(),
-      standardMenu().items![3],
+      standardMenu().items![4],
     ],
   );
 }

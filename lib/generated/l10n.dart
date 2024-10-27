@@ -1170,6 +1170,16 @@ class S {
     );
   }
 
+  /// `Minimize`
+  String get minimize {
+    return Intl.message(
+      'Minimize',
+      name: 'minimize',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Minimize to tray`
   String get minimizeToTray {
     return Intl.message(
