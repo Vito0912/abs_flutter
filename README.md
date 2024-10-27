@@ -77,7 +77,8 @@ As for Linux, the app hasn’t been tested on that platform yet.
    **HTML Support** - Converts HTML in descriptions and makes links clickable.\
 🚀 **Fast Loading** - Option to enable fast loading that loads even the biggest libraries in a fraction of time.\
 🚗 **Car Player Mode (Big Buttons)** - Big buttons for easy control while driving.\
-⚙️ **Many Settings** - Customize the app to your liking. Head to [Settings](SETTINGS.md) to learn more.
+⚙️ **Many Settings** - Customize the app to your liking. Head to [Settings](SETTINGS.md) to learn more.\
+   **Tray Icon** - Control the app from the tray icon. (Desktops)\
 
 ### Additional to First-party App
 
@@ -89,7 +90,8 @@ As for Linux, the app hasn’t been tested on that platform yet.
 🔁 **Queue Support**\
 **HTML Support**\
 🚀 **Advanced Caching**\
-🚗 **Car Player Mode (Big Buttons)**
+🚗 **Car Player Mode (Big Buttons)**\
+**Tray Icon**
 
 ### Missing from First-party App
 

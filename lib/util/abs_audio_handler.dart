@@ -11,6 +11,7 @@ import 'package:abs_flutter/provider/queue_provider.dart';
 import 'package:abs_flutter/provider/session_provider.dart';
 import 'package:abs_flutter/provider/settings_provider.dart';
 import 'package:abs_flutter/provider/sleep_timer_provider.dart';
+import 'package:abs_flutter/util/tray_menu_handler.dart';
 import 'package:audio_service/audio_service.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -136,8 +137,10 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
     if (currentStatus.playStatus != PlayerStatus.playing) {
       await currentStatus.setPlayStatusQuietly(PlayerStatus.playing, 'play');
     }
-
+    setPlayerMenu();
     await _player.play();
+    if (Platform.isWindows) await player.pause();
+    if (Platform.isWindows) await player.play();
     _container.read(timerProvider.notifier).continueTimer();
   }
 
@@ -166,6 +169,7 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
 
   @override
   Future<void> pause() async {
+    setPlayerMenu();
     final currentStatus = _container.read(playStatusProvider.notifier);
     if (currentStatus.playStatus != PlayerStatus.paused) {
       await currentStatus.setPlayStatusQuietly(PlayerStatus.paused, 'pause');
@@ -178,6 +182,7 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
 
   @override
   Future<void> stop() async {
+    setStandardMenu();
     final currentStatus = _container.read(playStatusProvider.notifier);
     if (currentStatus.playStatus != PlayerStatus.stopped) {
       await currentStatus.setPlayStatusQuietly(PlayerStatus.stopped, 'stop');

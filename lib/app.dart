@@ -2,6 +2,8 @@ import 'dart:io';
 
 import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/provider/log_provider.dart';
+import 'package:abs_flutter/provider/player_provider.dart';
+import 'package:abs_flutter/provider/player_status_provider.dart';
 import 'package:abs_flutter/provider/progress_provider.dart';
 import 'package:abs_flutter/provider/session_provider.dart';
 import 'package:abs_flutter/provider/settings_provider.dart';
@@ -9,11 +11,14 @@ import 'package:abs_flutter/provider/user_provider.dart';
 import 'package:abs_flutter/util/constants.dart';
 import 'package:abs_flutter/util/router.dart';
 import 'package:abs_flutter/util/theme.dart';
+import 'package:abs_flutter/util/tray_menu_handler.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:tray_manager/tray_manager.dart';
 
 import 'globals.dart';
 
@@ -24,16 +29,23 @@ class AbsApp extends ConsumerStatefulWidget {
   _AbsAppState createState() => _AbsAppState();
 }
 
-class _AbsAppState extends ConsumerState<AbsApp> with WidgetsBindingObserver {
+class _AbsAppState extends ConsumerState<AbsApp>
+    with WidgetsBindingObserver, TrayListener {
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
+    trayManager.addListener(this);
+
+    SchedulerBinding.instance.addPostFrameCallback((_) {
+      setStandardMenu();
+    });
   }
 
   @override
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
+    trayManager.removeListener(this);
     super.dispose();
   }
 
@@ -93,5 +105,49 @@ class _AbsAppState extends ConsumerState<AbsApp> with WidgetsBindingObserver {
       return darkMode ? ThemeMode.dark : ThemeMode.light;
     }
     return ThemeMode.system;
+  }
+
+  @override
+  void onTrayIconMouseDown() {
+    trayManager.popUpContextMenu();
+  }
+
+  @override
+  void onTrayIconRightMouseDown() {}
+
+  @override
+  void onTrayIconRightMouseUp() {}
+
+  @override
+  void onTrayMenuItemClick(MenuItem menuItem) {
+    switch (menuItem.key) {
+      case 'fast_forward':
+        ref.read(playerProvider.notifier).audioService.fastForward();
+        break;
+      case 'rewind':
+        ref.read(playerProvider.notifier).audioService.rewind();
+        break;
+      case 'play':
+        ref
+            .read(playStatusProvider.notifier)
+            .setPlayStatus(PlayerStatus.playing, 'tray');
+        break;
+      case 'pause':
+        ref
+            .read(playStatusProvider.notifier)
+            .setPlayStatus(PlayerStatus.paused, 'tray');
+        break;
+      case 'stop':
+        ref
+            .read(playStatusProvider.notifier)
+            .setPlayStatus(PlayerStatus.stopped, 'tray');
+        break;
+      case 'previous_chapter':
+        ref.read(playerProvider.notifier).audioService.skipToPrevious();
+        break;
+      case 'next_chapter':
+        ref.read(playerProvider.notifier).audioService.skipToNext();
+        break;
+    }
   }
 }

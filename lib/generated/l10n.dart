@@ -100,6 +100,16 @@ class S {
     );
   }
 
+  /// `AMOLED Mode`
+  String get amoledMode {
+    return Intl.message(
+      'AMOLED Mode',
+      name: 'amoledMode',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Ascending`
   String get ascending {
     return Intl.message(
@@ -800,11 +810,31 @@ class S {
     );
   }
 
+  /// `Exit`
+  String get exit {
+    return Intl.message(
+      'Exit',
+      name: 'exit',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Failed`
   String get failed {
     return Intl.message(
       'Failed',
       name: 'failed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Fast forward`
+  String get fastForward {
+    return Intl.message(
+      'Fast forward',
+      name: 'fastForward',
       desc: '',
       args: [],
     );
@@ -880,6 +910,16 @@ class S {
     );
   }
 
+  /// `Hide`
+  String get hide {
+    return Intl.message(
+      'Hide',
+      name: 'hide',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `If the quick account switcher should be shown`
   String get ifTheQuickAccountSwitcherShouldBeShown {
     return Intl.message(
@@ -895,6 +935,16 @@ class S {
     return Intl.message(
       'In Progress',
       name: 'inProgress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Information`
+  String get information {
+    return Intl.message(
+      'Information',
+      name: 'information',
       desc: '',
       args: [],
     );
@@ -1120,6 +1170,26 @@ class S {
     );
   }
 
+  /// `Minimize to tray`
+  String get minimizeToTray {
+    return Intl.message(
+      'Minimize to tray',
+      name: 'minimizeToTray',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This option hides the app from the taskbar and moves it to the system tray.`
+  String get minimizeToTrayDescription {
+    return Intl.message(
+      'This option hides the app from the taskbar and moves it to the system tray.',
+      name: 'minimizeToTrayDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Miscellaneous`
   String get miscellaneous {
     return Intl.message(
@@ -1175,6 +1245,26 @@ class S {
     return Intl.message(
       'Newest Episodes',
       name: 'newestEpisodes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Next`
+  String get next {
+    return Intl.message(
+      'Next',
+      name: 'next',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Next Chapter`
+  String get nextChapter {
+    return Intl.message(
+      'Next Chapter',
+      name: 'nextChapter',
       desc: '',
       args: [],
     );
@@ -1463,6 +1553,26 @@ class S {
     );
   }
 
+  /// `Previous`
+  String get previous {
+    return Intl.message(
+      'Previous',
+      name: 'previous',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Previous Chapter`
+  String get previousChapter {
+    return Intl.message(
+      'Previous Chapter',
+      name: 'previousChapter',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Progress`
   String get progress {
     return Intl.message(
@@ -1568,6 +1678,16 @@ class S {
     return Intl.message(
       'Please restart the app to apply the changes.',
       name: 'restartRequiredDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Rewind`
+  String get rewind {
+    return Intl.message(
+      'Rewind',
+      name: 'rewind',
       desc: '',
       args: [],
     );
@@ -1688,6 +1808,16 @@ class S {
     return Intl.message(
       'Share Open',
       name: 'shareOpen',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Show`
+  String get show {
+    return Intl.message(
+      'Show',
+      name: 'show',
       desc: '',
       args: [],
     );
@@ -2018,26 +2148,6 @@ class S {
     return Intl.message(
       'Year',
       name: 'year',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `AMOLED Mode`
-  String get amoledMode {
-    return Intl.message(
-      'AMOLED Mode',
-      name: 'amoledMode',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Information`
-  String get information {
-    return Intl.message(
-      'Information',
-      name: 'information',
       desc: '',
       args: [],
     );

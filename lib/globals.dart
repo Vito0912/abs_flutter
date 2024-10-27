@@ -47,7 +47,8 @@ final Map<String, dynamic> defaultSettings = {
   Constants.CACHING_ENABLED: true,
   Constants.AGGRESSIVE_CACHING: true,
   Constants.BOOST_LOADING: true,
-  Constants.LOGGING_ENABLED: true
+  Constants.LOGGING_ENABLED: true,
+  Constants.WINDOWS_MINIMIZE_TO_TRAY: false
 };
 
 final Map<String, String> supportedLocales = {

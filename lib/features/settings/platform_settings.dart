@@ -90,6 +90,14 @@ class PlatformSettings extends ConsumerWidget {
                   title: S.of(context).syncOnlyViaWifi,
                   keyValue: Constants.SYNC_ONLY_VIA_WIFI,
                   defaultValue: false),
+              if (Helper.isDesktop())
+                SwitchTile(
+                    leading: const Icon(IonIcons.file_tray),
+                    title: S.of(context).minimizeToTray,
+                    toolTipText: S.of(context).minimizeToTrayDescription,
+                    keyValue: Constants.WINDOWS_MINIMIZE_TO_TRAY,
+                    defaultValue: false),
+              //TODO: Add support for Linux and MacOS
             ],
           ),
           SettingsSection(
