@@ -1,8 +1,496 @@
 {
-  "addUser": "新增用户",
+  "addUser": "添加用户",
   "@addUser": {},
   "aggressiveCaching": "本地缓存",
   "@aggressiveCaching": {},
-  "addANewUser": "新增新用户",
-  "@addANewUser": {}
+  "addANewUser": "添加新用户",
+  "@addANewUser": {},
+  "allDownloads": "所有下载列表",
+  "@allDownloads": {},
+  "author": "作者",
+  "@author": {},
+  "back": "后退",
+  "@back": {},
+  "bookCover": "书籍封面",
+  "@bookCover": {},
+  "boostLoading": "实时更新",
+  "@boostLoading": {},
+  "cachingHeader": "缓存",
+  "@cachingHeader": {},
+  "cancel": "取消",
+  "@cancel": {},
+  "carPlayer": "车载播放器",
+  "@carPlayer": {},
+  "chapters": "章节",
+  "@chapters": {},
+  "chaptersNum": "章节 ({num})",
+  "@chaptersNum": {
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "close": "关闭",
+  "@close": {},
+  "consecutiveDays": "连续收听天数",
+  "@consecutiveDays": {},
+  "continueListening": "继续收听",
+  "@continueListening": {},
+  "currentDownloads": "当前下载",
+  "@currentDownloads": {},
+  "currentPositionNum": "当前时长: {position}",
+  "@currentPositionNum": {
+    "placeholders": {
+      "position": {
+        "type": "String"
+      }
+    }
+  },
+  "dateFormatDayHourMinuteShort": "{days}天 {hours}时 {minutes}分",
+  "@dateFormatDayHourMinuteShort": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatHourMinuteShort": "{hours}时 {minutes}分",
+  "@dateFormatHourMinuteShort": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatHourShort": "{count}小时",
+  "@dateFormatHourShort": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "debugLogs": "调试日志",
+  "@debugLogs": {},
+  "downloadComplete": "下载完成",
+  "@downloadComplete": {},
+  "description": "描述",
+  "@description": {},
+  "domainOrIp": "域名 或 IP",
+  "@domainOrIp": {},
+  "disabled": "禁用",
+  "@disabled": {},
+  "downloadingBody": "'{'displayName'}' 正在下载",
+  "@downloadingBody": {},
+  "downloads": "下载列表",
+  "@downloads": {},
+  "downloadsOnlyViaWifi": "仅通过Wifi下载",
+  "@downloadsOnlyViaWifi": {},
+  "error": "错误",
+  "@error": {},
+  "enabled": "启用",
+  "@enabled": {},
+  "editQueue": "编辑队列",
+  "@editQueue": {},
+  "duration": "持续时间",
+  "@duration": {},
+  "fastForwardSeconds": "快进秒数",
+  "@fastForwardSeconds": {},
+  "filter": "筛选",
+  "@filter": {},
+  "genres": "类型",
+  "@genres": {},
+  "finished": "已完成",
+  "@finished": {},
+  "errorDownloading": "下载失败",
+  "@errorDownloading": {},
+  "errorDownloadingBody": "下载 '{'displayName'}'时发生错误",
+  "@errorDownloadingBody": {},
+  "failed": "失败的",
+  "@failed": {},
+  "exit": "退出",
+  "@exit": {},
+  "inProgress": "正在更新",
+  "@inProgress": {},
+  "itemLength": "总时长: {length}",
+  "@itemLength": {
+    "placeholders": {
+      "length": {
+        "type": "String"
+      }
+    }
+  },
+  "itemNumChapters": "章节数: {numChapters}",
+  "@itemNumChapters": {
+    "placeholders": {
+      "numChapters": {
+        "type": "String"
+      }
+    }
+  },
+  "information": "信息",
+  "@information": {},
+  "ifTheQuickAccountSwitcherShouldBeShown": "如果需要启用账号快速切换功能",
+  "@ifTheQuickAccountSwitcherShouldBeShown": {},
+  "last30Days": "最后30天",
+  "@last30Days": {},
+  "last7Days": "最后7天",
+  "@last7Days": {},
+  "jumpToLastPosition": "跳转到最后一个位置",
+  "@jumpToLastPosition": {},
+  "libraryStats": "媒体库统计",
+  "@libraryStats": {},
+  "listenAgain": "再听一遍",
+  "@listenAgain": {},
+  "libraries": "媒体库",
+  "@libraries": {},
+  "logging": "日志记录",
+  "@logging": {},
+  "markItemsFinished": "将项目标记为已完成",
+  "@markItemsFinished": {},
+  "minimize": "最小化",
+  "@minimize": {},
+  "minimizeToTray": "最小化至托盘",
+  "@minimizeToTray": {},
+  "minimizeToTrayDescription": "此选项从任务栏隐藏应用程序并将其移动到系统托盘。",
+  "@minimizeToTrayDescription": {},
+  "newestEpisodes": "最新剧集",
+  "@newestEpisodes": {},
+  "moreOptions": "更多选择",
+  "@moreOptions": {},
+  "noInternetDescription": "连接到服务器时遇到问题。",
+  "@noInternetDescription": {},
+  "noConnection": "未连接",
+  "@noConnection": {},
+  "notFinished": "未完成",
+  "@notFinished": {},
+  "notStarted": "未播放",
+  "@notStarted": {},
+  "noUserData": "登录失败：未获取到用户数据",
+  "@noUserData": {},
+  "notTriedYet": "尚未尝试",
+  "@notTriedYet": {},
+  "ownStats": "我的统计",
+  "@ownStats": {},
+  "pause": "暂停播放",
+  "@pause": {},
+  "player": "播放器",
+  "@player": {},
+  "personalizedLibrary": "我的媒体库",
+  "@personalizedLibrary": {},
+  "playbackSpeed": "倍速",
+  "@playbackSpeed": {},
+  "password": "密码",
+  "@password": {},
+  "playerSettings": "播放器设置",
+  "@playerSettings": {},
+  "playNextEpisode": "播放下一集",
+  "@playNextEpisode": {},
+  "port": "端口",
+  "@port": {},
+  "previous": "以前的",
+  "@previous": {},
+  "progress": "进度",
+  "@progress": {},
+  "progressNum": "当前进度: {progress} %",
+  "@progressNum": {
+    "placeholders": {
+      "progress": {
+        "type": "String"
+      }
+    }
+  },
+  "readMore": "阅读更多",
+  "@readMore": {},
+  "readLess": "阅读较少",
+  "@readLess": {},
+  "rewind": "快退",
+  "@rewind": {},
+  "recentlyAdded": "最近添加",
+  "@recentlyAdded": {},
+  "restartRequiredDescription": "请重新启动应用程序以应用更改。",
+  "@restartRequiredDescription": {},
+  "restartRequired": "需要重新启动",
+  "@restartRequired": {},
+  "reportAnIssue": "报告问题",
+  "@reportAnIssue": {},
+  "search": "搜索",
+  "@search": {},
+  "searchDisabled": "禁用搜索",
+  "@searchDisabled": {},
+  "serverAdressContinue": "输入您的服务器地址以继续",
+  "@serverAdressContinue": {},
+  "settings": "设置",
+  "@settings": {},
+  "serverSelection": "服务器选择",
+  "@serverSelection": {},
+  "signOut": "注销",
+  "@signOut": {},
+  "sleepTimer": "睡眠定时器",
+  "@sleepTimer": {},
+  "stopPlayerUntilSync": "停止播放直至同步",
+  "@stopPlayerUntilSync": {},
+  "timeRemainingNum": "剩余时间: {time}",
+  "@timeRemainingNum": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "syncOnlyViaWifi": "仅通过Wifi同步",
+  "@syncOnlyViaWifi": {},
+  "totalTimeListened": "总收听时长",
+  "@totalTimeListened": {},
+  "today": "今日收听时长",
+  "@today": {},
+  "tryAgain": "重试",
+  "@tryAgain": {},
+  "unknown": "未知",
+  "@unknown": {},
+  "user": "用户",
+  "@user": {},
+  "updatedAt": "更新于",
+  "@updatedAt": {},
+  "viewOnGithub": "GitHub页面",
+  "@viewOnGithub": {},
+  "waitingForDownload": "等待下载开始",
+  "@waitingForDownload": {},
+  "year": "年",
+  "@year": {},
+  "aggressiveCachingDescription": "启用后，应用将在本地进行缓存。缓存数据可能包含需要定期更新的数据，例如所有项目的进度。在这种情况下，除非您专门打开并请求单个项目，否则将使用最后一个已知位置。这些缓存数据的持续时间较短。",
+  "@aggressiveCachingDescription": {},
+  "amoledMode": "AMOLED模式",
+  "@amoledMode": {},
+  "ascending": "升序",
+  "@ascending": {},
+  "attribution": "关于",
+  "@attribution": {},
+  "authors": "作者",
+  "@authors": {},
+  "boostLoadingSubtitle": "请阅读说明以了解此功能。",
+  "@boostLoadingSubtitle": {},
+  "boostLoadingDescription": "启用此功能后，应用将有效地绕过实时缓存。它将始终尝试从服务器获取最新数据，同时使用缓存数据立即加载内容。检索到更新的数据后，它将替换旧缓存，确保下次加载应用时显示最新数据。因此，您将始终看到服务器当前数据后面一个获取周期的数据。",
+  "@boostLoadingDescription": {},
+  "caching": "缓存",
+  "@caching": {},
+  "changeLibrary": "切换媒体库",
+  "@changeLibrary": {},
+  "clearCache": "清理缓存",
+  "@clearCache": {},
+  "nextChapter": "下一章",
+  "@nextChapter": {},
+  "fastForward": "快进",
+  "@fastForward": {},
+  "library": "媒体库",
+  "@library": {},
+  "darkMode": "黑夜模式",
+  "@darkMode": {},
+  "previousChapter": "上一章",
+  "@previousChapter": {},
+  "play": "播放",
+  "@play": {},
+  "playHistory": "播放历史",
+  "@playHistory": {},
+  "stop": "停止播放",
+  "@stop": {},
+  "show": "显示",
+  "@show": {},
+  "discover": "发现",
+  "@discover": {},
+  "hide": "隐藏",
+  "@hide": {},
+  "fastForwardSecondsDescription": "设置按下快进按钮时向前跳过的秒数。",
+  "@fastForwardSecondsDescription": {},
+  "rewindSecondsDescription": "设置按下快退按钮时向后跳过的秒数。",
+  "@rewindSecondsDescription": {},
+  "rewindSeconds": "快退秒数",
+  "@rewindSeconds": {},
+  "recentSeries": "近期系列",
+  "@recentSeries": {},
+  "series": "系列",
+  "@series": {},
+  "sort": "排序",
+  "@sort": {},
+  "title": "标题",
+  "@title": {},
+  "noSeriesSelected": "未选择系列",
+  "@noSeriesSelected": {},
+  "unknownTitle": "未知标题",
+  "@unknownTitle": {},
+  "publisher": "发行商",
+  "@publisher": {},
+  "descending": "降序",
+  "@descending": {},
+  "language": "语言",
+  "@language": {},
+  "progressAsChaptersDescription": "启用此选项可在播放器中显示进度并按章节显示通知。如果禁用，则将根据整个项目显示进度。",
+  "@progressAsChaptersDescription": {},
+  "languages": "语言",
+  "@languages": {},
+  "sequence": "顺序",
+  "@sequence": {},
+  "tags": "标签",
+  "@tags": {},
+  "enableNotificationsDownload": "请启用通知以接收下载进度更新并能够在后台下载文件。",
+  "@enableNotificationsDownload": {},
+  "narrators": "演播者",
+  "@narrators": {},
+  "lockProgressBar": "锁定媒体进度条",
+  "@lockProgressBar": {},
+  "lockProgressBarDescription": "启用后，此功能将锁定媒体通知中的进度条（如果操作系统支持）",
+  "@lockProgressBarDescription": {},
+  "offlineProgress": "离线进度",
+  "@offlineProgress": {},
+  "itemProgress": "进度: {progress}%",
+  "@itemProgress": {
+    "placeholders": {
+      "progress": {
+        "type": "String"
+      }
+    }
+  },
+  "offlineSavedProgress": "离线保存进度",
+  "@offlineSavedProgress": {},
+  "showProgressPerChapters": "显示每章的进度",
+  "@showProgressPerChapters": {},
+  "openDownloads": "打开下载",
+  "@openDownloads": {},
+  "markItemsFinishedAfterDescription": "指定项目结束前应标记为完成的时间（以秒为单位） 。将其设置为 0 表示只有当玩家到达最后时，项目才会标记为完成。如果设置了正值，则当玩家在结束前到达该时间时，项目才会标记为完成。",
+  "@markItemsFinishedAfterDescription": {},
+  "daysListened": "收听天数",
+  "@daysListened": {},
+  "stats": "统计",
+  "@stats": {},
+  "dateFormatDayHourMinuteSecondShort": "{days}天 {hours}时 {minutes}分 {seconds}秒",
+  "@dateFormatDayHourMinuteSecondShort": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      },
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatDayHourShort": "{days}天 {hours}时",
+  "@dateFormatDayHourShort": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "waitTillRedirect": "请等待重定向至 /init。您目前尚未登录。",
+  "@waitTillRedirect": {},
+  "collapseSeriesDescription": "启用后，系列中的项目将在库视图中分组，仅显示单个项目来代表整个系列。",
+  "@collapseSeriesDescription": {},
+  "shakeResetTimer": "摇动以重置睡眠定时器",
+  "@shakeResetTimer": {},
+  "dateFormatMinuteSecondShort": "{minutes}分 {seconds}秒",
+  "@dateFormatMinuteSecondShort": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      },
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatHourMinuteSecondShort": "{hours}时 {minutes}分 {seconds}秒",
+  "@dateFormatHourMinuteSecondShort": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      },
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "timerText": "{time} 分钟",
+  "@timerText": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "stopPlayerWhileSyncingDescription": "启用此选项可防止播放器在同步最新播放位置之前启动。这可确保从正确位置恢复播放。如果禁用，播放位置可能会在开始后不久发生变化，从而可能导致数据丢失。启用此选项有助于节省数据使用量。",
+  "@stopPlayerWhileSyncingDescription": {},
+  "logs": "日志",
+  "@logs": {},
+  "downloadCompleteBody": "'{'displayName'}' 下载完成",
+  "@downloadCompleteBody": {},
+  "downloading": "正在下载",
+  "@downloading": {},
+  "noDownloads": "未下载列表",
+  "@noDownloads": {},
+  "success": "成功",
+  "@success": {},
+  "pleaseCheckInternet": "请检查您的Internet连接并重试。",
+  "@pleaseCheckInternet": {},
+  "jumpToLastPositionDescription": "当启用时，播放器将跳转到最后一个位置时，按下播放",
+  "@jumpToLastPositionDescription": {},
+  "showAccountSwitcher": "显示帐户切换",
+  "@showAccountSwitcher": {},
+  "showAccountSwitcherDescription": "启用此选项可在应用栏中添加图标按钮，以便快速切换帐户。这将减小应用栏的大小。",
+  "@showAccountSwitcherDescription": {},
+  "syncInterval": "同步间隔（秒）",
+  "@syncInterval": {},
+  "sync": "同步",
+  "@sync": {},
+  "syncIntervalDescription": "指定应用程序与服务器同步的频率。请重启应用程序以使更改生效。",
+  "@syncIntervalDescription": {},
+  "username": "用户名",
+  "@username": {},
+  "usernameOrPasswordNotEmpty": "密码不能为空",
+  "@usernameOrPasswordNotEmpty": {},
+  "notificationHeading": "",
+  "@notificationHeading": {},
+  "noItemsFound": "未找到任何商品",
+  "@noItemsFound": {},
+  "next": "下一个",
+  "@next": {},
+  "mustEnterValidAddress": "您必须输入有效的服务器地址",
+  "@mustEnterValidAddress": {},
+  "multipleServerAdressess": "如果要使用多个服务器地址，可以稍后添加",
+  "@multipleServerAdressess": {},
+  "listeningInTheLastYear": "最后一年的收听",
+  "@listeningInTheLastYear": {},
+  "itemPublishedYear": "出版年份: {year}",
+  "@itemPublishedYear": {
+    "placeholders": {
+      "year": {
+        "type": "String"
+      }
+    }
+  },
+  "enterValidUsernameOrPassword": "请输入您的用户名和密码:",
+  "@enterValidUsernameOrPassword": {},
+  "deleteSelected": "删除所选",
+  "@deleteSelected": {}
 }
