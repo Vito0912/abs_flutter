@@ -1,1 +1,8 @@
-{}
+{
+  "addUser": "新增用户",
+  "@addUser": {},
+  "aggressiveCaching": "本地缓存",
+  "@aggressiveCaching": {},
+  "addANewUser": "新增新用户",
+  "@addANewUser": {}
+}
