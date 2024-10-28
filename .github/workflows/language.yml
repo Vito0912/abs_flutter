@@ -1,0 +1,77 @@
+name: Update l10n files
+
+on:
+  push:
+    branches:
+      - main 
+    paths:
+      - 'lib/l10n/*'
+
+jobs:
+  update-localization:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y wget curl xz-utils git bash unzip
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: 3.22.3
+
+      - name: Install Flutter dependencies
+        run: |
+          flutter pub get
+          flutter pub add intl
+          flutter pub add intl_utils
+          flutter pub add arb_utils
+
+      - name: Set PATH for global Dart packages
+        run: echo 'export PATH="$PATH":"$HOME/.pub-cache/bin"' >> $GITHUB_ENV
+
+      - name: Activate intl_utils
+        run: dart pub global activate intl_utils
+
+      - name: Activate arb_utils
+        run: dart pub global activate arb_utils
+
+      - name: Run arb_utils commands for each modified file
+        run: |
+          if [ -z "${{ github.event.before }}" ]; then
+            modified_files=$(git ls-tree -r --name-only HEAD | grep "^lib/l10n/")
+          else
+            modified_files=$(git diff --name-only "${{ github.event.before }}" "${{ github.sha }}" | grep "^lib/l10n/")
+          fi
+          
+          if [ -z "$modified_files" ]; then
+            echo "No modified localization files to process."
+            exit 0
+          fi
+
+          for file in $modified_files; do
+            arb_utils generate-meta "$file"
+            arb_utils sort "$file"
+          done
+
+      - name: Generate l10n files
+        run: flutter --no-color pub global run intl_utils:generate
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add lib/l10n/*
+          git add lib/generated/intl/*
+          git commit -m "Update localization files [skip ci]" || echo "No changes to commit"
+          git push origin main --force
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
