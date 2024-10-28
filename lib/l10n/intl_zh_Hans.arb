@@ -489,7 +489,7 @@
       }
     }
   },
-  "enterValidUsernameOrPassword": "请输入您的用户名和密码:",
+  "enterValidUsernameOrPassword": "请输入您的用户名和密码。",
   "@enterValidUsernameOrPassword": {},
   "deleteSelected": "删除所选",
   "@deleteSelected": {}
