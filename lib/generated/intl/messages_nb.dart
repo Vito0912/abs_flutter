@@ -28,7 +28,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m26(year) => "Publisert år: ${year}";
 
-  static String m29(time) => "${time} min";
+  static String m30(time) => "${time} min";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -76,13 +76,13 @@ class MessageLookup extends MessageLookupByLibrary {
             "Angi antall sekunder før de faktisk er ferdige elementer skal markers som fullført. «0» betyr at fullføring kun inntreffer når avspilleren faktisk er ferdig."),
         "miscellaneous": MessageLookupByLibrary.simpleMessage("Ymse"),
         "multipleServerAdressess": MessageLookupByLibrary.simpleMessage(
-            "Hvis du ønsker å bruke flere tjeneradresser kan du legge dem til senere."),
+            "Hvis du ønsker å bruke flere tjeneradresser kan du legge dem til senere"),
         "mustEnterValidAddress": MessageLookupByLibrary.simpleMessage(
             "Du å angi en gyldig tjeneradresse"),
         "noConnection":
             MessageLookupByLibrary.simpleMessage("Ingen tilkobling"),
         "noUserData": MessageLookupByLibrary.simpleMessage(
-            "Kunne ikke logge inn. Mottok ingen brukerdata."),
+            "Kunne ikke logge inn. Mottok ingen brukerdata"),
         "password": MessageLookupByLibrary.simpleMessage("Passord"),
         "playbackSpeed": MessageLookupByLibrary.simpleMessage("Hastighet"),
         "player": MessageLookupByLibrary.simpleMessage("Avspiller"),
@@ -118,7 +118,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "stopPlayerWhileSyncingDescription": MessageLookupByLibrary.simpleMessage(
             "Alternativ for å forhindre avspilleren fra å starte til mest nylige avspillingsposisjon er nådd. Forsikrer at avspilling starter fra rett posisjon. Ellers kan posisjonen endres kort tid etter oppstart, noe som kan medføre datatap. Å skru dette på bruker mindre data."),
         "tags": MessageLookupByLibrary.simpleMessage("Etiketter"),
-        "timerText": m29,
+        "timerText": m30,
         "title": MessageLookupByLibrary.simpleMessage("Navn"),
         "updatedAt": MessageLookupByLibrary.simpleMessage("Oppdatert"),
         "user": MessageLookupByLibrary.simpleMessage("Bruker"),

@@ -54,7 +54,8 @@ final Map<String, dynamic> defaultSettings = {
 final Map<String, String> supportedLocales = {
   'en': 'English',
   'de': 'Deutsch',
-  'nb': 'Norsk Bokmål'
+  'nb': 'Norsk Bokmål',
+  'zh': '中文',
 };
 
 bool cachingEnabled = true;
