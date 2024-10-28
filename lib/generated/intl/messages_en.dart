@@ -87,14 +87,14 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m26(year) => "Published Year: ${year}";
 
-  static String m30(numBooks) =>
+  static String m27(numBooks) =>
       "${Intl.plural(numBooks, zero: 'No Books', one: '1 Book', other: '${numBooks} Books')}";
 
-  static String m27(progress) => "Current Progress: ${progress} %";
+  static String m28(progress) => "Current Progress: ${progress} %";
 
-  static String m28(time) => "Time Remaining: ${time}";
+  static String m29(time) => "Time Remaining: ${time}";
 
-  static String m29(time) => "${time} min";
+  static String m30(time) => "${time} min";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -269,7 +269,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "notTriedYet": MessageLookupByLibrary.simpleMessage("Not tried yet"),
         "notificationHeading": MessageLookupByLibrary.simpleMessage(
             "Notifications should be enabled"),
-        "numBooksInSeries": m30,
+        "numBooksInSeries": m27,
         "offlineProgress":
             MessageLookupByLibrary.simpleMessage("Offline Progress"),
         "offlineSavedProgress":
@@ -300,7 +300,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "progress": MessageLookupByLibrary.simpleMessage("Progress"),
         "progressAsChaptersDescription": MessageLookupByLibrary.simpleMessage(
             "Enable this option to display progress in the player and notifications on a per-chapter basis. If disabled, progress will be shown based on the entire item."),
-        "progressNum": m27,
+        "progressNum": m28,
         "publisher": MessageLookupByLibrary.simpleMessage("Publisher"),
         "readLess": MessageLookupByLibrary.simpleMessage("Read less"),
         "readMore": MessageLookupByLibrary.simpleMessage("Read more"),
@@ -356,8 +356,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "syncOnlyViaWifi":
             MessageLookupByLibrary.simpleMessage("Sync only via WiFi"),
         "tags": MessageLookupByLibrary.simpleMessage("Tags"),
-        "timeRemainingNum": m28,
-        "timerText": m29,
+        "timeRemainingNum": m29,
+        "timerText": m30,
         "title": MessageLookupByLibrary.simpleMessage("Title"),
         "today": MessageLookupByLibrary.simpleMessage("Today"),
         "totalTimeListened":
@@ -370,6 +370,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "username": MessageLookupByLibrary.simpleMessage("Username"),
         "usernameOrPasswordNotEmpty": MessageLookupByLibrary.simpleMessage(
             "Username and password cannot be empty"),
+        "viewChapters": MessageLookupByLibrary.simpleMessage("View Chapters"),
         "viewOnGithub": MessageLookupByLibrary.simpleMessage("View on GitHub"),
         "waitTillRedirect": MessageLookupByLibrary.simpleMessage(
             "Please wait for redirect to /init. You are currently not logged in."),

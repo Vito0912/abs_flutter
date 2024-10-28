@@ -54,7 +54,7 @@ class Metainfo extends StatelessWidget {
                         'end': e?.end,
                       })
                   .toList(),
-              child: PlatformText('View Chapters'))
+              child: PlatformText(S.of(context).viewChapters))
         ],
       ],
     );

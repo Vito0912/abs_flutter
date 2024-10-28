@@ -87,28 +87,47 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m26(year) => "Erscheinungsjahr: ${year}";
 
-  static String m27(progress) => "Aktueller Fortschritt: ${progress} %";
+  static String m27(numBooks) =>
+      "${Intl.plural(numBooks, zero: 'Keine Bücher', one: '1 Buch', other: '${numBooks} Bücher')}";
 
-  static String m28(time) => "Übrige Zeit: ${time}";
+  static String m28(progress) => "Aktueller Fortschritt: ${progress} %";
 
-  static String m29(time) => "${time} min";
+  static String m29(time) => "Übrige Zeit: ${time}";
+
+  static String m30(time) => "${time} min";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "addANewUser":
             MessageLookupByLibrary.simpleMessage("Füge einen Nutzer hinzu"),
         "addUser": MessageLookupByLibrary.simpleMessage("Benutzer hinzufügen"),
+        "aggressiveCaching":
+            MessageLookupByLibrary.simpleMessage("Aggressives Caching"),
+        "aggressiveCachingDescription": MessageLookupByLibrary.simpleMessage(
+            "Wenn aktiviert, verwendet die App ein intensiveres Caching. Dazu gehört das Zwischenspeichern von Routen, die möglicherweise Daten enthalten, die regelmäßig aktualisiert werden müssen, wie etwa der Fortschritt aller Elemente. In diesen Fällen wird die zuletzt bekannte Position verwendet, es sei denn, du öffnest und aktualisierst ein einzelnes Element gezielt. Diese Routen haben eine kürzere Cache-Dauer."),
+        "allDownloads": MessageLookupByLibrary.simpleMessage("Alle Downloads"),
+        "amoledMode": MessageLookupByLibrary.simpleMessage("AMOLED Modus"),
         "ascending": MessageLookupByLibrary.simpleMessage("Aufsteigend"),
         "attribution": MessageLookupByLibrary.simpleMessage("Anerkennungen"),
         "author": MessageLookupByLibrary.simpleMessage("Autor"),
         "authors": MessageLookupByLibrary.simpleMessage("Autoren"),
         "back": MessageLookupByLibrary.simpleMessage("Zurück"),
         "bookCover": MessageLookupByLibrary.simpleMessage("Buch Cover"),
+        "boostLoading":
+            MessageLookupByLibrary.simpleMessage("Ladezeiten senken"),
+        "boostLoadingDescription": MessageLookupByLibrary.simpleMessage(
+            "Wenn aktiviert, umgeht die App effektiv das Real-Time-Caching. Sie versucht stets, die neuesten Daten vom Server abzurufen, während zwischengespeicherte Daten genutzt werden, um Inhalte sofort zu laden. Sobald die aktualisierten Daten abgerufen sind, ersetzen sie den alten Cache, sodass beim nächsten Laden der App die aktuellsten Daten angezeigt werden. Dadurch siehst du immer die Daten aus einem Abrufzyklus hinter den neuesten Serverdaten. Dafür lädt der Inhalt schneller."),
+        "boostLoadingSubtitle": MessageLookupByLibrary.simpleMessage(
+            "Bitte lese die Beschreibung um dieses Feature zu verstehen."),
+        "caching": MessageLookupByLibrary.simpleMessage("Caching"),
+        "cachingHeader": MessageLookupByLibrary.simpleMessage("Caching"),
         "cancel": MessageLookupByLibrary.simpleMessage("Abbrechen"),
+        "carPlayer": MessageLookupByLibrary.simpleMessage("Auto Player"),
         "changeLibrary":
             MessageLookupByLibrary.simpleMessage("Bibliothek wechseln"),
         "chapters": MessageLookupByLibrary.simpleMessage("Kapitel"),
         "chaptersNum": m0,
+        "clearCache": MessageLookupByLibrary.simpleMessage("Cache leeren"),
         "close": MessageLookupByLibrary.simpleMessage("Schließen"),
         "collapseSeries":
             MessageLookupByLibrary.simpleMessage("Serien einklappen"),
@@ -116,6 +135,10 @@ class MessageLookup extends MessageLookupByLibrary {
             "Wenn aktiviert, werden Elemente einer Serie in der Bibliotheksansicht zusammengefasst und es wird nur ein einzelnes Element angezeigt, das die gesamte Serie repräsentiert."),
         "consecutiveDays":
             MessageLookupByLibrary.simpleMessage("Aufeinanderfolgende Tage"),
+        "continueListening":
+            MessageLookupByLibrary.simpleMessage("Weiter hören"),
+        "continueSeries":
+            MessageLookupByLibrary.simpleMessage("Serie weiter hören"),
         "currentDownloads":
             MessageLookupByLibrary.simpleMessage("Aktuell heruntergeladen"),
         "currentPositionNum": m1,
@@ -141,12 +164,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "dateFormatSecond": m20,
         "dateFormatSecondShort": m21,
         "daysListened": MessageLookupByLibrary.simpleMessage("Tage gehört"),
+        "debugLogs": MessageLookupByLibrary.simpleMessage("Entwickler Logs"),
         "deleteSelected":
             MessageLookupByLibrary.simpleMessage("Lösche auswahl"),
         "descending": MessageLookupByLibrary.simpleMessage("Absteigend"),
         "description": MessageLookupByLibrary.simpleMessage("Beschreibung"),
         "deviceInfo": m22,
         "disabled": MessageLookupByLibrary.simpleMessage("Deaktiviert"),
+        "discover": MessageLookupByLibrary.simpleMessage("Entdecken"),
         "domainOrIp":
             MessageLookupByLibrary.simpleMessage("Serveradresse oder IP"),
         "downloadComplete":
@@ -157,6 +182,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Wird heruntergeladen"),
         "downloadingBody": MessageLookupByLibrary.simpleMessage(
             "\'{\'displayName\'}\' wird heruntergeladen"),
+        "downloads": MessageLookupByLibrary.simpleMessage("Downloads"),
         "downloadsOnlyViaWifi": MessageLookupByLibrary.simpleMessage(
             "Nur über W-Lan herunterladen"),
         "duration": MessageLookupByLibrary.simpleMessage("Dauer"),
@@ -172,7 +198,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Fehler beim Herunterladen"),
         "errorDownloadingBody": MessageLookupByLibrary.simpleMessage(
             "Es ist ein Fehler beim Herunterladen von \'{\'displayName\'}\' aufgetreten"),
+        "exit": MessageLookupByLibrary.simpleMessage("Beenden"),
         "failed": MessageLookupByLibrary.simpleMessage("Fehlgeschlagen"),
+        "fastForward": MessageLookupByLibrary.simpleMessage("Vorspulen"),
         "fastForwardSeconds":
             MessageLookupByLibrary.simpleMessage("Sekunden vorspulen"),
         "fastForwardSecondsDescription": MessageLookupByLibrary.simpleMessage(
@@ -182,10 +210,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "finished": MessageLookupByLibrary.simpleMessage("Fertig"),
         "general": MessageLookupByLibrary.simpleMessage("Allgemein"),
         "genres": MessageLookupByLibrary.simpleMessage("Genres"),
+        "hide": MessageLookupByLibrary.simpleMessage("Verstecken"),
         "ifTheQuickAccountSwitcherShouldBeShown":
             MessageLookupByLibrary.simpleMessage(
                 "Ob der schnelle Nutzerwechsel angezeigt werden soll"),
         "inProgress": MessageLookupByLibrary.simpleMessage("In Bearbeitung"),
+        "information": MessageLookupByLibrary.simpleMessage("Informationen"),
         "itemLength": m23,
         "itemNumChapters": m24,
         "itemProgress": m25,
@@ -202,6 +232,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "library": MessageLookupByLibrary.simpleMessage("Bibliothek"),
         "libraryStats":
             MessageLookupByLibrary.simpleMessage("Bibliotekstatistik"),
+        "listenAgain": MessageLookupByLibrary.simpleMessage("Erneut hören"),
         "listeningInTheLastYear":
             MessageLookupByLibrary.simpleMessage("In diesem Jahr gehört"),
         "loading": MessageLookupByLibrary.simpleMessage("Wird geladen …"),
@@ -209,10 +240,17 @@ class MessageLookup extends MessageLookupByLibrary {
             "Sperre die Medienbenachrichtigung"),
         "lockProgressBarDescription": MessageLookupByLibrary.simpleMessage(
             "Wenn aktiviert, sperrt diese Funktion die Fortschrittsleiste in der Medienbenachrichtigung, sofern das Betriebssystem dies unterstützt"),
+        "logging": MessageLookupByLibrary.simpleMessage("Protokollierung"),
+        "logs": MessageLookupByLibrary.simpleMessage("Protokolle"),
         "markItemsFinished":
             MessageLookupByLibrary.simpleMessage("Makiere Element als fertig"),
         "markItemsFinishedAfterDescription": MessageLookupByLibrary.simpleMessage(
             "Gib die Zeit in Sekunden an, bevor ein Element endet, ab der es als abgeschlossen markiert werden soll. Wenn dieser Wert auf 0 gesetzt wird, wird das Element nur als abgeschlossen markiert, wenn der Player das Ende erreicht. Wenn ein positiver Wert festgelegt wird, wird das Element als abgeschlossen markiert, wenn der Player diese Zeit vor dem Ende erreicht."),
+        "minimize": MessageLookupByLibrary.simpleMessage("Minimieren"),
+        "minimizeToTray":
+            MessageLookupByLibrary.simpleMessage("Nur im System-Tray anzeigen"),
+        "minimizeToTrayDescription": MessageLookupByLibrary.simpleMessage(
+            "Diese Option versteckt die App in der Taskleiste und verschiebt sie in den System-Tray."),
         "miscellaneous": MessageLookupByLibrary.simpleMessage("Verschiedenes"),
         "moreOptions": MessageLookupByLibrary.simpleMessage("Mehr Optionen"),
         "multipleServerAdressess": MessageLookupByLibrary.simpleMessage(
@@ -220,6 +258,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "mustEnterValidAddress": MessageLookupByLibrary.simpleMessage(
             "Du musst eine valide Serveradresse eingeben"),
         "narrators": MessageLookupByLibrary.simpleMessage("Erzähler"),
+        "newestEpisodes":
+            MessageLookupByLibrary.simpleMessage("Neuste Episoden"),
+        "next": MessageLookupByLibrary.simpleMessage("Nächste"),
+        "nextChapter": MessageLookupByLibrary.simpleMessage("Nächstes Kapitel"),
         "noConnection":
             MessageLookupByLibrary.simpleMessage("Keine Verbindung"),
         "noDownloads":
@@ -228,6 +270,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Wir haben Probleme, eine Verbindung zum Server herzustellen."),
         "noItemsFound":
             MessageLookupByLibrary.simpleMessage("Keine Elemente gefunden"),
+        "noSeriesSelected":
+            MessageLookupByLibrary.simpleMessage("Keine Serie ausgewählt"),
         "noUserData": MessageLookupByLibrary.simpleMessage(
             "Login fehlgeschlagen: Keine Daten erhalten"),
         "notFinished": MessageLookupByLibrary.simpleMessage("Nicht fertig"),
@@ -235,12 +279,21 @@ class MessageLookup extends MessageLookupByLibrary {
         "notTriedYet": MessageLookupByLibrary.simpleMessage("Nicht versucht"),
         "notificationHeading": MessageLookupByLibrary.simpleMessage(
             "Benachrichtigungen sollten aktiviert sein"),
+        "numBooksInSeries": m27,
+        "offlineProgress":
+            MessageLookupByLibrary.simpleMessage("Offline Fortschritte"),
+        "offlineSavedProgress": MessageLookupByLibrary.simpleMessage(
+            "Offline gespeicherte Fortschritte"),
         "ok": MessageLookupByLibrary.simpleMessage("OK"),
+        "openDownloads":
+            MessageLookupByLibrary.simpleMessage("Öffne Downloads"),
         "openProjectLink":
             MessageLookupByLibrary.simpleMessage("Audiobookshelf/Server"),
         "ownStats": MessageLookupByLibrary.simpleMessage("Eigene Statistik"),
         "password": MessageLookupByLibrary.simpleMessage("Passwort"),
         "pause": MessageLookupByLibrary.simpleMessage("Pause"),
+        "personalizedLibrary":
+            MessageLookupByLibrary.simpleMessage("Personalisiert"),
         "play": MessageLookupByLibrary.simpleMessage("Wiedergabe"),
         "playHistory":
             MessageLookupByLibrary.simpleMessage("Wiedergabeverlauf"),
@@ -254,22 +307,35 @@ class MessageLookup extends MessageLookupByLibrary {
         "pleaseCheckInternet": MessageLookupByLibrary.simpleMessage(
             "Bitte überprüfe deine Internetverbindung und versuche es erneut."),
         "port": MessageLookupByLibrary.simpleMessage("Port"),
+        "previous": MessageLookupByLibrary.simpleMessage("Vorherige"),
+        "previousChapter":
+            MessageLookupByLibrary.simpleMessage("Vorheriges Kapitel"),
         "progress": MessageLookupByLibrary.simpleMessage("Fortschritt"),
         "progressAsChaptersDescription": MessageLookupByLibrary.simpleMessage(
             "Aktiviere diese Option, um den Fortschritt im Player kapitelweise anzuzeigen. Wenn diese Option deaktiviert ist, wird der Fortschritt basierend auf dem gesamten Element angezeigt."),
-        "progressNum": m27,
+        "progressNum": m28,
         "publisher": MessageLookupByLibrary.simpleMessage("Herausgeber"),
         "readLess": MessageLookupByLibrary.simpleMessage("Weniger lesen"),
         "readMore": MessageLookupByLibrary.simpleMessage("Mehr lesen"),
+        "recentSeries": MessageLookupByLibrary.simpleMessage("Neue Serien"),
+        "recentlyAdded":
+            MessageLookupByLibrary.simpleMessage("Neu hinzugefügt"),
         "reportAnIssue":
             MessageLookupByLibrary.simpleMessage("Einen Fehler melden"),
         "restartRequired":
             MessageLookupByLibrary.simpleMessage("Neustart erforderlich"),
         "restartRequiredDescription": MessageLookupByLibrary.simpleMessage(
             "Bitte starte die App neu, um diese Änderung zu speichern."),
+        "rewind": MessageLookupByLibrary.simpleMessage("Zurückspulen"),
+        "rewindSeconds":
+            MessageLookupByLibrary.simpleMessage("Sekunden zurückspulen"),
         "rewindSecondsDescription": MessageLookupByLibrary.simpleMessage(
             "Lege die Anzahl der Sekunden fest, die beim Drücken der Rückspultaste zurückgesprungen werden sollen."),
-        "seek": MessageLookupByLibrary.simpleMessage("Springen"),
+        "search": MessageLookupByLibrary.simpleMessage("Suchen"),
+        "searchDisabled":
+            MessageLookupByLibrary.simpleMessage("Suche ist deaktiviert"),
+        "seek": MessageLookupByLibrary.simpleMessage("Spulen"),
+        "sequence": MessageLookupByLibrary.simpleMessage("Reihenfolge"),
         "series": MessageLookupByLibrary.simpleMessage("Serien"),
         "serverAdressContinue": MessageLookupByLibrary.simpleMessage(
             "Gib eine Serveradresse ein, um fortzufahren"),
@@ -279,6 +345,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "shakeResetTimer": MessageLookupByLibrary.simpleMessage(
             "Schütteln um Sleeptimer zurückzusetzten"),
         "shareOpen": MessageLookupByLibrary.simpleMessage("Freigegeben"),
+        "show": MessageLookupByLibrary.simpleMessage("Zeigen"),
         "showAccountSwitcher":
             MessageLookupByLibrary.simpleMessage("Kontowechsler anzeigen"),
         "showAccountSwitcherDescription": MessageLookupByLibrary.simpleMessage(
@@ -304,8 +371,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "syncOnlyViaWifi": MessageLookupByLibrary.simpleMessage(
             "Nur über WiFi synchronisieren"),
         "tags": MessageLookupByLibrary.simpleMessage("Schlagwörter"),
-        "timeRemainingNum": m28,
-        "timerText": m29,
+        "timeRemainingNum": m29,
+        "timerText": m30,
         "title": MessageLookupByLibrary.simpleMessage("Titel"),
         "today": MessageLookupByLibrary.simpleMessage("Heute"),
         "totalTimeListened":
@@ -321,6 +388,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Der Nutzername und das Passwort dürfen nicht leer sein"),
         "viewOnGithub":
             MessageLookupByLibrary.simpleMessage("Auf GitHub ansehen"),
+        "waitTillRedirect": MessageLookupByLibrary.simpleMessage(
+            "Bitte warte bis du weitergeleitet wirst. Du bist aktuell nicht eingeloggt."),
         "waitingForDownload": MessageLookupByLibrary.simpleMessage(
             "Warten auf den Beginn des Downloads"),
         "year": MessageLookupByLibrary.simpleMessage("Jahr")

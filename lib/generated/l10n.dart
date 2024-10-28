@@ -2123,6 +2123,16 @@ class S {
     );
   }
 
+  /// `View Chapters`
+  String get viewChapters {
+    return Intl.message(
+      'View Chapters',
+      name: 'viewChapters',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `View on GitHub`
   String get viewOnGithub {
     return Intl.message(
@@ -2172,6 +2182,7 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
       Locale.fromSubtags(languageCode: 'en'),
       Locale.fromSubtags(languageCode: 'de'),
       Locale.fromSubtags(languageCode: 'nb', countryCode: 'NO'),
+      Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hans'),
     ];
   }
 
