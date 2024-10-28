@@ -4,7 +4,6 @@ import 'package:abs_flutter/util/helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
 
 class Chapters extends ConsumerWidget {
   final List<dynamic> chapters;
@@ -84,7 +83,7 @@ class Chapters extends ConsumerWidget {
               PlatformDialogAction(
                 child: PlatformText(S.of(context).close),
                 onPressed: () {
-                  context.pop();
+                  Navigator.of(context, rootNavigator: true).pop();
                 },
               ),
             ],
