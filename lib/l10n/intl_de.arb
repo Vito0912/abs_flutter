@@ -671,5 +671,7 @@
   "rewind": "Zurückspulen",
   "@rewind": {},
   "aggressiveCachingDescription": "Wenn aktiviert, verwendet die App ein intensiveres Caching. Dazu gehört das Zwischenspeichern von Routen, die möglicherweise Daten enthalten, die regelmäßig aktualisiert werden müssen, wie etwa der Fortschritt aller Elemente. In diesen Fällen wird die zuletzt bekannte Position verwendet, es sei denn, du öffnest und aktualisierst ein einzelnes Element gezielt. Diese Routen haben eine kürzere Cache-Dauer.",
-  "@aggressiveCachingDescription": {}
+  "@aggressiveCachingDescription": {},
+  "viewChapters": "Kapitel anzeigen",
+  "@viewChapters": {}
 }
