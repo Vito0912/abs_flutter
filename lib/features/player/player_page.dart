@@ -1,6 +1,5 @@
 import 'package:abs_flutter/features/player/modules/play_bar.dart';
 import 'package:abs_flutter/features/player/modules/player_button_menu.dart';
-import 'package:abs_flutter/features/player/modules/volume.dart';
 import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/provider/chapter_provider.dart';
 import 'package:abs_flutter/provider/player_provider.dart';
@@ -23,7 +22,6 @@ class PlayerPage extends ConsumerWidget {
     final player = ref.watch(playerProvider);
     final user = ref.watch(currentUserProvider);
     final currentChapter = ref.watch(chapterProvider);
-    final volumeStream = player.audioService.player.volumeStream;
     final positionStream = player.audioService.player.positionStream;
     final durationStream = player.audioService.player.durationStream;
     final speedStream = player.audioService.player.speedStream;
@@ -108,11 +106,6 @@ class PlayerPage extends ConsumerWidget {
                               )
                             ],
                           ),
-                        ),
-                        Volume(
-                          volumeStream: volumeStream,
-                          player: player,
-                          size: size,
                         )
                       ],
                     ),

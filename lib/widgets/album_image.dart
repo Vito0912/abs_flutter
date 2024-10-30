@@ -55,7 +55,6 @@ class AlbumImage extends ConsumerWidget {
                 final progress = ref
                     .watch(progressProviderWithItemId(ItemEpisodeId(itemId)));
                 num progressValue = progress?.progress ?? 0.0;
-
                 return Align(
                   alignment: Alignment.bottomCenter,
                   child: LinearProgressIndicator(
