@@ -3,7 +3,7 @@ description: "An ABS app"
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: 1.5.7
+version: 1.5.8
 
 environment:
   sdk: '>=3.4.3 <4.0.0'
@@ -104,7 +104,7 @@ msix_config:
   publisher_display_name: Vito0912
   identity_name: Vito0912.Buchable
   package_name: Vito0912.Buchable
-  msix_version: 1.5.7.0
+  msix_version: 1.5.8.0
   capabilities: internetClient
   languages: en-us
   install_certificate: false
