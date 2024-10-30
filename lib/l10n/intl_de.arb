@@ -1,196 +1,81 @@
 {
   "@@locale": "de",
+  "addANewUser": "Füge einen Nutzer hinzu",
+  "@addANewUser": {},
   "addUser": "Benutzer hinzufügen",
   "@addUser": {},
+  "aggressiveCaching": "Aggressives Caching",
+  "@aggressiveCaching": {},
+  "aggressiveCachingDescription": "Wenn aktiviert, verwendet die App ein intensiveres Caching. Dazu gehört das Zwischenspeichern von Routen, die möglicherweise Daten enthalten, die regelmäßig aktualisiert werden müssen, wie etwa der Fortschritt aller Elemente. In diesen Fällen wird die zuletzt bekannte Position verwendet, es sei denn, du öffnest und aktualisierst ein einzelnes Element gezielt. Diese Routen haben eine kürzere Cache-Dauer.",
+  "@aggressiveCachingDescription": {},
+  "allDownloads": "Alle Downloads",
+  "@allDownloads": {},
+  "amoledMode": "AMOLED Modus",
+  "@amoledMode": {},
   "ascending": "Aufsteigend",
   "@ascending": {},
+  "attribution": "Anerkennungen",
+  "@attribution": {},
   "author": "Autor",
   "@author": {},
   "authors": "Autoren",
   "@authors": {},
   "back": "Zurück",
   "@back": {},
+  "bookCover": "Buch Cover",
+  "@bookCover": {},
+  "boostLoading": "Ladezeiten senken",
+  "@boostLoading": {},
+  "boostLoadingDescription": "Wenn aktiviert, umgeht die App effektiv das Real-Time-Caching. Sie versucht stets, die neuesten Daten vom Server abzurufen, während zwischengespeicherte Daten genutzt werden, um Inhalte sofort zu laden. Sobald die aktualisierten Daten abgerufen sind, ersetzen sie den alten Cache, sodass beim nächsten Laden der App die aktuellsten Daten angezeigt werden. Dadurch siehst du immer die Daten aus einem Abrufzyklus hinter den neuesten Serverdaten. Dafür lädt der Inhalt schneller.",
+  "@boostLoadingDescription": {},
+  "boostLoadingSubtitle": "Bitte lese die Beschreibung um dieses Feature zu verstehen.",
+  "@boostLoadingSubtitle": {},
+  "caching": "Caching",
+  "@caching": {},
+  "cachingHeader": "Caching",
+  "@cachingHeader": {},
   "cancel": "Abbrechen",
   "@cancel": {},
+  "carPlayer": "Auto Player",
+  "@carPlayer": {},
+  "changeLibrary": "Bibliothek wechseln",
+  "@changeLibrary": {},
+  "chapters": "Kapitel",
+  "@chapters": {},
+  "chaptersNum": "Kapitel ({num})",
+  "@chaptersNum": {
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "clearCache": "Cache leeren",
+  "@clearCache": {},
   "close": "Schließen",
   "@close": {},
   "collapseSeries": "Serien einklappen",
   "@collapseSeries": {},
+  "collapseSeriesDescription": "Wenn aktiviert, werden Elemente einer Serie in der Bibliotheksansicht zusammengefasst und es wird nur ein einzelnes Element angezeigt, das die gesamte Serie repräsentiert.",
+  "@collapseSeriesDescription": {},
+  "consecutiveDays": "Aufeinanderfolgende Tage",
+  "@consecutiveDays": {},
+  "continueListening": "Weiter hören",
+  "@continueListening": {},
+  "continueSeries": "Serie weiter hören",
+  "@continueSeries": {},
+  "currentDownloads": "Aktuell heruntergeladen",
+  "@currentDownloads": {},
+  "currentPositionNum": "Aktuelle Position: {position}",
+  "@currentPositionNum": {
+    "placeholders": {
+      "position": {
+        "type": "String"
+      }
+    }
+  },
   "darkMode": "Dunkler Modus",
   "@darkMode": {},
-  "descending": "Absteigend",
-  "@descending": {},
-  "description": "Beschreibung",
-  "@description": {},
-  "disabled": "Deaktiviert",
-  "@disabled": {},
-  "domainOrIp": "Serveradresse oder IP",
-  "@domainOrIp": {},
-  "downloadComplete": "Herunterladen abgeschlossen",
-  "@downloadComplete": {},
-  "downloadCompleteBody": "Herunterladen von '{'displayName'}' abgeschlossen",
-  "@downloadCompleteBody": {},
-  "downloading": "Wird heruntergeladen",
-  "@downloading": {},
-  "downloadingBody": "'{'displayName'}' wird heruntergeladen",
-  "@downloadingBody": {},
-  "duration": "Dauer",
-  "@duration": {},
-  "editQueue": "Warteschlange bearbeiten",
-  "@editQueue": {},
-  "enabled": "Aktiviert",
-  "@enabled": {},
-  "error": "Fehler",
-  "@error": {},
-  "errorDownloading": "Fehler beim Herunterladen",
-  "@errorDownloading": {},
-  "filter": "Filter",
-  "@filter": {},
-  "general": "Allgemein",
-  "@general": {},
-  "inProgress": "In Bearbeitung",
-  "@inProgress": {},
-  "itemLength": "Länge: {length}",
-  "@itemLength": {
-    "placeholders": {
-      "length": {
-        "type": "String"
-      }
-    }
-  },
-  "itemNumChapters": "Anzahl der Kapitel: {numChapters}",
-  "@itemNumChapters": {
-    "placeholders": {
-      "numChapters": {
-        "type": "String"
-      }
-    }
-  },
-  "itemProgress": "Fortschritt: {progress}%",
-  "@itemProgress": {
-    "placeholders": {
-      "progress": {
-        "type": "String"
-      }
-    }
-  },
-  "itemPublishedYear": "Erscheinungsjahr: {year}",
-  "@itemPublishedYear": {
-    "placeholders": {
-      "year": {
-        "type": "String"
-      }
-    }
-  },
-  "language": "Sprache",
-  "@language": {},
-  "languages": "Sprachen",
-  "@languages": {},
-  "loading": "Wird geladen …",
-  "@loading": {},
-  "miscellaneous": "Verschiedenes",
-  "@miscellaneous": {},
-  "multipleServerAdressess": "Wenn du mehrere Server verwenden willst, kannst du diese später hinzufügen",
-  "@multipleServerAdressess": {},
-  "mustEnterValidAddress": "Du musst eine valide Serveradresse eingeben",
-  "@mustEnterValidAddress": {},
-  "noConnection": "Keine Verbindung",
-  "@noConnection": {},
-  "noItemsFound": "Keine Elemente gefunden",
-  "@noItemsFound": {},
-  "noUserData": "Login fehlgeschlagen: Keine Daten erhalten",
-  "@noUserData": {},
-  "notStarted": "Nicht gestartet",
-  "@notStarted": {},
-  "ok": "OK",
-  "@ok": {},
-  "password": "Passwort",
-  "@password": {},
-  "pause": "Pause",
-  "@pause": {},
-  "play": "Wiedergabe",
-  "@play": {},
-  "playbackSpeed": "Geschwindigkeit",
-  "@playbackSpeed": {},
-  "port": "Port",
-  "@port": {},
-  "progress": "Fortschritt",
-  "@progress": {},
-  "publisher": "Herausgeber",
-  "@publisher": {},
-  "readLess": "Weniger lesen",
-  "@readLess": {},
-  "readMore": "Mehr lesen",
-  "@readMore": {},
-  "restartRequired": "Neustart erforderlich",
-  "@restartRequired": {},
-  "series": "Serien",
-  "@series": {},
-  "serverAdressContinue": "Gib eine Serveradresse ein, um fortzufahren",
-  "@serverAdressContinue": {},
-  "serverSelection": "Serverauswahl",
-  "@serverSelection": {},
-  "settings": "Einstellungen",
-  "@settings": {},
-  "showAccountSwitcher": "Kontowechsler anzeigen",
-  "@showAccountSwitcher": {},
-  "signOut": "Abmelden",
-  "@signOut": {},
-  "size": "Größe",
-  "@size": {},
-  "stop": "Stopp",
-  "@stop": {},
-  "syncOnlyViaWifi": "Nur über WiFi synchronisieren",
-  "@syncOnlyViaWifi": {},
-  "tags": "Schlagwörter",
-  "@tags": {},
-  "timerText": "{time} min",
-  "@timerText": {
-    "placeholders": {
-      "time": {
-        "type": "String"
-      }
-    }
-  },
-  "title": "Titel",
-  "@title": {},
-  "today": "Heute",
-  "@today": {},
-  "tryAgain": "Erneut versuchen",
-  "@tryAgain": {},
-  "unknown": "Unbekannt",
-  "@unknown": {},
-  "unknownTitle": "Unbekannter Titel",
-  "@unknownTitle": {},
-  "updatedAt": "Aktualisiert am",
-  "@updatedAt": {},
-  "user": "Benutzer",
-  "@user": {},
-  "username": "Nutzername",
-  "@username": {},
-  "usernameOrPasswordNotEmpty": "Der Nutzername und das Passwort dürfen nicht leer sein",
-  "@usernameOrPasswordNotEmpty": {},
-  "year": "Jahr",
-  "@year": {},
-  "dateFormatHour": "{count, plural, one {{count} Stunde} other {{count} Stunden}}",
-  "@dateFormatHour": {
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
-  "dateFormatHourMinute": "{hours, plural, one {{hours} Stunde} other {{hours} Stunden}} {minutes, plural, one {{minutes} Minute} other {{minutes} Minuten}}",
-  "@dateFormatHourMinute": {
-    "placeholders": {
-      "hours": {
-        "type": "int"
-      },
-      "minutes": {
-        "type": "int"
-      }
-    }
-  },
   "dateFormatDay": "{count, plural, one {{count}  Tag} other {{count} Tage}}",
   "@dateFormatDay": {
     "placeholders": {
@@ -224,37 +109,19 @@
       }
     }
   },
-  "dateFormatHourShort": "{count}h",
-  "@dateFormatHourShort": {
+  "dateFormatDayHourMinuteSecond": "{days, plural, one {{days} Tag} other {{days} Tage}} {hours, plural, one {{hours} Stunde} other {{hours} Stunden}} {minutes, plural, one {{minutes} Minute} other {{minutes} Minuten}} {seconds, plural, one {{seconds} Sekunde} other {{seconds} Sekunden}}",
+  "@dateFormatDayHourMinuteSecond": {
     "placeholders": {
-      "count": {
+      "days": {
         "type": "int"
-      }
-    }
-  },
-  "dateFormatMinuteSecondShort": "{minutes}m {seconds}s",
-  "@dateFormatMinuteSecondShort": {
-    "placeholders": {
+      },
+      "hours": {
+        "type": "int"
+      },
       "minutes": {
         "type": "int"
       },
       "seconds": {
-        "type": "int"
-      }
-    }
-  },
-  "dateFormatMinuteShort": "{count}m",
-  "@dateFormatMinuteShort": {
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
-  "dateFormatSecondShort": "{count}s",
-  "@dateFormatSecondShort": {
-    "placeholders": {
-      "count": {
         "type": "int"
       }
     }
@@ -276,30 +143,6 @@
       }
     }
   },
-  "noInternetDescription": "Wir haben Probleme, eine Verbindung zum Server herzustellen.",
-  "@noInternetDescription": {},
-  "restartRequiredDescription": "Bitte starte die App neu, um diese Änderung zu speichern.",
-  "@restartRequiredDescription": {},
-  "seek": "Spulen",
-  "@seek": {},
-  "sync": "Syncronisation",
-  "@sync": {},
-  "narrators": "Erzähler",
-  "@narrators": {},
-  "shakeResetTimer": "Schütteln um Sleeptimer zurückzusetzten",
-  "@shakeResetTimer": {},
-  "feedOpen": "Feed offen",
-  "@feedOpen": {},
-  "finished": "Fertig",
-  "@finished": {},
-  "notFinished": "Nicht fertig",
-  "@notFinished": {},
-  "shareOpen": "Freigegeben",
-  "@shareOpen": {},
-  "chapters": "Kapitel",
-  "@chapters": {},
-  "consecutiveDays": "Aufeinanderfolgende Tage",
-  "@consecutiveDays": {},
   "dateFormatDayHourMinuteShort": "{days}d {hours}h {minutes}m",
   "@dateFormatDayHourMinuteShort": {
     "placeholders": {
@@ -333,6 +176,39 @@
       }
     }
   },
+  "dateFormatHour": "{count, plural, one {{count} Stunde} other {{count} Stunden}}",
+  "@dateFormatHour": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatHourMinute": "{hours, plural, one {{hours} Stunde} other {{hours} Stunden}} {minutes, plural, one {{minutes} Minute} other {{minutes} Minuten}}",
+  "@dateFormatHourMinute": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatHourMinuteSecond": "{hours, plural, one {{hours} Stunde} other {{hours} Stunden}} {minutes, plural, one {{minutes} Minute} other {{minutes} Minuten}} {seconds, plural, one {{seconds} Sekunde} other {{seconds} Sekunden}}",
+  "@dateFormatHourMinuteSecond": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      },
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
   "dateFormatHourMinuteSecondShort": "{hours}h {minutes}m {seconds}s",
   "@dateFormatHourMinuteSecondShort": {
     "placeholders": {
@@ -358,81 +234,10 @@
       }
     }
   },
-  "downloadsOnlyViaWifi": "Nur über W-Lan herunterladen",
-  "@downloadsOnlyViaWifi": {},
-  "jumpToLastPosition": "Zur letzten Position springen",
-  "@jumpToLastPosition": {},
-  "libraryStats": "Bibliotekstatistik",
-  "@libraryStats": {},
-  "lockProgressBar": "Sperre die Medienbenachrichtigung",
-  "@lockProgressBar": {},
-  "lockProgressBarDescription": "Wenn aktiviert, sperrt diese Funktion die Fortschrittsleiste in der Medienbenachrichtigung, sofern das Betriebssystem dies unterstützt",
-  "@lockProgressBarDescription": {},
-  "notTriedYet": "Nicht versucht",
-  "@notTriedYet": {},
-  "notificationHeading": "Benachrichtigungen sollten aktiviert sein",
-  "@notificationHeading": {},
-  "ownStats": "Eigene Statistik",
-  "@ownStats": {},
-  "playHistory": "Wiedergabeverlauf",
-  "@playHistory": {},
-  "playNextEpisode": "Spiele nächste Episode",
-  "@playNextEpisode": {},
-  "pleaseCheckInternet": "Bitte überprüfe deine Internetverbindung und versuche es erneut.",
-  "@pleaseCheckInternet": {},
-  "showProgressPerChapters": "Zeige Fortschritt pro Kapitel",
-  "@showProgressPerChapters": {},
-  "sleepTimer": "Sleeptimer",
-  "@sleepTimer": {},
-  "stats": "Statistiken",
-  "@stats": {},
-  "stopPlayerUntilSync": "Pausiere Player bis Sync",
-  "@stopPlayerUntilSync": {},
-  "success": "Erfolgreich",
-  "@success": {},
-  "syncInterval": "Sync Interval (Sekunden)",
-  "@syncInterval": {},
-  "timeRemainingNum": "Übrige Zeit: {time}",
-  "@timeRemainingNum": {
+  "dateFormatHourShort": "{count}h",
+  "@dateFormatHourShort": {
     "placeholders": {
-      "time": {
-        "type": "String"
-      }
-    }
-  },
-  "syncIntervalDescription": "Gibt an, wie oft die App mit dem Server synchronisiert werden soll. Bitte starte die App neu, damit die Änderungen wirksam werden.",
-  "@syncIntervalDescription": {},
-  "totalTimeListened": "Gesamthörzeit",
-  "@totalTimeListened": {},
-  "chaptersNum": "Kapitel ({num})",
-  "@chaptersNum": {
-    "placeholders": {
-      "num": {
-        "type": "int"
-      }
-    }
-  },
-  "currentPositionNum": "Aktuelle Position: {position}",
-  "@currentPositionNum": {
-    "placeholders": {
-      "position": {
-        "type": "String"
-      }
-    }
-  },
-  "dateFormatDayHourMinuteSecond": "{days, plural, one {{days} Tag} other {{days} Tage}} {hours, plural, one {{hours} Stunde} other {{hours} Stunden}} {minutes, plural, one {{minutes} Minute} other {{minutes} Minuten}} {seconds, plural, one {{seconds} Sekunde} other {{seconds} Sekunden}}",
-  "@dateFormatDayHourMinuteSecond": {
-    "placeholders": {
-      "days": {
-        "type": "int"
-      },
-      "hours": {
-        "type": "int"
-      },
-      "minutes": {
-        "type": "int"
-      },
-      "seconds": {
+      "count": {
         "type": "int"
       }
     }
@@ -441,32 +246,6 @@
   "@dateFormatMinute": {
     "placeholders": {
       "count": {
-        "type": "int"
-      }
-    }
-  },
-  "dateFormatSecond": "{count, plural, one {{count} Sekunde} other {{count} Sekunden}}",
-  "@dateFormatSecond": {
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
-  "daysListened": "Tage gehört",
-  "@daysListened": {},
-  "deleteSelected": "Lösche auswahl",
-  "@deleteSelected": {},
-  "dateFormatHourMinuteSecond": "{hours, plural, one {{hours} Stunde} other {{hours} Stunden}} {minutes, plural, one {{minutes} Minute} other {{minutes} Minuten}} {seconds, plural, one {{seconds} Sekunde} other {{seconds} Sekunden}}",
-  "@dateFormatHourMinuteSecond": {
-    "placeholders": {
-      "hours": {
-        "type": "int"
-      },
-      "minutes": {
-        "type": "int"
-      },
-      "seconds": {
         "type": "int"
       }
     }
@@ -482,80 +261,51 @@
       }
     }
   },
-  "jumpToLastPositionDescription": "Wenn aktiviert, springt der Player beim Drücken der Wiedergabetaste zur letzten Position",
-  "@jumpToLastPositionDescription": {},
-  "noDownloads": "Nichts heruntergeladen",
-  "@noDownloads": {},
-  "progressNum": "Aktueller Fortschritt: {progress} %",
-  "@progressNum": {
+  "dateFormatMinuteSecondShort": "{minutes}m {seconds}s",
+  "@dateFormatMinuteSecondShort": {
     "placeholders": {
-      "progress": {
-        "type": "String"
+      "minutes": {
+        "type": "int"
+      },
+      "seconds": {
+        "type": "int"
       }
     }
   },
-  "waitingForDownload": "Warten auf den Beginn des Downloads",
-  "@waitingForDownload": {},
-  "showAccountSwitcherDescription": "Aktiviere diese Option, um der App-Leiste eine Symbolschaltfläche für den schnellen Userwechsel hinzuzufügen.",
-  "@showAccountSwitcherDescription": {},
-  "enableNotificationsDownload": "Bitte aktiviere die Benachrichtigungen, um Fortschrittsupdates zum Download zu erhalten und Dateien im Hintergrund herunterladen zu können.",
-  "@enableNotificationsDownload": {},
-  "errorDownloadingBody": "Es ist ein Fehler beim Herunterladen von '{'displayName'}' aufgetreten",
-  "@errorDownloadingBody": {},
-  "failed": "Fehlgeschlagen",
-  "@failed": {},
-  "addANewUser": "Füge einen Nutzer hinzu",
-  "@addANewUser": {},
-  "attribution": "Anerkennungen",
-  "@attribution": {},
-  "bookCover": "Buch Cover",
-  "@bookCover": {},
-  "enterValidUsernameOrPassword": "Bitte gib eine gültige IP/Domain und einen Port ein, bevor du deinen Benutzernamen und dein Passwort eingibst.",
-  "@enterValidUsernameOrPassword": {},
-  "fastForwardSeconds": "Sekunden vorspulen",
-  "@fastForwardSeconds": {},
-  "genres": "Genres",
-  "@genres": {},
-  "ifTheQuickAccountSwitcherShouldBeShown": "Ob der schnelle Nutzerwechsel angezeigt werden soll",
-  "@ifTheQuickAccountSwitcherShouldBeShown": {},
-  "markItemsFinished": "Makiere Element als fertig",
-  "@markItemsFinished": {},
-  "markItemsFinishedAfterDescription": "Gib die Zeit in Sekunden an, bevor ein Element endet, ab der es als abgeschlossen markiert werden soll. Wenn dieser Wert auf 0 gesetzt wird, wird das Element nur als abgeschlossen markiert, wenn der Player das Ende erreicht. Wenn ein positiver Wert festgelegt wird, wird das Element als abgeschlossen markiert, wenn der Player diese Zeit vor dem Ende erreicht.",
-  "@markItemsFinishedAfterDescription": {},
-  "player": "Player",
-  "@player": {},
-  "stopPlayerWhileSyncingDescription": "Aktiviere diese Option, um zu verhindern, dass der Player startet, bevor die letzte Wiedergabeposition synchronisiert wurde. Dies stellt sicher, dass die Wiedergabe an der richtigen Stelle fortgesetzt wird. Wenn diese Option deaktiviert ist, kann sich die Wiedergabeposition kurz nach dem Start ändern, was möglicherweise zu Datenverlust führen kann. Das Aktivieren dieser Option hilft, den Datenverbrauch zu reduzieren.",
-  "@stopPlayerWhileSyncingDescription": {},
-  "collapseSeriesDescription": "Wenn aktiviert, werden Elemente einer Serie in der Bibliotheksansicht zusammengefasst und es wird nur ein einzelnes Element angezeigt, das die gesamte Serie repräsentiert.",
-  "@collapseSeriesDescription": {},
-  "fastForwardSecondsDescription": "Lege die Anzahl der Sekunden fest, die beim Drücken der Vorspultaste übersprungen werden sollen.",
-  "@fastForwardSecondsDescription": {},
-  "playerSettings": "Playereinstellungen",
-  "@playerSettings": {},
-  "progressAsChaptersDescription": "Aktiviere diese Option, um den Fortschritt im Player kapitelweise anzuzeigen. Wenn diese Option deaktiviert ist, wird der Fortschritt basierend auf dem gesamten Element angezeigt.",
-  "@progressAsChaptersDescription": {},
-  "rewindSecondsDescription": "Lege die Anzahl der Sekunden fest, die beim Drücken der Rückspultaste zurückgesprungen werden sollen.",
-  "@rewindSecondsDescription": {},
-  "changeLibrary": "Bibliothek wechseln",
-  "@changeLibrary": {},
-  "last30Days": "Letzte 30 Tage",
-  "@last30Days": {},
-  "last7Days": "Letzte 7 Tage",
-  "@last7Days": {},
-  "library": "Bibliothek",
-  "@library": {},
-  "listeningInTheLastYear": "In diesem Jahr gehört",
-  "@listeningInTheLastYear": {},
-  "moreOptions": "Mehr Optionen",
-  "@moreOptions": {},
-  "openProjectLink": "Audiobookshelf/Server",
-  "@openProjectLink": {},
-  "reportAnIssue": "Einen Fehler melden",
-  "@reportAnIssue": {},
-  "sort": "Sortieren",
-  "@sort": {},
-  "currentDownloads": "Aktuell heruntergeladen",
-  "@currentDownloads": {},
+  "dateFormatMinuteShort": "{count}m",
+  "@dateFormatMinuteShort": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatSecond": "{count, plural, one {{count} Sekunde} other {{count} Sekunden}}",
+  "@dateFormatSecond": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatSecondShort": "{count}s",
+  "@dateFormatSecondShort": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "daysListened": "Tage gehört",
+  "@daysListened": {},
+  "debugLogs": "Entwickler Logs",
+  "@debugLogs": {},
+  "deleteSelected": "Lösche auswahl",
+  "@deleteSelected": {},
+  "descending": "Absteigend",
+  "@descending": {},
+  "description": "Beschreibung",
+  "@description": {},
   "deviceInfo": "Gerät: {device}\nOS: {os}\nApp Version: {version}",
   "@deviceInfo": {
     "placeholders": {
@@ -570,42 +320,178 @@
       }
     }
   },
-  "viewOnGithub": "Auf GitHub ansehen",
-  "@viewOnGithub": {},
-  "libraries": "Bibliotheken",
-  "@libraries": {},
-  "openDownloads": "Öffne Downloads",
-  "@openDownloads": {},
-  "allDownloads": "Alle Downloads",
-  "@allDownloads": {},
-  "aggressiveCaching": "Aggressives Caching",
-  "@aggressiveCaching": {},
-  "boostLoading": "Ladezeiten senken",
-  "@boostLoading": {},
-  "boostLoadingSubtitle": "Bitte lese die Beschreibung um dieses Feature zu verstehen.",
-  "@boostLoadingSubtitle": {},
-  "caching": "Caching",
-  "@caching": {},
-  "cachingHeader": "Caching",
-  "@cachingHeader": {},
-  "carPlayer": "Auto Player",
-  "@carPlayer": {},
-  "clearCache": "Cache leeren",
-  "@clearCache": {},
-  "continueListening": "Weiter hören",
-  "@continueListening": {},
-  "continueSeries": "Serie weiter hören",
-  "@continueSeries": {},
-  "debugLogs": "Entwickler Logs",
-  "@debugLogs": {},
+  "disabled": "Deaktiviert",
+  "@disabled": {},
   "discover": "Entdecken",
   "@discover": {},
+  "domainOrIp": "Serveradresse oder IP",
+  "@domainOrIp": {},
+  "downloadComplete": "Herunterladen abgeschlossen",
+  "@downloadComplete": {},
+  "downloadCompleteBody": "Herunterladen von '{'displayName'}' abgeschlossen",
+  "@downloadCompleteBody": {},
+  "downloading": "Wird heruntergeladen",
+  "@downloading": {},
+  "downloadingBody": "'{'displayName'}' wird heruntergeladen",
+  "@downloadingBody": {},
+  "downloads": "Downloads",
+  "@downloads": {},
+  "downloadsOnlyViaWifi": "Nur über W-Lan herunterladen",
+  "@downloadsOnlyViaWifi": {},
+  "duration": "Dauer",
+  "@duration": {},
+  "editQueue": "Warteschlange bearbeiten",
+  "@editQueue": {},
+  "enableNotificationsDownload": "Bitte aktiviere die Benachrichtigungen, um Fortschrittsupdates zum Download zu erhalten und Dateien im Hintergrund herunterladen zu können.",
+  "@enableNotificationsDownload": {},
+  "enabled": "Aktiviert",
+  "@enabled": {},
+  "enterValidUsernameOrPassword": "Bitte gib eine gültige IP/Domain und einen Port ein, bevor du deinen Benutzernamen und dein Passwort eingibst.",
+  "@enterValidUsernameOrPassword": {},
+  "error": "Fehler",
+  "@error": {},
+  "errorDownloading": "Fehler beim Herunterladen",
+  "@errorDownloading": {},
+  "errorDownloadingBody": "Es ist ein Fehler beim Herunterladen von '{'displayName'}' aufgetreten",
+  "@errorDownloadingBody": {},
+  "exit": "Beenden",
+  "@exit": {},
+  "failed": "Fehlgeschlagen",
+  "@failed": {},
+  "fastForward": "Vorspulen",
+  "@fastForward": {},
+  "fastForwardSeconds": "Sekunden vorspulen",
+  "@fastForwardSeconds": {},
+  "fastForwardSecondsDescription": "Lege die Anzahl der Sekunden fest, die beim Drücken der Vorspultaste übersprungen werden sollen.",
+  "@fastForwardSecondsDescription": {},
+  "feedOpen": "Feed offen",
+  "@feedOpen": {},
+  "filter": "Filter",
+  "@filter": {},
+  "finished": "Fertig",
+  "@finished": {},
+  "general": "Allgemein",
+  "@general": {},
+  "genres": "Genres",
+  "@genres": {},
+  "hide": "Verstecken",
+  "@hide": {},
+  "ifTheQuickAccountSwitcherShouldBeShown": "Ob der schnelle Nutzerwechsel angezeigt werden soll",
+  "@ifTheQuickAccountSwitcherShouldBeShown": {},
+  "inProgress": "In Bearbeitung",
+  "@inProgress": {},
+  "information": "Informationen",
+  "@information": {},
+  "itemLength": "Länge: {length}",
+  "@itemLength": {
+    "placeholders": {
+      "length": {
+        "type": "String"
+      }
+    }
+  },
+  "itemNumChapters": "Anzahl der Kapitel: {numChapters}",
+  "@itemNumChapters": {
+    "placeholders": {
+      "numChapters": {
+        "type": "String"
+      }
+    }
+  },
+  "itemProgress": "Fortschritt: {progress}%",
+  "@itemProgress": {
+    "placeholders": {
+      "progress": {
+        "type": "String"
+      }
+    }
+  },
+  "itemPublishedYear": "Erscheinungsjahr: {year}",
+  "@itemPublishedYear": {
+    "placeholders": {
+      "year": {
+        "type": "String"
+      }
+    }
+  },
+  "jumpToLastPosition": "Zur letzten Position springen",
+  "@jumpToLastPosition": {},
+  "jumpToLastPositionDescription": "Wenn aktiviert, springt der Player beim Drücken der Wiedergabetaste zur letzten Position",
+  "@jumpToLastPositionDescription": {},
+  "language": "Sprache",
+  "@language": {},
+  "languages": "Sprachen",
+  "@languages": {},
+  "last30Days": "Letzte 30 Tage",
+  "@last30Days": {},
+  "last7Days": "Letzte 7 Tage",
+  "@last7Days": {},
+  "libraries": "Bibliotheken",
+  "@libraries": {},
+  "library": "Bibliothek",
+  "@library": {},
+  "libraryStats": "Bibliotekstatistik",
+  "@libraryStats": {},
   "listenAgain": "Erneut hören",
   "@listenAgain": {},
+  "listeningInTheLastYear": "In diesem Jahr gehört",
+  "@listeningInTheLastYear": {},
+  "loading": "Wird geladen …",
+  "@loading": {},
+  "lockProgressBar": "Sperre die Medienbenachrichtigung",
+  "@lockProgressBar": {},
+  "lockProgressBarDescription": "Wenn aktiviert, sperrt diese Funktion die Fortschrittsleiste in der Medienbenachrichtigung, sofern das Betriebssystem dies unterstützt",
+  "@lockProgressBarDescription": {},
+  "logging": "Protokollierung",
+  "@logging": {},
+  "logs": "Protokolle",
+  "@logs": {},
+  "markItemsFinished": "Makiere Element als fertig",
+  "@markItemsFinished": {},
+  "markItemsFinishedAfterDescription": "Gib die Zeit in Sekunden an, bevor ein Element endet, ab der es als abgeschlossen markiert werden soll. Wenn dieser Wert auf 0 gesetzt wird, wird das Element nur als abgeschlossen markiert, wenn der Player das Ende erreicht. Wenn ein positiver Wert festgelegt wird, wird das Element als abgeschlossen markiert, wenn der Player diese Zeit vor dem Ende erreicht.",
+  "@markItemsFinishedAfterDescription": {},
+  "minimize": "Minimieren",
+  "@minimize": {},
+  "minimizeToTray": "Nur im System-Tray anzeigen",
+  "@minimizeToTray": {},
+  "minimizeToTrayDescription": "Diese Option versteckt die App in der Taskleiste und verschiebt sie in den System-Tray.",
+  "@minimizeToTrayDescription": {},
+  "miscellaneous": "Verschiedenes",
+  "@miscellaneous": {},
+  "moreOptions": "Mehr Optionen",
+  "@moreOptions": {},
+  "multipleServerAdressess": "Wenn du mehrere Server verwenden willst, kannst du diese später hinzufügen",
+  "@multipleServerAdressess": {},
+  "mustEnterValidAddress": "Du musst eine valide Serveradresse eingeben",
+  "@mustEnterValidAddress": {},
+  "narrators": "Erzähler",
+  "@narrators": {},
   "newestEpisodes": "Neuste Episoden",
   "@newestEpisodes": {},
+  "next": "Nächste",
+  "@next": {},
+  "nextChapter": "Nächstes Kapitel",
+  "@nextChapter": {},
+  "noConnection": "Keine Verbindung",
+  "@noConnection": {},
+  "noDownloads": "Nichts heruntergeladen",
+  "@noDownloads": {},
+  "noInternetDescription": "Wir haben Probleme, eine Verbindung zum Server herzustellen.",
+  "@noInternetDescription": {},
+  "noItemsFound": "Keine Elemente gefunden",
+  "@noItemsFound": {},
   "noSeriesSelected": "Keine Serie ausgewählt",
   "@noSeriesSelected": {},
+  "noUserData": "Login fehlgeschlagen: Keine Daten erhalten",
+  "@noUserData": {},
+  "notFinished": "Nicht fertig",
+  "@notFinished": {},
+  "notStarted": "Nicht gestartet",
+  "@notStarted": {},
+  "notTriedYet": "Nicht versucht",
+  "@notTriedYet": {},
+  "notificationHeading": "Benachrichtigungen sollten aktiviert sein",
+  "@notificationHeading": {},
   "numBooksInSeries": "{numBooks, plural, =0 {Keine Bücher} =1 {1 Buch} other {{numBooks} Bücher}}",
   "@numBooksInSeries": {
     "placeholders": {
@@ -618,60 +504,174 @@
   "@offlineProgress": {},
   "offlineSavedProgress": "Offline gespeicherte Fortschritte",
   "@offlineSavedProgress": {},
+  "ok": "OK",
+  "@ok": {},
+  "openDownloads": "Öffne Downloads",
+  "@openDownloads": {},
+  "openProjectLink": "Audiobookshelf/Server",
+  "@openProjectLink": {},
+  "ownStats": "Eigene Statistik",
+  "@ownStats": {},
+  "password": "Passwort",
+  "@password": {},
+  "pause": "Pause",
+  "@pause": {},
   "personalizedLibrary": "Personalisiert",
   "@personalizedLibrary": {},
-  "recentSeries": "Neue Serien",
-  "@recentSeries": {},
-  "recentlyAdded": "Neu hinzugefügt",
-  "@recentlyAdded": {},
-  "search": "Suchen",
-  "@search": {},
-  "searchDisabled": "Suche ist deaktiviert",
-  "@searchDisabled": {},
-  "sequence": "Reihenfolge",
-  "@sequence": {},
-  "waitTillRedirect": "Bitte warte bis du weitergeleitet wirst. Du bist aktuell nicht eingeloggt.",
-  "@waitTillRedirect": {},
-  "logging": "Protokollierung",
-  "@logging": {},
-  "logs": "Protokolle",
-  "@logs": {},
-  "rewindSeconds": "Sekunden zurückspulen",
-  "@rewindSeconds": {},
-  "minimizeToTrayDescription": "Diese Option versteckt die App in der Taskleiste und verschiebt sie in den System-Tray.",
-  "@minimizeToTrayDescription": {},
-  "nextChapter": "Nächstes Kapitel",
-  "@nextChapter": {},
-  "show": "Zeigen",
-  "@show": {},
-  "amoledMode": "AMOLED Modus",
-  "@amoledMode": {},
-  "boostLoadingDescription": "Wenn aktiviert, umgeht die App effektiv das Real-Time-Caching. Sie versucht stets, die neuesten Daten vom Server abzurufen, während zwischengespeicherte Daten genutzt werden, um Inhalte sofort zu laden. Sobald die aktualisierten Daten abgerufen sind, ersetzen sie den alten Cache, sodass beim nächsten Laden der App die aktuellsten Daten angezeigt werden. Dadurch siehst du immer die Daten aus einem Abrufzyklus hinter den neuesten Serverdaten. Dafür lädt der Inhalt schneller.",
-  "@boostLoadingDescription": {},
-  "downloads": "Downloads",
-  "@downloads": {},
-  "exit": "Beenden",
-  "@exit": {},
-  "information": "Informationen",
-  "@information": {},
-  "minimizeToTray": "Nur im System-Tray anzeigen",
-  "@minimizeToTray": {},
-  "next": "Nächste",
-  "@next": {},
-  "fastForward": "Vorspulen",
-  "@fastForward": {},
-  "hide": "Verstecken",
-  "@hide": {},
-  "minimize": "Minimieren",
-  "@minimize": {},
+  "play": "Wiedergabe",
+  "@play": {},
+  "playHistory": "Wiedergabeverlauf",
+  "@playHistory": {},
+  "playNextEpisode": "Spiele nächste Episode",
+  "@playNextEpisode": {},
+  "playbackSpeed": "Geschwindigkeit",
+  "@playbackSpeed": {},
+  "player": "Player",
+  "@player": {},
+  "playerSettings": "Playereinstellungen",
+  "@playerSettings": {},
+  "pleaseCheckInternet": "Bitte überprüfe deine Internetverbindung und versuche es erneut.",
+  "@pleaseCheckInternet": {},
+  "port": "Port",
+  "@port": {},
   "previous": "Vorherige",
   "@previous": {},
   "previousChapter": "Vorheriges Kapitel",
   "@previousChapter": {},
+  "progress": "Fortschritt",
+  "@progress": {},
+  "progressAsChaptersDescription": "Aktiviere diese Option, um den Fortschritt im Player kapitelweise anzuzeigen. Wenn diese Option deaktiviert ist, wird der Fortschritt basierend auf dem gesamten Element angezeigt.",
+  "@progressAsChaptersDescription": {},
+  "progressNum": "Aktueller Fortschritt: {progress} %",
+  "@progressNum": {
+    "placeholders": {
+      "progress": {
+        "type": "String"
+      }
+    }
+  },
+  "publisher": "Herausgeber",
+  "@publisher": {},
+  "readLess": "Weniger lesen",
+  "@readLess": {},
+  "readMore": "Mehr lesen",
+  "@readMore": {},
+  "recentSeries": "Neue Serien",
+  "@recentSeries": {},
+  "recentlyAdded": "Neu hinzugefügt",
+  "@recentlyAdded": {},
+  "reportAnIssue": "Einen Fehler melden",
+  "@reportAnIssue": {},
+  "restartRequired": "Neustart erforderlich",
+  "@restartRequired": {},
+  "restartRequiredDescription": "Bitte starte die App neu, um diese Änderung zu speichern.",
+  "@restartRequiredDescription": {},
   "rewind": "Zurückspulen",
   "@rewind": {},
-  "aggressiveCachingDescription": "Wenn aktiviert, verwendet die App ein intensiveres Caching. Dazu gehört das Zwischenspeichern von Routen, die möglicherweise Daten enthalten, die regelmäßig aktualisiert werden müssen, wie etwa der Fortschritt aller Elemente. In diesen Fällen wird die zuletzt bekannte Position verwendet, es sei denn, du öffnest und aktualisierst ein einzelnes Element gezielt. Diese Routen haben eine kürzere Cache-Dauer.",
-  "@aggressiveCachingDescription": {},
+  "rewindSeconds": "Sekunden zurückspulen",
+  "@rewindSeconds": {},
+  "rewindSecondsDescription": "Lege die Anzahl der Sekunden fest, die beim Drücken der Rückspultaste zurückgesprungen werden sollen.",
+  "@rewindSecondsDescription": {},
+  "search": "Suchen",
+  "@search": {},
+  "searchDisabled": "Suche ist deaktiviert",
+  "@searchDisabled": {},
+  "seek": "Spulen",
+  "@seek": {},
+  "sequence": "Reihenfolge",
+  "@sequence": {},
+  "series": "Serien",
+  "@series": {},
+  "serverAdressContinue": "Gib eine Serveradresse ein, um fortzufahren",
+  "@serverAdressContinue": {},
+  "serverSelection": "Serverauswahl",
+  "@serverSelection": {},
+  "settings": "Einstellungen",
+  "@settings": {},
+  "shakeResetTimer": "Schütteln um Sleeptimer zurückzusetzten",
+  "@shakeResetTimer": {},
+  "shareOpen": "Freigegeben",
+  "@shareOpen": {},
+  "show": "Zeigen",
+  "@show": {},
+  "showAccountSwitcher": "Kontowechsler anzeigen",
+  "@showAccountSwitcher": {},
+  "showAccountSwitcherDescription": "Aktiviere diese Option, um der App-Leiste eine Symbolschaltfläche für den schnellen Userwechsel hinzuzufügen.",
+  "@showAccountSwitcherDescription": {},
+  "showProgressPerChapters": "Zeige Fortschritt pro Kapitel",
+  "@showProgressPerChapters": {},
+  "signOut": "Abmelden",
+  "@signOut": {},
+  "size": "Größe",
+  "@size": {},
+  "sleepTimer": "Sleeptimer",
+  "@sleepTimer": {},
+  "sort": "Sortieren",
+  "@sort": {},
+  "stats": "Statistiken",
+  "@stats": {},
+  "stop": "Stopp",
+  "@stop": {},
+  "stopPlayerUntilSync": "Pausiere Player bis Sync",
+  "@stopPlayerUntilSync": {},
+  "stopPlayerWhileSyncingDescription": "Aktiviere diese Option, um zu verhindern, dass der Player startet, bevor die letzte Wiedergabeposition synchronisiert wurde. Dies stellt sicher, dass die Wiedergabe an der richtigen Stelle fortgesetzt wird. Wenn diese Option deaktiviert ist, kann sich die Wiedergabeposition kurz nach dem Start ändern, was möglicherweise zu Datenverlust führen kann. Das Aktivieren dieser Option hilft, den Datenverbrauch zu reduzieren.",
+  "@stopPlayerWhileSyncingDescription": {},
+  "success": "Erfolgreich",
+  "@success": {},
+  "sync": "Syncronisation",
+  "@sync": {},
+  "syncInterval": "Sync Interval (Sekunden)",
+  "@syncInterval": {},
+  "syncIntervalDescription": "Gibt an, wie oft die App mit dem Server synchronisiert werden soll. Bitte starte die App neu, damit die Änderungen wirksam werden.",
+  "@syncIntervalDescription": {},
+  "syncOnlyViaWifi": "Nur über WiFi synchronisieren",
+  "@syncOnlyViaWifi": {},
+  "tags": "Schlagwörter",
+  "@tags": {},
+  "timeRemainingNum": "Übrige Zeit: {time}",
+  "@timeRemainingNum": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "timerText": "{time} min",
+  "@timerText": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "title": "Titel",
+  "@title": {},
+  "today": "Heute",
+  "@today": {},
+  "totalTimeListened": "Gesamthörzeit",
+  "@totalTimeListened": {},
+  "tryAgain": "Erneut versuchen",
+  "@tryAgain": {},
+  "unknown": "Unbekannt",
+  "@unknown": {},
+  "unknownTitle": "Unbekannter Titel",
+  "@unknownTitle": {},
+  "updatedAt": "Aktualisiert am",
+  "@updatedAt": {},
+  "user": "Benutzer",
+  "@user": {},
+  "username": "Nutzername",
+  "@username": {},
+  "usernameOrPasswordNotEmpty": "Der Nutzername und das Passwort dürfen nicht leer sein",
+  "@usernameOrPasswordNotEmpty": {},
   "viewChapters": "Kapitel anzeigen",
-  "@viewChapters": {}
+  "@viewChapters": {},
+  "viewOnGithub": "Auf GitHub ansehen",
+  "@viewOnGithub": {},
+  "waitTillRedirect": "Bitte warte bis du weitergeleitet wirst. Du bist aktuell nicht eingeloggt.",
+  "@waitTillRedirect": {},
+  "waitingForDownload": "Warten auf den Beginn des Downloads",
+  "@waitingForDownload": {},
+  "year": "Jahr",
+  "@year": {}
 }
