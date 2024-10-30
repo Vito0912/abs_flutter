@@ -1,23 +1,15 @@
-import 'package:abs_flutter/features/player/modules/chapter_buttons.dart';
-import 'package:abs_flutter/features/player/modules/chapters.dart';
-import 'package:abs_flutter/features/player/modules/play_button.dart';
-import 'package:abs_flutter/features/player/modules/queue_button.dart';
-import 'package:abs_flutter/features/player/modules/seeking_buttons.dart';
-import 'package:abs_flutter/features/player/modules/sleep_timer.dart';
-import 'package:abs_flutter/features/player/modules/speed_control.dart';
-import 'package:abs_flutter/features/player/modules/volume.dart';
+import 'package:abs_flutter/features/player/modules/play_bar.dart';
+import 'package:abs_flutter/features/player/modules/player_button_menu.dart';
 import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/provider/chapter_provider.dart';
 import 'package:abs_flutter/provider/player_provider.dart';
 import 'package:abs_flutter/provider/player_status_provider.dart';
-import 'package:abs_flutter/provider/queue_provider.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
 import 'package:abs_flutter/widgets/album_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:icons_plus/icons_plus.dart';
 
 import 'modules/progress_bar.dart';
 
@@ -30,7 +22,6 @@ class PlayerPage extends ConsumerWidget {
     final player = ref.watch(playerProvider);
     final user = ref.watch(currentUserProvider);
     final currentChapter = ref.watch(chapterProvider);
-    final volumeStream = player.audioService.player.volumeStream;
     final positionStream = player.audioService.player.positionStream;
     final durationStream = player.audioService.player.durationStream;
     final speedStream = player.audioService.player.speedStream;
@@ -66,31 +57,17 @@ class PlayerPage extends ConsumerWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Container(
-                          height: 200,
-                          width: 200,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(100),
-                            color: Colors.grey[300],
-                          ),
-                          child: AlbumImage(player.audioService.mediaItem.value!
-                              .extras!['libraryItemId']),
-                        ),
+                        AlbumImage(
+                            player.audioService.mediaItem.value!
+                                .extras!['libraryItemId'],
+                            size: 200),
                         const SizedBox(height: 16),
                         SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: [
-                              PlatformText(
-                                player.audioService.mediaItem.value?.title ??
-                                    '',
-                                style: Theme.of(context).textTheme.titleLarge,
-                              )
-                            ],
-                          ),
-                        ),
+                            scrollDirection: Axis.horizontal,
+                            child: PlatformText(
+                              player.audioService.mediaItem.value?.title ?? '',
+                              style: Theme.of(context).textTheme.titleLarge,
+                            )),
                         const SizedBox(height: 16),
                         PlatformText(
                           player.audioService.mediaItem.value?.artist ?? '',
@@ -101,42 +78,12 @@ class PlayerPage extends ConsumerWidget {
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  if (currentChapter != null)
-                                    ChapterButtons(
-                                      positionStream: positionStream,
-                                      player: player,
-                                      size: size,
-                                      isForward: false,
-                                      currentChapter: currentChapter,
-                                    ),
-                                  SeekingButtons(
-                                    positionStream: positionStream,
-                                    player: player,
-                                    size: size,
-                                    isForward: false,
-                                  ),
-                                  PlayButton(
-                                      size: size,
-                                      playerStatusProvider: playerStatus),
-                                  SeekingButtons(
-                                    positionStream: positionStream,
-                                    player: player,
-                                    size: size,
-                                    isForward: true,
-                                  ),
-                                  if (currentChapter != null)
-                                    ChapterButtons(
-                                      positionStream: positionStream,
-                                      player: player,
-                                      size: size,
-                                      isForward: true,
-                                      currentChapter: currentChapter,
-                                    ),
-                                ],
-                              ),
+                              PlayBar(
+                                  positionStream: positionStream,
+                                  player: player,
+                                  playerStatus: playerStatus,
+                                  currentChapter: currentChapter,
+                                  size: size),
                               ProgressBar(
                                 positionStream: positionStream,
                                 durationStream: durationStream,
@@ -149,63 +96,16 @@ class PlayerPage extends ConsumerWidget {
                                 size: size,
                               ),
                               const SizedBox(height: 16),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  SpeedControl(
-                                    player: player,
-                                    size: size,
-                                    speedStream: speedStream,
-                                  ),
-                                  SleepTimer(
-                                    player: player,
-                                    size: size,
-                                    currentChapter: currentChapter,
-                                  ),
-                                  if (player.audioService.mediaItem.value
-                                          ?.extras?['chapters'] !=
-                                      null)
-                                    Chapters(
-                                      chapters: player.audioService.mediaItem
-                                          .value!.extras!['chapters'],
-                                      child: const Icon(
-                                        EvaIcons.book_open_outline,
-                                        size: size,
-                                      ),
-                                    ),
-                                  const QueueButton(size: size),
-                                  if (libraryItemId != null)
-                                    PlatformIconButton(
-                                      icon: const Icon(
-                                        size: size,
-                                        AntDesign.history_outline,
-                                      ),
-                                      onPressed: () {
-                                        context.push('/history/$libraryItemId');
-                                      },
-                                    ),
-                                  PlatformIconButton(
-                                    icon: const Icon(size: size, Icons.close),
-                                    onPressed: () {
-                                      final queue = ref.read(queueProvider);
-                                      queue.clear();
-                                      ref
-                                          .read(queueProvider.notifier)
-                                          .update((state) => [...queue]);
-                                      playerStatus.setPlayStatus(
-                                          PlayerStatus.stopped, "Close player");
-                                      context.pop();
-                                    },
-                                  )
-                                ],
-                              ),
+                              PlayerButtonMenu(
+                                size: size,
+                                speedStream: speedStream,
+                                player: player,
+                                libraryItemId: libraryItemId,
+                                playerStatus: playerStatus,
+                                currentChapter: currentChapter,
+                              )
                             ],
                           ),
-                        ),
-                        Volume(
-                          volumeStream: volumeStream,
-                          player: player,
-                          size: size,
                         )
                       ],
                     ),

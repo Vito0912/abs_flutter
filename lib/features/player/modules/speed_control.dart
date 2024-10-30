@@ -27,24 +27,25 @@ class SpeedControl extends StatelessWidget {
       options: speedOptions.entries
           .map((entry) => _buildSpeedOption(entry.key, entry.value, context))
           .toList(),
-      icon: SizedBox(
-        width: size,
-        height: size,
-        child: FittedBox(
-          fit: BoxFit.fitWidth,
-          alignment: Alignment.center,
-          child: Tooltip(
-              message: S.of(context).playbackSpeed,
-              child: StreamBuilder<double>(
-                  stream: speedStream,
-                  builder:
-                      (BuildContext context, AsyncSnapshot<double> snapshot) {
-                    if (snapshot.hasData) {
-                      return PlatformText('${snapshot.data.toString()}x');
-                    } else {
-                      return const SizedBox.shrink();
-                    }
-                  })),
+      icon: Tooltip(
+        message: S.of(context).playbackSpeed,
+        child: SizedBox(
+          width: size,
+          height: size,
+          child: FittedBox(
+            fit: BoxFit.fitWidth,
+            alignment: Alignment.center,
+            child: StreamBuilder<double>(
+                stream: speedStream,
+                builder:
+                    (BuildContext context, AsyncSnapshot<double> snapshot) {
+                  if (snapshot.hasData) {
+                    return PlatformText('${snapshot.data.toString()}x');
+                  } else {
+                    return const SizedBox.shrink();
+                  }
+                }),
+          ),
         ),
       ),
     );

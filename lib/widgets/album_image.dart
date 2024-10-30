@@ -20,9 +20,8 @@ class AlbumImage extends ConsumerWidget {
     final User? user = ref.read(currentUserProvider);
     if (user == null) return const SizedBox.shrink();
     return SizedBox(
-      // TODO: find the right constraint for "the layout"
-      width: size, // Or provide specific width and height
-      height: size, // Or use other constraints based on the layout
+      width: size,
+      height: size,
       child: Stack(
         children: [
           AspectRatio(
@@ -56,7 +55,6 @@ class AlbumImage extends ConsumerWidget {
                 final progress = ref
                     .watch(progressProviderWithItemId(ItemEpisodeId(itemId)));
                 num progressValue = progress?.progress ?? 0.0;
-
                 return Align(
                   alignment: Alignment.bottomCenter,
                   child: LinearProgressIndicator(

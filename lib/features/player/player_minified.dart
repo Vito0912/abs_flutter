@@ -6,11 +6,13 @@ import 'package:abs_flutter/provider/player_status_provider.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
 import 'package:abs_flutter/util/helper.dart';
 import 'package:abs_flutter/widgets/album_image.dart';
+import 'package:abs_flutter/widgets/scrolling_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import 'modules/chapter_buttons.dart';
 import 'modules/seeking_buttons.dart';
 
 class PlayerMinified extends ConsumerWidget {
@@ -82,17 +84,14 @@ class PlayerMinified extends ConsumerWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
-                                    PlatformText(
-                                      player.audioService.mediaItem.value!
-                                              .title +
-                                          (currentChapter != null
-                                              ? ' - ${currentChapter.title}'
-                                              : ''),
+                                    ScrollingText(
+                                      text: player
+                                          .audioService.mediaItem.value!.title,
                                       style: Theme.of(context)
                                           .textTheme
-                                          .labelSmall,
-                                      overflow: TextOverflow.ellipsis,
-                                      maxLines: 1,
+                                          .labelMedium!,
+                                      scrollDuration:
+                                          const Duration(seconds: 5),
                                     ),
                                     PlatformText(
                                       player.audioService.mediaItem.value!
@@ -110,38 +109,16 @@ class PlayerMinified extends ConsumerWidget {
                             ],
                           ),
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          mainAxisSize: MainAxisSize.max,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            SeekingButtons(
-                              positionStream: positionStream,
-                              player: player,
-                              isForward: false,
-                            ),
-                            PlayButton(
-                                playerStatusProvider: playerStatusProvider),
-                            SeekingButtons(
-                              positionStream: positionStream,
-                              player: player,
-                              isForward: true,
-                            ),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            IconButton(
-                                onPressed: () {
-                                  if (Helper.getCurrentRoute(
-                                          GoRouter.of(context)) !=
-                                      '/settings') {
-                                    context.push('/settings');
-                                  }
-                                },
-                                icon: const Icon(Icons.more_vert)),
-                          ],
-                        ),
+                        MediaQuery.of(context).size.width > 500
+                            ? Padding(
+                                padding: const EdgeInsets.only(right: 8.0),
+                                child: _buildControls(positionStream, player,
+                                    playerStatusProvider, true, ref))
+                            : _buildControls(positionStream, player,
+                                playerStatusProvider, false, ref),
+                        MediaQuery.of(context).size.width > 500
+                            ? Flexible(child: _buildOptions(context))
+                            : _buildOptions(context),
                       ],
                     ),
                   ProgressBar(
@@ -159,6 +136,63 @@ class PlayerMinified extends ConsumerWidget {
           ],
         ),
       ),
+    );
+  }
+
+  Widget _buildControls(
+      Stream<Duration> positionStream,
+      PlayerProvider player,
+      PlayerStatusProvider playerStatusProvider,
+      bool isExpanded,
+      WidgetRef ref) {
+    final currentChapter = ref.watch(chapterProvider);
+
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisSize: MainAxisSize.max,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        if (isExpanded && currentChapter != null)
+          ChapterButtons(
+            positionStream: positionStream,
+            player: player,
+            isForward: false,
+            currentChapter: currentChapter,
+          ),
+        SeekingButtons(
+          positionStream: positionStream,
+          player: player,
+          isForward: false,
+        ),
+        PlayButton(playerStatusProvider: playerStatusProvider),
+        SeekingButtons(
+          positionStream: positionStream,
+          player: player,
+          isForward: true,
+        ),
+        if (isExpanded && currentChapter != null)
+          ChapterButtons(
+            positionStream: positionStream,
+            player: player,
+            isForward: true,
+            currentChapter: currentChapter,
+          ),
+      ],
+    );
+  }
+
+  Widget _buildOptions(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        IconButton(
+            onPressed: () {
+              if (Helper.getCurrentRoute(GoRouter.of(context)) != '/settings') {
+                context.push('/settings');
+              }
+            },
+            icon: const Icon(Icons.more_vert)),
+      ],
     );
   }
 }
