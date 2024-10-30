@@ -12,6 +12,7 @@ import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import 'modules/chapter_buttons.dart';
 import 'modules/seeking_buttons.dart';
 
 class PlayerMinified extends ConsumerWidget {
@@ -112,9 +113,9 @@ class PlayerMinified extends ConsumerWidget {
                             ? Padding(
                                 padding: const EdgeInsets.only(right: 8.0),
                                 child: _buildControls(positionStream, player,
-                                    playerStatusProvider))
-                            : _buildControls(
-                                positionStream, player, playerStatusProvider),
+                                    playerStatusProvider, true, ref))
+                            : _buildControls(positionStream, player,
+                                playerStatusProvider, false, ref),
                         MediaQuery.of(context).size.width > 500
                             ? Flexible(child: _buildOptions(context))
                             : _buildOptions(context),
@@ -138,12 +139,26 @@ class PlayerMinified extends ConsumerWidget {
     );
   }
 
-  Widget _buildControls(positionStream, player, playerStatusProvider) {
+  Widget _buildControls(
+      Stream<Duration> positionStream,
+      PlayerProvider player,
+      PlayerStatusProvider playerStatusProvider,
+      bool isExpanded,
+      WidgetRef ref) {
+    final currentChapter = ref.watch(chapterProvider);
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       mainAxisSize: MainAxisSize.max,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
+        if (isExpanded && currentChapter != null)
+          ChapterButtons(
+            positionStream: positionStream,
+            player: player,
+            isForward: false,
+            currentChapter: currentChapter,
+          ),
         SeekingButtons(
           positionStream: positionStream,
           player: player,
@@ -155,6 +170,13 @@ class PlayerMinified extends ConsumerWidget {
           player: player,
           isForward: true,
         ),
+        if (isExpanded && currentChapter != null)
+          ChapterButtons(
+            positionStream: positionStream,
+            player: player,
+            isForward: true,
+            currentChapter: currentChapter,
+          ),
       ],
     );
   }
