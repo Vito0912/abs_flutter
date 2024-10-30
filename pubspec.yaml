@@ -102,8 +102,8 @@ flutter_intl:
 msix_config:
   display_name: Buchable
   publisher_display_name: Vito0912
-  identity_name: Vito0912.Buchable
-  package_name: Vito0912.Buchable
+  identity_name: Vito0912.Audiobookshelfly
+  package_name: Vito0912.Audiobookshelfly
   msix_version: 1.5.8.0
   capabilities: internetClient
   languages: en-us
