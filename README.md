@@ -1,9 +1,11 @@
-# Audiobookshelfly
+# Buchable
 <a href="https://hosted.weblate.org/engage/audiobookshelf-flutter-client/">
 <img src="https://hosted.weblate.org/widget/audiobookshelf-flutter-client/app/svg-badge.svg" alt="Translation status" />
 </a>
 
 For Android, iOS*<sup>1,2</sup>, macOS*<sup>1,2</sup>, Windows, Linux, and Web*<sup>3</sup>
+
+“Buch” (German for "book") + "able" = "Buchable"
 
 ## Important
 > If you're interested in trying out the Android version of this app, please reach out to me via [email](mailto:fito0912@duck.com) (fito0912@duck.com). I'll add you to the beta testing group on the Google Play Store. It is currently private. Your participation is crucial, as I need testers to be able to create a public beta.

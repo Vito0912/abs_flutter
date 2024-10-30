@@ -1,6 +1,6 @@
 The ultimate Audiobookshelf client for Windows.
 
-Experience audiobooks and podcasts with Audiobookshelfly, a third-party client for the Audiobookshelf server, now optimized for Windows.
+Experience audiobooks and podcasts with Buchable, a third-party client for the Audiobookshelf server, now optimized for Windows.
 
 Key Features:
     
@@ -34,9 +34,9 @@ Key Features:
     Customizable Settings
         Tailor the app to your preferences with a variety of adjustable settings.
 
-Why Choose Audiobookshelfly?
+Why Choose Buchable?
 
-Audiobookshelfly offers features that enhance your listening experience beyond the first-party app:
+Buchable offers features that enhance your listening experience beyond the first-party app:
 
     Fast Account Switching for quick access to multiple accounts.
     Advanced Caching to save data and speed up performance.

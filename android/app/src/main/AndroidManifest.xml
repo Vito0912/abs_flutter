@@ -7,7 +7,7 @@
 
 
     <application
-        android:label="Audiobookshelfly"
+        android:label="Buchable"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher"
 		android:roundIcon="@mipmap/ic_launcher_rounded"

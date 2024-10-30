@@ -52,7 +52,7 @@ class Home extends HookConsumerWidget {
               Flexible(
                 fit: FlexFit.tight,
                 child: PlatformText(
-                  'Audiobookshelfly',
+                  'Buchable',
                   overflow: TextOverflow.ellipsis,
                 ),
               )

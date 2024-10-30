@@ -1,4 +1,4 @@
-name: audiobookshelfly
+name: buchable
 version: 1.4.0
 summary: An ABS app
 description: Client for Audiobookshelf
@@ -8,21 +8,21 @@ base: core22
 grade: stable
 
 slots:
-  dbus-audiobookshelfly:
+  dbus-buchable:
     interface: dbus
     bus: session
-    name: org.bar.audiobookshelfly
+    name: org.bar.buchable
 
 apps:
-  audiobookshelfly:
-    command: audiobookshelfly
+  buchable:
+    command: buchable
     extensions: [gnome]
     plugs:
       - network
     slots:
       - dbus-super-cool-app
 parts:
-  audiobookshelfly:
+  buchable:
     source: .
     plugin: flutter
     flutter-target: lib/main.dart

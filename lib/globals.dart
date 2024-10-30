@@ -8,7 +8,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:sembast/sembast.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-const appTitle = 'Audiobookshelfly';
+const appTitle = 'Buchable';
 late final String appName;
 late final String packageName;
 late final String version;
