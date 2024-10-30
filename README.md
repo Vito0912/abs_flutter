@@ -6,7 +6,7 @@
 For Android, iOS*<sup>1,2</sup>, macOS*<sup>1,2</sup>, Windows, Linux, and Web*<sup>3</sup>
 
 ## Important
-> If you're interested in trying out the Android version of this app, please reach out to me via [email](mailto:cedar-onyx-feast@duck.com). I'll add you to the beta testing group on the Google Play Store. It is currently private. Your participation is crucial, as I need testers to be able to create a public beta.
+> If you're interested in trying out the Android version of this app, please reach out to me via [email](mailto:fito0912@duck.com) (fito0912@duck.com). I'll add you to the beta testing group on the Google Play Store. It is currently private. Your participation is crucial, as I need testers to be able to create a public beta.
 >
 > Alternatively, you can download the APK from the release section. However, joining the beta would greatly assist in bringing the app to the Play Store sooner.
 
