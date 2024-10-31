@@ -30,6 +30,7 @@ class ConnectionNotifier extends StateNotifier<bool> {
     log('ConnectionNotifier initialized');
     _connectivity.onConnectivityChanged.listen(_handleConnectivityChange);
     _checkServerReachability(); // Initial server reachability check
+    syncOfflineProgress(ref);
   }
 
   void _handleConnectivityChange(List<ConnectivityResult> results) {
@@ -48,7 +49,7 @@ class ConnectionNotifier extends StateNotifier<bool> {
     if (state != isReachable) {
       state = isReachable;
       if (state) {
-        _syncProgressWhenOnline();
+        syncOfflineProgress(ref);
       }
       log('Server reachable: $isReachable');
       if (isReachable) {
@@ -141,12 +142,12 @@ class ConnectionNotifier extends StateNotifier<bool> {
   /////
   /////
 
-  void _syncProgressWhenOnline() async {
+  static void syncOfflineProgress(dynamic ref) async {
     final api = ref.read(apiProvider);
     final progressList = ref.read(offlineProgressProviderHandler.notifier);
     final allUsers = ref.read(usersProvider);
 
-    if (api == null) return;
+    if (api == null || allUsers.isEmpty) return;
 
     for (m.User user in allUsers) {
       List<ProgressItem> progresses = progressList.getProgressByUser(user.id!);

@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:abs_flutter/models/chapter.dart';
 import 'package:abs_flutter/models/history.dart';
+import 'package:abs_flutter/provider/connection_provider.dart';
 import 'package:abs_flutter/provider/history_provider.dart';
 import 'package:abs_flutter/provider/log_provider.dart';
 import 'package:abs_flutter/provider/player_status_provider.dart';
@@ -192,6 +193,8 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
     _container.read(timerProvider.notifier).stop();
     await _container.read(sessionProvider.notifier).closeOpenSession();
     await _container.read(progressTimerProvider.notifier).stopSending();
+
+    ConnectionNotifier.syncOfflineProgress(_container);
 
     await _player.stop();
 
