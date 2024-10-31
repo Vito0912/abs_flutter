@@ -2172,6 +2172,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Error: Item not found!`
+  String get errorItemNotFound {
+    return Intl.message(
+      'Error: Item not found!',
+      name: 'errorItemNotFound',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The item could not be found. This may be due to a network error or because the item no longer exists but remains cached.`
+  String get itemNotFoundDescription {
+    return Intl.message(
+      'The item could not be found. This may be due to a network error or because the item no longer exists but remains cached.',
+      name: 'itemNotFoundDescription',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

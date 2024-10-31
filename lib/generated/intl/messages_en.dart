@@ -192,6 +192,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Error downloading"),
         "errorDownloadingBody": MessageLookupByLibrary.simpleMessage(
             "An error occurred while downloading \'{\'displayName\'}\'"),
+        "errorItemNotFound":
+            MessageLookupByLibrary.simpleMessage("Error: Item not found!"),
         "exit": MessageLookupByLibrary.simpleMessage("Exit"),
         "failed": MessageLookupByLibrary.simpleMessage("Failed"),
         "fastForward": MessageLookupByLibrary.simpleMessage("Fast forward"),
@@ -211,6 +213,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "inProgress": MessageLookupByLibrary.simpleMessage("In Progress"),
         "information": MessageLookupByLibrary.simpleMessage("Information"),
         "itemLength": m23,
+        "itemNotFoundDescription": MessageLookupByLibrary.simpleMessage(
+            "The item could not be found. This may be due to a network error or because the item no longer exists but remains cached."),
         "itemNumChapters": m24,
         "itemProgress": m25,
         "itemPublishedYear": m26,

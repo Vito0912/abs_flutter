@@ -5,13 +5,14 @@ import 'package:abs_flutter/features/library/item/book/tags_description.dart';
 import 'package:abs_flutter/features/library/item/components/add_to_queue_button.dart';
 import 'package:abs_flutter/features/library/item/components/download_button.dart';
 import 'package:abs_flutter/features/library/item/components/play_button.dart';
+import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/models/user.dart' as m;
 import 'package:abs_flutter/provider/library_item_provider.dart';
 import 'package:abs_flutter/provider/log_provider.dart';
 import 'package:abs_flutter/provider/progress_provider.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
 import 'package:abs_flutter/widgets/album_image.dart';
-import 'package:abs_flutter/widgets/error_text.dart';
+import 'package:abs_flutter/widgets/error_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -33,7 +34,9 @@ class BookView extends ConsumerWidget {
     return item.when(
       data: (item) {
         return item == null
-            ? const ErrorText('Error: Item not found')
+            ? ErrorPage(
+                shortMessage: S.of(context).errorItemNotFound,
+                longMessage: S.of(context).itemNotFoundDescription)
             : _buildContent(context, ref, item, currentUser!);
       },
       loading: () {
@@ -41,7 +44,11 @@ class BookView extends ConsumerWidget {
         progressNotifier.getProgressWithLibraryItem(itemId);
         return Center(child: PlatformCircularProgressIndicator());
       },
-      error: (error, _) => ErrorText('Error: $error'),
+      error: (error, track) {
+        return ErrorPage(
+            shortMessage: S.of(context).errorItemNotFound,
+            longMessage: error.toString());
+      },
     );
   }
 

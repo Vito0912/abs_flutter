@@ -673,5 +673,7 @@
   "waitingForDownload": "Waiting for download to start",
   "@waitingForDownload": {},
   "year": "Year",
-  "@year": {}
+  "@year": {},
+  "errorItemNotFound": "Error: Item not found!",
+  "itemNotFoundDescription": "The item could not be found. This may be due to a network error or because the item no longer exists but remains cached."
 }
