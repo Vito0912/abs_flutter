@@ -675,5 +675,8 @@
   "year": "Year",
   "@year": {},
   "errorItemNotFound": "Error: Item not found!",
-  "itemNotFoundDescription": "The item could not be found. This may be due to a network error or because the item no longer exists but remains cached."
+  "itemNotFoundDescription": "The item could not be found. This may be due to a network error or because the item no longer exists but remains cached.",
+  "noPath": "No Path",
+  "downloadPath": "Download Path",
+  "downloadPathDescription": "The path where downloads are stored. To change this you need to delete all downloads first."
 }

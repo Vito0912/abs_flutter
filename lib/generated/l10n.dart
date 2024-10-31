@@ -2192,6 +2192,36 @@ class S {
       args: [],
     );
   }
+
+  /// `No Path`
+  String get noPath {
+    return Intl.message(
+      'No Path',
+      name: 'noPath',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Download Path`
+  String get downloadPath {
+    return Intl.message(
+      'Download Path',
+      name: 'downloadPath',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The path where downloads are stored. To change this you need to delete all downloads first.`
+  String get downloadPathDescription {
+    return Intl.message(
+      'The path where downloads are stored. To change this you need to delete all downloads first.',
+      name: 'downloadPathDescription',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

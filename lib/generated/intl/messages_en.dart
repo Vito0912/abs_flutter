@@ -174,6 +174,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Download complete"),
         "downloadCompleteBody": MessageLookupByLibrary.simpleMessage(
             "Download of \'{\'displayName\'}\' complete"),
+        "downloadPath": MessageLookupByLibrary.simpleMessage("Download Path"),
+        "downloadPathDescription": MessageLookupByLibrary.simpleMessage(
+            "The path where downloads are stored. To change this you need to delete all downloads first."),
         "downloading": MessageLookupByLibrary.simpleMessage("Downloading"),
         "downloadingBody": MessageLookupByLibrary.simpleMessage(
             "Downloading \'{\'displayName\'}\'"),
@@ -264,6 +267,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "noInternetDescription": MessageLookupByLibrary.simpleMessage(
             "We are having trouble connecting to the server."),
         "noItemsFound": MessageLookupByLibrary.simpleMessage("No items found"),
+        "noPath": MessageLookupByLibrary.simpleMessage("No Path"),
         "noSeriesSelected":
             MessageLookupByLibrary.simpleMessage("No series selected"),
         "noUserData": MessageLookupByLibrary.simpleMessage(
