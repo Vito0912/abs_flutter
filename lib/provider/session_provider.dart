@@ -155,12 +155,17 @@ class PlaybackSessionNotifier
               'streaming': false,
             });
       } else {
+        String artist = item.value?.media?.metadata?.authors
+                ?.map((author) => author.name)
+                .join(', ') ??
+            '';
+
         mediaItem = MediaItem(
             id: download.filePath!,
             album: item.value?.media?.metadata?.series?.toList().join(', '),
             title: download.displayName,
             displaySubtitle: item.value?.media?.metadata?.subtitle,
-            artist: item.value?.media?.metadata?.authors?.toList().join(','),
+            artist: artist,
             artUri: Uri.parse(
                 '${currentUser!.server!.url}/api/items/$id/cover?token=${currentUser.token}'),
             duration: Duration(
