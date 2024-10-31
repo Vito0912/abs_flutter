@@ -155,7 +155,7 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
       final progresses = _container.read(progressProvider).progress;
       final progress = progresses?['$id${episodeId ?? ''}'];
       if (progress != null &&
-          !progress.isFinished! &&
+          (progress.isFinished == null || !progress.isFinished!) &&
           progress.progress! <= 0.99) {
         log('Now seeking to ${(progress.currentTime!).toInt()}',
             name: 'seeking');
