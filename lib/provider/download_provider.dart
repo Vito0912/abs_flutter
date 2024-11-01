@@ -1,9 +1,9 @@
 import 'dart:convert';
-import 'package:abs_flutter/provider/log_provider.dart';
 import 'dart:io';
 
 import 'package:abs_flutter/globals.dart';
 import 'package:abs_flutter/models/file.dart';
+import 'package:abs_flutter/provider/log_provider.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -67,6 +67,9 @@ class DownloadListNotifier extends StateNotifier<List<DownloadInfo>> {
             rethrow;
           }
         }
+      } else {
+        log('Not deleting folder: ${folder.path} - Names do not match',
+            name: 'removeDownload');
       }
     }
 
