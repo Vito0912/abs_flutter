@@ -634,6 +634,8 @@
   "@sleepTimer": {},
   "sort": "Sort",
   "@sort": {},
+  "sortSeriesAsc": "Sort Series in Ascending Order",
+  "@sortSeriesAsc": {},
   "stats": "Stats",
   "@stats": {},
   "stop": "Stop",
@@ -699,6 +701,5 @@
   "waitingForDownload": "Waiting for download to start",
   "@waitingForDownload": {},
   "year": "Year",
-  "@year": {},
-  "sortSeriesAsc": "Sort Series in Ascending Order"
+  "@year": {}
 }
