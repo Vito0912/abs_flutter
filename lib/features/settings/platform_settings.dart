@@ -93,6 +93,11 @@ class PlatformSettings extends ConsumerWidget {
                   title: S.of(context).syncOnlyViaWifi,
                   keyValue: Constants.SYNC_ONLY_VIA_WIFI,
                   defaultValue: false),
+              SwitchTile(
+                  leading: const Icon(OctIcons.sort_asc),
+                  title: S.of(context).sortSeriesAsc,
+                  keyValue: Constants.SORT_SERIES_ASC,
+                  defaultValue: false),
               if (!kIsWeb && Helper.isDesktop())
                 SwitchTile(
                     leading: const Icon(IonIcons.file_tray),

@@ -1,3 +1,4 @@
+import 'package:abs_flutter/globals.dart';
 import 'package:abs_flutter/provider/library_items_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
@@ -45,6 +46,7 @@ class ChipSection extends ConsumerWidget {
                               filterKey: filterKey,
                               filter: value.key,
                             );
+                        tabController.setIndex(context, 0);
                         context.pop();
                       },
                       child: Chip(

@@ -699,5 +699,6 @@
   "waitingForDownload": "Waiting for download to start",
   "@waitingForDownload": {},
   "year": "Year",
-  "@year": {}
+  "@year": {},
+  "sortSeriesAsc": "Sort Series in Ascending Order"
 }

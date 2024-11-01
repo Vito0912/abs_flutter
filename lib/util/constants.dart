@@ -20,4 +20,5 @@ class Constants {
   static const String LOGGING_ENABLED = 'loggingEnabled';
   static const String WINDOWS_MINIMIZE_TO_TRAY = 'windowsMinimizeToTray';
   static const String DOWNLOAD_PATH = 'downloadPath';
+  static const String SORT_SERIES_ASC = 'sortSeriesAsc';
 }
