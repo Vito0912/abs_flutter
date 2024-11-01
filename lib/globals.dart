@@ -49,7 +49,8 @@ final Map<String, dynamic> defaultSettings = {
   Constants.BOOST_LOADING: true,
   Constants.LOGGING_ENABLED: true,
   Constants.WINDOWS_MINIMIZE_TO_TRAY: false,
-  Constants.DOWNLOAD_PATH: null
+  Constants.DOWNLOAD_PATH: null,
+  Constants.SORT_SERIES_ASC: false,
 };
 
 final Map<String, String> supportedLocales = {

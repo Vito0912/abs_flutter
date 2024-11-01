@@ -362,6 +362,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "size": MessageLookupByLibrary.simpleMessage("Size"),
         "sleepTimer": MessageLookupByLibrary.simpleMessage("Sleep Timer"),
         "sort": MessageLookupByLibrary.simpleMessage("Sort"),
+        "sortSeriesAsc": MessageLookupByLibrary.simpleMessage(
+            "Sort Series in Ascending Order"),
         "stats": MessageLookupByLibrary.simpleMessage("Stats"),
         "stop": MessageLookupByLibrary.simpleMessage("Stop"),
         "stopPlayerUntilSync":

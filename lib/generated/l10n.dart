@@ -2302,6 +2302,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Sort Series in Ascending Order`
+  String get sortSeriesAsc {
+    return Intl.message(
+      'Sort Series in Ascending Order',
+      name: 'sortSeriesAsc',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -7,6 +7,8 @@ import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/models/library_series_preview.dart';
 import 'package:abs_flutter/provider/library_items_provider.dart';
 import 'package:abs_flutter/provider/progress_provider.dart';
+import 'package:abs_flutter/provider/settings_provider.dart';
+import 'package:abs_flutter/util/constants.dart';
 import 'package:abs_flutter/widgets/album_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
@@ -20,18 +22,22 @@ class ItemSeries extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final settings =
+        ref.watch(specificKeysSettingsProvider([Constants.SORT_SERIES_ASC]));
     return LayoutBuilder(builder: (context, BoxConstraints constraints) {
       final width = constraints.maxWidth / 2 - 8;
       return InkWell(
         onTap: clickable
             ? () {
-                ref.read(libraryItemSearchProvider.notifier).state =
-                    ref.read(libraryItemSearchProvider.notifier).state.copyWith(
-                          filterKey: 'series',
-                          filter: series.id,
-                          sort: 'sequence',
-                          desc: 1,
-                        );
+                ref.read(libraryItemSearchProvider.notifier).state = ref
+                    .read(libraryItemSearchProvider.notifier)
+                    .state
+                    .copyWith(
+                      filterKey: 'series',
+                      filter: series.id,
+                      sort: 'sequence',
+                      desc: settings[Constants.SORT_SERIES_ASC] == true ? 1 : 0,
+                    );
                 context.push('/series-view/${series.name}');
               }
             : null,
