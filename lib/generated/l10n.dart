@@ -690,6 +690,46 @@ class S {
     );
   }
 
+  /// `The file was not downloaded correctly. You can try to delete the data on the device by clicking the button and download it again.`
+  String get downloadErrorDescription {
+    return Intl.message(
+      'The file was not downloaded correctly. You can try to delete the data on the device by clicking the button and download it again.',
+      name: 'downloadErrorDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Download Info`
+  String get downloadInfo {
+    return Intl.message(
+      'Download Info',
+      name: 'downloadInfo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Download Path`
+  String get downloadPath {
+    return Intl.message(
+      'Download Path',
+      name: 'downloadPath',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The path where downloads are stored. To change this you need to delete all downloads first.`
+  String get downloadPathDescription {
+    return Intl.message(
+      'The path where downloads are stored. To change this you need to delete all downloads first.',
+      name: 'downloadPathDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Downloading`
   String get downloading {
     return Intl.message(
@@ -780,6 +820,16 @@ class S {
     );
   }
 
+  /// `Episode Id`
+  String get episodeId {
+    return Intl.message(
+      'Episode Id',
+      name: 'episodeId',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Error`
   String get error {
     return Intl.message(
@@ -807,6 +857,16 @@ class S {
       name: 'errorDownloadingBody',
       desc: '',
       args: [displayName],
+    );
+  }
+
+  /// `Error: Item not found!`
+  String get errorItemNotFound {
+    return Intl.message(
+      'Error: Item not found!',
+      name: 'errorItemNotFound',
+      desc: '',
+      args: [],
     );
   }
 
@@ -865,6 +925,26 @@ class S {
     return Intl.message(
       'Feed Open',
       name: 'feedOpen',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Filename`
+  String get filename {
+    return Intl.message(
+      'Filename',
+      name: 'filename',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Filepath`
+  String get filepath {
+    return Intl.message(
+      'Filepath',
+      name: 'filepath',
       desc: '',
       args: [],
     );
@@ -950,6 +1030,16 @@ class S {
     );
   }
 
+  /// `Item Id`
+  String get itemId {
+    return Intl.message(
+      'Item Id',
+      name: 'itemId',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Length: {length}`
   String itemLength(String length) {
     return Intl.message(
@@ -957,6 +1047,16 @@ class S {
       name: 'itemLength',
       desc: '',
       args: [length],
+    );
+  }
+
+  /// `The item could not be found. This may be due to a network error or because the item no longer exists but remains cached.`
+  String get itemNotFoundDescription {
+    return Intl.message(
+      'The item could not be found. This may be due to a network error or because the item no longer exists but remains cached.',
+      name: 'itemNotFoundDescription',
+      desc: '',
+      args: [],
     );
   }
 
@@ -987,6 +1087,16 @@ class S {
       name: 'itemPublishedYear',
       desc: '',
       args: [year],
+    );
+  }
+
+  /// `Item type`
+  String get itemType {
+    return Intl.message(
+      'Item type',
+      name: 'itemType',
+      desc: '',
+      args: [],
     );
   }
 
@@ -1065,6 +1175,16 @@ class S {
     return Intl.message(
       'Library',
       name: 'library',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Library Name`
+  String get libraryName {
+    return Intl.message(
+      'Library Name',
+      name: 'libraryName',
       desc: '',
       args: [],
     );
@@ -1315,6 +1435,16 @@ class S {
     return Intl.message(
       'No items found',
       name: 'noItemsFound',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No Path`
+  String get noPath {
+    return Intl.message(
+      'No Path',
+      name: 'noPath',
       desc: '',
       args: [],
     );
@@ -2168,136 +2298,6 @@ class S {
     return Intl.message(
       'Year',
       name: 'year',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Error: Item not found!`
-  String get errorItemNotFound {
-    return Intl.message(
-      'Error: Item not found!',
-      name: 'errorItemNotFound',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `The item could not be found. This may be due to a network error or because the item no longer exists but remains cached.`
-  String get itemNotFoundDescription {
-    return Intl.message(
-      'The item could not be found. This may be due to a network error or because the item no longer exists but remains cached.',
-      name: 'itemNotFoundDescription',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `No Path`
-  String get noPath {
-    return Intl.message(
-      'No Path',
-      name: 'noPath',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Download Path`
-  String get downloadPath {
-    return Intl.message(
-      'Download Path',
-      name: 'downloadPath',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `The path where downloads are stored. To change this you need to delete all downloads first.`
-  String get downloadPathDescription {
-    return Intl.message(
-      'The path where downloads are stored. To change this you need to delete all downloads first.',
-      name: 'downloadPathDescription',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Download Info`
-  String get downloadInfo {
-    return Intl.message(
-      'Download Info',
-      name: 'downloadInfo',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Library Name`
-  String get libraryName {
-    return Intl.message(
-      'Library Name',
-      name: 'libraryName',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Item Id`
-  String get itemId {
-    return Intl.message(
-      'Item Id',
-      name: 'itemId',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Episode Id`
-  String get episodeId {
-    return Intl.message(
-      'Episode Id',
-      name: 'episodeId',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Filename`
-  String get filename {
-    return Intl.message(
-      'Filename',
-      name: 'filename',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Filepath`
-  String get filepath {
-    return Intl.message(
-      'Filepath',
-      name: 'filepath',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Item type`
-  String get itemType {
-    return Intl.message(
-      'Item type',
-      name: 'itemType',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `The file was not downloaded correctly. You can try to delete the data on the device by clicking the button and download it again.`
-  String get downloadErrorDescription {
-    return Intl.message(
-      'The file was not downloaded correctly. You can try to delete the data on the device by clicking the button and download it again.',
-      name: 'downloadErrorDescription',
       desc: '',
       args: [],
     );

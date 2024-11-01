@@ -83,6 +83,7 @@ dev_dependencies:
 dependency_overrides:
   meta: ^1.14.0
   media_kit: 1.1.9
+  web: ^0.5.1 # Wait for stable
 
 flutter:
   uses-material-design: true
