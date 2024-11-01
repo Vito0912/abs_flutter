@@ -2292,6 +2292,16 @@ class S {
       args: [],
     );
   }
+
+  /// `The file was not downloaded correctly. You can try to delete the data on the device by clicking the button and download it again.`
+  String get downloadErrorDescription {
+    return Intl.message(
+      'The file was not downloaded correctly. You can try to delete the data on the device by clicking the button and download it again.',
+      name: 'downloadErrorDescription',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

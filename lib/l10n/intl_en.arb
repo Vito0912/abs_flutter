@@ -685,5 +685,6 @@
   "episodeId": "Episode Id",
   "filename": "Filename",
   "filepath": "Filepath",
-  "itemType": "Item type"
+  "itemType": "Item type",
+  "downloadErrorDescription": "The file was not downloaded correctly. You can try to delete the data on the device by clicking the button and download it again."
 }

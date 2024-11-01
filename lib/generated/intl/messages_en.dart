@@ -180,6 +180,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "downloadComplete":
             MessageLookupByLibrary.simpleMessage("Download complete"),
         "downloadCompleteBody": m23,
+        "downloadErrorDescription": MessageLookupByLibrary.simpleMessage(
+            "The file was not downloaded correctly. You can try to delete the data on the device by clicking the button and download it again."),
         "downloadInfo": MessageLookupByLibrary.simpleMessage("Download Info"),
         "downloadPath": MessageLookupByLibrary.simpleMessage("Download Path"),
         "downloadPathDescription": MessageLookupByLibrary.simpleMessage(

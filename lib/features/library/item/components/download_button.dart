@@ -25,7 +25,7 @@ class DownloadButton extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // TODO: Browser Support
-    if(kIsWeb) return const SizedBox.shrink();
+    if (kIsWeb) return const SizedBox.shrink();
     final downloader = ref.watch(downloaderProvider);
     final downloads = ref.watch(downloadListProvider);
     final currentDownload = downloader.downloads
@@ -63,7 +63,21 @@ class DownloadButton extends ConsumerWidget {
             )
           : downloadedItem == null
               ? Icon(PlatformIcons(context).cloudDownload)
-              : Icon(PlatformIcons(context).deleteOutline),
+              : downloadedItem.filePath == null
+                  ? Tooltip(
+                      message: S.of(context).downloadErrorDescription,
+                      child: Row(
+                        children: [
+                          Icon(
+                            PlatformIcons(context).deleteOutline,
+                            color: Theme.of(context).colorScheme.error,
+                          ),
+                          Icon(
+                            PlatformIcons(context).error,
+                          )
+                        ],
+                      ))
+                  : Icon(PlatformIcons(context).deleteOutline),
     );
   }
 
