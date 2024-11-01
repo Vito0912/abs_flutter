@@ -680,13 +680,13 @@ class S {
     );
   }
 
-  /// `Download of '{'displayName'}' complete`
-  String get downloadCompleteBody {
+  /// `Download of {displayName} complete`
+  String downloadCompleteBody(Object displayName) {
     return Intl.message(
-      'Download of \'{\'displayName\'}\' complete',
+      'Download of $displayName complete',
       name: 'downloadCompleteBody',
       desc: '',
-      args: [],
+      args: [displayName],
     );
   }
 
@@ -700,13 +700,13 @@ class S {
     );
   }
 
-  /// `Downloading '{'displayName'}'`
-  String get downloadingBody {
+  /// `Downloading {displayName}`
+  String downloadingBody(Object displayName) {
     return Intl.message(
-      'Downloading \'{\'displayName\'}\'',
+      'Downloading $displayName',
       name: 'downloadingBody',
       desc: '',
-      args: [],
+      args: [displayName],
     );
   }
 
@@ -800,13 +800,13 @@ class S {
     );
   }
 
-  /// `An error occurred while downloading '{'displayName'}'`
-  String get errorDownloadingBody {
+  /// `An error occurred while downloading {displayName}`
+  String errorDownloadingBody(Object displayName) {
     return Intl.message(
-      'An error occurred while downloading \'{\'displayName\'}\'',
+      'An error occurred while downloading $displayName',
       name: 'errorDownloadingBody',
       desc: '',
-      args: [],
+      args: [displayName],
     );
   }
 

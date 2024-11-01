@@ -40,19 +40,25 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m18(minutes, seconds) => "${minutes}分 ${seconds}秒";
 
-  static String m23(length) => "总时长: ${length}";
+  static String m23(displayName) => "\'{\'displayName\'}\' 下载完成";
 
-  static String m24(numChapters) => "章节数: ${numChapters}";
+  static String m24(displayName) => "\'{\'displayName\'}\' 正在下载";
 
-  static String m25(progress) => "进度: ${progress}%";
+  static String m25(displayName) => "下载 \'{\'displayName\'}\'时发生错误";
 
-  static String m26(year) => "出版年份: ${year}";
+  static String m26(length) => "总时长: ${length}";
 
-  static String m28(progress) => "当前进度: ${progress} %";
+  static String m27(numChapters) => "章节数: ${numChapters}";
 
-  static String m29(time) => "剩余时间: ${time}";
+  static String m28(progress) => "进度: ${progress}%";
 
-  static String m30(time) => "${time} 分钟";
+  static String m29(year) => "出版年份: ${year}";
+
+  static String m31(progress) => "当前进度: ${progress} %";
+
+  static String m32(time) => "剩余时间: ${time}";
+
+  static String m33(time) => "${time} 分钟";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -106,11 +112,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "discover": MessageLookupByLibrary.simpleMessage("发现"),
         "domainOrIp": MessageLookupByLibrary.simpleMessage("域名 或 IP"),
         "downloadComplete": MessageLookupByLibrary.simpleMessage("下载完成"),
-        "downloadCompleteBody":
-            MessageLookupByLibrary.simpleMessage("\'{\'displayName\'}\' 下载完成"),
+        "downloadCompleteBody": m23,
         "downloading": MessageLookupByLibrary.simpleMessage("正在下载"),
-        "downloadingBody":
-            MessageLookupByLibrary.simpleMessage("\'{\'displayName\'}\' 正在下载"),
+        "downloadingBody": m24,
         "downloads": MessageLookupByLibrary.simpleMessage("下载列表"),
         "downloadsOnlyViaWifi":
             MessageLookupByLibrary.simpleMessage("仅通过Wifi下载"),
@@ -123,8 +127,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("请输入您的用户名和密码。"),
         "error": MessageLookupByLibrary.simpleMessage("错误"),
         "errorDownloading": MessageLookupByLibrary.simpleMessage("下载失败"),
-        "errorDownloadingBody": MessageLookupByLibrary.simpleMessage(
-            "下载 \'{\'displayName\'}\'时发生错误"),
+        "errorDownloadingBody": m25,
         "exit": MessageLookupByLibrary.simpleMessage("退出"),
         "failed": MessageLookupByLibrary.simpleMessage("失败的"),
         "fastForward": MessageLookupByLibrary.simpleMessage("快进"),
@@ -139,10 +142,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("如果需要启用账号快速切换功能"),
         "inProgress": MessageLookupByLibrary.simpleMessage("正在更新"),
         "information": MessageLookupByLibrary.simpleMessage("信息"),
-        "itemLength": m23,
-        "itemNumChapters": m24,
-        "itemProgress": m25,
-        "itemPublishedYear": m26,
+        "itemLength": m26,
+        "itemNumChapters": m27,
+        "itemProgress": m28,
+        "itemPublishedYear": m29,
         "jumpToLastPosition": MessageLookupByLibrary.simpleMessage("跳转到最后一个位置"),
         "jumpToLastPositionDescription":
             MessageLookupByLibrary.simpleMessage("当启用时，播放器将跳转到最后一个位置时，按下播放"),
@@ -209,7 +212,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "progress": MessageLookupByLibrary.simpleMessage("进度"),
         "progressAsChaptersDescription": MessageLookupByLibrary.simpleMessage(
             "启用此选项可在播放器中显示进度并按章节显示通知。如果禁用，则将根据整个项目显示进度。"),
-        "progressNum": m28,
+        "progressNum": m31,
         "publisher": MessageLookupByLibrary.simpleMessage("发行商"),
         "readLess": MessageLookupByLibrary.simpleMessage("阅读较少"),
         "readMore": MessageLookupByLibrary.simpleMessage("阅读更多"),
@@ -253,8 +256,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "指定应用程序与服务器同步的频率。请重启应用程序以使更改生效。"),
         "syncOnlyViaWifi": MessageLookupByLibrary.simpleMessage("仅通过Wifi同步"),
         "tags": MessageLookupByLibrary.simpleMessage("标签"),
-        "timeRemainingNum": m29,
-        "timerText": m30,
+        "timeRemainingNum": m32,
+        "timerText": m33,
         "title": MessageLookupByLibrary.simpleMessage("标题"),
         "today": MessageLookupByLibrary.simpleMessage("今日收听时长"),
         "totalTimeListened": MessageLookupByLibrary.simpleMessage("总收听时长"),

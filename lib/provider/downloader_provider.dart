@@ -57,17 +57,18 @@ class DownloadProvider extends ChangeNotifier {
     FileDownloader().configureNotification(
         running: TaskNotification(
           S.current.downloading,
-          S.current.downloadingBody,
+          S.current.downloadingBody("{displayName}"),
         ),
         complete: TaskNotification(
           S.current.downloadComplete,
-          S.current.downloadCompleteBody,
+          S.current.downloadCompleteBody("{displayName}"),
         ),
         error: TaskNotification(
           S.current.errorDownloading,
-          S.current.errorDownloadingBody,
+          S.current.errorDownloadingBody("{displayName}"),
         ),
-        progressBar: true);
+        progressBar: true,
+        groupNotificationId: 'abs_flutter_downloads');
 
     // Listen to updates
     FileDownloader().updates.listen((update) {
