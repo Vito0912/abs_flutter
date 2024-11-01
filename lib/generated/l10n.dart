@@ -2222,6 +2222,76 @@ class S {
       args: [],
     );
   }
+
+  /// `Download Info`
+  String get downloadInfo {
+    return Intl.message(
+      'Download Info',
+      name: 'downloadInfo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Library Name`
+  String get libraryName {
+    return Intl.message(
+      'Library Name',
+      name: 'libraryName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Item Id`
+  String get itemId {
+    return Intl.message(
+      'Item Id',
+      name: 'itemId',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Episode Id`
+  String get episodeId {
+    return Intl.message(
+      'Episode Id',
+      name: 'episodeId',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Filename`
+  String get filename {
+    return Intl.message(
+      'Filename',
+      name: 'filename',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Filepath`
+  String get filepath {
+    return Intl.message(
+      'Filepath',
+      name: 'filepath',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Item type`
+  String get itemType {
+    return Intl.message(
+      'Item type',
+      name: 'itemType',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

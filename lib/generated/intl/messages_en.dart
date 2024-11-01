@@ -174,6 +174,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Download complete"),
         "downloadCompleteBody": MessageLookupByLibrary.simpleMessage(
             "Download of \'{\'displayName\'}\' complete"),
+        "downloadInfo": MessageLookupByLibrary.simpleMessage("Download Info"),
         "downloadPath": MessageLookupByLibrary.simpleMessage("Download Path"),
         "downloadPathDescription": MessageLookupByLibrary.simpleMessage(
             "The path where downloads are stored. To change this you need to delete all downloads first."),
@@ -190,6 +191,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "enabled": MessageLookupByLibrary.simpleMessage("Enabled"),
         "enterValidUsernameOrPassword": MessageLookupByLibrary.simpleMessage(
             "Please enter a valid IP/Domain and port before entering your username and password."),
+        "episodeId": MessageLookupByLibrary.simpleMessage("Episode Id"),
         "error": MessageLookupByLibrary.simpleMessage("Error"),
         "errorDownloading":
             MessageLookupByLibrary.simpleMessage("Error downloading"),
@@ -205,6 +207,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "fastForwardSecondsDescription": MessageLookupByLibrary.simpleMessage(
             "Set the number of seconds to skip forward when the fast forward button is pressed."),
         "feedOpen": MessageLookupByLibrary.simpleMessage("Feed Open"),
+        "filename": MessageLookupByLibrary.simpleMessage("Filename"),
+        "filepath": MessageLookupByLibrary.simpleMessage("Filepath"),
         "filter": MessageLookupByLibrary.simpleMessage("Filter"),
         "finished": MessageLookupByLibrary.simpleMessage("Finished"),
         "general": MessageLookupByLibrary.simpleMessage("General"),
@@ -215,12 +219,14 @@ class MessageLookup extends MessageLookupByLibrary {
                 "If the quick account switcher should be shown"),
         "inProgress": MessageLookupByLibrary.simpleMessage("In Progress"),
         "information": MessageLookupByLibrary.simpleMessage("Information"),
+        "itemId": MessageLookupByLibrary.simpleMessage("Item Id"),
         "itemLength": m23,
         "itemNotFoundDescription": MessageLookupByLibrary.simpleMessage(
             "The item could not be found. This may be due to a network error or because the item no longer exists but remains cached."),
         "itemNumChapters": m24,
         "itemProgress": m25,
         "itemPublishedYear": m26,
+        "itemType": MessageLookupByLibrary.simpleMessage("Item type"),
         "jumpToLastPosition":
             MessageLookupByLibrary.simpleMessage("Jump to last position"),
         "jumpToLastPositionDescription": MessageLookupByLibrary.simpleMessage(
@@ -231,6 +237,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "last7Days": MessageLookupByLibrary.simpleMessage("Last 7 days"),
         "libraries": MessageLookupByLibrary.simpleMessage("Libraries"),
         "library": MessageLookupByLibrary.simpleMessage("Library"),
+        "libraryName": MessageLookupByLibrary.simpleMessage("Library Name"),
         "libraryStats": MessageLookupByLibrary.simpleMessage("Library Stats"),
         "listenAgain": MessageLookupByLibrary.simpleMessage("Listen again"),
         "listeningInTheLastYear":

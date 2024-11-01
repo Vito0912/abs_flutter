@@ -678,5 +678,12 @@
   "itemNotFoundDescription": "The item could not be found. This may be due to a network error or because the item no longer exists but remains cached.",
   "noPath": "No Path",
   "downloadPath": "Download Path",
-  "downloadPathDescription": "The path where downloads are stored. To change this you need to delete all downloads first."
+  "downloadPathDescription": "The path where downloads are stored. To change this you need to delete all downloads first.",
+  "downloadInfo": "Download Info",
+  "libraryName": "Library Name",
+  "itemId": "Item Id",
+  "episodeId": "Episode Id",
+  "filename": "Filename",
+  "filepath": "Filepath",
+  "itemType": "Item type"
 }
