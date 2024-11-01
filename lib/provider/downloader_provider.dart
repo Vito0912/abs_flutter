@@ -331,6 +331,18 @@ class DownloadProvider extends ChangeNotifier {
 
       downloadItem.dispose();
 
+      final downloadList = ref.read(downloadListProvider);
+      final download = downloadList.firstWhereOrNull(
+        (download) =>
+            download.filename == downloadItem.task.filename &&
+            download.itemId == downloadItem.itemId &&
+            download.episodeId == downloadItem.episodeId &&
+            download.userId == downloadItem.userId,
+      );
+      if (download != null) {
+        ref.read(downloadListProvider.notifier).removeDownload(download);
+      }
+
       notifyListeners();
     } catch (e) {
       debugPrint('Failed to cancel download: $e');

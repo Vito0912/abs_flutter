@@ -45,6 +45,7 @@ class BookView extends ConsumerWidget {
         return Center(child: PlatformCircularProgressIndicator());
       },
       error: (error, track) {
+        log("$error\n$track", name: 'item_view');
         return ErrorPage(
             shortMessage: S.of(context).errorItemNotFound,
             longMessage: error.toString());
