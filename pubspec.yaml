@@ -3,7 +3,7 @@ description: "An ABS app"
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: 1.5.9
+version: 1.6.0
 
 environment:
   sdk: '>=3.4.3 <4.0.0'
@@ -57,6 +57,7 @@ dependencies:
   icons_plus: ^5.0.0
   settings_ui: ^2.0.2
   tray_manager: ^0.2.4
+  file_picker: ^8.1.3
 
   flutter_hooks: any
   uuid: any
@@ -104,7 +105,7 @@ msix_config:
   publisher_display_name: Vito0912
   identity_name: Vito0912.Audiobookshelfly
   package_name: Vito0912.Audiobookshelfly
-  msix_version: 1.5.9.0
+  msix_version: 1.6.0.0
   capabilities: internetClient
   languages: en-us
   install_certificate: false

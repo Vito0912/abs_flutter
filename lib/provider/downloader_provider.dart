@@ -1,16 +1,20 @@
 import 'dart:async';
+import 'dart:developer';
 import 'dart:io';
+
 import 'package:abs_api/abs_api.dart' as api;
 import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/models/file.dart';
 import 'package:abs_flutter/models/user.dart';
 import 'package:abs_flutter/provider/download_provider.dart';
 import 'package:abs_flutter/provider/library_provider.dart';
+import 'package:abs_flutter/provider/settings_provider.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:abs_flutter/util/constants.dart';
 import 'package:background_downloader/background_downloader.dart';
-import 'package:flutter/foundation.dart';
 import 'package:collection/collection.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class DownloadItem {
   final DownloadTask task;
@@ -53,17 +57,18 @@ class DownloadProvider extends ChangeNotifier {
     FileDownloader().configureNotification(
         running: TaskNotification(
           S.current.downloading,
-          S.current.downloadingBody,
+          S.current.downloadingBody("{displayName}"),
         ),
         complete: TaskNotification(
           S.current.downloadComplete,
-          S.current.downloadCompleteBody,
+          S.current.downloadCompleteBody("{displayName}"),
         ),
         error: TaskNotification(
           S.current.errorDownloading,
-          S.current.errorDownloadingBody,
+          S.current.errorDownloadingBody("{displayName}"),
         ),
-        progressBar: true);
+        progressBar: true,
+        groupNotificationId: 'abs_flutter_downloads');
 
     // Listen to updates
     FileDownloader().updates.listen((update) {
@@ -272,12 +277,28 @@ class DownloadProvider extends ChangeNotifier {
     } else {
       savePath = 'abs_flutter/$itemId';
     }
+    final settings =
+        ref.read(specificKeysSettingsProvider([Constants.DOWNLOAD_PATH]));
+
+    if (settings[Constants.DOWNLOAD_PATH] != null) {
+      if (episodeId != null) {
+        savePath = '${settings[Constants.DOWNLOAD_PATH]}/$itemId/$episodeId';
+      } else {
+        savePath = '${settings[Constants.DOWNLOAD_PATH]}/$itemId';
+      }
+    }
+
+    BaseDirectory baseDirectory = settings[Constants.DOWNLOAD_PATH] == null
+        ? BaseDirectory.applicationDocuments
+        : BaseDirectory.root;
+
+    log('Downloading to: $savePath ($baseDirectory)');
 
     final task = DownloadTask(
       url: '$url?token=${token.toString()}',
       filename: fileName,
       updates: Updates.statusAndProgress,
-      baseDirectory: BaseDirectory.applicationDocuments,
+      baseDirectory: baseDirectory,
       requiresWiFi: onlyWifi,
       directory: savePath,
       displayName: displayName ?? fileName,
@@ -309,6 +330,18 @@ class DownloadProvider extends ChangeNotifier {
       _downloads.remove(downloadItem);
 
       downloadItem.dispose();
+
+      final downloadList = ref.read(downloadListProvider);
+      final download = downloadList.firstWhereOrNull(
+        (download) =>
+            download.filename == downloadItem.task.filename &&
+            download.itemId == downloadItem.itemId &&
+            download.episodeId == downloadItem.episodeId &&
+            download.userId == downloadItem.userId,
+      );
+      if (download != null) {
+        ref.read(downloadListProvider.notifier).removeDownload(download);
+      }
 
       notifyListeners();
     } catch (e) {

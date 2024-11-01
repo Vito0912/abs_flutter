@@ -1,3 +1,4 @@
+import 'package:abs_flutter/features/settings/components/custom_tile.dart';
 import 'package:abs_flutter/features/settings/components/drop_down_tile.dart';
 import 'package:abs_flutter/features/settings/components/navigation_tile.dart';
 import 'package:abs_flutter/features/settings/components/slider_tile.dart';
@@ -8,6 +9,8 @@ import 'package:abs_flutter/provider/settings_provider.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
 import 'package:abs_flutter/util/constants.dart';
 import 'package:abs_flutter/util/helper.dart';
+import 'package:file_picker/file_picker.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -90,7 +93,7 @@ class PlatformSettings extends ConsumerWidget {
                   title: S.of(context).syncOnlyViaWifi,
                   keyValue: Constants.SYNC_ONLY_VIA_WIFI,
                   defaultValue: false),
-              if (Helper.isDesktop())
+              if (!kIsWeb && Helper.isDesktop())
                 SwitchTile(
                     leading: const Icon(IonIcons.file_tray),
                     title: S.of(context).minimizeToTray,
@@ -98,6 +101,26 @@ class PlatformSettings extends ConsumerWidget {
                     keyValue: Constants.WINDOWS_MINIMIZE_TO_TRAY,
                     defaultValue: false),
               //TODO: Add support for Linux and MacOS
+              CustomTile(
+                leading: const Icon(Iconsax.folder_bold),
+                title: S.of(context).downloadPath,
+                keyValue: Constants.DOWNLOAD_PATH,
+                noValue: S.of(context).noPath,
+                description: S.of(context).downloadPathDescription,
+                onPressed: () async {
+                  String? selectedDirectory =
+                      await FilePicker.platform.getDirectoryPath();
+
+                  if (selectedDirectory == null) {
+                    userSharedPreferences.setString(
+                        Constants.DOWNLOAD_PATH, null);
+                  } else {
+                    userSharedPreferences.setString(
+                        Constants.DOWNLOAD_PATH, selectedDirectory);
+                    print(selectedDirectory);
+                  }
+                },
+              )
             ],
           ),
           SettingsSection(

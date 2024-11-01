@@ -40,8 +40,9 @@ class PlaybackSessionNotifier
     final connection = ref.read(connectionProvider);
 
     _session = null;
-
-    if (connection) {
+    log('Creating session. $download (connection: $connection)',
+        name: 'session_provider');
+    if (download == null) {
       try {
         playerStatus.setLoading(id);
         CancelToken cancelToken = CancelToken();

@@ -79,22 +79,31 @@ class MessageLookup extends MessageLookupByLibrary {
   static String m22(device, os, version) =>
       "Gerät: ${device}\nOS: ${os}\nApp Version: ${version}";
 
-  static String m23(length) => "Länge: ${length}";
+  static String m23(displayName) =>
+      "Herunterladen von \'{\'displayName\'}\' abgeschlossen";
 
-  static String m24(numChapters) => "Anzahl der Kapitel: ${numChapters}";
+  static String m24(displayName) =>
+      "\'{\'displayName\'}\' wird heruntergeladen";
 
-  static String m25(progress) => "Fortschritt: ${progress}%";
+  static String m25(displayName) =>
+      "Es ist ein Fehler beim Herunterladen von \'{\'displayName\'}\' aufgetreten";
 
-  static String m26(year) => "Erscheinungsjahr: ${year}";
+  static String m26(length) => "Länge: ${length}";
 
-  static String m27(numBooks) =>
+  static String m27(numChapters) => "Anzahl der Kapitel: ${numChapters}";
+
+  static String m28(progress) => "Fortschritt: ${progress}%";
+
+  static String m29(year) => "Erscheinungsjahr: ${year}";
+
+  static String m30(numBooks) =>
       "${Intl.plural(numBooks, zero: 'Keine Bücher', one: '1 Buch', other: '${numBooks} Bücher')}";
 
-  static String m28(progress) => "Aktueller Fortschritt: ${progress} %";
+  static String m31(progress) => "Aktueller Fortschritt: ${progress} %";
 
-  static String m29(time) => "Übrige Zeit: ${time}";
+  static String m32(time) => "Übrige Zeit: ${time}";
 
-  static String m30(time) => "${time} min";
+  static String m33(time) => "${time} min";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -176,12 +185,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Serveradresse oder IP"),
         "downloadComplete":
             MessageLookupByLibrary.simpleMessage("Herunterladen abgeschlossen"),
-        "downloadCompleteBody": MessageLookupByLibrary.simpleMessage(
-            "Herunterladen von \'{\'displayName\'}\' abgeschlossen"),
+        "downloadCompleteBody": m23,
         "downloading":
             MessageLookupByLibrary.simpleMessage("Wird heruntergeladen"),
-        "downloadingBody": MessageLookupByLibrary.simpleMessage(
-            "\'{\'displayName\'}\' wird heruntergeladen"),
+        "downloadingBody": m24,
         "downloads": MessageLookupByLibrary.simpleMessage("Downloads"),
         "downloadsOnlyViaWifi": MessageLookupByLibrary.simpleMessage(
             "Nur über W-Lan herunterladen"),
@@ -196,8 +203,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "error": MessageLookupByLibrary.simpleMessage("Fehler"),
         "errorDownloading":
             MessageLookupByLibrary.simpleMessage("Fehler beim Herunterladen"),
-        "errorDownloadingBody": MessageLookupByLibrary.simpleMessage(
-            "Es ist ein Fehler beim Herunterladen von \'{\'displayName\'}\' aufgetreten"),
+        "errorDownloadingBody": m25,
         "exit": MessageLookupByLibrary.simpleMessage("Beenden"),
         "failed": MessageLookupByLibrary.simpleMessage("Fehlgeschlagen"),
         "fastForward": MessageLookupByLibrary.simpleMessage("Vorspulen"),
@@ -216,10 +222,10 @@ class MessageLookup extends MessageLookupByLibrary {
                 "Ob der schnelle Nutzerwechsel angezeigt werden soll"),
         "inProgress": MessageLookupByLibrary.simpleMessage("In Bearbeitung"),
         "information": MessageLookupByLibrary.simpleMessage("Informationen"),
-        "itemLength": m23,
-        "itemNumChapters": m24,
-        "itemProgress": m25,
-        "itemPublishedYear": m26,
+        "itemLength": m26,
+        "itemNumChapters": m27,
+        "itemProgress": m28,
+        "itemPublishedYear": m29,
         "jumpToLastPosition": MessageLookupByLibrary.simpleMessage(
             "Zur letzten Position springen"),
         "jumpToLastPositionDescription": MessageLookupByLibrary.simpleMessage(
@@ -279,7 +285,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "notTriedYet": MessageLookupByLibrary.simpleMessage("Nicht versucht"),
         "notificationHeading": MessageLookupByLibrary.simpleMessage(
             "Benachrichtigungen sollten aktiviert sein"),
-        "numBooksInSeries": m27,
+        "numBooksInSeries": m30,
         "offlineProgress":
             MessageLookupByLibrary.simpleMessage("Offline Fortschritte"),
         "offlineSavedProgress": MessageLookupByLibrary.simpleMessage(
@@ -313,7 +319,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "progress": MessageLookupByLibrary.simpleMessage("Fortschritt"),
         "progressAsChaptersDescription": MessageLookupByLibrary.simpleMessage(
             "Aktiviere diese Option, um den Fortschritt im Player kapitelweise anzuzeigen. Wenn diese Option deaktiviert ist, wird der Fortschritt basierend auf dem gesamten Element angezeigt."),
-        "progressNum": m28,
+        "progressNum": m31,
         "publisher": MessageLookupByLibrary.simpleMessage("Herausgeber"),
         "readLess": MessageLookupByLibrary.simpleMessage("Weniger lesen"),
         "readMore": MessageLookupByLibrary.simpleMessage("Mehr lesen"),
@@ -371,8 +377,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "syncOnlyViaWifi": MessageLookupByLibrary.simpleMessage(
             "Nur über WiFi synchronisieren"),
         "tags": MessageLookupByLibrary.simpleMessage("Schlagwörter"),
-        "timeRemainingNum": m29,
-        "timerText": m30,
+        "timeRemainingNum": m32,
+        "timerText": m33,
         "title": MessageLookupByLibrary.simpleMessage("Titel"),
         "today": MessageLookupByLibrary.simpleMessage("Heute"),
         "totalTimeListened":

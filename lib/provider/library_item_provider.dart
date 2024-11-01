@@ -23,7 +23,7 @@ final itemProvider =
 
   log(download.toString());
 
-  if (download == null) {
+  if (download == null || download.filePath == null) {
     try {
       final response = await api.getLibraryItemApi().getLibraryItem(id: id);
       if (response.data == null || response.data!.oneOf.value == null) {

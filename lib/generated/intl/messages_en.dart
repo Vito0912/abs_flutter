@@ -79,22 +79,29 @@ class MessageLookup extends MessageLookupByLibrary {
   static String m22(device, os, version) =>
       "Device: ${device}\nOS: ${os}\nApp Version: ${version}";
 
-  static String m23(length) => "Length: ${length}";
+  static String m23(displayName) => "Download of ${displayName} complete";
 
-  static String m24(numChapters) => "Number of Chapters: ${numChapters}";
+  static String m24(displayName) => "Downloading ${displayName}";
 
-  static String m25(progress) => "Progress: ${progress}%";
+  static String m25(displayName) =>
+      "An error occurred while downloading ${displayName}";
 
-  static String m26(year) => "Published Year: ${year}";
+  static String m26(length) => "Length: ${length}";
 
-  static String m27(numBooks) =>
+  static String m27(numChapters) => "Number of Chapters: ${numChapters}";
+
+  static String m28(progress) => "Progress: ${progress}%";
+
+  static String m29(year) => "Published Year: ${year}";
+
+  static String m30(numBooks) =>
       "${Intl.plural(numBooks, zero: 'No Books', one: '1 Book', other: '${numBooks} Books')}";
 
-  static String m28(progress) => "Current Progress: ${progress} %";
+  static String m31(progress) => "Current Progress: ${progress} %";
 
-  static String m29(time) => "Time Remaining: ${time}";
+  static String m32(time) => "Time Remaining: ${time}";
 
-  static String m30(time) => "${time} min";
+  static String m33(time) => "${time} min";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -172,11 +179,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "domainOrIp": MessageLookupByLibrary.simpleMessage("Domain or IP"),
         "downloadComplete":
             MessageLookupByLibrary.simpleMessage("Download complete"),
-        "downloadCompleteBody": MessageLookupByLibrary.simpleMessage(
-            "Download of \'{\'displayName\'}\' complete"),
+        "downloadCompleteBody": m23,
+        "downloadErrorDescription": MessageLookupByLibrary.simpleMessage(
+            "The file was not downloaded correctly. You can try to delete the data on the device by clicking the button and download it again."),
+        "downloadInfo": MessageLookupByLibrary.simpleMessage("Download Info"),
+        "downloadPath": MessageLookupByLibrary.simpleMessage("Download Path"),
+        "downloadPathDescription": MessageLookupByLibrary.simpleMessage(
+            "The path where downloads are stored. To change this you need to delete all downloads first."),
         "downloading": MessageLookupByLibrary.simpleMessage("Downloading"),
-        "downloadingBody": MessageLookupByLibrary.simpleMessage(
-            "Downloading \'{\'displayName\'}\'"),
+        "downloadingBody": m24,
         "downloads": MessageLookupByLibrary.simpleMessage("Downloads"),
         "downloadsOnlyViaWifi":
             MessageLookupByLibrary.simpleMessage("Downloads only via WiFi"),
@@ -187,11 +198,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "enabled": MessageLookupByLibrary.simpleMessage("Enabled"),
         "enterValidUsernameOrPassword": MessageLookupByLibrary.simpleMessage(
             "Please enter a valid IP/Domain and port before entering your username and password."),
+        "episodeId": MessageLookupByLibrary.simpleMessage("Episode Id"),
         "error": MessageLookupByLibrary.simpleMessage("Error"),
         "errorDownloading":
             MessageLookupByLibrary.simpleMessage("Error downloading"),
-        "errorDownloadingBody": MessageLookupByLibrary.simpleMessage(
-            "An error occurred while downloading \'{\'displayName\'}\'"),
+        "errorDownloadingBody": m25,
         "errorItemNotFound":
             MessageLookupByLibrary.simpleMessage("Error: Item not found!"),
         "exit": MessageLookupByLibrary.simpleMessage("Exit"),
@@ -202,6 +213,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "fastForwardSecondsDescription": MessageLookupByLibrary.simpleMessage(
             "Set the number of seconds to skip forward when the fast forward button is pressed."),
         "feedOpen": MessageLookupByLibrary.simpleMessage("Feed Open"),
+        "filename": MessageLookupByLibrary.simpleMessage("Filename"),
+        "filepath": MessageLookupByLibrary.simpleMessage("Filepath"),
         "filter": MessageLookupByLibrary.simpleMessage("Filter"),
         "finished": MessageLookupByLibrary.simpleMessage("Finished"),
         "general": MessageLookupByLibrary.simpleMessage("General"),
@@ -212,12 +225,14 @@ class MessageLookup extends MessageLookupByLibrary {
                 "If the quick account switcher should be shown"),
         "inProgress": MessageLookupByLibrary.simpleMessage("In Progress"),
         "information": MessageLookupByLibrary.simpleMessage("Information"),
-        "itemLength": m23,
+        "itemId": MessageLookupByLibrary.simpleMessage("Item Id"),
+        "itemLength": m26,
         "itemNotFoundDescription": MessageLookupByLibrary.simpleMessage(
             "The item could not be found. This may be due to a network error or because the item no longer exists but remains cached."),
-        "itemNumChapters": m24,
-        "itemProgress": m25,
-        "itemPublishedYear": m26,
+        "itemNumChapters": m27,
+        "itemProgress": m28,
+        "itemPublishedYear": m29,
+        "itemType": MessageLookupByLibrary.simpleMessage("Item type"),
         "jumpToLastPosition":
             MessageLookupByLibrary.simpleMessage("Jump to last position"),
         "jumpToLastPositionDescription": MessageLookupByLibrary.simpleMessage(
@@ -228,6 +243,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "last7Days": MessageLookupByLibrary.simpleMessage("Last 7 days"),
         "libraries": MessageLookupByLibrary.simpleMessage("Libraries"),
         "library": MessageLookupByLibrary.simpleMessage("Library"),
+        "libraryName": MessageLookupByLibrary.simpleMessage("Library Name"),
         "libraryStats": MessageLookupByLibrary.simpleMessage("Library Stats"),
         "listenAgain": MessageLookupByLibrary.simpleMessage("Listen again"),
         "listeningInTheLastYear":
@@ -264,6 +280,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "noInternetDescription": MessageLookupByLibrary.simpleMessage(
             "We are having trouble connecting to the server."),
         "noItemsFound": MessageLookupByLibrary.simpleMessage("No items found"),
+        "noPath": MessageLookupByLibrary.simpleMessage("No Path"),
         "noSeriesSelected":
             MessageLookupByLibrary.simpleMessage("No series selected"),
         "noUserData": MessageLookupByLibrary.simpleMessage(
@@ -273,7 +290,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "notTriedYet": MessageLookupByLibrary.simpleMessage("Not tried yet"),
         "notificationHeading": MessageLookupByLibrary.simpleMessage(
             "Notifications should be enabled"),
-        "numBooksInSeries": m27,
+        "numBooksInSeries": m30,
         "offlineProgress":
             MessageLookupByLibrary.simpleMessage("Offline Progress"),
         "offlineSavedProgress":
@@ -304,7 +321,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "progress": MessageLookupByLibrary.simpleMessage("Progress"),
         "progressAsChaptersDescription": MessageLookupByLibrary.simpleMessage(
             "Enable this option to display progress in the player and notifications on a per-chapter basis. If disabled, progress will be shown based on the entire item."),
-        "progressNum": m28,
+        "progressNum": m31,
         "publisher": MessageLookupByLibrary.simpleMessage("Publisher"),
         "readLess": MessageLookupByLibrary.simpleMessage("Read less"),
         "readMore": MessageLookupByLibrary.simpleMessage("Read more"),
@@ -360,8 +377,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "syncOnlyViaWifi":
             MessageLookupByLibrary.simpleMessage("Sync only via WiFi"),
         "tags": MessageLookupByLibrary.simpleMessage("Tags"),
-        "timeRemainingNum": m29,
-        "timerText": m30,
+        "timeRemainingNum": m32,
+        "timerText": m33,
         "title": MessageLookupByLibrary.simpleMessage("Title"),
         "today": MessageLookupByLibrary.simpleMessage("Today"),
         "totalTimeListened":

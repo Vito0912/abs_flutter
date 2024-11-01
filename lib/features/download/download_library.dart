@@ -3,9 +3,9 @@ import 'package:abs_flutter/models/file.dart';
 import 'package:abs_flutter/provider/download_provider.dart';
 import 'package:abs_flutter/widgets/album_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:go_router/go_router.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class DownloadLibrary extends HookConsumerWidget {
@@ -22,8 +22,12 @@ class DownloadLibrary extends HookConsumerWidget {
 
     final List<DownloadInfo> libraryDownloads = [];
     if (libraryId != null) {
-      libraryDownloads.addAll(
-          downloads!.where((element) => element.libraryId == libraryId));
+      final downloadsNew = ref.watch(downloadListProvider);
+      downloads = downloadsNew;
+      if (downloads != null) {
+        libraryDownloads.addAll(
+            downloads!.where((element) => element.libraryId == libraryId));
+      }
     } else {
       libraryDownloads.addAll(downloads!);
     }
@@ -88,6 +92,47 @@ class DownloadLibrary extends HookConsumerWidget {
                         .removeDownload(item);
                   },
                 ),
+                PlatformIconButton(
+                    icon: Icon(PlatformIcons(context).info),
+                    onPressed: () {
+                      showPlatformDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return PlatformAlertDialog(
+                              title: PlatformText(S.of(context).downloadInfo),
+                              content: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    PlatformText(
+                                        '${S.of(context).libraryName}: ${item.libraryName}'),
+                                    PlatformText(
+                                        '${S.of(context).itemId}: ${item.itemId}'),
+                                    if (item.episodeId != null)
+                                      PlatformText(
+                                          '${S.of(context).episodeId}: ${item.episodeId}'),
+                                    PlatformText(
+                                        '${S.of(context).filename}: ${item.filename}'),
+                                    PlatformText(
+                                        '${S.of(context).filepath}: ${item.filePath}'),
+                                    PlatformText(
+                                        '${S.of(context).itemType}: ${item.type.name}'),
+                                  ]
+                                      .map((e) => Padding(
+                                          padding: const EdgeInsets.all(4.0),
+                                          child: e))
+                                      .toList()),
+                              actions: [
+                                PlatformDialogAction(
+                                  child: PlatformText(S.of(context).close),
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                ),
+                              ],
+                            );
+                          });
+                    }),
                 const SizedBox(width: 16),
                 Icon(PlatformIcons(context).rightChevron),
               ],
