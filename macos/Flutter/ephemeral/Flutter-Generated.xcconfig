@@ -2,10 +2,11 @@
 FLUTTER_ROOT=/opt/homebrew/Caskroom/flutter/3.24.4/flutter
 FLUTTER_APPLICATION_PATH=/Users/paulohenriquesg/Projects/abs_flutter
 COCOAPODS_PARALLEL_CODE_SIGN=true
+FLUTTER_TARGET=/Users/paulohenriquesg/Projects/abs_flutter/lib/main.dart
 FLUTTER_BUILD_DIR=build
 FLUTTER_BUILD_NAME=1.6.0
 FLUTTER_BUILD_NUMBER=1.6.0
 DART_OBFUSCATION=false
 TRACK_WIDGET_CREATION=true
 TREE_SHAKE_ICONS=false
-PACKAGE_CONFIG=.dart_tool/package_config.json
+PACKAGE_CONFIG=/Users/paulohenriquesg/Projects/abs_flutter/.dart_tool/package_config.json
