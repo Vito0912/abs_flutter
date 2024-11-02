@@ -12,10 +12,10 @@ class TrayManager extends ConsumerStatefulWidget {
   final Widget child;
 
   @override
-  _TrayManagerState createState() => _TrayManagerState();
+  TrayManagerState createState() => TrayManagerState();
 }
 
-class _TrayManagerState extends ConsumerState<TrayManager> with TrayListener {
+class TrayManagerState extends ConsumerState<TrayManager> with TrayListener {
   @override
   void initState() {
     trayManager.addListener(this);

@@ -1,10 +1,9 @@
-import 'package:abs_flutter/provider/log_provider.dart';
-
 import 'package:abs_flutter/provider/connection_provider.dart';
+import 'package:abs_flutter/provider/log_provider.dart';
 import 'package:dio/dio.dart';
 
 class ABSInterceptor extends Interceptor {
-  final ref;
+  final dynamic ref;
 
   const ABSInterceptor(this.ref);
 

@@ -49,8 +49,7 @@ class CustomTile extends AbstractSettingsTile {
               padding: const EdgeInsets.only(left: 32.0),
               child: Consumer(
                   builder: (BuildContext context, WidgetRef ref, child) {
-                final settings =
-                    ref.watch(specificKeysSettingsProvider([keyValue]));
+                ref.watch(specificKeysSettingsProvider([keyValue]));
                 return Tooltip(
                   message: userSharedPreferences.getString(keyValue) ?? noValue,
                   child: ElevatedButton(

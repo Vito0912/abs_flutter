@@ -13,7 +13,7 @@ class LibraryItemWidget extends StatelessWidget {
   final LibraryPreviewItem? item;
   final bool isLoading;
 
-  const LibraryItemWidget._({super.key, this.item, required this.isLoading});
+  const LibraryItemWidget._({this.item, required this.isLoading});
 
   factory LibraryItemWidget.loading() {
     return const LibraryItemWidget._(isLoading: true);

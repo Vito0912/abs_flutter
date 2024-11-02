@@ -20,21 +20,11 @@ import 'package:just_audio/just_audio.dart';
 
 class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
   final AudioPlayer _player = AudioPlayer();
-  late final PlayerStatusProvider _playerStatusProvider;
-  ProgressProvider? _progressProvider;
   Map<String, dynamic>? _settingsProvider;
   final ProviderContainer _container;
   bool? seeking;
 
   AbsAudioHandler(this._container) {
-    _playerStatusProvider = _container.read(playStatusProvider.notifier);
-    _progressProvider = _container.read(progressProvider);
-
-    // Listen for changes in the progress state
-    _container.listen<ProgressProvider>(progressProvider, (previous, next) {
-      _progressProvider = next;
-    });
-
     _container.listen<Map<String, dynamic>>(settingsProvider, (previous, next) {
       _settingsProvider = next;
     });

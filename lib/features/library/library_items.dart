@@ -12,10 +12,10 @@ class LibraryItems extends ConsumerStatefulWidget {
   const LibraryItems({super.key});
 
   @override
-  _LibraryItemsState createState() => _LibraryItemsState();
+  LibraryItemsState createState() => LibraryItemsState();
 }
 
-class _LibraryItemsState extends ConsumerState<LibraryItems> {
+class LibraryItemsState extends ConsumerState<LibraryItems> {
   late ScrollController _scrollController;
   bool _isLoadingMore = false;
   bool _hasMore = true;

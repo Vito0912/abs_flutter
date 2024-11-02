@@ -20,7 +20,7 @@ class CacheInterceptor extends Interceptor {
 
   final StoreRef<String, dynamic> _store = StoreRef.main();
 
-  final ref;
+  final dynamic ref;
 
   CacheInterceptor(this.ref);
 

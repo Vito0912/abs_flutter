@@ -56,7 +56,7 @@ class TagsDescription extends StatelessWidget {
 
   Map<String, String> _mapAuthors(List<Author>? authors) {
     if (authors == null) return {};
-    return {for (var author in authors) author.id!: author.name!};
+    return {for (var author in authors) author.id: author.name};
   }
 
   Map<String, String> _mapSeries(List<Series>? series) {

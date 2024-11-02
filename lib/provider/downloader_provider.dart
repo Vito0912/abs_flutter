@@ -158,8 +158,8 @@ class DownloadProvider extends ChangeNotifier {
 
   Future<void> downloadAudioFile(
       String url, AudioFile file, LibraryItem item) async {
-    final fileName = file.metadata!.filename!;
-    final name = item.media!.bookMedia!.metadata!.title;
+    final fileName = file.metadata.filename;
+    final name = item.media!.bookMedia!.metadata.title;
 
     final downloadList = ref.read(downloadListProvider);
     final currentUser = ref.read(currentUserProvider);
@@ -170,25 +170,25 @@ class DownloadProvider extends ChangeNotifier {
         libraries.value!.data!.libraries == null) {
       return;
     }
-    final userId = currentUser.id!;
+    final userId = currentUser.id;
 
     final downloadInfo = DownloadInfo(
-      index: int.parse(file.ino!),
+      index: int.parse(file.ino),
       type: MediaTypeDownload.book,
       userId: userId,
-      filename: file.metadata!.filename!,
-      format: file.metadata!.ext!,
+      filename: file.metadata.filename,
+      format: file.metadata.ext,
       libraryId: item.libraryId!,
-      itemId: item.id!,
-      size: file.metadata!.size!,
-      displayName: name ?? fileName,
+      itemId: item.id,
+      size: file.metadata.size,
+      displayName: name,
       libraryName: libraries.value!.data!.libraries!
           .firstWhere((library) => library.id == item.libraryId)
           .name!,
       status: TaskStatus.enqueued,
     );
 
-    String? metaPath = await _download(url, fileName, name, item.id!);
+    String? metaPath = await _download(url, fileName, name, item.id);
 
     downloadList.add(downloadInfo);
 
@@ -220,18 +220,18 @@ class DownloadProvider extends ChangeNotifier {
         libraries.value!.data!.libraries == null) {
       return;
     }
-    final userId = currentUser.id!;
+    final userId = currentUser.id;
 
     final downloadInfo = DownloadInfo(
-      index: int.parse(item.audioFile!.ino!),
+      index: int.parse(item.audioFile!.ino),
       type: MediaTypeDownload.podcast,
       userId: userId,
-      filename: item.audioFile!.metadata!.filename!,
-      format: item.audioFile!.metadata!.ext!,
+      filename: item.audioFile!.metadata.filename,
+      format: item.audioFile!.metadata.ext,
       libraryId: libraryItem.libraryId!,
-      itemId: libraryItem.id!,
+      itemId: libraryItem.id,
       episodeId: item.id,
-      size: item.audioFile!.metadata!.size!,
+      size: item.audioFile!.metadata.size,
       displayName: name ?? fileName,
       libraryName: libraries.value!.data!.libraries!
           .firstWhere((library) => library.id == libraryItem.libraryId)
@@ -239,7 +239,7 @@ class DownloadProvider extends ChangeNotifier {
       status: TaskStatus.enqueued,
     );
 
-    String? metaPath = await _download(url, fileName, name, item.libraryItemId!,
+    String? metaPath = await _download(url, fileName, name, item.libraryItemId,
         episodeId: item.id);
 
     downloadList.add(downloadInfo);
@@ -318,7 +318,7 @@ class DownloadProvider extends ChangeNotifier {
       statusController: statusController,
       itemId: itemId,
       episodeId: episodeId,
-      userId: user.id!,
+      userId: user.id,
     );
 
     _downloads.add(downloadItem);

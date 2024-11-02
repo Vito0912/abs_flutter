@@ -139,7 +139,7 @@ class CurrentUserNotifier extends StateNotifier<User?> {
 
   void removeUser(BuildContext context) {
     final allUsers = _ref.read(usersProvider.notifier);
-    if (allUsers == null || allUsers.mounted == false) return;
+    if (allUsers.mounted == false) return;
 
     allUsers.removeUser(state!);
     context.go("/");

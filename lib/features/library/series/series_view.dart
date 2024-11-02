@@ -10,13 +10,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 class SeriesView extends ConsumerStatefulWidget {
-  const SeriesView({Key? key}) : super(key: key);
+  const SeriesView({super.key});
 
   @override
-  _SeriesViewState createState() => _SeriesViewState();
+  SeriesViewState createState() => SeriesViewState();
 }
 
-class _SeriesViewState extends ConsumerState<SeriesView> {
+class SeriesViewState extends ConsumerState<SeriesView> {
   final ScrollController _scrollController = ScrollController();
   bool isLoading = false;
   int currentPage = 0;

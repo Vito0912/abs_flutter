@@ -96,10 +96,10 @@ void main() async {
   deviceName = await _getDeviceModel();
   osVersion = await _getOSModel();
 
-  if (users != null && userNotifier != null) {
+  if (users != null) {
     userNotifier.setUsers(users);
   }
-  if (currentUser < 0 && users != null && users.length > 0) {
+  if (currentUser < 0 && users != null && users.isNotEmpty) {
     selectedUserNotifier.state = 0;
   } else {
     selectedUserNotifier.state = currentUser;

@@ -4,7 +4,7 @@ import 'package:abs_flutter/provider/user_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class OwnStatsNotifier extends StateNotifier<GetListeningStats200Response?> {
-  final ref;
+  final dynamic ref;
 
   OwnStatsNotifier({required this.user, required this.ref}) : super(null) {
     if (user != null) {

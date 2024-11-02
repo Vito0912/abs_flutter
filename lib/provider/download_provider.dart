@@ -14,7 +14,7 @@ final downloadListProvider =
 });
 
 class DownloadListNotifier extends StateNotifier<List<DownloadInfo>> {
-  final _ref;
+  final dynamic _ref;
 
   DownloadListNotifier(this._ref) : super([]) {
     _loadDownloads();
