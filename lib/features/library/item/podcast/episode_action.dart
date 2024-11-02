@@ -1,4 +1,4 @@
-import 'package:abs_api/abs_api.dart';
+import 'package:abs_flutter/api/library_items/episode.dart';
 import 'package:abs_flutter/features/library/item/components/add_to_queue_button.dart';
 import 'package:abs_flutter/features/library/item/components/download_button.dart';
 import 'package:abs_flutter/features/library/item/components/play_button.dart';
@@ -9,9 +9,10 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class EpisodeActions extends HookConsumerWidget {
   final String itemId;
-  final PodcastEpisode episode;
+  final Episode episode;
 
-  const EpisodeActions({super.key, required this.itemId, required this.episode});
+  const EpisodeActions(
+      {super.key, required this.itemId, required this.episode});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

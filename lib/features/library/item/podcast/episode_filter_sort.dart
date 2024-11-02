@@ -1,9 +1,9 @@
-import 'package:abs_api/abs_api.dart';
+import 'package:abs_flutter/api/library_items/episode.dart';
 import 'package:abs_flutter/provider/progress_provider.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-List<PodcastEpisode> filterEpisodes(
-    List<PodcastEpisode> episodes, String filter, WidgetRef ref) {
+List<Episode> filterEpisodes(
+    List<Episode> episodes, String filter, WidgetRef ref) {
   final progresses = ref.read(progressProvider);
   switch (filter) {
     case 'Incomplete':
@@ -31,8 +31,8 @@ List<PodcastEpisode> filterEpisodes(
   }
 }
 
-List<PodcastEpisode> sortEpisodes(
-    List<PodcastEpisode> episodes, String sort, bool isAscending) {
+List<Episode> sortEpisodes(
+    List<Episode> episodes, String sort, bool isAscending) {
   int compare<T extends Comparable<T>>(T? a, T? b) {
     if (a == null && b == null) return 0;
     if (a == null) return isAscending ? -1 : 1;

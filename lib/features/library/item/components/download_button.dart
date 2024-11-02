@@ -1,4 +1,6 @@
-import 'package:abs_api/abs_api.dart';
+import 'package:abs_flutter/api/library_items/audio_file.dart';
+import 'package:abs_flutter/api/library_items/episode.dart';
+import 'package:abs_flutter/api/library_items/library_item.dart';
 import 'package:abs_flutter/api/me/user.dart' as m;
 import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/models/file.dart';
@@ -18,7 +20,7 @@ class DownloadButton extends ConsumerWidget {
       required this.user,
       this.episodeId});
 
-  final LibraryItemBase libraryItem;
+  final LibraryItem libraryItem;
   final m.User user;
   final String? episodeId;
 
@@ -82,7 +84,7 @@ class DownloadButton extends ConsumerWidget {
   }
 
   String getDownloadUrl(String fileId) {
-    return '${user.server!.url}/api/items/${libraryItem.id!}/file/$fileId/download';
+    return '${user.server!.url}/api/items/${libraryItem.id}/file/$fileId/download';
   }
 
   Future<void> _downloadFile(WidgetRef ref, BuildContext context) async {
@@ -108,16 +110,16 @@ class DownloadButton extends ConsumerWidget {
     }
 
     final downloader = ref.read(downloaderProvider);
-    if (libraryItem.mediaType!.name == 'book') {
-      for (AudioFile file in libraryItem.media!.audioFiles!) {
+    if (libraryItem.media?.bookMedia != null) {
+      for (AudioFile file in libraryItem.media!.bookMedia!.audioFiles!) {
         downloader.downloadAudioFile(
-            getDownloadUrl(file.ino!), file, libraryItem);
+            getDownloadUrl(file.ino), file, libraryItem);
       }
     } else {
-      PodcastEpisode episode = libraryItem.media!.episodes!
+      Episode episode = libraryItem.media!.podcastMedia!.episodes!
           .firstWhere((element) => element.id == episodeId);
       downloader.downloadPodcastFile(
-          getDownloadUrl(episode.audioFile!.ino!), episode, libraryItem);
+          getDownloadUrl(episode.audioFile!.ino), episode, libraryItem);
     }
   }
 }

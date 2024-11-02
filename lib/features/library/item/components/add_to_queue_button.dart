@@ -1,4 +1,5 @@
-import 'package:abs_api/abs_api.dart';
+import 'package:abs_flutter/api/library_items/episode.dart';
+import 'package:abs_flutter/api/library_items/library_item.dart';
 import 'package:abs_flutter/models/queue.dart';
 import 'package:abs_flutter/provider/player_status_provider.dart';
 import 'package:abs_flutter/provider/queue_provider.dart';
@@ -9,8 +10,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class AddQueueButton extends ConsumerWidget {
   const AddQueueButton({super.key, required this.item, this.episode});
 
-  final LibraryItemBase item;
-  final PodcastEpisode? episode;
+  final LibraryItem item;
+  final Episode? episode;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -18,9 +19,9 @@ class AddQueueButton extends ConsumerWidget {
     final playerStatus = ref.watch(playStatusProvider);
 
     Queue queueItem = Queue(
-      itemId: item.id!,
+      itemId: item.id,
       episodeId: episode?.id,
-      title: episode?.title ?? item.media!.metadata!.title!,
+      title: episode?.title ?? item.media!.bookMedia!.metadata.title,
     );
 
     if (queue

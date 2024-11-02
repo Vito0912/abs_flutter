@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:abs_flutter/models/chapter.dart';
@@ -95,17 +96,32 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
     await _player.setAudioSource(source);
   }
 
-  @override
   Future<void> playMediaItem(MediaItem item) async {
     _isNewSession = true;
 
     late AudioSource source;
-    if (item.extras?['streaming'] == true) {
-      source = AudioSource.uri(Uri.parse(item.id));
-    } else {
-      source = AudioSource.file(item.id);
-    }
+    if (item.extras?['multipleSources'] != null &&
+        item.extras?['multipleSources'] == true) {
+      //TODO: Handel the duration of the audio
+      final sources = jsonDecode(item.extras?['audioSources']);
+      List<AudioSource> audioSources = [];
 
+      for (final source in sources) {
+        audioSources.add(AudioSource.uri(Uri.parse(source)));
+      }
+
+      source = ConcatenatingAudioSource(
+        children: audioSources,
+        useLazyPreparation: false,
+      );
+      log('Multiple sources', name: 'playMediaItem');
+    } else {
+      if (item.extras?['streaming'] == true) {
+        source = AudioSource.uri(Uri.parse(item.id));
+      } else {
+        source = AudioSource.file(item.id);
+      }
+    }
     mediaItem.add(item);
 
     await _player.setAudioSource(source);

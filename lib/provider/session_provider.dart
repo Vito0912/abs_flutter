@@ -1,4 +1,11 @@
-import 'package:abs_api/abs_api.dart';
+import 'dart:convert';
+
+import 'package:abs_flutter/api/library_items/device_info.dart' as abs;
+import 'package:abs_flutter/api/library_items/episode.dart';
+import 'package:abs_flutter/api/library_items/playback_session.dart';
+import 'package:abs_flutter/api/library_items/request/play_library_item_request.dart'
+    as abs;
+import 'package:abs_flutter/api/routes/abs_api.dart';
 import 'package:abs_flutter/globals.dart';
 import 'package:abs_flutter/models/file.dart';
 import 'package:abs_flutter/provider/connection_provider.dart';
@@ -9,26 +16,23 @@ import 'package:abs_flutter/provider/player_provider.dart';
 import 'package:abs_flutter/provider/player_status_provider.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
 import 'package:audio_service/audio_service.dart';
-import 'package:built_collection/built_collection.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class PlaybackSessionNotifier
-    extends StateNotifier<AsyncValue<Response<PlaybackSessionExpanded>?>> {
+    extends StateNotifier<AsyncValue<Response<PlaybackSession>?>> {
   final Ref ref;
-  Response<PlaybackSessionExpanded>? _session;
-  PlaybackSessionBookExpanded? _book;
-  PlaybackSessionPodcastExpanded? _podcast;
+  Response<PlaybackSession>? _session;
 
   PlaybackSessionNotifier(this.ref) : super(const AsyncValue.loading());
 
   Future<void> load(String id, String? episodeId) async {
-    final AbsApi? api = ref.read(apiProvider);
+    final ABSApi? apiNew = ref.read(apiProviderNew);
     final playerStatus = ref.read(playStatusProvider.notifier);
     final player = ref.read(playerProvider.notifier);
     final currentUser = ref.read(currentUserProvider);
 
-    if (api == null) {
+    if (apiNew == null || currentUser == null) {
       state = const AsyncValue.error('API is not available', StackTrace.empty);
       return;
     }
@@ -48,52 +52,41 @@ class PlaybackSessionNotifier
         CancelToken cancelToken = CancelToken();
         playerStatus.setCancelToken(cancelToken);
 
-        //TODO: Currently always using hls
-        DeviceInfoBuilder deviceInfoBuilder = DeviceInfoBuilder();
-        deviceInfoBuilder.clientName = appName;
-        deviceInfoBuilder.clientVersion = version;
-        deviceInfoBuilder.deviceId = currentUser?.hashCode.toString();
+        abs.PlayLibraryItemRequest playLibraryItemRequest =
+            abs.PlayLibraryItemRequest(
+          deviceInfo: abs.DeviceInfo(
+            deviceId: currentUser.hashCode.toString(),
+            clientName: appName,
+            clientVersion: version,
+            manufacturer: 'N/A',
+            model: 'N/A',
+            sdkVersion: 'N/A',
+          ),
+          mediaPlayer: 'abs_flutter w/ just_audio',
+          supportedMimeTypes: [
+            'audio/flac',
+            'audio/mpeg',
+            'audio/mp4',
+            'audio/ogg',
+            'audio/aac',
+            'audio/webm'
+          ],
+        );
 
-        PlayLibraryItemRequestBuilder requestBuilder =
-            PlayLibraryItemRequestBuilder()
-              ..mediaPlayer = 'abs_flutter w/ just_audio'
-              ..deviceInfo = deviceInfoBuilder
-              ..supportedMimeTypes = ListBuilder<String>([
-                'audio/flac',
-                'audio/mpeg',
-                'audio/mp4',
-                'audio/ogg',
-                'audio/aac'
-                    'audio/webm',
-              ])
-              ..forceDirectPlay = false
-              ..forceTranscode = false;
+        final response = await apiNew.getLibraryItemApi().playLibraryItem(
+              id,
+              episodeId: episodeId,
+              cancelToken: cancelToken,
+              libraryItemRequest: playLibraryItemRequest,
+            );
 
-        final response =
-            await api.getLibraryItemApi().playLibraryItemPodcastEpisode(
-                  id: id,
-                  episodeId: episodeId ?? '',
-                  cancelToken: cancelToken,
-                  playLibraryItemRequest: requestBuilder.build(),
-                );
         _session = response;
 
-        if (response.data != null) {
-          if (response.data!.oneOf.value is PlaybackSessionBookExpanded) {
-            PlaybackSessionBookExpanded book =
-                response.data!.oneOf.value as PlaybackSessionBookExpanded;
-            _book = book;
-            _podcast = null;
-            await _bookSession(id, book);
-          } else {
-            PlaybackSessionPodcastExpanded podcast =
-                response.data!.oneOf.value as PlaybackSessionPodcastExpanded;
-            _podcast = podcast;
-            _book = null;
-            await _podcastSession(id, episodeId!, podcast);
-          }
+        if (_session!.data!.mediaMetadata.podcastMetadata != null) {
+          _podcastSession(_session!.data!.libraryItemId,
+              _session!.data!.episodeId!, _session!.data!);
         } else {
-          log('No session data created', name: 'session_provider');
+          _bookSession(_session!.data!.libraryItemId, _session!.data!);
         }
       } catch (e) {
         playerStatus.setPlayStatus(PlayerStatus.stopped, "Session error");
@@ -109,12 +102,12 @@ class PlaybackSessionNotifier
               }
               try {
                 log("Trying to delete session: $sessionId");
-                await api.getSessionApi().closeSession(id: sessionId);
+                await apiNew.getSessionApi().closeOpenSession(sessionId);
               } catch (e) {
                 log(e.toString());
               }
               try {
-                await api.getSessionApi().deleteSession(id: sessionId);
+                await apiNew.getSessionApi().closeOpenSession(sessionId);
               } catch (e) {
                 log(e.toString());
               }
@@ -140,15 +133,22 @@ class PlaybackSessionNotifier
       late final MediaItem mediaItem;
 
       if (download.type == MediaTypeDownload.podcast) {
-        final PodcastEpisode episode = item.value!.media!.episodes!
-            .firstWhere((element) => element.id == episodeId);
+        final Episode? episode = item.value?.media?.podcastMedia?.episodes
+            ?.firstWhere((element) => element.id == episodeId);
+        if (episode == null) {
+          log('Could not find episode for offline playback',
+              name: 'session_provider');
+          state = const AsyncValue.error(
+              'Episode is not available', StackTrace.empty);
+          return;
+        }
         mediaItem = MediaItem(
             id: download.filePath!,
-            album: item.value?.media?.metadata?.title,
+            album: item.value?.media?.podcastMedia?.metadata.title,
             title: download.displayName,
-            artist: item.value?.media?.metadata?.authors?.toList().join(','),
+            artist: item.value?.media?.podcastMedia?.metadata.author,
             artUri: Uri.parse(
-                '${currentUser!.server!.url}/api/items/$id/cover?token=${currentUser.token}'),
+                '${currentUser.server!.url}/api/items/$id/cover?token=${currentUser.token}'),
             duration: Duration(seconds: episode.audioFile!.duration!.round()),
             extras: {
               'libraryItemId': id,
@@ -156,29 +156,34 @@ class PlaybackSessionNotifier
               'streaming': false,
             });
       } else {
-        String artist = item.value?.media?.metadata?.authors
+        String artist = item.value?.media?.bookMedia?.metadata.authors
                 ?.map((author) => author.name)
                 .join(', ') ??
             '';
 
         mediaItem = MediaItem(
             id: download.filePath!,
-            album: item.value?.media?.metadata?.series?.toList().join(', '),
+            album: item.value?.media?.bookMedia?.metadata.series
+                ?.toList()
+                .join(', '),
             title: download.displayName,
-            displaySubtitle: item.value?.media?.metadata?.subtitle,
+            displaySubtitle: item.value?.media?.bookMedia?.metadata.subtitle,
             artist: artist,
             artUri: Uri.parse(
-                '${currentUser!.server!.url}/api/items/$id/cover?token=${currentUser.token}'),
+                '${currentUser.server!.url}/api/items/$id/cover?token=${currentUser.token}'),
             duration: Duration(
-                seconds: item.value!.media!.audioFiles![0].duration!.round()),
+                seconds: item.value!.media!.bookMedia!.audioFiles!
+                    .map((file) => file.duration!)
+                    .reduce((sum, duration) => sum + duration)
+                    .round()),
             extras: {
               'libraryItemId': id,
               'streaming': false,
-              'chapters': item.value!.media!.chapters
+              'chapters': item.value!.media!.bookMedia!.chapters
                   ?.map((e) => {
-                        'title': e?.title,
-                        'start': e?.start,
-                        'end': e?.end,
+                        'title': e.title,
+                        'start': e.start,
+                        'end': e.end,
                       })
                   .toList(),
             });
@@ -188,15 +193,15 @@ class PlaybackSessionNotifier
     }
   }
 
-  Future<void> _podcastSession(String itemId, String episodeId,
-      PlaybackSessionPodcastExpanded playback) async {
+  Future<void> _podcastSession(
+      String itemId, String episodeId, PlaybackSession playback) async {
     final currentUser = ref.read(currentUserProvider);
     final downloads = ref.read(downloadListProvider.notifier);
     final download = downloads.getDownload(itemId, episodeId);
     final player = ref.read(playerProvider.notifier);
 
     final streamUrl =
-        '${currentUser?.server!.url}${playback.audioTracks![0].contentUrl!}?token=${currentUser?.token!}';
+        '${currentUser?.server!.url}${playback.audioTracks[0].contentUrl}?token=${currentUser?.token!}';
 
     String? path;
     if (download != null) {
@@ -207,10 +212,14 @@ class PlaybackSessionNotifier
 
     MediaItem mediaItem = MediaItem(
         id: path!,
-        album: playback.mediaMetadata?.title,
+        album: playback.mediaMetadata.podcastMetadata?.title,
         title: playback.displayTitle!,
         artist: playback.displayAuthor!,
-        duration: Duration(seconds: playback.audioTracks![0].duration!.round()),
+        duration: Duration(
+            seconds: playback.audioTracks
+                .map((file) => file.duration)
+                .reduce((sum, duration) => sum + duration)
+                .round()),
         artUri: Uri.parse(
             '${currentUser!.server!.url}/api/items/$itemId/cover?token=${currentUser.token}'),
         extras: {
@@ -220,7 +229,7 @@ class PlaybackSessionNotifier
           'streaming': download == null
         });
 
-    log('Adding to queue: ${mediaItem.title} from ${currentUser.server!.url}${playback.audioTracks![0].contentUrl!}?token=${currentUser.token!}');
+    log('Adding to queue: ${mediaItem.title} from ${currentUser.server!.url}${playback.audioTracks[0].contentUrl}?token=${currentUser.token!}');
 
     await player.playMediaItem(mediaItem);
 
@@ -229,15 +238,14 @@ class PlaybackSessionNotifier
     log('Playing: ${mediaItem.title}');
   }
 
-  Future<void> _bookSession(
-      String itemId, PlaybackSessionBookExpanded playback) async {
+  Future<void> _bookSession(String itemId, PlaybackSession playback) async {
     final currentUser = ref.read(currentUserProvider);
     final downloads = ref.read(downloadListProvider.notifier);
     final download = downloads.getDownload(itemId, null);
     final player = ref.read(playerProvider.notifier);
 
     final streamUrl =
-        '${currentUser?.server!.url}${playback.audioTracks![0].contentUrl!}?token=${currentUser?.token!}';
+        '${currentUser?.server!.url}${playback.audioTracks[0].contentUrl}?token=${currentUser?.token!}';
 
     String? path;
     if (download != null) {
@@ -245,14 +253,23 @@ class PlaybackSessionNotifier
     } else {
       path = streamUrl;
     }
+    bool multipleTracks = playback.audioTracks.length > 1;
+    List<String> audioSources = playback.audioTracks
+        .map((e) =>
+            '${currentUser?.server!.url}${e.contentUrl}?token=${currentUser?.token!}')
+        .toList();
 
     MediaItem mediaItem = MediaItem(
         id: path!,
-        album: playback.mediaMetadata?.series?.toList().join(', '),
+        album: playback.mediaMetadata.bookMetadata?.series?.toList().join(', '),
         title: playback.displayTitle!,
-        displaySubtitle: playback.mediaMetadata!.subtitle,
+        displaySubtitle: playback.mediaMetadata.bookMetadata?.subtitle,
         artist: playback.displayAuthor!,
-        duration: Duration(seconds: playback.audioTracks![0].duration!.round()),
+        duration: Duration(
+            seconds: playback.audioTracks
+                .map((file) => file.duration)
+                .reduce((sum, duration) => sum + duration)
+                .round()),
         artUri: Uri.parse(
             '${currentUser!.server!.url}/api/items/$itemId/cover?token=${currentUser.token}'),
         extras: {
@@ -261,14 +278,16 @@ class PlaybackSessionNotifier
           'streaming': download == null,
           'chapters': playback.chapters
               ?.map((e) => {
-                    'title': e?.title,
-                    'start': e?.start,
-                    'end': e?.end,
+                    'title': e.title,
+                    'start': e.start,
+                    'end': e.end,
                   })
               .toList(),
+          'multipleSources': multipleTracks,
+          'audioSources': jsonEncode(audioSources),
         });
 
-    log('Adding to queue: ${mediaItem.title} from ${currentUser.server!.url}${playback.audioTracks![0].contentUrl!}?token=${currentUser.token!}');
+    log('Adding to queue: ${mediaItem.title} from ${currentUser.server!.url}${playback.audioTracks[0].contentUrl}?token=${currentUser.token!}');
 
     await player.playMediaItem(mediaItem);
 
@@ -278,11 +297,11 @@ class PlaybackSessionNotifier
   }
 
   Future<bool> closeOpenSession({bool stop = true}) async {
-    final AbsApi? api = ref.read(apiProvider);
+    final ABSApi? api = ref.read(apiProviderNew);
     final currentUser = ref.read(currentUserProvider);
 
     if (api == null ||
-        (_session == null && _book == null && _podcast == null) ||
+        (_session == null) ||
         currentUser == null ||
         (_session!.data == null)) {
       return false;
@@ -293,15 +312,12 @@ class PlaybackSessionNotifier
     bool returnValue = false;
 
     // Delay the closing of the session to allow the player to send the last progress
+    // TODO: Send progress to the server with this api call!
     await Future.delayed(const Duration(seconds: 1), () async {
       try {
-        if (_book != null) api.getSessionApi().closeSession(id: _book!.id!);
-        if (_podcast != null) {
-          api.getSessionApi().closeSession(id: _podcast!.id!);
-        }
+        api.getSessionApi().closeOpenSession(_session!.data!.id);
+
         _session = null;
-        _book = null;
-        _podcast = null;
         returnValue = true;
         if (stop) {
           playerStatus.setPlayStatus(PlayerStatus.stopped, "Close session");
@@ -317,12 +333,10 @@ class PlaybackSessionNotifier
     return returnValue;
   }
 
-  PlaybackSessionBookExpanded? get session => _book;
-  PlaybackSessionBookExpanded? get book => _book;
-  PlaybackSessionPodcastExpanded? get podcast => _podcast;
+  PlaybackSession? get session => _session?.data;
 }
 
 final sessionProvider = StateNotifierProvider<PlaybackSessionNotifier,
-    AsyncValue<Response<PlaybackSessionExpanded>?>>((ref) {
+    AsyncValue<Response<PlaybackSession>?>>((ref) {
   return PlaybackSessionNotifier(ref);
 });

@@ -1,4 +1,5 @@
 import 'package:abs_api/abs_api.dart';
+import 'package:abs_flutter/api/library_items/episode.dart';
 import 'package:abs_flutter/features/library/item/podcast/episode_filter_sort.dart';
 import 'package:abs_flutter/features/library/item/podcast/episode_list.dart';
 import 'package:abs_flutter/features/library/item/podcast/shimmer_loading.dart';
@@ -23,18 +24,20 @@ class PodcastView extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final item = ref.watch(itemProvider(itemId));
 
-    if (item.value == null || item.value!.media!.episodes == null) {
+    if (item.value == null ||
+        item.value!.media?.podcastMedia?.episodes == null) {
       return item.isLoading
           ? const ShimmerLoading()
           : const ErrorText('Error: Episodes or item not found');
     }
 
-    final episodes = useState(item.value!.media!.episodes!.reversed.toList());
+    final episodes =
+        useState(item.value!.media!.podcastMedia!.episodes!.reversed.toList());
     final filter = useState<String>('Show All');
     final sort = useState<String>('Pub Date');
     final isAscending = useState<bool>(false);
 
-    List<PodcastEpisode> filteredEpisodes =
+    List<Episode> filteredEpisodes =
         filterEpisodes(episodes.value, filter.value, ref);
     filteredEpisodes =
         sortEpisodes(filteredEpisodes, sort.value, isAscending.value);
@@ -45,15 +48,15 @@ class PodcastView extends HookConsumerWidget {
 
     print(filteredEpisodes);
 
-    final _scrollController = ScrollController();
+    final scrollController = ScrollController();
 
     return PlatformScaffold(
       appBar: PlatformAppBar(
-        title: PlatformText(item.value!.media!.metadata!.title!),
+        title: PlatformText(item.value!.media!.podcastMedia!.metadata.title!),
       ),
       body: SafeArea(
         child: SingleChildScrollView(
-          controller: _scrollController,
+          controller: scrollController,
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
@@ -63,7 +66,7 @@ class PodcastView extends HookConsumerWidget {
                 AlbumImage(itemId, size: 200),
                 const SizedBox(height: 16),
                 PlatformText(
-                  item.value!.media!.metadata!.title!,
+                  item.value!.media!.podcastMedia!.metadata.title!,
                   style: Theme.of(context).textTheme.titleLarge,
                 ),
                 const SizedBox(height: 8),
@@ -85,7 +88,7 @@ class PodcastView extends HookConsumerWidget {
                     key: UniqueKey(), // Force rebuilts the stateful widget TODO
                     episodes: filteredEpisodes,
                     itemId: itemId,
-                    scrollController: _scrollController),
+                    scrollController: scrollController),
               ],
             ),
           ),
@@ -94,16 +97,20 @@ class PodcastView extends HookConsumerWidget {
     );
   }
 
-  PodcastEpisode? findLastProgressEpisode(
-    List<PodcastEpisode> podcastEpisodes,
+  Episode? findLastProgressEpisode(
+    List<Episode> podcastEpisodes,
     Map<String, MediaProgress> mediaProgressList, {
     bool reverse = false,
   }) {
+    if (podcastEpisodes.isEmpty) {
+      return null;
+    }
+
     final range = reverse
         ? Iterable<int>.generate(podcastEpisodes.length).toList().reversed
         : Iterable<int>.generate(podcastEpisodes.length);
 
-    PodcastEpisode? lastValidEpisode;
+    Episode? lastValidEpisode;
 
     for (var i in range) {
       final episode = podcastEpisodes[i];

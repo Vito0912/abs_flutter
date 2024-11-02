@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:abs_api/abs_api.dart';
+import 'package:abs_flutter/api/library_items/playback_session.dart' as abs;
 import 'package:abs_flutter/globals.dart';
 import 'package:abs_flutter/models/history.dart';
 import 'package:abs_flutter/models/progress_item.dart';
@@ -73,24 +74,22 @@ class TimerNotifier extends StateNotifier<DateTime?> {
         listenedSeconds > ((settings[Constants.SYNC_INTERVAL] ?? 60) * 2))
       return;
 
-    final PlaybackSessionBookExpanded? bookSession =
-        ref.read(sessionProvider.notifier).book;
-    final PlaybackSessionPodcastExpanded? podcastSession =
-        ref.read(sessionProvider.notifier).podcast;
+    final abs.PlaybackSession? session =
+        ref.read(sessionProvider.notifier).session;
 
     final shouldSyncOnline = (settings[Constants.SYNC_ONLY_VIA_WIFI] == false ||
         connection.currentConnectivity.contains(ConnectivityResult.wifi) ||
         connection.currentConnectivity.contains(ConnectivityResult.ethernet));
 
     if (connection.state &&
-        (bookSession != null || podcastSession != null) &&
+        (session != null) &&
         api != null &&
         shouldSyncOnline) {
       log('Sending data to server: $listenedSeconds');
 
       SyncOpenSessionRequestBuilder syncSession =
           SyncOpenSessionRequestBuilder()
-            ..id = bookSession?.id ?? podcastSession!.id
+            ..id = session.id
             ..timeListened = listenedSeconds
             ..currentTime = currentTime;
 
@@ -98,7 +97,7 @@ class TimerNotifier extends StateNotifier<DateTime?> {
         await api
             .getSessionApi()
             .syncOpenSession(
-              id: bookSession?.id ?? podcastSession!.id!,
+              id: session.id,
               syncOpenSessionRequest: syncSession.build(),
             )
             .then((response) => log(response.data.toString(), name: 'Sync'));
@@ -141,10 +140,15 @@ class TimerNotifier extends StateNotifier<DateTime?> {
             name: 'progress_timer_provider');
         final String? episodeId =
             player.audioService.mediaItem.value!.extras!['episodeId'];
+        if (session == null) {
+          log('Saving offline progress without session',
+              name: 'progress_timer_provider');
+        }
+
         ProgressItem newProgress = ProgressItem(
           itemId: player.audioService.mediaItem.value!.extras!['libraryItemId'],
-          userId: user.id!,
-          sessionId: bookSession?.id ?? podcastSession?.id,
+          userId: user.id,
+          sessionId: session?.id,
           episodeId: episodeId,
           currentTime: currentTime,
           timeListened: listenedSeconds,

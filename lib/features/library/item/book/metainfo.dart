@@ -1,4 +1,5 @@
-import 'package:abs_api/abs_api.dart';
+import 'package:abs_flutter/api/library_items/audio_file.dart';
+import 'package:abs_flutter/api/library_items/library_item.dart';
 import 'package:abs_flutter/features/library/item/book/progress.dart';
 import 'package:abs_flutter/features/player/modules/chapters.dart';
 import 'package:abs_flutter/generated/l10n.dart';
@@ -9,7 +10,7 @@ import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 class Metainfo extends StatelessWidget {
   const Metainfo({super.key, required this.castItem});
 
-  final LibraryItemBase castItem;
+  final LibraryItem castItem;
 
   @override
   Widget build(BuildContext context) {
@@ -20,38 +21,36 @@ class Metainfo extends StatelessWidget {
           item: castItem,
         ),
         const SizedBox(height: 16.0),
-        if (castItem.media?.audioFiles != null) ...[
+        if (castItem.media?.bookMedia?.audioFiles != null) ...[
           PlatformText(
-            S.of(context).itemLength(Helper.formatTimeToReadable(
-                _totalDuration(castItem.media!.audioFiles!.toList()
-            ))),
+            S.of(context).itemLength(Helper.formatTimeToReadable(_totalDuration(
+                castItem.media!.bookMedia!.audioFiles!.toList()))),
             style: const TextStyle(fontSize: 16.0),
           ),
         ],
-        const SizedBox(height:4.0),
-        if (castItem.media!.metadata!.publishedYear != null) ...[
+        const SizedBox(height: 4.0),
+        if (castItem.media!.bookMedia?.metadata.publishedYear != null) ...[
           PlatformText(
             S.of(context).itemPublishedYear(
-                castItem.media!.metadata!.publishedYear.toString()),
+                castItem.media!.bookMedia!.metadata.publishedYear.toString()),
             style: const TextStyle(fontSize: 16.0),
           ),
         ],
-        if (castItem.media!.chapters != null &&
-            castItem.media!.chapters!.isNotEmpty) ...[
+        if (castItem.media!.bookMedia?.chapters != null &&
+            castItem.media!.bookMedia!.chapters!.isNotEmpty) ...[
           const SizedBox(height: 4.0),
           PlatformText(
-            S
-                .of(context)
-                .itemNumChapters(castItem.media!.chapters!.length.toString()),
+            S.of(context).itemNumChapters(
+                castItem.media!.bookMedia!.chapters!.length.toString()),
             style: const TextStyle(fontSize: 16.0),
           ),
           const SizedBox(height: 4.0),
           Chapters(
-              chapters: castItem.media!.chapters!
+              chapters: castItem.media!.bookMedia!.chapters!
                   .map((e) => {
-                        'title': e?.title,
-                        'start': e?.start,
-                        'end': e?.end,
+                        'title': e.title,
+                        'start': e.start,
+                        'end': e.end,
                       })
                   .toList(),
               child: PlatformText(S.of(context).viewChapters))

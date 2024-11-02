@@ -21,4 +21,7 @@ class Constants {
   static const String WINDOWS_MINIMIZE_TO_TRAY = 'windowsMinimizeToTray';
   static const String DOWNLOAD_PATH = 'downloadPath';
   static const String SORT_SERIES_ASC = 'sortSeriesAsc';
+
+  static const String BOOK = 'book';
+  static const String PODCAST = 'podcast';
 }

@@ -1,4 +1,4 @@
-import 'package:abs_api/abs_api.dart';
+import 'package:abs_flutter/api/library_items/library_item.dart';
 import 'package:abs_flutter/api/me/user.dart' as m;
 import 'package:abs_flutter/features/home/components/download_info_button.dart';
 import 'package:abs_flutter/features/library/item/book/metainfo.dart';
@@ -33,7 +33,7 @@ class BookView extends ConsumerWidget {
 
     return item.when(
       data: (item) {
-        return item == null
+        return (item == null || item.media?.bookMedia == null)
             ? ErrorPage(
                 shortMessage: S.of(context).errorItemNotFound,
                 longMessage: S.of(context).itemNotFoundDescription)
@@ -54,10 +54,10 @@ class BookView extends ConsumerWidget {
   }
 
   Widget _buildContent(BuildContext context, WidgetRef ref,
-      LibraryItemBase castItem, m.User currentUser) {
+      LibraryItem castItem, m.User currentUser) {
     return PlatformScaffold(
       appBar: PlatformAppBar(
-        title: PlatformText(castItem.media!.metadata!.title!),
+        title: PlatformText(castItem.media!.bookMedia!.metadata.title!),
         trailingActions: const [
           DownloadInfoButton(
             show: true,
@@ -98,17 +98,17 @@ class BookView extends ConsumerWidget {
   }
 
   Widget _buildTextContent(
-      BuildContext context, LibraryItemBase castItem, m.User user) {
+      BuildContext context, LibraryItem castItem, m.User user) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         PlatformText(
-          castItem.media!.metadata!.title!,
+          castItem.media!.bookMedia!.metadata.title,
           style: Theme.of(context).textTheme.titleLarge,
         ),
-        if (castItem.media!.metadata!.subtitle != null) ...[
+        if (castItem.media!.bookMedia!.metadata.subtitle != null) ...[
           PlatformText(
-            castItem.media!.metadata!.subtitle!,
+            castItem.media!.bookMedia!.metadata.subtitle!,
             style: Theme.of(context).textTheme.labelLarge,
           ),
         ],
@@ -117,7 +117,7 @@ class BookView extends ConsumerWidget {
           scrollDirection: Axis.horizontal,
           child: Row(
             children: [
-              PlayButton(itemId: castItem.id!, mediaType: 'book'),
+              PlayButton(itemId: castItem.id, mediaType: 'book'),
               const VerticalDivider(),
               DownloadButton(
                 libraryItem: castItem,
@@ -129,9 +129,9 @@ class BookView extends ConsumerWidget {
           ),
         ),
         const SizedBox(height: 16.0),
-        if (castItem.media!.metadata!.description != null) ...[
+        if (castItem.media!.bookMedia!.metadata.description != null) ...[
           ExpandableDescription(
-              description: castItem.media!.metadata!.description!),
+              description: castItem.media!.bookMedia!.metadata.description!),
         ],
         Metainfo(castItem: castItem),
       ],
