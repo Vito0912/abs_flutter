@@ -1,84 +1,10 @@
 {
-  "year": "Ano",
-  "@year": {},
-  "dateFormatSecond": "{count, plural, one {{count}  segundo} other {{count} segundos}}",
-  "@dateFormatSecond": {
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
-  "itemNumChapters": "Número de CApítulos: {numChapters}",
-  "@itemNumChapters": {
-    "placeholders": {
-      "numChapters": {
-        "type": "String"
-      }
-    }
-  },
-  "itemPublishedYear": "Ano de publicação: {year}",
-  "@itemPublishedYear": {
-    "placeholders": {
-      "year": {
-        "type": "String"
-      }
-    }
-  },
-  "openProjectLink": "Audiobookshelf/Server",
-  "@openProjectLink": {},
-  "ok": "OK",
-  "@ok": {},
-  "numBooksInSeries": "{numBooks, plural, =0 {Sem livros} =1 {1 livro} other {{numBooks} livors}}",
-  "@numBooksInSeries": {
-    "placeholders": {
-      "numBooks": {
-        "type": "num"
-      }
-    }
-  },
-  "personalizedLibrary": "Biblioteca personalizada",
-  "@personalizedLibrary": {},
-  "play": "Tocar",
-  "@play": {},
-  "previous": "Anterior",
-  "@previous": {},
-  "password": "Senha",
-  "@password": {},
-  "pause": "Pausa",
-  "@pause": {},
-  "playNextEpisode": "Tocar próximo episódio",
-  "@playNextEpisode": {},
-  "playbackSpeed": "Velocidade",
-  "@playbackSpeed": {},
-  "port": "Porta",
-  "@port": {},
-  "previousChapter": "Capítulo anterior",
-  "@previousChapter": {},
-  "size": "Tamanho",
-  "@size": {},
-  "progress": "Progresso",
-  "@progress": {},
-  "stats": "Estatísticas",
-  "@stats": {},
-  "sort": "Ordenar",
-  "@sort": {},
-  "syncInterval": "Intervalo de sincronização (segundos)",
-  "@syncInterval": {},
-  "timerText": "{time} min",
-  "@timerText": {
-    "placeholders": {
-      "time": {
-        "type": "String"
-      }
-    }
-  },
-  "title": "Título",
-  "@title": {},
-  "today": "Hoje",
-  "@today": {},
+  "addANewUser": "Adicionar um novo usuário",
+  "@addANewUser": {},
   "addUser": "Adicionar usuário",
   "@addUser": {},
+  "aggressiveCaching": "Cache agressivo",
+  "@aggressiveCaching": {},
   "allDownloads": "Todos os downloads",
   "@allDownloads": {},
   "amoledMode": "Modo AMOLED",
@@ -91,12 +17,18 @@
   "@author": {},
   "authors": "Autores",
   "@authors": {},
+  "back": "Voltar",
+  "@back": {},
   "bookCover": "Capa do livro",
   "@bookCover": {},
   "boostLoadingSubtitle": "Por favor, leia a descrição para entender esta funcionalidade.",
   "@boostLoadingSubtitle": {},
   "caching": "Cacheando",
   "@caching": {},
+  "cachingHeader": "Cacheando",
+  "@cachingHeader": {},
+  "cancel": "Cancelar",
+  "@cancel": {},
   "changeLibrary": "Mudar biblioteca",
   "@changeLibrary": {},
   "chapters": "Capítulos",
@@ -117,12 +49,24 @@
   "@collapseSeries": {},
   "collapseSeriesDescription": "Quando ativado, itens em uma série serão agrupados na visão de biblioteca, mostrando apenas um único item para representar a série inteira.",
   "@collapseSeriesDescription": {},
+  "consecutiveDays": "Dias consecutivos",
+  "@consecutiveDays": {},
   "continueListening": "Continuar ouvindo",
   "@continueListening": {},
   "continueSeries": "Continuar série",
   "@continueSeries": {},
   "currentDownloads": "Downloads atuais",
   "@currentDownloads": {},
+  "currentPositionNum": "Posição atual: {position}",
+  "@currentPositionNum": {
+    "placeholders": {
+      "position": {
+        "type": "String"
+      }
+    }
+  },
+  "darkMode": "Modo escuro",
+  "@darkMode": {},
   "dateFormatDay": "{count, plural, one {{count}  dia} other {{count} dias}}",
   "@dateFormatDay": {
     "placeholders": {
@@ -152,6 +96,23 @@
         "type": "int"
       },
       "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatDayHourMinuteSecond": "{days, plural, one {{days} dia} other {{days} dias}} {hours, plural, one {{hours} hora} other {{hours} horas}} {minutes, plural, one {{minutes} minuto} other {{minutes} minutos}} {seconds, plural, one {{seconds} segundo} other {{seconds} segundos}}",
+  "@dateFormatDayHourMinuteSecond": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      },
+      "seconds": {
         "type": "int"
       }
     }
@@ -225,12 +186,6 @@
       }
     }
   },
-  "disabled": "Desabilitado",
-  "@disabled": {},
-  "discover": "Descobrir",
-  "@discover": {},
-  "domainOrIp": "Domínio ou IP",
-  "@domainOrIp": {},
   "dateFormatHourMinuteSecondShort": "{hours}h {minutes}m {seconds}s",
   "@dateFormatHourMinuteSecondShort": {
     "placeholders": {
@@ -272,17 +227,6 @@
       }
     }
   },
-  "dateFormatMinuteSecondShort": "{minutes}m {seconds}s",
-  "@dateFormatMinuteSecondShort": {
-    "placeholders": {
-      "minutes": {
-        "type": "int"
-      },
-      "seconds": {
-        "type": "int"
-      }
-    }
-  },
   "dateFormatMinuteSecond": "{minutes, plural, one {{minutes} minuto} other {{minutes} minutos}} {seconds, plural, one {{seconds} segundo} other {{seconds} segundos}}",
   "@dateFormatMinuteSecond": {
     "placeholders": {
@@ -294,8 +238,27 @@
       }
     }
   },
+  "dateFormatMinuteSecondShort": "{minutes}m {seconds}s",
+  "@dateFormatMinuteSecondShort": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      },
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
   "dateFormatMinuteShort": "{count}m",
   "@dateFormatMinuteShort": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatSecond": "{count, plural, one {{count}  segundo} other {{count} segundos}}",
+  "@dateFormatSecond": {
     "placeholders": {
       "count": {
         "type": "int"
@@ -314,54 +277,24 @@
   "@descending": {},
   "description": "Descrição",
   "@description": {},
-  "exit": "Sair",
-  "@exit": {},
-  "loading": "Carregando…",
-  "@loading": {},
-  "language": "Idioma",
-  "@language": {},
-  "languages": "Idiomas",
-  "@languages": {},
-  "last30Days": "Últimos 30 dias",
-  "@last30Days": {},
-  "last7Days": "Últimos 7 dias",
-  "@last7Days": {},
-  "libraries": "Bibliotecas",
-  "@libraries": {},
-  "library": "Biblioteca",
-  "@library": {},
-  "libraryStats": "Estatísticas da biblioteca",
-  "@libraryStats": {},
-  "listenAgain": "Ouvir novamente",
-  "@listenAgain": {},
-  "listeningInTheLastYear": "Ouvindo no último ano",
-  "@listeningInTheLastYear": {},
-  "readLess": "Ler menos",
-  "@readLess": {},
-  "readMore": "Ler mais",
-  "@readMore": {},
-  "recentSeries": "Séries recentes",
-  "@recentSeries": {},
-  "recentlyAdded": "Adicionado recentemente",
-  "@recentlyAdded": {},
-  "reportAnIssue": "Informe um problema",
-  "@reportAnIssue": {},
-  "serverSelection": "Seleção de servidor",
-  "@serverSelection": {},
-  "settings": "Configurações",
-  "@settings": {},
-  "show": "Mostrar",
-  "@show": {},
-  "signOut": "Sair",
-  "@signOut": {},
-  "viewOnGithub": "Ver on GitHub",
-  "@viewOnGithub": {},
-  "enabled": "Ativado",
-  "@enabled": {},
+  "disabled": "Desabilitado",
+  "@disabled": {},
+  "discover": "Descobrir",
+  "@discover": {},
+  "domainOrIp": "Domínio ou IP",
+  "@domainOrIp": {},
   "duration": "Duração",
   "@duration": {},
   "editQueue": "Editar fila",
   "@editQueue": {},
+  "enabled": "Ativado",
+  "@enabled": {},
+  "error": "Erro",
+  "@error": {},
+  "errorItemNotFound": "Erro: Item não encontrado",
+  "@errorItemNotFound": {},
+  "exit": "Sair",
+  "@exit": {},
   "failed": "Falha",
   "@failed": {},
   "fastForward": "Avançar",
@@ -392,12 +325,14 @@
   "@information": {},
   "itemId": "Id do item",
   "@itemId": {},
-  "libraryName": "Nome da biblioteca",
-  "@libraryName": {},
-  "error": "Erro",
-  "@error": {},
-  "errorItemNotFound": "Erro: Item não encontrado",
-  "@errorItemNotFound": {},
+  "itemNumChapters": "Número de CApítulos: {numChapters}",
+  "@itemNumChapters": {
+    "placeholders": {
+      "numChapters": {
+        "type": "String"
+      }
+    }
+  },
   "itemProgress": "Progresso: {progress}%",
   "@itemProgress": {
     "placeholders": {
@@ -406,12 +341,46 @@
       }
     }
   },
+  "itemPublishedYear": "Ano de publicação: {year}",
+  "@itemPublishedYear": {
+    "placeholders": {
+      "year": {
+        "type": "String"
+      }
+    }
+  },
   "itemType": "Tipo de item",
   "@itemType": {},
   "jumpToLastPosition": "Pular para última posição",
   "@jumpToLastPosition": {},
+  "language": "Idioma",
+  "@language": {},
+  "languages": "Idiomas",
+  "@languages": {},
+  "last30Days": "Últimos 30 dias",
+  "@last30Days": {},
+  "last7Days": "Últimos 7 dias",
+  "@last7Days": {},
+  "libraries": "Bibliotecas",
+  "@libraries": {},
+  "library": "Biblioteca",
+  "@library": {},
+  "libraryName": "Nome da biblioteca",
+  "@libraryName": {},
+  "libraryStats": "Estatísticas da biblioteca",
+  "@libraryStats": {},
+  "listenAgain": "Ouvir novamente",
+  "@listenAgain": {},
+  "listeningInTheLastYear": "Ouvindo no último ano",
+  "@listeningInTheLastYear": {},
+  "loading": "Carregando…",
+  "@loading": {},
+  "moreOptions": "Mais opções",
+  "@moreOptions": {},
   "narrators": "Narradores",
   "@narrators": {},
+  "newestEpisodes": "Episódios mais recentes",
+  "@newestEpisodes": {},
   "next": "Próximo",
   "@next": {},
   "nextChapter": "Próximo capítulo",
@@ -424,6 +393,8 @@
   "@noInternetDescription": {},
   "noItemsFound": "Nenhum item encontrado",
   "@noItemsFound": {},
+  "noSeriesSelected": "Nenhuma série selecionada",
+  "@noSeriesSelected": {},
   "notFinished": "Não terminado",
   "@notFinished": {},
   "notStarted": "Não começado",
@@ -432,14 +403,50 @@
   "@notTriedYet": {},
   "notificationHeading": "Notificações devem estar ativadas",
   "@notificationHeading": {},
+  "numBooksInSeries": "{numBooks, plural, =0 {Sem livros} =1 {1 livro} other {{numBooks} livors}}",
+  "@numBooksInSeries": {
+    "placeholders": {
+      "numBooks": {
+        "type": "num"
+      }
+    }
+  },
   "offlineProgress": "Progresso offline",
   "@offlineProgress": {},
-  "moreOptions": "Mais opções",
-  "@moreOptions": {},
-  "newestEpisodes": "Episódios mais recentes",
-  "@newestEpisodes": {},
-  "noSeriesSelected": "Nenhuma série selecionada",
-  "@noSeriesSelected": {},
+  "ok": "OK",
+  "@ok": {},
+  "openProjectLink": "Audiobookshelf/Server",
+  "@openProjectLink": {},
+  "password": "Senha",
+  "@password": {},
+  "pause": "Pausa",
+  "@pause": {},
+  "personalizedLibrary": "Biblioteca personalizada",
+  "@personalizedLibrary": {},
+  "play": "Tocar",
+  "@play": {},
+  "playNextEpisode": "Tocar próximo episódio",
+  "@playNextEpisode": {},
+  "playbackSpeed": "Velocidade",
+  "@playbackSpeed": {},
+  "port": "Porta",
+  "@port": {},
+  "previous": "Anterior",
+  "@previous": {},
+  "previousChapter": "Capítulo anterior",
+  "@previousChapter": {},
+  "progress": "Progresso",
+  "@progress": {},
+  "readLess": "Ler menos",
+  "@readLess": {},
+  "readMore": "Ler mais",
+  "@readMore": {},
+  "recentSeries": "Séries recentes",
+  "@recentSeries": {},
+  "recentlyAdded": "Adicionado recentemente",
+  "@recentlyAdded": {},
+  "reportAnIssue": "Informe um problema",
+  "@reportAnIssue": {},
   "restartRequired": "Reinício requerido",
   "@restartRequired": {},
   "rewind": "Voltar",
@@ -454,12 +461,40 @@
   "@sequence": {},
   "series": "Séries",
   "@series": {},
+  "serverSelection": "Seleção de servidor",
+  "@serverSelection": {},
+  "settings": "Configurações",
+  "@settings": {},
+  "show": "Mostrar",
+  "@show": {},
+  "signOut": "Sair",
+  "@signOut": {},
+  "size": "Tamanho",
+  "@size": {},
+  "sort": "Ordenar",
+  "@sort": {},
+  "stats": "Estatísticas",
+  "@stats": {},
   "stop": "Parar",
   "@stop": {},
   "success": "Sucesso",
   "@success": {},
   "sync": "Sincronizar",
   "@sync": {},
+  "syncInterval": "Intervalo de sincronização (segundos)",
+  "@syncInterval": {},
+  "timerText": "{time} min",
+  "@timerText": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "title": "Título",
+  "@title": {},
+  "today": "Hoje",
+  "@today": {},
   "tryAgain": "Tentar novamente",
   "@tryAgain": {},
   "unknown": "Desconhecido",
@@ -476,43 +511,8 @@
   "@usernameOrPasswordNotEmpty": {},
   "viewChapters": "Ver capítulos",
   "@viewChapters": {},
-  "addANewUser": "Adicionar um novo usuário",
-  "@addANewUser": {},
-  "aggressiveCaching": "Cache agressivo",
-  "@aggressiveCaching": {},
-  "back": "Voltar",
-  "@back": {},
-  "cachingHeader": "Cacheando",
-  "@cachingHeader": {},
-  "cancel": "Cancelar",
-  "@cancel": {},
-  "consecutiveDays": "Dias consecutivos",
-  "@consecutiveDays": {},
-  "currentPositionNum": "Posição atual: {position}",
-  "@currentPositionNum": {
-    "placeholders": {
-      "position": {
-        "type": "String"
-      }
-    }
-  },
-  "darkMode": "Modo escuro",
-  "@darkMode": {},
-  "dateFormatDayHourMinuteSecond": "{days, plural, one {{days} dia} other {{days} dias}} {hours, plural, one {{hours} hora} other {{hours} horas}} {minutes, plural, one {{minutes} minuto} other {{minutes} minutos}} {seconds, plural, one {{seconds} segundo} other {{seconds} segundos}}",
-  "@dateFormatDayHourMinuteSecond": {
-    "placeholders": {
-      "days": {
-        "type": "int"
-      },
-      "hours": {
-        "type": "int"
-      },
-      "minutes": {
-        "type": "int"
-      },
-      "seconds": {
-        "type": "int"
-      }
-    }
-  }
+  "viewOnGithub": "Ver on GitHub",
+  "@viewOnGithub": {},
+  "year": "Ano",
+  "@year": {}
 }
