@@ -1,4 +1,4 @@
-import 'package:abs_api/abs_api.dart';
+import 'package:abs_flutter/api/library_items/episode.dart';
 import 'package:abs_flutter/util/helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
@@ -6,7 +6,7 @@ import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart
 import 'package:intl/intl.dart';
 
 class EpisodeHeader extends StatelessWidget {
-  final PodcastEpisode episode;
+  final Episode episode;
   final bool isExpanded;
 
   const EpisodeHeader(

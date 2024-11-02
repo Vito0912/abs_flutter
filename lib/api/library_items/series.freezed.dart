@@ -25,7 +25,7 @@ mixin _$Series {
   @JsonKey(name: "name")
   String get name => throw _privateConstructorUsedError;
   @JsonKey(name: "sequence")
-  String get sequence => throw _privateConstructorUsedError;
+  String? get sequence => throw _privateConstructorUsedError;
 
   /// Serializes this Series to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -44,7 +44,7 @@ abstract class $SeriesCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: "id") String id,
       @JsonKey(name: "name") String name,
-      @JsonKey(name: "sequence") String sequence});
+      @JsonKey(name: "sequence") String? sequence});
 }
 
 /// @nodoc
@@ -64,7 +64,7 @@ class _$SeriesCopyWithImpl<$Res, $Val extends Series>
   $Res call({
     Object? id = null,
     Object? name = null,
-    Object? sequence = null,
+    Object? sequence = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -75,10 +75,10 @@ class _$SeriesCopyWithImpl<$Res, $Val extends Series>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      sequence: null == sequence
+      sequence: freezed == sequence
           ? _value.sequence
           : sequence // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ) as $Val);
   }
 }
@@ -93,7 +93,7 @@ abstract class _$$SeriesImplCopyWith<$Res> implements $SeriesCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: "id") String id,
       @JsonKey(name: "name") String name,
-      @JsonKey(name: "sequence") String sequence});
+      @JsonKey(name: "sequence") String? sequence});
 }
 
 /// @nodoc
@@ -111,7 +111,7 @@ class __$$SeriesImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? name = null,
-    Object? sequence = null,
+    Object? sequence = freezed,
   }) {
     return _then(_$SeriesImpl(
       id: null == id
@@ -122,10 +122,10 @@ class __$$SeriesImplCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      sequence: null == sequence
+      sequence: freezed == sequence
           ? _value.sequence
           : sequence // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -136,7 +136,7 @@ class _$SeriesImpl implements _Series {
   const _$SeriesImpl(
       {@JsonKey(name: "id") required this.id,
       @JsonKey(name: "name") required this.name,
-      @JsonKey(name: "sequence") required this.sequence});
+      @JsonKey(name: "sequence") this.sequence});
 
   factory _$SeriesImpl.fromJson(Map<String, dynamic> json) =>
       _$$SeriesImplFromJson(json);
@@ -149,7 +149,7 @@ class _$SeriesImpl implements _Series {
   final String name;
   @override
   @JsonKey(name: "sequence")
-  final String sequence;
+  final String? sequence;
 
   @override
   String toString() {
@@ -189,10 +189,9 @@ class _$SeriesImpl implements _Series {
 
 abstract class _Series implements Series {
   const factory _Series(
-          {@JsonKey(name: "id") required final String id,
-          @JsonKey(name: "name") required final String name,
-          @JsonKey(name: "sequence") required final String sequence}) =
-      _$SeriesImpl;
+      {@JsonKey(name: "id") required final String id,
+      @JsonKey(name: "name") required final String name,
+      @JsonKey(name: "sequence") final String? sequence}) = _$SeriesImpl;
 
   factory _Series.fromJson(Map<String, dynamic> json) = _$SeriesImpl.fromJson;
 
@@ -204,7 +203,7 @@ abstract class _Series implements Series {
   String get name;
   @override
   @JsonKey(name: "sequence")
-  String get sequence;
+  String? get sequence;
 
   /// Create a copy of Series
   /// with the given fields replaced by the non-null parameter values.

@@ -9,7 +9,7 @@ part of 'series.dart';
 _$SeriesImpl _$$SeriesImplFromJson(Map<String, dynamic> json) => _$SeriesImpl(
       id: json['id'] as String,
       name: json['name'] as String,
-      sequence: json['sequence'] as String,
+      sequence: json['sequence'] as String?,
     );
 
 Map<String, dynamic> _$$SeriesImplToJson(_$SeriesImpl instance) =>

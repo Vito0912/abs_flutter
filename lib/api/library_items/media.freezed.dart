@@ -14,17 +14,10 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-Media _$MediaFromJson(Map<String, dynamic> json) {
-  return _Media.fromJson(json);
-}
-
 /// @nodoc
 mixin _$Media {
   PodcastMedia? get podcastMedia => throw _privateConstructorUsedError;
   BookMedia? get bookMedia => throw _privateConstructorUsedError;
-
-  /// Serializes this Media to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
   /// Create a copy of Media
   /// with the given fields replaced by the non-null parameter values.
@@ -147,12 +140,9 @@ class __$$MediaImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$MediaImpl implements _Media {
-  const _$MediaImpl({this.podcastMedia, this.bookMedia});
 
-  factory _$MediaImpl.fromJson(Map<String, dynamic> json) =>
-      _$$MediaImplFromJson(json);
+class _$MediaImpl extends _Media {
+  const _$MediaImpl({this.podcastMedia, this.bookMedia}) : super._();
 
   @override
   final PodcastMedia? podcastMedia;
@@ -175,7 +165,6 @@ class _$MediaImpl implements _Media {
                 other.bookMedia == bookMedia));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, podcastMedia, bookMedia);
 
@@ -186,21 +175,13 @@ class _$MediaImpl implements _Media {
   @pragma('vm:prefer-inline')
   _$$MediaImplCopyWith<_$MediaImpl> get copyWith =>
       __$$MediaImplCopyWithImpl<_$MediaImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$MediaImplToJson(
-      this,
-    );
-  }
 }
 
-abstract class _Media implements Media {
+abstract class _Media extends Media {
   const factory _Media(
       {final PodcastMedia? podcastMedia,
       final BookMedia? bookMedia}) = _$MediaImpl;
-
-  factory _Media.fromJson(Map<String, dynamic> json) = _$MediaImpl.fromJson;
+  const _Media._() : super._();
 
   @override
   PodcastMedia? get podcastMedia;

@@ -1,4 +1,4 @@
-import 'package:abs_api/abs_api.dart';
+import 'package:abs_flutter/api/library_items/episode.dart';
 import 'package:abs_flutter/features/library/item/podcast/episode_action.dart';
 import 'package:abs_flutter/features/library/item/podcast/episode_header.dart';
 import 'package:abs_flutter/provider/log_provider.dart';
@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class EpisodeList extends StatefulWidget {
-  final List<PodcastEpisode> episodes;
+  final List<Episode> episodes;
   final String itemId;
   final int itemsPerPage;
   final ScrollController scrollController;
@@ -25,7 +25,7 @@ class EpisodeList extends StatefulWidget {
 }
 
 class _EpisodeListState extends State<EpisodeList> {
-  List<PodcastEpisode> _displayedEpisodes = [];
+  final List<Episode> _displayedEpisodes = [];
   int _currentPage = 0;
   bool _isLoadingMore = false;
 
@@ -93,7 +93,7 @@ class _EpisodeListState extends State<EpisodeList> {
 }
 
 class EpisodeItem extends StatefulWidget {
-  final PodcastEpisode episode;
+  final Episode episode;
   final String itemId;
 
   const EpisodeItem({

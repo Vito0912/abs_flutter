@@ -1,6 +1,7 @@
+import 'dart:convert';
 import 'dart:io';
 
-import 'package:abs_api/abs_api.dart';
+import 'package:abs_flutter/api/library_items/library_item.dart';
 import 'package:abs_flutter/api/library_items/request/library_item_request.dart';
 import 'package:abs_flutter/models/file.dart';
 import 'package:abs_flutter/provider/download_provider.dart';
@@ -11,9 +12,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:path/path.dart' as p;
 
 final itemProvider =
-    FutureProvider.family<LibraryItemBase?, String>((ref, id) async {
-  final api = ref.watch(apiProvider);
-  final apiNew = ref.watch(apiProviderNew);
+    FutureProvider.family<LibraryItem?, String>((ref, id) async {
+  final api = ref.watch(apiProviderNew);
 
   if (api == null) {
     return null;
@@ -27,18 +27,13 @@ final itemProvider =
 
   if (download == null || download.filePath == null) {
     try {
-      final responseNew = await apiNew?.getLibraryItemApi().getLibraryItem(
+      final response = await api.getLibraryItemApi().getLibraryItem(
             libraryItemRequest: LibraryItemRequest(id: id),
           );
-      print(responseNew);
-      final response = await api.getLibraryItemApi().getLibraryItem(id: id);
-      if (response.data == null || response.data!.oneOf.value == null) {
+      if (response.data == null) {
         return null;
       }
-      if (response.data!.oneOf.value is LibraryItemBase) {
-        return response.data!.oneOf.value as LibraryItemBase;
-      }
-      return null;
+      return response.data;
     } catch (e) {
       if (e is DioException) {
         if (e.response != null && e.response!.data != null) {
@@ -65,7 +60,6 @@ final itemProvider =
 
     log('Reading file: $newFilePath');
 
-    return api.serializers
-        .fromJson(LibraryItemBase.serializer, file.readAsStringSync());
+    return LibraryItem.fromJson(jsonDecode(file.readAsStringSync()));
   }
 });

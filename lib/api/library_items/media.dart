@@ -3,7 +3,6 @@ import 'package:abs_flutter/api/library_items/podcast_media.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'media.freezed.dart';
-part 'media.g.dart';
 
 @freezed
 class Media with _$Media {
@@ -23,6 +22,18 @@ class Media with _$Media {
     // Otherwise, default to BookMedia.
     else {
       return Media(bookMedia: BookMedia.fromJson(json));
+    }
+  }
+
+  /// Custom toJson method to handle different structures.
+  Map<String, dynamic> toJson() {
+    // Check if the instance contains a PodcastMedia.
+    if (podcastMedia != null) {
+      return podcastMedia!.toJson();
+    }
+    // Otherwise, default to BookMedia.
+    else {
+      return bookMedia!.toJson();
     }
   }
 }

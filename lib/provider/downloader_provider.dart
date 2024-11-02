@@ -3,6 +3,9 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:abs_api/abs_api.dart' as api;
+import 'package:abs_flutter/api/library_items/audio_file.dart';
+import 'package:abs_flutter/api/library_items/episode.dart';
+import 'package:abs_flutter/api/library_items/library_item.dart';
 import 'package:abs_flutter/api/me/user.dart';
 import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/models/file.dart';
@@ -154,9 +157,9 @@ class DownloadProvider extends ChangeNotifier {
   }
 
   Future<void> downloadAudioFile(
-      String url, api.AudioFile file, api.LibraryItemBase item) async {
+      String url, AudioFile file, LibraryItem item) async {
     final fileName = file.metadata!.filename!;
-    final name = item.media!.metadata!.title;
+    final name = item.media!.bookMedia!.metadata!.title;
 
     final downloadList = ref.read(downloadListProvider);
     final currentUser = ref.read(currentUserProvider);
@@ -203,9 +206,9 @@ class DownloadProvider extends ChangeNotifier {
     }
   }
 
-  Future<void> downloadPodcastFile(String url, api.PodcastEpisode item,
-      api.LibraryItemBase libraryItem) async {
-    final fileName = item.audioFile!.metadata!.filename!;
+  Future<void> downloadPodcastFile(
+      String url, Episode item, LibraryItem libraryItem) async {
+    final fileName = item.audioFile!.metadata.filename;
     final name = item.title;
 
     final downloadList = ref.read(downloadListProvider);

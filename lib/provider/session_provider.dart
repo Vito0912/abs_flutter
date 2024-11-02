@@ -1,4 +1,5 @@
 import 'package:abs_api/abs_api.dart';
+import 'package:abs_flutter/api/library_items/episode.dart';
 import 'package:abs_flutter/globals.dart';
 import 'package:abs_flutter/models/file.dart';
 import 'package:abs_flutter/provider/connection_provider.dart';
@@ -140,13 +141,20 @@ class PlaybackSessionNotifier
       late final MediaItem mediaItem;
 
       if (download.type == MediaTypeDownload.podcast) {
-        final PodcastEpisode episode = item.value!.media!.episodes!
-            .firstWhere((element) => element.id == episodeId);
+        final Episode? episode = item.value?.media?.podcastMedia?.episodes
+            ?.firstWhere((element) => element.id == episodeId);
+        if (episode == null) {
+          log('Could not find episode for offline playback',
+              name: 'session_provider');
+          state = const AsyncValue.error(
+              'Episode is not available', StackTrace.empty);
+          return;
+        }
         mediaItem = MediaItem(
             id: download.filePath!,
-            album: item.value?.media?.metadata?.title,
+            album: item.value?.media?.podcastMedia?.metadata.title,
             title: download.displayName,
-            artist: item.value?.media?.metadata?.authors?.toList().join(','),
+            artist: item.value?.media?.podcastMedia?.metadata.author,
             artUri: Uri.parse(
                 '${currentUser!.server!.url}/api/items/$id/cover?token=${currentUser.token}'),
             duration: Duration(seconds: episode.audioFile!.duration!.round()),
@@ -156,29 +164,32 @@ class PlaybackSessionNotifier
               'streaming': false,
             });
       } else {
-        String artist = item.value?.media?.metadata?.authors
+        String artist = item.value?.media?.bookMedia?.metadata.authors
                 ?.map((author) => author.name)
                 .join(', ') ??
             '';
 
         mediaItem = MediaItem(
             id: download.filePath!,
-            album: item.value?.media?.metadata?.series?.toList().join(', '),
+            album: item.value?.media?.bookMedia?.metadata.series
+                ?.toList()
+                .join(', '),
             title: download.displayName,
-            displaySubtitle: item.value?.media?.metadata?.subtitle,
+            displaySubtitle: item.value?.media?.bookMedia?.metadata.subtitle,
             artist: artist,
             artUri: Uri.parse(
                 '${currentUser!.server!.url}/api/items/$id/cover?token=${currentUser.token}'),
             duration: Duration(
-                seconds: item.value!.media!.audioFiles![0].duration!.round()),
+                seconds: item.value!.media!.bookMedia!.audioFiles![0].duration!
+                    .round()),
             extras: {
               'libraryItemId': id,
               'streaming': false,
-              'chapters': item.value!.media!.chapters
+              'chapters': item.value!.media!.bookMedia!.chapters
                   ?.map((e) => {
-                        'title': e?.title,
-                        'start': e?.start,
-                        'end': e?.end,
+                        'title': e.title,
+                        'start': e.start,
+                        'end': e.end,
                       })
                   .toList(),
             });

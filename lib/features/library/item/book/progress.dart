@@ -1,4 +1,4 @@
-import 'package:abs_api/abs_api.dart';
+import 'package:abs_flutter/api/library_items/library_item.dart';
 import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/provider/progress_provider.dart';
 import 'package:abs_flutter/util/helper.dart';
@@ -8,12 +8,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class Progress extends ConsumerWidget {
   const Progress({super.key, required this.item});
-  final LibraryItemBase item;
+  final LibraryItem item;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final progress =
-        ref.watch(progressProviderWithItemId(ItemEpisodeId(item.id!, null)));
+        ref.watch(progressProviderWithItemId(ItemEpisodeId(item.id, null)));
     if (progress?.progress == null ||
         progress?.progress == null ||
         progress!.progress! <= 0) {
@@ -21,10 +21,8 @@ class Progress extends ConsumerWidget {
     }
     final currentProgress =
         Helper.formatPercentage(progress.progress!.toDouble());
-    final currentPosition = Helper.formatTimeToReadable(
-        progress.currentTime!,
-        precise: true,
-        short: true);
+    final currentPosition = Helper.formatTimeToReadable(progress.currentTime!,
+        precise: true, short: true);
     final toGoSeconds =
         progress.duration! - progress.progress! * progress.duration!;
     final timeRemaining = Helper.formatTimeToReadable(
@@ -33,10 +31,10 @@ class Progress extends ConsumerWidget {
         short: true);
     return Chip(
         label: IntrinsicWidth(
-          child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
           PlatformText(
             S.of(context).progressNum(currentProgress),
             style: Theme.of(context).textTheme.bodyMedium,
@@ -48,12 +46,13 @@ class Progress extends ConsumerWidget {
             S.of(context).currentPositionNum(currentPosition),
             style: Theme.of(context).textTheme.bodySmall,
           ),
-          if(progress.duration != null && progress.duration! > 0) PlatformText(
-            S.of(context).timeRemainingNum(timeRemaining),
-            style: Theme.of(context).textTheme.bodySmall,
-          ),
-                ],
-              ),
-        ));
+          if (progress.duration != null && progress.duration! > 0)
+            PlatformText(
+              S.of(context).timeRemainingNum(timeRemaining),
+              style: Theme.of(context).textTheme.bodySmall,
+            ),
+        ],
+      ),
+    ));
   }
 }
