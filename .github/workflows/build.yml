@@ -151,6 +151,16 @@ jobs:
           Move-Item -Path $sourcePath -Destination $destinationPath
         shell: pwsh
 
+      - name: Create MSIX package (Store)
+        run: dart run msix:create --store
+
+      - name: Move MSIX file
+        run: |
+          $sourcePath = "build/windows/x64/runner/Release/abs_flutter.msix"
+          $destinationPath = "windows-installer-release-${{ env.VERSION }}-store.msix"
+          Move-Item -Path $sourcePath -Destination $destinationPath
+        shell: pwsh
+
       - name: Upload Windows Build and MSIX Artifacts
         uses: actions/upload-artifact@v4
         with:
@@ -158,6 +168,7 @@ jobs:
           path: |
             windows-Release-${{ env.VERSION }}.zip
             windows-installer-release-${{ env.VERSION }}.msix
+            windows-installer-release-${{ env.VERSION }}-store.msix
 
   create-release:
     runs-on: ubuntu-latest
