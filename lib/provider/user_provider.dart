@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:abs_api/abs_api.dart' as abs_api;
 import 'package:abs_api/src/auth/bearer_auth.dart';
@@ -23,7 +24,14 @@ class UserNotifier extends StateNotifier<List<User>> {
   }
 
   _save(List<User> users) {
-    secureStorage.write(key: 'users', value: jsonEncode(users));
+    List<User> newUsers = [];
+    for (var user in users) {
+      newUsers.add(user.copyWith(mediaProgress: null, bookmarks: null));
+    }
+
+    log(newUsers.toString());
+
+    secureStorage.write(key: 'users', value: jsonEncode(newUsers));
   }
 
   void setUsers(List<User> users) {
@@ -54,7 +62,7 @@ class UserNotifier extends StateNotifier<List<User>> {
         user.setting!.settings = defaultSettings;
       }
     }
-    secureStorage.write(key: 'users', value: jsonEncode(state));
+    _save(state);
   }
 }
 
