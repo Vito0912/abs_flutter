@@ -58,6 +58,7 @@ final Map<String, String> supportedLocales = {
   'de': 'Deutsch',
   'nb': 'Norsk Bokmål',
   'zh': '中文',
+  'pt': 'Português',
 };
 
 bool cachingEnabled = true;
