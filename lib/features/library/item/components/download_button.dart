@@ -1,7 +1,7 @@
 import 'package:abs_api/abs_api.dart';
+import 'package:abs_flutter/api/me/user.dart' as m;
 import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/models/file.dart';
-import 'package:abs_flutter/models/user.dart' as m;
 import 'package:abs_flutter/provider/download_provider.dart';
 import 'package:abs_flutter/provider/downloader_provider.dart';
 import 'package:background_downloader/background_downloader.dart';

@@ -62,7 +62,7 @@ void log(String message, {String? name, LogLevel level = LogLevel.info}) {
   final loggingEnabled =
       provContainer.read(settingsProvider)[Constants.LOGGING_ENABLED];
 
-  if (!loggingEnabled) return;
+  if (loggingEnabled != null && !loggingEnabled) return;
 
   Future.microtask(() {
     dev.log(message, name: name ?? 'Log', time: currentTime);

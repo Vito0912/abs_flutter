@@ -1,9 +1,9 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:abs_flutter/api/me/user.dart';
 import 'package:abs_flutter/app.dart';
 import 'package:abs_flutter/globals.dart';
-import 'package:abs_flutter/models/user.dart';
 import 'package:abs_flutter/provider/library_provider.dart';
 import 'package:abs_flutter/provider/log_provider.dart';
 import 'package:abs_flutter/provider/player_provider.dart';

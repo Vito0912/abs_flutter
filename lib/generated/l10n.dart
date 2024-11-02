@@ -2033,6 +2033,16 @@ class S {
     );
   }
 
+  /// `Sort Series in Ascending Order`
+  String get sortSeriesAsc {
+    return Intl.message(
+      'Sort Series in Ascending Order',
+      name: 'sortSeriesAsc',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Stats`
   String get stats {
     return Intl.message(
@@ -2298,16 +2308,6 @@ class S {
     return Intl.message(
       'Year',
       name: 'year',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Sort Series in Ascending Order`
-  String get sortSeriesAsc {
-    return Intl.message(
-      'Sort Series in Ascending Order',
-      name: 'sortSeriesAsc',
       desc: '',
       args: [],
     );

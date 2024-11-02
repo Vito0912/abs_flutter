@@ -3,9 +3,9 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:abs_api/abs_api.dart' as api;
+import 'package:abs_flutter/api/me/user.dart';
 import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/models/file.dart';
-import 'package:abs_flutter/models/user.dart';
 import 'package:abs_flutter/provider/download_provider.dart';
 import 'package:abs_flutter/provider/library_provider.dart';
 import 'package:abs_flutter/provider/settings_provider.dart';
