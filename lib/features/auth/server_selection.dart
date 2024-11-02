@@ -5,6 +5,7 @@ import 'package:abs_flutter/api/me/request/login_request.dart';
 import 'package:abs_flutter/api/me/user.dart';
 import 'package:abs_flutter/features/auth/server_input.dart';
 import 'package:abs_flutter/generated/l10n.dart';
+import 'package:abs_flutter/globals.dart';
 import 'package:abs_flutter/models/server.dart';
 import 'package:abs_flutter/models/setting.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
@@ -346,6 +347,9 @@ class LoginButton extends ConsumerWidget {
           User user = res.data!.user;
           user.server = server;
           user.setting = user.setting ?? Setting();
+
+          // set default settings
+          user.setting!.settings = defaultSettings;
 
           final usersNotifier = ref.read(usersProvider.notifier);
           final users = ref.read(usersProvider);
