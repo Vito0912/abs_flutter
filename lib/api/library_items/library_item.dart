@@ -28,6 +28,7 @@ class LibraryItem with _$LibraryItem {
     @JsonKey(name: "mediaType") String? mediaType,
     @JsonKey(name: "media") required Media? media,
     @JsonKey(name: "libraryFiles") required List<LibraryFile> libraryFiles,
+    @JsonKey(name: "size") int? size,
   }) = _LibraryItem;
 
   factory LibraryItem.fromJson(Map<String, dynamic> json) =>

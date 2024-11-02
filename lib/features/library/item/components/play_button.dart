@@ -33,10 +33,9 @@ class PlayButton extends ConsumerWidget {
           ? SizedBox(
               width: 16, height: 16, child: PlatformCircularProgressIndicator())
           : (playerStatus.playStatus == PlayerStatus.playing &&
-                  ((session.podcast != null &&
-                          session.podcast!.libraryItemId == itemId &&
-                          session.podcast!.episodeId == episodeId) ||
-                      (session.book != null && session.book!.id == itemId)))
+                  ((session.session != null &&
+                      session.session!.libraryItemId == itemId &&
+                      session.session!.episodeId == episodeId)))
               ? const Icon(Icons.stop)
               : const Icon(Icons.play_arrow),
     );

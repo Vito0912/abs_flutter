@@ -2,6 +2,7 @@ import 'package:abs_flutter/api/routes/interceptors/bearer_auth_interceptor.dart
 import 'package:abs_flutter/api/routes/interceptors/o_auth_interceptor.dart';
 import 'package:abs_flutter/api/routes/library_item_api.dart';
 import 'package:abs_flutter/api/routes/me_api.dart';
+import 'package:abs_flutter/api/routes/session_api.dart';
 import 'package:abs_flutter/provider/log_provider.dart';
 import 'package:dio/dio.dart';
 
@@ -48,9 +49,10 @@ class ABSApi {
 
   static Future<Response<T>> makeApiPostRequest<T>({
     required String route,
-    required Function(Map<String, dynamic>) fromJson,
-    required Map<String, dynamic> bodyData,
+    required Function(Map<String, dynamic>)? fromJson,
+    required Map<String, dynamic>? bodyData,
     required Dio dio,
+    T? returnData,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -82,15 +84,17 @@ class ABSApi {
         options: options,
         cancelToken: cancelToken,
       );
-
       T? responseData;
-      final rawResponse = response.data;
-      responseData = rawResponse == null
-          ? null
-          : fromJson(rawResponse as Map<String, dynamic>);
+
+      if (fromJson != null) {
+        final rawResponse = response.data;
+        responseData = rawResponse == null
+            ? null
+            : fromJson(rawResponse as Map<String, dynamic>);
+      }
 
       return Response<T>(
-        data: responseData,
+        data: fromJson != null ? responseData : returnData,
         headers: response.headers,
         isRedirect: response.isRedirect,
         requestOptions: response.requestOptions,
@@ -203,5 +207,9 @@ class ABSApi {
 
   LibraryItemApi getLibraryItemApi() {
     return LibraryItemApi(dio);
+  }
+
+  SessionApi getSessionApi() {
+    return SessionApi(dio);
   }
 }

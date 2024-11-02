@@ -60,6 +60,8 @@ mixin _$LibraryItem {
   Media? get media => throw _privateConstructorUsedError;
   @JsonKey(name: "libraryFiles")
   List<LibraryFile> get libraryFiles => throw _privateConstructorUsedError;
+  @JsonKey(name: "size")
+  int? get size => throw _privateConstructorUsedError;
 
   /// Serializes this LibraryItem to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -97,7 +99,8 @@ abstract class $LibraryItemCopyWith<$Res> {
       @JsonKey(name: "isInvalid") bool? isInvalid,
       @JsonKey(name: "mediaType") String? mediaType,
       @JsonKey(name: "media") Media? media,
-      @JsonKey(name: "libraryFiles") List<LibraryFile> libraryFiles});
+      @JsonKey(name: "libraryFiles") List<LibraryFile> libraryFiles,
+      @JsonKey(name: "size") int? size});
 
   $MediaCopyWith<$Res>? get media;
 }
@@ -137,6 +140,7 @@ class _$LibraryItemCopyWithImpl<$Res, $Val extends LibraryItem>
     Object? mediaType = freezed,
     Object? media = freezed,
     Object? libraryFiles = null,
+    Object? size = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -219,6 +223,10 @@ class _$LibraryItemCopyWithImpl<$Res, $Val extends LibraryItem>
           ? _value.libraryFiles
           : libraryFiles // ignore: cast_nullable_to_non_nullable
               as List<LibraryFile>,
+      size: freezed == size
+          ? _value.size
+          : size // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 
@@ -265,7 +273,8 @@ abstract class _$$LibraryItemImplCopyWith<$Res>
       @JsonKey(name: "isInvalid") bool? isInvalid,
       @JsonKey(name: "mediaType") String? mediaType,
       @JsonKey(name: "media") Media? media,
-      @JsonKey(name: "libraryFiles") List<LibraryFile> libraryFiles});
+      @JsonKey(name: "libraryFiles") List<LibraryFile> libraryFiles,
+      @JsonKey(name: "size") int? size});
 
   @override
   $MediaCopyWith<$Res>? get media;
@@ -304,6 +313,7 @@ class __$$LibraryItemImplCopyWithImpl<$Res>
     Object? mediaType = freezed,
     Object? media = freezed,
     Object? libraryFiles = null,
+    Object? size = freezed,
   }) {
     return _then(_$LibraryItemImpl(
       id: null == id
@@ -386,6 +396,10 @@ class __$$LibraryItemImplCopyWithImpl<$Res>
           ? _value._libraryFiles
           : libraryFiles // ignore: cast_nullable_to_non_nullable
               as List<LibraryFile>,
+      size: freezed == size
+          ? _value.size
+          : size // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -414,7 +428,8 @@ class _$LibraryItemImpl implements _LibraryItem {
       @JsonKey(name: "mediaType") this.mediaType,
       @JsonKey(name: "media") required this.media,
       @JsonKey(name: "libraryFiles")
-      required final List<LibraryFile> libraryFiles})
+      required final List<LibraryFile> libraryFiles,
+      @JsonKey(name: "size") this.size})
       : _libraryFiles = libraryFiles;
 
   factory _$LibraryItemImpl.fromJson(Map<String, dynamic> json) =>
@@ -487,8 +502,12 @@ class _$LibraryItemImpl implements _LibraryItem {
   }
 
   @override
+  @JsonKey(name: "size")
+  final int? size;
+
+  @override
   String toString() {
-    return 'LibraryItem(id: $id, ino: $ino, oldLibraryItemId: $oldLibraryItemId, libraryId: $libraryId, folderId: $folderId, path: $path, relPath: $relPath, isFile: $isFile, mtimeMs: $mtimeMs, ctimeMs: $ctimeMs, birthtimeMs: $birthtimeMs, addedAt: $addedAt, updatedAt: $updatedAt, lastScan: $lastScan, scanVersion: $scanVersion, isMissing: $isMissing, isInvalid: $isInvalid, mediaType: $mediaType, media: $media, libraryFiles: $libraryFiles)';
+    return 'LibraryItem(id: $id, ino: $ino, oldLibraryItemId: $oldLibraryItemId, libraryId: $libraryId, folderId: $folderId, path: $path, relPath: $relPath, isFile: $isFile, mtimeMs: $mtimeMs, ctimeMs: $ctimeMs, birthtimeMs: $birthtimeMs, addedAt: $addedAt, updatedAt: $updatedAt, lastScan: $lastScan, scanVersion: $scanVersion, isMissing: $isMissing, isInvalid: $isInvalid, mediaType: $mediaType, media: $media, libraryFiles: $libraryFiles, size: $size)';
   }
 
   @override
@@ -526,7 +545,8 @@ class _$LibraryItemImpl implements _LibraryItem {
                 other.mediaType == mediaType) &&
             (identical(other.media, media) || other.media == media) &&
             const DeepCollectionEquality()
-                .equals(other._libraryFiles, _libraryFiles));
+                .equals(other._libraryFiles, _libraryFiles) &&
+            (identical(other.size, size) || other.size == size));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -552,7 +572,8 @@ class _$LibraryItemImpl implements _LibraryItem {
         isInvalid,
         mediaType,
         media,
-        const DeepCollectionEquality().hash(_libraryFiles)
+        const DeepCollectionEquality().hash(_libraryFiles),
+        size
       ]);
 
   /// Create a copy of LibraryItem
@@ -593,7 +614,8 @@ abstract class _LibraryItem implements LibraryItem {
       @JsonKey(name: "mediaType") final String? mediaType,
       @JsonKey(name: "media") required final Media? media,
       @JsonKey(name: "libraryFiles")
-      required final List<LibraryFile> libraryFiles}) = _$LibraryItemImpl;
+      required final List<LibraryFile> libraryFiles,
+      @JsonKey(name: "size") final int? size}) = _$LibraryItemImpl;
 
   factory _LibraryItem.fromJson(Map<String, dynamic> json) =
       _$LibraryItemImpl.fromJson;
@@ -658,6 +680,9 @@ abstract class _LibraryItem implements LibraryItem {
   @override
   @JsonKey(name: "libraryFiles")
   List<LibraryFile> get libraryFiles;
+  @override
+  @JsonKey(name: "size")
+  int? get size;
 
   /// Create a copy of LibraryItem
   /// with the given fields replaced by the non-null parameter values.
