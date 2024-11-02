@@ -1,7 +1,6 @@
+import 'package:abs_flutter/api/me/user.dart';
 import 'package:abs_flutter/models/setting.dart';
 import 'package:abs_flutter/provider/log_provider.dart';
-
-import 'package:abs_flutter/models/user.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

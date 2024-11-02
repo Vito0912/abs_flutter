@@ -1,5 +1,5 @@
 import 'package:abs_api/abs_api.dart';
-import 'package:abs_flutter/models/user.dart' as m;
+import 'package:abs_flutter/api/me/user.dart' as m;
 import 'package:abs_flutter/provider/user_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

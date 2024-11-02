@@ -1,4 +1,4 @@
-import 'package:abs_flutter/models/user.dart';
+import 'package:abs_flutter/api/me/user.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';

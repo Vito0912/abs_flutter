@@ -1,11 +1,12 @@
-import 'package:abs_api/abs_api.dart' as abs;
+import 'dart:developer';
+
+import 'package:abs_flutter/api/me/login.dart';
+import 'package:abs_flutter/api/me/request/login_request.dart';
+import 'package:abs_flutter/api/me/user.dart';
 import 'package:abs_flutter/features/auth/server_input.dart';
 import 'package:abs_flutter/generated/l10n.dart';
-import 'package:abs_flutter/globals.dart';
-import 'package:abs_flutter/models/permissions.dart';
 import 'package:abs_flutter/models/server.dart';
 import 'package:abs_flutter/models/setting.dart';
-import 'package:abs_flutter/models/user.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -324,16 +325,16 @@ class LoginButton extends ConsumerWidget {
             ssl: protocol == 'https://', host: domain, port: int.parse(port));
         setBasePathOverride(ref, server.url);
 
-        abs.LoginRequestBuilder loginPostRequestBuilder =
-            abs.LoginRequestBuilder();
-        loginPostRequestBuilder.username = username;
-        loginPostRequestBuilder.password = password;
+        LoginRequest loginRequest = LoginRequest(
+          username: username,
+          password: password,
+        );
 
         try {
-          Response<abs.Login200Response> res = await ref
-              .watch(apiProvider)!
-              .getAuthApi()
-              .login(loginRequest: loginPostRequestBuilder.build());
+          Response<Login> res = await ref
+              .watch(apiProviderNew)!
+              .getMeApi()
+              .login(loginRequest: loginRequest);
 
           if (res.data!.user == null) {
             ref
@@ -342,33 +343,9 @@ class LoginButton extends ConsumerWidget {
             return;
           }
 
-          abs.User apiUser = res.data!.user!;
-
-          Permissions permissions = Permissions(
-            download: apiUser.permissions?.download,
-            delete: apiUser.permissions?.delete,
-            upload: apiUser.permissions?.upload,
-            accessAllLibraries: apiUser.permissions?.accessAllLibraries,
-            accessAllTags: apiUser.permissions?.accessAllTags,
-            accessExplicitContent: apiUser.permissions?.accessExplicitContent,
-            update_: apiUser.permissions?.update_,
-          );
-
-          User user = User(
-            id: apiUser.id!,
-            username: apiUser.username!,
-            type: apiUser.type!,
-            token: apiUser.token!,
-            isActive: apiUser.isActive,
-            isLocked: apiUser.isLocked,
-            lastSeen: apiUser.lastSeen,
-            createdAt: apiUser.createdAt,
-            server: server,
-            setting: Setting(settings: defaultSettings),
-            permissions: permissions,
-            librariesAccessible: apiUser.librariesAccessible?.toList(),
-            itemTagsAccessible: apiUser.itemTagsSelected?.toList(),
-          );
+          User user = res.data!.user;
+          user.server = server;
+          user.setting = user.setting ?? Setting();
 
           final usersNotifier = ref.read(usersProvider.notifier);
           final users = ref.read(usersProvider);
@@ -376,8 +353,7 @@ class LoginButton extends ConsumerWidget {
           List<User> updatedUsers = List.from(users);
 
           // Delete the user if it already exists
-          updatedUsers.removeWhere((user) =>
-              user.id == apiUser.id && user.server?.url == server.url);
+          updatedUsers.removeWhere((userCurrent) => userCurrent.id == user.id);
 
           updatedUsers.add(user);
 
@@ -397,7 +373,8 @@ class LoginButton extends ConsumerWidget {
             ref.read(loginStateProvider.notifier).setError(
                 'There was an error while trying to navigate to the home screen');
           }
-        } catch (e) {
+        } catch (e, stackTrace) {
+          log("$e\n$stackTrace", name: 'LoginButton');
           String errorMessage = 'Login failed';
           if (e is DioException) {
             if (e.response?.statusCode == 401) {

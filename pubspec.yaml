@@ -80,6 +80,7 @@ dev_dependencies:
   msix: ^3.16.7
   icons_launcher: ^2.1.7
 
+
 dependency_overrides:
   meta: ^1.14.0
   media_kit: 1.1.9

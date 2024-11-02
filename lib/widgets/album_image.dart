@@ -1,5 +1,5 @@
+import 'package:abs_flutter/api/me/user.dart';
 import 'package:abs_flutter/generated/l10n.dart';
-import 'package:abs_flutter/models/user.dart';
 import 'package:abs_flutter/provider/progress_provider.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
 import 'package:abs_flutter/widgets/shimmer_placeholder.dart';

@@ -2,9 +2,13 @@ import 'dart:convert';
 
 import 'package:abs_api/abs_api.dart' as abs_api;
 import 'package:abs_api/src/auth/bearer_auth.dart';
+import 'package:abs_flutter/api/me/user.dart';
+import 'package:abs_flutter/api/routes/abs_api.dart';
+import 'package:abs_flutter/api/routes/interceptors/bearer_auth_interceptor.dart'
+    as abs;
+import 'package:abs_flutter/api/routes/interceptors/o_auth_interceptor.dart';
 import 'package:abs_flutter/globals.dart';
 import 'package:abs_flutter/models/setting.dart';
-import 'package:abs_flutter/models/user.dart';
 import 'package:abs_flutter/util/interceptor/abs_interceptor.dart';
 import 'package:abs_flutter/util/interceptor/cache_interceptor.dart';
 import 'package:dio/dio.dart';
@@ -47,9 +51,7 @@ class UserNotifier extends StateNotifier<List<User>> {
     for (var user in state) {
       if (user.setting == null) {
         user.setting ??= Setting();
-        for (var setting in defaultSettings.keys) {
-          user.setting!.settings[setting] = defaultSettings[setting];
-        }
+        user.setting!.settings = defaultSettings;
       }
     }
     secureStorage.write(key: 'users', value: jsonEncode(state));
@@ -168,6 +170,50 @@ final apiProvider = Provider<abs_api.AbsApi?>((ref) {
   // Otherwise, use the user's server URL
   if (index >= 0) {
     abs_api.AbsApi api = abs_api.AbsApi(
+        dio: Dio(
+          BaseOptions(
+            connectTimeout: const Duration(seconds: 3),
+            receiveTimeout: const Duration(seconds: 20),
+            baseUrl: users[index].server?.url ?? r'http://localhost:3000',
+          ),
+        ),
+        interceptors: interceptors,
+        basePathOverride: users[index].server?.url);
+
+    final token = users[index].token;
+
+    // Set up Bearer authentication
+    if (token != null) {
+      api.setBearerAuth('BearerAuth', token);
+    }
+
+    return api;
+  }
+
+  return null;
+});
+
+final apiProviderNew = Provider<ABSApi?>((ref) {
+  final users = ref.read(usersProvider);
+  final index = ref.watch(selectedUserProvider);
+  final basePathOverride = ref.watch(basePathOverrideProvider);
+
+  // If there is an overridden base path, use it
+  if (basePathOverride != null) {
+    ABSApi res = ABSApi(basePathOverride: basePathOverride);
+    return res;
+  }
+
+  List<Interceptor> interceptors = [
+    OAuthInterceptor(),
+    abs.BearerAuthInterceptor(),
+    CacheInterceptor(ref),
+    ABSInterceptor(ref),
+  ];
+
+  // Otherwise, use the user's server URL
+  if (index >= 0) {
+    ABSApi api = ABSApi(
         dio: Dio(
           BaseOptions(
             connectTimeout: const Duration(seconds: 3),
