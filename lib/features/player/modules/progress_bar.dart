@@ -51,16 +51,18 @@ class ProgressBar extends StatelessWidget {
                           trackHeight: size / 6,
                           trackShape: ProgressBarTrack(),
                         ),
-                        child: Slider(
-                          value: currentValue,
-                          min: min,
-                          max: max,
-                          onChanged: disabled
-                              ? null
-                              : (double value) {
-                                  player.audioService.seek(
-                                      Duration(milliseconds: value.toInt()));
-                                },
+                        child: Material(
+                          child: Slider(
+                            value: currentValue,
+                            min: min,
+                            max: max,
+                            onChanged: disabled
+                                ? null
+                                : (double value) {
+                                    player.audioService.seek(
+                                        Duration(milliseconds: value.toInt()));
+                                  },
+                          ),
                         ),
                       );
                     } else {

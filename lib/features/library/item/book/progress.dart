@@ -21,39 +21,40 @@ class Progress extends ConsumerWidget {
     }
     final currentProgress =
         Helper.formatPercentage(progress.progress!.toDouble());
-    final currentPosition = Helper.formatTimeToReadable(
-        progress.currentTime!,
-        precise: true,
-        short: true);
+    final currentPosition = Helper.formatTimeToReadable(progress.currentTime!,
+        precise: true, short: true);
     final toGoSeconds =
         progress.duration! - progress.progress! * progress.duration!;
     final timeRemaining = Helper.formatTimeToReadable(
         toGoSeconds >= progress.duration! ? progress.duration! : toGoSeconds,
         precise: true,
         short: true);
-    return Chip(
-        label: IntrinsicWidth(
-          child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-          PlatformText(
-            S.of(context).progressNum(currentProgress),
-            style: Theme.of(context).textTheme.bodyMedium,
-          ),
-          const Divider(
-            height: 4,
-          ),
-          PlatformText(
-            S.of(context).currentPositionNum(currentPosition),
-            style: Theme.of(context).textTheme.bodySmall,
-          ),
-          if(progress.duration != null && progress.duration! > 0) PlatformText(
-            S.of(context).timeRemainingNum(timeRemaining),
-            style: Theme.of(context).textTheme.bodySmall,
-          ),
-                ],
+    return Material(
+      child: Chip(
+          label: IntrinsicWidth(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            PlatformText(
+              S.of(context).progressNum(currentProgress),
+              style: Theme.of(context).textTheme.bodyMedium,
+            ),
+            const Divider(
+              height: 4,
+            ),
+            PlatformText(
+              S.of(context).currentPositionNum(currentPosition),
+              style: Theme.of(context).textTheme.bodySmall,
+            ),
+            if (progress.duration != null && progress.duration! > 0)
+              PlatformText(
+                S.of(context).timeRemainingNum(timeRemaining),
+                style: Theme.of(context).textTheme.bodySmall,
               ),
-        ));
+          ],
+        ),
+      )),
+    );
   }
 }

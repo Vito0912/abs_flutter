@@ -34,56 +34,59 @@ class PlayHistoryPage extends HookConsumerWidget {
             padding: const EdgeInsets.only(left: 16.0),
             child: Column(
               children: [
-                ListTile(
-                  key: UniqueKey(),
-                  dense: true,
-                  title: Row(
-                    children: [
-                      _getIcon(views[index].type, context),
-                      const SizedBox(width: 16),
-                      Flexible(
-                        child: PlatformText(
-                          '${_getHistoryText(views[index].type, context)} (${views[index].histories.length}x)',
-                          overflow: TextOverflow.clip,
+                Material(
+                  child: ListTile(
+                    key: UniqueKey(),
+                    dense: true,
+                    title: Row(
+                      children: [
+                        _getIcon(views[index].type, context),
+                        const SizedBox(width: 16),
+                        Flexible(
+                          child: PlatformText(
+                            '${_getHistoryText(views[index].type, context)} (${views[index].histories.length}x)',
+                            overflow: TextOverflow.clip,
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                  onTap: () {
-                    if (isExpanded) {
-                      expandedIndices.value = {...expandedIndices.value}
-                        ..remove(index);
-                    } else {
-                      expandedIndices.value = {...expandedIndices.value}
-                        ..add(index);
-                    }
-                  },
-                  leading: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      PlatformText(
-                          DateFormat.Hm().format(views[index].first.date)),
-                      if (views[index].isCompressed)
+                      ],
+                    ),
+                    onTap: () {
+                      if (isExpanded) {
+                        expandedIndices.value = {...expandedIndices.value}
+                          ..remove(index);
+                      } else {
+                        expandedIndices.value = {...expandedIndices.value}
+                          ..add(index);
+                      }
+                    },
+                    leading: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
                         PlatformText(
-                            DateFormat.Hm().format(views[index].last.date)),
-                    ],
-                  ),
-                  trailing: Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      PlatformText(
-                        Helper.formatTimeToReadable(views[index].first.position,
-                            precise: true),
-                      ),
-                      if (views[index].isCompressed)
+                            DateFormat.Hm().format(views[index].first.date)),
+                        if (views[index].isCompressed)
+                          PlatformText(
+                              DateFormat.Hm().format(views[index].last.date)),
+                      ],
+                    ),
+                    trailing: Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
                         PlatformText(
                           Helper.formatTimeToReadable(
-                              views[index].last.position,
+                              views[index].first.position,
                               precise: true),
                         ),
-                    ],
+                        if (views[index].isCompressed)
+                          PlatformText(
+                            Helper.formatTimeToReadable(
+                                views[index].last.position,
+                                precise: true),
+                          ),
+                      ],
+                    ),
                   ),
                 ),
                 if (isExpanded)
@@ -95,7 +98,8 @@ class PlayHistoryPage extends HookConsumerWidget {
                           padding: const EdgeInsets.symmetric(vertical: 4.0),
                           child: Row(
                             children: [
-                              PlatformText(DateFormat.Hm().format(history.date)),
+                              PlatformText(
+                                  DateFormat.Hm().format(history.date)),
                               const SizedBox(width: 16),
                               Flexible(
                                 child: PlatformText(

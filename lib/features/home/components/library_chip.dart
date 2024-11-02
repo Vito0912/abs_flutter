@@ -19,8 +19,10 @@ class LibraryChip extends ConsumerWidget {
     final connectionState = ref.watch(connectionProvider);
 
     if (!connectionState) {
-      return Chip(
-        label: Text(S.of(context).noConnection),
+      return Material(
+        child: Chip(
+          label: Text(S.of(context).noConnection),
+        ),
       );
     }
 
@@ -72,7 +74,8 @@ class LibraryChip extends ConsumerWidget {
         onTapDown: (_) => _onTapDown(context, true),
         onTapUp: (_) => _onTapDown(context, false),
         onTapCancel: () => _onTapDown(context, false),
-        child: InkWell(
+        child: Material(
+            child: InkWell(
           borderRadius: BorderRadius.circular(20),
           splashColor: Colors.blue.withAlpha(30),
           highlightColor: Colors.blue.withAlpha(50),
@@ -89,7 +92,7 @@ class LibraryChip extends ConsumerWidget {
               ),
             ),
           ),
-        ),
+        )),
       ),
     );
   }
