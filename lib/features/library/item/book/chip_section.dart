@@ -49,11 +49,13 @@ class ChipSection extends ConsumerWidget {
                         tabController.setIndex(context, 0);
                         context.pop();
                       },
-                      child: Chip(
-                          label: Text(value.value),
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 8.0, vertical: 4.0),
-                          labelStyle: const TextStyle(fontSize: 12.0)),
+                      child: Material(
+                        child: Chip(
+                            label: Text(value.value),
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 8.0, vertical: 4.0),
+                            labelStyle: const TextStyle(fontSize: 12.0)),
+                      ),
                     ),
                   ))
               .toList(),
