@@ -11,7 +11,8 @@ class EpisodeActions extends HookConsumerWidget {
   final String itemId;
   final PodcastEpisode episode;
 
-  const EpisodeActions({super.key, required this.itemId, required this.episode});
+  const EpisodeActions(
+      {super.key, required this.itemId, required this.episode});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

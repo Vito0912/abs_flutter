@@ -7,25 +7,31 @@ class SortOptions extends StatelessWidget {
   final ValueNotifier<String> sort;
   final ValueNotifier<bool> isAscending;
 
-   SortOptions({super.key, required this.filter, required this.sort, required this.isAscending});
+  SortOptions(
+      {super.key,
+      required this.filter,
+      required this.sort,
+      required this.isAscending});
 
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        DropdownButton<String>(
-          value: filter.value,
-          items: ['Show All', 'Incomplete', 'Complete', 'In Progress']
-              .map((String value) {
-            return DropdownMenuItem<String>(
-              value: value,
-              child: Text(value),
-            );
-          }).toList(),
-          onChanged: (String? newValue) {
-            filter.value = newValue!;
-          },
+        Material(
+          child: DropdownButton<String>(
+            value: filter.value,
+            items: ['Show All', 'Incomplete', 'Complete', 'In Progress']
+                .map((String value) {
+              return DropdownMenuItem<String>(
+                value: value,
+                child: Text(value),
+              );
+            }).toList(),
+            onChanged: (String? newValue) {
+              filter.value = newValue!;
+            },
+          ),
         ),
         PlatformIconButton(
           icon: const Icon(Icons.filter_alt_outlined),
@@ -53,7 +59,7 @@ class SortOptions extends StatelessWidget {
                 sortValue,
                 isSelected,
                 isAscending.value,
-                    () {
+                () {
                   if (isSelected) {
                     isAscending.value = !isAscending.value;
                   } else {
@@ -67,7 +73,7 @@ class SortOptions extends StatelessWidget {
                 sortValue,
                 isSelected,
                 isAscending.value,
-                    () {
+                () {
                   if (isSelected) {
                     isAscending.value = !isAscending.value;
                   } else {

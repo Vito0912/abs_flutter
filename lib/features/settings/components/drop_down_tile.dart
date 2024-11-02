@@ -41,17 +41,19 @@ class DropDownTile extends AbstractSettingsTile {
           PlatformText(title),
           Padding(
             padding: const EdgeInsets.only(left: 8),
-            child: DropdownButton<String>(
-                value: userSharedPreferences.getString(keyValue),
-                items: items.keys.map((String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(items[value]!),
-                  );
-                }).toList(),
-                onChanged: (String? value) {
-                  userSharedPreferences.setString(keyValue, value!);
-                }),
+            child: Material(
+              child: DropdownButton<String>(
+                  value: userSharedPreferences.getString(keyValue),
+                  items: items.keys.map((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(items[value]!),
+                    );
+                  }).toList(),
+                  onChanged: (String? value) {
+                    userSharedPreferences.setString(keyValue, value!);
+                  }),
+            ),
           )
         ],
       ),

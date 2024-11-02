@@ -162,20 +162,22 @@ class FilterButton extends HookConsumerWidget {
       items = filterLabels.keys.map((key) {
         return Hero(
           tag: key,
-          child: ListTile(
-            title: Text(filterLabels[key]!),
-            trailing: Icon(PlatformIcons(context).forward),
-            onTap: () {
-              Navigator.of(context).pop();
-              if (!noValueFilters.contains(key)) {
-                _animateToSubview(context, key, filterLabels, data, ref);
-              } else {
-                sortNotifier.state = sortNotifier.state.copyWith(
-                  filter: null,
-                  filterKey: key,
-                );
-              }
-            },
+          child: Material(
+            child: ListTile(
+              title: Text(filterLabels[key]!),
+              trailing: Icon(PlatformIcons(context).forward),
+              onTap: () {
+                Navigator.of(context).pop();
+                if (!noValueFilters.contains(key)) {
+                  _animateToSubview(context, key, filterLabels, data, ref);
+                } else {
+                  sortNotifier.state = sortNotifier.state.copyWith(
+                    filter: null,
+                    filterKey: key,
+                  );
+                }
+              },
+            ),
           ),
         );
       }).toList();
@@ -185,24 +187,26 @@ class FilterButton extends HookConsumerWidget {
         String item = entry.value;
         return Hero(
           tag: item,
-          child: ListTile(
-            title: PlatformText(item),
-            onTap: () {
-              if (selectedKey == 'series') {
-                sortNotifier.state = sortNotifier.state.copyWith(
-                  filter: entry.key,
-                  filterKey: selectedKey,
-                  sort: 'sequence',
-                  desc: 1,
-                );
-              } else {
-                sortNotifier.state = sortNotifier.state.copyWith(
-                  filter: entry.key,
-                  filterKey: selectedKey,
-                );
-              }
-              Navigator.pop(context);
-            },
+          child: Material(
+            child: ListTile(
+              title: PlatformText(item),
+              onTap: () {
+                if (selectedKey == 'series') {
+                  sortNotifier.state = sortNotifier.state.copyWith(
+                    filter: entry.key,
+                    filterKey: selectedKey,
+                    sort: 'sequence',
+                    desc: 1,
+                  );
+                } else {
+                  sortNotifier.state = sortNotifier.state.copyWith(
+                    filter: entry.key,
+                    filterKey: selectedKey,
+                  );
+                }
+                Navigator.pop(context);
+              },
+            ),
           ),
         );
       }).toList();

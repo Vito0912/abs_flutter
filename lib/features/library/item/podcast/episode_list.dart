@@ -114,13 +114,16 @@ class _EpisodeItemState extends State<EpisodeItem> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        InkWell(
-          onTap: () {
-            setState(() {
-              isExpanded = !isExpanded;
-            });
-          },
-          child: EpisodeHeader(episode: widget.episode, isExpanded: isExpanded),
+        Material(
+          child: InkWell(
+            onTap: () {
+              setState(() {
+                isExpanded = !isExpanded;
+              });
+            },
+            child:
+                EpisodeHeader(episode: widget.episode, isExpanded: isExpanded),
+          ),
         ),
         const SizedBox(height: 8),
         EpisodeActions(itemId: widget.itemId, episode: widget.episode),

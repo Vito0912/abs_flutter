@@ -25,14 +25,16 @@ class LibraryItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      radius: 16,
-      onTap: isLoading
-          ? null
-          : () {
-              context.push('/view/${item!.mediaType}/${item!.id}');
-            },
-      child: _content(context),
+    return Material(
+      child: InkWell(
+        radius: 16,
+        onTap: isLoading
+            ? null
+            : () {
+                context.push('/view/${item!.mediaType}/${item!.id}');
+              },
+        child: _content(context),
+      ),
     );
   }
 

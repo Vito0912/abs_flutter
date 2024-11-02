@@ -40,13 +40,19 @@ class _ServerInputState extends ConsumerState<ServerInput> {
   void validateInput() {
     final domain = ref.read(domainProvider).trim();
     final port = ref.read(portProvider).trim();
-    final portValid = int.tryParse(port) != null && int.parse(port) > 0 && int.parse(port) <= 65535;
+    final portValid = int.tryParse(port) != null &&
+        int.parse(port) > 0 &&
+        int.parse(port) <= 65535;
     final domainValid = domain.isNotEmpty;
-    final domainRegex = RegExp(r'^(?=.{1,253}$)(?:(?!-)[A-Za-z0-9-]{1,63}(?<!-)\.?)+[A-Za-z]{2,63}$');
+    final domainRegex = RegExp(
+        r'^(?=.{1,253}$)(?:(?!-)[A-Za-z0-9-]{1,63}(?<!-)\.?)+[A-Za-z]{2,63}$');
     final ipv4Regex = RegExp(r'^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$');
-    final ipv6Regex = RegExp(r'^(?:[A-Fa-f0-9]{1,4}:){7}[A-Fa-f0-9]{1,4}$|^(?:[A-Fa-f0-9]{1,4}:){1,7}:$|^(?:[A-Fa-f0-9]{1,4}:){1,6}:[A-Fa-f0-9]{1,4}$|^(?:[A-Fa-f0-9]{1,4}:){1,5}(?::[A-Fa-f0-9]{1,4}){1,2}$|^(?:[A-Fa-f0-9]{1,4}:){1,4}(?::[A-Fa-f0-9]{1,4}){1,3}$|^(?:[A-Fa-f0-9]{1,4}:){1,3}(?::[A-Fa-f0-9]{1,4}){1,4}$|^(?:[A-Fa-f0-9]{1,4}:){1,2}(?::[A-Fa-f0-9]{1,4}){1,5}$|^[A-Fa-f0-9]{1,4}:(?::[A-Fa-f0-9]{1,4}){1,6}$|^(?::(?::[A-Fa-f0-9]{1,4}){1,7}|:)$');
+    final ipv6Regex = RegExp(
+        r'^(?:[A-Fa-f0-9]{1,4}:){7}[A-Fa-f0-9]{1,4}$|^(?:[A-Fa-f0-9]{1,4}:){1,7}:$|^(?:[A-Fa-f0-9]{1,4}:){1,6}:[A-Fa-f0-9]{1,4}$|^(?:[A-Fa-f0-9]{1,4}:){1,5}(?::[A-Fa-f0-9]{1,4}){1,2}$|^(?:[A-Fa-f0-9]{1,4}:){1,4}(?::[A-Fa-f0-9]{1,4}){1,3}$|^(?:[A-Fa-f0-9]{1,4}:){1,3}(?::[A-Fa-f0-9]{1,4}){1,4}$|^(?:[A-Fa-f0-9]{1,4}:){1,2}(?::[A-Fa-f0-9]{1,4}){1,5}$|^[A-Fa-f0-9]{1,4}:(?::[A-Fa-f0-9]{1,4}){1,6}$|^(?::(?::[A-Fa-f0-9]{1,4}){1,7}|:)$');
 
-    final domainFormatValid = domainRegex.hasMatch(domain) || ipv4Regex.hasMatch(domain) || ipv6Regex.hasMatch(domain);
+    final domainFormatValid = domainRegex.hasMatch(domain) ||
+        ipv4Regex.hasMatch(domain) ||
+        ipv6Regex.hasMatch(domain);
 
     if (domainValid && portValid && domainFormatValid) {
       ref.read(isInputValidProvider.notifier).state = true;
@@ -97,7 +103,8 @@ class ProtocolDropdown extends StatelessWidget {
   final String protocol;
   final ValueChanged<String> onChanged;
 
-  const ProtocolDropdown({super.key, required this.protocol, required this.onChanged});
+  const ProtocolDropdown(
+      {super.key, required this.protocol, required this.onChanged});
 
   @override
   Widget build(BuildContext context) {
@@ -110,20 +117,23 @@ class ProtocolDropdown extends StatelessWidget {
         border: Border.all(color: Colors.grey),
       ),
       child: DropdownButtonHideUnderline(
-        child: DropdownButton<String>(
-          value: protocol,
-          items: <String>['http://', 'https://'].map((String value) {
-            return DropdownMenuItem<String>(
-              value: value,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: Text(value),
-              ),
-            );
-          }).toList(),
-          onChanged: (String? newValue) {
-            if (newValue != null) onChanged(newValue);
-          },
+        child: Material(
+          type: MaterialType.transparency,
+          child: DropdownButton<String>(
+            value: protocol,
+            items: <String>['http://', 'https://'].map((String value) {
+              return DropdownMenuItem<String>(
+                value: value,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: Text(value),
+                ),
+              );
+            }).toList(),
+            onChanged: (String? newValue) {
+              if (newValue != null) onChanged(newValue);
+            },
+          ),
         ),
       ),
     );

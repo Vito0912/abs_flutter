@@ -58,37 +58,39 @@ class _NotchContentState extends ConsumerState<NotchContent> {
               child: Row(
                 children: [
                   Expanded(
-                    child: TextField(
-                      controller: searchController,
-                      enabled: !widget.disableSearch,
-                      keyboardType: TextInputType.text,
-                      decoration: InputDecoration(
-                        prefixIcon: Icon(PlatformIcons(context).search),
-                        border: InputBorder.none,
-                        contentPadding: const EdgeInsets.only(top: 12),
-                        hintText: !widget.disableSearch
-                            ? S.of(context).search
-                            : S.of(context).searchDisabled,
-                        hintStyle: !widget.disableSearch
-                            ? Theme.of(context).textTheme.bodyLarge
-                            : Theme.of(context).textTheme.bodyLarge?.copyWith(
-                                  color: Theme.of(context).colorScheme.error,
-                                ),
-                        disabledBorder: InputBorder.none,
+                    child: Material(
+                      child: TextField(
+                        controller: searchController,
+                        enabled: !widget.disableSearch,
+                        keyboardType: TextInputType.text,
+                        decoration: InputDecoration(
+                          prefixIcon: Icon(PlatformIcons(context).search),
+                          border: InputBorder.none,
+                          contentPadding: const EdgeInsets.only(top: 12),
+                          hintText: !widget.disableSearch
+                              ? S.of(context).search
+                              : S.of(context).searchDisabled,
+                          hintStyle: !widget.disableSearch
+                              ? Theme.of(context).textTheme.bodyLarge
+                              : Theme.of(context).textTheme.bodyLarge?.copyWith(
+                                    color: Theme.of(context).colorScheme.error,
+                                  ),
+                          disabledBorder: InputBorder.none,
+                        ),
+                        autofocus: false,
+                        onChanged: widget.disableSearch
+                            ? null // Disable onChanged if disableSearch is true
+                            : (value) {
+                                if (_debounce?.isActive ?? false)
+                                  _debounce?.cancel();
+                                _debounce = Timer(_debouceDuration, () async {
+                                  librarySortNotifier.state =
+                                      librarySortNotifier.state.copyWith(
+                                    search: value,
+                                  );
+                                });
+                              },
                       ),
-                      autofocus: false,
-                      onChanged: widget.disableSearch
-                          ? null // Disable onChanged if disableSearch is true
-                          : (value) {
-                              if (_debounce?.isActive ?? false)
-                                _debounce?.cancel();
-                              _debounce = Timer(_debouceDuration, () async {
-                                librarySortNotifier.state =
-                                    librarySortNotifier.state.copyWith(
-                                  search: value,
-                                );
-                              });
-                            },
                     ),
                   ),
                   SortButton(),
