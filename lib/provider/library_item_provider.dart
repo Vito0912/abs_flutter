@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:abs_api/abs_api.dart';
+import 'package:abs_flutter/api/library_items/request/library_item_request.dart';
 import 'package:abs_flutter/models/file.dart';
 import 'package:abs_flutter/provider/download_provider.dart';
 import 'package:abs_flutter/provider/log_provider.dart';
@@ -12,6 +13,7 @@ import 'package:path/path.dart' as p;
 final itemProvider =
     FutureProvider.family<LibraryItemBase?, String>((ref, id) async {
   final api = ref.watch(apiProvider);
+  final apiNew = ref.watch(apiProviderNew);
 
   if (api == null) {
     return null;
@@ -25,6 +27,10 @@ final itemProvider =
 
   if (download == null || download.filePath == null) {
     try {
+      final responseNew = await apiNew?.getLibraryItemApi().getLibraryItem(
+            libraryItemRequest: LibraryItemRequest(id: id),
+          );
+      print(responseNew);
       final response = await api.getLibraryItemApi().getLibraryItem(id: id);
       if (response.data == null || response.data!.oneOf.value == null) {
         return null;
