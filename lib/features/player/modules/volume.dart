@@ -15,10 +15,10 @@ class Volume extends StatefulWidget {
   final double size;
 
   @override
-  VolumeState createState() => VolumeState();
+  _VolumeState createState() => _VolumeState();
 }
 
-class VolumeState extends State<Volume> {
+class _VolumeState extends State<Volume> {
   final GlobalKey _buttonKey = GlobalKey();
   OverlayEntry? _overlayEntry;
 

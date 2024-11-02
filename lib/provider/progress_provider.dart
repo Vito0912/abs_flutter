@@ -19,6 +19,8 @@ class ProgressProvider extends ChangeNotifier {
     ref.listen<AbsApi?>(apiProvider, (previousApi, nextApi) {
       api = nextApi;
     });
+
+    addListener(() => print('Change'));
   }
 
   Future<void> getAllProgress() async {

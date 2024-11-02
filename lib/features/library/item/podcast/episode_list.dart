@@ -21,10 +21,10 @@ class EpisodeList extends StatefulWidget {
   });
 
   @override
-  EpisodeListState createState() => EpisodeListState();
+  _EpisodeListState createState() => _EpisodeListState();
 }
 
-class EpisodeListState extends State<EpisodeList> {
+class _EpisodeListState extends State<EpisodeList> {
   final List<Episode> _displayedEpisodes = [];
   int _currentPage = 0;
   bool _isLoadingMore = false;
@@ -103,10 +103,10 @@ class EpisodeItem extends StatefulWidget {
   });
 
   @override
-  EpisodeItemState createState() => EpisodeItemState();
+  _EpisodeItemState createState() => _EpisodeItemState();
 }
 
-class EpisodeItemState extends State<EpisodeItem> {
+class _EpisodeItemState extends State<EpisodeItem> {
   bool isExpanded = false;
 
   @override

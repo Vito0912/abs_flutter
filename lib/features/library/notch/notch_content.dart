@@ -15,10 +15,10 @@ class NotchContent extends ConsumerStatefulWidget {
       {super.key, this.disableFilter = false, this.disableSearch = false});
 
   @override
-  NotchContentState createState() => NotchContentState();
+  _NotchContentState createState() => _NotchContentState();
 }
 
-class NotchContentState extends ConsumerState<NotchContent> {
+class _NotchContentState extends ConsumerState<NotchContent> {
   late TextEditingController searchController;
   final Duration _debouceDuration = const Duration(milliseconds: 500);
   Timer? _debounce;
@@ -80,9 +80,8 @@ class NotchContentState extends ConsumerState<NotchContent> {
                       onChanged: widget.disableSearch
                           ? null // Disable onChanged if disableSearch is true
                           : (value) {
-                              if (_debounce?.isActive ?? false) {
+                              if (_debounce?.isActive ?? false)
                                 _debounce?.cancel();
-                              }
                               _debounce = Timer(_debouceDuration, () async {
                                 librarySortNotifier.state =
                                     librarySortNotifier.state.copyWith(

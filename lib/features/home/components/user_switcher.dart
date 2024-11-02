@@ -10,8 +10,9 @@ class UserSwitcher extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return PlatformPopupMenu(
-        options: _generateOptions(context, ref),
-        icon: Icon(PlatformIcons(context).accountCircle));
+      options: _generateOptions(context, ref),
+      icon: Icon(PlatformIcons(context).accountCircle)
+    );
   }
 
   List<PopupMenuOption> _generateOptions(BuildContext context, WidgetRef ref) {
@@ -21,9 +22,11 @@ class UserSwitcher extends ConsumerWidget {
       final index = entry.key;
       final user = entry.value;
       return PopupMenuOption(
-        label: user.username,
+        label: user.username ?? '',
         onTap: (PopupMenuOption option) {
-          ref.watch(selectedUserProvider.notifier).state = index;
+          ref
+              .watch(selectedUserProvider.notifier)
+              .state = index;
         },
       );
     }).toList();

@@ -10,6 +10,7 @@ class UserSharedPreferences extends CacheProvider {
   final ProviderContainer _container;
   int? _selectedUserIndex;
   List<User>? _users;
+  late CurrentUserNotifier _userNotifier;
 
   UserSharedPreferences(this._container);
 
@@ -114,6 +115,11 @@ class UserSharedPreferences extends CacheProvider {
     _users = _container.read(usersProvider);
     _container.listen<List<User>>(usersProvider, (previousUsers, newUsers) {
       _users = newUsers;
+    });
+
+    _userNotifier = _container.read(currentUserProvider.notifier);
+    _container.listen<User?>(currentUserProvider, (previousUser, newUser) {
+      _userNotifier = _container.read(currentUserProvider.notifier);
     });
 
     return Future.value();

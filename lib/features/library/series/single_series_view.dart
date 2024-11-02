@@ -15,14 +15,14 @@ class SingleSeriesView extends ConsumerStatefulWidget {
   final String seriesName;
 
   @override
-  SingleSeriesViewState createState() => SingleSeriesViewState();
+  _SingleSeriesViewState createState() => _SingleSeriesViewState();
 }
 
-class SingleSeriesViewState extends ConsumerState<SingleSeriesView> {
+class _SingleSeriesViewState extends ConsumerState<SingleSeriesView> {
   final ScrollController _scrollController = ScrollController();
   bool _isLoadingMore = false;
   // TODO: Find a better way to check if the list has more items
-  final bool _hasMore = true;
+  bool _hasMore = true;
 
   @override
   void initState() {

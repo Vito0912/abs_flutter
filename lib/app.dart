@@ -21,10 +21,10 @@ class AbsApp extends ConsumerStatefulWidget {
   const AbsApp({super.key});
 
   @override
-  AbsAppState createState() => AbsAppState();
+  _AbsAppState createState() => _AbsAppState();
 }
 
-class AbsAppState extends ConsumerState<AbsApp> with WidgetsBindingObserver {
+class _AbsAppState extends ConsumerState<AbsApp> with WidgetsBindingObserver {
   @override
   void initState() {
     super.initState();

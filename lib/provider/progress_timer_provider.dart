@@ -70,9 +70,8 @@ class TimerNotifier extends StateNotifier<DateTime?> {
 
     // Everything under 1 second is considered a fault (like seeking)
     if (listenedSeconds <= 1 ||
-        listenedSeconds > ((settings[Constants.SYNC_INTERVAL] ?? 60) * 2)) {
+        listenedSeconds > ((settings[Constants.SYNC_INTERVAL] ?? 60) * 2))
       return;
-    }
 
     final PlaybackSessionBookExpanded? bookSession =
         ref.read(sessionProvider.notifier).book;
@@ -121,7 +120,7 @@ class TimerNotifier extends StateNotifier<DateTime?> {
               element.itemId ==
                   player
                       .audioService.mediaItem.value!.extras!['libraryItemId'] &&
-              element.userId == user.id &&
+              element.userId == user.id! &&
               element.episodeId ==
                   player.audioService.mediaItem.value!.extras!['episodeId'])
           .firstOrNull;
@@ -144,7 +143,7 @@ class TimerNotifier extends StateNotifier<DateTime?> {
             player.audioService.mediaItem.value!.extras!['episodeId'];
         ProgressItem newProgress = ProgressItem(
           itemId: player.audioService.mediaItem.value!.extras!['libraryItemId'],
-          userId: user.id,
+          userId: user.id!,
           sessionId: bookSession?.id ?? podcastSession?.id,
           episodeId: episodeId,
           currentTime: currentTime,

@@ -12,10 +12,10 @@ class OwnStats extends ConsumerStatefulWidget {
   const OwnStats({super.key});
 
   @override
-  OwnStatsState createState() => OwnStatsState();
+  _OwnStatsState createState() => _OwnStatsState();
 }
 
-class OwnStatsState extends ConsumerState<OwnStats> {
+class _OwnStatsState extends ConsumerState<OwnStats> {
   bool _is7DaysSelected = true;
 
   @override

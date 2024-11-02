@@ -57,7 +57,7 @@ class BookView extends ConsumerWidget {
       LibraryItem castItem, m.User currentUser) {
     return PlatformScaffold(
       appBar: PlatformAppBar(
-        title: PlatformText(castItem.media!.bookMedia!.metadata.title),
+        title: PlatformText(castItem.media!.bookMedia!.metadata.title!),
         trailingActions: const [
           DownloadInfoButton(
             show: true,
@@ -77,7 +77,7 @@ class BookView extends ConsumerWidget {
                     borderRadius: BorderRadius.circular(8.0),
                     child: Stack(children: [
                       AlbumImage(
-                        castItem.id,
+                        castItem.id!,
                         size: 200,
                         withProgress: true,
                         barHeight: 6,

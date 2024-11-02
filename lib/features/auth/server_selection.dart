@@ -337,6 +337,13 @@ class LoginButton extends ConsumerWidget {
               .getMeApi()
               .login(loginRequest: loginRequest);
 
+          if (res.data!.user == null) {
+            ref
+                .read(loginStateProvider.notifier)
+                .setError(S.current.noUserData);
+            return;
+          }
+
           User user = res.data!.user;
           user.server = server;
           user.setting = user.setting ?? Setting();

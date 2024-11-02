@@ -131,7 +131,7 @@ class PlaybackSessionNotifier
     } else {
       // Offline playback
       final item = ref.read(itemProvider(id));
-      if (item.value == null) {
+      if (item.value == null || download == null) {
         log('Could not create session for offline playback');
         state =
             const AsyncValue.error('Item is not available', StackTrace.empty);

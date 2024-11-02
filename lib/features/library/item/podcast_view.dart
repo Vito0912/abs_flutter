@@ -6,7 +6,6 @@ import 'package:abs_flutter/features/library/item/podcast/shimmer_loading.dart';
 import 'package:abs_flutter/features/library/item/podcast/sort_options.dart';
 import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/provider/library_item_provider.dart';
-import 'package:abs_flutter/provider/log_provider.dart';
 import 'package:abs_flutter/provider/progress_provider.dart';
 import 'package:abs_flutter/provider/session_provider.dart';
 import 'package:abs_flutter/widgets/album_image.dart';
@@ -47,7 +46,7 @@ class PodcastView extends HookConsumerWidget {
       ref.read(progressProvider).progress ?? {},
     );
 
-    log(filteredEpisodes.toString(), name: 'filteredEpisodes');
+    print(filteredEpisodes);
 
     final scrollController = ScrollController();
 
@@ -77,7 +76,7 @@ class PodcastView extends HookConsumerWidget {
                   onPressed: nextEpisode != null
                       ? () => ref
                           .read(sessionProvider.notifier)
-                          .load(nextEpisode.libraryItemId, nextEpisode.id)
+                          .load(nextEpisode.libraryItemId!, nextEpisode.id)
                       : null,
                   child: PlatformText(S.of(context).playNextEpisode),
                 ),
@@ -116,7 +115,7 @@ class PodcastView extends HookConsumerWidget {
     for (var i in range) {
       final episode = podcastEpisodes[i];
       final matchingProgress =
-          mediaProgressList['${episode.libraryItemId}${episode.id}'];
+          mediaProgressList['${episode.libraryItemId}${episode.id ?? ''}'];
 
       if (matchingProgress != null &&
           ((matchingProgress.isFinished ?? false) ||

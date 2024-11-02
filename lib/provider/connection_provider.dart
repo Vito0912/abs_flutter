@@ -150,7 +150,7 @@ class ConnectionNotifier extends StateNotifier<bool> {
     if (api == null || allUsers.isEmpty) return;
 
     for (m.User user in allUsers) {
-      List<ProgressItem> progresses = progressList.getProgressByUser(user.id);
+      List<ProgressItem> progresses = progressList.getProgressByUser(user.id!);
       List<ItemSessionKey> distinctItemSessionKeys = progresses
           .map((item) =>
               ItemSessionKey(item.itemId, item.sessionId, item.episodeId))

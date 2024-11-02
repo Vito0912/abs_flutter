@@ -122,6 +122,7 @@ class PlatformSettings extends ConsumerWidget {
                   } else {
                     userSharedPreferences.setString(
                         Constants.DOWNLOAD_PATH, selectedDirectory);
+                    print(selectedDirectory);
                   }
                 },
               )
@@ -293,7 +294,7 @@ class PlatformSettings extends ConsumerWidget {
           ref.watch(selectedUserProvider.notifier).state = index;
           context.pop();
         },
-        title: user.username,
+        title: user.username ?? '',
         description: user.server?.url ?? '',
         leading: Icon(PlatformIcons(context).person),
         enabled: index != selectedUser,

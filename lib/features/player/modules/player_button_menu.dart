@@ -21,7 +21,7 @@ class PlayerButtonMenu extends HookWidget {
   final PlayerProvider player;
   final PlayerStatusProvider playerStatus;
   final Chapter? currentChapter;
-  const PlayerButtonMenu(
+  PlayerButtonMenu(
       {super.key,
       required this.size,
       required this.speedStream,
