@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:abs_flutter/api/me/bookmark.dart';
+import 'package:abs_flutter/api/me/request/create_bookmark_request.dart';
 import 'package:abs_flutter/api/me/user.dart';
 import 'package:abs_flutter/api/routes/abs_api.dart';
 import 'package:abs_flutter/provider/log_provider.dart';
@@ -56,6 +57,41 @@ class BookmarkProvider extends ChangeNotifier {
     return bookmarks
         ?.where((element) => element.libraryItemId == itemId)
         .toList();
+  }
+
+  Future<bool> createBookmark(String itemId, int time, String title) async {
+    if (api == null) return false;
+    log('createBookmark', name: 'progress_provider');
+
+    try {
+      final response = await api!.getMeApi().createBookmark(itemId,
+          createBookmarkRequest:
+              CreateBookmarkRequest(time: time, title: title));
+      if (response.data == null) return false;
+      bookmarks?.add(response.data!);
+      notifyListeners();
+      return true;
+    } catch (e) {
+      log(e.toString(), name: 'progress_provider');
+      return false;
+    }
+  }
+
+  Future<bool> deleteBookmark(String itemId, int time) async {
+    if (api == null) return false;
+    log('deleteBookmark', name: 'progress_provider');
+
+    try {
+      final success = await api!.getMeApi().deleteBookmark(itemId, time);
+      if (!success) return false;
+      bookmarks?.removeWhere(
+          (element) => element.libraryItemId == itemId && element.time == time);
+      notifyListeners();
+      return true;
+    } catch (e) {
+      log(e.toString(), name: 'progress_provider');
+      return false;
+    }
   }
 }
 

@@ -104,6 +104,7 @@ class PlayerButtonMenu extends HookConsumerWidget {
           padding: const EdgeInsets.only(left: 8.0),
           child: Bookmarks(
               bookmarks: bookmarks,
+              libraryItemId: libraryItemId,
               child: Icon(
                 EvaIcons.bookmark,
                 size: size,

@@ -65,6 +65,7 @@ class Metainfo extends ConsumerWidget {
           if (bookmarks != null && bookmarks.isNotEmpty)
             Bookmarks(
               bookmarks: bookmarks,
+              libraryItemId: castItem.id,
               child: PlatformText(S.of(context).viewBookmarks),
             ),
         ],

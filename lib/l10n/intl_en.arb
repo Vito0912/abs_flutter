@@ -702,5 +702,8 @@
   "@waitingForDownload": {},
   "year": "Year",
   "@year": {},
-  "viewBookmarks": "View Bookmarks"
+  "viewBookmarks": "View Bookmarks",
+  "createBookmark": "Create Bookmark",
+  "create": "Create",
+  "createBookmarkTitle": "Create bookmark"
 }
