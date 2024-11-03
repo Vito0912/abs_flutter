@@ -64,6 +64,7 @@ dependencies:
   collection: any
   built_collection: any
   built_value: any
+  media_kit_libs_linux: any
 
 dev_dependencies:
   flutter_test:
