@@ -1,38 +1,62 @@
-name: buchable
-version: 1.4.0
-summary: An ABS app
-description: Client for Audiobookshelf
+name: buchable 
+base: core22 
+version: 'VERSION'
+summary: The unofficial cross-platform app for Audiobookshelf
+description: |
+  Fast Account Switching - Switch between multiple Audiobookshelf accounts with different servers in just two clicks.
+  🚀 Advanced Caching - Caches items, libraries and more to save a ton of mobile data
+  📄 Pagination - Load more items when you reach the end of lists to save data.
+  📈 Does Not Rely on a Socket - Use the app even with an occasionally interrupted connection.
+  📅 Up-to-date Sync - The app stays synchronized with the server when connected to the internet.
+  🔁 Queue Support - Add multiple items to the queue and play them in order. Even works offline.
+  🔊 Advanced Player Controls - Skip chapters, set a sleep timer, adjust playback speed, and more.
+  📴 Offline Support - Listen to your audiobooks even when you're offline. Sync offline up to one year
+  🔎 Fast Search - Search for audiobooks. Preserves query while switching library or user.
+  📖 History - Track where you paused, skipped, and resumed.
+  📊 Stats - View your listening habits over the past 365 days, including total time, frequency, and recent activity.
+  HTML Support - Converts HTML in descriptions and makes links clickable.
+  🚀 Fast Loading - Option to enable fast loading that loads even the biggest libraries in a fraction of time.
+  🚗 Car Player Mode (Big Buttons) - Big buttons for easy control while driving.
 
-confinement: strict
-base: core22
 grade: stable
-
-slots:
-  dbus-buchable:
-    interface: dbus
-    bus: session
-    name: org.bar.buchable
+confinement: strict
 
 apps:
   buchable:
-    command: buchable
+    command: buchable/abs_flutter
     extensions: [gnome]
     plugs:
-      - network
-    slots:
-      - dbus-super-cool-app
+      - home                 
+      - removable-media      
+
+
 parts:
+  flutter:
+    source: https://github.com/flutter/flutter.git
+    source-tag: stable
+    plugin: dump
+    override-build: |
+      export PATH="/root/parts/flutter/src/bin:$PATH"
+
   buchable:
     source: .
     plugin: flutter
     flutter-target: lib/main.dart
-  uet-lms:
-    source: .
-    plugin: flutter
-    flutter-target: lib/main.dart
+    override-build: |
+      export PATH="/root/parts/flutter/src/bin:$PATH"
+      flutter clean
+      rm -rf build
+      rm -rf linux/flutter/ephemeral/
+      flutter build linux  
+      mkdir -p $SNAPCRAFT_PRIME/buchable
+      cp -r build/linux/x64/release/bundle/* $SNAPCRAFT_PRIME/buchable 
     build-packages:
       - libsecret-1-dev
       - libjsoncpp-dev
+      - libmpv-dev
+      - libayatana-appindicator3-dev
     stage-packages:
-      - libsecret-1-0
+      - libsecret-1-dev
       - libjsoncpp-dev
+      - libmpv-dev
+      - libayatana-appindicator3-dev
