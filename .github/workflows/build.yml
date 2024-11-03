@@ -2,6 +2,12 @@ name: Flutter Build
 
 on:
   workflow_dispatch:
+  
+  push:
+    branches:
+      - main
+    tags:
+      - 'v*.*.*'
 
 env:
   KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
