@@ -2312,6 +2312,46 @@ class S {
       args: [],
     );
   }
+
+  /// `View Bookmarks`
+  String get viewBookmarks {
+    return Intl.message(
+      'View Bookmarks',
+      name: 'viewBookmarks',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create Bookmark`
+  String get createBookmark {
+    return Intl.message(
+      'Create Bookmark',
+      name: 'createBookmark',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create`
+  String get create {
+    return Intl.message(
+      'Create',
+      name: 'create',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create bookmark`
+  String get createBookmarkTitle {
+    return Intl.message(
+      'Create bookmark',
+      name: 'createBookmarkTitle',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

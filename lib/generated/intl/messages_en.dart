@@ -143,6 +143,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Continue Listening"),
         "continueSeries":
             MessageLookupByLibrary.simpleMessage("Continue Series"),
+        "create": MessageLookupByLibrary.simpleMessage("Create"),
+        "createBookmark":
+            MessageLookupByLibrary.simpleMessage("Create Bookmark"),
+        "createBookmarkTitle":
+            MessageLookupByLibrary.simpleMessage("Create bookmark"),
         "currentDownloads":
             MessageLookupByLibrary.simpleMessage("Current Downloads"),
         "currentPositionNum": m1,
@@ -393,6 +398,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "username": MessageLookupByLibrary.simpleMessage("Username"),
         "usernameOrPasswordNotEmpty": MessageLookupByLibrary.simpleMessage(
             "Username and password cannot be empty"),
+        "viewBookmarks": MessageLookupByLibrary.simpleMessage("View Bookmarks"),
         "viewChapters": MessageLookupByLibrary.simpleMessage("View Chapters"),
         "viewOnGithub": MessageLookupByLibrary.simpleMessage("View on GitHub"),
         "waitTillRedirect": MessageLookupByLibrary.simpleMessage(

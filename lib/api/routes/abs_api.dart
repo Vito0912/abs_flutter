@@ -201,6 +201,53 @@ class ABSApi {
     }
   }
 
+  static Future<bool> makeApiDeleteRequest({
+    required String route,
+    required Dio dio,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    Map<String, dynamic>? data,
+  }) async {
+    // Define the request options, including headers and security details
+    final options = Options(
+      method: 'DELETE',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'http',
+            'scheme': 'bearer',
+            'name': 'BearerAuth',
+          },
+        ],
+        ...?extra,
+      },
+      contentType: 'application/json',
+    );
+
+    try {
+      final response = await dio.request<Object>(
+        route,
+        options: options,
+        cancelToken: cancelToken,
+        data: data,
+      );
+
+      return response.statusCode != null &&
+          response.statusCode! >= 200 &&
+          response.statusCode! < 300;
+    } catch (error, stackTrace) {
+      log("$error\n$stackTrace", name: route);
+      if (error is DioException && error.response != null) {
+        log(error.response!.data.toString(), name: route);
+      }
+      return false;
+    }
+  }
+
   MeApi getMeApi() {
     return MeApi(dio);
   }
