@@ -393,6 +393,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "username": MessageLookupByLibrary.simpleMessage("Username"),
         "usernameOrPasswordNotEmpty": MessageLookupByLibrary.simpleMessage(
             "Username and password cannot be empty"),
+        "viewBookmarks": MessageLookupByLibrary.simpleMessage("View Bookmarks"),
         "viewChapters": MessageLookupByLibrary.simpleMessage("View Chapters"),
         "viewOnGithub": MessageLookupByLibrary.simpleMessage("View on GitHub"),
         "waitTillRedirect": MessageLookupByLibrary.simpleMessage(

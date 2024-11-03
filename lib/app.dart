@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:abs_flutter/generated/l10n.dart';
+import 'package:abs_flutter/provider/bookmark_provider.dart';
 import 'package:abs_flutter/provider/log_provider.dart';
 import 'package:abs_flutter/provider/progress_provider.dart';
 import 'package:abs_flutter/provider/session_provider.dart';
@@ -60,9 +61,11 @@ class _AbsAppState extends ConsumerState<AbsApp> with WidgetsBindingObserver {
     final settings = ref.watch(specificKeysSettingsProvider(
         [Constants.DARK_MODE, Constants.LANGUAGE, Constants.AMOLED_MODE]));
     final userIndex = ref.watch(selectedUserProvider);
+    //TODO: Two calls. Unify me api calls
     if (userIndex >= 0) {
       final progressProv = ref.read(progressProvider);
       progressProv.getAllProgress();
+      ref.read(bookmarkProvider).fetchAllBookmarks();
     }
 
     return PlatformApp.router(

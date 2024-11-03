@@ -77,7 +77,7 @@ class BookView extends ConsumerWidget {
                     borderRadius: BorderRadius.circular(8.0),
                     child: Stack(children: [
                       AlbumImage(
-                        castItem.id!,
+                        castItem.id,
                         size: 200,
                         withProgress: true,
                         barHeight: 6,

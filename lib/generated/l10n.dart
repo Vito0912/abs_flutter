@@ -2312,6 +2312,16 @@ class S {
       args: [],
     );
   }
+
+  /// `View Bookmarks`
+  String get viewBookmarks {
+    return Intl.message(
+      'View Bookmarks',
+      name: 'viewBookmarks',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

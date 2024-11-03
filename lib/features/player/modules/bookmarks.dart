@@ -1,3 +1,4 @@
+import 'package:abs_flutter/api/me/bookmark.dart';
 import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/provider/player_provider.dart';
 import 'package:abs_flutter/util/helper.dart';
@@ -6,10 +7,10 @@ import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class Bookmarks extends ConsumerWidget {
-  final List<dynamic> chapters;
+  final List<Bookmark> bookmarks;
   final Widget child;
 
-  const Bookmarks({super.key, required this.chapters, required this.child})
+  const Bookmarks({super.key, required this.bookmarks, required this.child})
       : super();
 
   @override
@@ -24,7 +25,7 @@ class Bookmarks extends ConsumerWidget {
         showPlatformDialog(
           context: context,
           builder: (_) => PlatformAlertDialog(
-            title: Text(S.of(context).chaptersNum(chapters.length)),
+            title: Text(S.of(context).chaptersNum(bookmarks.length)),
             content: Container(
               constraints: BoxConstraints(
                 maxWidth: 500,
@@ -34,14 +35,12 @@ class Bookmarks extends ConsumerWidget {
               child: ListView.builder(
                 shrinkWrap: true,
                 itemBuilder: (BuildContext context, int index) {
-                  final chapter = chapters[index];
+                  final Bookmark bookmark = bookmarks[index];
                   return ListTile(
                     onTap: isPlaying
                         ? () {
-                            player.audioService.seek(Duration(
-                                seconds:
-                                    double.parse(chapter['start'].toString())
-                                        .toInt()));
+                            player.audioService
+                                .seek(Duration(seconds: bookmark.time));
                           }
                         : null,
                     title: Row(
@@ -54,9 +53,9 @@ class Bookmarks extends ConsumerWidget {
                             children: [
                               Flexible(
                                 child: Tooltip(
-                                    message: chapter['title'],
+                                    message: bookmark.title,
                                     child: Text(
-                                      chapter['title'],
+                                      bookmark.title,
                                       overflow: TextOverflow.ellipsis,
                                     )),
                               ),
@@ -64,19 +63,13 @@ class Bookmarks extends ConsumerWidget {
                           ),
                         ),
                         const SizedBox(width: 16),
-                        PlatformText(Helper.formatTimeToClock(chapter['start']),
+                        PlatformText(Helper.formatTimeToClock(bookmark.time),
                             style: Theme.of(context).textTheme.labelSmall)
                       ],
                     ),
-                    subtitle: PlatformText(
-                        Helper.formatTimeToReadable(
-                            chapter['end'] - chapter['start'],
-                            short: true,
-                            precise: true),
-                        style: Theme.of(context).textTheme.labelSmall),
                   );
                 },
-                itemCount: chapters.length,
+                itemCount: bookmarks.length,
               ),
             ),
             actions: [

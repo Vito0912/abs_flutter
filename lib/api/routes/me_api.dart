@@ -1,5 +1,6 @@
 import 'package:abs_flutter/api/me/login.dart';
 import 'package:abs_flutter/api/me/request/login_request.dart';
+import 'package:abs_flutter/api/me/user.dart';
 import 'package:abs_flutter/api/routes/abs_api.dart';
 import 'package:dio/dio.dart';
 
@@ -22,6 +23,22 @@ class MeApi {
       headers: headers,
       extra: extra,
       dio: _dio,
+    );
+  }
+
+  Future<Response<User>> getUser({
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+  }) async {
+    return ABSApi.makeApiGetRequest(
+      route: '/api/me',
+      fromJson: User.fromJson,
+      cancelToken: cancelToken,
+      headers: headers,
+      extra: extra,
+      dio: _dio,
+      queryParams: {},
     );
   }
 }

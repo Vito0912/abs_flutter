@@ -20,7 +20,7 @@ class ProgressProvider extends ChangeNotifier {
       api = nextApi;
     });
 
-    addListener(() => print('Change'));
+    addListener(() {});
   }
 
   Future<void> getAllProgress() async {

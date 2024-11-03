@@ -1,19 +1,26 @@
 import 'package:abs_flutter/api/library_items/audio_file.dart';
 import 'package:abs_flutter/api/library_items/library_item.dart';
+import 'package:abs_flutter/api/me/bookmark.dart';
 import 'package:abs_flutter/features/library/item/book/progress.dart';
+import 'package:abs_flutter/features/player/modules/bookmarks.dart';
 import 'package:abs_flutter/features/player/modules/chapters.dart';
 import 'package:abs_flutter/generated/l10n.dart';
+import 'package:abs_flutter/provider/bookmark_provider.dart';
 import 'package:abs_flutter/util/helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class Metainfo extends StatelessWidget {
+class Metainfo extends ConsumerWidget {
   const Metainfo({super.key, required this.castItem});
 
   final LibraryItem castItem;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final List<Bookmark>? bookmarks =
+        ref.watch(bookmarkProvider).getBookmarksForItem(castItem.id);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -53,7 +60,13 @@ class Metainfo extends StatelessWidget {
                         'end': e.end,
                       })
                   .toList(),
-              child: PlatformText(S.of(context).viewChapters))
+              child: PlatformText(S.of(context).viewChapters)),
+          const SizedBox(height: 4.0),
+          if (bookmarks != null && bookmarks.isNotEmpty)
+            Bookmarks(
+              bookmarks: bookmarks,
+              child: PlatformText(S.of(context).viewBookmarks),
+            ),
         ],
       ],
     );

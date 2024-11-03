@@ -1,27 +1,30 @@
+import 'package:abs_flutter/api/me/bookmark.dart';
+import 'package:abs_flutter/features/player/modules/bookmarks.dart';
 import 'package:abs_flutter/features/player/modules/chapters.dart';
 import 'package:abs_flutter/features/player/modules/queue_button.dart';
 import 'package:abs_flutter/features/player/modules/sleep_timer.dart';
 import 'package:abs_flutter/features/player/modules/speed_control.dart';
 import 'package:abs_flutter/features/player/modules/volume.dart';
 import 'package:abs_flutter/models/chapter.dart';
+import 'package:abs_flutter/provider/bookmark_provider.dart';
 import 'package:abs_flutter/provider/player_provider.dart';
 import 'package:abs_flutter/provider/player_status_provider.dart';
 import 'package:abs_flutter/provider/queue_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:icons_plus/icons_plus.dart';
 
-class PlayerButtonMenu extends HookWidget {
+class PlayerButtonMenu extends HookConsumerWidget {
   final double size;
   final Stream<double> speedStream;
   final String? libraryItemId;
   final PlayerProvider player;
   final PlayerStatusProvider playerStatus;
   final Chapter? currentChapter;
-  PlayerButtonMenu(
+  const PlayerButtonMenu(
       {super.key,
       required this.size,
       required this.speedStream,
@@ -31,12 +34,10 @@ class PlayerButtonMenu extends HookWidget {
       this.currentChapter});
 
   @override
-  Widget build(BuildContext context) {
-    final volumeStream = player.audioService.player.volumeStream;
-
+  Widget build(BuildContext context, WidgetRef ref) {
     final isExpanded = useState(false);
 
-    final expandedButtons = _expandedButtons(context, volumeStream);
+    final expandedButtons = _expandedButtons(context, ref, player);
 
     return Column(
       children: [
@@ -51,7 +52,7 @@ class PlayerButtonMenu extends HookWidget {
         ),
         if (isExpanded.value)
           Container(
-            padding: const EdgeInsets.only(top: 4.0),
+            padding: const EdgeInsets.only(top: 6.0),
             decoration: BoxDecoration(
               border: Border(
                 top: BorderSide(
@@ -73,7 +74,11 @@ class PlayerButtonMenu extends HookWidget {
     );
   }
 
-  List<Widget> _expandedButtons(BuildContext context, volumeStream) {
+  List<Widget> _expandedButtons(
+      BuildContext context, WidgetRef ref, PlayerProvider player) {
+    final volumeStream = player.audioService.player.volumeStream;
+    final List<Bookmark>? bookmarks =
+        ref.watch(bookmarkProvider).getBookmarksForItem(libraryItemId);
     return [
       if (player.audioService.mediaItem.value?.extras?['chapters'] != null)
         Chapters(
@@ -93,6 +98,16 @@ class PlayerButtonMenu extends HookWidget {
           onPressed: () {
             context.push('/history/$libraryItemId');
           },
+        ),
+      if (bookmarks != null && bookmarks.isNotEmpty)
+        Padding(
+          padding: const EdgeInsets.only(left: 8.0),
+          child: Bookmarks(
+              bookmarks: bookmarks,
+              child: Icon(
+                EvaIcons.bookmark,
+                size: size,
+              )),
         ),
       Volume(
         volumeStream: volumeStream,
