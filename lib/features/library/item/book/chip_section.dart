@@ -43,9 +43,11 @@ class ChipSection extends ConsumerWidget {
                             .read(libraryItemSearchProvider.notifier)
                             .state
                             .copyWith(
-                              filterKey: filterKey,
-                              filter: value.key,
-                            );
+                                filterKey: filterKey,
+                                filter: value.key,
+                                search: "",
+                                sort:
+                                    filterKey == 'series' ? 'sequence' : null);
                         tabController.setIndex(context, 0);
                         context.pop();
                       },
