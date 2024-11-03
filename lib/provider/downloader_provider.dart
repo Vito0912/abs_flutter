@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 
@@ -193,8 +194,8 @@ class DownloadProvider extends ChangeNotifier {
     downloadList.add(downloadInfo);
 
     // Save item to BaseDirectory.applicationDocuments/abs_flutter/itemId/meta.json
-    String json =
-        api.AbsApi().serializers.toJson(api.LibraryItemBase.serializer, item);
+    String json = jsonEncode(item);
+
     if (metaPath != null) {
       // Create the parent directory
       final dir = Directory(metaPath).parent;
