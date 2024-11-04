@@ -5,6 +5,10 @@
 
 For Android, iOS*<sup>1,2</sup>, macOS*<sup>1,2</sup>, Windows, Linux, and Web*<sup>3</sup>
 
+<a href="https://apps.microsoft.com/detail/9n3m43ss4889?mode=direct">
+	<img src="https://get.microsoft.com/images/en-us%20dark.svg" width="200"/>
+</a>
+
 “Buch” (German for "book") + "able" = "Buchable"
 
 ## Important
