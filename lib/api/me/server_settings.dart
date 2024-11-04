@@ -19,7 +19,7 @@ class ServerSettings with _$ServerSettings {
     @JsonKey(name: "rateLimitLoginRequests")
     int? rateLimitLoginRequests,
     @JsonKey(name: "rateLimitLoginWindow") int? rateLimitLoginWindow,
-    @JsonKey(name: "backupSchedule") String? backupSchedule,
+    @JsonKey(name: "backupSchedule") dynamic backupSchedule,
     @JsonKey(name: "backupsToKeep") int? backupsToKeep,
     @JsonKey(name: "maxBackupSize") int? maxBackupSize,
     @JsonKey(name: "loggerDailyLogsToKeep") int? loggerDailyLogsToKeep,

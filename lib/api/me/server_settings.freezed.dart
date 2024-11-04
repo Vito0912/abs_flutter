@@ -43,7 +43,7 @@ mixin _$ServerSettings {
   @JsonKey(name: "rateLimitLoginWindow")
   int? get rateLimitLoginWindow => throw _privateConstructorUsedError;
   @JsonKey(name: "backupSchedule")
-  String? get backupSchedule => throw _privateConstructorUsedError;
+  dynamic get backupSchedule => throw _privateConstructorUsedError;
   @JsonKey(name: "backupsToKeep")
   int? get backupsToKeep => throw _privateConstructorUsedError;
   @JsonKey(name: "maxBackupSize")
@@ -100,7 +100,7 @@ abstract class $ServerSettingsCopyWith<$Res> {
       @JsonKey(name: "metadataFileFormat") String? metadataFileFormat,
       @JsonKey(name: "rateLimitLoginRequests") int? rateLimitLoginRequests,
       @JsonKey(name: "rateLimitLoginWindow") int? rateLimitLoginWindow,
-      @JsonKey(name: "backupSchedule") String? backupSchedule,
+      @JsonKey(name: "backupSchedule") dynamic backupSchedule,
       @JsonKey(name: "backupsToKeep") int? backupsToKeep,
       @JsonKey(name: "maxBackupSize") int? maxBackupSize,
       @JsonKey(name: "loggerDailyLogsToKeep") int? loggerDailyLogsToKeep,
@@ -205,7 +205,7 @@ class _$ServerSettingsCopyWithImpl<$Res, $Val extends ServerSettings>
       backupSchedule: freezed == backupSchedule
           ? _value.backupSchedule
           : backupSchedule // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as dynamic,
       backupsToKeep: freezed == backupsToKeep
           ? _value.backupsToKeep
           : backupsToKeep // ignore: cast_nullable_to_non_nullable
@@ -283,7 +283,7 @@ abstract class _$$ServerSettingsImplCopyWith<$Res>
       @JsonKey(name: "metadataFileFormat") String? metadataFileFormat,
       @JsonKey(name: "rateLimitLoginRequests") int? rateLimitLoginRequests,
       @JsonKey(name: "rateLimitLoginWindow") int? rateLimitLoginWindow,
-      @JsonKey(name: "backupSchedule") String? backupSchedule,
+      @JsonKey(name: "backupSchedule") dynamic backupSchedule,
       @JsonKey(name: "backupsToKeep") int? backupsToKeep,
       @JsonKey(name: "maxBackupSize") int? maxBackupSize,
       @JsonKey(name: "loggerDailyLogsToKeep") int? loggerDailyLogsToKeep,
@@ -386,7 +386,7 @@ class __$$ServerSettingsImplCopyWithImpl<$Res>
       backupSchedule: freezed == backupSchedule
           ? _value.backupSchedule
           : backupSchedule // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as dynamic,
       backupsToKeep: freezed == backupsToKeep
           ? _value.backupsToKeep
           : backupsToKeep // ignore: cast_nullable_to_non_nullable
@@ -513,7 +513,7 @@ class _$ServerSettingsImpl implements _ServerSettings {
   final int? rateLimitLoginWindow;
   @override
   @JsonKey(name: "backupSchedule")
-  final String? backupSchedule;
+  final dynamic backupSchedule;
   @override
   @JsonKey(name: "backupsToKeep")
   final int? backupsToKeep;
@@ -595,8 +595,8 @@ class _$ServerSettingsImpl implements _ServerSettings {
                 other.rateLimitLoginRequests == rateLimitLoginRequests) &&
             (identical(other.rateLimitLoginWindow, rateLimitLoginWindow) ||
                 other.rateLimitLoginWindow == rateLimitLoginWindow) &&
-            (identical(other.backupSchedule, backupSchedule) ||
-                other.backupSchedule == backupSchedule) &&
+            const DeepCollectionEquality()
+                .equals(other.backupSchedule, backupSchedule) &&
             (identical(other.backupsToKeep, backupsToKeep) ||
                 other.backupsToKeep == backupsToKeep) &&
             (identical(other.maxBackupSize, maxBackupSize) ||
@@ -640,7 +640,7 @@ class _$ServerSettingsImpl implements _ServerSettings {
         metadataFileFormat,
         rateLimitLoginRequests,
         rateLimitLoginWindow,
-        backupSchedule,
+        const DeepCollectionEquality().hash(backupSchedule),
         backupsToKeep,
         maxBackupSize,
         loggerDailyLogsToKeep,
@@ -688,7 +688,7 @@ abstract class _ServerSettings implements ServerSettings {
       @JsonKey(name: "rateLimitLoginRequests")
       final int? rateLimitLoginRequests,
       @JsonKey(name: "rateLimitLoginWindow") final int? rateLimitLoginWindow,
-      @JsonKey(name: "backupSchedule") final String? backupSchedule,
+      @JsonKey(name: "backupSchedule") final dynamic backupSchedule,
       @JsonKey(name: "backupsToKeep") final int? backupsToKeep,
       @JsonKey(name: "maxBackupSize") final int? maxBackupSize,
       @JsonKey(name: "loggerDailyLogsToKeep") final int? loggerDailyLogsToKeep,
@@ -742,7 +742,7 @@ abstract class _ServerSettings implements ServerSettings {
   int? get rateLimitLoginWindow;
   @override
   @JsonKey(name: "backupSchedule")
-  String? get backupSchedule;
+  dynamic get backupSchedule;
   @override
   @JsonKey(name: "backupsToKeep")
   int? get backupsToKeep;

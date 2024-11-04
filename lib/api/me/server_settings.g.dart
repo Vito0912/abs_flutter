@@ -20,7 +20,7 @@ _$ServerSettingsImpl _$$ServerSettingsImplFromJson(Map<String, dynamic> json) =>
       metadataFileFormat: json['metadataFileFormat'] as String?,
       rateLimitLoginRequests: (json['rateLimitLoginRequests'] as num?)?.toInt(),
       rateLimitLoginWindow: (json['rateLimitLoginWindow'] as num?)?.toInt(),
-      backupSchedule: json['backupSchedule'] as String?,
+      backupSchedule: json['backupSchedule'],
       backupsToKeep: (json['backupsToKeep'] as num?)?.toInt(),
       maxBackupSize: (json['maxBackupSize'] as num?)?.toInt(),
       loggerDailyLogsToKeep: (json['loggerDailyLogsToKeep'] as num?)?.toInt(),
