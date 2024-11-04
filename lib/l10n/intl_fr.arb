@@ -1,4 +1,5 @@
 {
+  "@@locale": "fr",
   "addANewUser": "Ajouter un nouvel utilisateur",
   "@addANewUser": {},
   "addUser": "Ajouter un utilisateur",
