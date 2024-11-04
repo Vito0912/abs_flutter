@@ -219,6 +219,42 @@ jobs:
             windows-artifacts/windows-Release-${{ env.VERSION }}.zip
             windows-artifacts/windows-installer-release-${{ env.VERSION }}.msix
 
+  publish-release:
+    runs-on: ubuntu-latest
+    needs: [build-ubuntu, build-windows]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Download Ubuntu Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: ubuntu-build-artifacts
+          path: ./ubuntu-build-artifacts
+
+      - name: Move AAB file
+        run: |
+          mv ubuntu-build-artifacts/app-release.aab app-release.aab
+
+      - name: Extract version from pubspec.yaml
+        id: extract_version
+        run: |
+          VERSION=$(grep '^version:' pubspec.yaml | sed 's/version: //;s/+.*//')
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+
+      - name: Publish to Play Store
+        uses: r0adkll/upload-google-play@v1
+        with:
+          serviceAccountJsonPlainText: ${{ secrets.SERVICE_ACCOUNT_JSON }}
+          packageName: de.vito.absapp.abs_flutter
+          releaseFiles: app-release.aab
+          track: beta
+          status: inProgress
+          releaseName: v${{ env.VERSION }}
+          inAppUpdatePriority: 2
+          userFraction: 1.0
+          whatsNewDirectory: android/whatsnew
+
   deploy:
     runs-on: ubuntu-latest
     needs: build-ubuntu
