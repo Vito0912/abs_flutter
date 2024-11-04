@@ -1,6 +1,11 @@
 name: Flutter Build
 
 on:
+  push:
+    branches:
+      - main
+    tags:
+      - 'v*.*.*'
   workflow_dispatch:
 
 env:
@@ -170,16 +175,75 @@ jobs:
             windows-installer-release-${{ env.VERSION }}.msix
             windows-installer-release-${{ env.VERSION }}-store.msix
 
+  build-linux:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: 3.22.3
+
+      - name: Install Flutter dependencies
+        run: flutter pub get
+
+      - name: Install linux dependencies
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install -y curl git unzip xz-utils zip libglu1-mesa
+          sudo apt-get install -y libayatana-appindicator3-dev 
+          sudo apt-get install -y libmpv-dev mpv 
+          sudo apt-get install -y clang cmake git ninja-build pkg-config libgtk-3-dev liblzma-dev libstdc++-12-dev
+
+      - name: Build Flutter linux
+        run: flutter build linux --release
+
+      - name: Zip the linux build directory
+        run: |
+          cd build/linux/x64/release/bundle
+          zip -r linux-release.zip .
+          mv linux-release.zip ../../../../../
+          cd ../../../../../
+
+      - name: Extract version from pubspec.yaml
+        id: extract_version
+        run: |
+          VERSION=$(grep '^version:' pubspec.yaml | sed 's/version: //;s/+.*//')
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+
+      - name: Replace VERSION in snapcraft.yaml
+        run: |
+          sed -i "s/VERSION/${{ env.VERSION }}/g" snap/snapcraft.yaml
+
+      - uses: snapcore/action-build@v1
+        id: build
+
+      - name: Rename the snap
+        run: |
+          mv buchable_${{ env.VERSION }}_amd64.snap linux-release.snap
+
+      - name: Upload Linux build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: linux-build-artifacts
+          path: |
+            linux-release.zip
+            linux-release.snap
+
   create-release:
     runs-on: ubuntu-latest
-    needs: [build-ubuntu, build-windows]
+    needs: [build-ubuntu, build-windows, build-linux]
     permissions:
       contents: write
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Download Linux Artifacts
+      - name: Download Ubuntu Artifacts
         uses: actions/download-artifact@v4
         with:
           name: ubuntu-build-artifacts
@@ -191,17 +255,24 @@ jobs:
           name: windows-build-artifacts
           path: ./windows-artifacts
 
+      - name: Download Linux Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: linux-build-artifacts
+
       - name: Extract version from pubspec.yaml
         id: extract_version
         run: |
           VERSION=$(grep '^version:' pubspec.yaml | sed 's/version: //;s/+.*//')
           echo "VERSION=$VERSION" >> $GITHUB_ENV
 
-      - name: Rename app-release.apk
+      - name: Rename
         run: | 
           mv linux-artifacts/app-release.apk linux-artifacts/android-release-${{ env.VERSION }}.apk
           mv linux-artifacts/app-release.aab linux-artifacts/android-release-${{ env.VERSION }}.aab
           mv linux-artifacts/web-release.zip linux-artifacts/web-release-${{ env.VERSION }}.zip
+          mv linux-build-artifacts/linux-release.zip linux-build-artifacts/linux-release-${{ env.VERSION }}.zip
+          mv linux-build-artifacts/linux-release.snap linux-build-artifacts/linux-release-${{ env.VERSION }}.snap
 
       - name: Create GitHub Release
         id: create_release
@@ -218,6 +289,8 @@ jobs:
             linux-artifacts/web-release-${{ env.VERSION }}.zip
             windows-artifacts/windows-Release-${{ env.VERSION }}.zip
             windows-artifacts/windows-installer-release-${{ env.VERSION }}.msix
+            linux-build-artifacts/linux-release-${{ env.VERSION }}.zip
+            linux-build-artifacts/linux-release-${{ env.VERSION }}.snap
 
   deploy:
     runs-on: ubuntu-latest

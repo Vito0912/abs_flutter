@@ -1,8 +1,10 @@
 [Desktop Entry]
-Name=Flutter Linux App
-Comment=Flutter Linux launcher icon
-Exec=app_icon
-Icon=app_icon.png
+Name=Buchable
+Comment=The unofficial cross-platform app for Audiobookshelf, available on Android, iOS, Windows, and Linux.
+Exec=buchable
+Icon=${SNAP}/meta/gui/app_icon.png
 Terminal=false
 Type=Application
 Categories=Entertainment;
+Keywords=Flutter;
+StartupNotify=false
