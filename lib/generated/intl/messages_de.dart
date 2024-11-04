@@ -80,13 +80,12 @@ class MessageLookup extends MessageLookupByLibrary {
       "Gerät: ${device}\nOS: ${os}\nApp Version: ${version}";
 
   static String m23(displayName) =>
-      "Herunterladen von \'{\'displayName\'}\' abgeschlossen";
+      "Herunterladen von ${displayName} abgeschlossen";
 
-  static String m24(displayName) =>
-      "\'{\'displayName\'}\' wird heruntergeladen";
+  static String m24(displayName) => "${displayName} wird heruntergeladen";
 
   static String m25(displayName) =>
-      "Es ist ein Fehler beim Herunterladen von \'{\'displayName\'}\' aufgetreten";
+      "Es ist ein Fehler beim Herunterladen von ${displayName} aufgetreten";
 
   static String m26(length) => "Länge: ${length}";
 
@@ -186,6 +185,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "downloadComplete":
             MessageLookupByLibrary.simpleMessage("Herunterladen abgeschlossen"),
         "downloadCompleteBody": m23,
+        "downloadErrorDescription": MessageLookupByLibrary.simpleMessage(
+            "Die Datei wurde nicht korrekt heruntergeladen. Du kannst versuchen, die Daten auf dem Gerät zu löschen und sie erneut herunterzuladen, indem du auf den Button klickst."),
+        "downloadInfo": MessageLookupByLibrary.simpleMessage("Download Infos"),
+        "downloadPath": MessageLookupByLibrary.simpleMessage("Download Pfad"),
+        "downloadPathDescription": MessageLookupByLibrary.simpleMessage(
+            "Der Pfad, in dem die Downloads gespeichert werden."),
         "downloading":
             MessageLookupByLibrary.simpleMessage("Wird heruntergeladen"),
         "downloadingBody": m24,
@@ -200,10 +205,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "enabled": MessageLookupByLibrary.simpleMessage("Aktiviert"),
         "enterValidUsernameOrPassword": MessageLookupByLibrary.simpleMessage(
             "Bitte gib eine gültige IP/Domain und einen Port ein, bevor du deinen Benutzernamen und dein Passwort eingibst."),
+        "episodeId": MessageLookupByLibrary.simpleMessage("Episoden Id"),
         "error": MessageLookupByLibrary.simpleMessage("Fehler"),
         "errorDownloading":
             MessageLookupByLibrary.simpleMessage("Fehler beim Herunterladen"),
         "errorDownloadingBody": m25,
+        "errorItemNotFound": MessageLookupByLibrary.simpleMessage(
+            "Error: Dieser Inhalt wurde nicht gefunden!"),
         "exit": MessageLookupByLibrary.simpleMessage("Beenden"),
         "failed": MessageLookupByLibrary.simpleMessage("Fehlgeschlagen"),
         "fastForward": MessageLookupByLibrary.simpleMessage("Vorspulen"),
@@ -212,6 +220,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "fastForwardSecondsDescription": MessageLookupByLibrary.simpleMessage(
             "Lege die Anzahl der Sekunden fest, die beim Drücken der Vorspultaste übersprungen werden sollen."),
         "feedOpen": MessageLookupByLibrary.simpleMessage("Feed offen"),
+        "filename": MessageLookupByLibrary.simpleMessage("Dateiname"),
+        "filepath": MessageLookupByLibrary.simpleMessage("Dateipfad"),
         "filter": MessageLookupByLibrary.simpleMessage("Filter"),
         "finished": MessageLookupByLibrary.simpleMessage("Fertig"),
         "general": MessageLookupByLibrary.simpleMessage("Allgemein"),
@@ -222,10 +232,14 @@ class MessageLookup extends MessageLookupByLibrary {
                 "Ob der schnelle Nutzerwechsel angezeigt werden soll"),
         "inProgress": MessageLookupByLibrary.simpleMessage("In Bearbeitung"),
         "information": MessageLookupByLibrary.simpleMessage("Informationen"),
+        "itemId": MessageLookupByLibrary.simpleMessage("Medien Id"),
         "itemLength": m26,
+        "itemNotFoundDescription": MessageLookupByLibrary.simpleMessage(
+            "Der Inhalt konnte nicht gefunden werden. Dies kann an einem Netzwerkfehler liegen oder daran, dass das Element nicht mehr existiert, aber noch im Cache gespeichert ist."),
         "itemNumChapters": m27,
         "itemProgress": m28,
         "itemPublishedYear": m29,
+        "itemType": MessageLookupByLibrary.simpleMessage("Medientyp"),
         "jumpToLastPosition": MessageLookupByLibrary.simpleMessage(
             "Zur letzten Position springen"),
         "jumpToLastPositionDescription": MessageLookupByLibrary.simpleMessage(
@@ -236,6 +250,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "last7Days": MessageLookupByLibrary.simpleMessage("Letzte 7 Tage"),
         "libraries": MessageLookupByLibrary.simpleMessage("Bibliotheken"),
         "library": MessageLookupByLibrary.simpleMessage("Bibliothek"),
+        "libraryName": MessageLookupByLibrary.simpleMessage("Bibliotheksname"),
         "libraryStats":
             MessageLookupByLibrary.simpleMessage("Bibliotekstatistik"),
         "listenAgain": MessageLookupByLibrary.simpleMessage("Erneut hören"),
@@ -276,6 +291,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Wir haben Probleme, eine Verbindung zum Server herzustellen."),
         "noItemsFound":
             MessageLookupByLibrary.simpleMessage("Keine Elemente gefunden"),
+        "noPath": MessageLookupByLibrary.simpleMessage("Kein Pfad"),
         "noSeriesSelected":
             MessageLookupByLibrary.simpleMessage("Keine Serie ausgewählt"),
         "noUserData": MessageLookupByLibrary.simpleMessage(
@@ -362,6 +378,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "size": MessageLookupByLibrary.simpleMessage("Größe"),
         "sleepTimer": MessageLookupByLibrary.simpleMessage("Sleeptimer"),
         "sort": MessageLookupByLibrary.simpleMessage("Sortieren"),
+        "sortSeriesAsc":
+            MessageLookupByLibrary.simpleMessage("Sortiere Serien Aufsteigend"),
         "stats": MessageLookupByLibrary.simpleMessage("Statistiken"),
         "stop": MessageLookupByLibrary.simpleMessage("Stopp"),
         "stopPlayerUntilSync":

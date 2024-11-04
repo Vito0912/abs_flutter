@@ -1,296 +1,84 @@
 {
-  "enableNotificationsDownload": "Veuillez activer les notifications pour suivre l'avancement du téléchargement, et être capable de télécharger les fichiers en arrière-plan.",
-  "@enableNotificationsDownload": {},
-  "libraries": "Bibliothèques",
-  "@libraries": {},
-  "errorDownloadingBody": "Une erreur est survenue lors du téléchargement de {displayName}",
-  "@errorDownloadingBody": {},
-  "fastForward": "Avance rapide",
-  "@fastForward": {},
-  "fastForwardSecondsDescription": "Définissez le nombre de secondes à avancer lorsque le bouton Avance Rapide est pressé.",
-  "@fastForwardSecondsDescription": {},
-  "filter": "Filtre",
-  "@filter": {},
-  "general": "Général",
-  "@general": {},
-  "inProgress": "En cours",
-  "@inProgress": {},
-  "lockProgressBar": "Verrouiller la barre de progression du média",
-  "@lockProgressBar": {},
-  "minimize": "Réduire",
-  "@minimize": {},
-  "minimizeToTray": "Réduire dans la barre d'état système",
-  "@minimizeToTray": {},
-  "itemId": "Identifiant de l'élément",
-  "@itemId": {},
-  "itemNotFoundDescription": "L'élément n'a pu être trouvé. Cela peut être du à une erreur réseau ou parce que le fichier n'existe plus mais est toujours affiché.",
-  "@itemNotFoundDescription": {},
-  "itemPublishedYear": "Année de Publication : {year}",
-  "@itemPublishedYear": {
-    "placeholders": {
-      "year": {
-        "type": "String"
-      }
-    }
-  },
-  "language": "Langue",
-  "@language": {},
-  "languages": "Langues",
-  "@languages": {},
-  "downloadPathDescription": "Le chemin ou les téléchargements sont enregistrés. Pour modifier cela vous devez d'abord supprimer tous les téléchargements.",
-  "@downloadPathDescription": {},
-  "minimizeToTrayDescription": "Cette option masque l'application de la barre des tâches et l'affiche dans la barre d'état système.",
-  "@minimizeToTrayDescription": {},
-  "mustEnterValidAddress": "Vous devez saisir une adresse de serveur valide",
-  "@mustEnterValidAddress": {},
-  "noConnection": "Pas de Connexion",
-  "@noConnection": {},
-  "next": "Suivant",
-  "@next": {},
-  "nextChapter": "Chapitre Suivant",
-  "@nextChapter": {},
-  "noDownloads": "Pas de téléchargements",
-  "@noDownloads": {},
-  "noPath": "Pas de chemin",
-  "@noPath": {},
-  "notFinished": "Non terminé",
-  "@notFinished": {},
-  "notStarted": "Non démarré",
-  "@notStarted": {},
-  "notTriedYet": "Pas encore de tentative",
-  "@notTriedYet": {},
-  "notificationHeading": "Les notifications devraient être activées",
-  "@notificationHeading": {},
-  "offlineSavedProgress": "Sauvegarde de la progression Hors-Ligne",
-  "@offlineSavedProgress": {},
-  "password": "Mot de passe",
-  "@password": {},
-  "ok": "OK",
-  "@ok": {},
-  "pause": "Pause",
-  "@pause": {},
-  "pleaseCheckInternet": "Veuillez vérifier votre connexion internet et essayer à nouveau.",
-  "@pleaseCheckInternet": {},
-  "playHistory": "Historique de Lecture",
-  "@playHistory": {},
-  "playNextEpisode": "Lire l'épisode suivant",
-  "@playNextEpisode": {},
-  "playbackSpeed": "Vitesse",
-  "@playbackSpeed": {},
-  "player": "Lecteur",
-  "@player": {},
-  "playerSettings": "Paramètres du lecteur",
-  "@playerSettings": {},
-  "previous": "Précédent",
-  "@previous": {},
-  "progressAsChaptersDescription": "Activez cette option pour afficher la progression dans le lecteur et les notification sur la base des chapitres. Si désactivée, la progression sera affichée sur la base de l'élément intégral.",
-  "@progressAsChaptersDescription": {},
-  "progressNum": "Progression Courante : {progress} %",
-  "@progressNum": {
-    "placeholders": {
-      "progress": {
-        "type": "String"
-      }
-    }
-  },
-  "recentSeries": "Séries Récentes",
-  "@recentSeries": {},
-  "recentlyAdded": "Ajouté récemment",
-  "@recentlyAdded": {},
-  "readMore": "Lire plus",
-  "@readMore": {},
-  "serverSelection": "Sélection du serveur",
-  "@serverSelection": {},
-  "restartRequired": "Redémarrage Requis",
-  "@restartRequired": {},
-  "search": "Rechercher",
-  "@search": {},
-  "settings": "Paramètres",
-  "@settings": {},
-  "shakeResetTimer": "Secouer pour mettre à zéro le minuteur de la mise en veille",
-  "@shakeResetTimer": {},
-  "success": "Succès",
-  "@success": {},
-  "sleepTimer": "Minuteur de mise en veille",
-  "@sleepTimer": {},
-  "signOut": "Se Déconnecter",
-  "@signOut": {},
-  "sort": "Tri",
-  "@sort": {},
-  "stopPlayerUntilSync": "Arrêter le lecteur jusqu'à la synchronisation",
-  "@stopPlayerUntilSync": {},
-  "sync": "Synchroniser",
-  "@sync": {},
-  "syncIntervalDescription": "Défini la fréquence à laquelle l'application doit synchroniser avec le serveur. Veuillez redémarrer l'application pour que la modification soit appliquée.",
-  "@syncIntervalDescription": {},
-  "timeRemainingNum": "Temps Restant : {time}",
-  "@timeRemainingNum": {
-    "placeholders": {
-      "time": {
-        "type": "String"
-      }
-    }
-  },
-  "usernameOrPasswordNotEmpty": "Le nom d'utilisateur et le mot de passe ne peuvent être vides",
-  "@usernameOrPasswordNotEmpty": {},
-  "timerText": "{time} min",
-  "@timerText": {
-    "placeholders": {
-      "time": {
-        "type": "String"
-      }
-    }
-  },
-  "updatedAt": "Mis à jour à",
-  "@updatedAt": {},
-  "username": "Nom d'utilisateur",
-  "@username": {},
-  "totalTimeListened": "Temps d'écoute total",
-  "@totalTimeListened": {},
-  "unknownTitle": "Titre inconnu",
-  "@unknownTitle": {},
-  "user": "Utilisateur",
-  "@user": {},
-  "waitTillRedirect": "Veuillez attendre d'être redirigé vers /init. Vous n'êtes actuellement pas connecté.",
-  "@waitTillRedirect": {},
-  "year": "Année",
-  "@year": {},
-  "waitingForDownload": "En attente de démarrage du téléchargement",
-  "@waitingForDownload": {},
+  "addANewUser": "Ajouter un nouvel utilisateur",
+  "@addANewUser": {},
+  "addUser": "Ajouter un utilisateur",
+  "@addUser": {},
+  "aggressiveCaching": "Mise en mémoire tampon agressive",
+  "@aggressiveCaching": {},
   "aggressiveCachingDescription": "Lorsque cette option est activée, l'application va activer la mise en mémoire tampon agressive. Cela inclus stocker les chemins qui peuvent contenir des données nécessitant des mises à jour régulières, comme récupérer la progression de tous les éléments. Dans ces cas, la dernière position connue sera utilisée à moins que vous ouvriez spécifiquement un seul élément. Ces chemins auront une durée de mise en tampon plus courte.",
   "@aggressiveCachingDescription": {},
+  "allDownloads": "Tous les téléchargements",
+  "@allDownloads": {},
+  "amoledMode": "Mode AMOLED",
+  "@amoledMode": {},
+  "ascending": "Montant",
+  "@ascending": {},
+  "attribution": "Attribution",
+  "@attribution": {},
+  "author": "Auteur",
+  "@author": {},
+  "authors": "Auteurs",
+  "@authors": {},
+  "back": "Précédent",
+  "@back": {},
+  "bookCover": "Couverture du livre",
+  "@bookCover": {},
+  "boostLoading": "Accélérer le chargement",
+  "@boostLoading": {},
   "boostLoadingDescription": "Lorsque cette option est activée, l'application n'utilise pas la mise en mémoire tampon en temps réel. Il y aura toujours une tentative de récupération des dernières données depuis le serveur lors de l'accès à des données en mémoire tampon afin d'afficher le contenu immédiatement. Une fois les données à jour récupérées, l'ancienne mémoire tampon est remplacée, cela assure l'affichage des données les plus à jour lors du prochain lancement de l'application. En résultat, vous verrez toujours les données du dernier cycle de récupération des données depuis le serveur.",
   "@boostLoadingDescription": {},
+  "boostLoadingSubtitle": "Veuillez lire la description pour en savoir plus sur la fonctionnalité.",
+  "@boostLoadingSubtitle": {},
+  "caching": "Mise en mémoire tampon",
+  "@caching": {},
+  "cachingHeader": "Mise en mémoire tampon",
+  "@cachingHeader": {},
+  "cancel": "Annuler",
+  "@cancel": {},
+  "carPlayer": "Lecteur de Voiture",
+  "@carPlayer": {},
+  "changeLibrary": "Changer de bibliothèque",
+  "@changeLibrary": {},
+  "chapters": "Chapitres",
+  "@chapters": {},
+  "chaptersNum": "Chapitres ({num})",
+  "@chaptersNum": {
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "clearCache": "Vider la mise en mémoire tampon",
+  "@clearCache": {},
+  "close": "Fermer",
+  "@close": {},
+  "collapseSeries": "Réduire les séries",
+  "@collapseSeries": {},
   "collapseSeriesDescription": "Une fois l'option activée, les éléments d'une série seront groupés ensemble dans la vue bibliothèque, un seul élément représentera la série entière.",
   "@collapseSeriesDescription": {},
-  "dateFormatMinuteSecondShort": "{minutes}m {seconds}s",
-  "@dateFormatMinuteSecondShort": {
-    "placeholders": {
-      "minutes": {
-        "type": "int"
-      },
-      "seconds": {
-        "type": "int"
-      }
-    }
-  },
+  "consecutiveDays": "Jours consécutifs",
+  "@consecutiveDays": {},
   "continueListening": "Continuer l'écoute",
   "@continueListening": {},
-  "dateFormatDayHourMinuteShort": "{days}j {hours}h {minutes}m",
-  "@dateFormatDayHourMinuteShort": {
+  "continueSeries": "Continuer les Séries",
+  "@continueSeries": {},
+  "currentDownloads": "Téléchargements en cours",
+  "@currentDownloads": {},
+  "currentPositionNum": "Position actuelle : {position}",
+  "@currentPositionNum": {
     "placeholders": {
-      "days": {
-        "type": "int"
-      },
-      "hours": {
-        "type": "int"
-      },
-      "minutes": {
-        "type": "int"
-      }
-    }
-  },
-  "dateFormatMinuteShort": "{count}m",
-  "@dateFormatMinuteShort": {
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
-  "dateFormatSecondShort": "{count}s",
-  "@dateFormatSecondShort": {
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
-  "dateFormatHourMinuteSecondShort": "{hours}h {minutes}m {seconds}s",
-  "@dateFormatHourMinuteSecondShort": {
-    "placeholders": {
-      "hours": {
-        "type": "int"
-      },
-      "minutes": {
-        "type": "int"
-      },
-      "seconds": {
-        "type": "int"
-      }
-    }
-  },
-  "dateFormatHourShort": "{count}h",
-  "@dateFormatHourShort": {
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
-  "dateFormatHourMinuteShort": "{hours}h {minutes}m",
-  "@dateFormatHourMinuteShort": {
-    "placeholders": {
-      "hours": {
-        "type": "int"
-      },
-      "minutes": {
-        "type": "int"
-      }
-    }
-  },
-  "downloadErrorDescription": "Le fichier n'a pas été téléchargé correctement. Vous pouvez tenter de supprimer les données sur le terminal en cliquant sur le bouton et le télécharger à nouveau.",
-  "@downloadErrorDescription": {},
-  "errorDownloading": "Erreur lors du téléchargement",
-  "@errorDownloading": {},
-  "ifTheQuickAccountSwitcherShouldBeShown": "Défini si le sélecteur rapide de comptes doit être affiché",
-  "@ifTheQuickAccountSwitcherShouldBeShown": {},
-  "itemLength": "Durée : {length}",
-  "@itemLength": {
-    "placeholders": {
-      "length": {
+      "position": {
         "type": "String"
       }
     }
   },
-  "jumpToLastPositionDescription": "Lorsque cette option est activée, le lecteur ira à la dernière position lorsque le bouton lecture est pressé",
-  "@jumpToLastPositionDescription": {},
-  "lockProgressBarDescription": "Lorsque cette option est activée, la barre de progression dans la notification du média est verrouillée, le système d'exploitation doit le supporter",
-  "@lockProgressBarDescription": {},
-  "markItemsFinishedAfterDescription": "Détermine le temps en secondes avant la fin d'un élément à partir duquel ce dernier doit être marqué en terminé. Définir ce réglage à 0 marquera l'élément comme terminé uniquement à la toute fin. Si une valeur positive est définie, l'élément sera marqué comme terminé lorsque le lecteur attendra ce temps avant la fin.",
-  "@markItemsFinishedAfterDescription": {},
-  "numBooksInSeries": "{numBooks, plural, =0 {Pas de Livres} =1 {1 Livre} other {{numBooks} Livres}}",
-  "@numBooksInSeries": {
-    "placeholders": {
-      "numBooks": {
-        "type": "num"
-      }
-    }
-  },
-  "showAccountSwitcherDescription": "Activez cette option pour ajouter une icône bouton dans la barre de l'application pour accéder rapidement au sélecteur de compte. Cela va réduire la taille de la barre de l'application.",
-  "@showAccountSwitcherDescription": {},
-  "rewindSecondsDescription": "Définissez le nombre de secondes que vous voulez reculer lorsque le bouton rembobiner est pressé.",
-  "@rewindSecondsDescription": {},
+  "darkMode": "Mode Sombre",
+  "@darkMode": {},
   "dateFormatDay": "{count, plural, one {{count}  jour} other {{count} jours}}",
   "@dateFormatDay": {
     "placeholders": {
       "count": {
-        "type": "int"
-      }
-    }
-  },
-  "stopPlayerWhileSyncingDescription": "Activez cette option pour éviter que le lecteur débute la lecture depuis la derniere position synchronisée. Cela permet de s'assurer que la lecture reprend à la bonne position. Si désactivée, la lecture pourrait changer rapidement après le démarrage, qui peut induire des pertes de données. Activer cela permet de limiter la consommation de données.",
-  "@stopPlayerWhileSyncingDescription": {},
-  "dateFormatHourMinuteSecond": "{hours, plural, one {{hours} heure} other {{hours} heures}} {minutes, plural, one {{minutes} minute} other {{minutes} minutes}} {seconds, plural, one {{seconds} seconde} other {{seconds} secondes}}",
-  "@dateFormatHourMinuteSecond": {
-    "placeholders": {
-      "hours": {
-        "type": "int"
-      },
-      "minutes": {
-        "type": "int"
-      },
-      "seconds": {
         "type": "int"
       }
     }
@@ -337,125 +125,6 @@
       }
     }
   },
-  "dateFormatHourMinute": "{hours, plural, one {{hours} heure} other {{hours} heures}} {minutes, plural, one {{minutes} minute} other {{minutes} minutes}}",
-  "@dateFormatHourMinute": {
-    "placeholders": {
-      "hours": {
-        "type": "int"
-      },
-      "minutes": {
-        "type": "int"
-      }
-    }
-  },
-  "dateFormatMinute": "{count, plural, one {{count} minute} other {{count} minutes}}",
-  "@dateFormatMinute": {
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
-  "deviceInfo": "Terminal : {device}\nOS : {os}\nApp Version : {version}",
-  "@deviceInfo": {
-    "placeholders": {
-      "device": {
-        "type": "String"
-      },
-      "os": {
-        "type": "String"
-      },
-      "version": {
-        "type": "String"
-      }
-    }
-  },
-  "title": "Titre",
-  "@title": {},
-  "today": "Aujourd'hui",
-  "@today": {},
-  "unknown": "Inconnu",
-  "@unknown": {},
-  "tryAgain": "Nouvel Essai",
-  "@tryAgain": {},
-  "viewChapters": "Voir les Chapitres",
-  "@viewChapters": {},
-  "viewOnGithub": "Voir sur GitHub",
-  "@viewOnGithub": {},
-  "addUser": "Ajouter un utilisateur",
-  "@addUser": {},
-  "ascending": "Montant",
-  "@ascending": {},
-  "allDownloads": "Tous les téléchargements",
-  "@allDownloads": {},
-  "boostLoadingSubtitle": "Veuillez lire la description pour en savoir plus sur la fonctionnalité.",
-  "@boostLoadingSubtitle": {},
-  "cancel": "Annuler",
-  "@cancel": {},
-  "chapters": "Chapitres",
-  "@chapters": {},
-  "clearCache": "Vider la mise en mémoire tampon",
-  "@clearCache": {},
-  "duration": "Durée",
-  "@duration": {},
-  "downloadCompleteBody": "Téléchargement de {displayName} terminé",
-  "@downloadCompleteBody": {},
-  "downloadInfo": "Informations sur le téléchargement",
-  "@downloadInfo": {},
-  "addANewUser": "Ajouter un nouvel utilisateur",
-  "@addANewUser": {},
-  "aggressiveCaching": "Mise en mémoire tampon agressive",
-  "@aggressiveCaching": {},
-  "amoledMode": "Mode AMOLED",
-  "@amoledMode": {},
-  "author": "Auteur",
-  "@author": {},
-  "authors": "Auteurs",
-  "@authors": {},
-  "back": "Précédent",
-  "@back": {},
-  "attribution": "Attribution",
-  "@attribution": {},
-  "bookCover": "Couverture du livre",
-  "@bookCover": {},
-  "boostLoading": "Accélérer le chargement",
-  "@boostLoading": {},
-  "caching": "Mise en mémoire tampon",
-  "@caching": {},
-  "cachingHeader": "Mise en mémoire tampon",
-  "@cachingHeader": {},
-  "changeLibrary": "Changer de bibliothèque",
-  "@changeLibrary": {},
-  "carPlayer": "Lecteur de Voiture",
-  "@carPlayer": {},
-  "chaptersNum": "Chapitres ({num})",
-  "@chaptersNum": {
-    "placeholders": {
-      "num": {
-        "type": "int"
-      }
-    }
-  },
-  "close": "Fermer",
-  "@close": {},
-  "collapseSeries": "Réduire les séries",
-  "@collapseSeries": {},
-  "consecutiveDays": "Jours consécutifs",
-  "@consecutiveDays": {},
-  "currentDownloads": "Téléchargements en cours",
-  "@currentDownloads": {},
-  "darkMode": "Mode Sombre",
-  "@darkMode": {},
-  "continueSeries": "Continuer les Séries",
-  "@continueSeries": {},
-  "currentPositionNum": "Position actuelle : {position}",
-  "@currentPositionNum": {
-    "placeholders": {
-      "position": {
-        "type": "String"
-      }
-    }
-  },
   "dateFormatDayHourMinuteSecondShort": "{days}j {hours}h {minutes}m {seconds}s",
   "@dateFormatDayHourMinuteSecondShort": {
     "placeholders": {
@@ -469,6 +138,20 @@
         "type": "int"
       },
       "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatDayHourMinuteShort": "{days}j {hours}h {minutes}m",
+  "@dateFormatDayHourMinuteShort": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
         "type": "int"
       }
     }
@@ -500,6 +183,72 @@
       }
     }
   },
+  "dateFormatHourMinute": "{hours, plural, one {{hours} heure} other {{hours} heures}} {minutes, plural, one {{minutes} minute} other {{minutes} minutes}}",
+  "@dateFormatHourMinute": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatHourMinuteSecond": "{hours, plural, one {{hours} heure} other {{hours} heures}} {minutes, plural, one {{minutes} minute} other {{minutes} minutes}} {seconds, plural, one {{seconds} seconde} other {{seconds} secondes}}",
+  "@dateFormatHourMinuteSecond": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      },
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatHourMinuteSecondShort": "{hours}h {minutes}m {seconds}s",
+  "@dateFormatHourMinuteSecondShort": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      },
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatHourMinuteShort": "{hours}h {minutes}m",
+  "@dateFormatHourMinuteShort": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatHourShort": "{count}h",
+  "@dateFormatHourShort": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatMinute": "{count, plural, one {{count} minute} other {{count} minutes}}",
+  "@dateFormatMinute": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "dateFormatMinuteSecond": "{minutes, plural, one {{minutes} minute} other {{minutes} minutes}} {seconds, plural, one {{seconds} seconde} other {{seconds} secondes}}",
   "@dateFormatMinuteSecond": {
     "placeholders": {
@@ -507,6 +256,25 @@
         "type": "int"
       },
       "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatMinuteSecondShort": "{minutes}m {seconds}s",
+  "@dateFormatMinuteSecondShort": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      },
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatMinuteShort": "{count}m",
+  "@dateFormatMinuteShort": {
+    "placeholders": {
+      "count": {
         "type": "int"
       }
     }
@@ -519,26 +287,56 @@
       }
     }
   },
+  "dateFormatSecondShort": "{count}s",
+  "@dateFormatSecondShort": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "daysListened": "Jours d'écoute",
   "@daysListened": {},
   "debugLogs": "Journaux de debogage",
   "@debugLogs": {},
+  "deleteSelected": "Supprimer la Sélection",
+  "@deleteSelected": {},
   "descending": "Descendant",
   "@descending": {},
   "description": "Description",
   "@description": {},
+  "deviceInfo": "Terminal : {device}\nOS : {os}\nApp Version : {version}",
+  "@deviceInfo": {
+    "placeholders": {
+      "device": {
+        "type": "String"
+      },
+      "os": {
+        "type": "String"
+      },
+      "version": {
+        "type": "String"
+      }
+    }
+  },
   "disabled": "Désactivé",
   "@disabled": {},
   "discover": "Découvrir",
   "@discover": {},
   "domainOrIp": "Domaine ou IP",
   "@domainOrIp": {},
-  "deleteSelected": "Supprimer la Sélection",
-  "@deleteSelected": {},
   "downloadComplete": "Téléchargement terminé",
   "@downloadComplete": {},
+  "downloadCompleteBody": "Téléchargement de {displayName} terminé",
+  "@downloadCompleteBody": {},
+  "downloadErrorDescription": "Le fichier n'a pas été téléchargé correctement. Vous pouvez tenter de supprimer les données sur le terminal en cliquant sur le bouton et le télécharger à nouveau.",
+  "@downloadErrorDescription": {},
+  "downloadInfo": "Informations sur le téléchargement",
+  "@downloadInfo": {},
   "downloadPath": "Chemin pour les téléchargements",
   "@downloadPath": {},
+  "downloadPathDescription": "Le chemin ou les téléchargements sont enregistrés. Pour modifier cela vous devez d'abord supprimer tous les téléchargements.",
+  "@downloadPathDescription": {},
   "downloading": "Téléchargement",
   "@downloading": {},
   "downloadingBody": "Téléchargement de {displayName}",
@@ -547,6 +345,12 @@
   "@downloads": {},
   "downloadsOnlyViaWifi": "Téléchargement par le WiFi uniquement",
   "@downloadsOnlyViaWifi": {},
+  "duration": "Durée",
+  "@duration": {},
+  "editQueue": "Editer la File",
+  "@editQueue": {},
+  "enableNotificationsDownload": "Veuillez activer les notifications pour suivre l'avancement du téléchargement, et être capable de télécharger les fichiers en arrière-plan.",
+  "@enableNotificationsDownload": {},
   "enabled": "Activé",
   "@enabled": {},
   "enterValidUsernameOrPassword": "Veuillez saisir un Domaine ou une IP et un port valide avant de saisir votre identifiant et mot de passe.",
@@ -555,30 +359,56 @@
   "@episodeId": {},
   "error": "Erreur",
   "@error": {},
-  "editQueue": "Editer la File",
-  "@editQueue": {},
+  "errorDownloading": "Erreur lors du téléchargement",
+  "@errorDownloading": {},
+  "errorDownloadingBody": "Une erreur est survenue lors du téléchargement de {displayName}",
+  "@errorDownloadingBody": {},
   "errorItemNotFound": "Erreur : Elément introuvable !",
   "@errorItemNotFound": {},
   "exit": "Quitter",
   "@exit": {},
   "failed": "Echoué",
   "@failed": {},
+  "fastForward": "Avance rapide",
+  "@fastForward": {},
   "fastForwardSeconds": "Avance Rapide en Secondes",
   "@fastForwardSeconds": {},
+  "fastForwardSecondsDescription": "Définissez le nombre de secondes à avancer lorsque le bouton Avance Rapide est pressé.",
+  "@fastForwardSecondsDescription": {},
+  "feedOpen": "Ouvrir le Flux",
+  "@feedOpen": {},
   "filename": "Nom du fichier",
   "@filename": {},
   "filepath": "Chemin du fichier",
   "@filepath": {},
+  "filter": "Filtre",
+  "@filter": {},
   "finished": "Terminé",
   "@finished": {},
+  "general": "Général",
+  "@general": {},
   "genres": "Genres",
   "@genres": {},
   "hide": "Masquer",
   "@hide": {},
-  "feedOpen": "Ouvrir le Flux",
-  "@feedOpen": {},
+  "ifTheQuickAccountSwitcherShouldBeShown": "Défini si le sélecteur rapide de comptes doit être affiché",
+  "@ifTheQuickAccountSwitcherShouldBeShown": {},
+  "inProgress": "En cours",
+  "@inProgress": {},
   "information": "Informations",
   "@information": {},
+  "itemId": "Identifiant de l'élément",
+  "@itemId": {},
+  "itemLength": "Durée : {length}",
+  "@itemLength": {
+    "placeholders": {
+      "length": {
+        "type": "String"
+      }
+    }
+  },
+  "itemNotFoundDescription": "L'élément n'a pu être trouvé. Cela peut être du à une erreur réseau ou parce que le fichier n'existe plus mais est toujours affiché.",
+  "@itemNotFoundDescription": {},
   "itemNumChapters": "Nombre de Chapitres : {numChapters}",
   "@itemNumChapters": {
     "placeholders": {
@@ -595,14 +425,30 @@
       }
     }
   },
+  "itemPublishedYear": "Année de Publication : {year}",
+  "@itemPublishedYear": {
+    "placeholders": {
+      "year": {
+        "type": "String"
+      }
+    }
+  },
   "itemType": "Type d'élément",
   "@itemType": {},
   "jumpToLastPosition": "Aller à la dernière position",
   "@jumpToLastPosition": {},
-  "last7Days": "7 derniers jours",
-  "@last7Days": {},
+  "jumpToLastPositionDescription": "Lorsque cette option est activée, le lecteur ira à la dernière position lorsque le bouton lecture est pressé",
+  "@jumpToLastPositionDescription": {},
+  "language": "Langue",
+  "@language": {},
+  "languages": "Langues",
+  "@languages": {},
   "last30Days": "30 derniers jours",
   "@last30Days": {},
+  "last7Days": "7 derniers jours",
+  "@last7Days": {},
+  "libraries": "Bibliothèques",
+  "@libraries": {},
   "library": "Bibliothèque",
   "@library": {},
   "libraryName": "Nom de la bibliothèque",
@@ -615,90 +461,244 @@
   "@listeningInTheLastYear": {},
   "loading": "Chargement …",
   "@loading": {},
+  "lockProgressBar": "Verrouiller la barre de progression du média",
+  "@lockProgressBar": {},
+  "lockProgressBarDescription": "Lorsque cette option est activée, la barre de progression dans la notification du média est verrouillée, le système d'exploitation doit le supporter",
+  "@lockProgressBarDescription": {},
   "logging": "Journalisation",
   "@logging": {},
   "logs": "Journaux",
   "@logs": {},
   "markItemsFinished": "Marquer les éléments en Terminé",
   "@markItemsFinished": {},
+  "markItemsFinishedAfterDescription": "Détermine le temps en secondes avant la fin d'un élément à partir duquel ce dernier doit être marqué en terminé. Définir ce réglage à 0 marquera l'élément comme terminé uniquement à la toute fin. Si une valeur positive est définie, l'élément sera marqué comme terminé lorsque le lecteur attendra ce temps avant la fin.",
+  "@markItemsFinishedAfterDescription": {},
+  "minimize": "Réduire",
+  "@minimize": {},
+  "minimizeToTray": "Réduire dans la barre d'état système",
+  "@minimizeToTray": {},
+  "minimizeToTrayDescription": "Cette option masque l'application de la barre des tâches et l'affiche dans la barre d'état système.",
+  "@minimizeToTrayDescription": {},
   "miscellaneous": "Divers",
   "@miscellaneous": {},
   "moreOptions": "Plus d'options",
   "@moreOptions": {},
   "multipleServerAdressess": "Si vous souhaitez utiliser plusieurs adresses de serveur, vous pourrez les ajouter plus tard",
   "@multipleServerAdressess": {},
-  "newestEpisodes": "Derniers Episodes",
-  "@newestEpisodes": {},
+  "mustEnterValidAddress": "Vous devez saisir une adresse de serveur valide",
+  "@mustEnterValidAddress": {},
   "narrators": "Narrateurs",
   "@narrators": {},
+  "newestEpisodes": "Derniers Episodes",
+  "@newestEpisodes": {},
+  "next": "Suivant",
+  "@next": {},
+  "nextChapter": "Chapitre Suivant",
+  "@nextChapter": {},
+  "noConnection": "Pas de Connexion",
+  "@noConnection": {},
+  "noDownloads": "Pas de téléchargements",
+  "@noDownloads": {},
   "noInternetDescription": "Nous n'arrivons pas a nous connecter au serveur.",
   "@noInternetDescription": {},
   "noItemsFound": "Pas d'éléments trouvés",
   "@noItemsFound": {},
+  "noPath": "Pas de chemin",
+  "@noPath": {},
   "noSeriesSelected": "Pas de séries sélectionnées",
   "@noSeriesSelected": {},
   "noUserData": "Erreur de connexion : Pas de données utilisateur reçues",
   "@noUserData": {},
+  "notFinished": "Non terminé",
+  "@notFinished": {},
+  "notStarted": "Non démarré",
+  "@notStarted": {},
+  "notTriedYet": "Pas encore de tentative",
+  "@notTriedYet": {},
+  "notificationHeading": "Les notifications devraient être activées",
+  "@notificationHeading": {},
+  "numBooksInSeries": "{numBooks, plural, =0 {Pas de Livres} =1 {1 Livre} other {{numBooks} Livres}}",
+  "@numBooksInSeries": {
+    "placeholders": {
+      "numBooks": {
+        "type": "num"
+      }
+    }
+  },
   "offlineProgress": "Progression Hors-Ligne",
   "@offlineProgress": {},
+  "offlineSavedProgress": "Sauvegarde de la progression Hors-Ligne",
+  "@offlineSavedProgress": {},
+  "ok": "OK",
+  "@ok": {},
   "openDownloads": "Ouvrir les téléchargements",
   "@openDownloads": {},
   "openProjectLink": "Audiobookshelf/Serveur",
   "@openProjectLink": {},
   "ownStats": "Statistiques Personnelles",
   "@ownStats": {},
+  "password": "Mot de passe",
+  "@password": {},
+  "pause": "Pause",
+  "@pause": {},
   "personalizedLibrary": "Bibliothèque personnalisée",
   "@personalizedLibrary": {},
   "play": "Lire",
   "@play": {},
+  "playHistory": "Historique de Lecture",
+  "@playHistory": {},
+  "playNextEpisode": "Lire l'épisode suivant",
+  "@playNextEpisode": {},
+  "playbackSpeed": "Vitesse",
+  "@playbackSpeed": {},
+  "player": "Lecteur",
+  "@player": {},
+  "playerSettings": "Paramètres du lecteur",
+  "@playerSettings": {},
+  "pleaseCheckInternet": "Veuillez vérifier votre connexion internet et essayer à nouveau.",
+  "@pleaseCheckInternet": {},
   "port": "Port",
   "@port": {},
+  "previous": "Précédent",
+  "@previous": {},
   "previousChapter": "Chapitre Précédent",
   "@previousChapter": {},
   "progress": "Progression",
   "@progress": {},
-  "readLess": "Lire moins",
-  "@readLess": {},
+  "progressAsChaptersDescription": "Activez cette option pour afficher la progression dans le lecteur et les notification sur la base des chapitres. Si désactivée, la progression sera affichée sur la base de l'élément intégral.",
+  "@progressAsChaptersDescription": {},
+  "progressNum": "Progression Courante : {progress} %",
+  "@progressNum": {
+    "placeholders": {
+      "progress": {
+        "type": "String"
+      }
+    }
+  },
   "publisher": "Editeur",
   "@publisher": {},
+  "readLess": "Lire moins",
+  "@readLess": {},
+  "readMore": "Lire plus",
+  "@readMore": {},
+  "recentSeries": "Séries Récentes",
+  "@recentSeries": {},
+  "recentlyAdded": "Ajouté récemment",
+  "@recentlyAdded": {},
   "reportAnIssue": "Signaler un problème",
   "@reportAnIssue": {},
+  "restartRequired": "Redémarrage Requis",
+  "@restartRequired": {},
   "restartRequiredDescription": "Veuillez redémarrer l'application pour appliquer les changements.",
   "@restartRequiredDescription": {},
   "rewind": "Rembobiner",
   "@rewind": {},
   "rewindSeconds": "Rembobiner Secondes",
   "@rewindSeconds": {},
+  "rewindSecondsDescription": "Définissez le nombre de secondes que vous voulez reculer lorsque le bouton rembobiner est pressé.",
+  "@rewindSecondsDescription": {},
+  "search": "Rechercher",
+  "@search": {},
   "searchDisabled": "Recherche désactivée",
   "@searchDisabled": {},
+  "seek": "Chercher",
+  "@seek": {},
   "sequence": "Séquence",
   "@sequence": {},
   "series": "Séries",
   "@series": {},
   "serverAdressContinue": "Saisissez l'adresse de votre serveur pour continuer",
   "@serverAdressContinue": {},
-  "seek": "Chercher",
-  "@seek": {},
+  "serverSelection": "Sélection du serveur",
+  "@serverSelection": {},
+  "settings": "Paramètres",
+  "@settings": {},
+  "shakeResetTimer": "Secouer pour mettre à zéro le minuteur de la mise en veille",
+  "@shakeResetTimer": {},
+  "shareOpen": "Ouvrir le partage",
+  "@shareOpen": {},
   "show": "Afficher",
   "@show": {},
   "showAccountSwitcher": "Afficher le sélecteur de compte",
   "@showAccountSwitcher": {},
+  "showAccountSwitcherDescription": "Activez cette option pour ajouter une icône bouton dans la barre de l'application pour accéder rapidement au sélecteur de compte. Cela va réduire la taille de la barre de l'application.",
+  "@showAccountSwitcherDescription": {},
   "showProgressPerChapters": "Afficher la Progression par Chapitre",
   "@showProgressPerChapters": {},
-  "shareOpen": "Ouvrir le partage",
-  "@shareOpen": {},
+  "signOut": "Se Déconnecter",
+  "@signOut": {},
   "size": "Taille",
   "@size": {},
+  "sleepTimer": "Minuteur de mise en veille",
+  "@sleepTimer": {},
+  "sort": "Tri",
+  "@sort": {},
+  "sortSeriesAsc": "Trier les séries dans l'ordre Ascendant",
+  "@sortSeriesAsc": {},
   "stats": "Statistiques",
   "@stats": {},
   "stop": "Arrêter",
   "@stop": {},
-  "sortSeriesAsc": "Trier les séries dans l'ordre Ascendant",
-  "@sortSeriesAsc": {},
+  "stopPlayerUntilSync": "Arrêter le lecteur jusqu'à la synchronisation",
+  "@stopPlayerUntilSync": {},
+  "stopPlayerWhileSyncingDescription": "Activez cette option pour éviter que le lecteur débute la lecture depuis la derniere position synchronisée. Cela permet de s'assurer que la lecture reprend à la bonne position. Si désactivée, la lecture pourrait changer rapidement après le démarrage, qui peut induire des pertes de données. Activer cela permet de limiter la consommation de données.",
+  "@stopPlayerWhileSyncingDescription": {},
+  "success": "Succès",
+  "@success": {},
+  "sync": "Synchroniser",
+  "@sync": {},
   "syncInterval": "Intervalle de Synchronisation (secondes)",
   "@syncInterval": {},
+  "syncIntervalDescription": "Défini la fréquence à laquelle l'application doit synchroniser avec le serveur. Veuillez redémarrer l'application pour que la modification soit appliquée.",
+  "@syncIntervalDescription": {},
   "syncOnlyViaWifi": "Synchroniser via WiFi uniquement",
   "@syncOnlyViaWifi": {},
   "tags": "Mot-Clés",
-  "@tags": {}
+  "@tags": {},
+  "timeRemainingNum": "Temps Restant : {time}",
+  "@timeRemainingNum": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "timerText": "{time} min",
+  "@timerText": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "title": "Titre",
+  "@title": {},
+  "today": "Aujourd'hui",
+  "@today": {},
+  "totalTimeListened": "Temps d'écoute total",
+  "@totalTimeListened": {},
+  "tryAgain": "Nouvel Essai",
+  "@tryAgain": {},
+  "unknown": "Inconnu",
+  "@unknown": {},
+  "unknownTitle": "Titre inconnu",
+  "@unknownTitle": {},
+  "updatedAt": "Mis à jour à",
+  "@updatedAt": {},
+  "user": "Utilisateur",
+  "@user": {},
+  "username": "Nom d'utilisateur",
+  "@username": {},
+  "usernameOrPasswordNotEmpty": "Le nom d'utilisateur et le mot de passe ne peuvent être vides",
+  "@usernameOrPasswordNotEmpty": {},
+  "viewChapters": "Voir les Chapitres",
+  "@viewChapters": {},
+  "viewOnGithub": "Voir sur GitHub",
+  "@viewOnGithub": {},
+  "waitTillRedirect": "Veuillez attendre d'être redirigé vers /init. Vous n'êtes actuellement pas connecté.",
+  "@waitTillRedirect": {},
+  "waitingForDownload": "En attente de démarrage du téléchargement",
+  "@waitingForDownload": {},
+  "year": "Année",
+  "@year": {}
 }
