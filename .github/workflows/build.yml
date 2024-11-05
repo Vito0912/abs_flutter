@@ -10,9 +10,56 @@ env:
   STORE_FILE: '../keystore.jks'
 
 jobs:
-  build-ubuntu:
+  update_version:
     runs-on: ubuntu-latest
 
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Update version in pubspec.yaml
+        run: |
+          # Read the current version from pubspec.yaml
+          VERSION=$(grep '^version:' pubspec.yaml | sed 's/version: //;s/+.*//')
+          echo "Current Version: $VERSION"
+
+          # Split the version into major, minor, and patch components
+          IFS='.' read -r major minor patch <<< "$VERSION"
+
+          # Check if the patch version is 9
+          if [ "$patch" -eq 9 ]; then
+            # If yes, increment the minor version and reset the patch version to 0
+            new_minor=$((minor + 1))
+            new_version="$major.$new_minor.0"
+          else
+            # Otherwise, simply increment the patch version
+            new_patch=$((patch + 1))
+            new_version="$major.$minor.$new_patch"
+          fi
+
+          echo "New Version: $new_version"
+
+          # Update pubspec.yaml with the new version
+          sed -i "s/^version: .*/version: $new_version/" pubspec.yaml
+
+          # Update msix_version in the msix_config section
+          msix_version="$new_version.0"
+          sed -i "s/msix_version: .*/msix_version: $msix_version/" pubspec.yaml
+
+          # Indicate that the versions have been updated
+          echo "The version in pubspec.yaml has been updated to $new_version and msix_version to $msix_version."
+
+      - name: Commit changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add pubspec.yaml
+          git commit -m "Update version to $new_version"
+          git push
+
+  build-ubuntu:
+    runs-on: ubuntu-latest
+    needs: [update_version]
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -112,7 +159,7 @@ jobs:
 
   build-windows:
     runs-on: windows-latest
-
+    needs: [update_version]
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -250,9 +297,10 @@ jobs:
           packageName: de.vito.absapp.abs_flutter
           releaseFiles: app-release.aab
           track: beta
-          status: completed
+          status: inProgress
           releaseName: v${{ env.VERSION }}
           inAppUpdatePriority: 2
+          userFraction: 1.0
           whatsNewDirectory: android/whatsnew
         continue-on-error: true
 
