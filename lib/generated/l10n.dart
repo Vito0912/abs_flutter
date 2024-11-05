@@ -1,6 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+
 import 'intl/messages_all.dart';
 
 // **************************************************************************
@@ -2448,6 +2449,46 @@ class S {
     return Intl.message(
       'Total Audio Tracks',
       name: 'totalAudioTracks',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Copy logs`
+  String get copyLogs {
+    return Intl.message(
+      'Copy logs',
+      name: 'copyLogs',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Copy`
+  String get copy {
+    return Intl.message(
+      'Copy',
+      name: 'copy',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Copy (Try removed personal data)`
+  String get copyAnonymous {
+    return Intl.message(
+      'Copy (Try removed personal data)',
+      name: 'copyAnonymous',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Important:\nClicking 'Copy' will transfer all currently displayed logs to your clipboard, including data recorded since the app was started or last cleared. These logs may contain sensitive information such as tokens, usernames, emails, and server URLs. Be cautious about where you paste this information!\nIf you choose 'Copy and Attempt to Hide Sensitive Information,' the app will try to mask items like tokens, usernames, emails, and server URLs. However, you are responsible for reviewing the logs to ensure all personal data is fully removed.`
+  String get copyLogsDescription {
+    return Intl.message(
+      'Important:\nClicking \'Copy\' will transfer all currently displayed logs to your clipboard, including data recorded since the app was started or last cleared. These logs may contain sensitive information such as tokens, usernames, emails, and server URLs. Be cautious about where you paste this information!\n\nIf you choose \'Copy and Attempt to Hide Sensitive Information,\' the app will try to mask items like tokens, usernames, emails, and server URLs. However, you are responsible for reviewing the logs to ensure all personal data is fully removed.',
+      name: 'copyLogsDescription',
       desc: '',
       args: [],
     );

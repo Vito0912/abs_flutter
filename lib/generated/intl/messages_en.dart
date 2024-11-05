@@ -143,6 +143,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Continue Listening"),
         "continueSeries":
             MessageLookupByLibrary.simpleMessage("Continue Series"),
+        "copy": MessageLookupByLibrary.simpleMessage("Copy"),
+        "copyAnonymous": MessageLookupByLibrary.simpleMessage(
+            "Copy (Try removed personal data)"),
+        "copyLogs": MessageLookupByLibrary.simpleMessage("Copy logs"),
+        "copyLogsDescription": MessageLookupByLibrary.simpleMessage(
+            "Important:\nClicking \'Copy\' will transfer all currently displayed logs to your clipboard, including data recorded since the app was started or last cleared. These logs may contain sensitive information such as tokens, usernames, emails, and server URLs. Be cautious about where you paste this information!\\nIf you choose \'Copy and Attempt to Hide Sensitive Information,\' the app will try to mask items like tokens, usernames, emails, and server URLs. However, you are responsible for reviewing the logs to ensure all personal data is fully removed."),
         "create": MessageLookupByLibrary.simpleMessage("Create"),
         "createBookmark":
             MessageLookupByLibrary.simpleMessage("Create Bookmark"),
