@@ -2352,6 +2352,86 @@ class S {
       args: [],
     );
   }
+
+  /// `Total Items`
+  String get totalItems {
+    return Intl.message(
+      'Total Items',
+      name: 'totalItems',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total Duration`
+  String get totalDuration {
+    return Intl.message(
+      'Total Duration',
+      name: 'totalDuration',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total Authors`
+  String get totalAuthors {
+    return Intl.message(
+      'Total Authors',
+      name: 'totalAuthors',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total Genres`
+  String get totalGenres {
+    return Intl.message(
+      'Total Genres',
+      name: 'totalGenres',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Longest Items`
+  String get longestItems {
+    return Intl.message(
+      'Longest Items',
+      name: 'longestItems',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Largest Items`
+  String get largestItems {
+    return Intl.message(
+      'Largest Items',
+      name: 'largestItems',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Top Authors`
+  String get topAuthors {
+    return Intl.message(
+      'Top Authors',
+      name: 'topAuthors',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Top Genres`
+  String get topGenres {
+    return Intl.message(
+      'Top Genres',
+      name: 'topGenres',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -1,3 +1,4 @@
+import 'package:abs_flutter/features/stats/library_stats.dart';
 import 'package:abs_flutter/features/stats/own_stats.dart';
 import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/provider/stats_provider.dart';
@@ -35,6 +36,7 @@ class StatsWrapper extends StatelessWidget {
       },
       bodyBuilder: (_, index) {
         if (index == 0) return const OwnStats();
+        if (index == 1) return const LibraryStats();
         return Center(
           child: Text(S.of(context).stats),
         );

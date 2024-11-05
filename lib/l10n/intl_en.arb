@@ -705,5 +705,13 @@
   "viewBookmarks": "View Bookmarks",
   "createBookmark": "Create Bookmark",
   "create": "Create",
-  "createBookmarkTitle": "Create bookmark"
+  "createBookmarkTitle": "Create bookmark",
+  "totalItems": "Total Items",
+  "totalDuration": "Total Duration",
+  "totalAuthors": "Total Authors",
+  "totalGenres": "Total Genres",
+  "longestItems": "Longest Items",
+  "largestItems": "Largest Items",
+  "topAuthors": "Top Authors",
+  "topGenres": "Top Genres"
 }

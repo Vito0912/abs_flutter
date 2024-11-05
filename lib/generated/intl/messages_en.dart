@@ -244,6 +244,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "When enabled, the player will jump to the last position when pressing play"),
         "language": MessageLookupByLibrary.simpleMessage("Language"),
         "languages": MessageLookupByLibrary.simpleMessage("Languages"),
+        "largestItems": MessageLookupByLibrary.simpleMessage("Largest Items"),
         "last30Days": MessageLookupByLibrary.simpleMessage("Last 30 days"),
         "last7Days": MessageLookupByLibrary.simpleMessage("Last 7 days"),
         "libraries": MessageLookupByLibrary.simpleMessage("Libraries"),
@@ -260,6 +261,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "When enabled, this feature locks the progress bar in the media notification, if supported by the operating system"),
         "logging": MessageLookupByLibrary.simpleMessage("Logging"),
         "logs": MessageLookupByLibrary.simpleMessage("Logs"),
+        "longestItems": MessageLookupByLibrary.simpleMessage("Longest Items"),
         "markItemsFinished":
             MessageLookupByLibrary.simpleMessage("Mark Items Finished"),
         "markItemsFinishedAfterDescription": MessageLookupByLibrary.simpleMessage(
@@ -388,6 +390,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "timerText": m33,
         "title": MessageLookupByLibrary.simpleMessage("Title"),
         "today": MessageLookupByLibrary.simpleMessage("Today"),
+        "topAuthors": MessageLookupByLibrary.simpleMessage("Top Authors"),
+        "topGenres": MessageLookupByLibrary.simpleMessage("Top Genres"),
+        "totalAuthors": MessageLookupByLibrary.simpleMessage("Total Authors"),
+        "totalDuration": MessageLookupByLibrary.simpleMessage("Total Duration"),
+        "totalGenres": MessageLookupByLibrary.simpleMessage("Total Genres"),
+        "totalItems": MessageLookupByLibrary.simpleMessage("Total Items"),
         "totalTimeListened":
             MessageLookupByLibrary.simpleMessage("Total time listened"),
         "tryAgain": MessageLookupByLibrary.simpleMessage("Try Again"),

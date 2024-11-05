@@ -176,4 +176,30 @@ class Helper {
   static bool isDesktop() {
     return Platform.isWindows || Platform.isLinux || Platform.isMacOS;
   }
+
+  static String formatBytes(int size) {
+    if (size <= 0) return '0 B';
+
+    const List<String> units = [
+      'B',
+      'KB',
+      'MB',
+      'GB',
+      'TB',
+      'PB',
+      'EB',
+      'ZB',
+      'YB'
+    ];
+    double digitGroups = size.toDouble();
+    int unitIndex = 0;
+
+    // Note: ABS uses 1000 as divisor, not 1024
+    while (digitGroups >= 1000 && unitIndex < units.length - 1) {
+      digitGroups /= 1000;
+      unitIndex++;
+    }
+
+    return '${digitGroups.toStringAsFixed(2)} ${units[unitIndex]}';
+  }
 }
