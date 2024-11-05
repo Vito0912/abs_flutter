@@ -33,8 +33,8 @@ class _OwnStatsState extends ConsumerState<OwnStats> {
 
     // Get data based on the selected timeframe
     final List<num> lastDays = _is7DaysSelected
-        ? _getLastDays(ownStats.days?.toMap(), today, 7)
-        : _getLastDays(ownStats.days?.toMap(), today, 30);
+        ? _getLastDays(ownStats.days, today, 7)
+        : _getLastDays(ownStats.days, today, 30);
     final List<String> lastDaysLabels = _is7DaysSelected
         ? _getLastDaysLabels(today, 7, context)
         : _getLastDaysLabels(today, 30, context);
@@ -104,7 +104,7 @@ class _OwnStatsState extends ConsumerState<OwnStats> {
               axis: MediaQuery.of(context).size.width > 1080
                   ? Axis.vertical
                   : Axis.horizontal,
-              datasets: _generateDatasets(ownStats.days?.toMap()),
+              datasets: _generateDatasets(ownStats.days),
             ),
           ),
           const SizedBox(height: 16),

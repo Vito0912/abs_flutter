@@ -21,17 +21,17 @@ DeviceInfo _$DeviceInfoFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$DeviceInfo {
   @JsonKey(name: "deviceId")
-  String get deviceId => throw _privateConstructorUsedError;
+  String? get deviceId => throw _privateConstructorUsedError;
   @JsonKey(name: "clientName")
-  String get clientName => throw _privateConstructorUsedError;
+  String? get clientName => throw _privateConstructorUsedError;
   @JsonKey(name: "clientVersion")
-  String get clientVersion => throw _privateConstructorUsedError;
+  String? get clientVersion => throw _privateConstructorUsedError;
   @JsonKey(name: "manufacturer")
-  String get manufacturer => throw _privateConstructorUsedError;
+  String? get manufacturer => throw _privateConstructorUsedError;
   @JsonKey(name: "model")
-  String get model => throw _privateConstructorUsedError;
+  String? get model => throw _privateConstructorUsedError;
   @JsonKey(name: "sdkVersion")
-  String get sdkVersion => throw _privateConstructorUsedError;
+  String? get sdkVersion => throw _privateConstructorUsedError;
 
   /// Serializes this DeviceInfo to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -50,12 +50,12 @@ abstract class $DeviceInfoCopyWith<$Res> {
       _$DeviceInfoCopyWithImpl<$Res, DeviceInfo>;
   @useResult
   $Res call(
-      {@JsonKey(name: "deviceId") String deviceId,
-      @JsonKey(name: "clientName") String clientName,
-      @JsonKey(name: "clientVersion") String clientVersion,
-      @JsonKey(name: "manufacturer") String manufacturer,
-      @JsonKey(name: "model") String model,
-      @JsonKey(name: "sdkVersion") String sdkVersion});
+      {@JsonKey(name: "deviceId") String? deviceId,
+      @JsonKey(name: "clientName") String? clientName,
+      @JsonKey(name: "clientVersion") String? clientVersion,
+      @JsonKey(name: "manufacturer") String? manufacturer,
+      @JsonKey(name: "model") String? model,
+      @JsonKey(name: "sdkVersion") String? sdkVersion});
 }
 
 /// @nodoc
@@ -73,38 +73,38 @@ class _$DeviceInfoCopyWithImpl<$Res, $Val extends DeviceInfo>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? deviceId = null,
-    Object? clientName = null,
-    Object? clientVersion = null,
-    Object? manufacturer = null,
-    Object? model = null,
-    Object? sdkVersion = null,
+    Object? deviceId = freezed,
+    Object? clientName = freezed,
+    Object? clientVersion = freezed,
+    Object? manufacturer = freezed,
+    Object? model = freezed,
+    Object? sdkVersion = freezed,
   }) {
     return _then(_value.copyWith(
-      deviceId: null == deviceId
+      deviceId: freezed == deviceId
           ? _value.deviceId
           : deviceId // ignore: cast_nullable_to_non_nullable
-              as String,
-      clientName: null == clientName
+              as String?,
+      clientName: freezed == clientName
           ? _value.clientName
           : clientName // ignore: cast_nullable_to_non_nullable
-              as String,
-      clientVersion: null == clientVersion
+              as String?,
+      clientVersion: freezed == clientVersion
           ? _value.clientVersion
           : clientVersion // ignore: cast_nullable_to_non_nullable
-              as String,
-      manufacturer: null == manufacturer
+              as String?,
+      manufacturer: freezed == manufacturer
           ? _value.manufacturer
           : manufacturer // ignore: cast_nullable_to_non_nullable
-              as String,
-      model: null == model
+              as String?,
+      model: freezed == model
           ? _value.model
           : model // ignore: cast_nullable_to_non_nullable
-              as String,
-      sdkVersion: null == sdkVersion
+              as String?,
+      sdkVersion: freezed == sdkVersion
           ? _value.sdkVersion
           : sdkVersion // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ) as $Val);
   }
 }
@@ -118,12 +118,12 @@ abstract class _$$DeviceInfoImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: "deviceId") String deviceId,
-      @JsonKey(name: "clientName") String clientName,
-      @JsonKey(name: "clientVersion") String clientVersion,
-      @JsonKey(name: "manufacturer") String manufacturer,
-      @JsonKey(name: "model") String model,
-      @JsonKey(name: "sdkVersion") String sdkVersion});
+      {@JsonKey(name: "deviceId") String? deviceId,
+      @JsonKey(name: "clientName") String? clientName,
+      @JsonKey(name: "clientVersion") String? clientVersion,
+      @JsonKey(name: "manufacturer") String? manufacturer,
+      @JsonKey(name: "model") String? model,
+      @JsonKey(name: "sdkVersion") String? sdkVersion});
 }
 
 /// @nodoc
@@ -139,38 +139,38 @@ class __$$DeviceInfoImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? deviceId = null,
-    Object? clientName = null,
-    Object? clientVersion = null,
-    Object? manufacturer = null,
-    Object? model = null,
-    Object? sdkVersion = null,
+    Object? deviceId = freezed,
+    Object? clientName = freezed,
+    Object? clientVersion = freezed,
+    Object? manufacturer = freezed,
+    Object? model = freezed,
+    Object? sdkVersion = freezed,
   }) {
     return _then(_$DeviceInfoImpl(
-      deviceId: null == deviceId
+      deviceId: freezed == deviceId
           ? _value.deviceId
           : deviceId // ignore: cast_nullable_to_non_nullable
-              as String,
-      clientName: null == clientName
+              as String?,
+      clientName: freezed == clientName
           ? _value.clientName
           : clientName // ignore: cast_nullable_to_non_nullable
-              as String,
-      clientVersion: null == clientVersion
+              as String?,
+      clientVersion: freezed == clientVersion
           ? _value.clientVersion
           : clientVersion // ignore: cast_nullable_to_non_nullable
-              as String,
-      manufacturer: null == manufacturer
+              as String?,
+      manufacturer: freezed == manufacturer
           ? _value.manufacturer
           : manufacturer // ignore: cast_nullable_to_non_nullable
-              as String,
-      model: null == model
+              as String?,
+      model: freezed == model
           ? _value.model
           : model // ignore: cast_nullable_to_non_nullable
-              as String,
-      sdkVersion: null == sdkVersion
+              as String?,
+      sdkVersion: freezed == sdkVersion
           ? _value.sdkVersion
           : sdkVersion // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -179,34 +179,34 @@ class __$$DeviceInfoImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$DeviceInfoImpl implements _DeviceInfo {
   const _$DeviceInfoImpl(
-      {@JsonKey(name: "deviceId") required this.deviceId,
-      @JsonKey(name: "clientName") required this.clientName,
-      @JsonKey(name: "clientVersion") required this.clientVersion,
-      @JsonKey(name: "manufacturer") required this.manufacturer,
-      @JsonKey(name: "model") required this.model,
-      @JsonKey(name: "sdkVersion") required this.sdkVersion});
+      {@JsonKey(name: "deviceId") this.deviceId,
+      @JsonKey(name: "clientName") this.clientName,
+      @JsonKey(name: "clientVersion") this.clientVersion,
+      @JsonKey(name: "manufacturer") this.manufacturer,
+      @JsonKey(name: "model") this.model,
+      @JsonKey(name: "sdkVersion") this.sdkVersion});
 
   factory _$DeviceInfoImpl.fromJson(Map<String, dynamic> json) =>
       _$$DeviceInfoImplFromJson(json);
 
   @override
   @JsonKey(name: "deviceId")
-  final String deviceId;
+  final String? deviceId;
   @override
   @JsonKey(name: "clientName")
-  final String clientName;
+  final String? clientName;
   @override
   @JsonKey(name: "clientVersion")
-  final String clientVersion;
+  final String? clientVersion;
   @override
   @JsonKey(name: "manufacturer")
-  final String manufacturer;
+  final String? manufacturer;
   @override
   @JsonKey(name: "model")
-  final String model;
+  final String? model;
   @override
   @JsonKey(name: "sdkVersion")
-  final String sdkVersion;
+  final String? sdkVersion;
 
   @override
   String toString() {
@@ -254,12 +254,12 @@ class _$DeviceInfoImpl implements _DeviceInfo {
 
 abstract class _DeviceInfo implements DeviceInfo {
   const factory _DeviceInfo(
-          {@JsonKey(name: "deviceId") required final String deviceId,
-          @JsonKey(name: "clientName") required final String clientName,
-          @JsonKey(name: "clientVersion") required final String clientVersion,
-          @JsonKey(name: "manufacturer") required final String manufacturer,
-          @JsonKey(name: "model") required final String model,
-          @JsonKey(name: "sdkVersion") required final String sdkVersion}) =
+          {@JsonKey(name: "deviceId") final String? deviceId,
+          @JsonKey(name: "clientName") final String? clientName,
+          @JsonKey(name: "clientVersion") final String? clientVersion,
+          @JsonKey(name: "manufacturer") final String? manufacturer,
+          @JsonKey(name: "model") final String? model,
+          @JsonKey(name: "sdkVersion") final String? sdkVersion}) =
       _$DeviceInfoImpl;
 
   factory _DeviceInfo.fromJson(Map<String, dynamic> json) =
@@ -267,22 +267,22 @@ abstract class _DeviceInfo implements DeviceInfo {
 
   @override
   @JsonKey(name: "deviceId")
-  String get deviceId;
+  String? get deviceId;
   @override
   @JsonKey(name: "clientName")
-  String get clientName;
+  String? get clientName;
   @override
   @JsonKey(name: "clientVersion")
-  String get clientVersion;
+  String? get clientVersion;
   @override
   @JsonKey(name: "manufacturer")
-  String get manufacturer;
+  String? get manufacturer;
   @override
   @JsonKey(name: "model")
-  String get model;
+  String? get model;
   @override
   @JsonKey(name: "sdkVersion")
-  String get sdkVersion;
+  String? get sdkVersion;
 
   /// Create a copy of DeviceInfo
   /// with the given fields replaced by the non-null parameter values.

@@ -23,24 +23,26 @@ _$PlaybackSessionImpl _$$PlaybackSessionImplFromJson(
       displayTitle: json['displayTitle'] as String?,
       displayAuthor: json['displayAuthor'] as String?,
       coverPath: json['coverPath'] as String?,
-      duration: (json['duration'] as num).toDouble(),
-      playMethod: (json['playMethod'] as num).toInt(),
-      mediaPlayer: json['mediaPlayer'] as String,
-      deviceInfo:
-          DeviceInfo.fromJson(json['deviceInfo'] as Map<String, dynamic>),
-      serverVersion: json['serverVersion'] as String,
-      date: json['date'] as String,
+      duration: (json['duration'] as num?)?.toDouble(),
+      playMethod: (json['playMethod'] as num?)?.toInt(),
+      mediaPlayer: json['mediaPlayer'] as String?,
+      deviceInfo: json['deviceInfo'] == null
+          ? null
+          : DeviceInfo.fromJson(json['deviceInfo'] as Map<String, dynamic>),
+      serverVersion: json['serverVersion'] as String?,
+      date: json['date'] as String?,
       dayOfWeek: json['dayOfWeek'] as String?,
-      timeListening: (json['timeListening'] as num).toDouble(),
-      startTime: (json['startTime'] as num).toDouble(),
-      currentTime: (json['currentTime'] as num).toDouble(),
-      startedAt: (json['startedAt'] as num).toInt(),
-      updatedAt: (json['updatedAt'] as num).toInt(),
-      audioTracks: (json['audioTracks'] as List<dynamic>)
-          .map((e) => AudioTrack.fromJson(e as Map<String, dynamic>))
+      timeListening: (json['timeListening'] as num?)?.toDouble(),
+      startTime: (json['startTime'] as num?)?.toDouble(),
+      currentTime: (json['currentTime'] as num?)?.toDouble(),
+      startedAt: (json['startedAt'] as num?)?.toInt(),
+      updatedAt: (json['updatedAt'] as num?)?.toInt(),
+      audioTracks: (json['audioTracks'] as List<dynamic>?)
+          ?.map((e) => AudioTrack.fromJson(e as Map<String, dynamic>))
           .toList(),
-      libraryItem:
-          LibraryItem.fromJson(json['libraryItem'] as Map<String, dynamic>),
+      libraryItem: json['libraryItem'] == null
+          ? null
+          : LibraryItem.fromJson(json['libraryItem'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$PlaybackSessionImplToJson(

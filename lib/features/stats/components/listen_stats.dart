@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:abs_api/abs_api.dart';
+import 'package:abs_flutter/api/library/stats/user_listening_stats.dart';
 import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/util/helper.dart';
 import 'package:flutter/material.dart';
@@ -10,13 +10,12 @@ import 'package:icons_plus/icons_plus.dart';
 import 'package:intl/intl.dart';
 
 class ListenStats extends StatelessWidget {
-  final GetListeningStats200Response ownStats;
+  final UserListeningStats ownStats;
   const ListenStats({super.key, required this.ownStats});
 
   @override
   Widget build(BuildContext context) {
-    final int consecutiveDays =
-        _calculateConsecutiveDays(ownStats.days?.toMap());
+    final int consecutiveDays = _calculateConsecutiveDays(ownStats.days);
 
     final DateTime today = DateTime.now();
     List<String> last7DaysFormatted = _getLast7DaysFormatted(today);
