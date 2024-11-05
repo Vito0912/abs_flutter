@@ -713,5 +713,7 @@
   "longestItems": "Longest Items",
   "largestItems": "Largest Items",
   "topAuthors": "Top Authors",
-  "topGenres": "Top Genres"
+  "topGenres": "Top Genres",
+  "totalSize": "Total size",
+  "totalAudioTracks": "Total Audio Tracks"
 }

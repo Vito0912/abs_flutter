@@ -31,8 +31,8 @@ mixin _$LibraryStats {
   @JsonKey(name: "longestItems")
   List<LibraryItemDurationStats>? get longestItems =>
       throw _privateConstructorUsedError;
-  @JsonKey(name: "numAudioTrack")
-  int? get numAudioTrack => throw _privateConstructorUsedError;
+  @JsonKey(name: "numAudioTracks")
+  int? get numAudioTracks => throw _privateConstructorUsedError;
   @JsonKey(name: "totalSize")
   int? get totalSize => throw _privateConstructorUsedError;
   @JsonKey(name: "largestItems")
@@ -66,7 +66,7 @@ abstract class $LibraryStatsCopyWith<$Res> {
       @JsonKey(name: "totalDuration") double? totalDuration,
       @JsonKey(name: "longestItems")
       List<LibraryItemDurationStats>? longestItems,
-      @JsonKey(name: "numAudioTrack") int? numAudioTrack,
+      @JsonKey(name: "numAudioTracks") int? numAudioTracks,
       @JsonKey(name: "totalSize") int? totalSize,
       @JsonKey(name: "largestItems") List<LibraryItemSizeStats>? largestItems,
       @JsonKey(name: "authorsWithCount") List<AuthorStats>? authorsWithCount,
@@ -93,7 +93,7 @@ class _$LibraryStatsCopyWithImpl<$Res, $Val extends LibraryStats>
     Object? totalGenres = freezed,
     Object? totalDuration = freezed,
     Object? longestItems = freezed,
-    Object? numAudioTrack = freezed,
+    Object? numAudioTracks = freezed,
     Object? totalSize = freezed,
     Object? largestItems = freezed,
     Object? authorsWithCount = freezed,
@@ -120,9 +120,9 @@ class _$LibraryStatsCopyWithImpl<$Res, $Val extends LibraryStats>
           ? _value.longestItems
           : longestItems // ignore: cast_nullable_to_non_nullable
               as List<LibraryItemDurationStats>?,
-      numAudioTrack: freezed == numAudioTrack
-          ? _value.numAudioTrack
-          : numAudioTrack // ignore: cast_nullable_to_non_nullable
+      numAudioTracks: freezed == numAudioTracks
+          ? _value.numAudioTracks
+          : numAudioTracks // ignore: cast_nullable_to_non_nullable
               as int?,
       totalSize: freezed == totalSize
           ? _value.totalSize
@@ -159,7 +159,7 @@ abstract class _$$LibraryStatsImplCopyWith<$Res>
       @JsonKey(name: "totalDuration") double? totalDuration,
       @JsonKey(name: "longestItems")
       List<LibraryItemDurationStats>? longestItems,
-      @JsonKey(name: "numAudioTrack") int? numAudioTrack,
+      @JsonKey(name: "numAudioTracks") int? numAudioTracks,
       @JsonKey(name: "totalSize") int? totalSize,
       @JsonKey(name: "largestItems") List<LibraryItemSizeStats>? largestItems,
       @JsonKey(name: "authorsWithCount") List<AuthorStats>? authorsWithCount,
@@ -184,7 +184,7 @@ class __$$LibraryStatsImplCopyWithImpl<$Res>
     Object? totalGenres = freezed,
     Object? totalDuration = freezed,
     Object? longestItems = freezed,
-    Object? numAudioTrack = freezed,
+    Object? numAudioTracks = freezed,
     Object? totalSize = freezed,
     Object? largestItems = freezed,
     Object? authorsWithCount = freezed,
@@ -211,9 +211,9 @@ class __$$LibraryStatsImplCopyWithImpl<$Res>
           ? _value._longestItems
           : longestItems // ignore: cast_nullable_to_non_nullable
               as List<LibraryItemDurationStats>?,
-      numAudioTrack: freezed == numAudioTrack
-          ? _value.numAudioTrack
-          : numAudioTrack // ignore: cast_nullable_to_non_nullable
+      numAudioTracks: freezed == numAudioTracks
+          ? _value.numAudioTracks
+          : numAudioTracks // ignore: cast_nullable_to_non_nullable
               as int?,
       totalSize: freezed == totalSize
           ? _value.totalSize
@@ -245,7 +245,7 @@ class _$LibraryStatsImpl implements _LibraryStats {
       @JsonKey(name: "totalDuration") this.totalDuration,
       @JsonKey(name: "longestItems")
       final List<LibraryItemDurationStats>? longestItems,
-      @JsonKey(name: "numAudioTrack") this.numAudioTrack,
+      @JsonKey(name: "numAudioTracks") this.numAudioTracks,
       @JsonKey(name: "totalSize") this.totalSize,
       @JsonKey(name: "largestItems")
       final List<LibraryItemSizeStats>? largestItems,
@@ -285,8 +285,8 @@ class _$LibraryStatsImpl implements _LibraryStats {
   }
 
   @override
-  @JsonKey(name: "numAudioTrack")
-  final int? numAudioTrack;
+  @JsonKey(name: "numAudioTracks")
+  final int? numAudioTracks;
   @override
   @JsonKey(name: "totalSize")
   final int? totalSize;
@@ -326,7 +326,7 @@ class _$LibraryStatsImpl implements _LibraryStats {
 
   @override
   String toString() {
-    return 'LibraryStats(totalItems: $totalItems, totalAuthors: $totalAuthors, totalGenres: $totalGenres, totalDuration: $totalDuration, longestItems: $longestItems, numAudioTrack: $numAudioTrack, totalSize: $totalSize, largestItems: $largestItems, authorsWithCount: $authorsWithCount, genresWithCount: $genresWithCount)';
+    return 'LibraryStats(totalItems: $totalItems, totalAuthors: $totalAuthors, totalGenres: $totalGenres, totalDuration: $totalDuration, longestItems: $longestItems, numAudioTracks: $numAudioTracks, totalSize: $totalSize, largestItems: $largestItems, authorsWithCount: $authorsWithCount, genresWithCount: $genresWithCount)';
   }
 
   @override
@@ -344,8 +344,8 @@ class _$LibraryStatsImpl implements _LibraryStats {
                 other.totalDuration == totalDuration) &&
             const DeepCollectionEquality()
                 .equals(other._longestItems, _longestItems) &&
-            (identical(other.numAudioTrack, numAudioTrack) ||
-                other.numAudioTrack == numAudioTrack) &&
+            (identical(other.numAudioTracks, numAudioTracks) ||
+                other.numAudioTracks == numAudioTracks) &&
             (identical(other.totalSize, totalSize) ||
                 other.totalSize == totalSize) &&
             const DeepCollectionEquality()
@@ -365,7 +365,7 @@ class _$LibraryStatsImpl implements _LibraryStats {
       totalGenres,
       totalDuration,
       const DeepCollectionEquality().hash(_longestItems),
-      numAudioTrack,
+      numAudioTracks,
       totalSize,
       const DeepCollectionEquality().hash(_largestItems),
       const DeepCollectionEquality().hash(_authorsWithCount),
@@ -395,7 +395,7 @@ abstract class _LibraryStats implements LibraryStats {
       @JsonKey(name: "totalDuration") final double? totalDuration,
       @JsonKey(name: "longestItems")
       final List<LibraryItemDurationStats>? longestItems,
-      @JsonKey(name: "numAudioTrack") final int? numAudioTrack,
+      @JsonKey(name: "numAudioTracks") final int? numAudioTracks,
       @JsonKey(name: "totalSize") final int? totalSize,
       @JsonKey(name: "largestItems")
       final List<LibraryItemSizeStats>? largestItems,
@@ -423,8 +423,8 @@ abstract class _LibraryStats implements LibraryStats {
   @JsonKey(name: "longestItems")
   List<LibraryItemDurationStats>? get longestItems;
   @override
-  @JsonKey(name: "numAudioTrack")
-  int? get numAudioTrack;
+  @JsonKey(name: "numAudioTracks")
+  int? get numAudioTracks;
   @override
   @JsonKey(name: "totalSize")
   int? get totalSize;

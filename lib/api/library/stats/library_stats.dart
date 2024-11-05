@@ -15,7 +15,7 @@ class LibraryStats with _$LibraryStats {
     @JsonKey(name: "totalGenres") int? totalGenres,
     @JsonKey(name: "totalDuration") double? totalDuration,
     @JsonKey(name: "longestItems") List<LibraryItemDurationStats>? longestItems,
-    @JsonKey(name: "numAudioTrack") int? numAudioTrack,
+    @JsonKey(name: "numAudioTracks") int? numAudioTracks,
     @JsonKey(name: "totalSize") int? totalSize,
     @JsonKey(name: "largestItems") List<LibraryItemSizeStats>? largestItems,
     @JsonKey(name: "authorsWithCount") List<AuthorStats>? authorsWithCount,

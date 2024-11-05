@@ -2432,6 +2432,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Total size`
+  String get totalSize {
+    return Intl.message(
+      'Total size',
+      name: 'totalSize',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total Audio Tracks`
+  String get totalAudioTracks {
+    return Intl.message(
+      'Total Audio Tracks',
+      name: 'totalAudioTracks',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

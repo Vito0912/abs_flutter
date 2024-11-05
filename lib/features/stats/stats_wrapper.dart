@@ -28,6 +28,7 @@ class StatsWrapper extends StatelessWidget {
                     icon: const Icon(EvaIcons.refresh_outline),
                     onPressed: () {
                       ref.read(ownStatsProvider.notifier).refreshStats();
+                      ref.read(libraryStatsProvider.notifier).refreshStats();
                     },
                   );
                 }),

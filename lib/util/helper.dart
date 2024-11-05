@@ -177,8 +177,8 @@ class Helper {
     return Platform.isWindows || Platform.isLinux || Platform.isMacOS;
   }
 
-  static String formatBytes(int size) {
-    if (size <= 0) return '0 B';
+  static String formatBytes(int? size) {
+    if (size == null || size <= 0) return '0 B';
 
     const List<String> units = [
       'B',

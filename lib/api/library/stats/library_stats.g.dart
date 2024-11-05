@@ -16,7 +16,7 @@ _$LibraryStatsImpl _$$LibraryStatsImplFromJson(Map<String, dynamic> json) =>
           ?.map((e) =>
               LibraryItemDurationStats.fromJson(e as Map<String, dynamic>))
           .toList(),
-      numAudioTrack: (json['numAudioTrack'] as num?)?.toInt(),
+      numAudioTracks: (json['numAudioTracks'] as num?)?.toInt(),
       totalSize: (json['totalSize'] as num?)?.toInt(),
       largestItems: (json['largestItems'] as List<dynamic>?)
           ?.map((e) => LibraryItemSizeStats.fromJson(e as Map<String, dynamic>))
@@ -36,7 +36,7 @@ Map<String, dynamic> _$$LibraryStatsImplToJson(_$LibraryStatsImpl instance) =>
       'totalGenres': instance.totalGenres,
       'totalDuration': instance.totalDuration,
       'longestItems': instance.longestItems,
-      'numAudioTrack': instance.numAudioTrack,
+      'numAudioTracks': instance.numAudioTracks,
       'totalSize': instance.totalSize,
       'largestItems': instance.largestItems,
       'authorsWithCount': instance.authorsWithCount,

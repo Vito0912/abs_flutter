@@ -392,10 +392,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "today": MessageLookupByLibrary.simpleMessage("Today"),
         "topAuthors": MessageLookupByLibrary.simpleMessage("Top Authors"),
         "topGenres": MessageLookupByLibrary.simpleMessage("Top Genres"),
+        "totalAudioTracks":
+            MessageLookupByLibrary.simpleMessage("Total Audio Tracks"),
         "totalAuthors": MessageLookupByLibrary.simpleMessage("Total Authors"),
         "totalDuration": MessageLookupByLibrary.simpleMessage("Total Duration"),
         "totalGenres": MessageLookupByLibrary.simpleMessage("Total Genres"),
         "totalItems": MessageLookupByLibrary.simpleMessage("Total Items"),
+        "totalSize": MessageLookupByLibrary.simpleMessage("Total size"),
         "totalTimeListened":
             MessageLookupByLibrary.simpleMessage("Total time listened"),
         "tryAgain": MessageLookupByLibrary.simpleMessage("Try Again"),

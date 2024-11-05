@@ -12,6 +12,7 @@ import 'package:abs_flutter/util/helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:icons_plus/icons_plus.dart';
 
 class LibraryStats extends ConsumerWidget {
   const LibraryStats({super.key});
@@ -43,7 +44,7 @@ class LibraryStats extends ConsumerWidget {
                 ),
                 const SizedBox(height: 16),
                 Wrap(
-                  alignment: WrapAlignment.spaceEvenly,
+                  alignment: WrapAlignment.spaceBetween,
                   runAlignment: WrapAlignment.spaceBetween,
                   spacing: 16.0,
                   runSpacing: 16.0,
@@ -59,6 +60,18 @@ class LibraryStats extends ConsumerWidget {
                         Helper.formatTimeToReadable(libraryStats.totalDuration,
                             short: true),
                         S.of(context).totalDuration,
+                        context,
+                        padding: 8),
+                    _buildInfoRow(
+                        FontAwesome.floppy_disk,
+                        Helper.formatBytes(libraryStats.totalSize),
+                        S.of(context).totalSize,
+                        context,
+                        padding: 8),
+                    _buildInfoRow(
+                        Icons.audiotrack_outlined,
+                        libraryStats.numAudioTracks.toString(),
+                        S.of(context).totalAudioTracks,
                         context,
                         padding: 8),
                     _buildInfoRow(
@@ -131,8 +144,8 @@ class LibraryStats extends ConsumerWidget {
       BuildContext context, abs.LibraryStats libraryStats) {
     List<Widget> items = [];
 
-    if(libraryStats.longestItems == null) {
-      items.add( PlatformText('No items found'));
+    if (libraryStats.longestItems == null) {
+      items.add(PlatformText('No items found'));
       return items;
     }
 
@@ -151,8 +164,8 @@ class LibraryStats extends ConsumerWidget {
       BuildContext context, abs.LibraryStats libraryStats) {
     List<Widget> items = [];
 
-    if(libraryStats.largestItems == null) {
-      items.add( PlatformText('No items found'));
+    if (libraryStats.largestItems == null) {
+      items.add(PlatformText('No items found'));
       return items;
     }
 
@@ -172,8 +185,8 @@ class LibraryStats extends ConsumerWidget {
       BuildContext context, abs.LibraryStats libraryStats) {
     List<Widget> items = [];
 
-    if(libraryStats.authorsWithCount == null) {
-      items.add( PlatformText('No items found'));
+    if (libraryStats.authorsWithCount == null) {
+      items.add(PlatformText('No items found'));
       return items;
     }
 
@@ -195,8 +208,8 @@ class LibraryStats extends ConsumerWidget {
       BuildContext context, abs.LibraryStats libraryStats) {
     List<Widget> items = [];
 
-    if(libraryStats.genresWithCount == null) {
-      items.add( PlatformText('No items found'));
+    if (libraryStats.genresWithCount == null) {
+      items.add(PlatformText('No items found'));
       return items;
     }
 
