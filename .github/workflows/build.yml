@@ -250,10 +250,9 @@ jobs:
           packageName: de.vito.absapp.abs_flutter
           releaseFiles: app-release.aab
           track: beta
-          status: inProgress
+          status: completed
           releaseName: v${{ env.VERSION }}
           inAppUpdatePriority: 2
-          userFraction: 1.0
           whatsNewDirectory: android/whatsnew
         continue-on-error: true
 
