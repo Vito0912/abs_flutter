@@ -1,5 +1,6 @@
 import 'package:abs_flutter/api/routes/interceptors/bearer_auth_interceptor.dart';
 import 'package:abs_flutter/api/routes/interceptors/o_auth_interceptor.dart';
+import 'package:abs_flutter/api/routes/library_api.dart';
 import 'package:abs_flutter/api/routes/library_item_api.dart';
 import 'package:abs_flutter/api/routes/me_api.dart';
 import 'package:abs_flutter/api/routes/session_api.dart';
@@ -258,5 +259,9 @@ class ABSApi {
 
   SessionApi getSessionApi() {
     return SessionApi(dio);
+  }
+
+  LibraryApi getLibraryApi() {
+    return LibraryApi(dio);
   }
 }

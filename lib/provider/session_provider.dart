@@ -200,8 +200,13 @@ class PlaybackSessionNotifier
     final download = downloads.getDownload(itemId, episodeId);
     final player = ref.read(playerProvider.notifier);
 
+    if (playback.audioTracks == null || playback.audioTracks!.isEmpty) {
+      log('No audio tracks found for book session');
+      return;
+    }
+
     final streamUrl =
-        '${currentUser?.server!.url}${playback.audioTracks[0].contentUrl}?token=${currentUser?.token!}';
+        '${currentUser?.server!.url}${playback.audioTracks![0].contentUrl}?token=${currentUser?.token!}';
 
     String? path;
     if (download != null) {
@@ -216,7 +221,7 @@ class PlaybackSessionNotifier
         title: playback.displayTitle!,
         artist: playback.displayAuthor!,
         duration: Duration(
-            seconds: playback.audioTracks
+            seconds: playback.audioTracks!
                 .map((file) => file.duration)
                 .reduce((sum, duration) => sum + duration)
                 .round()),
@@ -229,7 +234,7 @@ class PlaybackSessionNotifier
           'streaming': download == null
         });
 
-    log('Adding to queue: ${mediaItem.title} from ${currentUser.server!.url}${playback.audioTracks[0].contentUrl}?token=${currentUser.token!}');
+    log('Adding to queue: ${mediaItem.title} from ${currentUser.server!.url}${playback.audioTracks![0].contentUrl}?token=${currentUser.token!}');
 
     await player.playMediaItem(mediaItem);
 
@@ -244,8 +249,13 @@ class PlaybackSessionNotifier
     final download = downloads.getDownload(itemId, null);
     final player = ref.read(playerProvider.notifier);
 
+    if (playback.audioTracks == null || playback.audioTracks!.isEmpty) {
+      log('No audio tracks found for book session');
+      return;
+    }
+
     final streamUrl =
-        '${currentUser?.server!.url}${playback.audioTracks[0].contentUrl}?token=${currentUser?.token!}';
+        '${currentUser?.server!.url}${playback.audioTracks![0].contentUrl}?token=${currentUser?.token!}';
 
     String? path;
     if (download != null) {
@@ -253,8 +263,9 @@ class PlaybackSessionNotifier
     } else {
       path = streamUrl;
     }
-    bool multipleTracks = playback.audioTracks.length > 1;
-    List<String> audioSources = playback.audioTracks
+
+    bool multipleTracks = playback.audioTracks!.length > 1;
+    List<String> audioSources = playback.audioTracks!
         .map((e) =>
             '${currentUser?.server!.url}${e.contentUrl}?token=${currentUser?.token!}')
         .toList();
@@ -266,7 +277,7 @@ class PlaybackSessionNotifier
         displaySubtitle: playback.mediaMetadata.bookMetadata?.subtitle,
         artist: playback.displayAuthor!,
         duration: Duration(
-            seconds: playback.audioTracks
+            seconds: playback.audioTracks!
                 .map((file) => file.duration)
                 .reduce((sum, duration) => sum + duration)
                 .round()),
@@ -287,7 +298,7 @@ class PlaybackSessionNotifier
           'audioSources': jsonEncode(audioSources),
         });
 
-    log('Adding to queue: ${mediaItem.title} from ${currentUser.server!.url}${playback.audioTracks[0].contentUrl}?token=${currentUser.token!}');
+    log('Adding to queue: ${mediaItem.title} from ${currentUser.server!.url}${playback.audioTracks![0].contentUrl}?token=${currentUser.token!}');
 
     await player.playMediaItem(mediaItem);
 

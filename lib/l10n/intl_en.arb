@@ -705,5 +705,19 @@
   "viewBookmarks": "View Bookmarks",
   "createBookmark": "Create Bookmark",
   "create": "Create",
-  "createBookmarkTitle": "Create bookmark"
+  "createBookmarkTitle": "Create bookmark",
+  "totalItems": "Total Items",
+  "totalDuration": "Total Duration",
+  "totalAuthors": "Total Authors",
+  "totalGenres": "Total Genres",
+  "longestItems": "Longest Items",
+  "largestItems": "Largest Items",
+  "topAuthors": "Top Authors",
+  "topGenres": "Top Genres",
+  "totalSize": "Total size",
+  "totalAudioTracks": "Total Audio Tracks",
+  "copyLogs": "Copy logs",
+  "copy": "Copy",
+  "copyAnonymous": "Copy (Try removed personal data)",
+  "copyLogsDescription": "Important:\nClicking 'Copy' will transfer all currently displayed logs to your clipboard, including data recorded since the app was started or last cleared. These logs may contain sensitive information such as tokens, usernames, emails, and server URLs. Be cautious about where you paste this information!\\nIf you choose 'Copy and Attempt to Hide Sensitive Information,' the app will try to mask items like tokens, usernames, emails, and server URLs. However, you are responsible for reviewing the logs to ensure all personal data is fully removed."
 }

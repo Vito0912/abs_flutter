@@ -43,33 +43,33 @@ mixin _$PlaybackSession {
   @JsonKey(name: "coverPath")
   String? get coverPath => throw _privateConstructorUsedError;
   @JsonKey(name: "duration")
-  double get duration => throw _privateConstructorUsedError;
+  double? get duration => throw _privateConstructorUsedError;
   @JsonKey(name: "playMethod")
-  int get playMethod => throw _privateConstructorUsedError;
+  int? get playMethod => throw _privateConstructorUsedError;
   @JsonKey(name: "mediaPlayer")
-  String get mediaPlayer => throw _privateConstructorUsedError;
+  String? get mediaPlayer => throw _privateConstructorUsedError;
   @JsonKey(name: "deviceInfo")
-  DeviceInfo get deviceInfo => throw _privateConstructorUsedError;
+  DeviceInfo? get deviceInfo => throw _privateConstructorUsedError;
   @JsonKey(name: "serverVersion")
-  String get serverVersion => throw _privateConstructorUsedError;
+  String? get serverVersion => throw _privateConstructorUsedError;
   @JsonKey(name: "date")
-  String get date => throw _privateConstructorUsedError;
+  String? get date => throw _privateConstructorUsedError;
   @JsonKey(name: "dayOfWeek")
   String? get dayOfWeek => throw _privateConstructorUsedError;
   @JsonKey(name: "timeListening")
-  double get timeListening => throw _privateConstructorUsedError;
+  double? get timeListening => throw _privateConstructorUsedError;
   @JsonKey(name: "startTime")
-  double get startTime => throw _privateConstructorUsedError;
+  double? get startTime => throw _privateConstructorUsedError;
   @JsonKey(name: "currentTime")
-  double get currentTime => throw _privateConstructorUsedError;
+  double? get currentTime => throw _privateConstructorUsedError;
   @JsonKey(name: "startedAt")
-  int get startedAt => throw _privateConstructorUsedError;
+  int? get startedAt => throw _privateConstructorUsedError;
   @JsonKey(name: "updatedAt")
-  int get updatedAt => throw _privateConstructorUsedError;
+  int? get updatedAt => throw _privateConstructorUsedError;
   @JsonKey(name: "audioTracks")
-  List<AudioTrack> get audioTracks => throw _privateConstructorUsedError;
+  List<AudioTrack>? get audioTracks => throw _privateConstructorUsedError;
   @JsonKey(name: "libraryItem")
-  LibraryItem get libraryItem => throw _privateConstructorUsedError;
+  LibraryItem? get libraryItem => throw _privateConstructorUsedError;
 
   /// Serializes this PlaybackSession to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -99,24 +99,24 @@ abstract class $PlaybackSessionCopyWith<$Res> {
       @JsonKey(name: "displayTitle") String? displayTitle,
       @JsonKey(name: "displayAuthor") String? displayAuthor,
       @JsonKey(name: "coverPath") String? coverPath,
-      @JsonKey(name: "duration") double duration,
-      @JsonKey(name: "playMethod") int playMethod,
-      @JsonKey(name: "mediaPlayer") String mediaPlayer,
-      @JsonKey(name: "deviceInfo") DeviceInfo deviceInfo,
-      @JsonKey(name: "serverVersion") String serverVersion,
-      @JsonKey(name: "date") String date,
+      @JsonKey(name: "duration") double? duration,
+      @JsonKey(name: "playMethod") int? playMethod,
+      @JsonKey(name: "mediaPlayer") String? mediaPlayer,
+      @JsonKey(name: "deviceInfo") DeviceInfo? deviceInfo,
+      @JsonKey(name: "serverVersion") String? serverVersion,
+      @JsonKey(name: "date") String? date,
       @JsonKey(name: "dayOfWeek") String? dayOfWeek,
-      @JsonKey(name: "timeListening") double timeListening,
-      @JsonKey(name: "startTime") double startTime,
-      @JsonKey(name: "currentTime") double currentTime,
-      @JsonKey(name: "startedAt") int startedAt,
-      @JsonKey(name: "updatedAt") int updatedAt,
-      @JsonKey(name: "audioTracks") List<AudioTrack> audioTracks,
-      @JsonKey(name: "libraryItem") LibraryItem libraryItem});
+      @JsonKey(name: "timeListening") double? timeListening,
+      @JsonKey(name: "startTime") double? startTime,
+      @JsonKey(name: "currentTime") double? currentTime,
+      @JsonKey(name: "startedAt") int? startedAt,
+      @JsonKey(name: "updatedAt") int? updatedAt,
+      @JsonKey(name: "audioTracks") List<AudioTrack>? audioTracks,
+      @JsonKey(name: "libraryItem") LibraryItem? libraryItem});
 
   $MetadataCopyWith<$Res> get mediaMetadata;
-  $DeviceInfoCopyWith<$Res> get deviceInfo;
-  $LibraryItemCopyWith<$Res> get libraryItem;
+  $DeviceInfoCopyWith<$Res>? get deviceInfo;
+  $LibraryItemCopyWith<$Res>? get libraryItem;
 }
 
 /// @nodoc
@@ -145,20 +145,20 @@ class _$PlaybackSessionCopyWithImpl<$Res, $Val extends PlaybackSession>
     Object? displayTitle = freezed,
     Object? displayAuthor = freezed,
     Object? coverPath = freezed,
-    Object? duration = null,
-    Object? playMethod = null,
-    Object? mediaPlayer = null,
-    Object? deviceInfo = null,
-    Object? serverVersion = null,
-    Object? date = null,
+    Object? duration = freezed,
+    Object? playMethod = freezed,
+    Object? mediaPlayer = freezed,
+    Object? deviceInfo = freezed,
+    Object? serverVersion = freezed,
+    Object? date = freezed,
     Object? dayOfWeek = freezed,
-    Object? timeListening = null,
-    Object? startTime = null,
-    Object? currentTime = null,
-    Object? startedAt = null,
-    Object? updatedAt = null,
-    Object? audioTracks = null,
-    Object? libraryItem = null,
+    Object? timeListening = freezed,
+    Object? startTime = freezed,
+    Object? currentTime = freezed,
+    Object? startedAt = freezed,
+    Object? updatedAt = freezed,
+    Object? audioTracks = freezed,
+    Object? libraryItem = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -205,62 +205,62 @@ class _$PlaybackSessionCopyWithImpl<$Res, $Val extends PlaybackSession>
           ? _value.coverPath
           : coverPath // ignore: cast_nullable_to_non_nullable
               as String?,
-      duration: null == duration
+      duration: freezed == duration
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
-              as double,
-      playMethod: null == playMethod
+              as double?,
+      playMethod: freezed == playMethod
           ? _value.playMethod
           : playMethod // ignore: cast_nullable_to_non_nullable
-              as int,
-      mediaPlayer: null == mediaPlayer
+              as int?,
+      mediaPlayer: freezed == mediaPlayer
           ? _value.mediaPlayer
           : mediaPlayer // ignore: cast_nullable_to_non_nullable
-              as String,
-      deviceInfo: null == deviceInfo
+              as String?,
+      deviceInfo: freezed == deviceInfo
           ? _value.deviceInfo
           : deviceInfo // ignore: cast_nullable_to_non_nullable
-              as DeviceInfo,
-      serverVersion: null == serverVersion
+              as DeviceInfo?,
+      serverVersion: freezed == serverVersion
           ? _value.serverVersion
           : serverVersion // ignore: cast_nullable_to_non_nullable
-              as String,
-      date: null == date
+              as String?,
+      date: freezed == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       dayOfWeek: freezed == dayOfWeek
           ? _value.dayOfWeek
           : dayOfWeek // ignore: cast_nullable_to_non_nullable
               as String?,
-      timeListening: null == timeListening
+      timeListening: freezed == timeListening
           ? _value.timeListening
           : timeListening // ignore: cast_nullable_to_non_nullable
-              as double,
-      startTime: null == startTime
+              as double?,
+      startTime: freezed == startTime
           ? _value.startTime
           : startTime // ignore: cast_nullable_to_non_nullable
-              as double,
-      currentTime: null == currentTime
+              as double?,
+      currentTime: freezed == currentTime
           ? _value.currentTime
           : currentTime // ignore: cast_nullable_to_non_nullable
-              as double,
-      startedAt: null == startedAt
+              as double?,
+      startedAt: freezed == startedAt
           ? _value.startedAt
           : startedAt // ignore: cast_nullable_to_non_nullable
-              as int,
-      updatedAt: null == updatedAt
+              as int?,
+      updatedAt: freezed == updatedAt
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
-              as int,
-      audioTracks: null == audioTracks
+              as int?,
+      audioTracks: freezed == audioTracks
           ? _value.audioTracks
           : audioTracks // ignore: cast_nullable_to_non_nullable
-              as List<AudioTrack>,
-      libraryItem: null == libraryItem
+              as List<AudioTrack>?,
+      libraryItem: freezed == libraryItem
           ? _value.libraryItem
           : libraryItem // ignore: cast_nullable_to_non_nullable
-              as LibraryItem,
+              as LibraryItem?,
     ) as $Val);
   }
 
@@ -278,8 +278,12 @@ class _$PlaybackSessionCopyWithImpl<$Res, $Val extends PlaybackSession>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $DeviceInfoCopyWith<$Res> get deviceInfo {
-    return $DeviceInfoCopyWith<$Res>(_value.deviceInfo, (value) {
+  $DeviceInfoCopyWith<$Res>? get deviceInfo {
+    if (_value.deviceInfo == null) {
+      return null;
+    }
+
+    return $DeviceInfoCopyWith<$Res>(_value.deviceInfo!, (value) {
       return _then(_value.copyWith(deviceInfo: value) as $Val);
     });
   }
@@ -288,8 +292,12 @@ class _$PlaybackSessionCopyWithImpl<$Res, $Val extends PlaybackSession>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $LibraryItemCopyWith<$Res> get libraryItem {
-    return $LibraryItemCopyWith<$Res>(_value.libraryItem, (value) {
+  $LibraryItemCopyWith<$Res>? get libraryItem {
+    if (_value.libraryItem == null) {
+      return null;
+    }
+
+    return $LibraryItemCopyWith<$Res>(_value.libraryItem!, (value) {
       return _then(_value.copyWith(libraryItem: value) as $Val);
     });
   }
@@ -315,27 +323,27 @@ abstract class _$$PlaybackSessionImplCopyWith<$Res>
       @JsonKey(name: "displayTitle") String? displayTitle,
       @JsonKey(name: "displayAuthor") String? displayAuthor,
       @JsonKey(name: "coverPath") String? coverPath,
-      @JsonKey(name: "duration") double duration,
-      @JsonKey(name: "playMethod") int playMethod,
-      @JsonKey(name: "mediaPlayer") String mediaPlayer,
-      @JsonKey(name: "deviceInfo") DeviceInfo deviceInfo,
-      @JsonKey(name: "serverVersion") String serverVersion,
-      @JsonKey(name: "date") String date,
+      @JsonKey(name: "duration") double? duration,
+      @JsonKey(name: "playMethod") int? playMethod,
+      @JsonKey(name: "mediaPlayer") String? mediaPlayer,
+      @JsonKey(name: "deviceInfo") DeviceInfo? deviceInfo,
+      @JsonKey(name: "serverVersion") String? serverVersion,
+      @JsonKey(name: "date") String? date,
       @JsonKey(name: "dayOfWeek") String? dayOfWeek,
-      @JsonKey(name: "timeListening") double timeListening,
-      @JsonKey(name: "startTime") double startTime,
-      @JsonKey(name: "currentTime") double currentTime,
-      @JsonKey(name: "startedAt") int startedAt,
-      @JsonKey(name: "updatedAt") int updatedAt,
-      @JsonKey(name: "audioTracks") List<AudioTrack> audioTracks,
-      @JsonKey(name: "libraryItem") LibraryItem libraryItem});
+      @JsonKey(name: "timeListening") double? timeListening,
+      @JsonKey(name: "startTime") double? startTime,
+      @JsonKey(name: "currentTime") double? currentTime,
+      @JsonKey(name: "startedAt") int? startedAt,
+      @JsonKey(name: "updatedAt") int? updatedAt,
+      @JsonKey(name: "audioTracks") List<AudioTrack>? audioTracks,
+      @JsonKey(name: "libraryItem") LibraryItem? libraryItem});
 
   @override
   $MetadataCopyWith<$Res> get mediaMetadata;
   @override
-  $DeviceInfoCopyWith<$Res> get deviceInfo;
+  $DeviceInfoCopyWith<$Res>? get deviceInfo;
   @override
-  $LibraryItemCopyWith<$Res> get libraryItem;
+  $LibraryItemCopyWith<$Res>? get libraryItem;
 }
 
 /// @nodoc
@@ -362,20 +370,20 @@ class __$$PlaybackSessionImplCopyWithImpl<$Res>
     Object? displayTitle = freezed,
     Object? displayAuthor = freezed,
     Object? coverPath = freezed,
-    Object? duration = null,
-    Object? playMethod = null,
-    Object? mediaPlayer = null,
-    Object? deviceInfo = null,
-    Object? serverVersion = null,
-    Object? date = null,
+    Object? duration = freezed,
+    Object? playMethod = freezed,
+    Object? mediaPlayer = freezed,
+    Object? deviceInfo = freezed,
+    Object? serverVersion = freezed,
+    Object? date = freezed,
     Object? dayOfWeek = freezed,
-    Object? timeListening = null,
-    Object? startTime = null,
-    Object? currentTime = null,
-    Object? startedAt = null,
-    Object? updatedAt = null,
-    Object? audioTracks = null,
-    Object? libraryItem = null,
+    Object? timeListening = freezed,
+    Object? startTime = freezed,
+    Object? currentTime = freezed,
+    Object? startedAt = freezed,
+    Object? updatedAt = freezed,
+    Object? audioTracks = freezed,
+    Object? libraryItem = freezed,
   }) {
     return _then(_$PlaybackSessionImpl(
       id: null == id
@@ -422,62 +430,62 @@ class __$$PlaybackSessionImplCopyWithImpl<$Res>
           ? _value.coverPath
           : coverPath // ignore: cast_nullable_to_non_nullable
               as String?,
-      duration: null == duration
+      duration: freezed == duration
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
-              as double,
-      playMethod: null == playMethod
+              as double?,
+      playMethod: freezed == playMethod
           ? _value.playMethod
           : playMethod // ignore: cast_nullable_to_non_nullable
-              as int,
-      mediaPlayer: null == mediaPlayer
+              as int?,
+      mediaPlayer: freezed == mediaPlayer
           ? _value.mediaPlayer
           : mediaPlayer // ignore: cast_nullable_to_non_nullable
-              as String,
-      deviceInfo: null == deviceInfo
+              as String?,
+      deviceInfo: freezed == deviceInfo
           ? _value.deviceInfo
           : deviceInfo // ignore: cast_nullable_to_non_nullable
-              as DeviceInfo,
-      serverVersion: null == serverVersion
+              as DeviceInfo?,
+      serverVersion: freezed == serverVersion
           ? _value.serverVersion
           : serverVersion // ignore: cast_nullable_to_non_nullable
-              as String,
-      date: null == date
+              as String?,
+      date: freezed == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       dayOfWeek: freezed == dayOfWeek
           ? _value.dayOfWeek
           : dayOfWeek // ignore: cast_nullable_to_non_nullable
               as String?,
-      timeListening: null == timeListening
+      timeListening: freezed == timeListening
           ? _value.timeListening
           : timeListening // ignore: cast_nullable_to_non_nullable
-              as double,
-      startTime: null == startTime
+              as double?,
+      startTime: freezed == startTime
           ? _value.startTime
           : startTime // ignore: cast_nullable_to_non_nullable
-              as double,
-      currentTime: null == currentTime
+              as double?,
+      currentTime: freezed == currentTime
           ? _value.currentTime
           : currentTime // ignore: cast_nullable_to_non_nullable
-              as double,
-      startedAt: null == startedAt
+              as double?,
+      startedAt: freezed == startedAt
           ? _value.startedAt
           : startedAt // ignore: cast_nullable_to_non_nullable
-              as int,
-      updatedAt: null == updatedAt
+              as int?,
+      updatedAt: freezed == updatedAt
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
-              as int,
-      audioTracks: null == audioTracks
+              as int?,
+      audioTracks: freezed == audioTracks
           ? _value._audioTracks
           : audioTracks // ignore: cast_nullable_to_non_nullable
-              as List<AudioTrack>,
-      libraryItem: null == libraryItem
+              as List<AudioTrack>?,
+      libraryItem: freezed == libraryItem
           ? _value.libraryItem
           : libraryItem // ignore: cast_nullable_to_non_nullable
-              as LibraryItem,
+              as LibraryItem?,
     ));
   }
 }
@@ -497,20 +505,20 @@ class _$PlaybackSessionImpl implements _PlaybackSession {
       @JsonKey(name: "displayTitle") this.displayTitle,
       @JsonKey(name: "displayAuthor") this.displayAuthor,
       @JsonKey(name: "coverPath") this.coverPath,
-      @JsonKey(name: "duration") required this.duration,
-      @JsonKey(name: "playMethod") required this.playMethod,
-      @JsonKey(name: "mediaPlayer") required this.mediaPlayer,
-      @JsonKey(name: "deviceInfo") required this.deviceInfo,
-      @JsonKey(name: "serverVersion") required this.serverVersion,
-      @JsonKey(name: "date") required this.date,
+      @JsonKey(name: "duration") this.duration,
+      @JsonKey(name: "playMethod") this.playMethod,
+      @JsonKey(name: "mediaPlayer") this.mediaPlayer,
+      @JsonKey(name: "deviceInfo") this.deviceInfo,
+      @JsonKey(name: "serverVersion") this.serverVersion,
+      @JsonKey(name: "date") this.date,
       @JsonKey(name: "dayOfWeek") this.dayOfWeek,
-      @JsonKey(name: "timeListening") required this.timeListening,
-      @JsonKey(name: "startTime") required this.startTime,
-      @JsonKey(name: "currentTime") required this.currentTime,
-      @JsonKey(name: "startedAt") required this.startedAt,
-      @JsonKey(name: "updatedAt") required this.updatedAt,
-      @JsonKey(name: "audioTracks") required final List<AudioTrack> audioTracks,
-      @JsonKey(name: "libraryItem") required this.libraryItem})
+      @JsonKey(name: "timeListening") this.timeListening,
+      @JsonKey(name: "startTime") this.startTime,
+      @JsonKey(name: "currentTime") this.currentTime,
+      @JsonKey(name: "startedAt") this.startedAt,
+      @JsonKey(name: "updatedAt") this.updatedAt,
+      @JsonKey(name: "audioTracks") final List<AudioTrack>? audioTracks,
+      @JsonKey(name: "libraryItem") this.libraryItem})
       : _chapters = chapters,
         _audioTracks = audioTracks;
 
@@ -560,52 +568,54 @@ class _$PlaybackSessionImpl implements _PlaybackSession {
   final String? coverPath;
   @override
   @JsonKey(name: "duration")
-  final double duration;
+  final double? duration;
   @override
   @JsonKey(name: "playMethod")
-  final int playMethod;
+  final int? playMethod;
   @override
   @JsonKey(name: "mediaPlayer")
-  final String mediaPlayer;
+  final String? mediaPlayer;
   @override
   @JsonKey(name: "deviceInfo")
-  final DeviceInfo deviceInfo;
+  final DeviceInfo? deviceInfo;
   @override
   @JsonKey(name: "serverVersion")
-  final String serverVersion;
+  final String? serverVersion;
   @override
   @JsonKey(name: "date")
-  final String date;
+  final String? date;
   @override
   @JsonKey(name: "dayOfWeek")
   final String? dayOfWeek;
   @override
   @JsonKey(name: "timeListening")
-  final double timeListening;
+  final double? timeListening;
   @override
   @JsonKey(name: "startTime")
-  final double startTime;
+  final double? startTime;
   @override
   @JsonKey(name: "currentTime")
-  final double currentTime;
+  final double? currentTime;
   @override
   @JsonKey(name: "startedAt")
-  final int startedAt;
+  final int? startedAt;
   @override
   @JsonKey(name: "updatedAt")
-  final int updatedAt;
-  final List<AudioTrack> _audioTracks;
+  final int? updatedAt;
+  final List<AudioTrack>? _audioTracks;
   @override
   @JsonKey(name: "audioTracks")
-  List<AudioTrack> get audioTracks {
+  List<AudioTrack>? get audioTracks {
+    final value = _audioTracks;
+    if (value == null) return null;
     if (_audioTracks is EqualUnmodifiableListView) return _audioTracks;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_audioTracks);
+    return EqualUnmodifiableListView(value);
   }
 
   @override
   @JsonKey(name: "libraryItem")
-  final LibraryItem libraryItem;
+  final LibraryItem? libraryItem;
 
   @override
   String toString() {
@@ -715,32 +725,32 @@ class _$PlaybackSessionImpl implements _PlaybackSession {
 
 abstract class _PlaybackSession implements PlaybackSession {
   const factory _PlaybackSession(
-      {@JsonKey(name: "id") required final String id,
-      @JsonKey(name: "userId") required final String userId,
-      @JsonKey(name: "libraryId") required final String libraryId,
-      @JsonKey(name: "libraryItemId") required final String libraryItemId,
-      @JsonKey(name: "episodeId") final String? episodeId,
-      @JsonKey(name: "mediaType") final String? mediaType,
-      @JsonKey(name: "mediaMetadata") required final Metadata mediaMetadata,
-      @JsonKey(name: "chapters") final List<Chapter>? chapters,
-      @JsonKey(name: "displayTitle") final String? displayTitle,
-      @JsonKey(name: "displayAuthor") final String? displayAuthor,
-      @JsonKey(name: "coverPath") final String? coverPath,
-      @JsonKey(name: "duration") required final double duration,
-      @JsonKey(name: "playMethod") required final int playMethod,
-      @JsonKey(name: "mediaPlayer") required final String mediaPlayer,
-      @JsonKey(name: "deviceInfo") required final DeviceInfo deviceInfo,
-      @JsonKey(name: "serverVersion") required final String serverVersion,
-      @JsonKey(name: "date") required final String date,
-      @JsonKey(name: "dayOfWeek") final String? dayOfWeek,
-      @JsonKey(name: "timeListening") required final double timeListening,
-      @JsonKey(name: "startTime") required final double startTime,
-      @JsonKey(name: "currentTime") required final double currentTime,
-      @JsonKey(name: "startedAt") required final int startedAt,
-      @JsonKey(name: "updatedAt") required final int updatedAt,
-      @JsonKey(name: "audioTracks") required final List<AudioTrack> audioTracks,
-      @JsonKey(name: "libraryItem")
-      required final LibraryItem libraryItem}) = _$PlaybackSessionImpl;
+          {@JsonKey(name: "id") required final String id,
+          @JsonKey(name: "userId") required final String userId,
+          @JsonKey(name: "libraryId") required final String libraryId,
+          @JsonKey(name: "libraryItemId") required final String libraryItemId,
+          @JsonKey(name: "episodeId") final String? episodeId,
+          @JsonKey(name: "mediaType") final String? mediaType,
+          @JsonKey(name: "mediaMetadata") required final Metadata mediaMetadata,
+          @JsonKey(name: "chapters") final List<Chapter>? chapters,
+          @JsonKey(name: "displayTitle") final String? displayTitle,
+          @JsonKey(name: "displayAuthor") final String? displayAuthor,
+          @JsonKey(name: "coverPath") final String? coverPath,
+          @JsonKey(name: "duration") final double? duration,
+          @JsonKey(name: "playMethod") final int? playMethod,
+          @JsonKey(name: "mediaPlayer") final String? mediaPlayer,
+          @JsonKey(name: "deviceInfo") final DeviceInfo? deviceInfo,
+          @JsonKey(name: "serverVersion") final String? serverVersion,
+          @JsonKey(name: "date") final String? date,
+          @JsonKey(name: "dayOfWeek") final String? dayOfWeek,
+          @JsonKey(name: "timeListening") final double? timeListening,
+          @JsonKey(name: "startTime") final double? startTime,
+          @JsonKey(name: "currentTime") final double? currentTime,
+          @JsonKey(name: "startedAt") final int? startedAt,
+          @JsonKey(name: "updatedAt") final int? updatedAt,
+          @JsonKey(name: "audioTracks") final List<AudioTrack>? audioTracks,
+          @JsonKey(name: "libraryItem") final LibraryItem? libraryItem}) =
+      _$PlaybackSessionImpl;
 
   factory _PlaybackSession.fromJson(Map<String, dynamic> json) =
       _$PlaybackSessionImpl.fromJson;
@@ -780,46 +790,46 @@ abstract class _PlaybackSession implements PlaybackSession {
   String? get coverPath;
   @override
   @JsonKey(name: "duration")
-  double get duration;
+  double? get duration;
   @override
   @JsonKey(name: "playMethod")
-  int get playMethod;
+  int? get playMethod;
   @override
   @JsonKey(name: "mediaPlayer")
-  String get mediaPlayer;
+  String? get mediaPlayer;
   @override
   @JsonKey(name: "deviceInfo")
-  DeviceInfo get deviceInfo;
+  DeviceInfo? get deviceInfo;
   @override
   @JsonKey(name: "serverVersion")
-  String get serverVersion;
+  String? get serverVersion;
   @override
   @JsonKey(name: "date")
-  String get date;
+  String? get date;
   @override
   @JsonKey(name: "dayOfWeek")
   String? get dayOfWeek;
   @override
   @JsonKey(name: "timeListening")
-  double get timeListening;
+  double? get timeListening;
   @override
   @JsonKey(name: "startTime")
-  double get startTime;
+  double? get startTime;
   @override
   @JsonKey(name: "currentTime")
-  double get currentTime;
+  double? get currentTime;
   @override
   @JsonKey(name: "startedAt")
-  int get startedAt;
+  int? get startedAt;
   @override
   @JsonKey(name: "updatedAt")
-  int get updatedAt;
+  int? get updatedAt;
   @override
   @JsonKey(name: "audioTracks")
-  List<AudioTrack> get audioTracks;
+  List<AudioTrack>? get audioTracks;
   @override
   @JsonKey(name: "libraryItem")
-  LibraryItem get libraryItem;
+  LibraryItem? get libraryItem;
 
   /// Create a copy of PlaybackSession
   /// with the given fields replaced by the non-null parameter values.

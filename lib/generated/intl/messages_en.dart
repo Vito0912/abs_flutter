@@ -143,6 +143,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Continue Listening"),
         "continueSeries":
             MessageLookupByLibrary.simpleMessage("Continue Series"),
+        "copy": MessageLookupByLibrary.simpleMessage("Copy"),
+        "copyAnonymous": MessageLookupByLibrary.simpleMessage(
+            "Copy (Try removed personal data)"),
+        "copyLogs": MessageLookupByLibrary.simpleMessage("Copy logs"),
+        "copyLogsDescription": MessageLookupByLibrary.simpleMessage(
+            "Important:\nClicking \'Copy\' will transfer all currently displayed logs to your clipboard, including data recorded since the app was started or last cleared. These logs may contain sensitive information such as tokens, usernames, emails, and server URLs. Be cautious about where you paste this information!\\nIf you choose \'Copy and Attempt to Hide Sensitive Information,\' the app will try to mask items like tokens, usernames, emails, and server URLs. However, you are responsible for reviewing the logs to ensure all personal data is fully removed."),
         "create": MessageLookupByLibrary.simpleMessage("Create"),
         "createBookmark":
             MessageLookupByLibrary.simpleMessage("Create Bookmark"),
@@ -244,6 +250,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "When enabled, the player will jump to the last position when pressing play"),
         "language": MessageLookupByLibrary.simpleMessage("Language"),
         "languages": MessageLookupByLibrary.simpleMessage("Languages"),
+        "largestItems": MessageLookupByLibrary.simpleMessage("Largest Items"),
         "last30Days": MessageLookupByLibrary.simpleMessage("Last 30 days"),
         "last7Days": MessageLookupByLibrary.simpleMessage("Last 7 days"),
         "libraries": MessageLookupByLibrary.simpleMessage("Libraries"),
@@ -260,6 +267,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "When enabled, this feature locks the progress bar in the media notification, if supported by the operating system"),
         "logging": MessageLookupByLibrary.simpleMessage("Logging"),
         "logs": MessageLookupByLibrary.simpleMessage("Logs"),
+        "longestItems": MessageLookupByLibrary.simpleMessage("Longest Items"),
         "markItemsFinished":
             MessageLookupByLibrary.simpleMessage("Mark Items Finished"),
         "markItemsFinishedAfterDescription": MessageLookupByLibrary.simpleMessage(
@@ -388,6 +396,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "timerText": m33,
         "title": MessageLookupByLibrary.simpleMessage("Title"),
         "today": MessageLookupByLibrary.simpleMessage("Today"),
+        "topAuthors": MessageLookupByLibrary.simpleMessage("Top Authors"),
+        "topGenres": MessageLookupByLibrary.simpleMessage("Top Genres"),
+        "totalAudioTracks":
+            MessageLookupByLibrary.simpleMessage("Total Audio Tracks"),
+        "totalAuthors": MessageLookupByLibrary.simpleMessage("Total Authors"),
+        "totalDuration": MessageLookupByLibrary.simpleMessage("Total Duration"),
+        "totalGenres": MessageLookupByLibrary.simpleMessage("Total Genres"),
+        "totalItems": MessageLookupByLibrary.simpleMessage("Total Items"),
+        "totalSize": MessageLookupByLibrary.simpleMessage("Total size"),
         "totalTimeListened":
             MessageLookupByLibrary.simpleMessage("Total time listened"),
         "tryAgain": MessageLookupByLibrary.simpleMessage("Try Again"),

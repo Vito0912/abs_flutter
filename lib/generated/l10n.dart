@@ -1,6 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+
 import 'intl/messages_all.dart';
 
 // **************************************************************************
@@ -2348,6 +2349,146 @@ class S {
     return Intl.message(
       'Create bookmark',
       name: 'createBookmarkTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total Items`
+  String get totalItems {
+    return Intl.message(
+      'Total Items',
+      name: 'totalItems',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total Duration`
+  String get totalDuration {
+    return Intl.message(
+      'Total Duration',
+      name: 'totalDuration',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total Authors`
+  String get totalAuthors {
+    return Intl.message(
+      'Total Authors',
+      name: 'totalAuthors',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total Genres`
+  String get totalGenres {
+    return Intl.message(
+      'Total Genres',
+      name: 'totalGenres',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Longest Items`
+  String get longestItems {
+    return Intl.message(
+      'Longest Items',
+      name: 'longestItems',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Largest Items`
+  String get largestItems {
+    return Intl.message(
+      'Largest Items',
+      name: 'largestItems',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Top Authors`
+  String get topAuthors {
+    return Intl.message(
+      'Top Authors',
+      name: 'topAuthors',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Top Genres`
+  String get topGenres {
+    return Intl.message(
+      'Top Genres',
+      name: 'topGenres',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total size`
+  String get totalSize {
+    return Intl.message(
+      'Total size',
+      name: 'totalSize',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total Audio Tracks`
+  String get totalAudioTracks {
+    return Intl.message(
+      'Total Audio Tracks',
+      name: 'totalAudioTracks',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Copy logs`
+  String get copyLogs {
+    return Intl.message(
+      'Copy logs',
+      name: 'copyLogs',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Copy`
+  String get copy {
+    return Intl.message(
+      'Copy',
+      name: 'copy',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Copy (Try removed personal data)`
+  String get copyAnonymous {
+    return Intl.message(
+      'Copy (Try removed personal data)',
+      name: 'copyAnonymous',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Important:\nClicking 'Copy' will transfer all currently displayed logs to your clipboard, including data recorded since the app was started or last cleared. These logs may contain sensitive information such as tokens, usernames, emails, and server URLs. Be cautious about where you paste this information!\nIf you choose 'Copy and Attempt to Hide Sensitive Information,' the app will try to mask items like tokens, usernames, emails, and server URLs. However, you are responsible for reviewing the logs to ensure all personal data is fully removed.`
+  String get copyLogsDescription {
+    return Intl.message(
+      'Important:\nClicking \'Copy\' will transfer all currently displayed logs to your clipboard, including data recorded since the app was started or last cleared. These logs may contain sensitive information such as tokens, usernames, emails, and server URLs. Be cautious about where you paste this information!\n\nIf you choose \'Copy and Attempt to Hide Sensitive Information,\' the app will try to mask items like tokens, usernames, emails, and server URLs. However, you are responsible for reviewing the logs to ensure all personal data is fully removed.',
+      name: 'copyLogsDescription',
       desc: '',
       args: [],
     );

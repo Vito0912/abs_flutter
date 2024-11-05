@@ -25,7 +25,7 @@ late ProviderContainer provContainer;
 final PlatformTabController tabController =
     PlatformTabController(initialIndex: 1);
 
-double maxWidth = 800;
+const double maxWidth = 800;
 const String mediaPlayer = 'just_audio /w audio_service @ abs_flutter';
 
 final Map<String, dynamic> defaultSettings = {

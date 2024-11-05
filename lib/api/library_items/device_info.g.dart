@@ -8,12 +8,12 @@ part of 'device_info.dart';
 
 _$DeviceInfoImpl _$$DeviceInfoImplFromJson(Map<String, dynamic> json) =>
     _$DeviceInfoImpl(
-      deviceId: json['deviceId'] as String,
-      clientName: json['clientName'] as String,
-      clientVersion: json['clientVersion'] as String,
-      manufacturer: json['manufacturer'] as String,
-      model: json['model'] as String,
-      sdkVersion: json['sdkVersion'] as String,
+      deviceId: json['deviceId'] as String?,
+      clientName: json['clientName'] as String?,
+      clientVersion: json['clientVersion'] as String?,
+      manufacturer: json['manufacturer'] as String?,
+      model: json['model'] as String?,
+      sdkVersion: json['sdkVersion'] as String?,
     );
 
 Map<String, dynamic> _$$DeviceInfoImplToJson(_$DeviceInfoImpl instance) =>

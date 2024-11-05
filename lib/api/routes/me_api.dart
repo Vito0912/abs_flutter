@@ -1,3 +1,4 @@
+import 'package:abs_flutter/api/library/stats/user_listening_stats.dart';
 import 'package:abs_flutter/api/me/bookmark.dart';
 import 'package:abs_flutter/api/me/login.dart';
 import 'package:abs_flutter/api/me/request/create_bookmark_request.dart';
@@ -70,6 +71,23 @@ class MeApi {
     return ABSApi.makeApiGetRequest(
       route: '/api/me',
       fromJson: User.fromJson,
+      cancelToken: cancelToken,
+      headers: headers,
+      extra: extra,
+      dio: _dio,
+      queryParams: {},
+    );
+  }
+
+  Future<Response<UserListeningStats>> getListeningStats(
+    String userId, {
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+  }) async {
+    return ABSApi.makeApiGetRequest(
+      route: '/api/users/$userId/listening-stats',
+      fromJson: UserListeningStats.fromJson,
       cancelToken: cancelToken,
       headers: headers,
       extra: extra,
