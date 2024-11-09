@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:abs_flutter/api/library_items/audio_track.dart';
 import 'package:abs_flutter/models/chapter.dart';
 import 'package:abs_flutter/models/history.dart';
 import 'package:abs_flutter/provider/connection_provider.dart';
@@ -66,6 +67,7 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
     });
 
     _player.positionStream.listen((event) async {
+      return;
       if (_player.duration != null && _player.position >= _player.duration!) {
         log('Stopping player due to position: ${_player.position} and duration: ${_player.duration}');
         await _container
@@ -213,8 +215,16 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
   }
 
   @override
-  Future<void> seek(Duration position) async {
-    await _player.seek(position);
+  Future<void> seek(Duration position, {int? index}) async {
+    int value = position.inMilliseconds;
+    Duration seekTo = Duration(milliseconds: value);
+    int offset = getOffsetAtDuration(seekTo).inMilliseconds;
+    int realValue = value - offset;
+    Duration duration = Duration(milliseconds: realValue.toInt());
+
+    index ??= getIndexAtDuration(Duration(milliseconds: value.toInt()));
+
+    await _player.seek(duration, index: index);
 
     final itemId = mediaItem.value?.extras?['libraryItemId'];
     if (itemId != null) {
@@ -370,11 +380,168 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
         ProcessingState.completed: AudioProcessingState.completed,
       }[_player.processingState]!,
       playing: _player.playing,
-      updatePosition: _player.position,
+      updatePosition: position,
       bufferedPosition: _player.bufferedPosition,
       speed: _player.speed,
       queueIndex: event.currentIndex,
       captioningEnabled: false,
     );
+  }
+
+  ///
+  ///
+  ///
+  ///
+  ///
+  ///
+
+  Stream<Duration> get positionStream {
+    if (mediaItem.value == null) {
+      return player.positionStream;
+    }
+    return _positionStream();
+  }
+
+  Duration get position {
+    if (mediaItem.value == null) {
+      return player.position;
+    }
+    if (mediaItem.value!.extras != null &&
+        mediaItem.value!.extras!['audioTracks'] != null) {
+      List<AudioTrack> audioTracks =
+          (jsonDecode(mediaItem.value!.extras!['audioTracks']) as List)
+              .map((track) => AudioTrack.fromJson(track))
+              .toList();
+      final currentPosition = player.position;
+      if (audioTracks.length > 1) {
+        int? index = player.currentIndex;
+        if (index != null && index > 0) {
+          Duration cumulativeOffset = Duration.zero;
+          for (int i = 0; i < index; i++) {
+            cumulativeOffset += Duration(
+                milliseconds: (audioTracks[i].duration * 1000).toInt());
+          }
+
+          return cumulativeOffset + currentPosition;
+        } else {
+          return currentPosition;
+        }
+      }
+      return player.position;
+    } else {
+      return player.position;
+    }
+  }
+
+  Duration get offset {
+    if (mediaItem.value == null) {
+      return Duration.zero;
+    }
+    if (mediaItem.value!.extras != null &&
+        mediaItem.value!.extras!['audioTracks'] != null) {
+      List<AudioTrack> audioTracks =
+          (jsonDecode(mediaItem.value!.extras!['audioTracks']) as List)
+              .map((track) => AudioTrack.fromJson(track))
+              .toList();
+      if (audioTracks.length > 1) {
+        int? index = player.currentIndex;
+        if (index != null && index > 0) {
+          Duration cumulativeOffset = Duration.zero;
+          for (int i = 0; i < index; i++) {
+            cumulativeOffset += Duration(
+                milliseconds: (audioTracks[i].duration * 1000).toInt());
+          }
+
+          return cumulativeOffset;
+        } else {
+          return Duration.zero;
+        }
+      }
+      return Duration.zero;
+    } else {
+      return Duration.zero;
+    }
+  }
+
+  Stream<Duration> _positionStream() {
+    // Check if audioTracks exist in the extras of the media item.
+    if (mediaItem.value!.extras != null &&
+        mediaItem.value!.extras!['audioTracks'] != null) {
+      List<AudioTrack> audioTracks =
+          (jsonDecode(mediaItem.value!.extras!['audioTracks']) as List)
+              .map((track) => AudioTrack.fromJson(track))
+              .toList();
+      if (audioTracks.length > 1) {
+        return player.positionStream.map((currentPosition) {
+          int? index = player.currentIndex;
+          if (index != null && index > 0) {
+            Duration cumulativeOffset = Duration.zero;
+            for (int i = 0; i < index; i++) {
+              cumulativeOffset += Duration(
+                  milliseconds: (audioTracks[i].duration * 1000).toInt());
+            }
+
+            return cumulativeOffset + currentPosition;
+          } else {
+            return currentPosition;
+          }
+        });
+      }
+      return player.positionStream;
+    } else {
+      return player.positionStream;
+    }
+  }
+
+  int? get currentIndex => player.currentIndex;
+
+  int? getIndexAtDuration(Duration target) {
+    if (mediaItem.value == null) {
+      return null;
+    }
+    if (mediaItem.value!.extras != null &&
+        mediaItem.value!.extras!['audioTracks'] != null) {
+      List<AudioTrack> audioTracks =
+          (jsonDecode(mediaItem.value!.extras!['audioTracks']) as List)
+              .map((track) => AudioTrack.fromJson(track))
+              .toList();
+      if (audioTracks.length > 1) {
+        Duration cumulativeOffset = Duration.zero;
+        for (int i = 0; i < audioTracks.length; i++) {
+          cumulativeOffset +=
+              Duration(milliseconds: (audioTracks[i].duration * 1000).toInt());
+          if (cumulativeOffset >= target) {
+            return i;
+          }
+        }
+      }
+    }
+    return null;
+  }
+
+  Duration getOffsetAtDuration(Duration target) {
+    if (mediaItem.value == null) {
+      return Duration.zero;
+    }
+    if (mediaItem.value!.extras != null &&
+        mediaItem.value!.extras!['audioTracks'] != null) {
+      List<AudioTrack> audioTracks =
+          (jsonDecode(mediaItem.value!.extras!['audioTracks']) as List)
+              .map((track) => AudioTrack.fromJson(track))
+              .toList();
+      if (audioTracks.length > 1) {
+        Duration cumulativeOffset = Duration.zero;
+        for (int i = 0; i < audioTracks.length; i++) {
+          cumulativeOffset +=
+              Duration(milliseconds: (audioTracks[i].duration * 1000).toInt());
+          if (cumulativeOffset >= target) {
+            return cumulativeOffset -
+                Duration(
+                    milliseconds: (audioTracks[i].duration * 1000).toInt());
+          }
+        }
+      }
+    }
+    return Duration.zero;
   }
 }

@@ -10,8 +10,7 @@ createBookmark(BuildContext context, PlayerProvider player, WidgetRef ref,
     String? libraryItemId) {
   final TextEditingController titleController = TextEditingController();
   final TextEditingController timeController = TextEditingController();
-  timeController.text =
-      Helper.formatTimeToClock(player.audioService.player.position.inSeconds);
+  timeController.text = Helper.formatTimeToClock(player.position.inSeconds);
 
   showPlatformDialog(
     context: context,
@@ -38,7 +37,7 @@ createBookmark(BuildContext context, PlayerProvider player, WidgetRef ref,
           PlatformDialogAction(
             child: PlatformText(S.of(innerContext).create),
             onPressed: () async {
-              final time = player.audioService.player.position.inSeconds;
+              final time = player.position.inSeconds;
               await ref
                   .read(bookmarkProvider)
                   .createBookmark(libraryItemId!, time, titleController.text);

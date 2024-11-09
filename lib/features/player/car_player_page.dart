@@ -20,8 +20,7 @@ class CarPlayerPage extends ConsumerWidget {
     final playerStatus = ref.watch(playStatusProvider);
     final player = ref.watch(playerProvider);
     final currentChapter = ref.watch(chapterProvider);
-    final positionStream = player.audioService.player.positionStream;
-    final durationStream = player.audioService.player.durationStream;
+    final positionStream = player.positionStream;
     final bufferStream = player.audioService.player.bufferedPositionStream;
 
     const double size = 60.0;
@@ -98,7 +97,6 @@ class CarPlayerPage extends ConsumerWidget {
                       const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
                   child: ProgressBar(
                     positionStream: positionStream,
-                    durationStream: durationStream,
                     player: player,
                     showPerChapter: false,
                     size: size,

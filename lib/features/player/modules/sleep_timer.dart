@@ -70,8 +70,7 @@ class SleepTimer extends ConsumerWidget {
       onTap: (option) {
         // When end of chapter is selected
         if (value == -1 && currentChapter != null) {
-          double chapterTimer = currentChapter!.end -
-              player.audioService.player.position.inSeconds;
+          double chapterTimer = currentChapter!.end - player.position.inSeconds;
           if (timerNotifier.isRunning) {
             timerNotifier.updateTimer(chapterTimer); // Update the running timer
           } else {

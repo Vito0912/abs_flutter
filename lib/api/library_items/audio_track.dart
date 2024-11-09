@@ -13,7 +13,7 @@ class AudioTrack with _$AudioTrack {
     @JsonKey(name: "title") required String title,
     @JsonKey(name: "contentUrl") required String contentUrl,
     @JsonKey(name: "mimeType") required String mimeType,
-    @JsonKey(name: "metadata") required LibraryFileMetadata metadata,
+    @JsonKey(name: "metadata") LibraryFileMetadata? metadata,
   }) = _AudioTrack;
 
   factory AudioTrack.fromJson(Map<String, dynamic> json) =>

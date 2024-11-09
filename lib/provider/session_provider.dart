@@ -296,6 +296,7 @@ class PlaybackSessionNotifier
               .toList(),
           'multipleSources': multipleTracks,
           'audioSources': jsonEncode(audioSources),
+          'audioTracks': jsonEncode(playback.audioTracks),
         });
 
     log('Adding to queue: ${mediaItem.title} from ${currentUser.server!.url}${playback.audioTracks![0].contentUrl}?token=${currentUser.token!}');

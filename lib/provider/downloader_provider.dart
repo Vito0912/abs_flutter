@@ -1,9 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:developer';
 import 'dart:io';
 
-import 'package:abs_api/abs_api.dart' as api;
 import 'package:abs_flutter/api/library_items/audio_file.dart';
 import 'package:abs_flutter/api/library_items/episode.dart';
 import 'package:abs_flutter/api/library_items/library_item.dart';
@@ -12,6 +10,7 @@ import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/models/file.dart';
 import 'package:abs_flutter/provider/download_provider.dart';
 import 'package:abs_flutter/provider/library_provider.dart';
+import 'package:abs_flutter/provider/log_provider.dart';
 import 'package:abs_flutter/provider/settings_provider.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
 import 'package:abs_flutter/util/constants.dart';
@@ -193,6 +192,12 @@ class DownloadProvider extends ChangeNotifier {
 
     downloadList.add(downloadInfo);
 
+    if (metaPath == null) {
+      log('Failed to download file: $fileName. Meta path is null. Removing files',
+          name: 'DownloadProvider');
+      ref.read(downloadListProvider.notifier).removeDownload(downloadInfo);
+    }
+
     // Save item to BaseDirectory.applicationDocuments/abs_flutter/itemId/meta.json
     String json = jsonEncode(item);
 
@@ -245,12 +250,16 @@ class DownloadProvider extends ChangeNotifier {
 
     downloadList.add(downloadInfo);
 
+    if (metaPath == null) {
+      log('Failed to download file: $fileName. Meta path is null. Removing files',
+          name: 'DownloadProvider');
+      ref.read(downloadListProvider.notifier).removeDownload(downloadInfo);
+    }
+
     // Save item to BaseDirectory.applicationDocuments/abs_flutter/itemId/meta.json
-    String jsonLibrary = api.AbsApi()
-        .serializers
-        .toJson(api.LibraryItemBase.serializer, libraryItem);
-    String jsonEpisode =
-        api.AbsApi().serializers.toJson(api.PodcastEpisode.serializer, item);
+    String jsonLibrary = jsonEncode(libraryItem);
+    String jsonEpisode = jsonEncode(item);
+
     if (metaPath != null) {
       // Create the parent directory
       final dir = Directory(metaPath).parent;
