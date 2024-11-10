@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:abs_flutter/api/library_items/audio_track.dart';
 import 'package:abs_flutter/api/library_items/device_info.dart' as abs;
 import 'package:abs_flutter/api/library_items/episode.dart';
 import 'package:abs_flutter/api/library_items/playback_session.dart';
@@ -143,7 +144,7 @@ class PlaybackSessionNotifier
           return;
         }
         mediaItem = MediaItem(
-            id: download.filePath!,
+            id: download.files[0].filePath!,
             album: item.value?.media?.podcastMedia?.metadata.title,
             title: download.displayName,
             artist: item.value?.media?.podcastMedia?.metadata.author,
@@ -161,8 +162,39 @@ class PlaybackSessionNotifier
                 .join(', ') ??
             '';
 
+        final bool multipleTracks = download.files.length > 1;
+        final List<String> audioSources = [];
+        final List<AudioTrack> audioTracks = [];
+
+        if (multipleTracks) {
+          int i = 0;
+
+          List<DownloadFile> sortedFiles = download.files;
+          sortedFiles.sort((a, b) => a.index.compareTo(b.index));
+
+          for (final DownloadFile files in sortedFiles) {
+            if (files.filePath == null) {
+              return log('Download file path is null (Downloads)',
+                  name: 'session_provider');
+            }
+            if (files.duration == null) {
+              return log('Download duration is null (Downloads)',
+                  name: 'session_provider');
+            }
+            audioSources.add(files.filePath!);
+            audioTracks.add(AudioTrack(
+              index: i++,
+              contentUrl: files.filePath!,
+              duration: files.duration!.toDouble(),
+              title: download.displayName,
+              startOffset: 0,
+              mimeType: download.mimeType ?? '',
+            ));
+          }
+        }
+
         mediaItem = MediaItem(
-            id: download.filePath!,
+            id: download.files[0].filePath!,
             album: item.value?.media?.bookMedia?.metadata.series
                 ?.toList()
                 .join(', '),
@@ -186,6 +218,9 @@ class PlaybackSessionNotifier
                         'end': e.end,
                       })
                   .toList(),
+              'multipleSources': multipleTracks,
+              'audioSources': jsonEncode(audioSources),
+              'audioTracks': jsonEncode(audioTracks),
             });
       }
 
@@ -210,7 +245,7 @@ class PlaybackSessionNotifier
 
     String? path;
     if (download != null) {
-      path = download.filePath;
+      path = download.files[0].filePath;
     } else {
       path = streamUrl;
     }
@@ -259,7 +294,7 @@ class PlaybackSessionNotifier
 
     String? path;
     if (download != null) {
-      path = download.filePath;
+      path = download.files[0].filePath;
     } else {
       path = streamUrl;
     }

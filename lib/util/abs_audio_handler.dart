@@ -67,7 +67,6 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
     });
 
     _player.positionStream.listen((event) async {
-      return;
       if (_player.duration != null && _player.position >= _player.duration!) {
         log('Stopping player due to position: ${_player.position} and duration: ${_player.duration}');
         await _container
@@ -92,6 +91,7 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
     await _player.setAudioSource(source);
   }
 
+  @override
   Future<void> playMediaItem(MediaItem item) async {
     _isNewSession = true;
 
@@ -100,10 +100,15 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
         item.extras?['multipleSources'] == true) {
       //TODO: Handel the duration of the audio
       final sources = jsonDecode(item.extras?['audioSources']);
+      final isStreaming = item.extras?['streaming'] == true;
       List<AudioSource> audioSources = [];
 
       for (final source in sources) {
-        audioSources.add(AudioSource.uri(Uri.parse(source)));
+        if (isStreaming) {
+          audioSources.add(AudioSource.uri(Uri.parse(source)));
+        } else {
+          audioSources.add(AudioSource.file(source));
+        }
       }
 
       source = ConcatenatingAudioSource(

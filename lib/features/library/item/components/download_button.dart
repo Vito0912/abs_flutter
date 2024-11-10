@@ -1,4 +1,3 @@
-import 'package:abs_flutter/api/library_items/audio_file.dart';
 import 'package:abs_flutter/api/library_items/episode.dart';
 import 'package:abs_flutter/api/library_items/library_item.dart';
 import 'package:abs_flutter/api/me/user.dart' as m;
@@ -65,7 +64,7 @@ class DownloadButton extends ConsumerWidget {
             )
           : downloadedItem == null
               ? Icon(PlatformIcons(context).cloudDownload)
-              : downloadedItem.filePath == null
+              : (checkIfFileDownloaded(ref) == false)
                   ? Tooltip(
                       message: S.of(context).downloadErrorDescription,
                       child: Row(
@@ -81,10 +80,6 @@ class DownloadButton extends ConsumerWidget {
                       ))
                   : Icon(PlatformIcons(context).deleteOutline),
     );
-  }
-
-  String getDownloadUrl(String fileId) {
-    return '${user.server!.url}/api/items/${libraryItem.id}/file/$fileId/download';
   }
 
   Future<void> _downloadFile(WidgetRef ref, BuildContext context) async {
@@ -111,15 +106,22 @@ class DownloadButton extends ConsumerWidget {
 
     final downloader = ref.read(downloaderProvider);
     if (libraryItem.media?.bookMedia != null) {
-      for (AudioFile file in libraryItem.media!.bookMedia!.audioFiles!) {
-        downloader.downloadAudioFile(
-            getDownloadUrl(file.ino), file, libraryItem);
-      }
+      downloader.downloadAudioFiles(libraryItem);
     } else {
       Episode episode = libraryItem.media!.podcastMedia!.episodes!
           .firstWhere((element) => element.id == episodeId);
-      downloader.downloadPodcastFile(
-          getDownloadUrl(episode.audioFile!.ino), episode, libraryItem);
+      downloader.downloadPodcastFile(episode, libraryItem);
     }
+  }
+
+  bool checkIfFileDownloaded(WidgetRef ref) {
+    final downloads = ref.read(downloadListProvider.notifier);
+    final download = downloads.getDownload(libraryItem.id, episodeId);
+    for (final files in download!.files) {
+      if (files.filePath == null) {
+        return false;
+      }
+    }
+    return true;
   }
 }

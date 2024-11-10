@@ -84,27 +84,38 @@ class DownloadProvider extends ChangeNotifier {
   }
 
   void _handleStatusUpdate(TaskStatusUpdate update) async {
-    final downloadItem = _downloads.firstWhere(
-      (item) => item.task.taskId == update.task.taskId,
-      orElse: () => _createDummyDownloadItem(update.task as DownloadTask),
-    );
+    final downloadItem = _downloads
+        .firstWhereOrNull((item) => item.task.taskId == update.task.taskId);
+    if (downloadItem == null) {
+      return;
+    }
     final downloadList = ref.read(downloadListProvider);
-    final DownloadInfo? currentDownload = downloadList.firstWhereOrNull(
-      (download) => (download.filename == downloadItem.task.filename &&
-          download.itemId == downloadItem.itemId &&
-          download.episodeId == downloadItem.episodeId &&
-          download.userId == downloadItem.userId),
-    );
 
-    if (currentDownload != null) {
-      final newDownload = currentDownload.copyWith(
+    DownloadFile? currentDownloadFile;
+    DownloadInfo? currentDownload;
+    for (DownloadInfo download in downloadList) {
+      if (download.itemId == downloadItem.itemId &&
+          download.episodeId == downloadItem.episodeId &&
+          download.userId == downloadItem.userId) {
+        for (DownloadFile file in download.files) {
+          if (file.filename == downloadItem.task.filename) {
+            currentDownloadFile = file;
+            currentDownload = download;
+            break;
+          }
+        }
+      }
+    }
+
+    if (currentDownloadFile != null && currentDownload != null) {
+      final newDownload = currentDownloadFile.copyWith(
         status: update.status,
         filePath: update.status == TaskStatus.complete
             ? await update.task.filePath()
-            : currentDownload.filePath,
+            : currentDownloadFile.filePath,
       );
       final downloadListNotifier = ref.read(downloadListProvider.notifier);
-      downloadListNotifier.replaceDownload(currentDownload, newDownload);
+      downloadListNotifier.updateDownloadFile(currentDownload, newDownload);
     }
 
     downloadItem.statusController.add(update);
@@ -128,27 +139,10 @@ class DownloadProvider extends ChangeNotifier {
   }
 
   void _handleProgressUpdate(TaskProgressUpdate update) {
-    final downloadItem = _downloads.firstWhere(
-      (item) => item.task.taskId == update.task.taskId,
-      orElse: () => _createDummyDownloadItem(update.task as DownloadTask),
-    );
+    final downloadItem = _downloads
+        .firstWhereOrNull((item) => item.task.taskId == update.task.taskId);
 
-    downloadItem.progressController.add(update);
-  }
-
-  DownloadItem _createDummyDownloadItem(DownloadTask task) {
-    final dummyProgressController =
-        StreamController<TaskProgressUpdate>.broadcast();
-    final dummyStatusController =
-        StreamController<TaskStatusUpdate>.broadcast();
-
-    return DownloadItem(
-        task: task,
-        progressController: dummyProgressController,
-        statusController: dummyStatusController,
-        itemId: '',
-        episodeId: null,
-        userId: '');
+    downloadItem?.progressController.add(update);
   }
 
   bool get isDownloading {
@@ -156,10 +150,8 @@ class DownloadProvider extends ChangeNotifier {
         status == TaskStatus.enqueued || status == TaskStatus.running);
   }
 
-  Future<void> downloadAudioFile(
-      String url, AudioFile file, LibraryItem item) async {
-    final fileName = file.metadata!.filename!;
-    final name = item.media!.bookMedia!.metadata!.title;
+  Future<void> downloadAudioFiles(LibraryItem item) async {
+    final name = item.media!.bookMedia!.metadata.title;
 
     final downloadList = ref.read(downloadListProvider);
     final currentUser = ref.read(currentUserProvider);
@@ -170,50 +162,79 @@ class DownloadProvider extends ChangeNotifier {
         libraries.value!.data!.libraries == null) {
       return;
     }
-    final userId = currentUser.id!;
+    final userId = currentUser.id;
+
+    final List<AudioFile> audioFiles = item.media!.bookMedia!.audioFiles!;
+    final List<DownloadFile> files = [];
+    for (AudioFile file in audioFiles) {
+      files.add(DownloadFile(
+        index: file.index,
+        ino: file.ino,
+        filename: file.metadata.filename,
+        size: file.metadata.size,
+        status: TaskStatus.enqueued,
+        duration: file.duration,
+        format: file.metadata.ext,
+      ));
+    }
 
     final downloadInfo = DownloadInfo(
-      index: int.parse(file.ino!),
+      index: downloadList.length,
       type: MediaTypeDownload.book,
       userId: userId,
-      filename: file.metadata!.filename!,
-      format: file.metadata!.ext!,
       libraryId: item.libraryId!,
-      itemId: item.id!,
-      size: file.metadata!.size!,
-      displayName: name ?? fileName,
+      itemId: item.id,
+      displayName: name,
       libraryName: libraries.value!.data!.libraries!
           .firstWhere((library) => library.id == item.libraryId)
           .name!,
-      status: TaskStatus.enqueued,
+      files: files,
     );
 
-    String? metaPath = await _download(url, fileName, name, item.id!);
+    // Create a list to store each download task (and be able to await them)
+    List<Future<String?>> downloadTasks = [];
+
+    for (DownloadFile file in files) {
+      String downloadUrl = getDownloadUrl(file.ino, currentUser, item);
+      downloadTasks.add(_download(downloadUrl, file.filename, name, item.id));
+    }
+
+    List<String?> results = await Future.wait(downloadTasks);
 
     downloadList.add(downloadInfo);
 
-    if (metaPath == null) {
-      log('Failed to download file: $fileName. Meta path is null. Removing files',
+    if (results.length != files.length) {
+      log('Failed to download all files. Removing files',
           name: 'DownloadProvider');
       ref.read(downloadListProvider.notifier).removeDownload(downloadInfo);
+      return;
+    }
+
+    for (int i = 0; i < results.length; i++) {
+      if (results[i] == null) {
+        log('Failed to download file: ${files[i].filename}. Meta path is null. Removing files',
+            name: 'DownloadProvider');
+        ref.read(downloadListProvider.notifier).removeDownload(downloadInfo);
+        return;
+      }
     }
 
     // Save item to BaseDirectory.applicationDocuments/abs_flutter/itemId/meta.json
     String json = jsonEncode(item);
 
-    if (metaPath != null) {
+    if (results.firstOrNull != null) {
       // Create the parent directory
-      final dir = Directory(metaPath).parent;
+      final dir = Directory(results.first!).parent;
       if (!dir.existsSync()) {
         dir.createSync(recursive: true);
       }
-      final file = File(metaPath);
+      final file = File(results.first!);
       file.writeAsString(json);
     }
   }
 
   Future<void> downloadPodcastFile(
-      String url, Episode item, LibraryItem libraryItem) async {
+      Episode item, LibraryItem libraryItem) async {
     final fileName = item.audioFile!.metadata.filename;
     final name = item.title;
 
@@ -226,26 +247,37 @@ class DownloadProvider extends ChangeNotifier {
         libraries.value!.data!.libraries == null) {
       return;
     }
-    final userId = currentUser.id!;
+    final userId = currentUser.id;
 
     final downloadInfo = DownloadInfo(
-      index: int.parse(item.audioFile!.ino!),
+      index: int.parse(item.audioFile!.ino),
       type: MediaTypeDownload.podcast,
       userId: userId,
-      filename: item.audioFile!.metadata!.filename!,
-      format: item.audioFile!.metadata!.ext!,
       libraryId: libraryItem.libraryId!,
-      itemId: libraryItem.id!,
+      itemId: libraryItem.id,
       episodeId: item.id,
-      size: item.audioFile!.metadata!.size!,
       displayName: name ?? fileName,
       libraryName: libraries.value!.data!.libraries!
           .firstWhere((library) => library.id == libraryItem.libraryId)
           .name!,
-      status: TaskStatus.enqueued,
+      files: [
+        DownloadFile(
+          index: item.audioFile!.index,
+          filename: item.audioFile!.metadata.filename,
+          size: item.audioFile!.metadata.size,
+          status: TaskStatus.enqueued,
+          duration: item.audioFile!.duration,
+          format: item.audioFile!.metadata.ext,
+          ino: item.audioFile!.ino,
+        )
+      ],
     );
 
-    String? metaPath = await _download(url, fileName, name, item.libraryItemId!,
+    String? metaPath = await _download(
+        getDownloadUrl(item.audioFile!.ino, currentUser, libraryItem),
+        fileName,
+        name,
+        item.libraryItemId,
         episodeId: item.id);
 
     downloadList.add(downloadInfo);
@@ -314,6 +346,7 @@ class DownloadProvider extends ChangeNotifier {
       baseDirectory: baseDirectory,
       requiresWiFi: onlyWifi,
       directory: savePath,
+      allowPause: false,
       displayName: displayName ?? fileName,
     );
 
@@ -328,7 +361,7 @@ class DownloadProvider extends ChangeNotifier {
       statusController: statusController,
       itemId: itemId,
       episodeId: episodeId,
-      userId: user.id!,
+      userId: user.id,
     );
 
     _downloads.add(downloadItem);
@@ -344,10 +377,9 @@ class DownloadProvider extends ChangeNotifier {
 
       downloadItem.dispose();
 
-      final downloadList = ref.read(downloadListProvider);
-      final download = downloadList.firstWhereOrNull(
+      final List<DownloadInfo> downloadList = ref.read(downloadListProvider);
+      final DownloadInfo? download = downloadList.firstWhereOrNull(
         (download) =>
-            download.filename == downloadItem.task.filename &&
             download.itemId == downloadItem.itemId &&
             download.episodeId == downloadItem.episodeId &&
             download.userId == downloadItem.userId,
@@ -360,6 +392,10 @@ class DownloadProvider extends ChangeNotifier {
     } catch (e) {
       debugPrint('Failed to cancel download: $e');
     }
+  }
+
+  String getDownloadUrl(String fileId, User user, LibraryItem libraryItem) {
+    return '${user.server!.url}/api/items/${libraryItem.id}/file/$fileId/download';
   }
 
   @override

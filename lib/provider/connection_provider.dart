@@ -2,6 +2,8 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:abs_api/abs_api.dart';
+import 'package:abs_flutter/api/library_items/author.dart' as abs;
+import 'package:abs_flutter/api/library_items/library_item.dart' as abs;
 import 'package:abs_flutter/api/me/user.dart' as m;
 import 'package:abs_flutter/globals.dart';
 import 'package:abs_flutter/models/progress_item.dart';
@@ -197,17 +199,16 @@ class ConnectionNotifier extends StateNotifier<bool> {
         // Currently oneOf is not fully supported. We need to build our own json
         final Map<String, dynamic> bookItem = {};
 
-        final libraryItem = await ref.read(itemProvider(item.itemId).future);
+        final abs.LibraryItem libraryItem =
+            await ref.read(itemProvider(item.itemId).future);
 
-        if (libraryItem == null) {
-          log('Library item not found: ${item.itemId}');
-        } else {
-          Iterable<AuthorMinified> authors =
-              libraryItem.media?.metadata?.authors ?? [];
-          bookItem['displayTitle'] = libraryItem.media?.metadata?.title;
-          bookItem['displayAuthor'] = authors.map((e) => e.name).join(', ');
-          bookItem['libraryId'] = libraryItem.libraryId;
-        }
+        Iterable<abs.Author> authors =
+            libraryItem.media?.bookMedia?.metadata.authors ?? [];
+        bookItem['displayTitle'] =
+            libraryItem.media?.bookMedia?.metadata.title ??
+                libraryItem.media?.podcastMedia?.metadata.title;
+        bookItem['displayAuthor'] = authors.map((e) => e.name).join(', ');
+        bookItem['libraryId'] = libraryItem.libraryId;
 
         bookItem['mediaType'] = item.episodeId != null ? 'podcast' : 'book';
         bookItem['userId'] = item.userId;

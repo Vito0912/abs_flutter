@@ -12,18 +12,13 @@ _$DownloadInfoImpl _$$DownloadInfoImplFromJson(Map<String, dynamic> json) =>
       type: $enumDecode(_$MediaTypeDownloadEnumMap, json['type']),
       userId: json['userId'] as String,
       displayName: json['displayName'] as String,
-      filename: json['filename'] as String,
-      format: json['format'] as String,
       libraryId: json['libraryId'] as String,
       libraryName: json['libraryName'] as String,
       itemId: json['itemId'] as String,
-      status: $enumDecode(_$TaskStatusEnumMap, json['status']),
-      size: json['size'] as num,
+      files: (json['files'] as List<dynamic>)
+          .map((e) => DownloadFile.fromJson(e as Map<String, dynamic>))
+          .toList(),
       episodeId: json['episodeId'] as String?,
-      filePath: json['filePath'] as String?,
-      duration: json['duration'] as num?,
-      bitrate: (json['bitrate'] as num?)?.toInt(),
-      codec: json['codec'] as String?,
       mimeType: json['mimeType'] as String?,
       embeddedCoverArt: json['embeddedCoverArt'] as String?,
     );
@@ -34,18 +29,11 @@ Map<String, dynamic> _$$DownloadInfoImplToJson(_$DownloadInfoImpl instance) =>
       'type': _$MediaTypeDownloadEnumMap[instance.type]!,
       'userId': instance.userId,
       'displayName': instance.displayName,
-      'filename': instance.filename,
-      'format': instance.format,
       'libraryId': instance.libraryId,
       'libraryName': instance.libraryName,
       'itemId': instance.itemId,
-      'status': _$TaskStatusEnumMap[instance.status]!,
-      'size': instance.size,
+      'files': instance.files,
       'episodeId': instance.episodeId,
-      'filePath': instance.filePath,
-      'duration': instance.duration,
-      'bitrate': instance.bitrate,
-      'codec': instance.codec,
       'mimeType': instance.mimeType,
       'embeddedCoverArt': instance.embeddedCoverArt,
     };
@@ -55,6 +43,34 @@ const _$MediaTypeDownloadEnumMap = {
   MediaTypeDownload.podcast: 'podcast',
   MediaTypeDownload.ebook: 'ebook',
 };
+
+_$DownloadFileImpl _$$DownloadFileImplFromJson(Map<String, dynamic> json) =>
+    _$DownloadFileImpl(
+      filename: json['filename'] as String,
+      format: json['format'] as String,
+      status: $enumDecode(_$TaskStatusEnumMap, json['status']),
+      index: (json['index'] as num).toInt(),
+      ino: json['ino'] as String,
+      filePath: json['filePath'] as String?,
+      duration: (json['duration'] as num?)?.toDouble(),
+      size: (json['size'] as num?)?.toInt(),
+      bitrate: (json['bitrate'] as num?)?.toInt(),
+      codec: json['codec'] as String?,
+    );
+
+Map<String, dynamic> _$$DownloadFileImplToJson(_$DownloadFileImpl instance) =>
+    <String, dynamic>{
+      'filename': instance.filename,
+      'format': instance.format,
+      'status': _$TaskStatusEnumMap[instance.status]!,
+      'index': instance.index,
+      'ino': instance.ino,
+      'filePath': instance.filePath,
+      'duration': instance.duration,
+      'size': instance.size,
+      'bitrate': instance.bitrate,
+      'codec': instance.codec,
+    };
 
 const _$TaskStatusEnumMap = {
   TaskStatus.enqueued: 'enqueued',

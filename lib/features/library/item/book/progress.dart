@@ -23,10 +23,13 @@ class Progress extends ConsumerWidget {
         Helper.formatPercentage(progress.progress!.toDouble());
     final currentPosition = Helper.formatTimeToReadable(progress.currentTime!,
         precise: true, short: true);
-    final toGoSeconds =
-        progress.duration! - progress.progress! * progress.duration!;
+    final double mediaDuration = item.media?.bookMedia?.audioFiles!
+            .map((e) => e.duration)
+            .reduce((value, element) => value! + element!) ??
+        0;
+    final toGoSeconds = mediaDuration - progress.progress! * mediaDuration;
     final timeRemaining = Helper.formatTimeToReadable(
-        toGoSeconds >= progress.duration! ? progress.duration! : toGoSeconds,
+        toGoSeconds >= mediaDuration ? mediaDuration : toGoSeconds,
         precise: true,
         short: true);
     return Chip(
@@ -46,7 +49,7 @@ class Progress extends ConsumerWidget {
             S.of(context).currentPositionNum(currentPosition),
             style: Theme.of(context).textTheme.bodySmall,
           ),
-          if (progress.duration != null && progress.duration! > 0)
+          if (mediaDuration > 0)
             PlatformText(
               S.of(context).timeRemainingNum(timeRemaining),
               style: Theme.of(context).textTheme.bodySmall,
