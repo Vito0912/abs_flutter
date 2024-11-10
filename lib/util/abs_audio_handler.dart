@@ -67,7 +67,9 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
     });
 
     _player.positionStream.listen((event) async {
-      if (_player.duration != null && _player.position >= _player.duration!) {
+      if (mediaItem.value != null &&
+          mediaItem.value!.duration != null &&
+          position >= mediaItem.value!.duration!) {
         log('Stopping player due to position: ${_player.position} and duration: ${_player.duration}');
         await _container
             .read(playStatusProvider)

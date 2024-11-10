@@ -1,7 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-
 import 'intl/messages_all.dart';
 
 // **************************************************************************
@@ -336,6 +335,76 @@ class S {
     return Intl.message(
       'Continue Series',
       name: 'continueSeries',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Copy`
+  String get copy {
+    return Intl.message(
+      'Copy',
+      name: 'copy',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Copy (Try removed personal data)`
+  String get copyAnonymous {
+    return Intl.message(
+      'Copy (Try removed personal data)',
+      name: 'copyAnonymous',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Copy logs`
+  String get copyLogs {
+    return Intl.message(
+      'Copy logs',
+      name: 'copyLogs',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Important:\nClicking 'Copy' will transfer all currently displayed logs to your clipboard, including data recorded since the app was started or last cleared. These logs may contain sensitive information such as tokens, usernames, emails, and server URLs. Be cautious about where you paste this information!\nIf you choose 'Copy and Attempt to Hide Sensitive Information,' the app will try to mask items like tokens, usernames, emails, and server URLs. However, you are responsible for reviewing the logs to ensure all personal data is fully removed.`
+  String get copyLogsDescription {
+    return Intl.message(
+      'Important:\nClicking \'Copy\' will transfer all currently displayed logs to your clipboard, including data recorded since the app was started or last cleared. These logs may contain sensitive information such as tokens, usernames, emails, and server URLs. Be cautious about where you paste this information!\\nIf you choose \'Copy and Attempt to Hide Sensitive Information,\' the app will try to mask items like tokens, usernames, emails, and server URLs. However, you are responsible for reviewing the logs to ensure all personal data is fully removed.',
+      name: 'copyLogsDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create`
+  String get create {
+    return Intl.message(
+      'Create',
+      name: 'create',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create Bookmark`
+  String get createBookmark {
+    return Intl.message(
+      'Create Bookmark',
+      name: 'createBookmark',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create bookmark`
+  String get createBookmarkTitle {
+    return Intl.message(
+      'Create bookmark',
+      name: 'createBookmarkTitle',
       desc: '',
       args: [],
     );
@@ -1141,6 +1210,16 @@ class S {
     );
   }
 
+  /// `Largest Items`
+  String get largestItems {
+    return Intl.message(
+      'Largest Items',
+      name: 'largestItems',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Last 30 days`
   String get last30Days {
     return Intl.message(
@@ -1266,6 +1345,16 @@ class S {
     return Intl.message(
       'Logs',
       name: 'logs',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Longest Items`
+  String get longestItems {
+    return Intl.message(
+      'Longest Items',
+      name: 'longestItems',
       desc: '',
       args: [],
     );
@@ -2184,6 +2273,86 @@ class S {
     );
   }
 
+  /// `Top Authors`
+  String get topAuthors {
+    return Intl.message(
+      'Top Authors',
+      name: 'topAuthors',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Top Genres`
+  String get topGenres {
+    return Intl.message(
+      'Top Genres',
+      name: 'topGenres',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total Audio Tracks`
+  String get totalAudioTracks {
+    return Intl.message(
+      'Total Audio Tracks',
+      name: 'totalAudioTracks',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total Authors`
+  String get totalAuthors {
+    return Intl.message(
+      'Total Authors',
+      name: 'totalAuthors',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total Duration`
+  String get totalDuration {
+    return Intl.message(
+      'Total Duration',
+      name: 'totalDuration',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total Genres`
+  String get totalGenres {
+    return Intl.message(
+      'Total Genres',
+      name: 'totalGenres',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total Items`
+  String get totalItems {
+    return Intl.message(
+      'Total Items',
+      name: 'totalItems',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total size`
+  String get totalSize {
+    return Intl.message(
+      'Total size',
+      name: 'totalSize',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Total time listened`
   String get totalTimeListened {
     return Intl.message(
@@ -2264,6 +2433,16 @@ class S {
     );
   }
 
+  /// `View Bookmarks`
+  String get viewBookmarks {
+    return Intl.message(
+      'View Bookmarks',
+      name: 'viewBookmarks',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `View Chapters`
   String get viewChapters {
     return Intl.message(
@@ -2309,186 +2488,6 @@ class S {
     return Intl.message(
       'Year',
       name: 'year',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `View Bookmarks`
-  String get viewBookmarks {
-    return Intl.message(
-      'View Bookmarks',
-      name: 'viewBookmarks',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Create Bookmark`
-  String get createBookmark {
-    return Intl.message(
-      'Create Bookmark',
-      name: 'createBookmark',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Create`
-  String get create {
-    return Intl.message(
-      'Create',
-      name: 'create',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Create bookmark`
-  String get createBookmarkTitle {
-    return Intl.message(
-      'Create bookmark',
-      name: 'createBookmarkTitle',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Total Items`
-  String get totalItems {
-    return Intl.message(
-      'Total Items',
-      name: 'totalItems',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Total Duration`
-  String get totalDuration {
-    return Intl.message(
-      'Total Duration',
-      name: 'totalDuration',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Total Authors`
-  String get totalAuthors {
-    return Intl.message(
-      'Total Authors',
-      name: 'totalAuthors',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Total Genres`
-  String get totalGenres {
-    return Intl.message(
-      'Total Genres',
-      name: 'totalGenres',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Longest Items`
-  String get longestItems {
-    return Intl.message(
-      'Longest Items',
-      name: 'longestItems',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Largest Items`
-  String get largestItems {
-    return Intl.message(
-      'Largest Items',
-      name: 'largestItems',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Top Authors`
-  String get topAuthors {
-    return Intl.message(
-      'Top Authors',
-      name: 'topAuthors',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Top Genres`
-  String get topGenres {
-    return Intl.message(
-      'Top Genres',
-      name: 'topGenres',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Total size`
-  String get totalSize {
-    return Intl.message(
-      'Total size',
-      name: 'totalSize',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Total Audio Tracks`
-  String get totalAudioTracks {
-    return Intl.message(
-      'Total Audio Tracks',
-      name: 'totalAudioTracks',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Copy logs`
-  String get copyLogs {
-    return Intl.message(
-      'Copy logs',
-      name: 'copyLogs',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Copy`
-  String get copy {
-    return Intl.message(
-      'Copy',
-      name: 'copy',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Copy (Try removed personal data)`
-  String get copyAnonymous {
-    return Intl.message(
-      'Copy (Try removed personal data)',
-      name: 'copyAnonymous',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Important:\nClicking 'Copy' will transfer all currently displayed logs to your clipboard, including data recorded since the app was started or last cleared. These logs may contain sensitive information such as tokens, usernames, emails, and server URLs. Be cautious about where you paste this information!\nIf you choose 'Copy and Attempt to Hide Sensitive Information,' the app will try to mask items like tokens, usernames, emails, and server URLs. However, you are responsible for reviewing the logs to ensure all personal data is fully removed.`
-  String get copyLogsDescription {
-    return Intl.message(
-      'Important:\nClicking \'Copy\' will transfer all currently displayed logs to your clipboard, including data recorded since the app was started or last cleared. These logs may contain sensitive information such as tokens, usernames, emails, and server URLs. Be cautious about where you paste this information!\n\nIf you choose \'Copy and Attempt to Hide Sensitive Information,\' the app will try to mask items like tokens, usernames, emails, and server URLs. However, you are responsible for reviewing the logs to ensure all personal data is fully removed.',
-      name: 'copyLogsDescription',
       desc: '',
       args: [],
     );
