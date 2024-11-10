@@ -25,7 +25,7 @@ final itemProvider =
 
   log(download.toString());
 
-  if (download == null || download.filePath == null) {
+  if (download == null || !download.isDownloaded()) {
     try {
       final response = await api.getLibraryItemApi().getLibraryItem(
             libraryItemRequest: LibraryItemRequest(id: id),
@@ -47,13 +47,15 @@ final itemProvider =
       return null;
     }
   } else {
-    final String originalFilePath = download.filePath!;
+    final String originalFilePath = download.folderPath;
     late final String directory;
     if (download.type == MediaTypeDownload.podcast) {
-      directory = Directory(originalFilePath).parent.parent.path;
-    } else {
       directory = Directory(originalFilePath).parent.path;
+    } else {
+      directory = Directory(originalFilePath).path;
     }
+
+    print(directory);
 
     final String newFilePath = p.join(directory, 'meta.json');
     final File file = File(newFilePath);

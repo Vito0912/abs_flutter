@@ -28,30 +28,16 @@ mixin _$DownloadInfo {
   set userId(String value) => throw _privateConstructorUsedError;
   String get displayName => throw _privateConstructorUsedError;
   set displayName(String value) => throw _privateConstructorUsedError;
-  String get filename => throw _privateConstructorUsedError;
-  set filename(String value) => throw _privateConstructorUsedError;
-  String get format => throw _privateConstructorUsedError;
-  set format(String value) => throw _privateConstructorUsedError;
   String get libraryId => throw _privateConstructorUsedError;
   set libraryId(String value) => throw _privateConstructorUsedError;
   String get libraryName => throw _privateConstructorUsedError;
   set libraryName(String value) => throw _privateConstructorUsedError;
   String get itemId => throw _privateConstructorUsedError;
   set itemId(String value) => throw _privateConstructorUsedError;
-  TaskStatus get status => throw _privateConstructorUsedError;
-  set status(TaskStatus value) => throw _privateConstructorUsedError;
-  num get size => throw _privateConstructorUsedError;
-  set size(num value) => throw _privateConstructorUsedError;
+  List<DownloadFile> get files => throw _privateConstructorUsedError;
+  set files(List<DownloadFile> value) => throw _privateConstructorUsedError;
   String? get episodeId => throw _privateConstructorUsedError;
   set episodeId(String? value) => throw _privateConstructorUsedError;
-  String? get filePath => throw _privateConstructorUsedError;
-  set filePath(String? value) => throw _privateConstructorUsedError;
-  num? get duration => throw _privateConstructorUsedError;
-  set duration(num? value) => throw _privateConstructorUsedError;
-  int? get bitrate => throw _privateConstructorUsedError;
-  set bitrate(int? value) => throw _privateConstructorUsedError;
-  String? get codec => throw _privateConstructorUsedError;
-  set codec(String? value) => throw _privateConstructorUsedError;
   String? get mimeType => throw _privateConstructorUsedError;
   set mimeType(String? value) => throw _privateConstructorUsedError;
   String? get embeddedCoverArt => throw _privateConstructorUsedError;
@@ -78,18 +64,11 @@ abstract class $DownloadInfoCopyWith<$Res> {
       MediaTypeDownload type,
       String userId,
       String displayName,
-      String filename,
-      String format,
       String libraryId,
       String libraryName,
       String itemId,
-      TaskStatus status,
-      num size,
+      List<DownloadFile> files,
       String? episodeId,
-      String? filePath,
-      num? duration,
-      int? bitrate,
-      String? codec,
       String? mimeType,
       String? embeddedCoverArt});
 }
@@ -113,18 +92,11 @@ class _$DownloadInfoCopyWithImpl<$Res, $Val extends DownloadInfo>
     Object? type = null,
     Object? userId = null,
     Object? displayName = null,
-    Object? filename = null,
-    Object? format = null,
     Object? libraryId = null,
     Object? libraryName = null,
     Object? itemId = null,
-    Object? status = null,
-    Object? size = null,
+    Object? files = null,
     Object? episodeId = freezed,
-    Object? filePath = freezed,
-    Object? duration = freezed,
-    Object? bitrate = freezed,
-    Object? codec = freezed,
     Object? mimeType = freezed,
     Object? embeddedCoverArt = freezed,
   }) {
@@ -145,14 +117,6 @@ class _$DownloadInfoCopyWithImpl<$Res, $Val extends DownloadInfo>
           ? _value.displayName
           : displayName // ignore: cast_nullable_to_non_nullable
               as String,
-      filename: null == filename
-          ? _value.filename
-          : filename // ignore: cast_nullable_to_non_nullable
-              as String,
-      format: null == format
-          ? _value.format
-          : format // ignore: cast_nullable_to_non_nullable
-              as String,
       libraryId: null == libraryId
           ? _value.libraryId
           : libraryId // ignore: cast_nullable_to_non_nullable
@@ -165,33 +129,13 @@ class _$DownloadInfoCopyWithImpl<$Res, $Val extends DownloadInfo>
           ? _value.itemId
           : itemId // ignore: cast_nullable_to_non_nullable
               as String,
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as TaskStatus,
-      size: null == size
-          ? _value.size
-          : size // ignore: cast_nullable_to_non_nullable
-              as num,
+      files: null == files
+          ? _value.files
+          : files // ignore: cast_nullable_to_non_nullable
+              as List<DownloadFile>,
       episodeId: freezed == episodeId
           ? _value.episodeId
           : episodeId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      filePath: freezed == filePath
-          ? _value.filePath
-          : filePath // ignore: cast_nullable_to_non_nullable
-              as String?,
-      duration: freezed == duration
-          ? _value.duration
-          : duration // ignore: cast_nullable_to_non_nullable
-              as num?,
-      bitrate: freezed == bitrate
-          ? _value.bitrate
-          : bitrate // ignore: cast_nullable_to_non_nullable
-              as int?,
-      codec: freezed == codec
-          ? _value.codec
-          : codec // ignore: cast_nullable_to_non_nullable
               as String?,
       mimeType: freezed == mimeType
           ? _value.mimeType
@@ -218,18 +162,11 @@ abstract class _$$DownloadInfoImplCopyWith<$Res>
       MediaTypeDownload type,
       String userId,
       String displayName,
-      String filename,
-      String format,
       String libraryId,
       String libraryName,
       String itemId,
-      TaskStatus status,
-      num size,
+      List<DownloadFile> files,
       String? episodeId,
-      String? filePath,
-      num? duration,
-      int? bitrate,
-      String? codec,
       String? mimeType,
       String? embeddedCoverArt});
 }
@@ -251,18 +188,11 @@ class __$$DownloadInfoImplCopyWithImpl<$Res>
     Object? type = null,
     Object? userId = null,
     Object? displayName = null,
-    Object? filename = null,
-    Object? format = null,
     Object? libraryId = null,
     Object? libraryName = null,
     Object? itemId = null,
-    Object? status = null,
-    Object? size = null,
+    Object? files = null,
     Object? episodeId = freezed,
-    Object? filePath = freezed,
-    Object? duration = freezed,
-    Object? bitrate = freezed,
-    Object? codec = freezed,
     Object? mimeType = freezed,
     Object? embeddedCoverArt = freezed,
   }) {
@@ -283,14 +213,6 @@ class __$$DownloadInfoImplCopyWithImpl<$Res>
           ? _value.displayName
           : displayName // ignore: cast_nullable_to_non_nullable
               as String,
-      filename: null == filename
-          ? _value.filename
-          : filename // ignore: cast_nullable_to_non_nullable
-              as String,
-      format: null == format
-          ? _value.format
-          : format // ignore: cast_nullable_to_non_nullable
-              as String,
       libraryId: null == libraryId
           ? _value.libraryId
           : libraryId // ignore: cast_nullable_to_non_nullable
@@ -303,33 +225,13 @@ class __$$DownloadInfoImplCopyWithImpl<$Res>
           ? _value.itemId
           : itemId // ignore: cast_nullable_to_non_nullable
               as String,
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as TaskStatus,
-      size: null == size
-          ? _value.size
-          : size // ignore: cast_nullable_to_non_nullable
-              as num,
+      files: null == files
+          ? _value.files
+          : files // ignore: cast_nullable_to_non_nullable
+              as List<DownloadFile>,
       episodeId: freezed == episodeId
           ? _value.episodeId
           : episodeId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      filePath: freezed == filePath
-          ? _value.filePath
-          : filePath // ignore: cast_nullable_to_non_nullable
-              as String?,
-      duration: freezed == duration
-          ? _value.duration
-          : duration // ignore: cast_nullable_to_non_nullable
-              as num?,
-      bitrate: freezed == bitrate
-          ? _value.bitrate
-          : bitrate // ignore: cast_nullable_to_non_nullable
-              as int?,
-      codec: freezed == codec
-          ? _value.codec
-          : codec // ignore: cast_nullable_to_non_nullable
               as String?,
       mimeType: freezed == mimeType
           ? _value.mimeType
@@ -351,18 +253,11 @@ class _$DownloadInfoImpl extends _DownloadInfo with DiagnosticableTreeMixin {
       required this.type,
       required this.userId,
       required this.displayName,
-      required this.filename,
-      required this.format,
       required this.libraryId,
       required this.libraryName,
       required this.itemId,
-      required this.status,
-      required this.size,
+      required this.files,
       this.episodeId,
-      this.filePath,
-      this.duration,
-      this.bitrate,
-      this.codec,
       this.mimeType,
       this.embeddedCoverArt})
       : super._();
@@ -379,29 +274,15 @@ class _$DownloadInfoImpl extends _DownloadInfo with DiagnosticableTreeMixin {
   @override
   String displayName;
   @override
-  String filename;
-  @override
-  String format;
-  @override
   String libraryId;
   @override
   String libraryName;
   @override
   String itemId;
   @override
-  TaskStatus status;
-  @override
-  num size;
+  List<DownloadFile> files;
   @override
   String? episodeId;
-  @override
-  String? filePath;
-  @override
-  num? duration;
-  @override
-  int? bitrate;
-  @override
-  String? codec;
   @override
   String? mimeType;
   @override
@@ -409,7 +290,7 @@ class _$DownloadInfoImpl extends _DownloadInfo with DiagnosticableTreeMixin {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'DownloadInfo(index: $index, type: $type, userId: $userId, displayName: $displayName, filename: $filename, format: $format, libraryId: $libraryId, libraryName: $libraryName, itemId: $itemId, status: $status, size: $size, episodeId: $episodeId, filePath: $filePath, duration: $duration, bitrate: $bitrate, codec: $codec, mimeType: $mimeType, embeddedCoverArt: $embeddedCoverArt)';
+    return 'DownloadInfo(index: $index, type: $type, userId: $userId, displayName: $displayName, libraryId: $libraryId, libraryName: $libraryName, itemId: $itemId, files: $files, episodeId: $episodeId, mimeType: $mimeType, embeddedCoverArt: $embeddedCoverArt)';
   }
 
   @override
@@ -421,18 +302,11 @@ class _$DownloadInfoImpl extends _DownloadInfo with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('type', type))
       ..add(DiagnosticsProperty('userId', userId))
       ..add(DiagnosticsProperty('displayName', displayName))
-      ..add(DiagnosticsProperty('filename', filename))
-      ..add(DiagnosticsProperty('format', format))
       ..add(DiagnosticsProperty('libraryId', libraryId))
       ..add(DiagnosticsProperty('libraryName', libraryName))
       ..add(DiagnosticsProperty('itemId', itemId))
-      ..add(DiagnosticsProperty('status', status))
-      ..add(DiagnosticsProperty('size', size))
+      ..add(DiagnosticsProperty('files', files))
       ..add(DiagnosticsProperty('episodeId', episodeId))
-      ..add(DiagnosticsProperty('filePath', filePath))
-      ..add(DiagnosticsProperty('duration', duration))
-      ..add(DiagnosticsProperty('bitrate', bitrate))
-      ..add(DiagnosticsProperty('codec', codec))
       ..add(DiagnosticsProperty('mimeType', mimeType))
       ..add(DiagnosticsProperty('embeddedCoverArt', embeddedCoverArt));
   }
@@ -459,18 +333,11 @@ abstract class _DownloadInfo extends DownloadInfo {
       required MediaTypeDownload type,
       required String userId,
       required String displayName,
-      required String filename,
-      required String format,
       required String libraryId,
       required String libraryName,
       required String itemId,
-      required TaskStatus status,
-      required num size,
+      required List<DownloadFile> files,
       String? episodeId,
-      String? filePath,
-      num? duration,
-      int? bitrate,
-      String? codec,
       String? mimeType,
       String? embeddedCoverArt}) = _$DownloadInfoImpl;
   _DownloadInfo._() : super._();
@@ -491,12 +358,6 @@ abstract class _DownloadInfo extends DownloadInfo {
   String get displayName;
   set displayName(String value);
   @override
-  String get filename;
-  set filename(String value);
-  @override
-  String get format;
-  set format(String value);
-  @override
   String get libraryId;
   set libraryId(String value);
   @override
@@ -506,26 +367,11 @@ abstract class _DownloadInfo extends DownloadInfo {
   String get itemId;
   set itemId(String value);
   @override
-  TaskStatus get status;
-  set status(TaskStatus value);
-  @override
-  num get size;
-  set size(num value);
+  List<DownloadFile> get files;
+  set files(List<DownloadFile> value);
   @override
   String? get episodeId;
   set episodeId(String? value);
-  @override
-  String? get filePath;
-  set filePath(String? value);
-  @override
-  num? get duration;
-  set duration(num? value);
-  @override
-  int? get bitrate;
-  set bitrate(int? value);
-  @override
-  String? get codec;
-  set codec(String? value);
   @override
   String? get mimeType;
   set mimeType(String? value);
@@ -538,5 +384,356 @@ abstract class _DownloadInfo extends DownloadInfo {
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DownloadInfoImplCopyWith<_$DownloadInfoImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+DownloadFile _$DownloadFileFromJson(Map<String, dynamic> json) {
+  return _DownloadFile.fromJson(json);
+}
+
+/// @nodoc
+mixin _$DownloadFile {
+  String get filename => throw _privateConstructorUsedError;
+  set filename(String value) => throw _privateConstructorUsedError;
+  String get format => throw _privateConstructorUsedError;
+  set format(String value) => throw _privateConstructorUsedError;
+  TaskStatus get status => throw _privateConstructorUsedError;
+  set status(TaskStatus value) => throw _privateConstructorUsedError;
+  int get index => throw _privateConstructorUsedError;
+  set index(int value) => throw _privateConstructorUsedError;
+  String get ino => throw _privateConstructorUsedError;
+  set ino(String value) => throw _privateConstructorUsedError;
+  String? get filePath => throw _privateConstructorUsedError;
+  set filePath(String? value) => throw _privateConstructorUsedError;
+  double? get duration => throw _privateConstructorUsedError;
+  set duration(double? value) => throw _privateConstructorUsedError;
+  int? get size => throw _privateConstructorUsedError;
+  set size(int? value) => throw _privateConstructorUsedError;
+  int? get bitrate => throw _privateConstructorUsedError;
+  set bitrate(int? value) => throw _privateConstructorUsedError;
+  String? get codec => throw _privateConstructorUsedError;
+  set codec(String? value) => throw _privateConstructorUsedError;
+
+  /// Serializes this DownloadFile to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of DownloadFile
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $DownloadFileCopyWith<DownloadFile> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $DownloadFileCopyWith<$Res> {
+  factory $DownloadFileCopyWith(
+          DownloadFile value, $Res Function(DownloadFile) then) =
+      _$DownloadFileCopyWithImpl<$Res, DownloadFile>;
+  @useResult
+  $Res call(
+      {String filename,
+      String format,
+      TaskStatus status,
+      int index,
+      String ino,
+      String? filePath,
+      double? duration,
+      int? size,
+      int? bitrate,
+      String? codec});
+}
+
+/// @nodoc
+class _$DownloadFileCopyWithImpl<$Res, $Val extends DownloadFile>
+    implements $DownloadFileCopyWith<$Res> {
+  _$DownloadFileCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of DownloadFile
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? filename = null,
+    Object? format = null,
+    Object? status = null,
+    Object? index = null,
+    Object? ino = null,
+    Object? filePath = freezed,
+    Object? duration = freezed,
+    Object? size = freezed,
+    Object? bitrate = freezed,
+    Object? codec = freezed,
+  }) {
+    return _then(_value.copyWith(
+      filename: null == filename
+          ? _value.filename
+          : filename // ignore: cast_nullable_to_non_nullable
+              as String,
+      format: null == format
+          ? _value.format
+          : format // ignore: cast_nullable_to_non_nullable
+              as String,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as TaskStatus,
+      index: null == index
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
+      ino: null == ino
+          ? _value.ino
+          : ino // ignore: cast_nullable_to_non_nullable
+              as String,
+      filePath: freezed == filePath
+          ? _value.filePath
+          : filePath // ignore: cast_nullable_to_non_nullable
+              as String?,
+      duration: freezed == duration
+          ? _value.duration
+          : duration // ignore: cast_nullable_to_non_nullable
+              as double?,
+      size: freezed == size
+          ? _value.size
+          : size // ignore: cast_nullable_to_non_nullable
+              as int?,
+      bitrate: freezed == bitrate
+          ? _value.bitrate
+          : bitrate // ignore: cast_nullable_to_non_nullable
+              as int?,
+      codec: freezed == codec
+          ? _value.codec
+          : codec // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$DownloadFileImplCopyWith<$Res>
+    implements $DownloadFileCopyWith<$Res> {
+  factory _$$DownloadFileImplCopyWith(
+          _$DownloadFileImpl value, $Res Function(_$DownloadFileImpl) then) =
+      __$$DownloadFileImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {String filename,
+      String format,
+      TaskStatus status,
+      int index,
+      String ino,
+      String? filePath,
+      double? duration,
+      int? size,
+      int? bitrate,
+      String? codec});
+}
+
+/// @nodoc
+class __$$DownloadFileImplCopyWithImpl<$Res>
+    extends _$DownloadFileCopyWithImpl<$Res, _$DownloadFileImpl>
+    implements _$$DownloadFileImplCopyWith<$Res> {
+  __$$DownloadFileImplCopyWithImpl(
+      _$DownloadFileImpl _value, $Res Function(_$DownloadFileImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of DownloadFile
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? filename = null,
+    Object? format = null,
+    Object? status = null,
+    Object? index = null,
+    Object? ino = null,
+    Object? filePath = freezed,
+    Object? duration = freezed,
+    Object? size = freezed,
+    Object? bitrate = freezed,
+    Object? codec = freezed,
+  }) {
+    return _then(_$DownloadFileImpl(
+      filename: null == filename
+          ? _value.filename
+          : filename // ignore: cast_nullable_to_non_nullable
+              as String,
+      format: null == format
+          ? _value.format
+          : format // ignore: cast_nullable_to_non_nullable
+              as String,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as TaskStatus,
+      index: null == index
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
+      ino: null == ino
+          ? _value.ino
+          : ino // ignore: cast_nullable_to_non_nullable
+              as String,
+      filePath: freezed == filePath
+          ? _value.filePath
+          : filePath // ignore: cast_nullable_to_non_nullable
+              as String?,
+      duration: freezed == duration
+          ? _value.duration
+          : duration // ignore: cast_nullable_to_non_nullable
+              as double?,
+      size: freezed == size
+          ? _value.size
+          : size // ignore: cast_nullable_to_non_nullable
+              as int?,
+      bitrate: freezed == bitrate
+          ? _value.bitrate
+          : bitrate // ignore: cast_nullable_to_non_nullable
+              as int?,
+      codec: freezed == codec
+          ? _value.codec
+          : codec // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$DownloadFileImpl extends _DownloadFile with DiagnosticableTreeMixin {
+  _$DownloadFileImpl(
+      {required this.filename,
+      required this.format,
+      required this.status,
+      required this.index,
+      required this.ino,
+      this.filePath,
+      this.duration,
+      this.size,
+      this.bitrate,
+      this.codec})
+      : super._();
+
+  factory _$DownloadFileImpl.fromJson(Map<String, dynamic> json) =>
+      _$$DownloadFileImplFromJson(json);
+
+  @override
+  String filename;
+  @override
+  String format;
+  @override
+  TaskStatus status;
+  @override
+  int index;
+  @override
+  String ino;
+  @override
+  String? filePath;
+  @override
+  double? duration;
+  @override
+  int? size;
+  @override
+  int? bitrate;
+  @override
+  String? codec;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'DownloadFile(filename: $filename, format: $format, status: $status, index: $index, ino: $ino, filePath: $filePath, duration: $duration, size: $size, bitrate: $bitrate, codec: $codec)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'DownloadFile'))
+      ..add(DiagnosticsProperty('filename', filename))
+      ..add(DiagnosticsProperty('format', format))
+      ..add(DiagnosticsProperty('status', status))
+      ..add(DiagnosticsProperty('index', index))
+      ..add(DiagnosticsProperty('ino', ino))
+      ..add(DiagnosticsProperty('filePath', filePath))
+      ..add(DiagnosticsProperty('duration', duration))
+      ..add(DiagnosticsProperty('size', size))
+      ..add(DiagnosticsProperty('bitrate', bitrate))
+      ..add(DiagnosticsProperty('codec', codec));
+  }
+
+  /// Create a copy of DownloadFile
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DownloadFileImplCopyWith<_$DownloadFileImpl> get copyWith =>
+      __$$DownloadFileImplCopyWithImpl<_$DownloadFileImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$DownloadFileImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _DownloadFile extends DownloadFile {
+  factory _DownloadFile(
+      {required String filename,
+      required String format,
+      required TaskStatus status,
+      required int index,
+      required String ino,
+      String? filePath,
+      double? duration,
+      int? size,
+      int? bitrate,
+      String? codec}) = _$DownloadFileImpl;
+  _DownloadFile._() : super._();
+
+  factory _DownloadFile.fromJson(Map<String, dynamic> json) =
+      _$DownloadFileImpl.fromJson;
+
+  @override
+  String get filename;
+  set filename(String value);
+  @override
+  String get format;
+  set format(String value);
+  @override
+  TaskStatus get status;
+  set status(TaskStatus value);
+  @override
+  int get index;
+  set index(int value);
+  @override
+  String get ino;
+  set ino(String value);
+  @override
+  String? get filePath;
+  set filePath(String? value);
+  @override
+  double? get duration;
+  set duration(double? value);
+  @override
+  int? get size;
+  set size(int? value);
+  @override
+  int? get bitrate;
+  set bitrate(int? value);
+  @override
+  String? get codec;
+  set codec(String? value);
+
+  /// Create a copy of DownloadFile
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$DownloadFileImplCopyWith<_$DownloadFileImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

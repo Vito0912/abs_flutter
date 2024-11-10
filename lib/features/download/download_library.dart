@@ -1,6 +1,7 @@
 import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/models/file.dart';
 import 'package:abs_flutter/provider/download_provider.dart';
+import 'package:abs_flutter/util/helper.dart';
 import 'package:abs_flutter/widgets/album_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -68,7 +69,7 @@ class DownloadLibrary extends HookConsumerWidget {
 
           return ListTile(
             title: Text(item.displayName),
-            subtitle: Text(item.filename),
+            subtitle: Text(item.files.length.toString()),
             onTap: () {
               context.push('/view/$itemType/${item.itemId}');
             },
@@ -100,28 +101,30 @@ class DownloadLibrary extends HookConsumerWidget {
                           builder: (BuildContext context) {
                             return PlatformAlertDialog(
                               title: PlatformText(S.of(context).downloadInfo),
-                              content: Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    PlatformText(
-                                        '${S.of(context).libraryName}: ${item.libraryName}'),
-                                    PlatformText(
-                                        '${S.of(context).itemId}: ${item.itemId}'),
-                                    if (item.episodeId != null)
+                              content: SingleChildScrollView(
+                                child: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
                                       PlatformText(
-                                          '${S.of(context).episodeId}: ${item.episodeId}'),
-                                    PlatformText(
-                                        '${S.of(context).filename}: ${item.filename}'),
-                                    PlatformText(
-                                        '${S.of(context).filepath}: ${item.filePath}'),
-                                    PlatformText(
-                                        '${S.of(context).itemType}: ${item.type.name}'),
-                                  ]
-                                      .map((e) => Padding(
-                                          padding: const EdgeInsets.all(4.0),
-                                          child: e))
-                                      .toList()),
+                                          '${S.of(context).libraryName}: ${item.libraryName}'),
+                                      PlatformText(
+                                          '${S.of(context).itemId}: ${item.itemId}'),
+                                      if (item.episodeId != null)
+                                        PlatformText(
+                                            '${S.of(context).episodeId}: ${item.episodeId}'),
+                                      const Divider(),
+                                      ..._buildFileText(item, context),
+                                      const Divider(),
+                                      PlatformText(
+                                          '${S.of(context).itemType}: ${item.type.name}'),
+                                    ]
+                                        .map((e) => Padding(
+                                            padding: const EdgeInsets.all(4.0),
+                                            child: e))
+                                        .toList()),
+                              ),
                               actions: [
                                 PlatformDialogAction(
                                   child: PlatformText(S.of(context).close),
@@ -151,6 +154,24 @@ class DownloadLibrary extends HookConsumerWidget {
     } else {
       selectedDownloads.value = List.from(selectedDownloads.value)..add(item);
     }
+  }
+
+  List<Widget> _buildFileText(DownloadInfo item, BuildContext context) {
+    List<Widget> fileText = [];
+
+    for (DownloadFile file in item.files) {
+      fileText.add(
+        PlatformText('${S.of(context).filename}: ${file.filename}'),
+      );
+      fileText.add(
+        PlatformText('${S.of(context).filepath}: ${file.filePath}'),
+      );
+      fileText.add(
+        PlatformText('${S.of(context).size}: ${Helper.formatBytes(file.size)}'),
+      );
+    }
+
+    return fileText;
   }
 
   void _deleteSelectedDownloads(

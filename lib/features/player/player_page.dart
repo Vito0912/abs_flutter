@@ -22,7 +22,7 @@ class PlayerPage extends ConsumerWidget {
     final player = ref.watch(playerProvider);
     final user = ref.watch(currentUserProvider);
     final currentChapter = ref.watch(chapterProvider);
-    final positionStream = player.audioService.player.positionStream;
+    final positionStream = player.positionStream;
     final durationStream = player.audioService.player.durationStream;
     final speedStream = player.audioService.player.speedStream;
     final bufferStream = player.audioService.player.bufferedPositionStream;
@@ -86,7 +86,6 @@ class PlayerPage extends ConsumerWidget {
                                   size: size),
                               ProgressBar(
                                 positionStream: positionStream,
-                                durationStream: durationStream,
                                 player: player,
                                 showPerChapter: user?.setting
                                         ?.settings['progressAsChapters'] ??

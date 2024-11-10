@@ -5,6 +5,7 @@ import 'package:abs_flutter/globals.dart';
 import 'package:abs_flutter/models/file.dart';
 import 'package:abs_flutter/provider/log_provider.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -28,17 +29,22 @@ class DownloadListNotifier extends StateNotifier<List<DownloadInfo>> {
     }
     final userId = user.id!;
     if (downloadListString != null) {
-      final List<dynamic> decodedJson = jsonDecode(downloadListString);
-      final List<DownloadInfo> downloads =
-          decodedJson.map((json) => DownloadInfo.fromJson(json)).toList();
-      List<DownloadInfo> userDownload = [];
-      for (var download in downloads) {
-        if (download.userId == userId) {
-          userDownload.add(download);
+      try {
+        final List<dynamic> decodedJson = jsonDecode(downloadListString);
+        final List<DownloadInfo> downloads =
+            decodedJson.map((json) => DownloadInfo.fromJson(json)).toList();
+        List<DownloadInfo> userDownload = [];
+        for (var download in downloads) {
+          if (download.userId == userId) {
+            userDownload.add(download);
+          }
         }
-      }
 
-      state = userDownload;
+        state = userDownload;
+      } catch (e) {
+        log('Error loading downloads: $e', name: 'DownloadListNotifier');
+        sp.remove('downloads');
+      }
     }
   }
 
@@ -48,8 +54,8 @@ class DownloadListNotifier extends StateNotifier<List<DownloadInfo>> {
   }
 
   void removeDownload(DownloadInfo download) async {
-    if (!kIsWeb && download.filePath != null) {
-      final folder = Directory(download.filePath!).parent;
+    if (!kIsWeb && download.isDownloaded()) {
+      final folder = Directory(download.folderPath);
       // For windows support / and \ in path
       final folderName = folder.path.replaceAll('\\', '/').split('/').last;
       if (folderName == download.itemId || folderName == download.episodeId) {
@@ -78,6 +84,18 @@ class DownloadListNotifier extends StateNotifier<List<DownloadInfo>> {
   }
 
   void replaceDownload(DownloadInfo current, DownloadInfo newDownload) {
+    state = state.map((d) => d == current ? newDownload : d).toList();
+    _saveDownloads();
+  }
+
+  void updateDownloadFile(DownloadInfo current, DownloadFile file) {
+    final download = state.firstWhereOrNull((d) => d == current);
+    if (download == null) {
+      return log('Download not found', name: 'updateDownloadFile');
+    }
+    final files =
+        download.files.map((f) => f.index == file.index ? file : f).toList();
+    final newDownload = download.copyWith(files: files);
     state = state.map((d) => d == current ? newDownload : d).toList();
     _saveDownloads();
   }

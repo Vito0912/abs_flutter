@@ -33,7 +33,7 @@ mixin _$AudioTrack {
   @JsonKey(name: "mimeType")
   String get mimeType => throw _privateConstructorUsedError;
   @JsonKey(name: "metadata")
-  LibraryFileMetadata get metadata => throw _privateConstructorUsedError;
+  LibraryFileMetadata? get metadata => throw _privateConstructorUsedError;
 
   /// Serializes this AudioTrack to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -58,9 +58,9 @@ abstract class $AudioTrackCopyWith<$Res> {
       @JsonKey(name: "title") String title,
       @JsonKey(name: "contentUrl") String contentUrl,
       @JsonKey(name: "mimeType") String mimeType,
-      @JsonKey(name: "metadata") LibraryFileMetadata metadata});
+      @JsonKey(name: "metadata") LibraryFileMetadata? metadata});
 
-  $LibraryFileMetadataCopyWith<$Res> get metadata;
+  $LibraryFileMetadataCopyWith<$Res>? get metadata;
 }
 
 /// @nodoc
@@ -84,7 +84,7 @@ class _$AudioTrackCopyWithImpl<$Res, $Val extends AudioTrack>
     Object? title = null,
     Object? contentUrl = null,
     Object? mimeType = null,
-    Object? metadata = null,
+    Object? metadata = freezed,
   }) {
     return _then(_value.copyWith(
       index: null == index
@@ -111,10 +111,10 @@ class _$AudioTrackCopyWithImpl<$Res, $Val extends AudioTrack>
           ? _value.mimeType
           : mimeType // ignore: cast_nullable_to_non_nullable
               as String,
-      metadata: null == metadata
+      metadata: freezed == metadata
           ? _value.metadata
           : metadata // ignore: cast_nullable_to_non_nullable
-              as LibraryFileMetadata,
+              as LibraryFileMetadata?,
     ) as $Val);
   }
 
@@ -122,8 +122,12 @@ class _$AudioTrackCopyWithImpl<$Res, $Val extends AudioTrack>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $LibraryFileMetadataCopyWith<$Res> get metadata {
-    return $LibraryFileMetadataCopyWith<$Res>(_value.metadata, (value) {
+  $LibraryFileMetadataCopyWith<$Res>? get metadata {
+    if (_value.metadata == null) {
+      return null;
+    }
+
+    return $LibraryFileMetadataCopyWith<$Res>(_value.metadata!, (value) {
       return _then(_value.copyWith(metadata: value) as $Val);
     });
   }
@@ -144,10 +148,10 @@ abstract class _$$AudioTrackImplCopyWith<$Res>
       @JsonKey(name: "title") String title,
       @JsonKey(name: "contentUrl") String contentUrl,
       @JsonKey(name: "mimeType") String mimeType,
-      @JsonKey(name: "metadata") LibraryFileMetadata metadata});
+      @JsonKey(name: "metadata") LibraryFileMetadata? metadata});
 
   @override
-  $LibraryFileMetadataCopyWith<$Res> get metadata;
+  $LibraryFileMetadataCopyWith<$Res>? get metadata;
 }
 
 /// @nodoc
@@ -169,7 +173,7 @@ class __$$AudioTrackImplCopyWithImpl<$Res>
     Object? title = null,
     Object? contentUrl = null,
     Object? mimeType = null,
-    Object? metadata = null,
+    Object? metadata = freezed,
   }) {
     return _then(_$AudioTrackImpl(
       index: null == index
@@ -196,10 +200,10 @@ class __$$AudioTrackImplCopyWithImpl<$Res>
           ? _value.mimeType
           : mimeType // ignore: cast_nullable_to_non_nullable
               as String,
-      metadata: null == metadata
+      metadata: freezed == metadata
           ? _value.metadata
           : metadata // ignore: cast_nullable_to_non_nullable
-              as LibraryFileMetadata,
+              as LibraryFileMetadata?,
     ));
   }
 }
@@ -214,7 +218,7 @@ class _$AudioTrackImpl implements _AudioTrack {
       @JsonKey(name: "title") required this.title,
       @JsonKey(name: "contentUrl") required this.contentUrl,
       @JsonKey(name: "mimeType") required this.mimeType,
-      @JsonKey(name: "metadata") required this.metadata});
+      @JsonKey(name: "metadata") this.metadata});
 
   factory _$AudioTrackImpl.fromJson(Map<String, dynamic> json) =>
       _$$AudioTrackImplFromJson(json);
@@ -239,7 +243,7 @@ class _$AudioTrackImpl implements _AudioTrack {
   final String mimeType;
   @override
   @JsonKey(name: "metadata")
-  final LibraryFileMetadata metadata;
+  final LibraryFileMetadata? metadata;
 
   @override
   String toString() {
@@ -288,14 +292,14 @@ class _$AudioTrackImpl implements _AudioTrack {
 
 abstract class _AudioTrack implements AudioTrack {
   const factory _AudioTrack(
-      {@JsonKey(name: "index") required final int index,
-      @JsonKey(name: "startOffset") required final double startOffset,
-      @JsonKey(name: "duration") required final double duration,
-      @JsonKey(name: "title") required final String title,
-      @JsonKey(name: "contentUrl") required final String contentUrl,
-      @JsonKey(name: "mimeType") required final String mimeType,
-      @JsonKey(name: "metadata")
-      required final LibraryFileMetadata metadata}) = _$AudioTrackImpl;
+          {@JsonKey(name: "index") required final int index,
+          @JsonKey(name: "startOffset") required final double startOffset,
+          @JsonKey(name: "duration") required final double duration,
+          @JsonKey(name: "title") required final String title,
+          @JsonKey(name: "contentUrl") required final String contentUrl,
+          @JsonKey(name: "mimeType") required final String mimeType,
+          @JsonKey(name: "metadata") final LibraryFileMetadata? metadata}) =
+      _$AudioTrackImpl;
 
   factory _AudioTrack.fromJson(Map<String, dynamic> json) =
       _$AudioTrackImpl.fromJson;
@@ -320,7 +324,7 @@ abstract class _AudioTrack implements AudioTrack {
   String get mimeType;
   @override
   @JsonKey(name: "metadata")
-  LibraryFileMetadata get metadata;
+  LibraryFileMetadata? get metadata;
 
   /// Create a copy of AudioTrack
   /// with the given fields replaced by the non-null parameter values.

@@ -5,7 +5,6 @@ import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 
 class ProgressBar extends StatelessWidget {
   final Stream<Duration> positionStream;
-  final Stream<Duration?> durationStream;
   final Stream<Duration?> bufferStream;
   final PlayerProvider player;
   final bool showPerChapter;
@@ -17,7 +16,6 @@ class ProgressBar extends StatelessWidget {
   const ProgressBar(
       {super.key,
       required this.positionStream,
-      required this.durationStream,
       required this.player,
       required this.showPerChapter,
       required this.currentChapter,
@@ -28,45 +26,47 @@ class ProgressBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double? durationTime = player
+        .audioService.mediaItem.value?.duration?.inMilliseconds
+        .toDouble();
+    if (durationTime == null) {
+      return const SizedBox.shrink();
+    }
+    Duration duration = Duration(milliseconds: durationTime.toInt());
     return Column(
       children: [
         StreamBuilder(
-            stream: durationStream,
-            builder: (BuildContext context, AsyncSnapshot<Duration?> duration) {
-              return StreamBuilder(
-                  stream: positionStream,
-                  builder: (BuildContext context,
-                      AsyncSnapshot<Duration?> position) {
-                    if (duration.hasData && position.hasData) {
-                      double min = _getMinValue(currentChapter);
-                      double max = _getMaxValue(currentChapter, duration.data!);
-                      double currentValue = _maxBoundaries(
-                          position.data!.inMilliseconds.toDouble(), min, max);
-                      return SliderTheme(
-                        data: SliderTheme.of(context).copyWith(
-                          thumbShape: RoundSliderThumbShape(
-                              enabledThumbRadius: (size / 5)),
-                          overlayShape: RoundSliderOverlayShape(
-                              overlayRadius: (size / 2)),
-                          trackHeight: size / 6,
-                          trackShape: ProgressBarTrack(),
-                        ),
-                        child: Slider(
-                          value: currentValue,
-                          min: min,
-                          max: max,
-                          onChanged: disabled
-                              ? null
-                              : (double value) {
-                                  player.audioService.seek(
-                                      Duration(milliseconds: value.toInt()));
-                                },
-                        ),
-                      );
-                    } else {
-                      return const SizedBox.shrink();
-                    }
-                  });
+            stream: positionStream,
+            builder: (BuildContext context, AsyncSnapshot<Duration?> position) {
+              if (position.hasData) {
+                double min = _getMinValue(currentChapter);
+                double max = _getMaxValue(currentChapter, duration);
+                double currentValue = _maxBoundaries(
+                    position.data!.inMilliseconds.toDouble(), min, max);
+                return SliderTheme(
+                  data: SliderTheme.of(context).copyWith(
+                    thumbShape:
+                        RoundSliderThumbShape(enabledThumbRadius: (size / 5)),
+                    overlayShape:
+                        RoundSliderOverlayShape(overlayRadius: (size / 2)),
+                    trackHeight: size / 6,
+                    trackShape: ProgressBarTrack(),
+                  ),
+                  child: Slider(
+                    value: currentValue,
+                    min: min,
+                    max: max,
+                    onChanged: disabled
+                        ? null
+                        : (double value) {
+                            player.audioService
+                                .seek(Duration(milliseconds: value.toInt()));
+                          },
+                  ),
+                );
+              } else {
+                return const SizedBox.shrink();
+              }
             }),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -98,42 +98,32 @@ class ProgressBar extends StatelessWidget {
                   ),
                 ),
               )),
-            StreamBuilder(
-                stream: durationStream,
-                builder:
-                    (BuildContext context, AsyncSnapshot<Duration?> duration) {
-                  if (duration.hasData) {
-                    return (showPerChapter && currentChapter != null)
-                        ? StreamBuilder<Duration>(
-                            stream: positionStream,
-                            builder: (BuildContext context,
-                                AsyncSnapshot<Duration?> position) {
-                              if (!position.hasData) {
-                                return const SizedBox.shrink();
-                              }
-                              return SizedBox(
-                                height: size / 1.5,
-                                child: FittedBox(
-                                  fit: BoxFit.fitWidth,
-                                  alignment: Alignment.center,
-                                  child: PlatformText(_formattedTime(Duration(
-                                      seconds: (currentChapter!.end -
-                                              position.data!.inSeconds)
-                                          .toInt()))),
-                                ),
-                              );
-                            })
-                        : SizedBox(
-                            height: size / 1.5,
-                            child: FittedBox(
-                                fit: BoxFit.fitWidth,
-                                alignment: Alignment.center,
-                                child: PlatformText(
-                                    _formattedTime(duration.data!))));
-                  } else {
-                    return const SizedBox.shrink();
-                  }
-                }),
+            (showPerChapter && currentChapter != null)
+                ? StreamBuilder<Duration>(
+                    stream: positionStream,
+                    builder: (BuildContext context,
+                        AsyncSnapshot<Duration?> position) {
+                      if (!position.hasData) {
+                        return const SizedBox.shrink();
+                      }
+                      return SizedBox(
+                        height: size / 1.5,
+                        child: FittedBox(
+                          fit: BoxFit.fitWidth,
+                          alignment: Alignment.center,
+                          child: PlatformText(_formattedTime(Duration(
+                              seconds: (currentChapter!.end -
+                                      position.data!.inSeconds)
+                                  .toInt()))),
+                        ),
+                      );
+                    })
+                : SizedBox(
+                    height: size / 1.5,
+                    child: FittedBox(
+                        fit: BoxFit.fitWidth,
+                        alignment: Alignment.center,
+                        child: PlatformText(_formattedTime(duration))))
           ],
         ),
       ],

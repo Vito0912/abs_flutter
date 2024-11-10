@@ -59,8 +59,7 @@ class TimerNotifier extends StateNotifier<DateTime?> {
     final connection = ref.read(connectionProvider.notifier);
     final player = ref.read(playerProvider.notifier);
 
-    final currentTime =
-        player.audioService.player.position.inMicroseconds / 1000000;
+    final currentTime = player.position.inMicroseconds / 1000000;
     final duration =
         (player.audioService.player.duration?.inMicroseconds ?? -1) / 1000000;
 
