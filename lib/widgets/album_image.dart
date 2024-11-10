@@ -1,7 +1,9 @@
 import 'package:abs_flutter/api/me/user.dart';
 import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/provider/progress_provider.dart';
+import 'package:abs_flutter/provider/settings_provider.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
+import 'package:abs_flutter/util/constants.dart';
 import 'package:abs_flutter/widgets/shimmer_placeholder.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -12,8 +14,15 @@ class AlbumImage extends ConsumerWidget {
   final double? size;
   final bool withProgress;
   final double barHeight;
+  final bool hasAudio;
+  final bool hasBook;
   const AlbumImage(this.itemId,
-      {super.key, this.size, this.withProgress = false, this.barHeight = 5.0});
+      {super.key,
+      this.size,
+      this.withProgress = false,
+      this.barHeight = 5.0,
+      this.hasAudio = false,
+      this.hasBook = false});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -49,6 +58,36 @@ class AlbumImage extends ConsumerWidget {
               errorWidget: (context, url, error) => const Icon(Icons.error),
             ),
           ),
+          Consumer(
+              builder: (BuildContext context, WidgetRef ref, Widget? child) {
+            final settings = ref.watch(
+                specificKeysSettingsProvider([Constants.SHOW_MEDIA_TYPE]));
+            return settings[Constants.SHOW_MEDIA_TYPE]
+                ? Padding(
+                    padding: const EdgeInsets.only(bottom: 6.0, right: 2.0),
+                    child: Align(
+                      alignment: Alignment.bottomRight,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Theme.of(context)
+                              .colorScheme
+                              .surfaceContainer
+                              .withOpacity(0.3),
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                        padding: const EdgeInsets.all(2.0),
+                        child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              if (hasAudio)
+                                const Icon(Icons.audiotrack, size: 16.0),
+                              if (hasBook) const Icon(Icons.book, size: 16.0),
+                            ]),
+                      ),
+                    ))
+                : const SizedBox.shrink();
+          }),
           if (withProgress)
             Consumer(
               builder: (BuildContext context, WidgetRef ref, Widget? child) {

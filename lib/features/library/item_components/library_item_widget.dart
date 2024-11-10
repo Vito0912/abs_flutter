@@ -56,7 +56,9 @@ class LibraryItemWidget extends StatelessWidget {
           aspectRatio: 1,
           child: Stack(
             children: [
-              AlbumImage(item!.id),
+              AlbumImage(item!.id,
+                  hasAudio: item?.hasAudio ?? false,
+                  hasBook: item?.hasBook ?? false),
               if (item!.mediaType != 'podcast' || item!.episodeId != null)
                 Consumer(
                   builder:

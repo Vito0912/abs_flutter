@@ -110,7 +110,9 @@ class LibrariesNotifier extends StateNotifier<LibraryPreview?> {
                     item.media!.metadata!.series!.isNotEmpty)
                 ? item.media!.metadata!.series![0].sequence
                 : null,
-            mediaType: item.mediaType!.name);
+            mediaType: item.mediaType!.name,
+            hasAudio: item.media?.audioFiles?.isNotEmpty ?? false,
+            hasBook: item.media?.ebookFile != null);
         previewItems.add(previewItem);
       }
     }
@@ -152,7 +154,9 @@ class LibrariesNotifier extends StateNotifier<LibraryPreview?> {
                     item.libraryItem!.media!.metadata!.series!.isNotEmpty)
                 ? item.libraryItem!.media!.metadata!.series![0].sequence
                 : null,
-            mediaType: item.libraryItem!.mediaType!.name);
+            mediaType: item.libraryItem!.mediaType!.name,
+            hasAudio: item.libraryItem?.media?.audioFiles?.isNotEmpty ?? false,
+            hasBook: item.libraryItem?.media?.ebookFile != null);
         previewItems.add(previewItem);
       }
     } else if (libraryItem.podcast != null) {
@@ -170,7 +174,9 @@ class LibrariesNotifier extends StateNotifier<LibraryPreview?> {
                     item.libraryItem!.media!.metadata!.series!.isNotEmpty)
                 ? item.libraryItem!.media!.metadata!.series![0].sequence
                 : null,
-            mediaType: item.libraryItem!.mediaType!.name);
+            mediaType: item.libraryItem!.mediaType!.name,
+            hasAudio: item.libraryItem?.media?.audioFiles?.isNotEmpty ?? false,
+            hasBook: item.libraryItem?.media?.ebookFile != null);
         previewItems.add(previewItem);
       }
     } else {

@@ -16,7 +16,9 @@ class LibraryPreviewItem with _$LibraryPreviewItem {
     required List<String> authors,
     required String mediaType,
     String? episodeId,
-    String? seriesLabel
+    String? seriesLabel,
+    bool? hasBook,
+    bool? hasAudio
   }) = _LibraryPreviewItem;
 
   factory LibraryPreviewItem.fromJson(Map<String, dynamic> json) =>
