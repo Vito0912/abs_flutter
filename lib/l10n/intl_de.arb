@@ -701,5 +701,13 @@
   "waitingForDownload": "Warten auf den Beginn des Downloads",
   "@waitingForDownload": {},
   "year": "Jahr",
-  "@year": {}
+  "@year": {},
+  "viewBookmarks": "Lesezeichen anzeigen",
+  "@viewBookmarks": {},
+  "createBookmark": "Lesezeichen erstellen",
+  "@createBookmark": {},
+  "create": "Erstellen",
+  "@create": {},
+  "createBookmarkTitle": "Lesezeichenerstellung",
+  "@createBookmarkTitle": {}
 }
