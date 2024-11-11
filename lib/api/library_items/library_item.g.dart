@@ -18,10 +18,10 @@ _$LibraryItemImpl _$$LibraryItemImplFromJson(Map<String, dynamic> json) =>
       isFile: json['isFile'] as bool?,
       mtimeMs: (json['mtimeMs'] as num?)?.toInt(),
       ctimeMs: (json['ctimeMs'] as num?)?.toInt(),
-      birthtimeMs: (json['birthtimeMs'] as num).toInt(),
-      addedAt: (json['addedAt'] as num).toInt(),
-      updatedAt: (json['updatedAt'] as num).toInt(),
-      lastScan: (json['lastScan'] as num).toInt(),
+      birthtimeMs: (json['birthtimeMs'] as num?)?.toInt(),
+      addedAt: (json['addedAt'] as num?)?.toInt(),
+      updatedAt: (json['updatedAt'] as num?)?.toInt(),
+      lastScan: (json['lastScan'] as num?)?.toInt(),
       scanVersion: json['scanVersion'] as String?,
       isMissing: json['isMissing'] as bool?,
       isInvalid: json['isInvalid'] as bool?,
@@ -29,8 +29,8 @@ _$LibraryItemImpl _$$LibraryItemImplFromJson(Map<String, dynamic> json) =>
       media: json['media'] == null
           ? null
           : Media.fromJson(json['media'] as Map<String, dynamic>),
-      libraryFiles: (json['libraryFiles'] as List<dynamic>)
-          .map((e) => LibraryFile.fromJson(e as Map<String, dynamic>))
+      libraryFiles: (json['libraryFiles'] as List<dynamic>?)
+          ?.map((e) => LibraryFile.fromJson(e as Map<String, dynamic>))
           .toList(),
       size: (json['size'] as num?)?.toInt(),
     );

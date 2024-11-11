@@ -11,13 +11,18 @@ part 'book_media.g.dart';
 class BookMedia with _$BookMedia {
   const factory BookMedia({
     @JsonKey(name: "id") required String id,
-    @JsonKey(name: "libraryItemId") required String libraryItemId,
+    @JsonKey(name: "libraryItemId") String? libraryItemId,
     @JsonKey(name: "metadata") required MediaMetadata metadata,
     @JsonKey(name: "coverPath") String? coverPath,
     @JsonKey(name: "tags") List<String>? tags,
     @JsonKey(name: "audioFiles") List<AudioFile>? audioFiles,
     @JsonKey(name: "chapters") List<Chapter>? chapters,
     @JsonKey(name: "ebookFile") EbookFile? ebookFile,
+    @JsonKey(name: "numTracks") int? numTracks,
+    @JsonKey(name: "numChapters") int? numChapters,
+    @JsonKey(name: "numAudioFiles") int? numAudioFiles,
+    @JsonKey(name: "size") int? size,
+    @JsonKey(name: "ebookFormat") String? ebookFormat,
   }) = _BookMedia;
 
   factory BookMedia.fromJson(Map<String, dynamic> json) =>

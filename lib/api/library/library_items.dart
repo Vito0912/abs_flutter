@@ -8,16 +8,17 @@ part 'library_items.g.dart';
 class LibraryItems with _$LibraryItems {
   const factory LibraryItems({
     @JsonKey(name: "results") required List<LibraryItem> results,
-    @JsonKey(name: "total") required int total,
-    @JsonKey(name: "limit") required int limit,
-    @JsonKey(name: "page") required int page,
-    @JsonKey(name: "sortBy") required String sortBy,
-    @JsonKey(name: "sortDesc") required bool sortDesc,
-    @JsonKey(name: "mediaType") required MediaType mediaType,
-    @JsonKey(name: "minified") required bool minified,
-    @JsonKey(name: "collapseseries") required bool collapseseries,
-    @JsonKey(name: "include") required String include,
-    @JsonKey(name: "offset") required int offset,
+    @JsonKey(name: "total") int? total,
+    @JsonKey(name: "limit") int? limit,
+    @JsonKey(name: "page") int? page,
+    @JsonKey(name: "sortBy") String? sortBy,
+    @JsonKey(name: "sortDesc") bool? sortDesc,
+    @JsonKey(name: "filterBy") String? filterBy,
+    @JsonKey(name: "mediaType") MediaType? mediaType,
+    @JsonKey(name: "minified") bool? minified,
+    @JsonKey(name: "collapseseries") bool? collapseseries,
+    @JsonKey(name: "include") String? include,
+    @JsonKey(name: "offset") int? offset,
   }) = _LibraryItems;
 
   factory LibraryItems.fromJson(Map<String, dynamic> json) =>

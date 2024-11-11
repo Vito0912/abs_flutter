@@ -63,7 +63,7 @@ class TagsDescription extends StatelessWidget {
     if (series == null) return {};
     return {
       for (var s in series)
-        s.id: s.sequence != null ? '${s.name} #${s.sequence}' : s.name
+        s.id ?? '': s.sequence != null ? '${s.name} #${s.sequence}' : s.name
     };
   }
 }

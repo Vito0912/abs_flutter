@@ -11,16 +11,17 @@ _$LibraryItemsImpl _$$LibraryItemsImplFromJson(Map<String, dynamic> json) =>
       results: (json['results'] as List<dynamic>)
           .map((e) => LibraryItem.fromJson(e as Map<String, dynamic>))
           .toList(),
-      total: (json['total'] as num).toInt(),
-      limit: (json['limit'] as num).toInt(),
-      page: (json['page'] as num).toInt(),
-      sortBy: json['sortBy'] as String,
-      sortDesc: json['sortDesc'] as bool,
-      mediaType: $enumDecode(_$MediaTypeEnumMap, json['mediaType']),
-      minified: json['minified'] as bool,
-      collapseseries: json['collapseseries'] as bool,
-      include: json['include'] as String,
-      offset: (json['offset'] as num).toInt(),
+      total: (json['total'] as num?)?.toInt(),
+      limit: (json['limit'] as num?)?.toInt(),
+      page: (json['page'] as num?)?.toInt(),
+      sortBy: json['sortBy'] as String?,
+      sortDesc: json['sortDesc'] as bool?,
+      filterBy: json['filterBy'] as String?,
+      mediaType: $enumDecodeNullable(_$MediaTypeEnumMap, json['mediaType']),
+      minified: json['minified'] as bool?,
+      collapseseries: json['collapseseries'] as bool?,
+      include: json['include'] as String?,
+      offset: (json['offset'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$$LibraryItemsImplToJson(_$LibraryItemsImpl instance) =>
@@ -31,7 +32,8 @@ Map<String, dynamic> _$$LibraryItemsImplToJson(_$LibraryItemsImpl instance) =>
       'page': instance.page,
       'sortBy': instance.sortBy,
       'sortDesc': instance.sortDesc,
-      'mediaType': _$MediaTypeEnumMap[instance.mediaType]!,
+      'filterBy': instance.filterBy,
+      'mediaType': _$MediaTypeEnumMap[instance.mediaType],
       'minified': instance.minified,
       'collapseseries': instance.collapseseries,
       'include': instance.include,

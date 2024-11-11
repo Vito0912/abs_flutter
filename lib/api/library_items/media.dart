@@ -36,4 +36,28 @@ class Media with _$Media {
       return bookMedia!.toJson();
     }
   }
+
+  String? get title =>
+      podcastMedia?.metadata.title ?? bookMedia!.metadata.title;
+
+  String? get subtitle =>
+      podcastMedia == null ? bookMedia!.metadata.subtitle : null;
+
+  List<String>? get authors => podcastMedia != null
+      ? podcastMedia!.metadata.author?.split(',')
+      : bookMedia!.metadata.authors?.map((e) => e.name).toList();
+
+  String? get seriesSequence =>
+      bookMedia?.metadata.series?.firstOrNull?.sequence;
+
+  bool get hasAudio {
+    bool simple = podcastMedia?.episodes?.isNotEmpty ??
+        bookMedia?.audioFiles?.isNotEmpty ??
+        ((bookMedia?.numAudioFiles ?? 0) > 0);
+
+    return simple;
+  }
+
+  bool get hasBook =>
+      bookMedia?.ebookFile != null || bookMedia?.ebookFormat != null;
 }

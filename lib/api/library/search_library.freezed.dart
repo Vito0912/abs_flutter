@@ -32,7 +32,7 @@ mixin _$SearchLibrary {
   @JsonKey(name: "genres")
   List<SearchResultItem>? get genres => throw _privateConstructorUsedError;
   @JsonKey(name: "series")
-  List<Series>? get series => throw _privateConstructorUsedError;
+  List<SearchSeries>? get series => throw _privateConstructorUsedError;
   @JsonKey(name: "authors")
   List<SearchLibraryAuthor>? get authors => throw _privateConstructorUsedError;
 
@@ -58,7 +58,7 @@ abstract class $SearchLibraryCopyWith<$Res> {
       @JsonKey(name: "narrators") List<SearchResultNarrator>? narrators,
       @JsonKey(name: "tags") List<SearchResultItem>? tags,
       @JsonKey(name: "genres") List<SearchResultItem>? genres,
-      @JsonKey(name: "series") List<Series>? series,
+      @JsonKey(name: "series") List<SearchSeries>? series,
       @JsonKey(name: "authors") List<SearchLibraryAuthor>? authors});
 }
 
@@ -109,7 +109,7 @@ class _$SearchLibraryCopyWithImpl<$Res, $Val extends SearchLibrary>
       series: freezed == series
           ? _value.series
           : series // ignore: cast_nullable_to_non_nullable
-              as List<Series>?,
+              as List<SearchSeries>?,
       authors: freezed == authors
           ? _value.authors
           : authors // ignore: cast_nullable_to_non_nullable
@@ -132,7 +132,7 @@ abstract class _$$SearchLibraryImplCopyWith<$Res>
       @JsonKey(name: "narrators") List<SearchResultNarrator>? narrators,
       @JsonKey(name: "tags") List<SearchResultItem>? tags,
       @JsonKey(name: "genres") List<SearchResultItem>? genres,
-      @JsonKey(name: "series") List<Series>? series,
+      @JsonKey(name: "series") List<SearchSeries>? series,
       @JsonKey(name: "authors") List<SearchLibraryAuthor>? authors});
 }
 
@@ -181,7 +181,7 @@ class __$$SearchLibraryImplCopyWithImpl<$Res>
       series: freezed == series
           ? _value._series
           : series // ignore: cast_nullable_to_non_nullable
-              as List<Series>?,
+              as List<SearchSeries>?,
       authors: freezed == authors
           ? _value._authors
           : authors // ignore: cast_nullable_to_non_nullable
@@ -199,7 +199,7 @@ class _$SearchLibraryImpl implements _SearchLibrary {
       @JsonKey(name: "narrators") final List<SearchResultNarrator>? narrators,
       @JsonKey(name: "tags") final List<SearchResultItem>? tags,
       @JsonKey(name: "genres") final List<SearchResultItem>? genres,
-      @JsonKey(name: "series") final List<Series>? series,
+      @JsonKey(name: "series") final List<SearchSeries>? series,
       @JsonKey(name: "authors") final List<SearchLibraryAuthor>? authors})
       : _book = book,
         _podcast = podcast,
@@ -267,10 +267,10 @@ class _$SearchLibraryImpl implements _SearchLibrary {
     return EqualUnmodifiableListView(value);
   }
 
-  final List<Series>? _series;
+  final List<SearchSeries>? _series;
   @override
   @JsonKey(name: "series")
-  List<Series>? get series {
+  List<SearchSeries>? get series {
     final value = _series;
     if (value == null) return null;
     if (_series is EqualUnmodifiableListView) return _series;
@@ -344,7 +344,7 @@ abstract class _SearchLibrary implements SearchLibrary {
       @JsonKey(name: "narrators") final List<SearchResultNarrator>? narrators,
       @JsonKey(name: "tags") final List<SearchResultItem>? tags,
       @JsonKey(name: "genres") final List<SearchResultItem>? genres,
-      @JsonKey(name: "series") final List<Series>? series,
+      @JsonKey(name: "series") final List<SearchSeries>? series,
       @JsonKey(name: "authors")
       final List<SearchLibraryAuthor>? authors}) = _$SearchLibraryImpl;
 
@@ -368,7 +368,7 @@ abstract class _SearchLibrary implements SearchLibrary {
   List<SearchResultItem>? get genres;
   @override
   @JsonKey(name: "series")
-  List<Series>? get series;
+  List<SearchSeries>? get series;
   @override
   @JsonKey(name: "authors")
   List<SearchLibraryAuthor>? get authors;
@@ -617,7 +617,7 @@ mixin _$SearchResultItem {
   @JsonKey(name: "name")
   String get name => throw _privateConstructorUsedError;
   @JsonKey(name: "numItems")
-  int get numItems => throw _privateConstructorUsedError;
+  int? get numItems => throw _privateConstructorUsedError;
 
   /// Serializes this SearchResultItem to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -637,7 +637,7 @@ abstract class $SearchResultItemCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: "name") String name,
-      @JsonKey(name: "numItems") int numItems});
+      @JsonKey(name: "numItems") int? numItems});
 }
 
 /// @nodoc
@@ -656,17 +656,17 @@ class _$SearchResultItemCopyWithImpl<$Res, $Val extends SearchResultItem>
   @override
   $Res call({
     Object? name = null,
-    Object? numItems = null,
+    Object? numItems = freezed,
   }) {
     return _then(_value.copyWith(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      numItems: null == numItems
+      numItems: freezed == numItems
           ? _value.numItems
           : numItems // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
     ) as $Val);
   }
 }
@@ -681,7 +681,7 @@ abstract class _$$SearchResultItemImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: "name") String name,
-      @JsonKey(name: "numItems") int numItems});
+      @JsonKey(name: "numItems") int? numItems});
 }
 
 /// @nodoc
@@ -698,17 +698,17 @@ class __$$SearchResultItemImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? name = null,
-    Object? numItems = null,
+    Object? numItems = freezed,
   }) {
     return _then(_$SearchResultItemImpl(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      numItems: null == numItems
+      numItems: freezed == numItems
           ? _value.numItems
           : numItems // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
     ));
   }
 }
@@ -718,7 +718,7 @@ class __$$SearchResultItemImplCopyWithImpl<$Res>
 class _$SearchResultItemImpl implements _SearchResultItem {
   const _$SearchResultItemImpl(
       {@JsonKey(name: "name") required this.name,
-      @JsonKey(name: "numItems") required this.numItems});
+      @JsonKey(name: "numItems") this.numItems});
 
   factory _$SearchResultItemImpl.fromJson(Map<String, dynamic> json) =>
       _$$SearchResultItemImplFromJson(json);
@@ -728,7 +728,7 @@ class _$SearchResultItemImpl implements _SearchResultItem {
   final String name;
   @override
   @JsonKey(name: "numItems")
-  final int numItems;
+  final int? numItems;
 
   @override
   String toString() {
@@ -768,9 +768,8 @@ class _$SearchResultItemImpl implements _SearchResultItem {
 
 abstract class _SearchResultItem implements SearchResultItem {
   const factory _SearchResultItem(
-          {@JsonKey(name: "name") required final String name,
-          @JsonKey(name: "numItems") required final int numItems}) =
-      _$SearchResultItemImpl;
+      {@JsonKey(name: "name") required final String name,
+      @JsonKey(name: "numItems") final int? numItems}) = _$SearchResultItemImpl;
 
   factory _SearchResultItem.fromJson(Map<String, dynamic> json) =
       _$SearchResultItemImpl.fromJson;
@@ -780,7 +779,7 @@ abstract class _SearchResultItem implements SearchResultItem {
   String get name;
   @override
   @JsonKey(name: "numItems")
-  int get numItems;
+  int? get numItems;
 
   /// Create a copy of SearchResultItem
   /// with the given fields replaced by the non-null parameter values.
@@ -799,7 +798,7 @@ mixin _$SearchResultNarrator {
   @JsonKey(name: "name")
   String get name => throw _privateConstructorUsedError;
   @JsonKey(name: "numItems")
-  int get numItems => throw _privateConstructorUsedError;
+  int? get numItems => throw _privateConstructorUsedError;
 
   /// Serializes this SearchResultNarrator to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -819,7 +818,7 @@ abstract class $SearchResultNarratorCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: "name") String name,
-      @JsonKey(name: "numItems") int numItems});
+      @JsonKey(name: "numItems") int? numItems});
 }
 
 /// @nodoc
@@ -839,17 +838,17 @@ class _$SearchResultNarratorCopyWithImpl<$Res,
   @override
   $Res call({
     Object? name = null,
-    Object? numItems = null,
+    Object? numItems = freezed,
   }) {
     return _then(_value.copyWith(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      numItems: null == numItems
+      numItems: freezed == numItems
           ? _value.numItems
           : numItems // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
     ) as $Val);
   }
 }
@@ -864,7 +863,7 @@ abstract class _$$SearchResultNarratorImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: "name") String name,
-      @JsonKey(name: "numItems") int numItems});
+      @JsonKey(name: "numItems") int? numItems});
 }
 
 /// @nodoc
@@ -881,17 +880,17 @@ class __$$SearchResultNarratorImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? name = null,
-    Object? numItems = null,
+    Object? numItems = freezed,
   }) {
     return _then(_$SearchResultNarratorImpl(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      numItems: null == numItems
+      numItems: freezed == numItems
           ? _value.numItems
           : numItems // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
     ));
   }
 }
@@ -901,7 +900,7 @@ class __$$SearchResultNarratorImplCopyWithImpl<$Res>
 class _$SearchResultNarratorImpl implements _SearchResultNarrator {
   const _$SearchResultNarratorImpl(
       {@JsonKey(name: "name") required this.name,
-      @JsonKey(name: "numItems") required this.numItems});
+      @JsonKey(name: "numItems") this.numItems});
 
   factory _$SearchResultNarratorImpl.fromJson(Map<String, dynamic> json) =>
       _$$SearchResultNarratorImplFromJson(json);
@@ -911,7 +910,7 @@ class _$SearchResultNarratorImpl implements _SearchResultNarrator {
   final String name;
   @override
   @JsonKey(name: "numItems")
-  final int numItems;
+  final int? numItems;
 
   @override
   String toString() {
@@ -953,7 +952,7 @@ class _$SearchResultNarratorImpl implements _SearchResultNarrator {
 abstract class _SearchResultNarrator implements SearchResultNarrator {
   const factory _SearchResultNarrator(
           {@JsonKey(name: "name") required final String name,
-          @JsonKey(name: "numItems") required final int numItems}) =
+          @JsonKey(name: "numItems") final int? numItems}) =
       _$SearchResultNarratorImpl;
 
   factory _SearchResultNarrator.fromJson(Map<String, dynamic> json) =
@@ -964,7 +963,7 @@ abstract class _SearchResultNarrator implements SearchResultNarrator {
   String get name;
   @override
   @JsonKey(name: "numItems")
-  int get numItems;
+  int? get numItems;
 
   /// Create a copy of SearchResultNarrator
   /// with the given fields replaced by the non-null parameter values.

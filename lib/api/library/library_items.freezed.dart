@@ -23,25 +23,27 @@ mixin _$LibraryItems {
   @JsonKey(name: "results")
   List<LibraryItem> get results => throw _privateConstructorUsedError;
   @JsonKey(name: "total")
-  int get total => throw _privateConstructorUsedError;
+  int? get total => throw _privateConstructorUsedError;
   @JsonKey(name: "limit")
-  int get limit => throw _privateConstructorUsedError;
+  int? get limit => throw _privateConstructorUsedError;
   @JsonKey(name: "page")
-  int get page => throw _privateConstructorUsedError;
+  int? get page => throw _privateConstructorUsedError;
   @JsonKey(name: "sortBy")
-  String get sortBy => throw _privateConstructorUsedError;
+  String? get sortBy => throw _privateConstructorUsedError;
   @JsonKey(name: "sortDesc")
-  bool get sortDesc => throw _privateConstructorUsedError;
+  bool? get sortDesc => throw _privateConstructorUsedError;
+  @JsonKey(name: "filterBy")
+  String? get filterBy => throw _privateConstructorUsedError;
   @JsonKey(name: "mediaType")
-  MediaType get mediaType => throw _privateConstructorUsedError;
+  MediaType? get mediaType => throw _privateConstructorUsedError;
   @JsonKey(name: "minified")
-  bool get minified => throw _privateConstructorUsedError;
+  bool? get minified => throw _privateConstructorUsedError;
   @JsonKey(name: "collapseseries")
-  bool get collapseseries => throw _privateConstructorUsedError;
+  bool? get collapseseries => throw _privateConstructorUsedError;
   @JsonKey(name: "include")
-  String get include => throw _privateConstructorUsedError;
+  String? get include => throw _privateConstructorUsedError;
   @JsonKey(name: "offset")
-  int get offset => throw _privateConstructorUsedError;
+  int? get offset => throw _privateConstructorUsedError;
 
   /// Serializes this LibraryItems to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -61,16 +63,17 @@ abstract class $LibraryItemsCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: "results") List<LibraryItem> results,
-      @JsonKey(name: "total") int total,
-      @JsonKey(name: "limit") int limit,
-      @JsonKey(name: "page") int page,
-      @JsonKey(name: "sortBy") String sortBy,
-      @JsonKey(name: "sortDesc") bool sortDesc,
-      @JsonKey(name: "mediaType") MediaType mediaType,
-      @JsonKey(name: "minified") bool minified,
-      @JsonKey(name: "collapseseries") bool collapseseries,
-      @JsonKey(name: "include") String include,
-      @JsonKey(name: "offset") int offset});
+      @JsonKey(name: "total") int? total,
+      @JsonKey(name: "limit") int? limit,
+      @JsonKey(name: "page") int? page,
+      @JsonKey(name: "sortBy") String? sortBy,
+      @JsonKey(name: "sortDesc") bool? sortDesc,
+      @JsonKey(name: "filterBy") String? filterBy,
+      @JsonKey(name: "mediaType") MediaType? mediaType,
+      @JsonKey(name: "minified") bool? minified,
+      @JsonKey(name: "collapseseries") bool? collapseseries,
+      @JsonKey(name: "include") String? include,
+      @JsonKey(name: "offset") int? offset});
 }
 
 /// @nodoc
@@ -89,62 +92,67 @@ class _$LibraryItemsCopyWithImpl<$Res, $Val extends LibraryItems>
   @override
   $Res call({
     Object? results = null,
-    Object? total = null,
-    Object? limit = null,
-    Object? page = null,
-    Object? sortBy = null,
-    Object? sortDesc = null,
-    Object? mediaType = null,
-    Object? minified = null,
-    Object? collapseseries = null,
-    Object? include = null,
-    Object? offset = null,
+    Object? total = freezed,
+    Object? limit = freezed,
+    Object? page = freezed,
+    Object? sortBy = freezed,
+    Object? sortDesc = freezed,
+    Object? filterBy = freezed,
+    Object? mediaType = freezed,
+    Object? minified = freezed,
+    Object? collapseseries = freezed,
+    Object? include = freezed,
+    Object? offset = freezed,
   }) {
     return _then(_value.copyWith(
       results: null == results
           ? _value.results
           : results // ignore: cast_nullable_to_non_nullable
               as List<LibraryItem>,
-      total: null == total
+      total: freezed == total
           ? _value.total
           : total // ignore: cast_nullable_to_non_nullable
-              as int,
-      limit: null == limit
+              as int?,
+      limit: freezed == limit
           ? _value.limit
           : limit // ignore: cast_nullable_to_non_nullable
-              as int,
-      page: null == page
+              as int?,
+      page: freezed == page
           ? _value.page
           : page // ignore: cast_nullable_to_non_nullable
-              as int,
-      sortBy: null == sortBy
+              as int?,
+      sortBy: freezed == sortBy
           ? _value.sortBy
           : sortBy // ignore: cast_nullable_to_non_nullable
-              as String,
-      sortDesc: null == sortDesc
+              as String?,
+      sortDesc: freezed == sortDesc
           ? _value.sortDesc
           : sortDesc // ignore: cast_nullable_to_non_nullable
-              as bool,
-      mediaType: null == mediaType
+              as bool?,
+      filterBy: freezed == filterBy
+          ? _value.filterBy
+          : filterBy // ignore: cast_nullable_to_non_nullable
+              as String?,
+      mediaType: freezed == mediaType
           ? _value.mediaType
           : mediaType // ignore: cast_nullable_to_non_nullable
-              as MediaType,
-      minified: null == minified
+              as MediaType?,
+      minified: freezed == minified
           ? _value.minified
           : minified // ignore: cast_nullable_to_non_nullable
-              as bool,
-      collapseseries: null == collapseseries
+              as bool?,
+      collapseseries: freezed == collapseseries
           ? _value.collapseseries
           : collapseseries // ignore: cast_nullable_to_non_nullable
-              as bool,
-      include: null == include
+              as bool?,
+      include: freezed == include
           ? _value.include
           : include // ignore: cast_nullable_to_non_nullable
-              as String,
-      offset: null == offset
+              as String?,
+      offset: freezed == offset
           ? _value.offset
           : offset // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
     ) as $Val);
   }
 }
@@ -159,16 +167,17 @@ abstract class _$$LibraryItemsImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: "results") List<LibraryItem> results,
-      @JsonKey(name: "total") int total,
-      @JsonKey(name: "limit") int limit,
-      @JsonKey(name: "page") int page,
-      @JsonKey(name: "sortBy") String sortBy,
-      @JsonKey(name: "sortDesc") bool sortDesc,
-      @JsonKey(name: "mediaType") MediaType mediaType,
-      @JsonKey(name: "minified") bool minified,
-      @JsonKey(name: "collapseseries") bool collapseseries,
-      @JsonKey(name: "include") String include,
-      @JsonKey(name: "offset") int offset});
+      @JsonKey(name: "total") int? total,
+      @JsonKey(name: "limit") int? limit,
+      @JsonKey(name: "page") int? page,
+      @JsonKey(name: "sortBy") String? sortBy,
+      @JsonKey(name: "sortDesc") bool? sortDesc,
+      @JsonKey(name: "filterBy") String? filterBy,
+      @JsonKey(name: "mediaType") MediaType? mediaType,
+      @JsonKey(name: "minified") bool? minified,
+      @JsonKey(name: "collapseseries") bool? collapseseries,
+      @JsonKey(name: "include") String? include,
+      @JsonKey(name: "offset") int? offset});
 }
 
 /// @nodoc
@@ -185,62 +194,67 @@ class __$$LibraryItemsImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? results = null,
-    Object? total = null,
-    Object? limit = null,
-    Object? page = null,
-    Object? sortBy = null,
-    Object? sortDesc = null,
-    Object? mediaType = null,
-    Object? minified = null,
-    Object? collapseseries = null,
-    Object? include = null,
-    Object? offset = null,
+    Object? total = freezed,
+    Object? limit = freezed,
+    Object? page = freezed,
+    Object? sortBy = freezed,
+    Object? sortDesc = freezed,
+    Object? filterBy = freezed,
+    Object? mediaType = freezed,
+    Object? minified = freezed,
+    Object? collapseseries = freezed,
+    Object? include = freezed,
+    Object? offset = freezed,
   }) {
     return _then(_$LibraryItemsImpl(
       results: null == results
           ? _value._results
           : results // ignore: cast_nullable_to_non_nullable
               as List<LibraryItem>,
-      total: null == total
+      total: freezed == total
           ? _value.total
           : total // ignore: cast_nullable_to_non_nullable
-              as int,
-      limit: null == limit
+              as int?,
+      limit: freezed == limit
           ? _value.limit
           : limit // ignore: cast_nullable_to_non_nullable
-              as int,
-      page: null == page
+              as int?,
+      page: freezed == page
           ? _value.page
           : page // ignore: cast_nullable_to_non_nullable
-              as int,
-      sortBy: null == sortBy
+              as int?,
+      sortBy: freezed == sortBy
           ? _value.sortBy
           : sortBy // ignore: cast_nullable_to_non_nullable
-              as String,
-      sortDesc: null == sortDesc
+              as String?,
+      sortDesc: freezed == sortDesc
           ? _value.sortDesc
           : sortDesc // ignore: cast_nullable_to_non_nullable
-              as bool,
-      mediaType: null == mediaType
+              as bool?,
+      filterBy: freezed == filterBy
+          ? _value.filterBy
+          : filterBy // ignore: cast_nullable_to_non_nullable
+              as String?,
+      mediaType: freezed == mediaType
           ? _value.mediaType
           : mediaType // ignore: cast_nullable_to_non_nullable
-              as MediaType,
-      minified: null == minified
+              as MediaType?,
+      minified: freezed == minified
           ? _value.minified
           : minified // ignore: cast_nullable_to_non_nullable
-              as bool,
-      collapseseries: null == collapseseries
+              as bool?,
+      collapseseries: freezed == collapseseries
           ? _value.collapseseries
           : collapseseries // ignore: cast_nullable_to_non_nullable
-              as bool,
-      include: null == include
+              as bool?,
+      include: freezed == include
           ? _value.include
           : include // ignore: cast_nullable_to_non_nullable
-              as String,
-      offset: null == offset
+              as String?,
+      offset: freezed == offset
           ? _value.offset
           : offset // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
     ));
   }
 }
@@ -250,16 +264,17 @@ class __$$LibraryItemsImplCopyWithImpl<$Res>
 class _$LibraryItemsImpl implements _LibraryItems {
   const _$LibraryItemsImpl(
       {@JsonKey(name: "results") required final List<LibraryItem> results,
-      @JsonKey(name: "total") required this.total,
-      @JsonKey(name: "limit") required this.limit,
-      @JsonKey(name: "page") required this.page,
-      @JsonKey(name: "sortBy") required this.sortBy,
-      @JsonKey(name: "sortDesc") required this.sortDesc,
-      @JsonKey(name: "mediaType") required this.mediaType,
-      @JsonKey(name: "minified") required this.minified,
-      @JsonKey(name: "collapseseries") required this.collapseseries,
-      @JsonKey(name: "include") required this.include,
-      @JsonKey(name: "offset") required this.offset})
+      @JsonKey(name: "total") this.total,
+      @JsonKey(name: "limit") this.limit,
+      @JsonKey(name: "page") this.page,
+      @JsonKey(name: "sortBy") this.sortBy,
+      @JsonKey(name: "sortDesc") this.sortDesc,
+      @JsonKey(name: "filterBy") this.filterBy,
+      @JsonKey(name: "mediaType") this.mediaType,
+      @JsonKey(name: "minified") this.minified,
+      @JsonKey(name: "collapseseries") this.collapseseries,
+      @JsonKey(name: "include") this.include,
+      @JsonKey(name: "offset") this.offset})
       : _results = results;
 
   factory _$LibraryItemsImpl.fromJson(Map<String, dynamic> json) =>
@@ -276,38 +291,41 @@ class _$LibraryItemsImpl implements _LibraryItems {
 
   @override
   @JsonKey(name: "total")
-  final int total;
+  final int? total;
   @override
   @JsonKey(name: "limit")
-  final int limit;
+  final int? limit;
   @override
   @JsonKey(name: "page")
-  final int page;
+  final int? page;
   @override
   @JsonKey(name: "sortBy")
-  final String sortBy;
+  final String? sortBy;
   @override
   @JsonKey(name: "sortDesc")
-  final bool sortDesc;
+  final bool? sortDesc;
+  @override
+  @JsonKey(name: "filterBy")
+  final String? filterBy;
   @override
   @JsonKey(name: "mediaType")
-  final MediaType mediaType;
+  final MediaType? mediaType;
   @override
   @JsonKey(name: "minified")
-  final bool minified;
+  final bool? minified;
   @override
   @JsonKey(name: "collapseseries")
-  final bool collapseseries;
+  final bool? collapseseries;
   @override
   @JsonKey(name: "include")
-  final String include;
+  final String? include;
   @override
   @JsonKey(name: "offset")
-  final int offset;
+  final int? offset;
 
   @override
   String toString() {
-    return 'LibraryItems(results: $results, total: $total, limit: $limit, page: $page, sortBy: $sortBy, sortDesc: $sortDesc, mediaType: $mediaType, minified: $minified, collapseseries: $collapseseries, include: $include, offset: $offset)';
+    return 'LibraryItems(results: $results, total: $total, limit: $limit, page: $page, sortBy: $sortBy, sortDesc: $sortDesc, filterBy: $filterBy, mediaType: $mediaType, minified: $minified, collapseseries: $collapseseries, include: $include, offset: $offset)';
   }
 
   @override
@@ -322,6 +340,8 @@ class _$LibraryItemsImpl implements _LibraryItems {
             (identical(other.sortBy, sortBy) || other.sortBy == sortBy) &&
             (identical(other.sortDesc, sortDesc) ||
                 other.sortDesc == sortDesc) &&
+            (identical(other.filterBy, filterBy) ||
+                other.filterBy == filterBy) &&
             (identical(other.mediaType, mediaType) ||
                 other.mediaType == mediaType) &&
             (identical(other.minified, minified) ||
@@ -342,6 +362,7 @@ class _$LibraryItemsImpl implements _LibraryItems {
       page,
       sortBy,
       sortDesc,
+      filterBy,
       mediaType,
       minified,
       collapseseries,
@@ -367,16 +388,17 @@ class _$LibraryItemsImpl implements _LibraryItems {
 abstract class _LibraryItems implements LibraryItems {
   const factory _LibraryItems(
       {@JsonKey(name: "results") required final List<LibraryItem> results,
-      @JsonKey(name: "total") required final int total,
-      @JsonKey(name: "limit") required final int limit,
-      @JsonKey(name: "page") required final int page,
-      @JsonKey(name: "sortBy") required final String sortBy,
-      @JsonKey(name: "sortDesc") required final bool sortDesc,
-      @JsonKey(name: "mediaType") required final MediaType mediaType,
-      @JsonKey(name: "minified") required final bool minified,
-      @JsonKey(name: "collapseseries") required final bool collapseseries,
-      @JsonKey(name: "include") required final String include,
-      @JsonKey(name: "offset") required final int offset}) = _$LibraryItemsImpl;
+      @JsonKey(name: "total") final int? total,
+      @JsonKey(name: "limit") final int? limit,
+      @JsonKey(name: "page") final int? page,
+      @JsonKey(name: "sortBy") final String? sortBy,
+      @JsonKey(name: "sortDesc") final bool? sortDesc,
+      @JsonKey(name: "filterBy") final String? filterBy,
+      @JsonKey(name: "mediaType") final MediaType? mediaType,
+      @JsonKey(name: "minified") final bool? minified,
+      @JsonKey(name: "collapseseries") final bool? collapseseries,
+      @JsonKey(name: "include") final String? include,
+      @JsonKey(name: "offset") final int? offset}) = _$LibraryItemsImpl;
 
   factory _LibraryItems.fromJson(Map<String, dynamic> json) =
       _$LibraryItemsImpl.fromJson;
@@ -386,34 +408,37 @@ abstract class _LibraryItems implements LibraryItems {
   List<LibraryItem> get results;
   @override
   @JsonKey(name: "total")
-  int get total;
+  int? get total;
   @override
   @JsonKey(name: "limit")
-  int get limit;
+  int? get limit;
   @override
   @JsonKey(name: "page")
-  int get page;
+  int? get page;
   @override
   @JsonKey(name: "sortBy")
-  String get sortBy;
+  String? get sortBy;
   @override
   @JsonKey(name: "sortDesc")
-  bool get sortDesc;
+  bool? get sortDesc;
+  @override
+  @JsonKey(name: "filterBy")
+  String? get filterBy;
   @override
   @JsonKey(name: "mediaType")
-  MediaType get mediaType;
+  MediaType? get mediaType;
   @override
   @JsonKey(name: "minified")
-  bool get minified;
+  bool? get minified;
   @override
   @JsonKey(name: "collapseseries")
-  bool get collapseseries;
+  bool? get collapseseries;
   @override
   @JsonKey(name: "include")
-  String get include;
+  String? get include;
   @override
   @JsonKey(name: "offset")
-  int get offset;
+  int? get offset;
 
   /// Create a copy of LibraryItems
   /// with the given fields replaced by the non-null parameter values.

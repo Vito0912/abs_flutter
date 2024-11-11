@@ -24,7 +24,7 @@ _$SearchLibraryImpl _$$SearchLibraryImplFromJson(Map<String, dynamic> json) =>
           ?.map((e) => SearchResultItem.fromJson(e as Map<String, dynamic>))
           .toList(),
       series: (json['series'] as List<dynamic>?)
-          ?.map((e) => Series.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => SearchSeries.fromJson(e as Map<String, dynamic>))
           .toList(),
       authors: (json['authors'] as List<dynamic>?)
           ?.map((e) => SearchLibraryAuthor.fromJson(e as Map<String, dynamic>))
@@ -64,7 +64,7 @@ _$SearchResultItemImpl _$$SearchResultItemImplFromJson(
         Map<String, dynamic> json) =>
     _$SearchResultItemImpl(
       name: json['name'] as String,
-      numItems: (json['numItems'] as num).toInt(),
+      numItems: (json['numItems'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$$SearchResultItemImplToJson(
@@ -78,7 +78,7 @@ _$SearchResultNarratorImpl _$$SearchResultNarratorImplFromJson(
         Map<String, dynamic> json) =>
     _$SearchResultNarratorImpl(
       name: json['name'] as String,
-      numItems: (json['numItems'] as num).toInt(),
+      numItems: (json['numItems'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$$SearchResultNarratorImplToJson(

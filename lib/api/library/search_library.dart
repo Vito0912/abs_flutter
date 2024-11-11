@@ -1,4 +1,5 @@
 import 'package:abs_flutter/api/library/search_library_author.dart';
+import 'package:abs_flutter/api/library/search_series.dart';
 import 'package:abs_flutter/api/library_items/library_item.dart';
 import 'package:abs_flutter/api/library_items/series.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -14,7 +15,7 @@ class SearchLibrary with _$SearchLibrary {
     @JsonKey(name: "narrators") List<SearchResultNarrator>? narrators,
     @JsonKey(name: "tags") List<SearchResultItem>? tags,
     @JsonKey(name: "genres") List<SearchResultItem>? genres,
-    @JsonKey(name: "series") List<Series>? series,
+    @JsonKey(name: "series") List<SearchSeries>? series,
     @JsonKey(name: "authors") List<SearchLibraryAuthor>? authors,
   }) = _SearchLibrary;
 
@@ -38,7 +39,7 @@ class SearchLibraryResult with _$SearchLibraryResult {
 class SearchResultItem with _$SearchResultItem {
   const factory SearchResultItem({
     @JsonKey(name: "name") required String name,
-    @JsonKey(name: "numItems") required int numItems,
+    @JsonKey(name: "numItems") int? numItems,
   }) = _SearchResultItem;
 
   factory SearchResultItem.fromJson(Map<String, dynamic> json) =>
@@ -49,7 +50,7 @@ class SearchResultItem with _$SearchResultItem {
 class SearchResultNarrator with _$SearchResultNarrator {
   const factory SearchResultNarrator({
     @JsonKey(name: "name") required String name,
-    @JsonKey(name: "numItems") required int numItems,
+    @JsonKey(name: "numItems") int? numItems,
   }) = _SearchResultNarrator;
 
   factory SearchResultNarrator.fromJson(Map<String, dynamic> json) =>
