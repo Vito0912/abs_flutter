@@ -515,5 +515,91 @@
   "viewOnGithub": "Ver on GitHub",
   "@viewOnGithub": {},
   "year": "Ano",
-  "@year": {}
+  "@year": {},
+  "dateFormatHourMinuteSecond": "{hours, plural, one {{hours} hora} other {{hours} horas}} {minutes, plural, one {{minutes} minuto} other {{minutes} minutos}} {seconds, plural, one {{seconds} segundo} other {{seconds} segundos}}",
+  "@dateFormatHourMinuteSecond": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      },
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "daysListened": "Dias ouvindo",
+  "@daysListened": {},
+  "deleteSelected": "Apagar selecionado",
+  "@deleteSelected": {},
+  "deviceInfo": "Dispositivo: {device}\nSP: {os}\nVersão do app: {version}",
+  "@deviceInfo": {
+    "placeholders": {
+      "device": {
+        "type": "String"
+      },
+      "os": {
+        "type": "String"
+      },
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "downloadComplete": "Download completado",
+  "@downloadComplete": {},
+  "errorDownloading": "Erro ao fazer download",
+  "@errorDownloading": {},
+  "errorDownloadingBody": "Ocorreu um erro ao fazer download de {displayName}",
+  "@errorDownloadingBody": {},
+  "logs": "Logs",
+  "@logs": {},
+  "progressNum": "Progresso atual: {progress} %",
+  "@progressNum": {
+    "placeholders": {
+      "progress": {
+        "type": "String"
+      }
+    }
+  },
+  "downloadCompleteBody": "Download de {displayName} completado",
+  "@downloadCompleteBody": {},
+  "downloadInfo": "Informações sobre o download",
+  "@downloadInfo": {},
+  "downloadPath": "Caminho do download",
+  "@downloadPath": {},
+  "downloading": "Fazendo download",
+  "@downloading": {},
+  "downloadingBody": "Fazendo download de {displayName}",
+  "@downloadingBody": {},
+  "downloads": "Downloads",
+  "@downloads": {},
+  "downloadsOnlyViaWifi": "Downloads somente via WiFi",
+  "@downloadsOnlyViaWifi": {},
+  "episodeId": "Id do episódio",
+  "@episodeId": {},
+  "markItemsFinished": "Marcar itens como terminados",
+  "@markItemsFinished": {},
+  "minimize": "Minimizar",
+  "@minimize": {},
+  "mustEnterValidAddress": "Você precisa informar um endereço de servidor válido",
+  "@mustEnterValidAddress": {},
+  "noPath": "Sem caminho",
+  "@noPath": {},
+  "noUserData": "Falha no login: dados de usuário não recebidos",
+  "@noUserData": {},
+  "offlineSavedProgress": "Progresso salvo offline",
+  "@offlineSavedProgress": {},
+  "openDownloads": "Abrir downloads",
+  "@openDownloads": {},
+  "ownStats": "Minhas estatísticas",
+  "@ownStats": {},
+  "player": "Tocador",
+  "@player": {},
+  "playerSettings": "Configurações do tocador",
+  "@playerSettings": {},
+  "serverAdressContinue": "Informe o endereço do servidor para continuar",
+  "@serverAdressContinue": {}
 }
