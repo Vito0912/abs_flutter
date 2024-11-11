@@ -701,5 +701,13 @@
   "waitingForDownload": "En attente de démarrage du téléchargement",
   "@waitingForDownload": {},
   "year": "Année",
-  "@year": {}
+  "@year": {},
+  "viewBookmarks": "Afficher les favoris",
+  "@viewBookmarks": {},
+  "create": "Créer",
+  "@create": {},
+  "createBookmark": "Créer un favori",
+  "@createBookmark": {},
+  "createBookmarkTitle": "Créer un favori",
+  "@createBookmarkTitle": {}
 }
