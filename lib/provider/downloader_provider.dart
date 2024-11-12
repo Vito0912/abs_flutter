@@ -221,15 +221,23 @@ class DownloadProvider extends ChangeNotifier {
 
     // Save item to BaseDirectory.applicationDocuments/abs_flutter/itemId/meta.json
     String json = jsonEncode(item);
-
+    log('Does safe json?: ${results.firstOrNull}', name: 'DownloadProvider');
     if (results.firstOrNull != null) {
+      log('Saving meta.json to: ${results.firstOrNull}',
+          name: 'DownloadProvider');
       // Create the parent directory
       final dir = Directory(results.first!).parent;
       if (!dir.existsSync()) {
-        dir.createSync(recursive: true);
+        await dir.create(recursive: true);
+        log('Creating directory: ${dir.path}', name: 'DownloadProvider');
       }
+      log('Writing meta.json to: ${results.first!}', name: 'DownloadProvider');
       final file = File(results.first!);
-      file.writeAsString(json);
+      await file.writeAsString(json);
+      log('Writing meta.json to: ${results.first}', name: 'DownloadProvider');
+    } else {
+      log('Failed to save meta.json. Removing files', name: 'DownloadProvider');
+      ref.read(downloadListProvider.notifier).removeDownload(downloadInfo);
     }
   }
 
@@ -293,15 +301,21 @@ class DownloadProvider extends ChangeNotifier {
     String jsonEpisode = jsonEncode(item);
 
     if (metaPath != null) {
+      log('Saving meta.json to: $metaPath', name: 'DownloadProvider');
       // Create the parent directory
       final dir = Directory(metaPath).parent;
       if (!dir.existsSync()) {
-        dir.createSync(recursive: true);
+        await dir.create(recursive: true);
+        log('Creating directory: ${dir.path}', name: 'DownloadProvider');
       }
+      log('Writing meta.json to: ${dir.parent.path}/meta.json',
+          name: 'DownloadProvider');
       File file = File('${dir.parent.path}/meta.json');
-      file.writeAsString(jsonLibrary);
-      file = File(metaPath);
-      file.writeAsString(jsonEpisode);
+      await file.writeAsString(jsonLibrary);
+      log('Writing meta.json to: $metaPath', name: 'DownloadProvider');
+      File file1 = File(metaPath);
+      await file1.writeAsString(jsonEpisode);
+      log('Writing meta.json to: $metaPath', name: 'DownloadProvider');
     }
   }
 
