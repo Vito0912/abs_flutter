@@ -203,6 +203,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "downloadsOnlyViaWifi":
             MessageLookupByLibrary.simpleMessage("Downloads only via WiFi"),
         "duration": MessageLookupByLibrary.simpleMessage("Duration"),
+        "ebookreader": MessageLookupByLibrary.simpleMessage("eBook-Reader"),
         "editQueue": MessageLookupByLibrary.simpleMessage("Edit Queue"),
         "enableNotificationsDownload": MessageLookupByLibrary.simpleMessage(
             "Please enable notifications to receive download progress updates and be able to download files in the background."),

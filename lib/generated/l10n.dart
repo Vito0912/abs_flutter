@@ -2492,6 +2492,16 @@ class S {
       args: [],
     );
   }
+
+  /// `eBook-Reader`
+  String get ebookreader {
+    return Intl.message(
+      'eBook-Reader',
+      name: 'ebookreader',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

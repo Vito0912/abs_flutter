@@ -4,6 +4,7 @@ import 'package:abs_flutter/features/home/components/download_info_button.dart';
 import 'package:abs_flutter/features/library/item/book/metainfo.dart';
 import 'package:abs_flutter/features/library/item/book/tags_description.dart';
 import 'package:abs_flutter/features/library/item/components/add_to_queue_button.dart';
+import 'package:abs_flutter/features/library/item/components/book_button.dart';
 import 'package:abs_flutter/features/library/item/components/download_button.dart';
 import 'package:abs_flutter/features/library/item/components/play_button.dart';
 import 'package:abs_flutter/generated/l10n.dart';
@@ -117,14 +118,18 @@ class BookView extends ConsumerWidget {
           scrollDirection: Axis.horizontal,
           child: Row(
             children: [
-              PlayButton(itemId: castItem.id, mediaType: 'book'),
-              const VerticalDivider(),
-              DownloadButton(
-                libraryItem: castItem,
-                user: user,
-              ),
-              const VerticalDivider(),
-              AddQueueButton(item: castItem),
+              if (castItem.media!.hasAudio)
+                PlayButton(itemId: castItem.id, mediaType: 'book'),
+              if (castItem.media!.hasAudio) const SizedBox(width: 8.0),
+              if (castItem.media!.hasBook) BookButton(item: castItem),
+              if (castItem.media!.hasAudio) const VerticalDivider(),
+              if (castItem.media!.hasAudio)
+                DownloadButton(
+                  libraryItem: castItem,
+                  user: user,
+                ),
+              if (castItem.media!.hasBook) const VerticalDivider(),
+              if (castItem.media!.hasAudio) AddQueueButton(item: castItem),
             ],
           ),
         ),
