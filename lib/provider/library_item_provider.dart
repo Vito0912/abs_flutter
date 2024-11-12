@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:abs_flutter/api/library_items/library_item.dart';
 import 'package:abs_flutter/api/library_items/request/library_item_request.dart';
+import 'package:abs_flutter/api/routes/abs_api.dart';
 import 'package:abs_flutter/models/file.dart';
 import 'package:abs_flutter/provider/download_provider.dart';
 import 'package:abs_flutter/provider/log_provider.dart';
@@ -26,26 +27,7 @@ final itemProvider =
   log(download.toString());
 
   if (download == null || !download.isDownloaded()) {
-    try {
-      final response = await api.getLibraryItemApi().getLibraryItem(
-            libraryItemRequest: LibraryItemRequest(id: id),
-          );
-      if (response.data == null) {
-        return null;
-      }
-      return response.data;
-    } catch (e) {
-      if (e is DioException) {
-        if (e.response != null && e.response!.data != null) {
-          log(e.response!.data!.toString(), name: 'itemProvider');
-          return null;
-        }
-        log(e.toString(), name: 'itemProvider');
-        return null;
-      }
-
-      return null;
-    }
+    return await _fetchData(api, id);
   } else {
     final String originalFilePath = download.folderPath;
     late final String directory;
@@ -55,13 +37,41 @@ final itemProvider =
       directory = Directory(originalFilePath).path;
     }
 
-    print(directory);
+    try {
+      print(directory);
 
-    final String newFilePath = p.join(directory, 'meta.json');
-    final File file = File(newFilePath);
+      final String newFilePath = p.join(directory, 'meta.json');
+      final File file = File(newFilePath);
 
-    log('Reading file: $newFilePath');
+      log('Reading file: $newFilePath');
 
-    return LibraryItem.fromJson(jsonDecode(file.readAsStringSync()));
+      return LibraryItem.fromJson(jsonDecode(file.readAsStringSync()));
+    } catch (e) {
+      log(e.toString());
+      return await _fetchData(api, id);
+    }
   }
 });
+
+Future<LibraryItem?> _fetchData(ABSApi api, String id) async {
+  try {
+    final response = await api.getLibraryItemApi().getLibraryItem(
+          libraryItemRequest: LibraryItemRequest(id: id),
+        );
+    if (response.data == null) {
+      return null;
+    }
+    return response.data;
+  } catch (e) {
+    if (e is DioException) {
+      if (e.response != null && e.response!.data != null) {
+        log(e.response!.data!.toString(), name: 'itemProvider');
+        return null;
+      }
+      log(e.toString(), name: 'itemProvider');
+      return null;
+    }
+
+    return null;
+  }
+}
