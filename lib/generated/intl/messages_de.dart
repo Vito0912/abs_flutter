@@ -147,6 +147,17 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Weiter hören"),
         "continueSeries":
             MessageLookupByLibrary.simpleMessage("Serie weiter hören"),
+        "copy": MessageLookupByLibrary.simpleMessage("Kopieren"),
+        "copyAnonymous": MessageLookupByLibrary.simpleMessage(
+            "Kopieren (Persönliche Daten entfernt)"),
+        "copyLogs": MessageLookupByLibrary.simpleMessage("Kopiere Protokolle"),
+        "copyLogsDescription": MessageLookupByLibrary.simpleMessage(
+            "Wichtig:\nDurch Klicken auf „Kopieren“ werden alle aktuell angezeigten Protokolle in deine Zwischenablage übertragen, einschließlich der Daten, die seit dem Start der App oder der letzten Löschung aufgezeichnet wurden. Diese Protokolle können sensible Informationen wie Tokens, Benutzernamen, E-Mails und Server-URLs enthalten. Sei vorsichtig, wo du diese Informationen einfügst!\\nWenn du „Kopieren (Persönliche Daten entfernt)“ wählst, wird die App versuchen, Elemente wie Tokens, Benutzernamen, E-Mails und Server-URLs zu entfernen. Dennoch bist du dafür verantwortlich, die Protokolle zu überprüfen, um sicherzustellen, dass alle persönlichen Daten vollständig entfernt wurden."),
+        "create": MessageLookupByLibrary.simpleMessage("Erstellen"),
+        "createBookmark":
+            MessageLookupByLibrary.simpleMessage("Lesezeichen erstellen"),
+        "createBookmarkTitle":
+            MessageLookupByLibrary.simpleMessage("Lesezeichenerstellung"),
         "currentDownloads":
             MessageLookupByLibrary.simpleMessage("Aktuell heruntergeladen"),
         "currentPositionNum": m1,
@@ -246,6 +257,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Wenn aktiviert, springt der Player beim Drücken der Wiedergabetaste zur letzten Position"),
         "language": MessageLookupByLibrary.simpleMessage("Sprache"),
         "languages": MessageLookupByLibrary.simpleMessage("Sprachen"),
+        "largestItems": MessageLookupByLibrary.simpleMessage("Größte Medien"),
         "last30Days": MessageLookupByLibrary.simpleMessage("Letzte 30 Tage"),
         "last7Days": MessageLookupByLibrary.simpleMessage("Letzte 7 Tage"),
         "libraries": MessageLookupByLibrary.simpleMessage("Bibliotheken"),
@@ -263,6 +275,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Wenn aktiviert, sperrt diese Funktion die Fortschrittsleiste in der Medienbenachrichtigung, sofern das Betriebssystem dies unterstützt"),
         "logging": MessageLookupByLibrary.simpleMessage("Protokollierung"),
         "logs": MessageLookupByLibrary.simpleMessage("Protokolle"),
+        "longestItems": MessageLookupByLibrary.simpleMessage("Längste Medien"),
         "markItemsFinished":
             MessageLookupByLibrary.simpleMessage("Makiere Element als fertig"),
         "markItemsFinishedAfterDescription": MessageLookupByLibrary.simpleMessage(
@@ -399,6 +412,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "timerText": m33,
         "title": MessageLookupByLibrary.simpleMessage("Titel"),
         "today": MessageLookupByLibrary.simpleMessage("Heute"),
+        "topAuthors": MessageLookupByLibrary.simpleMessage("Top Autoren"),
+        "topGenres": MessageLookupByLibrary.simpleMessage("Top Genres"),
+        "totalAudioTracks":
+            MessageLookupByLibrary.simpleMessage("Anzahl Audiotracks"),
+        "totalAuthors": MessageLookupByLibrary.simpleMessage("Anzahl Autoren"),
+        "totalDuration": MessageLookupByLibrary.simpleMessage("Länge"),
+        "totalGenres": MessageLookupByLibrary.simpleMessage("Anzahl Genres"),
+        "totalItems": MessageLookupByLibrary.simpleMessage("Anzahl Medien"),
+        "totalSize": MessageLookupByLibrary.simpleMessage("Gesamtgröße"),
         "totalTimeListened":
             MessageLookupByLibrary.simpleMessage("Gesamthörzeit"),
         "tryAgain": MessageLookupByLibrary.simpleMessage("Erneut versuchen"),
@@ -410,6 +432,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "username": MessageLookupByLibrary.simpleMessage("Nutzername"),
         "usernameOrPasswordNotEmpty": MessageLookupByLibrary.simpleMessage(
             "Der Nutzername und das Passwort dürfen nicht leer sein"),
+        "viewBookmarks":
+            MessageLookupByLibrary.simpleMessage("Lesezeichen anzeigen"),
         "viewChapters":
             MessageLookupByLibrary.simpleMessage("Kapitel anzeigen"),
         "viewOnGithub":

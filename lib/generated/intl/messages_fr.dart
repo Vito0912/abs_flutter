@@ -152,6 +152,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Continuer l\'écoute"),
         "continueSeries":
             MessageLookupByLibrary.simpleMessage("Continuer les Séries"),
+        "create": MessageLookupByLibrary.simpleMessage("Créer"),
+        "createBookmark":
+            MessageLookupByLibrary.simpleMessage("Créer un favori"),
+        "createBookmarkTitle":
+            MessageLookupByLibrary.simpleMessage("Créer un favori"),
         "currentDownloads":
             MessageLookupByLibrary.simpleMessage("Téléchargements en cours"),
         "currentPositionNum": m1,
@@ -420,6 +425,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "username": MessageLookupByLibrary.simpleMessage("Nom d\'utilisateur"),
         "usernameOrPasswordNotEmpty": MessageLookupByLibrary.simpleMessage(
             "Le nom d\'utilisateur et le mot de passe ne peuvent être vides"),
+        "viewBookmarks":
+            MessageLookupByLibrary.simpleMessage("Afficher les favoris"),
         "viewChapters":
             MessageLookupByLibrary.simpleMessage("Voir les Chapitres"),
         "viewOnGithub": MessageLookupByLibrary.simpleMessage("Voir sur GitHub"),

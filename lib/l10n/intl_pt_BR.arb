@@ -187,6 +187,20 @@
       }
     }
   },
+  "dateFormatHourMinuteSecond": "{hours, plural, one {{hours} hora} other {{hours} horas}} {minutes, plural, one {{minutes} minuto} other {{minutes} minutos}} {seconds, plural, one {{seconds} segundo} other {{seconds} segundos}}",
+  "@dateFormatHourMinuteSecond": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      },
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
   "dateFormatHourMinuteSecondShort": "{hours}h {minutes}m {seconds}s",
   "@dateFormatHourMinuteSecondShort": {
     "placeholders": {
@@ -274,24 +288,64 @@
       }
     }
   },
+  "daysListened": "Dias ouvindo",
+  "@daysListened": {},
+  "deleteSelected": "Apagar selecionado",
+  "@deleteSelected": {},
   "descending": "Descendente",
   "@descending": {},
   "description": "Descrição",
   "@description": {},
+  "deviceInfo": "Dispositivo: {device}\nSP: {os}\nVersão do app: {version}",
+  "@deviceInfo": {
+    "placeholders": {
+      "device": {
+        "type": "String"
+      },
+      "os": {
+        "type": "String"
+      },
+      "version": {
+        "type": "String"
+      }
+    }
+  },
   "disabled": "Desabilitado",
   "@disabled": {},
   "discover": "Descobrir",
   "@discover": {},
   "domainOrIp": "Domínio ou IP",
   "@domainOrIp": {},
+  "downloadComplete": "Download completado",
+  "@downloadComplete": {},
+  "downloadCompleteBody": "Download de {displayName} completado",
+  "@downloadCompleteBody": {},
+  "downloadInfo": "Informações sobre o download",
+  "@downloadInfo": {},
+  "downloadPath": "Caminho do download",
+  "@downloadPath": {},
+  "downloading": "Fazendo download",
+  "@downloading": {},
+  "downloadingBody": "Fazendo download de {displayName}",
+  "@downloadingBody": {},
+  "downloads": "Downloads",
+  "@downloads": {},
+  "downloadsOnlyViaWifi": "Downloads somente via WiFi",
+  "@downloadsOnlyViaWifi": {},
   "duration": "Duração",
   "@duration": {},
   "editQueue": "Editar fila",
   "@editQueue": {},
   "enabled": "Ativado",
   "@enabled": {},
+  "episodeId": "Id do episódio",
+  "@episodeId": {},
   "error": "Erro",
   "@error": {},
+  "errorDownloading": "Erro ao fazer download",
+  "@errorDownloading": {},
+  "errorDownloadingBody": "Ocorreu um erro ao fazer download de {displayName}",
+  "@errorDownloadingBody": {},
   "errorItemNotFound": "Erro: Item não encontrado",
   "@errorItemNotFound": {},
   "exit": "Sair",
@@ -376,8 +430,16 @@
   "@listeningInTheLastYear": {},
   "loading": "Carregando…",
   "@loading": {},
+  "logs": "Logs",
+  "@logs": {},
+  "markItemsFinished": "Marcar itens como terminados",
+  "@markItemsFinished": {},
+  "minimize": "Minimizar",
+  "@minimize": {},
   "moreOptions": "Mais opções",
   "@moreOptions": {},
+  "mustEnterValidAddress": "Você precisa informar um endereço de servidor válido",
+  "@mustEnterValidAddress": {},
   "narrators": "Narradores",
   "@narrators": {},
   "newestEpisodes": "Episódios mais recentes",
@@ -394,8 +456,12 @@
   "@noInternetDescription": {},
   "noItemsFound": "Nenhum item encontrado",
   "@noItemsFound": {},
+  "noPath": "Sem caminho",
+  "@noPath": {},
   "noSeriesSelected": "Nenhuma série selecionada",
   "@noSeriesSelected": {},
+  "noUserData": "Falha no login: dados de usuário não recebidos",
+  "@noUserData": {},
   "notFinished": "Não terminado",
   "@notFinished": {},
   "notStarted": "Não começado",
@@ -414,10 +480,16 @@
   },
   "offlineProgress": "Progresso offline",
   "@offlineProgress": {},
+  "offlineSavedProgress": "Progresso salvo offline",
+  "@offlineSavedProgress": {},
   "ok": "OK",
   "@ok": {},
+  "openDownloads": "Abrir downloads",
+  "@openDownloads": {},
   "openProjectLink": "Audiobookshelf/Server",
   "@openProjectLink": {},
+  "ownStats": "Minhas estatísticas",
+  "@ownStats": {},
   "password": "Senha",
   "@password": {},
   "pause": "Pausa",
@@ -430,6 +502,10 @@
   "@playNextEpisode": {},
   "playbackSpeed": "Velocidade",
   "@playbackSpeed": {},
+  "player": "Tocador",
+  "@player": {},
+  "playerSettings": "Configurações do tocador",
+  "@playerSettings": {},
   "port": "Porta",
   "@port": {},
   "previous": "Anterior",
@@ -438,6 +514,14 @@
   "@previousChapter": {},
   "progress": "Progresso",
   "@progress": {},
+  "progressNum": "Progresso atual: {progress} %",
+  "@progressNum": {
+    "placeholders": {
+      "progress": {
+        "type": "String"
+      }
+    }
+  },
   "readLess": "Ler menos",
   "@readLess": {},
   "readMore": "Ler mais",
@@ -462,6 +546,8 @@
   "@sequence": {},
   "series": "Séries",
   "@series": {},
+  "serverAdressContinue": "Informe o endereço do servidor para continuar",
+  "@serverAdressContinue": {},
   "serverSelection": "Seleção de servidor",
   "@serverSelection": {},
   "settings": "Configurações",
@@ -515,91 +601,5 @@
   "viewOnGithub": "Ver on GitHub",
   "@viewOnGithub": {},
   "year": "Ano",
-  "@year": {},
-  "dateFormatHourMinuteSecond": "{hours, plural, one {{hours} hora} other {{hours} horas}} {minutes, plural, one {{minutes} minuto} other {{minutes} minutos}} {seconds, plural, one {{seconds} segundo} other {{seconds} segundos}}",
-  "@dateFormatHourMinuteSecond": {
-    "placeholders": {
-      "hours": {
-        "type": "int"
-      },
-      "minutes": {
-        "type": "int"
-      },
-      "seconds": {
-        "type": "int"
-      }
-    }
-  },
-  "daysListened": "Dias ouvindo",
-  "@daysListened": {},
-  "deleteSelected": "Apagar selecionado",
-  "@deleteSelected": {},
-  "deviceInfo": "Dispositivo: {device}\nSP: {os}\nVersão do app: {version}",
-  "@deviceInfo": {
-    "placeholders": {
-      "device": {
-        "type": "String"
-      },
-      "os": {
-        "type": "String"
-      },
-      "version": {
-        "type": "String"
-      }
-    }
-  },
-  "downloadComplete": "Download completado",
-  "@downloadComplete": {},
-  "errorDownloading": "Erro ao fazer download",
-  "@errorDownloading": {},
-  "errorDownloadingBody": "Ocorreu um erro ao fazer download de {displayName}",
-  "@errorDownloadingBody": {},
-  "logs": "Logs",
-  "@logs": {},
-  "progressNum": "Progresso atual: {progress} %",
-  "@progressNum": {
-    "placeholders": {
-      "progress": {
-        "type": "String"
-      }
-    }
-  },
-  "downloadCompleteBody": "Download de {displayName} completado",
-  "@downloadCompleteBody": {},
-  "downloadInfo": "Informações sobre o download",
-  "@downloadInfo": {},
-  "downloadPath": "Caminho do download",
-  "@downloadPath": {},
-  "downloading": "Fazendo download",
-  "@downloading": {},
-  "downloadingBody": "Fazendo download de {displayName}",
-  "@downloadingBody": {},
-  "downloads": "Downloads",
-  "@downloads": {},
-  "downloadsOnlyViaWifi": "Downloads somente via WiFi",
-  "@downloadsOnlyViaWifi": {},
-  "episodeId": "Id do episódio",
-  "@episodeId": {},
-  "markItemsFinished": "Marcar itens como terminados",
-  "@markItemsFinished": {},
-  "minimize": "Minimizar",
-  "@minimize": {},
-  "mustEnterValidAddress": "Você precisa informar um endereço de servidor válido",
-  "@mustEnterValidAddress": {},
-  "noPath": "Sem caminho",
-  "@noPath": {},
-  "noUserData": "Falha no login: dados de usuário não recebidos",
-  "@noUserData": {},
-  "offlineSavedProgress": "Progresso salvo offline",
-  "@offlineSavedProgress": {},
-  "openDownloads": "Abrir downloads",
-  "@openDownloads": {},
-  "ownStats": "Minhas estatísticas",
-  "@ownStats": {},
-  "player": "Tocador",
-  "@player": {},
-  "playerSettings": "Configurações do tocador",
-  "@playerSettings": {},
-  "serverAdressContinue": "Informe o endereço do servidor para continuar",
-  "@serverAdressContinue": {}
+  "@year": {}
 }

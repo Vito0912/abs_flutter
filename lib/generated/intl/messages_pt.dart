@@ -51,6 +51,9 @@ class MessageLookup extends MessageLookupByLibrary {
   static String m11(hours, minutes) =>
       "${Intl.plural(hours, one: '${hours} hora', other: '${hours} horas')} ${Intl.plural(minutes, one: '${minutes} minuto', other: '${minutes} minutos')}";
 
+  static String m12(hours, minutes, seconds) =>
+      "${Intl.plural(hours, one: '${hours} hora', other: '${hours} horas')} ${Intl.plural(minutes, one: '${minutes} minuto', other: '${minutes} minutos')} ${Intl.plural(seconds, one: '${seconds} segundo', other: '${seconds} segundos')}";
+
   static String m13(hours, minutes, seconds) =>
       "${hours}h ${minutes}m ${seconds}s";
 
@@ -73,6 +76,16 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m21(count) => "${count}s";
 
+  static String m22(device, os, version) =>
+      "Dispositivo: ${device}\nSP: ${os}\nVersão do app: ${version}";
+
+  static String m23(displayName) => "Download de ${displayName} completado";
+
+  static String m24(displayName) => "Fazendo download de ${displayName}";
+
+  static String m25(displayName) =>
+      "Ocorreu um erro ao fazer download de ${displayName}";
+
   static String m27(numChapters) => "Número de CApítulos: ${numChapters}";
 
   static String m28(progress) => "Progresso: ${progress}%";
@@ -81,6 +94,8 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m30(numBooks) =>
       "${Intl.plural(numBooks, zero: 'Sem livros', one: '1 livro', other: '${numBooks} livors')}";
+
+  static String m31(progress) => "Progresso atual: ${progress} %";
 
   static String m33(time) => "${time} min";
 
@@ -135,6 +150,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "dateFormatDayShort": m9,
         "dateFormatHour": m10,
         "dateFormatHourMinute": m11,
+        "dateFormatHourMinuteSecond": m12,
         "dateFormatHourMinuteSecondShort": m13,
         "dateFormatHourMinuteShort": m14,
         "dateFormatHourShort": m15,
@@ -144,15 +160,35 @@ class MessageLookup extends MessageLookupByLibrary {
         "dateFormatMinuteShort": m19,
         "dateFormatSecond": m20,
         "dateFormatSecondShort": m21,
+        "daysListened": MessageLookupByLibrary.simpleMessage("Dias ouvindo"),
+        "deleteSelected":
+            MessageLookupByLibrary.simpleMessage("Apagar selecionado"),
         "descending": MessageLookupByLibrary.simpleMessage("Descendente"),
         "description": MessageLookupByLibrary.simpleMessage("Descrição"),
+        "deviceInfo": m22,
         "disabled": MessageLookupByLibrary.simpleMessage("Desabilitado"),
         "discover": MessageLookupByLibrary.simpleMessage("Descobrir"),
         "domainOrIp": MessageLookupByLibrary.simpleMessage("Domínio ou IP"),
+        "downloadComplete":
+            MessageLookupByLibrary.simpleMessage("Download completado"),
+        "downloadCompleteBody": m23,
+        "downloadInfo": MessageLookupByLibrary.simpleMessage(
+            "Informações sobre o download"),
+        "downloadPath":
+            MessageLookupByLibrary.simpleMessage("Caminho do download"),
+        "downloading": MessageLookupByLibrary.simpleMessage("Fazendo download"),
+        "downloadingBody": m24,
+        "downloads": MessageLookupByLibrary.simpleMessage("Downloads"),
+        "downloadsOnlyViaWifi":
+            MessageLookupByLibrary.simpleMessage("Downloads somente via WiFi"),
         "duration": MessageLookupByLibrary.simpleMessage("Duração"),
         "editQueue": MessageLookupByLibrary.simpleMessage("Editar fila"),
         "enabled": MessageLookupByLibrary.simpleMessage("Ativado"),
+        "episodeId": MessageLookupByLibrary.simpleMessage("Id do episódio"),
         "error": MessageLookupByLibrary.simpleMessage("Erro"),
+        "errorDownloading":
+            MessageLookupByLibrary.simpleMessage("Erro ao fazer download"),
+        "errorDownloadingBody": m25,
         "errorItemNotFound":
             MessageLookupByLibrary.simpleMessage("Erro: Item não encontrado"),
         "exit": MessageLookupByLibrary.simpleMessage("Sair"),
@@ -193,7 +229,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "listeningInTheLastYear":
             MessageLookupByLibrary.simpleMessage("Ouvindo no último ano"),
         "loading": MessageLookupByLibrary.simpleMessage("Carregando…"),
+        "logs": MessageLookupByLibrary.simpleMessage("Logs"),
+        "markItemsFinished": MessageLookupByLibrary.simpleMessage(
+            "Marcar itens como terminados"),
+        "minimize": MessageLookupByLibrary.simpleMessage("Minimizar"),
         "moreOptions": MessageLookupByLibrary.simpleMessage("Mais opções"),
+        "mustEnterValidAddress": MessageLookupByLibrary.simpleMessage(
+            "Você precisa informar um endereço de servidor válido"),
         "narrators": MessageLookupByLibrary.simpleMessage("Narradores"),
         "newestEpisodes":
             MessageLookupByLibrary.simpleMessage("Episódios mais recentes"),
@@ -205,8 +247,11 @@ class MessageLookup extends MessageLookupByLibrary {
             "Estamos enfrentando problemas para conectar ao servidor."),
         "noItemsFound":
             MessageLookupByLibrary.simpleMessage("Nenhum item encontrado"),
+        "noPath": MessageLookupByLibrary.simpleMessage("Sem caminho"),
         "noSeriesSelected":
             MessageLookupByLibrary.simpleMessage("Nenhuma série selecionada"),
+        "noUserData": MessageLookupByLibrary.simpleMessage(
+            "Falha no login: dados de usuário não recebidos"),
         "notFinished": MessageLookupByLibrary.simpleMessage("Não terminado"),
         "notStarted": MessageLookupByLibrary.simpleMessage("Não começado"),
         "notTriedYet":
@@ -216,9 +261,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "numBooksInSeries": m30,
         "offlineProgress":
             MessageLookupByLibrary.simpleMessage("Progresso offline"),
+        "offlineSavedProgress":
+            MessageLookupByLibrary.simpleMessage("Progresso salvo offline"),
         "ok": MessageLookupByLibrary.simpleMessage("OK"),
+        "openDownloads":
+            MessageLookupByLibrary.simpleMessage("Abrir downloads"),
         "openProjectLink":
             MessageLookupByLibrary.simpleMessage("Audiobookshelf/Server"),
+        "ownStats": MessageLookupByLibrary.simpleMessage("Minhas estatísticas"),
         "password": MessageLookupByLibrary.simpleMessage("Senha"),
         "pause": MessageLookupByLibrary.simpleMessage("Pausa"),
         "personalizedLibrary":
@@ -227,11 +277,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "playNextEpisode":
             MessageLookupByLibrary.simpleMessage("Tocar próximo episódio"),
         "playbackSpeed": MessageLookupByLibrary.simpleMessage("Velocidade"),
+        "player": MessageLookupByLibrary.simpleMessage("Tocador"),
+        "playerSettings":
+            MessageLookupByLibrary.simpleMessage("Configurações do tocador"),
         "port": MessageLookupByLibrary.simpleMessage("Porta"),
         "previous": MessageLookupByLibrary.simpleMessage("Anterior"),
         "previousChapter":
             MessageLookupByLibrary.simpleMessage("Capítulo anterior"),
         "progress": MessageLookupByLibrary.simpleMessage("Progresso"),
+        "progressNum": m31,
         "readLess": MessageLookupByLibrary.simpleMessage("Ler menos"),
         "readMore": MessageLookupByLibrary.simpleMessage("Ler mais"),
         "recentSeries": MessageLookupByLibrary.simpleMessage("Séries recentes"),
@@ -249,6 +303,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Pesquisa desabilitada"),
         "sequence": MessageLookupByLibrary.simpleMessage("Sequência"),
         "series": MessageLookupByLibrary.simpleMessage("Séries"),
+        "serverAdressContinue": MessageLookupByLibrary.simpleMessage(
+            "Informe o endereço do servidor para continuar"),
         "serverSelection":
             MessageLookupByLibrary.simpleMessage("Seleção de servidor"),
         "settings": MessageLookupByLibrary.simpleMessage("Configurações"),
