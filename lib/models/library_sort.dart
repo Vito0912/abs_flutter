@@ -14,7 +14,8 @@ class LibrarySort with _$LibrarySort {
     @Default(null) String? filter,
     @Default(null) String? filterKey,
     @Default("") String? search,
-    LibrarySort? previous,
+    String? type,
+    List<LibrarySort>? previous,
   }) = _LibrarySort;
 
   factory LibrarySort.fromJson(Map<String, dynamic> json) =>

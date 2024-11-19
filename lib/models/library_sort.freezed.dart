@@ -34,8 +34,10 @@ mixin _$LibrarySort {
   set filterKey(String? value) => throw _privateConstructorUsedError;
   String? get search => throw _privateConstructorUsedError;
   set search(String? value) => throw _privateConstructorUsedError;
-  LibrarySort? get previous => throw _privateConstructorUsedError;
-  set previous(LibrarySort? value) => throw _privateConstructorUsedError;
+  String? get type => throw _privateConstructorUsedError;
+  set type(String? value) => throw _privateConstructorUsedError;
+  List<LibrarySort>? get previous => throw _privateConstructorUsedError;
+  set previous(List<LibrarySort>? value) => throw _privateConstructorUsedError;
 
   /// Serializes this LibrarySort to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -61,9 +63,8 @@ abstract class $LibrarySortCopyWith<$Res> {
       String? filter,
       String? filterKey,
       String? search,
-      LibrarySort? previous});
-
-  $LibrarySortCopyWith<$Res>? get previous;
+      String? type,
+      List<LibrarySort>? previous});
 }
 
 /// @nodoc
@@ -88,6 +89,7 @@ class _$LibrarySortCopyWithImpl<$Res, $Val extends LibrarySort>
     Object? filter = freezed,
     Object? filterKey = freezed,
     Object? search = freezed,
+    Object? type = freezed,
     Object? previous = freezed,
   }) {
     return _then(_value.copyWith(
@@ -119,25 +121,15 @@ class _$LibrarySortCopyWithImpl<$Res, $Val extends LibrarySort>
           ? _value.search
           : search // ignore: cast_nullable_to_non_nullable
               as String?,
+      type: freezed == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String?,
       previous: freezed == previous
           ? _value.previous
           : previous // ignore: cast_nullable_to_non_nullable
-              as LibrarySort?,
+              as List<LibrarySort>?,
     ) as $Val);
-  }
-
-  /// Create a copy of LibrarySort
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $LibrarySortCopyWith<$Res>? get previous {
-    if (_value.previous == null) {
-      return null;
-    }
-
-    return $LibrarySortCopyWith<$Res>(_value.previous!, (value) {
-      return _then(_value.copyWith(previous: value) as $Val);
-    });
   }
 }
 
@@ -157,10 +149,8 @@ abstract class _$$LibrarySortImplCopyWith<$Res>
       String? filter,
       String? filterKey,
       String? search,
-      LibrarySort? previous});
-
-  @override
-  $LibrarySortCopyWith<$Res>? get previous;
+      String? type,
+      List<LibrarySort>? previous});
 }
 
 /// @nodoc
@@ -183,6 +173,7 @@ class __$$LibrarySortImplCopyWithImpl<$Res>
     Object? filter = freezed,
     Object? filterKey = freezed,
     Object? search = freezed,
+    Object? type = freezed,
     Object? previous = freezed,
   }) {
     return _then(_$LibrarySortImpl(
@@ -214,10 +205,14 @@ class __$$LibrarySortImplCopyWithImpl<$Res>
           ? _value.search
           : search // ignore: cast_nullable_to_non_nullable
               as String?,
+      type: freezed == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String?,
       previous: freezed == previous
           ? _value.previous
           : previous // ignore: cast_nullable_to_non_nullable
-              as LibrarySort?,
+              as List<LibrarySort>?,
     ));
   }
 }
@@ -233,6 +228,7 @@ class _$LibrarySortImpl with DiagnosticableTreeMixin implements _LibrarySort {
       this.filter = null,
       this.filterKey = null,
       this.search = "",
+      this.type,
       this.previous});
 
   factory _$LibrarySortImpl.fromJson(Map<String, dynamic> json) =>
@@ -260,11 +256,13 @@ class _$LibrarySortImpl with DiagnosticableTreeMixin implements _LibrarySort {
   @JsonKey()
   String? search;
   @override
-  LibrarySort? previous;
+  String? type;
+  @override
+  List<LibrarySort>? previous;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'LibrarySort(limit: $limit, page: $page, sort: $sort, desc: $desc, filter: $filter, filterKey: $filterKey, search: $search, previous: $previous)';
+    return 'LibrarySort(limit: $limit, page: $page, sort: $sort, desc: $desc, filter: $filter, filterKey: $filterKey, search: $search, type: $type, previous: $previous)';
   }
 
   @override
@@ -279,6 +277,7 @@ class _$LibrarySortImpl with DiagnosticableTreeMixin implements _LibrarySort {
       ..add(DiagnosticsProperty('filter', filter))
       ..add(DiagnosticsProperty('filterKey', filterKey))
       ..add(DiagnosticsProperty('search', search))
+      ..add(DiagnosticsProperty('type', type))
       ..add(DiagnosticsProperty('previous', previous));
   }
 
@@ -307,7 +306,8 @@ abstract class _LibrarySort implements LibrarySort {
       String? filter,
       String? filterKey,
       String? search,
-      LibrarySort? previous}) = _$LibrarySortImpl;
+      String? type,
+      List<LibrarySort>? previous}) = _$LibrarySortImpl;
 
   factory _LibrarySort.fromJson(Map<String, dynamic> json) =
       _$LibrarySortImpl.fromJson;
@@ -334,8 +334,11 @@ abstract class _LibrarySort implements LibrarySort {
   String? get search;
   set search(String? value);
   @override
-  LibrarySort? get previous;
-  set previous(LibrarySort? value);
+  String? get type;
+  set type(String? value);
+  @override
+  List<LibrarySort>? get previous;
+  set previous(List<LibrarySort>? value);
 
   /// Create a copy of LibrarySort
   /// with the given fields replaced by the non-null parameter values.

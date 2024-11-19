@@ -1,6 +1,7 @@
 import 'package:abs_flutter/features/library/item_components/item_series.dart';
 import 'package:abs_flutter/models/library_preview_item.dart';
 import 'package:abs_flutter/models/library_series_preview.dart';
+import 'package:abs_flutter/provider/library_items_provider.dart';
 import 'package:abs_flutter/provider/library_provider.dart';
 import 'package:abs_flutter/provider/progress_provider.dart';
 import 'package:abs_flutter/provider/series_provider.dart';
@@ -54,7 +55,7 @@ class _SeriesViewState extends ConsumerState<SeriesView> {
 
       seriesState.whenData((data) {
         final totalResults = data?.total ?? 0;
-        final fetchedResults = data?.results?.length ?? 0;
+        final fetchedResults = data?.results.length ?? 0;
 
         setState(() {
           if (loadMore) {
@@ -75,10 +76,17 @@ class _SeriesViewState extends ConsumerState<SeriesView> {
   @override
   Widget build(BuildContext context) {
     final seriesAsyncValue = ref.watch(seriesProvider);
+    final search = ref.watch(libraryItemSearchProvider);
 
     ref.listen(currentLibraryProvider, (old, newVal) {
       ref.read(seriesProvider.notifier).resetSeries();
     });
+
+    double abovePadding;
+
+    (MediaQuery.of(context).size.width < 900)
+        ? abovePadding = 80 - 16
+        : abovePadding = 0;
 
     return seriesAsyncValue.when(
       data: (data) {
@@ -107,6 +115,7 @@ class _SeriesViewState extends ConsumerState<SeriesView> {
                   (constraints.maxWidth / 325).floor().clamp(1, 4);
 
               return AlignedGridView.count(
+                padding: EdgeInsets.only(top: abovePadding),
                 controller: _scrollController,
                 crossAxisCount: crossAxisCount,
                 mainAxisSpacing: 8,
