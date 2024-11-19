@@ -147,7 +147,7 @@ class _SeriesViewState extends ConsumerState<SeriesView> {
                     books: books,
                     total: data.total ?? 0,
                     page: data.page ?? 0,
-                    id: currentSeries.id!,
+                    id: currentSeries.id,
                     libraryId: currentSeries.books!.first.libraryId ?? '',
                     name: currentSeries.name ?? 'Unnamed Series',
                   );

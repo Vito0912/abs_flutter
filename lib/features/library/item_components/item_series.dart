@@ -33,11 +33,12 @@ class ItemSeries extends ConsumerWidget {
                     .read(libraryItemSearchProvider.notifier)
                     .state
                     .copyWith(
-                      filterKey: 'series',
-                      filter: series.id,
-                      sort: 'sequence',
-                      desc: settings[Constants.SORT_SERIES_ASC] == true ? 1 : 0,
-                    );
+                        filterKey: 'series',
+                        filter: series.id,
+                        sort: 'sequence',
+                        desc:
+                            settings[Constants.SORT_SERIES_ASC] == true ? 1 : 0,
+                        search: '');
                 context.push('/series-view/${series.name}');
               }
             : null,
