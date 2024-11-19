@@ -1,3 +1,4 @@
+import 'package:abs_flutter/api/library/collapsed_series.dart';
 import 'package:abs_flutter/api/library_items/library_file.dart';
 import 'package:abs_flutter/api/library_items/media.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -29,6 +30,7 @@ class LibraryItem with _$LibraryItem {
     @JsonKey(name: "media") required Media? media,
     @JsonKey(name: "libraryFiles") required List<LibraryFile>? libraryFiles,
     @JsonKey(name: "size") int? size,
+    @JsonKey(name: "collapsedSeries") CollapsedSeries? collapsedSeries,
   }) = _LibraryItem;
 
   factory LibraryItem.fromJson(Map<String, dynamic> json) =>

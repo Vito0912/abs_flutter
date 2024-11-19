@@ -33,6 +33,10 @@ _$LibraryItemImpl _$$LibraryItemImplFromJson(Map<String, dynamic> json) =>
           ?.map((e) => LibraryFile.fromJson(e as Map<String, dynamic>))
           .toList(),
       size: (json['size'] as num?)?.toInt(),
+      collapsedSeries: json['collapsedSeries'] == null
+          ? null
+          : CollapsedSeries.fromJson(
+              json['collapsedSeries'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$LibraryItemImplToJson(_$LibraryItemImpl instance) =>
@@ -58,4 +62,5 @@ Map<String, dynamic> _$$LibraryItemImplToJson(_$LibraryItemImpl instance) =>
       'media': instance.media,
       'libraryFiles': instance.libraryFiles,
       'size': instance.size,
+      'collapsedSeries': instance.collapsedSeries,
     };

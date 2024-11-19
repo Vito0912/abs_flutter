@@ -18,11 +18,8 @@ class _EReaderState extends State<EReader> {
 
   @override
   void initState() {
-
     // Load the EPUB file from assets
-    rootBundle
-        .load('assets/xxx')
-        .then((ByteData book) async {
+    rootBundle.load('assets/xxx').then((ByteData book) async {
       // Convert ByteData to Uint8List
       Uint8List uint8List = book.buffer.asUint8List();
 
@@ -72,7 +69,6 @@ class _EReaderState extends State<EReader> {
           return HtmlWidget(
             htmlContent ?? '',
             buildAsync: true,
-            factoryBuilder: () {},
             customStylesBuilder: (element) {
               for (CssRule rule in cssRules) {
                 if (rule.type == 'tag' && rule.selector == element.localName) {
