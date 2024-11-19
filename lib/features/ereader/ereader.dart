@@ -1,27 +1,43 @@
 import 'package:abs_flutter/generated/l10n.dart';
+import 'package:abs_flutter/provider/user_provider.dart';
+import 'package:dio/dio.dart';
 import 'package:epubx/epubx.dart' hide Image;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
 
-class EReader extends StatefulWidget {
+class EReader extends ConsumerStatefulWidget {
   final String itemId;
   const EReader({super.key, required this.itemId});
 
   @override
-  State<EReader> createState() => _EReaderState();
+  ConsumerState<EReader> createState() => _EReaderState();
 }
 
-class _EReaderState extends State<EReader> {
+class _EReaderState extends ConsumerState<EReader> {
   EpubBook? epubBook;
 
   @override
   void initState() {
+    final user = ref.read(currentUserProvider);
+    if (user == null) {
+      return;
+    }
+    // Get file from url
+    final url =
+        '${user.server!.url}/api/items/${widget.itemId}/ebook?token=${user.token}';
+
+    print(url);
     // Load the EPUB file from assets
-    rootBundle.load('assets/xxx').then((ByteData book) async {
-      // Convert ByteData to Uint8List
-      Uint8List uint8List = book.buffer.asUint8List();
+    Dio()
+        .get(
+      url,
+      options: Options(responseType: ResponseType.bytes),
+    )
+        .then((Response response) async {
+      final Uint8List uint8List = response.data;
 
       // Read the EPUB book
       EpubReader.readBook(uint8List).then(
@@ -41,8 +57,6 @@ class _EReaderState extends State<EReader> {
     String? htmlContent;
     List<CssRule> cssRules = [];
     if (epubBook != null) {
-      print(epubBook!.AuthorList);
-      print(epubBook!.Content!.AllFiles);
       for (var item in epubBook!.Content!.AllFiles!.entries) {
         if (item.value.ContentType == EpubContentType.CSS) {
           EpubTextContentFile cssFile = item.value as EpubTextContentFile;
@@ -62,35 +76,31 @@ class _EReaderState extends State<EReader> {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8.0),
-        child: SelectionArea(child:
-            LayoutBuilder(builder: (context, BoxConstraints constraints) {
-          print(constraints.widthConstraints());
-          print(constraints.heightConstraints());
-          return HtmlWidget(
-            htmlContent ?? '',
-            buildAsync: true,
-            customStylesBuilder: (element) {
-              for (CssRule rule in cssRules) {
-                if (rule.type == 'tag' && rule.selector == element.localName) {
-                  return rule.properties;
-                }
-                if (rule.type == 'class' &&
-                    element.classes.contains(rule.selector)) {
-                  return rule.properties;
-                }
-                if (rule.type == 'id' && element.id == rule.selector) {
-                  return rule.properties;
-                }
-                if (rule.type == 'at-rule' && rule.selector == 'body') {
-                  return rule.properties;
-                }
+        child: SelectionArea(
+            child: HtmlWidget(
+          htmlContent ?? '',
+          buildAsync: true,
+          customStylesBuilder: (element) {
+            for (CssRule rule in cssRules) {
+              if (rule.type == 'tag' && rule.selector == element.localName) {
+                return rule.properties;
               }
+              if (rule.type == 'class' &&
+                  element.classes.contains(rule.selector)) {
+                return rule.properties;
+              }
+              if (rule.type == 'id' && element.id == rule.selector) {
+                return rule.properties;
+              }
+              if (rule.type == 'at-rule' && rule.selector == 'body') {
+                return rule.properties;
+              }
+            }
 
-              return null;
-            },
-            renderMode: RenderMode.column,
-          );
-        })),
+            return null;
+          },
+          renderMode: RenderMode.listView,
+        )),
       ),
     );
   }

@@ -738,5 +738,6 @@
   "@waitingForDownload": {},
   "year": "Year",
   "@year": {},
-  "ebookreader": "eBook-Reader"
+  "ebookreader": "eBook-Reader",
+  "open": "Open"
 }
