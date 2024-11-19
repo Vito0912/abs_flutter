@@ -23,7 +23,7 @@ mixin _$BookMedia {
   @JsonKey(name: "id")
   String get id => throw _privateConstructorUsedError;
   @JsonKey(name: "libraryItemId")
-  String get libraryItemId => throw _privateConstructorUsedError;
+  String? get libraryItemId => throw _privateConstructorUsedError;
   @JsonKey(name: "metadata")
   MediaMetadata get metadata => throw _privateConstructorUsedError;
   @JsonKey(name: "coverPath")
@@ -36,6 +36,16 @@ mixin _$BookMedia {
   List<Chapter>? get chapters => throw _privateConstructorUsedError;
   @JsonKey(name: "ebookFile")
   EbookFile? get ebookFile => throw _privateConstructorUsedError;
+  @JsonKey(name: "numTracks")
+  int? get numTracks => throw _privateConstructorUsedError;
+  @JsonKey(name: "numChapters")
+  int? get numChapters => throw _privateConstructorUsedError;
+  @JsonKey(name: "numAudioFiles")
+  int? get numAudioFiles => throw _privateConstructorUsedError;
+  @JsonKey(name: "size")
+  int? get size => throw _privateConstructorUsedError;
+  @JsonKey(name: "ebookFormat")
+  String? get ebookFormat => throw _privateConstructorUsedError;
 
   /// Serializes this BookMedia to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -54,13 +64,18 @@ abstract class $BookMediaCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: "id") String id,
-      @JsonKey(name: "libraryItemId") String libraryItemId,
+      @JsonKey(name: "libraryItemId") String? libraryItemId,
       @JsonKey(name: "metadata") MediaMetadata metadata,
       @JsonKey(name: "coverPath") String? coverPath,
       @JsonKey(name: "tags") List<String>? tags,
       @JsonKey(name: "audioFiles") List<AudioFile>? audioFiles,
       @JsonKey(name: "chapters") List<Chapter>? chapters,
-      @JsonKey(name: "ebookFile") EbookFile? ebookFile});
+      @JsonKey(name: "ebookFile") EbookFile? ebookFile,
+      @JsonKey(name: "numTracks") int? numTracks,
+      @JsonKey(name: "numChapters") int? numChapters,
+      @JsonKey(name: "numAudioFiles") int? numAudioFiles,
+      @JsonKey(name: "size") int? size,
+      @JsonKey(name: "ebookFormat") String? ebookFormat});
 
   $MediaMetadataCopyWith<$Res> get metadata;
   $EbookFileCopyWith<$Res>? get ebookFile;
@@ -82,23 +97,28 @@ class _$BookMediaCopyWithImpl<$Res, $Val extends BookMedia>
   @override
   $Res call({
     Object? id = null,
-    Object? libraryItemId = null,
+    Object? libraryItemId = freezed,
     Object? metadata = null,
     Object? coverPath = freezed,
     Object? tags = freezed,
     Object? audioFiles = freezed,
     Object? chapters = freezed,
     Object? ebookFile = freezed,
+    Object? numTracks = freezed,
+    Object? numChapters = freezed,
+    Object? numAudioFiles = freezed,
+    Object? size = freezed,
+    Object? ebookFormat = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      libraryItemId: null == libraryItemId
+      libraryItemId: freezed == libraryItemId
           ? _value.libraryItemId
           : libraryItemId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       metadata: null == metadata
           ? _value.metadata
           : metadata // ignore: cast_nullable_to_non_nullable
@@ -123,6 +143,26 @@ class _$BookMediaCopyWithImpl<$Res, $Val extends BookMedia>
           ? _value.ebookFile
           : ebookFile // ignore: cast_nullable_to_non_nullable
               as EbookFile?,
+      numTracks: freezed == numTracks
+          ? _value.numTracks
+          : numTracks // ignore: cast_nullable_to_non_nullable
+              as int?,
+      numChapters: freezed == numChapters
+          ? _value.numChapters
+          : numChapters // ignore: cast_nullable_to_non_nullable
+              as int?,
+      numAudioFiles: freezed == numAudioFiles
+          ? _value.numAudioFiles
+          : numAudioFiles // ignore: cast_nullable_to_non_nullable
+              as int?,
+      size: freezed == size
+          ? _value.size
+          : size // ignore: cast_nullable_to_non_nullable
+              as int?,
+      ebookFormat: freezed == ebookFormat
+          ? _value.ebookFormat
+          : ebookFormat // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 
@@ -161,13 +201,18 @@ abstract class _$$BookMediaImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: "id") String id,
-      @JsonKey(name: "libraryItemId") String libraryItemId,
+      @JsonKey(name: "libraryItemId") String? libraryItemId,
       @JsonKey(name: "metadata") MediaMetadata metadata,
       @JsonKey(name: "coverPath") String? coverPath,
       @JsonKey(name: "tags") List<String>? tags,
       @JsonKey(name: "audioFiles") List<AudioFile>? audioFiles,
       @JsonKey(name: "chapters") List<Chapter>? chapters,
-      @JsonKey(name: "ebookFile") EbookFile? ebookFile});
+      @JsonKey(name: "ebookFile") EbookFile? ebookFile,
+      @JsonKey(name: "numTracks") int? numTracks,
+      @JsonKey(name: "numChapters") int? numChapters,
+      @JsonKey(name: "numAudioFiles") int? numAudioFiles,
+      @JsonKey(name: "size") int? size,
+      @JsonKey(name: "ebookFormat") String? ebookFormat});
 
   @override
   $MediaMetadataCopyWith<$Res> get metadata;
@@ -189,23 +234,28 @@ class __$$BookMediaImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? libraryItemId = null,
+    Object? libraryItemId = freezed,
     Object? metadata = null,
     Object? coverPath = freezed,
     Object? tags = freezed,
     Object? audioFiles = freezed,
     Object? chapters = freezed,
     Object? ebookFile = freezed,
+    Object? numTracks = freezed,
+    Object? numChapters = freezed,
+    Object? numAudioFiles = freezed,
+    Object? size = freezed,
+    Object? ebookFormat = freezed,
   }) {
     return _then(_$BookMediaImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      libraryItemId: null == libraryItemId
+      libraryItemId: freezed == libraryItemId
           ? _value.libraryItemId
           : libraryItemId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       metadata: null == metadata
           ? _value.metadata
           : metadata // ignore: cast_nullable_to_non_nullable
@@ -230,6 +280,26 @@ class __$$BookMediaImplCopyWithImpl<$Res>
           ? _value.ebookFile
           : ebookFile // ignore: cast_nullable_to_non_nullable
               as EbookFile?,
+      numTracks: freezed == numTracks
+          ? _value.numTracks
+          : numTracks // ignore: cast_nullable_to_non_nullable
+              as int?,
+      numChapters: freezed == numChapters
+          ? _value.numChapters
+          : numChapters // ignore: cast_nullable_to_non_nullable
+              as int?,
+      numAudioFiles: freezed == numAudioFiles
+          ? _value.numAudioFiles
+          : numAudioFiles // ignore: cast_nullable_to_non_nullable
+              as int?,
+      size: freezed == size
+          ? _value.size
+          : size // ignore: cast_nullable_to_non_nullable
+              as int?,
+      ebookFormat: freezed == ebookFormat
+          ? _value.ebookFormat
+          : ebookFormat // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -239,13 +309,18 @@ class __$$BookMediaImplCopyWithImpl<$Res>
 class _$BookMediaImpl implements _BookMedia {
   const _$BookMediaImpl(
       {@JsonKey(name: "id") required this.id,
-      @JsonKey(name: "libraryItemId") required this.libraryItemId,
+      @JsonKey(name: "libraryItemId") this.libraryItemId,
       @JsonKey(name: "metadata") required this.metadata,
       @JsonKey(name: "coverPath") this.coverPath,
       @JsonKey(name: "tags") final List<String>? tags,
       @JsonKey(name: "audioFiles") final List<AudioFile>? audioFiles,
       @JsonKey(name: "chapters") final List<Chapter>? chapters,
-      @JsonKey(name: "ebookFile") this.ebookFile})
+      @JsonKey(name: "ebookFile") this.ebookFile,
+      @JsonKey(name: "numTracks") this.numTracks,
+      @JsonKey(name: "numChapters") this.numChapters,
+      @JsonKey(name: "numAudioFiles") this.numAudioFiles,
+      @JsonKey(name: "size") this.size,
+      @JsonKey(name: "ebookFormat") this.ebookFormat})
       : _tags = tags,
         _audioFiles = audioFiles,
         _chapters = chapters;
@@ -258,7 +333,7 @@ class _$BookMediaImpl implements _BookMedia {
   final String id;
   @override
   @JsonKey(name: "libraryItemId")
-  final String libraryItemId;
+  final String? libraryItemId;
   @override
   @JsonKey(name: "metadata")
   final MediaMetadata metadata;
@@ -301,10 +376,25 @@ class _$BookMediaImpl implements _BookMedia {
   @override
   @JsonKey(name: "ebookFile")
   final EbookFile? ebookFile;
+  @override
+  @JsonKey(name: "numTracks")
+  final int? numTracks;
+  @override
+  @JsonKey(name: "numChapters")
+  final int? numChapters;
+  @override
+  @JsonKey(name: "numAudioFiles")
+  final int? numAudioFiles;
+  @override
+  @JsonKey(name: "size")
+  final int? size;
+  @override
+  @JsonKey(name: "ebookFormat")
+  final String? ebookFormat;
 
   @override
   String toString() {
-    return 'BookMedia(id: $id, libraryItemId: $libraryItemId, metadata: $metadata, coverPath: $coverPath, tags: $tags, audioFiles: $audioFiles, chapters: $chapters, ebookFile: $ebookFile)';
+    return 'BookMedia(id: $id, libraryItemId: $libraryItemId, metadata: $metadata, coverPath: $coverPath, tags: $tags, audioFiles: $audioFiles, chapters: $chapters, ebookFile: $ebookFile, numTracks: $numTracks, numChapters: $numChapters, numAudioFiles: $numAudioFiles, size: $size, ebookFormat: $ebookFormat)';
   }
 
   @override
@@ -324,7 +414,16 @@ class _$BookMediaImpl implements _BookMedia {
                 .equals(other._audioFiles, _audioFiles) &&
             const DeepCollectionEquality().equals(other._chapters, _chapters) &&
             (identical(other.ebookFile, ebookFile) ||
-                other.ebookFile == ebookFile));
+                other.ebookFile == ebookFile) &&
+            (identical(other.numTracks, numTracks) ||
+                other.numTracks == numTracks) &&
+            (identical(other.numChapters, numChapters) ||
+                other.numChapters == numChapters) &&
+            (identical(other.numAudioFiles, numAudioFiles) ||
+                other.numAudioFiles == numAudioFiles) &&
+            (identical(other.size, size) || other.size == size) &&
+            (identical(other.ebookFormat, ebookFormat) ||
+                other.ebookFormat == ebookFormat));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -338,7 +437,12 @@ class _$BookMediaImpl implements _BookMedia {
       const DeepCollectionEquality().hash(_tags),
       const DeepCollectionEquality().hash(_audioFiles),
       const DeepCollectionEquality().hash(_chapters),
-      ebookFile);
+      ebookFile,
+      numTracks,
+      numChapters,
+      numAudioFiles,
+      size,
+      ebookFormat);
 
   /// Create a copy of BookMedia
   /// with the given fields replaced by the non-null parameter values.
@@ -359,13 +463,18 @@ class _$BookMediaImpl implements _BookMedia {
 abstract class _BookMedia implements BookMedia {
   const factory _BookMedia(
           {@JsonKey(name: "id") required final String id,
-          @JsonKey(name: "libraryItemId") required final String libraryItemId,
+          @JsonKey(name: "libraryItemId") final String? libraryItemId,
           @JsonKey(name: "metadata") required final MediaMetadata metadata,
           @JsonKey(name: "coverPath") final String? coverPath,
           @JsonKey(name: "tags") final List<String>? tags,
           @JsonKey(name: "audioFiles") final List<AudioFile>? audioFiles,
           @JsonKey(name: "chapters") final List<Chapter>? chapters,
-          @JsonKey(name: "ebookFile") final EbookFile? ebookFile}) =
+          @JsonKey(name: "ebookFile") final EbookFile? ebookFile,
+          @JsonKey(name: "numTracks") final int? numTracks,
+          @JsonKey(name: "numChapters") final int? numChapters,
+          @JsonKey(name: "numAudioFiles") final int? numAudioFiles,
+          @JsonKey(name: "size") final int? size,
+          @JsonKey(name: "ebookFormat") final String? ebookFormat}) =
       _$BookMediaImpl;
 
   factory _BookMedia.fromJson(Map<String, dynamic> json) =
@@ -376,7 +485,7 @@ abstract class _BookMedia implements BookMedia {
   String get id;
   @override
   @JsonKey(name: "libraryItemId")
-  String get libraryItemId;
+  String? get libraryItemId;
   @override
   @JsonKey(name: "metadata")
   MediaMetadata get metadata;
@@ -395,6 +504,21 @@ abstract class _BookMedia implements BookMedia {
   @override
   @JsonKey(name: "ebookFile")
   EbookFile? get ebookFile;
+  @override
+  @JsonKey(name: "numTracks")
+  int? get numTracks;
+  @override
+  @JsonKey(name: "numChapters")
+  int? get numChapters;
+  @override
+  @JsonKey(name: "numAudioFiles")
+  int? get numAudioFiles;
+  @override
+  @JsonKey(name: "size")
+  int? get size;
+  @override
+  @JsonKey(name: "ebookFormat")
+  String? get ebookFormat;
 
   /// Create a copy of BookMedia
   /// with the given fields replaced by the non-null parameter values.

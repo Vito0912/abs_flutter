@@ -737,5 +737,9 @@
   "waitingForDownload": "Waiting for download to start",
   "@waitingForDownload": {},
   "year": "Year",
-  "@year": {}
+  "@year": {},
+  "ebookreader": "eBook-Reader",
+  "open": "Open",
+  "showMediaType": "Show Media Type",
+  "showMediaTypeDescription": "Displays the media type badges at the bottom of each item."
 }

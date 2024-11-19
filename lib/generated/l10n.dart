@@ -2492,6 +2492,46 @@ class S {
       args: [],
     );
   }
+
+  /// `eBook-Reader`
+  String get ebookreader {
+    return Intl.message(
+      'eBook-Reader',
+      name: 'ebookreader',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Open`
+  String get open {
+    return Intl.message(
+      'Open',
+      name: 'open',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Show Media Type`
+  String get showMediaType {
+    return Intl.message(
+      'Show Media Type',
+      name: 'showMediaType',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Displays the media type badges at the bottom of each item.`
+  String get showMediaTypeDescription {
+    return Intl.message(
+      'Displays the media type badges at the bottom of each item.',
+      name: 'showMediaTypeDescription',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

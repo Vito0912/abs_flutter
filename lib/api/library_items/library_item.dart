@@ -1,3 +1,4 @@
+import 'package:abs_flutter/api/library/collapsed_series.dart';
 import 'package:abs_flutter/api/library_items/library_file.dart';
 import 'package:abs_flutter/api/library_items/media.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -18,17 +19,18 @@ class LibraryItem with _$LibraryItem {
     @JsonKey(name: "isFile") bool? isFile,
     @JsonKey(name: "mtimeMs") int? mtimeMs,
     @JsonKey(name: "ctimeMs") int? ctimeMs,
-    @JsonKey(name: "birthtimeMs") required int birthtimeMs,
-    @JsonKey(name: "addedAt") required int addedAt,
-    @JsonKey(name: "updatedAt") required int updatedAt,
-    @JsonKey(name: "lastScan") required int lastScan,
+    @JsonKey(name: "birthtimeMs") int? birthtimeMs,
+    @JsonKey(name: "addedAt") int? addedAt,
+    @JsonKey(name: "updatedAt") int? updatedAt,
+    @JsonKey(name: "lastScan") int? lastScan,
     @JsonKey(name: "scanVersion") String? scanVersion,
     @JsonKey(name: "isMissing") bool? isMissing,
     @JsonKey(name: "isInvalid") bool? isInvalid,
     @JsonKey(name: "mediaType") String? mediaType,
     @JsonKey(name: "media") required Media? media,
-    @JsonKey(name: "libraryFiles") required List<LibraryFile> libraryFiles,
+    @JsonKey(name: "libraryFiles") required List<LibraryFile>? libraryFiles,
     @JsonKey(name: "size") int? size,
+    @JsonKey(name: "collapsedSeries") CollapsedSeries? collapsedSeries,
   }) = _LibraryItem;
 
   factory LibraryItem.fromJson(Map<String, dynamic> json) =>

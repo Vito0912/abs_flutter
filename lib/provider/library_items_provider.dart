@@ -1,4 +1,8 @@
 import 'package:abs_api/abs_api.dart';
+import 'package:abs_flutter/api/library/library_items.dart';
+import 'package:abs_flutter/api/library/request/library_items_request.dart';
+import 'package:abs_flutter/api/library/search_library.dart';
+import 'package:abs_flutter/api/routes/abs_api.dart';
 import 'package:abs_flutter/models/library_preview.dart';
 import 'package:abs_flutter/models/library_preview_item.dart';
 import 'package:abs_flutter/models/library_sort.dart';
@@ -12,7 +16,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final libraryItemsProvider =
     StateNotifierProvider<LibrariesNotifier, LibraryPreview?>((ref) {
-  final api = ref.watch(apiProvider);
+  final ABSApi? api = ref.watch(apiProviderNew);
   final currentLibrary = ref.watch(currentLibraryProvider);
   final librarySort = ref.watch(libraryItemSearchProvider);
 
@@ -20,11 +24,11 @@ final libraryItemsProvider =
 });
 
 class LibrariesNotifier extends StateNotifier<LibraryPreview?> {
-  final AbsApi? api;
+  final ABSApi? api;
   final ModelLibrary? currentLibrary;
   final LibrarySort sort;
   late final int limit;
-  Response<GetLibraryItems200Response>? altResponse;
+  LibraryItems? altResponse;
 
   int page = 0;
   final double screenSize = MediaQueryData.fromView(
@@ -64,20 +68,22 @@ class LibrariesNotifier extends StateNotifier<LibraryPreview?> {
     if (api == null || currentLibrary == null) return;
 
     if (sort.search == null || sort.search!.isEmpty) {
-      final response = await api!.getLibrariesApi().getLibraryItems(
-            id: currentLibrary!.id!,
-            limit: limit,
-            page: page,
-            desc: sort.desc,
-            sort: sort.sort,
-            filter: Helper.sortString(sort.filterKey, sort.filter),
-          );
-      altResponse = response;
-      state = _convertToLibraryPreview(response);
+      final Response<LibraryItems> response =
+          await api!.getLibraryApi().getLibraryItems(
+              currentLibrary!.id!,
+              LibraryItemsRequest(
+                limit: limit,
+                page: page,
+                desc: sort.desc,
+                sort: sort.sort,
+                filter: Helper.sortString(sort.filterKey, sort.filter),
+              ));
+      altResponse = response.data;
+      state = _convertToLibraryPreview(response.data);
     } else {
-      final response = await api!
-          .getLibrariesApi()
-          .searchLibrary(id: currentLibrary!.id!, q: sort.search!, limit: 25);
+      final Response<SearchLibrary> response = await api!
+          .getLibraryApi()
+          .getSearchLibrary(currentLibrary!.id!, sort.search!);
 
       // Check if mounted
       if (mounted) {
@@ -89,38 +95,35 @@ class LibrariesNotifier extends StateNotifier<LibraryPreview?> {
   ///
   /// Convert LibraryItems to LibraryItemPreview
   ///
-  LibraryPreview? _convertToLibraryPreview(
-      Response<GetLibraryItems200Response>? libraryItem) {
-    if (libraryItem == null || libraryItem.data == null) {
+  LibraryPreview? _convertToLibraryPreview(LibraryItems? libraryItem) {
+    if (libraryItem == null) {
       return null;
     }
 
     final List<LibraryPreviewItem> previewItems = [];
 
-    if (libraryItem.data != null) {
-      for (final item in libraryItem.data!.results!) {
-        //TODO: Wrong OpenAPI spec for authors
-        final previewItem = LibraryPreviewItem(
-            id: item.id!,
-            title: item.media!.metadata!.title!,
-            subtitle: item.media!.metadata!.subtitle ?? "",
-            authors:
-                item.media!.metadata!.authors?.toList().cast<String>() ?? [],
-            seriesLabel: (item.media!.metadata!.series != null &&
-                    item.media!.metadata!.series!.isNotEmpty)
-                ? item.media!.metadata!.series![0].sequence
-                : null,
-            mediaType: item.mediaType!.name);
-        previewItems.add(previewItem);
-      }
+    for (final item in libraryItem.results) {
+      final previewItem = LibraryPreviewItem(
+          id: item.id,
+          title: item.media!.title!,
+          subtitle: item.media!.subtitle ?? "",
+          authors: item.media!.authors ?? [],
+          seriesLabel: item.media?.seriesSequence,
+          mediaType: item.mediaType!,
+          hasAudio: item.media?.hasAudio,
+          hasBook: item.media?.hasBook);
+      previewItems.add(previewItem);
     }
+
+    print(libraryItem.total);
+    print(libraryItem.page);
 
     LibraryPreview preview = LibraryPreview(
       items: previewItems,
-      total: libraryItem.data!.total!,
-      page: libraryItem.data!.page!,
-      limit: libraryItem.data!.limit,
-      filterBy: libraryItem.data!.filterBy,
+      total: libraryItem.total ?? 0,
+      page: libraryItem.page ?? 0,
+      limit: libraryItem.limit,
+      filterBy: libraryItem.filterBy,
     );
 
     return preview;
@@ -129,48 +132,25 @@ class LibrariesNotifier extends StateNotifier<LibraryPreview?> {
   ///
   /// Convert LibraryItems to LibraryItemPreview
   ///
-  LibraryPreview? _convertSearchToLibraryPreview(
-      Response<SearchLibrary200Response> item) {
+  LibraryPreview? _convertSearchToLibraryPreview(Response<SearchLibrary> item) {
     if (item.data == null) {
       return null;
     }
-    SearchLibrary200Response libraryItem = item.data!;
+    SearchLibrary libraryItem = item.data!;
 
     List<LibraryPreviewItem> previewItems = [];
-    if (libraryItem.book != null) {
-      for (final item in libraryItem.book!) {
+    if (libraryItem.book != null || libraryItem.podcast != null) {
+      for (final SearchLibraryResult item
+          in libraryItem.book ?? libraryItem.podcast!) {
         LibraryPreviewItem previewItem = LibraryPreviewItem(
-            id: item.libraryItem!.id!,
-            title: item.libraryItem!.media!.metadata!.title!,
-            subtitle: item.libraryItem!.media!.metadata!.subtitle ?? "",
-            authors: item.libraryItem!.media!.metadata!.authors
-                    ?.toList()
-                    .map((e) => e.name ?? "")
-                    .toList() ??
-                [],
-            seriesLabel: (item.libraryItem!.media!.metadata!.series != null &&
-                    item.libraryItem!.media!.metadata!.series!.isNotEmpty)
-                ? item.libraryItem!.media!.metadata!.series![0].sequence
-                : null,
-            mediaType: item.libraryItem!.mediaType!.name);
-        previewItems.add(previewItem);
-      }
-    } else if (libraryItem.podcast != null) {
-      for (final item in libraryItem.podcast!) {
-        LibraryPreviewItem previewItem = LibraryPreviewItem(
-            id: item.libraryItem!.id!,
-            title: item.libraryItem!.media!.metadata!.title!,
-            subtitle: item.libraryItem!.media!.metadata!.subtitle ?? "",
-            authors: item.libraryItem!.media!.metadata!.authors
-                    ?.toList()
-                    .map((e) => e.name ?? "")
-                    .toList() ??
-                [],
-            seriesLabel: (item.libraryItem!.media!.metadata!.series != null &&
-                    item.libraryItem!.media!.metadata!.series!.isNotEmpty)
-                ? item.libraryItem!.media!.metadata!.series![0].sequence
-                : null,
-            mediaType: item.libraryItem!.mediaType!.name);
+            id: item.libraryItem!.id,
+            title: item.libraryItem!.media!.title!,
+            subtitle: item.libraryItem!.media!.subtitle ?? "",
+            authors: item.libraryItem!.media!.authors ?? [],
+            seriesLabel: item.libraryItem!.media!.seriesSequence,
+            mediaType: item.libraryItem!.mediaType!,
+            hasAudio: item.libraryItem?.media?.hasAudio,
+            hasBook: item.libraryItem?.media?.hasBook);
         previewItems.add(previewItem);
       }
     } else {
@@ -181,7 +161,7 @@ class LibrariesNotifier extends StateNotifier<LibraryPreview?> {
         items: previewItems,
         total: libraryItem.book?.length ?? 0,
         page: 0,
-        limit: 25);
+        limit: 50);
 
     return preview;
   }
@@ -199,18 +179,18 @@ class LibrariesNotifier extends StateNotifier<LibraryPreview?> {
 
     try {
       if (sort.search == null || sort.search!.isEmpty) {
-        final newResponse = await api!.getLibrariesApi().getLibraryItems(
-              id: currentLibrary!.id!,
+        final newResponse = await api!.getLibraryApi().getLibraryItems(
+            currentLibrary!.id!,
+            LibraryItemsRequest(
               limit: limit,
               page: page,
               desc: sort.desc,
               sort: sort.sort,
               filter: Helper.sortString(sort.filterKey, sort.filter),
-            );
+            ));
 
-        state =
-            _convertToLibraryPreview(_mergeResponses(altResponse, newResponse));
-        altResponse = newResponse;
+        altResponse = _mergeResponses(altResponse, newResponse);
+        state = _convertToLibraryPreview(altResponse);
       } else {}
     } catch (e) {
       if (e is DioException) {
@@ -222,38 +202,29 @@ class LibrariesNotifier extends StateNotifier<LibraryPreview?> {
     }
   }
 
-  Response<GetLibraryItems200Response>? _mergeResponses(
-      Response<GetLibraryItems200Response>? response,
-      Response<GetLibraryItems200Response>? newResponse) {
+  LibraryItems? _mergeResponses(
+      LibraryItems? response, Response<LibraryItems>? newResponse) {
     if (response == null) {
-      return newResponse;
+      return newResponse?.data;
     }
 
-    if (newResponse == null) {
+    if (newResponse == null || newResponse.data == null) {
       return response;
     }
 
-    GetLibraryItems200ResponseBuilder builder =
-        GetLibraryItems200ResponseBuilder();
-    // Convert the existing results to a ListBuilder
-    final existingResultsBuilder = response.data!.results!.toBuilder();
+    final LibraryItems libraryItems = response;
+    final LibraryItems newLibraryItems = newResponse.data!;
 
-    // Convert the new results to a ListBuilder
-    final newResultsBuilder = newResponse.data!.results!.toBuilder();
+    print(libraryItems.results.length);
+    print(newLibraryItems.results.length);
 
-    // Combine the results
-    existingResultsBuilder.addAll(newResultsBuilder.build());
+    LibraryItems? returnItems = libraryItems.copyWith(
+      results: [...libraryItems.results, ...newLibraryItems.results],
+      total: newLibraryItems.total,
+      page: newLibraryItems.page,
+    );
 
-    // Assign the combined results back to the builder
-    builder.results = existingResultsBuilder;
-    builder.total = response.data!.total!;
-    builder.limit = newResponse.data!.limit;
-    builder.page = newResponse.data!.page;
-    builder.filterBy = newResponse.data!.filterBy;
-
-    newResponse.data = builder.build();
-
-    return newResponse;
+    return returnItems;
   }
 }
 

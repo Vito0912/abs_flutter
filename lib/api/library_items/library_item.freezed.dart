@@ -41,13 +41,13 @@ mixin _$LibraryItem {
   @JsonKey(name: "ctimeMs")
   int? get ctimeMs => throw _privateConstructorUsedError;
   @JsonKey(name: "birthtimeMs")
-  int get birthtimeMs => throw _privateConstructorUsedError;
+  int? get birthtimeMs => throw _privateConstructorUsedError;
   @JsonKey(name: "addedAt")
-  int get addedAt => throw _privateConstructorUsedError;
+  int? get addedAt => throw _privateConstructorUsedError;
   @JsonKey(name: "updatedAt")
-  int get updatedAt => throw _privateConstructorUsedError;
+  int? get updatedAt => throw _privateConstructorUsedError;
   @JsonKey(name: "lastScan")
-  int get lastScan => throw _privateConstructorUsedError;
+  int? get lastScan => throw _privateConstructorUsedError;
   @JsonKey(name: "scanVersion")
   String? get scanVersion => throw _privateConstructorUsedError;
   @JsonKey(name: "isMissing")
@@ -59,9 +59,11 @@ mixin _$LibraryItem {
   @JsonKey(name: "media")
   Media? get media => throw _privateConstructorUsedError;
   @JsonKey(name: "libraryFiles")
-  List<LibraryFile> get libraryFiles => throw _privateConstructorUsedError;
+  List<LibraryFile>? get libraryFiles => throw _privateConstructorUsedError;
   @JsonKey(name: "size")
   int? get size => throw _privateConstructorUsedError;
+  @JsonKey(name: "collapsedSeries")
+  CollapsedSeries? get collapsedSeries => throw _privateConstructorUsedError;
 
   /// Serializes this LibraryItem to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -90,19 +92,21 @@ abstract class $LibraryItemCopyWith<$Res> {
       @JsonKey(name: "isFile") bool? isFile,
       @JsonKey(name: "mtimeMs") int? mtimeMs,
       @JsonKey(name: "ctimeMs") int? ctimeMs,
-      @JsonKey(name: "birthtimeMs") int birthtimeMs,
-      @JsonKey(name: "addedAt") int addedAt,
-      @JsonKey(name: "updatedAt") int updatedAt,
-      @JsonKey(name: "lastScan") int lastScan,
+      @JsonKey(name: "birthtimeMs") int? birthtimeMs,
+      @JsonKey(name: "addedAt") int? addedAt,
+      @JsonKey(name: "updatedAt") int? updatedAt,
+      @JsonKey(name: "lastScan") int? lastScan,
       @JsonKey(name: "scanVersion") String? scanVersion,
       @JsonKey(name: "isMissing") bool? isMissing,
       @JsonKey(name: "isInvalid") bool? isInvalid,
       @JsonKey(name: "mediaType") String? mediaType,
       @JsonKey(name: "media") Media? media,
-      @JsonKey(name: "libraryFiles") List<LibraryFile> libraryFiles,
-      @JsonKey(name: "size") int? size});
+      @JsonKey(name: "libraryFiles") List<LibraryFile>? libraryFiles,
+      @JsonKey(name: "size") int? size,
+      @JsonKey(name: "collapsedSeries") CollapsedSeries? collapsedSeries});
 
   $MediaCopyWith<$Res>? get media;
+  $CollapsedSeriesCopyWith<$Res>? get collapsedSeries;
 }
 
 /// @nodoc
@@ -130,17 +134,18 @@ class _$LibraryItemCopyWithImpl<$Res, $Val extends LibraryItem>
     Object? isFile = freezed,
     Object? mtimeMs = freezed,
     Object? ctimeMs = freezed,
-    Object? birthtimeMs = null,
-    Object? addedAt = null,
-    Object? updatedAt = null,
-    Object? lastScan = null,
+    Object? birthtimeMs = freezed,
+    Object? addedAt = freezed,
+    Object? updatedAt = freezed,
+    Object? lastScan = freezed,
     Object? scanVersion = freezed,
     Object? isMissing = freezed,
     Object? isInvalid = freezed,
     Object? mediaType = freezed,
     Object? media = freezed,
-    Object? libraryFiles = null,
+    Object? libraryFiles = freezed,
     Object? size = freezed,
+    Object? collapsedSeries = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -183,22 +188,22 @@ class _$LibraryItemCopyWithImpl<$Res, $Val extends LibraryItem>
           ? _value.ctimeMs
           : ctimeMs // ignore: cast_nullable_to_non_nullable
               as int?,
-      birthtimeMs: null == birthtimeMs
+      birthtimeMs: freezed == birthtimeMs
           ? _value.birthtimeMs
           : birthtimeMs // ignore: cast_nullable_to_non_nullable
-              as int,
-      addedAt: null == addedAt
+              as int?,
+      addedAt: freezed == addedAt
           ? _value.addedAt
           : addedAt // ignore: cast_nullable_to_non_nullable
-              as int,
-      updatedAt: null == updatedAt
+              as int?,
+      updatedAt: freezed == updatedAt
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
-              as int,
-      lastScan: null == lastScan
+              as int?,
+      lastScan: freezed == lastScan
           ? _value.lastScan
           : lastScan // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       scanVersion: freezed == scanVersion
           ? _value.scanVersion
           : scanVersion // ignore: cast_nullable_to_non_nullable
@@ -219,14 +224,18 @@ class _$LibraryItemCopyWithImpl<$Res, $Val extends LibraryItem>
           ? _value.media
           : media // ignore: cast_nullable_to_non_nullable
               as Media?,
-      libraryFiles: null == libraryFiles
+      libraryFiles: freezed == libraryFiles
           ? _value.libraryFiles
           : libraryFiles // ignore: cast_nullable_to_non_nullable
-              as List<LibraryFile>,
+              as List<LibraryFile>?,
       size: freezed == size
           ? _value.size
           : size // ignore: cast_nullable_to_non_nullable
               as int?,
+      collapsedSeries: freezed == collapsedSeries
+          ? _value.collapsedSeries
+          : collapsedSeries // ignore: cast_nullable_to_non_nullable
+              as CollapsedSeries?,
     ) as $Val);
   }
 
@@ -241,6 +250,20 @@ class _$LibraryItemCopyWithImpl<$Res, $Val extends LibraryItem>
 
     return $MediaCopyWith<$Res>(_value.media!, (value) {
       return _then(_value.copyWith(media: value) as $Val);
+    });
+  }
+
+  /// Create a copy of LibraryItem
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $CollapsedSeriesCopyWith<$Res>? get collapsedSeries {
+    if (_value.collapsedSeries == null) {
+      return null;
+    }
+
+    return $CollapsedSeriesCopyWith<$Res>(_value.collapsedSeries!, (value) {
+      return _then(_value.copyWith(collapsedSeries: value) as $Val);
     });
   }
 }
@@ -264,20 +287,23 @@ abstract class _$$LibraryItemImplCopyWith<$Res>
       @JsonKey(name: "isFile") bool? isFile,
       @JsonKey(name: "mtimeMs") int? mtimeMs,
       @JsonKey(name: "ctimeMs") int? ctimeMs,
-      @JsonKey(name: "birthtimeMs") int birthtimeMs,
-      @JsonKey(name: "addedAt") int addedAt,
-      @JsonKey(name: "updatedAt") int updatedAt,
-      @JsonKey(name: "lastScan") int lastScan,
+      @JsonKey(name: "birthtimeMs") int? birthtimeMs,
+      @JsonKey(name: "addedAt") int? addedAt,
+      @JsonKey(name: "updatedAt") int? updatedAt,
+      @JsonKey(name: "lastScan") int? lastScan,
       @JsonKey(name: "scanVersion") String? scanVersion,
       @JsonKey(name: "isMissing") bool? isMissing,
       @JsonKey(name: "isInvalid") bool? isInvalid,
       @JsonKey(name: "mediaType") String? mediaType,
       @JsonKey(name: "media") Media? media,
-      @JsonKey(name: "libraryFiles") List<LibraryFile> libraryFiles,
-      @JsonKey(name: "size") int? size});
+      @JsonKey(name: "libraryFiles") List<LibraryFile>? libraryFiles,
+      @JsonKey(name: "size") int? size,
+      @JsonKey(name: "collapsedSeries") CollapsedSeries? collapsedSeries});
 
   @override
   $MediaCopyWith<$Res>? get media;
+  @override
+  $CollapsedSeriesCopyWith<$Res>? get collapsedSeries;
 }
 
 /// @nodoc
@@ -303,17 +329,18 @@ class __$$LibraryItemImplCopyWithImpl<$Res>
     Object? isFile = freezed,
     Object? mtimeMs = freezed,
     Object? ctimeMs = freezed,
-    Object? birthtimeMs = null,
-    Object? addedAt = null,
-    Object? updatedAt = null,
-    Object? lastScan = null,
+    Object? birthtimeMs = freezed,
+    Object? addedAt = freezed,
+    Object? updatedAt = freezed,
+    Object? lastScan = freezed,
     Object? scanVersion = freezed,
     Object? isMissing = freezed,
     Object? isInvalid = freezed,
     Object? mediaType = freezed,
     Object? media = freezed,
-    Object? libraryFiles = null,
+    Object? libraryFiles = freezed,
     Object? size = freezed,
+    Object? collapsedSeries = freezed,
   }) {
     return _then(_$LibraryItemImpl(
       id: null == id
@@ -356,22 +383,22 @@ class __$$LibraryItemImplCopyWithImpl<$Res>
           ? _value.ctimeMs
           : ctimeMs // ignore: cast_nullable_to_non_nullable
               as int?,
-      birthtimeMs: null == birthtimeMs
+      birthtimeMs: freezed == birthtimeMs
           ? _value.birthtimeMs
           : birthtimeMs // ignore: cast_nullable_to_non_nullable
-              as int,
-      addedAt: null == addedAt
+              as int?,
+      addedAt: freezed == addedAt
           ? _value.addedAt
           : addedAt // ignore: cast_nullable_to_non_nullable
-              as int,
-      updatedAt: null == updatedAt
+              as int?,
+      updatedAt: freezed == updatedAt
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
-              as int,
-      lastScan: null == lastScan
+              as int?,
+      lastScan: freezed == lastScan
           ? _value.lastScan
           : lastScan // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       scanVersion: freezed == scanVersion
           ? _value.scanVersion
           : scanVersion // ignore: cast_nullable_to_non_nullable
@@ -392,14 +419,18 @@ class __$$LibraryItemImplCopyWithImpl<$Res>
           ? _value.media
           : media // ignore: cast_nullable_to_non_nullable
               as Media?,
-      libraryFiles: null == libraryFiles
+      libraryFiles: freezed == libraryFiles
           ? _value._libraryFiles
           : libraryFiles // ignore: cast_nullable_to_non_nullable
-              as List<LibraryFile>,
+              as List<LibraryFile>?,
       size: freezed == size
           ? _value.size
           : size // ignore: cast_nullable_to_non_nullable
               as int?,
+      collapsedSeries: freezed == collapsedSeries
+          ? _value.collapsedSeries
+          : collapsedSeries // ignore: cast_nullable_to_non_nullable
+              as CollapsedSeries?,
     ));
   }
 }
@@ -418,18 +449,19 @@ class _$LibraryItemImpl implements _LibraryItem {
       @JsonKey(name: "isFile") this.isFile,
       @JsonKey(name: "mtimeMs") this.mtimeMs,
       @JsonKey(name: "ctimeMs") this.ctimeMs,
-      @JsonKey(name: "birthtimeMs") required this.birthtimeMs,
-      @JsonKey(name: "addedAt") required this.addedAt,
-      @JsonKey(name: "updatedAt") required this.updatedAt,
-      @JsonKey(name: "lastScan") required this.lastScan,
+      @JsonKey(name: "birthtimeMs") this.birthtimeMs,
+      @JsonKey(name: "addedAt") this.addedAt,
+      @JsonKey(name: "updatedAt") this.updatedAt,
+      @JsonKey(name: "lastScan") this.lastScan,
       @JsonKey(name: "scanVersion") this.scanVersion,
       @JsonKey(name: "isMissing") this.isMissing,
       @JsonKey(name: "isInvalid") this.isInvalid,
       @JsonKey(name: "mediaType") this.mediaType,
       @JsonKey(name: "media") required this.media,
       @JsonKey(name: "libraryFiles")
-      required final List<LibraryFile> libraryFiles,
-      @JsonKey(name: "size") this.size})
+      required final List<LibraryFile>? libraryFiles,
+      @JsonKey(name: "size") this.size,
+      @JsonKey(name: "collapsedSeries") this.collapsedSeries})
       : _libraryFiles = libraryFiles;
 
   factory _$LibraryItemImpl.fromJson(Map<String, dynamic> json) =>
@@ -467,16 +499,16 @@ class _$LibraryItemImpl implements _LibraryItem {
   final int? ctimeMs;
   @override
   @JsonKey(name: "birthtimeMs")
-  final int birthtimeMs;
+  final int? birthtimeMs;
   @override
   @JsonKey(name: "addedAt")
-  final int addedAt;
+  final int? addedAt;
   @override
   @JsonKey(name: "updatedAt")
-  final int updatedAt;
+  final int? updatedAt;
   @override
   @JsonKey(name: "lastScan")
-  final int lastScan;
+  final int? lastScan;
   @override
   @JsonKey(name: "scanVersion")
   final String? scanVersion;
@@ -492,22 +524,27 @@ class _$LibraryItemImpl implements _LibraryItem {
   @override
   @JsonKey(name: "media")
   final Media? media;
-  final List<LibraryFile> _libraryFiles;
+  final List<LibraryFile>? _libraryFiles;
   @override
   @JsonKey(name: "libraryFiles")
-  List<LibraryFile> get libraryFiles {
+  List<LibraryFile>? get libraryFiles {
+    final value = _libraryFiles;
+    if (value == null) return null;
     if (_libraryFiles is EqualUnmodifiableListView) return _libraryFiles;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_libraryFiles);
+    return EqualUnmodifiableListView(value);
   }
 
   @override
   @JsonKey(name: "size")
   final int? size;
+  @override
+  @JsonKey(name: "collapsedSeries")
+  final CollapsedSeries? collapsedSeries;
 
   @override
   String toString() {
-    return 'LibraryItem(id: $id, ino: $ino, oldLibraryItemId: $oldLibraryItemId, libraryId: $libraryId, folderId: $folderId, path: $path, relPath: $relPath, isFile: $isFile, mtimeMs: $mtimeMs, ctimeMs: $ctimeMs, birthtimeMs: $birthtimeMs, addedAt: $addedAt, updatedAt: $updatedAt, lastScan: $lastScan, scanVersion: $scanVersion, isMissing: $isMissing, isInvalid: $isInvalid, mediaType: $mediaType, media: $media, libraryFiles: $libraryFiles, size: $size)';
+    return 'LibraryItem(id: $id, ino: $ino, oldLibraryItemId: $oldLibraryItemId, libraryId: $libraryId, folderId: $folderId, path: $path, relPath: $relPath, isFile: $isFile, mtimeMs: $mtimeMs, ctimeMs: $ctimeMs, birthtimeMs: $birthtimeMs, addedAt: $addedAt, updatedAt: $updatedAt, lastScan: $lastScan, scanVersion: $scanVersion, isMissing: $isMissing, isInvalid: $isInvalid, mediaType: $mediaType, media: $media, libraryFiles: $libraryFiles, size: $size, collapsedSeries: $collapsedSeries)';
   }
 
   @override
@@ -546,7 +583,9 @@ class _$LibraryItemImpl implements _LibraryItem {
             (identical(other.media, media) || other.media == media) &&
             const DeepCollectionEquality()
                 .equals(other._libraryFiles, _libraryFiles) &&
-            (identical(other.size, size) || other.size == size));
+            (identical(other.size, size) || other.size == size) &&
+            (identical(other.collapsedSeries, collapsedSeries) ||
+                other.collapsedSeries == collapsedSeries));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -573,7 +612,8 @@ class _$LibraryItemImpl implements _LibraryItem {
         mediaType,
         media,
         const DeepCollectionEquality().hash(_libraryFiles),
-        size
+        size,
+        collapsedSeries
       ]);
 
   /// Create a copy of LibraryItem
@@ -604,18 +644,20 @@ abstract class _LibraryItem implements LibraryItem {
       @JsonKey(name: "isFile") final bool? isFile,
       @JsonKey(name: "mtimeMs") final int? mtimeMs,
       @JsonKey(name: "ctimeMs") final int? ctimeMs,
-      @JsonKey(name: "birthtimeMs") required final int birthtimeMs,
-      @JsonKey(name: "addedAt") required final int addedAt,
-      @JsonKey(name: "updatedAt") required final int updatedAt,
-      @JsonKey(name: "lastScan") required final int lastScan,
+      @JsonKey(name: "birthtimeMs") final int? birthtimeMs,
+      @JsonKey(name: "addedAt") final int? addedAt,
+      @JsonKey(name: "updatedAt") final int? updatedAt,
+      @JsonKey(name: "lastScan") final int? lastScan,
       @JsonKey(name: "scanVersion") final String? scanVersion,
       @JsonKey(name: "isMissing") final bool? isMissing,
       @JsonKey(name: "isInvalid") final bool? isInvalid,
       @JsonKey(name: "mediaType") final String? mediaType,
       @JsonKey(name: "media") required final Media? media,
       @JsonKey(name: "libraryFiles")
-      required final List<LibraryFile> libraryFiles,
-      @JsonKey(name: "size") final int? size}) = _$LibraryItemImpl;
+      required final List<LibraryFile>? libraryFiles,
+      @JsonKey(name: "size") final int? size,
+      @JsonKey(name: "collapsedSeries")
+      final CollapsedSeries? collapsedSeries}) = _$LibraryItemImpl;
 
   factory _LibraryItem.fromJson(Map<String, dynamic> json) =
       _$LibraryItemImpl.fromJson;
@@ -652,16 +694,16 @@ abstract class _LibraryItem implements LibraryItem {
   int? get ctimeMs;
   @override
   @JsonKey(name: "birthtimeMs")
-  int get birthtimeMs;
+  int? get birthtimeMs;
   @override
   @JsonKey(name: "addedAt")
-  int get addedAt;
+  int? get addedAt;
   @override
   @JsonKey(name: "updatedAt")
-  int get updatedAt;
+  int? get updatedAt;
   @override
   @JsonKey(name: "lastScan")
-  int get lastScan;
+  int? get lastScan;
   @override
   @JsonKey(name: "scanVersion")
   String? get scanVersion;
@@ -679,10 +721,13 @@ abstract class _LibraryItem implements LibraryItem {
   Media? get media;
   @override
   @JsonKey(name: "libraryFiles")
-  List<LibraryFile> get libraryFiles;
+  List<LibraryFile>? get libraryFiles;
   @override
   @JsonKey(name: "size")
   int? get size;
+  @override
+  @JsonKey(name: "collapsedSeries")
+  CollapsedSeries? get collapsedSeries;
 
   /// Create a copy of LibraryItem
   /// with the given fields replaced by the non-null parameter values.

@@ -51,6 +51,7 @@ final Map<String, dynamic> defaultSettings = {
   Constants.WINDOWS_MINIMIZE_TO_TRAY: false,
   Constants.DOWNLOAD_PATH: null,
   Constants.SORT_SERIES_ASC: false,
+  Constants.SHOW_MEDIA_TYPE: true,
 };
 
 final Map<String, String> supportedLocales = {

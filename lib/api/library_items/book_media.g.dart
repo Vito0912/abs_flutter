@@ -9,7 +9,7 @@ part of 'book_media.dart';
 _$BookMediaImpl _$$BookMediaImplFromJson(Map<String, dynamic> json) =>
     _$BookMediaImpl(
       id: json['id'] as String,
-      libraryItemId: json['libraryItemId'] as String,
+      libraryItemId: json['libraryItemId'] as String?,
       metadata:
           MediaMetadata.fromJson(json['metadata'] as Map<String, dynamic>),
       coverPath: json['coverPath'] as String?,
@@ -23,6 +23,11 @@ _$BookMediaImpl _$$BookMediaImplFromJson(Map<String, dynamic> json) =>
       ebookFile: json['ebookFile'] == null
           ? null
           : EbookFile.fromJson(json['ebookFile'] as Map<String, dynamic>),
+      numTracks: (json['numTracks'] as num?)?.toInt(),
+      numChapters: (json['numChapters'] as num?)?.toInt(),
+      numAudioFiles: (json['numAudioFiles'] as num?)?.toInt(),
+      size: (json['size'] as num?)?.toInt(),
+      ebookFormat: json['ebookFormat'] as String?,
     );
 
 Map<String, dynamic> _$$BookMediaImplToJson(_$BookMediaImpl instance) =>
@@ -35,4 +40,9 @@ Map<String, dynamic> _$$BookMediaImplToJson(_$BookMediaImpl instance) =>
       'audioFiles': instance.audioFiles,
       'chapters': instance.chapters,
       'ebookFile': instance.ebookFile,
+      'numTracks': instance.numTracks,
+      'numChapters': instance.numChapters,
+      'numAudioFiles': instance.numAudioFiles,
+      'size': instance.size,
+      'ebookFormat': instance.ebookFormat,
     };

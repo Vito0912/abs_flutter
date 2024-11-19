@@ -203,6 +203,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "downloadsOnlyViaWifi":
             MessageLookupByLibrary.simpleMessage("Downloads only via WiFi"),
         "duration": MessageLookupByLibrary.simpleMessage("Duration"),
+        "ebookreader": MessageLookupByLibrary.simpleMessage("eBook-Reader"),
         "editQueue": MessageLookupByLibrary.simpleMessage("Edit Queue"),
         "enableNotificationsDownload": MessageLookupByLibrary.simpleMessage(
             "Please enable notifications to receive download progress updates and be able to download files in the background."),
@@ -309,6 +310,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "offlineSavedProgress":
             MessageLookupByLibrary.simpleMessage("Offline saved progress"),
         "ok": MessageLookupByLibrary.simpleMessage("OK"),
+        "open": MessageLookupByLibrary.simpleMessage("Open"),
         "openDownloads": MessageLookupByLibrary.simpleMessage("Open Downloads"),
         "openProjectLink":
             MessageLookupByLibrary.simpleMessage("Audiobookshelf/Server"),
@@ -369,6 +371,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Show Account Switcher"),
         "showAccountSwitcherDescription": MessageLookupByLibrary.simpleMessage(
             "Enable this option to add an icon button to the app bar for quick account switching. This will reduce the size of the app bar."),
+        "showMediaType":
+            MessageLookupByLibrary.simpleMessage("Show Media Type"),
+        "showMediaTypeDescription": MessageLookupByLibrary.simpleMessage(
+            "Displays the media type badges at the bottom of each item."),
         "showProgressPerChapters":
             MessageLookupByLibrary.simpleMessage("Show Progress per Chapter"),
         "signOut": MessageLookupByLibrary.simpleMessage("Sign Out"),

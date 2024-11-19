@@ -2,6 +2,7 @@
 import 'package:abs_flutter/features/auth/server_selection.dart';
 import 'package:abs_flutter/features/download/download_library.dart';
 import 'package:abs_flutter/features/download/download_page.dart';
+import 'package:abs_flutter/features/ereader/ereader.dart';
 import 'package:abs_flutter/features/home/home.dart';
 import 'package:abs_flutter/features/library/item/item_view.dart';
 import 'package:abs_flutter/features/library/series/single_series_view.dart';
@@ -112,6 +113,11 @@ final router = GoRouter(
                       return PlayHistoryPage(
                         itemId: state.pathParameters['itemId']!,
                       );
+                    }),
+                GoRoute(
+                    path: '/e-reader/:itemId',
+                    builder: (context, state) {
+                      return EReader(itemId: state.pathParameters['itemId']!);
                     }),
               ]),
         ]),
