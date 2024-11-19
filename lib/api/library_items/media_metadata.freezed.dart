@@ -29,6 +29,7 @@ mixin _$MediaMetadata {
   @JsonKey(name: "narrators")
   List<String>? get narrators => throw _privateConstructorUsedError;
   @JsonKey(name: "series")
+  @SeriesConverter()
   List<Series>? get series => throw _privateConstructorUsedError;
   @JsonKey(name: "genres")
   List<String>? get genres => throw _privateConstructorUsedError;
@@ -72,7 +73,7 @@ abstract class $MediaMetadataCopyWith<$Res> {
       @JsonKey(name: "subtitle") String? subtitle,
       @JsonKey(name: "authors") List<Author>? authors,
       @JsonKey(name: "narrators") List<String>? narrators,
-      @JsonKey(name: "series") List<Series>? series,
+      @JsonKey(name: "series") @SeriesConverter() List<Series>? series,
       @JsonKey(name: "genres") List<String>? genres,
       @JsonKey(name: "publishedYear") String? publishedYear,
       @JsonKey(name: "publishedDate") String? publishedDate,
@@ -194,7 +195,7 @@ abstract class _$$MediaMetadataImplCopyWith<$Res>
       @JsonKey(name: "subtitle") String? subtitle,
       @JsonKey(name: "authors") List<Author>? authors,
       @JsonKey(name: "narrators") List<String>? narrators,
-      @JsonKey(name: "series") List<Series>? series,
+      @JsonKey(name: "series") @SeriesConverter() List<Series>? series,
       @JsonKey(name: "genres") List<String>? genres,
       @JsonKey(name: "publishedYear") String? publishedYear,
       @JsonKey(name: "publishedDate") String? publishedDate,
@@ -309,7 +310,7 @@ class _$MediaMetadataImpl implements _MediaMetadata {
       @JsonKey(name: "subtitle") this.subtitle,
       @JsonKey(name: "authors") final List<Author>? authors,
       @JsonKey(name: "narrators") final List<String>? narrators,
-      @JsonKey(name: "series") final List<Series>? series,
+      @JsonKey(name: "series") @SeriesConverter() final List<Series>? series,
       @JsonKey(name: "genres") final List<String>? genres,
       @JsonKey(name: "publishedYear") this.publishedYear,
       @JsonKey(name: "publishedDate") this.publishedDate,
@@ -359,6 +360,7 @@ class _$MediaMetadataImpl implements _MediaMetadata {
   final List<Series>? _series;
   @override
   @JsonKey(name: "series")
+  @SeriesConverter()
   List<Series>? get series {
     final value = _series;
     if (value == null) return null;
@@ -484,7 +486,7 @@ abstract class _MediaMetadata implements MediaMetadata {
       @JsonKey(name: "subtitle") final String? subtitle,
       @JsonKey(name: "authors") final List<Author>? authors,
       @JsonKey(name: "narrators") final List<String>? narrators,
-      @JsonKey(name: "series") final List<Series>? series,
+      @JsonKey(name: "series") @SeriesConverter() final List<Series>? series,
       @JsonKey(name: "genres") final List<String>? genres,
       @JsonKey(name: "publishedYear") final String? publishedYear,
       @JsonKey(name: "publishedDate") final String? publishedDate,
@@ -513,6 +515,7 @@ abstract class _MediaMetadata implements MediaMetadata {
   List<String>? get narrators;
   @override
   @JsonKey(name: "series")
+  @SeriesConverter()
   List<Series>? get series;
   @override
   @JsonKey(name: "genres")

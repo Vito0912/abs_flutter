@@ -15,6 +15,9 @@ _$LibrarySortImpl _$$LibrarySortImplFromJson(Map<String, dynamic> json) =>
       filter: json['filter'] as String? ?? null,
       filterKey: json['filterKey'] as String? ?? null,
       search: json['search'] as String? ?? "",
+      previous: json['previous'] == null
+          ? null
+          : LibrarySort.fromJson(json['previous'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$LibrarySortImplToJson(_$LibrarySortImpl instance) =>
@@ -26,4 +29,5 @@ Map<String, dynamic> _$$LibrarySortImplToJson(_$LibrarySortImpl instance) =>
       'filter': instance.filter,
       'filterKey': instance.filterKey,
       'search': instance.search,
+      'previous': instance.previous,
     };

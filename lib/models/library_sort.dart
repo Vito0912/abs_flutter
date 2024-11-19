@@ -1,8 +1,7 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'library_sort.freezed.dart';
-
 part 'library_sort.g.dart';
 
 @unfreezed
@@ -15,6 +14,7 @@ class LibrarySort with _$LibrarySort {
     @Default(null) String? filter,
     @Default(null) String? filterKey,
     @Default("") String? search,
+    LibrarySort? previous,
   }) = _LibrarySort;
 
   factory LibrarySort.fromJson(Map<String, dynamic> json) =>

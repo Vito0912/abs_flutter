@@ -120,15 +120,17 @@ class _SeriesViewState extends ConsumerState<SeriesView> {
                   final currentSeries = seriesList[index];
                   final books = currentSeries.books!
                       .map((bookItem) => LibraryPreviewItem(
-                            id: bookItem.id!,
-                            title: bookItem.media?.metadata?.title ??
+                            id: bookItem.id,
+                            title: bookItem.media?.bookMedia?.metadata.title ??
                                 'Unknown Title',
-                            subtitle: bookItem.media?.metadata?.subtitle ?? '',
-                            authors: bookItem.media?.metadata?.authors
+                            subtitle:
+                                bookItem.media?.bookMedia?.metadata.subtitle ??
+                                    '',
+                            authors: bookItem.media?.bookMedia?.metadata.authors
                                     ?.map((e) => e.name ?? 'Unknown Author')
                                     .toList() ??
                                 [],
-                            mediaType: bookItem.mediaType?.name ?? 'Unknown',
+                            mediaType: bookItem.mediaType ?? 'Unknown',
                           ))
                       .toList();
 

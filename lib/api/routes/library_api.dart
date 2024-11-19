@@ -1,6 +1,7 @@
 import 'package:abs_flutter/api/library/library_items.dart';
 import 'package:abs_flutter/api/library/request/library_items_request.dart';
 import 'package:abs_flutter/api/library/search_library.dart';
+import 'package:abs_flutter/api/library/series_items.dart';
 import 'package:abs_flutter/api/library/stats/library_stats.dart';
 import 'package:abs_flutter/api/routes/abs_api.dart';
 import 'package:dio/dio.dart';
@@ -60,6 +61,24 @@ class LibraryApi {
       extra: extra,
       dio: _dio,
       queryParams: {'q': search, 'limit': 50},
+    );
+  }
+
+  Future<Response<SeriesItems>> getLibrarySeries(
+    String libraryId,
+    LibraryItemsRequest request, {
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+  }) async {
+    return ABSApi.makeApiGetRequest(
+      route: '/api/libraries/$libraryId/series',
+      fromJson: (data) => SeriesItems.fromJson(data),
+      cancelToken: cancelToken,
+      headers: headers,
+      extra: extra,
+      dio: _dio,
+      queryParams: request.toJson(),
     );
   }
 }

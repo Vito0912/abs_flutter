@@ -1,5 +1,6 @@
 import 'package:abs_flutter/api/library_items/author.dart';
 import 'package:abs_flutter/api/library_items/series.dart';
+import 'package:abs_flutter/api/library_items/series_convertor.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'media_metadata.freezed.dart';
@@ -12,7 +13,7 @@ class MediaMetadata with _$MediaMetadata {
     @JsonKey(name: "subtitle") String? subtitle,
     @JsonKey(name: "authors") List<Author>? authors,
     @JsonKey(name: "narrators") List<String>? narrators,
-    @JsonKey(name: "series") List<Series>? series,
+    @JsonKey(name: "series") @SeriesConverter() List<Series>? series,
     @JsonKey(name: "genres") List<String>? genres,
     @JsonKey(name: "publishedYear") String? publishedYear,
     @JsonKey(name: "publishedDate") String? publishedDate,

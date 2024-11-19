@@ -169,6 +169,7 @@ class ABSApi {
         options: options,
         cancelToken: cancelToken,
       );
+      print(response.data);
 
       T? responseData;
       final rawResponse = response.data;

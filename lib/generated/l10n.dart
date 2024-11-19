@@ -850,6 +850,16 @@ class S {
     );
   }
 
+  /// `eBook-Reader`
+  String get ebookreader {
+    return Intl.message(
+      'eBook-Reader',
+      name: 'ebookreader',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Edit Queue`
   String get editQueue {
     return Intl.message(
@@ -1643,6 +1653,16 @@ class S {
     );
   }
 
+  /// `Open`
+  String get open {
+    return Intl.message(
+      'Open',
+      name: 'open',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Open Downloads`
   String get openDownloads {
     return Intl.message(
@@ -2073,6 +2093,26 @@ class S {
     );
   }
 
+  /// `Show Media Type`
+  String get showMediaType {
+    return Intl.message(
+      'Show Media Type',
+      name: 'showMediaType',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Displays the media type badges at the bottom of each item.`
+  String get showMediaTypeDescription {
+    return Intl.message(
+      'Displays the media type badges at the bottom of each item.',
+      name: 'showMediaTypeDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Show Progress per Chapter`
   String get showProgressPerChapters {
     return Intl.message(
@@ -2488,46 +2528,6 @@ class S {
     return Intl.message(
       'Year',
       name: 'year',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `eBook-Reader`
-  String get ebookreader {
-    return Intl.message(
-      'eBook-Reader',
-      name: 'ebookreader',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Open`
-  String get open {
-    return Intl.message(
-      'Open',
-      name: 'open',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Show Media Type`
-  String get showMediaType {
-    return Intl.message(
-      'Show Media Type',
-      name: 'showMediaType',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Displays the media type badges at the bottom of each item.`
-  String get showMediaTypeDescription {
-    return Intl.message(
-      'Displays the media type badges at the bottom of each item.',
-      name: 'showMediaTypeDescription',
       desc: '',
       args: [],
     );
