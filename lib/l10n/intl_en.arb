@@ -739,5 +739,7 @@
   "year": "Year",
   "@year": {},
   "ebookreader": "eBook-Reader",
-  "open": "Open"
+  "open": "Open",
+  "showMediaType": "Show Media Type",
+  "showMediaTypeDescription": "Displays the media type badges at the bottom of each item."
 }

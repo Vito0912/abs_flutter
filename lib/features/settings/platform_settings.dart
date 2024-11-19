@@ -66,13 +66,6 @@ class PlatformSettings extends ConsumerWidget {
                 defaultValue: true,
                 toolTipText: S.of(context).showAccountSwitcherDescription,
               ),
-              NavigationTile(
-                (context) => null,
-                leading: const Icon(Bootstrap.info),
-                title: S.of(context).markItemsFinished,
-                description:
-                    'This setting is deprecated as of server version above 2.15.1 and is now managed by the server. To change this value, go to the library settings.',
-              ),
               SwitchTile(
                 leading: const Icon(
                   OctIcons.sidebar_collapse,
@@ -98,6 +91,12 @@ class PlatformSettings extends ConsumerWidget {
                   title: S.of(context).sortSeriesAsc,
                   keyValue: Constants.SORT_SERIES_ASC,
                   defaultValue: false),
+              SwitchTile(
+                  leading: const Icon(Icons.hide_source_rounded),
+                  title: S.of(context).showMediaType,
+                  toolTipText: S.of(context).showMediaTypeDescription,
+                  keyValue: Constants.SHOW_MEDIA_TYPE,
+                  defaultValue: true),
               if (!kIsWeb && Helper.isDesktop())
                 SwitchTile(
                     leading: const Icon(IonIcons.file_tray),
