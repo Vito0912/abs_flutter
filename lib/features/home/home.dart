@@ -9,12 +9,12 @@ import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/globals.dart';
 import 'package:abs_flutter/models/library_sort.dart';
 import 'package:abs_flutter/provider/library_items_provider.dart';
-import 'package:collection/collection.dart';
 import 'package:abs_flutter/provider/library_provider.dart';
 import 'package:abs_flutter/provider/settings_provider.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
 import 'package:abs_flutter/util/constants.dart';
 import 'package:abs_flutter/widgets/error_text.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
@@ -129,32 +129,27 @@ class Home extends HookConsumerWidget {
         tabController: tabController,
         itemChanged: (index) {
           final sortList = ref.read(libraryItemSearchProvider);
-          if(index != sortList.index) {
+          final validIndexes = [0, 2];
+          if (index != sortList.index && validIndexes.contains(index)) {
+            LibrarySort? previousSort = sortList.previous
+                ?.firstWhereOrNull((LibrarySort sort) => sort.index == index);
 
-            LibrarySort? previousSort = sortList.previous?.firstWhereOrNull(
-                (LibrarySort sort) => sort.index == index);
-
-            print(sortList);
-
-            ref.read(libraryItemSearchProvider.notifier).state =
-                ref.read(libraryItemSearchProvider.notifier).state.copyWith(
+            ref.read(libraryItemSearchProvider.notifier).state = ref
+                .read(libraryItemSearchProvider.notifier)
+                .state
+                .copyWith(
                     index: index,
-                  search: previousSort?.search ?? '',
-                  filter: previousSort?.filter,
-                  filterKey: previousSort?.filterKey,
-                  previous: [
-                    ...?sortList.previous?.where(
-                            (LibrarySort sort) {
-                      return true;
-                    }).map((LibrarySort sort) {
-                      return sort.copyWith(
-                        previous: null
-                      );
-                    })
-                    ]
-                );
-
-            print(ref.read(libraryItemSearchProvider.notifier).state);
+                    search: previousSort?.search ?? '',
+                    filter: previousSort?.filter,
+                    filterKey: previousSort?.filterKey,
+                    previous: [
+                  ...?sortList.previous?.where((LibrarySort sort) {
+                    return sort.index != index;
+                  }).map((LibrarySort sort) {
+                    return sort.copyWith(previous: null);
+                  }),
+                  sortList.copyWith(previous: null)
+                ]);
           }
           currentIndex.value = index;
         },
