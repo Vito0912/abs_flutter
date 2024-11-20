@@ -7,6 +7,7 @@ part 'library_sort.g.dart';
 @unfreezed
 class LibrarySort with _$LibrarySort {
   factory LibrarySort({
+    required int index,
     @Default(10) int? limit,
     @Default(0) int? page,
     @Default("media.metadata.title") String? sort,

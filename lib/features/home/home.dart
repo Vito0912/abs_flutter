@@ -7,6 +7,9 @@ import 'package:abs_flutter/features/library/series/series_view_wrapper.dart';
 import 'package:abs_flutter/features/library/shelf_items.dart';
 import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/globals.dart';
+import 'package:abs_flutter/models/library_sort.dart';
+import 'package:abs_flutter/provider/library_items_provider.dart';
+import 'package:collection/collection.dart';
 import 'package:abs_flutter/provider/library_provider.dart';
 import 'package:abs_flutter/provider/settings_provider.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
@@ -125,6 +128,34 @@ class Home extends HookConsumerWidget {
         navBarHeight: 64,
         tabController: tabController,
         itemChanged: (index) {
+          final sortList = ref.read(libraryItemSearchProvider);
+          if(index != sortList.index) {
+
+            LibrarySort? previousSort = sortList.previous?.firstWhereOrNull(
+                (LibrarySort sort) => sort.index == index);
+
+            print(sortList);
+
+            ref.read(libraryItemSearchProvider.notifier).state =
+                ref.read(libraryItemSearchProvider.notifier).state.copyWith(
+                    index: index,
+                  search: previousSort?.search ?? '',
+                  filter: previousSort?.filter,
+                  filterKey: previousSort?.filterKey,
+                  previous: [
+                    ...?sortList.previous?.where(
+                            (LibrarySort sort) {
+                      return true;
+                    }).map((LibrarySort sort) {
+                      return sort.copyWith(
+                        previous: null
+                      );
+                    })
+                    ]
+                );
+
+            print(ref.read(libraryItemSearchProvider.notifier).state);
+          }
           currentIndex.value = index;
         },
         bodyBuilder: (context, index) {

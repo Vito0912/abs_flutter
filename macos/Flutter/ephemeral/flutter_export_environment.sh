@@ -1,11 +1,11 @@
 #!/bin/sh
 # This is a generated file; do not edit or check into version control.
-export "FLUTTER_ROOT=C:\Framework\flutter"
-export "FLUTTER_APPLICATION_PATH=C:\Users\finn\Documents\Projects\GitHub\abs_flutter"
+export "FLUTTER_ROOT=C:\dev\flutter"
+export "FLUTTER_APPLICATION_PATH=C:\Users\finn\Documents\GitHub\abs_flutter"
 export "COCOAPODS_PARALLEL_CODE_SIGN=true"
 export "FLUTTER_BUILD_DIR=build"
-export "FLUTTER_BUILD_NAME=1.6.6"
-export "FLUTTER_BUILD_NUMBER=1.6.6"
+export "FLUTTER_BUILD_NAME=1.6.7"
+export "FLUTTER_BUILD_NUMBER=1.6.7"
 export "DART_OBFUSCATION=false"
 export "TRACK_WIDGET_CREATION=true"
 export "TREE_SHAKE_ICONS=false"

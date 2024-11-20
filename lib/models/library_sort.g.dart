@@ -8,6 +8,7 @@ part of 'library_sort.dart';
 
 _$LibrarySortImpl _$$LibrarySortImplFromJson(Map<String, dynamic> json) =>
     _$LibrarySortImpl(
+      index: (json['index'] as num).toInt(),
       limit: (json['limit'] as num?)?.toInt() ?? 10,
       page: (json['page'] as num?)?.toInt() ?? 0,
       sort: json['sort'] as String? ?? "media.metadata.title",
@@ -23,6 +24,7 @@ _$LibrarySortImpl _$$LibrarySortImplFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$LibrarySortImplToJson(_$LibrarySortImpl instance) =>
     <String, dynamic>{
+      'index': instance.index,
       'limit': instance.limit,
       'page': instance.page,
       'sort': instance.sort,

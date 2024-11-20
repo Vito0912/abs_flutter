@@ -229,5 +229,5 @@ class LibrariesNotifier extends StateNotifier<LibraryPreview?> {
 }
 
 final libraryItemSearchProvider = StateProvider<LibrarySort>((ref) {
-  return LibrarySort();
+  return LibrarySort(index: 0);
 });
