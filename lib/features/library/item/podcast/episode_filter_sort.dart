@@ -9,14 +9,14 @@ List<Episode> filterEpisodes(
     case 'Incomplete':
       return episodes.where((episode) {
         final progress =
-            progresses.progress?['${episode.libraryItemId}${episode.id ?? ''}'];
-        return progress != null && progress.progress! < 1.0;
+        progresses.progress?['${episode.libraryItemId}${episode.id ?? ''}'];
+        return progress == null || progress.progress! < .99;
       }).toList();
     case 'Complete':
       return episodes.where((episode) {
         final progress =
             progresses.progress?['${episode.libraryItemId}${episode.id ?? ''}'];
-        return progress != null && progress.progress! == 1.0;
+        return progress != null && progress.progress! >= .99;
       }).toList();
     case 'In Progress':
       return episodes.where((episode) {
@@ -24,7 +24,7 @@ List<Episode> filterEpisodes(
             progresses.progress?['${episode.libraryItemId}${episode.id ?? ''}'];
         return progress != null &&
             progress.progress! > 0 &&
-            progress.progress! < 1.0;
+            progress.progress! < .99;
       }).toList();
     default:
       return episodes;
