@@ -61,6 +61,7 @@ final Map<String, String> supportedLocales = {
   'zh': '中文',
   'pt': 'Português',
   'fr': 'Français',
+  'it': 'Italiano',
 };
 
 bool cachingEnabled = true;
