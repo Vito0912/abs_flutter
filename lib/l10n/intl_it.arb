@@ -1,1 +1,748 @@
-{}
+{
+  "aggressiveCaching": "Caching aggressivo",
+  "@aggressiveCaching": {},
+  "allDownloads": "Tutti i Download",
+  "@allDownloads": {},
+  "amoledMode": "Modalità AMOLED",
+  "@amoledMode": {},
+  "ascending": "Ascendente",
+  "@ascending": {},
+  "attribution": "Attributi",
+  "@attribution": {},
+  "author": "Autore",
+  "@author": {},
+  "authors": "Autori",
+  "@authors": {},
+  "back": "Indietro",
+  "@back": {},
+  "bookCover": "Copertina",
+  "@bookCover": {},
+  "boostLoading": "Caricamento potenziato",
+  "@boostLoading": {},
+  "boostLoadingSubtitle": "Si prega di leggere la descrizione per comprendere questa funzionalità.",
+  "@boostLoadingSubtitle": {},
+  "caching": "Caching",
+  "@caching": {},
+  "cachingHeader": "Caching",
+  "@cachingHeader": {},
+  "cancel": "Cancella",
+  "@cancel": {},
+  "carPlayer": "Car Player",
+  "@carPlayer": {},
+  "changeLibrary": "Cambia Libreria",
+  "@changeLibrary": {},
+  "chapters": "Capitoli",
+  "@chapters": {},
+  "chaptersNum": "Capitoli ({num})",
+  "@chaptersNum": {
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "clearCache": "Pulisci la Cache",
+  "@clearCache": {},
+  "close": "Chiudi",
+  "@close": {},
+  "collapseSeries": "Raggruppa Serie",
+  "@collapseSeries": {},
+  "collapseSeriesDescription": "Se abilitata, gli elementi di una serie verranno raggruppati nella vista libreria, visualizzando un solo elemento per rappresentare l'intera serie.",
+  "@collapseSeriesDescription": {},
+  "consecutiveDays": "Giorni Consecutivi",
+  "@consecutiveDays": {},
+  "continueListening": "Continua L'ascolto",
+  "@continueListening": {},
+  "continueSeries": "Contina la serie",
+  "@continueSeries": {},
+  "copy": "Copia",
+  "@copy": {},
+  "copyAnonymous": "Copia (prova i dati personali rimossi)",
+  "@copyAnonymous": {},
+  "copyLogs": "Copia i Log",
+  "@copyLogs": {},
+  "create": "Crea",
+  "@create": {},
+  "createBookmark": "Crea Segnalibro",
+  "@createBookmark": {},
+  "createBookmarkTitle": "Crea Segnalibro",
+  "@createBookmarkTitle": {},
+  "currentDownloads": "Download corrente",
+  "@currentDownloads": {},
+  "currentPositionNum": "Posizione attuale: {position}",
+  "@currentPositionNum": {
+    "placeholders": {
+      "position": {
+        "type": "String"
+      }
+    }
+  },
+  "dateFormatDay": "{count, plural, one {{count}  day} other {{count} days}}",
+  "@dateFormatDay": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatDayHourMinuteSecondShort": "{days}d {hours}h {minutes}m {seconds}s",
+  "@dateFormatDayHourMinuteSecondShort": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      },
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatDayHourMinuteShort": "{days}d {hours}h {minutes}m",
+  "@dateFormatDayHourMinuteShort": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatDayHourShort": "{days}d {hours}h",
+  "@dateFormatDayHourShort": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatDayShort": "{count}d",
+  "@dateFormatDayShort": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatHourMinuteShort": "{hours}h {minutes}m",
+  "@dateFormatHourMinuteShort": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatHourShort": "{count}h",
+  "@dateFormatHourShort": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatMinute": "{count, plural, one {{count} minute} other {{count} minutes}}",
+  "@dateFormatMinute": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatMinuteSecondShort": "{minutes}m {seconds}s",
+  "@dateFormatMinuteSecondShort": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      },
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "daysListened": "Giorni di ascolto",
+  "@daysListened": {},
+  "debugLogs": "Debug Logs",
+  "@debugLogs": {},
+  "deleteSelected": "Cancella Selezionati",
+  "@deleteSelected": {},
+  "descending": "Discendente",
+  "@descending": {},
+  "description": "Descrizione",
+  "@description": {},
+  "deviceInfo": "Dispositivo: {device}\nOS: {os}\nApp Versione: {version}",
+  "@deviceInfo": {
+    "placeholders": {
+      "device": {
+        "type": "String"
+      },
+      "os": {
+        "type": "String"
+      },
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "disabled": "Diattivato",
+  "@disabled": {},
+  "discover": "Scopri",
+  "@discover": {},
+  "domainOrIp": "Domain or IP",
+  "@domainOrIp": {},
+  "downloadComplete": "Download completato",
+  "@downloadComplete": {},
+  "downloadCompleteBody": "Download si {displayName} completo",
+  "@downloadCompleteBody": {},
+  "downloadErrorDescription": "Il file non è stato scaricato correttamente. Puoi provare a eliminare i dati sul dispositivo cliccando sul pulsante e scaricarlo di nuovo.",
+  "@downloadErrorDescription": {},
+  "downloadInfo": "Download Info",
+  "@downloadInfo": {},
+  "downloading": "Scaricamento",
+  "@downloading": {},
+  "duration": "Durata",
+  "@duration": {},
+  "enabled": "Abilitato",
+  "@enabled": {},
+  "progress": "Progresso",
+  "@progress": {},
+  "progressAsChaptersDescription": "Abilita questa opzione per visualizzare i progressi nel player e le notifiche in base al capitolo. Se disabilitata, i progressi saranno mostrati in base all'intero elemento.",
+  "@progressAsChaptersDescription": {},
+  "unknownTitle": "TItolo Sconosciuto",
+  "@unknownTitle": {},
+  "updatedAt": "Aggiornato il",
+  "@updatedAt": {},
+  "user": "Utente",
+  "@user": {},
+  "username": "Username",
+  "@username": {},
+  "usernameOrPasswordNotEmpty": "Il nome utente e la password non possono essere vuoti",
+  "@usernameOrPasswordNotEmpty": {},
+  "viewBookmarks": "Vedi Segnalibri",
+  "@viewBookmarks": {},
+  "viewChapters": "Vedi Capitoli",
+  "@viewChapters": {},
+  "viewOnGithub": "Vedi su Github",
+  "@viewOnGithub": {},
+  "waitTillRedirect": "Attendi il reindirizzamento a /init. Al momento non hai effettuato l'accesso.",
+  "@waitTillRedirect": {},
+  "waitingForDownload": "In attesa dell'avvio del download",
+  "@waitingForDownload": {},
+  "year": "Anno",
+  "@year": {},
+  "errorItemNotFound": "Errore: elemento non trovato!",
+  "@errorItemNotFound": {},
+  "exit": "Esci",
+  "@exit": {},
+  "fastForward": "Avanti veloce",
+  "@fastForward": {},
+  "ebookreader": "eBook-Reader",
+  "@ebookreader": {},
+  "editQueue": "Modifica coda",
+  "@editQueue": {},
+  "episodeId": "Episodio Id",
+  "@episodeId": {},
+  "feedOpen": "Apri Feed",
+  "@feedOpen": {},
+  "filename": "Nome del file",
+  "@filename": {},
+  "general": "Generale",
+  "@general": {},
+  "genres": "Generi",
+  "@genres": {},
+  "inProgress": "in corso",
+  "@inProgress": {},
+  "itemNumChapters": "Numero dei Capitoli: {numChapters}",
+  "@itemNumChapters": {
+    "placeholders": {
+      "numChapters": {
+        "type": "String"
+      }
+    }
+  },
+  "itemProgress": "Progresso: {progress}%",
+  "@itemProgress": {
+    "placeholders": {
+      "progress": {
+        "type": "String"
+      }
+    }
+  },
+  "itemPublishedYear": "Anno di Pubblicazione: {year}",
+  "@itemPublishedYear": {
+    "placeholders": {
+      "year": {
+        "type": "String"
+      }
+    }
+  },
+  "itemType": "Tipo Oggetto",
+  "@itemType": {},
+  "jumpToLastPosition": "Vai all'ultima posizione",
+  "@jumpToLastPosition": {},
+  "jumpToLastPositionDescription": "Se abilitato, il lettore salterà all'ultima posizione quando si preme play",
+  "@jumpToLastPositionDescription": {},
+  "language": "Lingua",
+  "@language": {},
+  "languages": "Lingue",
+  "@languages": {},
+  "largestItems": "File Grandi",
+  "@largestItems": {},
+  "last30Days": "Ultimi 30 giorni",
+  "@last30Days": {},
+  "last7Days": "Ultimi 7 giorni",
+  "@last7Days": {},
+  "libraries": "Librerie",
+  "@libraries": {},
+  "library": "Libreria",
+  "@library": {},
+  "libraryName": "Nome Libreria",
+  "@libraryName": {},
+  "libraryStats": "Statistiche Libreria",
+  "@libraryStats": {},
+  "listenAgain": "Ascolta di nuovo",
+  "@listenAgain": {},
+  "listeningInTheLastYear": "Ascoltati nell'ultimo anno",
+  "@listeningInTheLastYear": {},
+  "loading": "Caricamento…",
+  "@loading": {},
+  "lockProgressBar": "blocca la barra di progresso",
+  "@lockProgressBar": {},
+  "lockProgressBarDescription": "Se abilitata, questa funzione blocca la barra di avanzamento nella notifica multimediale, se supportata dal sistema operativo",
+  "@lockProgressBarDescription": {},
+  "logging": "registrazione",
+  "@logging": {},
+  "logs": "Log",
+  "@logs": {},
+  "longestItems": "Oggetti lungi",
+  "@longestItems": {},
+  "markItemsFinished": "Segna come Finito",
+  "@markItemsFinished": {},
+  "minimize": "Riduci",
+  "@minimize": {},
+  "minimizeToTray": "Riduci nella barra",
+  "@minimizeToTray": {},
+  "minimizeToTrayDescription": "Questa opzione nasconde l'app dalla barra delle applicazioni e la sposta nella barra delle applicazioni.",
+  "@minimizeToTrayDescription": {},
+  "miscellaneous": "Varie",
+  "@miscellaneous": {},
+  "moreOptions": "Altre Opzioni",
+  "@moreOptions": {},
+  "multipleServerAdressess": "Se vuoi utilizzare più indirizzi server, puoi aggiungerli in seguito",
+  "@multipleServerAdressess": {},
+  "mustEnterValidAddress": "Devi inserire un indirizzo server valido",
+  "@mustEnterValidAddress": {},
+  "narrators": "Lettori",
+  "@narrators": {},
+  "newestEpisodes": "Nuovi Episodi",
+  "@newestEpisodes": {},
+  "next": "Prossimo",
+  "@next": {},
+  "noConnection": "Nessuna connessione",
+  "@noConnection": {},
+  "noDownloads": "Nessun Download",
+  "@noDownloads": {},
+  "noUserData": "Accesso non riuscito: nessun dato utente ricevuto",
+  "@noUserData": {},
+  "notFinished": "Non Finito",
+  "@notFinished": {},
+  "notTriedYet": "Non ancora provato",
+  "@notTriedYet": {},
+  "offlineProgress": "Progressi offline",
+  "@offlineProgress": {},
+  "openDownloads": "Apri Download",
+  "@openDownloads": {},
+  "password": "Password",
+  "@password": {},
+  "playbackSpeed": "Velocità",
+  "@playbackSpeed": {},
+  "playerSettings": "Impostazioni Player",
+  "@playerSettings": {},
+  "pleaseCheckInternet": "Controlla la tua connessione Internet e riprova.",
+  "@pleaseCheckInternet": {},
+  "port": "Porta",
+  "@port": {},
+  "previousChapter": "Capitolo Precedente",
+  "@previousChapter": {},
+  "progressNum": "progresso Corrente: {progress} %",
+  "@progressNum": {
+    "placeholders": {
+      "progress": {
+        "type": "String"
+      }
+    }
+  },
+  "publisher": "Publisher",
+  "@publisher": {},
+  "readLess": "di meno",
+  "@readLess": {},
+  "readMore": "di più",
+  "@readMore": {},
+  "recentSeries": "Serie recenti",
+  "@recentSeries": {},
+  "recentlyAdded": "Aggiunte recententemente",
+  "@recentlyAdded": {},
+  "reportAnIssue": "Segnala un problema",
+  "@reportAnIssue": {},
+  "restartRequiredDescription": "Riavvia l'app per applicare le modifiche.",
+  "@restartRequiredDescription": {},
+  "rewindSeconds": "Riavvolgi di tot secondi",
+  "@rewindSeconds": {},
+  "rewindSecondsDescription": "Imposta il numero di secondi da saltare indietro quando si preme il pulsante di riavvolgimento.",
+  "@rewindSecondsDescription": {},
+  "search": "Cerca",
+  "@search": {},
+  "searchDisabled": "Ricerca disattivata",
+  "@searchDisabled": {},
+  "seek": "Scorri",
+  "@seek": {},
+  "sequence": "Sequenza",
+  "@sequence": {},
+  "shareOpen": "Condivisione Aperta",
+  "@shareOpen": {},
+  "show": "Mostra",
+  "@show": {},
+  "showAccountSwitcher": "Mostra il selettore account",
+  "@showAccountSwitcher": {},
+  "showAccountSwitcherDescription": "Abilita questa opzione per aggiungere un pulsante icona alla barra delle applicazioni per un rapido cambio di account. Ciò ridurrà le dimensioni della barra delle applicazioni.",
+  "@showAccountSwitcherDescription": {},
+  "showMediaType": "Mostra Media Type",
+  "@showMediaType": {},
+  "signOut": "Disconnetti",
+  "@signOut": {},
+  "sort": "Ordina",
+  "@sort": {},
+  "sortSeriesAsc": "Ordina le serie in ordine crescente",
+  "@sortSeriesAsc": {},
+  "stats": "Stats",
+  "@stats": {},
+  "stop": "Stop",
+  "@stop": {},
+  "stopPlayerUntilSync": "Interrompi lettore fino alla sincronizzazione",
+  "@stopPlayerUntilSync": {},
+  "stopPlayerWhileSyncingDescription": "Abilita questa opzione per impedire al player di avviarsi finché non è stata sincronizzata la posizione di riproduzione più recente. Ciò assicura che la riproduzione riprenda dalla posizione corretta. Se disabilitata, la posizione di riproduzione potrebbe cambiare poco dopo l'avvio, causando potenzialmente la perdita di dati. L'attivazione di questa opzione aiuta a risparmiare l'utilizzo dei dati.",
+  "@stopPlayerWhileSyncingDescription": {},
+  "syncOnlyViaWifi": "Sincronizzazione solo tramite WiFi",
+  "@syncOnlyViaWifi": {},
+  "tags": "Tags",
+  "@tags": {},
+  "timeRemainingNum": "Tempo rimanente: {time}",
+  "@timeRemainingNum": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "timerText": "{time} min",
+  "@timerText": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "title": "Titolo",
+  "@title": {},
+  "today": "Oggi",
+  "@today": {},
+  "topAuthors": "Miglior Autore",
+  "@topAuthors": {},
+  "topGenres": "Miglior Genere",
+  "@topGenres": {},
+  "totalAudioTracks": "Tracce Audio Totali",
+  "@totalAudioTracks": {},
+  "totalAuthors": "Totale Autori",
+  "@totalAuthors": {},
+  "totalDuration": "Durata Totale",
+  "@totalDuration": {},
+  "totalGenres": "Totale Genere",
+  "@totalGenres": {},
+  "totalItems": "Totale Oggetti",
+  "@totalItems": {},
+  "totalSize": "Dimensione Totale",
+  "@totalSize": {},
+  "tryAgain": "Riprova",
+  "@tryAgain": {},
+  "unknown": "Sconosciuto",
+  "@unknown": {},
+  "addANewUser": "Aggiungi un nuovo Utente",
+  "@addANewUser": {},
+  "addUser": "Aggiungi utente",
+  "@addUser": {},
+  "aggressiveCachingDescription": "Se abilitata, l'app abiliterà un caching più aggressivo. Ciò include il caching di percorsi che potrebbero contenere dati che necessitano di aggiornamenti regolari, come il recupero dell'avanzamento di tutti gli elementi. In questi casi, verrà utilizzata l'ultima posizione nota, a meno che non si apra e si richieda specificamente un singolo elemento. Questi percorsi avranno una durata di cache più breve.",
+  "@aggressiveCachingDescription": {},
+  "boostLoadingDescription": "Quando questa funzionalità è abilitata, l'app bypassa efficacemente la memorizzazione nella cache in tempo reale. Tenterà sempre di recuperare i dati più recenti dal server mentre utilizza i dati memorizzati nella cache per caricare immediatamente i contenuti. Una volta recuperati i dati aggiornati, sostituisce la vecchia cache, assicurando che i dati più recenti vengano visualizzati la prossima volta che carichi l'app. Di conseguenza, vedrai sempre i dati di un ciclo di recupero dietro i dati correnti del server.",
+  "@boostLoadingDescription": {},
+  "copyLogsDescription": "Importante:\nCliccando su \"Copia\" tutti i log attualmente visualizzati verranno trasferiti negli appunti, inclusi i dati registrati dall'avvio o dall'ultima cancellazione dell'app. Questi log potrebbero contenere informazioni sensibili come token, nomi utente, e-mail e URL del server. Fai attenzione a dove incolli queste informazioni!\\nSe scegli \"Copia e tenta di nascondere informazioni sensibili\", l'app proverà a mascherare elementi come token, nomi utente, e-mail e URL del server. Tuttavia, sei responsabile della revisione dei log per assicurarti che tutti i dati personali vengano completamente rimossi.",
+  "@copyLogsDescription": {},
+  "darkMode": "Modalità scura",
+  "@darkMode": {},
+  "dateFormatDayHour": "{days, plural, one {{days} day} other {{days} days}} {hours, plural, one {{hours} hour} other {{hours} hours}}",
+  "@dateFormatDayHour": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatDayHourMinute": "{days, plural, one {{days} day} other {{days} days}} {hours, plural, one {{hours} hour} other {{hours} hours}} {minutes, plural, one {{minutes} minute} other {{minutes} minutes}}",
+  "@dateFormatDayHourMinute": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatDayHourMinuteSecond": "{days, plural, one {{days} day} other {{days} days}} {hours, plural, one {{hours} hour} other {{hours} hours}} {minutes, plural, one {{minutes} minute} other {{minutes} minutes}} {seconds, plural, one {{seconds} second} other {{seconds} seconds}}",
+  "@dateFormatDayHourMinuteSecond": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      },
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "errorDownloading": "Errore di download",
+  "@errorDownloading": {},
+  "fastForwardSeconds": "Avanti veloce di secondi",
+  "@fastForwardSeconds": {},
+  "information": "Informazioni",
+  "@information": {},
+  "errorDownloadingBody": "Si è verificato un errore durante il download di {displayName}",
+  "@errorDownloadingBody": {},
+  "failed": "Fallito",
+  "@failed": {},
+  "finished": "Finito",
+  "@finished": {},
+  "itemId": "Id Oggetto",
+  "@itemId": {},
+  "itemLength": "Lunghezza: {length}",
+  "@itemLength": {
+    "placeholders": {
+      "length": {
+        "type": "String"
+      }
+    }
+  },
+  "fastForwardSecondsDescription": "Imposta il numero di secondi da saltare in avanti quando si preme il pulsante di avanzamento rapido.",
+  "@fastForwardSecondsDescription": {},
+  "filepath": "Percorso file",
+  "@filepath": {},
+  "filter": "Filtro",
+  "@filter": {},
+  "hide": "Nascondi",
+  "@hide": {},
+  "ifTheQuickAccountSwitcherShouldBeShown": "Se deve essere visualizzato il commutatore rapido dell'account",
+  "@ifTheQuickAccountSwitcherShouldBeShown": {},
+  "itemNotFoundDescription": "L'elemento non è stato trovato. Ciò potrebbe essere dovuto a un errore di rete o perché l'elemento non esiste più ma rimane nella cache.",
+  "@itemNotFoundDescription": {},
+  "markItemsFinishedAfterDescription": "Specifica il tempo in secondi prima della fine di un elemento in cui deve essere contrassegnato come terminato. Impostando questo valore su 0, l'elemento viene contrassegnato come terminato solo quando il giocatore raggiunge la fine. Se viene impostato un valore positivo, l'elemento viene contrassegnato come terminato quando il giocatore raggiunge quel momento prima della fine.",
+  "@markItemsFinishedAfterDescription": {},
+  "nextChapter": "Prossimo Capitolo",
+  "@nextChapter": {},
+  "noInternetDescription": "Stiamo riscontrando problemi di connessione al server.",
+  "@noInternetDescription": {},
+  "noPath": "Nessun Percorso",
+  "@noPath": {},
+  "notStarted": "Non Iniziato",
+  "@notStarted": {},
+  "noItemsFound": "Nessun Oggetto trovato",
+  "@noItemsFound": {},
+  "noSeriesSelected": "Nessuna serie selezionata",
+  "@noSeriesSelected": {},
+  "numBooksInSeries": "{numBooks, plural, =0 {No Books} =1 {1 Book} other {{numBooks} Books}}",
+  "@numBooksInSeries": {
+    "placeholders": {
+      "numBooks": {
+        "type": "num"
+      }
+    }
+  },
+  "notificationHeading": "Le notifiche dovrebbero essere abilitate",
+  "@notificationHeading": {},
+  "offlineSavedProgress": "Progressi offline salvati",
+  "@offlineSavedProgress": {},
+  "ok": "OK",
+  "@ok": {},
+  "open": "Apri",
+  "@open": {},
+  "openProjectLink": "Audiobookshelf/Server",
+  "@openProjectLink": {},
+  "ownStats": "Le tue stats",
+  "@ownStats": {},
+  "personalizedLibrary": "Personalizza Libreria",
+  "@personalizedLibrary": {},
+  "previous": "Precedente",
+  "@previous": {},
+  "pause": "Pausa",
+  "@pause": {},
+  "play": "Play",
+  "@play": {},
+  "player": "Player",
+  "@player": {},
+  "playHistory": "Cronologia di riproduzione",
+  "@playHistory": {},
+  "playNextEpisode": "Riproduci prossimo episodio",
+  "@playNextEpisode": {},
+  "restartRequired": "RIavvio Richiesto",
+  "@restartRequired": {},
+  "rewind": "Riavvolgi",
+  "@rewind": {},
+  "series": "Serie",
+  "@series": {},
+  "serverSelection": "Selezione server",
+  "@serverSelection": {},
+  "settings": "Impostazioni",
+  "@settings": {},
+  "shakeResetTimer": "Agita per reimpostare il timer di spegnimento",
+  "@shakeResetTimer": {},
+  "serverAdressContinue": "Inserisci l'indirizzo del tuo server per continuare",
+  "@serverAdressContinue": {},
+  "showMediaTypeDescription": "Visualizza i badge del tipo di media nella parte inferiore di ogni elemento.",
+  "@showMediaTypeDescription": {},
+  "size": "DImensione",
+  "@size": {},
+  "showProgressPerChapters": "Mostra avanzamento per capitolo",
+  "@showProgressPerChapters": {},
+  "success": "Successo",
+  "@success": {},
+  "sleepTimer": "Sleep Timer",
+  "@sleepTimer": {},
+  "sync": "Sync",
+  "@sync": {},
+  "syncInterval": "Intervallo Sync (secondi)",
+  "@syncInterval": {},
+  "syncIntervalDescription": "Specifica la frequenza con cui l'app deve sincronizzarsi con il server. Riavvia l'app affinché le modifiche abbiano effetto.",
+  "@syncIntervalDescription": {},
+  "totalTimeListened": "Tenmpo di Ascolto Totale",
+  "@totalTimeListened": {},
+  "dateFormatHourMinute": "{hours, plural, one {{hours} hour} other {{hours} hours}} {minutes, plural, one {{minutes} minute} other {{minutes} minutes}}",
+  "@dateFormatHourMinute": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatSecond": "{count, plural, one {{count}  second} other {{count} seconds}}",
+  "@dateFormatSecond": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatHour": "{count, plural, one {{count} hour} other {{count} hours}}",
+  "@dateFormatHour": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatHourMinuteSecondShort": "{hours}h {minutes}m {seconds}s",
+  "@dateFormatHourMinuteSecondShort": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      },
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatHourMinuteSecond": "{hours, plural, one {{hours} hour} other {{hours} hours}} {minutes, plural, one {{minutes} minute} other {{minutes} minutes}} {seconds, plural, one {{seconds} second} other {{seconds} seconds}}",
+  "@dateFormatHourMinuteSecond": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      },
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatMinuteSecond": "{minutes, plural, one {{minutes} minute} other {{minutes} minutes}} {seconds, plural, one {{seconds} second} other {{seconds} seconds}}",
+  "@dateFormatMinuteSecond": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      },
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatSecondShort": "{count}s",
+  "@dateFormatSecondShort": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatMinuteShort": "{count}m",
+  "@dateFormatMinuteShort": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "downloadPath": "Percorso Download",
+  "@downloadPath": {},
+  "downloadPathDescription": "Il percorso in cui vengono salvati i download. Per modificarlo, devi prima eliminare tutti i download.",
+  "@downloadPathDescription": {},
+  "downloadingBody": "Scaricamento {displayName}",
+  "@downloadingBody": {},
+  "downloads": "Scaricati",
+  "@downloads": {},
+  "enterValidUsernameOrPassword": "Inserisci un IP/dominio e una porta validi prima di inserire nome utente e password.",
+  "@enterValidUsernameOrPassword": {},
+  "downloadsOnlyViaWifi": "Download solo tramite WiFi",
+  "@downloadsOnlyViaWifi": {},
+  "enableNotificationsDownload": "Abilita le notifiche per ricevere aggiornamenti sullo stato di avanzamento del download e poter scaricare i file in background.",
+  "@enableNotificationsDownload": {},
+  "error": "Errore",
+  "@error": {}
+}
