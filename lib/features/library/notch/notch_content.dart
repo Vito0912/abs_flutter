@@ -11,8 +11,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class NotchContent extends ConsumerStatefulWidget {
   final bool disableFilter;
   final bool disableSearch;
+  final Map<String, String>? sortKeys;
   const NotchContent(
-      {super.key, this.disableFilter = false, this.disableSearch = false});
+      {super.key,
+      this.disableFilter = false,
+      this.disableSearch = false,
+      this.sortKeys});
 
   @override
   _NotchContentState createState() => _NotchContentState();
@@ -93,7 +97,9 @@ class _NotchContentState extends ConsumerState<NotchContent> {
                             },
                     ),
                   ),
-                  SortButton(),
+                  SortButton(
+                    overwriteSortOptions: widget.sortKeys,
+                  ),
                   if (!widget.disableFilter) const FilterButton(),
                   if (librarySort.search == null ||
                       librarySort.search!.isNotEmpty)

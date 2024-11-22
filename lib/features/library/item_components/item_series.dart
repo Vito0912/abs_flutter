@@ -5,7 +5,6 @@ import 'package:abs_api/abs_api.dart';
 import 'package:abs_flutter/features/library/item_components/top_label.dart';
 import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/models/library_series_preview.dart';
-import 'package:abs_flutter/provider/library_items_provider.dart';
 import 'package:abs_flutter/provider/progress_provider.dart';
 import 'package:abs_flutter/provider/settings_provider.dart';
 import 'package:abs_flutter/util/constants.dart';
@@ -29,17 +28,7 @@ class ItemSeries extends ConsumerWidget {
       return InkWell(
         onTap: clickable
             ? () {
-                ref.read(libraryItemSearchProvider.notifier).state = ref
-                    .read(libraryItemSearchProvider.notifier)
-                    .state
-                    .copyWith(
-                        filterKey: 'series',
-                        filter: series.id,
-                        sort: 'sequence',
-                        desc:
-                            settings[Constants.SORT_SERIES_ASC] == true ? 1 : 0,
-                        search: '');
-                context.push('/series-view/${series.name}');
+                context.push('/series-view/${series.name}/${series.id}');
               }
             : null,
         child: Padding(

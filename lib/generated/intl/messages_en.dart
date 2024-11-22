@@ -107,6 +107,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "addANewUser": MessageLookupByLibrary.simpleMessage("Add a New User"),
         "addUser": MessageLookupByLibrary.simpleMessage("Add User"),
+        "added": MessageLookupByLibrary.simpleMessage("Added"),
         "aggressiveCaching":
             MessageLookupByLibrary.simpleMessage("Aggressive Caching"),
         "aggressiveCachingDescription": MessageLookupByLibrary.simpleMessage(
@@ -284,6 +285,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "If you want to use multiple server addresses, you can add them later"),
         "mustEnterValidAddress": MessageLookupByLibrary.simpleMessage(
             "You must enter a valid server address"),
+        "name": MessageLookupByLibrary.simpleMessage("Name"),
         "narrators": MessageLookupByLibrary.simpleMessage("Narrators"),
         "newestEpisodes":
             MessageLookupByLibrary.simpleMessage("Newest Episodes"),
@@ -305,6 +307,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "notificationHeading": MessageLookupByLibrary.simpleMessage(
             "Notifications should be enabled"),
         "numBooksInSeries": m30,
+        "numberOfBooks":
+            MessageLookupByLibrary.simpleMessage("Number of Books"),
         "offlineProgress":
             MessageLookupByLibrary.simpleMessage("Offline Progress"),
         "offlineSavedProgress":
