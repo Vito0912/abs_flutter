@@ -1,4 +1,5 @@
 import 'package:abs_flutter/api/me/user.dart';
+import 'package:abs_flutter/features/library/item_components/top_label.dart';
 import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/provider/progress_provider.dart';
 import 'package:abs_flutter/provider/settings_provider.dart';
@@ -16,13 +17,15 @@ class AlbumImage extends ConsumerWidget {
   final double barHeight;
   final bool hasAudio;
   final bool hasBook;
+  final String? label;
   const AlbumImage(this.itemId,
       {super.key,
       this.size,
       this.withProgress = false,
       this.barHeight = 5.0,
       this.hasAudio = false,
-      this.hasBook = false});
+      this.hasBook = false,
+      this.label});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -58,6 +61,13 @@ class AlbumImage extends ConsumerWidget {
               errorWidget: (context, url, error) => const Icon(Icons.error),
             ),
           ),
+          if (label != null)
+            Align(
+              alignment: Alignment.topRight,
+              child: Container(
+                  constraints: const BoxConstraints(maxWidth: 120),
+                  child: TopLabel(label!)),
+            ),
           Consumer(
               builder: (BuildContext context, WidgetRef ref, Widget? child) {
             final settings = ref.watch(
