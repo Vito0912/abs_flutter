@@ -745,5 +745,8 @@
   "waitingForDownload": "Waiting for download to start",
   "@waitingForDownload": {},
   "year": "Year",
-  "@year": {}
+  "@year": {},
+  "name": "Name",
+  "added": "Added",
+  "numberOfBooks": "Number of Books"
 }

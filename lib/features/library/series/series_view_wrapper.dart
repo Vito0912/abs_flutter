@@ -1,5 +1,6 @@
 import 'package:abs_flutter/features/library/notch.dart';
 import 'package:abs_flutter/features/library/series/series_view.dart';
+import 'package:abs_flutter/globals.dart';
 import 'package:flutter/material.dart';
 
 class SeriesViewWrapper extends StatelessWidget {
@@ -10,7 +11,8 @@ class SeriesViewWrapper extends StatelessWidget {
     return Stack(
       children: [
         const SeriesView(),
-        if (MediaQuery.of(context).size.width < 900) const LibraryNotch(),
+        if (MediaQuery.of(context).size.width < 900)
+          LibraryNotch(disableFilter: true, sortKeys: seriesSortKeys),
       ],
     );
   }

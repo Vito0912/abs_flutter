@@ -62,13 +62,18 @@ class Home extends HookConsumerWidget {
             ],
             if (MediaQuery.of(context).size.width >= 900 &&
                 (currentIndex.value == 0 || currentIndex.value == 2)) ...[
-              const Expanded(
+              Expanded(
                   flex: 3,
                   child: Padding(
-                    padding: EdgeInsets.only(left: 16),
+                    padding: const EdgeInsets.only(left: 16),
                     child: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 32),
-                        child: Center(child: NotchContent())),
+                        padding: const EdgeInsets.symmetric(horizontal: 32),
+                        child: Center(
+                            child: NotchContent(
+                          disableFilter: currentIndex.value == 2,
+                          sortKeys:
+                              currentIndex.value == 2 ? seriesSortKeys : null,
+                        ))),
                   ))
             ]
           ],
@@ -142,6 +147,7 @@ class Home extends HookConsumerWidget {
                     search: previousSort?.search ?? '',
                     filter: previousSort?.filter,
                     filterKey: previousSort?.filterKey,
+                    sort: previousSort?.sort ?? (index == 2 ? 'name' : null),
                     previous: [
                   ...?sortList.previous?.where((LibrarySort sort) {
                     return sort.index != index;

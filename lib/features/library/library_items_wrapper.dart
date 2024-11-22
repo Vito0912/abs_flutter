@@ -11,7 +11,7 @@ class LibraryItemsWrapper extends StatelessWidget {
     return Stack(
       children: [
         const LibraryItems(),
-        if(MediaQuery.of(context).size.width < 900) const LibraryNotch(),
+        if (MediaQuery.of(context).size.width < 900) const LibraryNotch(),
       ],
     );
   }

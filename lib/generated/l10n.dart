@@ -2532,6 +2532,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Name`
+  String get name {
+    return Intl.message(
+      'Name',
+      name: 'name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Added`
+  String get added {
+    return Intl.message(
+      'Added',
+      name: 'added',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Number of Books`
+  String get numberOfBooks {
+    return Intl.message(
+      'Number of Books',
+      name: 'numberOfBooks',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

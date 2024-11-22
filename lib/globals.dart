@@ -1,5 +1,6 @@
 // globals.dart
 
+import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/util/constants.dart';
 import 'package:abs_flutter/util/setting_cache_provider.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
@@ -69,3 +70,10 @@ bool aggressiveCaching = true;
 bool boostLoading = false;
 
 late UserSharedPreferences userSharedPreferences;
+
+final Map<String, String> seriesSortKeys = {
+  'name': S.current.name,
+  'numBooks': S.current.numberOfBooks,
+  'totalDuration': S.current.totalDuration,
+  'addedAt': S.current.added,
+};
