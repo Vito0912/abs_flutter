@@ -63,6 +63,11 @@ final router = GoRouter(
                     builder: (context, state) => SingleSeriesView(
                         seriesName: state.pathParameters['seriesName']!)),
                 GoRoute(
+                    path: '/series-view/:seriesName/:id',
+                    builder: (context, state) => SingleSeriesView(
+                        seriesName: state.pathParameters['seriesName']!,
+                        seriesId: state.pathParameters['id']!)),
+                GoRoute(
                   path: '/logs',
                   builder: (context, state) => const LogView(),
                 ),

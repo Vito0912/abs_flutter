@@ -4,15 +4,18 @@ import 'package:abs_flutter/features/library/notch/notch_content.dart';
 import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/models/library_series_preview.dart';
 import 'package:abs_flutter/provider/library_items_provider.dart';
+import 'package:abs_flutter/provider/settings_provider.dart';
+import 'package:abs_flutter/util/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 class SingleSeriesView extends ConsumerStatefulWidget {
-  const SingleSeriesView({super.key, required this.seriesName});
+  const SingleSeriesView({super.key, this.seriesName, this.seriesId});
 
-  final String seriesName;
+  final String? seriesName;
+  final String? seriesId;
 
   @override
   _SingleSeriesViewState createState() => _SingleSeriesViewState();
@@ -26,8 +29,25 @@ class _SingleSeriesViewState extends ConsumerState<SingleSeriesView> {
 
   @override
   void initState() {
-    super.initState();
+    // Ensure the widget is initalized
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (widget.seriesId != null) {
+        if (ref.read(libraryItemSearchProvider).filter != widget.seriesId) {
+          ref.read(libraryItemSearchProvider.notifier).state = ref
+              .read(libraryItemSearchProvider)
+              .copyWith(
+                  filter: '${widget.seriesId}',
+                  filterKey: 'series',
+                  sort: 'sequence',
+                  desc: (ref.read(settingsProvider)[Constants.SORT_SERIES_ASC])
+                      ? 1
+                      : 0);
+        }
+      }
+    });
+
     _scrollController.addListener(_onScroll);
+    super.initState();
   }
 
   @override
@@ -75,7 +95,8 @@ class _SingleSeriesViewState extends ConsumerState<SingleSeriesView> {
         !series.filterBy!.contains('series.')) {
       return PlatformScaffold(
           appBar: PlatformAppBar(
-            title: PlatformText(widget.seriesName),
+            title: PlatformText(
+                widget.seriesName ?? series.items.first.seriesName ?? ''),
           ),
           body: Center(child: PlatformText(S.of(context).noSeriesSelected)));
     }
@@ -86,7 +107,7 @@ class _SingleSeriesViewState extends ConsumerState<SingleSeriesView> {
         page: series.page,
         id: series.filterBy!.split('.').last,
         libraryId: '',
-        name: widget.seriesName);
+        name: widget.seriesName ?? series.items.first.seriesName ?? '');
 
     const double screenWidth = 800;
 

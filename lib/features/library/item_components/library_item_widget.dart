@@ -1,3 +1,4 @@
+import 'package:abs_flutter/api/library/collapsed_series.dart';
 import 'package:abs_flutter/features/library/item_components/top_label.dart';
 import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/models/library_preview_item.dart';
@@ -12,15 +13,22 @@ import 'package:go_router/go_router.dart';
 class LibraryItemWidget extends StatelessWidget {
   final LibraryPreviewItem? item;
   final bool isLoading;
+  final CollapsedSeries? collapseSeries;
 
-  const LibraryItemWidget._({super.key, this.item, required this.isLoading});
+  const LibraryItemWidget._(
+      {super.key, this.item, required this.isLoading, this.collapseSeries});
 
   factory LibraryItemWidget.loading() {
-    return const LibraryItemWidget._(isLoading: true);
+    return const LibraryItemWidget._(
+      isLoading: true,
+      collapseSeries: null,
+    );
   }
 
-  factory LibraryItemWidget({required LibraryPreviewItem item}) {
-    return LibraryItemWidget._(item: item, isLoading: false);
+  factory LibraryItemWidget(
+      {required LibraryPreviewItem item, CollapsedSeries? collapseSeries}) {
+    return LibraryItemWidget._(
+        item: item, isLoading: false, collapseSeries: collapseSeries);
   }
 
   @override
@@ -30,7 +38,12 @@ class LibraryItemWidget extends StatelessWidget {
       onTap: isLoading
           ? null
           : () {
-              context.push('/view/${item!.mediaType}/${item!.id}');
+              if (collapseSeries != null) {
+                context.push(
+                    '/series-view/${collapseSeries!.name}/${collapseSeries!.id}');
+              } else {
+                context.push('/view/${item!.mediaType}/${item!.id}');
+              }
             },
       child: _content(context),
     );
