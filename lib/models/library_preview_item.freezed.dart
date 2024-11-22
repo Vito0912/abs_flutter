@@ -34,10 +34,15 @@ mixin _$LibraryPreviewItem {
   set episodeId(String? value) => throw _privateConstructorUsedError;
   String? get seriesLabel => throw _privateConstructorUsedError;
   set seriesLabel(String? value) => throw _privateConstructorUsedError;
+  String? get seriesName => throw _privateConstructorUsedError;
+  set seriesName(String? value) => throw _privateConstructorUsedError;
   bool? get hasBook => throw _privateConstructorUsedError;
   set hasBook(bool? value) => throw _privateConstructorUsedError;
   bool? get hasAudio => throw _privateConstructorUsedError;
   set hasAudio(bool? value) => throw _privateConstructorUsedError;
+  CollapsedSeries? get collapsedSeries => throw _privateConstructorUsedError;
+  set collapsedSeries(CollapsedSeries? value) =>
+      throw _privateConstructorUsedError;
 
   /// Serializes this LibraryPreviewItem to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -63,8 +68,12 @@ abstract class $LibraryPreviewItemCopyWith<$Res> {
       String mediaType,
       String? episodeId,
       String? seriesLabel,
+      String? seriesName,
       bool? hasBook,
-      bool? hasAudio});
+      bool? hasAudio,
+      CollapsedSeries? collapsedSeries});
+
+  $CollapsedSeriesCopyWith<$Res>? get collapsedSeries;
 }
 
 /// @nodoc
@@ -89,8 +98,10 @@ class _$LibraryPreviewItemCopyWithImpl<$Res, $Val extends LibraryPreviewItem>
     Object? mediaType = null,
     Object? episodeId = freezed,
     Object? seriesLabel = freezed,
+    Object? seriesName = freezed,
     Object? hasBook = freezed,
     Object? hasAudio = freezed,
+    Object? collapsedSeries = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -121,6 +132,10 @@ class _$LibraryPreviewItemCopyWithImpl<$Res, $Val extends LibraryPreviewItem>
           ? _value.seriesLabel
           : seriesLabel // ignore: cast_nullable_to_non_nullable
               as String?,
+      seriesName: freezed == seriesName
+          ? _value.seriesName
+          : seriesName // ignore: cast_nullable_to_non_nullable
+              as String?,
       hasBook: freezed == hasBook
           ? _value.hasBook
           : hasBook // ignore: cast_nullable_to_non_nullable
@@ -129,7 +144,25 @@ class _$LibraryPreviewItemCopyWithImpl<$Res, $Val extends LibraryPreviewItem>
           ? _value.hasAudio
           : hasAudio // ignore: cast_nullable_to_non_nullable
               as bool?,
+      collapsedSeries: freezed == collapsedSeries
+          ? _value.collapsedSeries
+          : collapsedSeries // ignore: cast_nullable_to_non_nullable
+              as CollapsedSeries?,
     ) as $Val);
+  }
+
+  /// Create a copy of LibraryPreviewItem
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $CollapsedSeriesCopyWith<$Res>? get collapsedSeries {
+    if (_value.collapsedSeries == null) {
+      return null;
+    }
+
+    return $CollapsedSeriesCopyWith<$Res>(_value.collapsedSeries!, (value) {
+      return _then(_value.copyWith(collapsedSeries: value) as $Val);
+    });
   }
 }
 
@@ -149,8 +182,13 @@ abstract class _$$LibraryPreviewItemImplCopyWith<$Res>
       String mediaType,
       String? episodeId,
       String? seriesLabel,
+      String? seriesName,
       bool? hasBook,
-      bool? hasAudio});
+      bool? hasAudio,
+      CollapsedSeries? collapsedSeries});
+
+  @override
+  $CollapsedSeriesCopyWith<$Res>? get collapsedSeries;
 }
 
 /// @nodoc
@@ -173,8 +211,10 @@ class __$$LibraryPreviewItemImplCopyWithImpl<$Res>
     Object? mediaType = null,
     Object? episodeId = freezed,
     Object? seriesLabel = freezed,
+    Object? seriesName = freezed,
     Object? hasBook = freezed,
     Object? hasAudio = freezed,
+    Object? collapsedSeries = freezed,
   }) {
     return _then(_$LibraryPreviewItemImpl(
       id: null == id
@@ -205,6 +245,10 @@ class __$$LibraryPreviewItemImplCopyWithImpl<$Res>
           ? _value.seriesLabel
           : seriesLabel // ignore: cast_nullable_to_non_nullable
               as String?,
+      seriesName: freezed == seriesName
+          ? _value.seriesName
+          : seriesName // ignore: cast_nullable_to_non_nullable
+              as String?,
       hasBook: freezed == hasBook
           ? _value.hasBook
           : hasBook // ignore: cast_nullable_to_non_nullable
@@ -213,6 +257,10 @@ class __$$LibraryPreviewItemImplCopyWithImpl<$Res>
           ? _value.hasAudio
           : hasAudio // ignore: cast_nullable_to_non_nullable
               as bool?,
+      collapsedSeries: freezed == collapsedSeries
+          ? _value.collapsedSeries
+          : collapsedSeries // ignore: cast_nullable_to_non_nullable
+              as CollapsedSeries?,
     ));
   }
 }
@@ -229,8 +277,10 @@ class _$LibraryPreviewItemImpl extends _LibraryPreviewItem
       required this.mediaType,
       this.episodeId,
       this.seriesLabel,
+      this.seriesName,
       this.hasBook,
-      this.hasAudio})
+      this.hasAudio,
+      this.collapsedSeries})
       : super._();
 
   factory _$LibraryPreviewItemImpl.fromJson(Map<String, dynamic> json) =>
@@ -251,13 +301,17 @@ class _$LibraryPreviewItemImpl extends _LibraryPreviewItem
   @override
   String? seriesLabel;
   @override
+  String? seriesName;
+  @override
   bool? hasBook;
   @override
   bool? hasAudio;
+  @override
+  CollapsedSeries? collapsedSeries;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'LibraryPreviewItem(id: $id, title: $title, subtitle: $subtitle, authors: $authors, mediaType: $mediaType, episodeId: $episodeId, seriesLabel: $seriesLabel, hasBook: $hasBook, hasAudio: $hasAudio)';
+    return 'LibraryPreviewItem(id: $id, title: $title, subtitle: $subtitle, authors: $authors, mediaType: $mediaType, episodeId: $episodeId, seriesLabel: $seriesLabel, seriesName: $seriesName, hasBook: $hasBook, hasAudio: $hasAudio, collapsedSeries: $collapsedSeries)';
   }
 
   @override
@@ -272,8 +326,10 @@ class _$LibraryPreviewItemImpl extends _LibraryPreviewItem
       ..add(DiagnosticsProperty('mediaType', mediaType))
       ..add(DiagnosticsProperty('episodeId', episodeId))
       ..add(DiagnosticsProperty('seriesLabel', seriesLabel))
+      ..add(DiagnosticsProperty('seriesName', seriesName))
       ..add(DiagnosticsProperty('hasBook', hasBook))
-      ..add(DiagnosticsProperty('hasAudio', hasAudio));
+      ..add(DiagnosticsProperty('hasAudio', hasAudio))
+      ..add(DiagnosticsProperty('collapsedSeries', collapsedSeries));
   }
 
   /// Create a copy of LibraryPreviewItem
@@ -302,8 +358,10 @@ abstract class _LibraryPreviewItem extends LibraryPreviewItem {
       required String mediaType,
       String? episodeId,
       String? seriesLabel,
+      String? seriesName,
       bool? hasBook,
-      bool? hasAudio}) = _$LibraryPreviewItemImpl;
+      bool? hasAudio,
+      CollapsedSeries? collapsedSeries}) = _$LibraryPreviewItemImpl;
   _LibraryPreviewItem._() : super._();
 
   factory _LibraryPreviewItem.fromJson(Map<String, dynamic> json) =
@@ -331,11 +389,17 @@ abstract class _LibraryPreviewItem extends LibraryPreviewItem {
   String? get seriesLabel;
   set seriesLabel(String? value);
   @override
+  String? get seriesName;
+  set seriesName(String? value);
+  @override
   bool? get hasBook;
   set hasBook(bool? value);
   @override
   bool? get hasAudio;
   set hasAudio(bool? value);
+  @override
+  CollapsedSeries? get collapsedSeries;
+  set collapsedSeries(CollapsedSeries? value);
 
   /// Create a copy of LibraryPreviewItem
   /// with the given fields replaced by the non-null parameter values.

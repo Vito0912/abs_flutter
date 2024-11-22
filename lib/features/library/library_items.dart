@@ -102,7 +102,9 @@ class _LibraryItemsState extends ConsumerState<LibraryItems> {
           itemCount: libraryItems.items.length,
           controller: _scrollController,
           itemBuilder: (context, index) {
-            return LibraryItemWidget(item: libraryItems.items[index]);
+            return LibraryItemWidget(
+                item: libraryItems.items[index],
+                collapseSeries: libraryItems.items[index].collapsedSeries);
           },
         );
       },

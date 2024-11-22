@@ -17,8 +17,13 @@ _$LibraryPreviewItemImpl _$$LibraryPreviewItemImplFromJson(
       mediaType: json['mediaType'] as String,
       episodeId: json['episodeId'] as String?,
       seriesLabel: json['seriesLabel'] as String?,
+      seriesName: json['seriesName'] as String?,
       hasBook: json['hasBook'] as bool?,
       hasAudio: json['hasAudio'] as bool?,
+      collapsedSeries: json['collapsedSeries'] == null
+          ? null
+          : CollapsedSeries.fromJson(
+              json['collapsedSeries'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$LibraryPreviewItemImplToJson(
@@ -31,6 +36,8 @@ Map<String, dynamic> _$$LibraryPreviewItemImplToJson(
       'mediaType': instance.mediaType,
       'episodeId': instance.episodeId,
       'seriesLabel': instance.seriesLabel,
+      'seriesName': instance.seriesName,
       'hasBook': instance.hasBook,
       'hasAudio': instance.hasAudio,
+      'collapsedSeries': instance.collapsedSeries,
     };

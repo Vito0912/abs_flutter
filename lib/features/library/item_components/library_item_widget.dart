@@ -1,3 +1,4 @@
+import 'package:abs_flutter/api/library/collapsed_series.dart';
 import 'package:abs_flutter/features/library/item_components/top_label.dart';
 import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/models/library_preview_item.dart';
@@ -12,15 +13,22 @@ import 'package:go_router/go_router.dart';
 class LibraryItemWidget extends StatelessWidget {
   final LibraryPreviewItem? item;
   final bool isLoading;
+  final CollapsedSeries? collapseSeries;
 
-  const LibraryItemWidget._({super.key, this.item, required this.isLoading});
+  const LibraryItemWidget._(
+      {super.key, this.item, required this.isLoading, this.collapseSeries});
 
   factory LibraryItemWidget.loading() {
-    return const LibraryItemWidget._(isLoading: true);
+    return const LibraryItemWidget._(
+      isLoading: true,
+      collapseSeries: null,
+    );
   }
 
-  factory LibraryItemWidget({required LibraryPreviewItem item}) {
-    return LibraryItemWidget._(item: item, isLoading: false);
+  factory LibraryItemWidget(
+      {required LibraryPreviewItem item, CollapsedSeries? collapseSeries}) {
+    return LibraryItemWidget._(
+        item: item, isLoading: false, collapseSeries: collapseSeries);
   }
 
   @override
@@ -30,7 +38,12 @@ class LibraryItemWidget extends StatelessWidget {
       onTap: isLoading
           ? null
           : () {
-              context.push('/view/${item!.mediaType}/${item!.id}');
+              if (collapseSeries != null) {
+                context.push(
+                    '/series-view/${collapseSeries!.name}/${collapseSeries!.id}');
+              } else {
+                context.push('/view/${item!.mediaType}/${item!.id}');
+              }
             },
       child: _content(context),
     );
@@ -56,9 +69,14 @@ class LibraryItemWidget extends StatelessWidget {
           aspectRatio: 1,
           child: Stack(
             children: [
-              AlbumImage(item!.id,
-                  hasAudio: item?.hasAudio ?? false,
-                  hasBook: item?.hasBook ?? false),
+              AlbumImage(
+                item!.id,
+                hasAudio: item?.hasAudio ?? false,
+                hasBook: item?.hasBook ?? false,
+                label: collapseSeries?.numBooks != null
+                    ? S.of(context).numBooksInSeries(collapseSeries!.numBooks!)
+                    : null,
+              ),
               if (item!.mediaType != 'podcast' || item!.episodeId != null)
                 Consumer(
                   builder:
@@ -95,11 +113,14 @@ class LibraryItemWidget extends StatelessWidget {
         ),
       ),
       const SizedBox(height: 4.0),
-      PlatformText(item!.title,
+      PlatformText(
+          item?.collapsedSeries == null
+              ? item!.title
+              : item!.collapsedSeries!.name!,
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
           style: Theme.of(context).textTheme.labelLarge),
-      if (item!.subtitle.isNotEmpty)
+      if (item!.subtitle.isNotEmpty && item?.collapsedSeries == null)
         PlatformText(item!.subtitle,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,

@@ -1,8 +1,8 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:abs_flutter/api/library/collapsed_series.dart';
 import 'package:flutter/foundation.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'library_preview_item.freezed.dart';
-
 part 'library_preview_item.g.dart';
 
 @unfreezed
@@ -17,8 +17,10 @@ class LibraryPreviewItem with _$LibraryPreviewItem {
     required String mediaType,
     String? episodeId,
     String? seriesLabel,
+    String? seriesName,
     bool? hasBook,
-    bool? hasAudio
+    bool? hasAudio,
+    CollapsedSeries? collapsedSeries,
   }) = _LibraryPreviewItem;
 
   factory LibraryPreviewItem.fromJson(Map<String, dynamic> json) =>

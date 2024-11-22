@@ -8,7 +8,9 @@ import 'package:abs_flutter/models/library_preview_item.dart';
 import 'package:abs_flutter/models/library_sort.dart';
 import 'package:abs_flutter/provider/library_provider.dart';
 import 'package:abs_flutter/provider/log_provider.dart';
+import 'package:abs_flutter/provider/settings_provider.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
+import 'package:abs_flutter/util/constants.dart';
 import 'package:abs_flutter/util/helper.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -19,8 +21,10 @@ final libraryItemsProvider =
   final ABSApi? api = ref.watch(apiProviderNew);
   final currentLibrary = ref.watch(currentLibraryProvider);
   final librarySort = ref.watch(libraryItemSearchProvider);
+  final setting =
+      ref.watch(specificKeysSettingsProvider([Constants.COLLAPSE_SERIES]));
 
-  return LibrariesNotifier(api, currentLibrary, librarySort);
+  return LibrariesNotifier(api, currentLibrary, librarySort, setting);
 });
 
 class LibrariesNotifier extends StateNotifier<LibraryPreview?> {
@@ -28,6 +32,7 @@ class LibrariesNotifier extends StateNotifier<LibraryPreview?> {
   final ModelLibrary? currentLibrary;
   final LibrarySort sort;
   late final int limit;
+  final Map<String, dynamic> setting;
   LibraryItems? altResponse;
 
   int page = 0;
@@ -40,7 +45,8 @@ class LibrariesNotifier extends StateNotifier<LibraryPreview?> {
           .size
           .height;
 
-  LibrariesNotifier(this.api, this.currentLibrary, this.sort) : super(null) {
+  LibrariesNotifier(this.api, this.currentLibrary, this.sort, this.setting)
+      : super(null) {
     limit = _calculateLoadLimit();
     loadInitialData();
   }
@@ -76,6 +82,10 @@ class LibrariesNotifier extends StateNotifier<LibraryPreview?> {
                 page: page,
                 desc: sort.desc,
                 sort: sort.sort,
+                collapseseries:
+                    (setting[Constants.COLLAPSE_SERIES] ?? false) == true
+                        ? 1
+                        : 0,
                 filter: Helper.sortString(sort.filterKey, sort.filter),
               ));
       altResponse = response.data;
@@ -111,12 +121,11 @@ class LibrariesNotifier extends StateNotifier<LibraryPreview?> {
           seriesLabel: item.media?.seriesSequence,
           mediaType: item.mediaType!,
           hasAudio: item.media?.hasAudio,
-          hasBook: item.media?.hasBook);
+          hasBook: item.media?.hasBook,
+          seriesName: item.collapsedSeries?.name,
+          collapsedSeries: item.collapsedSeries);
       previewItems.add(previewItem);
     }
-
-    print(libraryItem.total);
-    print(libraryItem.page);
 
     LibraryPreview preview = LibraryPreview(
       items: previewItems,
@@ -148,6 +157,7 @@ class LibrariesNotifier extends StateNotifier<LibraryPreview?> {
             subtitle: item.libraryItem!.media!.subtitle ?? "",
             authors: item.libraryItem!.media!.authors ?? [],
             seriesLabel: item.libraryItem!.media!.seriesSequence,
+            seriesName: item.libraryItem!.collapsedSeries?.name,
             mediaType: item.libraryItem!.mediaType!,
             hasAudio: item.libraryItem?.media?.hasAudio,
             hasBook: item.libraryItem?.media?.hasBook);
@@ -186,6 +196,8 @@ class LibrariesNotifier extends StateNotifier<LibraryPreview?> {
               page: page,
               desc: sort.desc,
               sort: sort.sort,
+              collapseseries:
+                  (setting[Constants.COLLAPSE_SERIES] ?? false) == true ? 1 : 0,
               filter: Helper.sortString(sort.filterKey, sort.filter),
             ));
 
