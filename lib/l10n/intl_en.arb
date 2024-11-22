@@ -4,6 +4,8 @@
   "@addANewUser": {},
   "addUser": "Add User",
   "@addUser": {},
+  "added": "Added",
+  "@added": {},
   "aggressiveCaching": "Aggressive Caching",
   "@aggressiveCaching": {},
   "aggressiveCachingDescription": "When enabled, the app will enable more aggressive caching. This includes caching routes that might contain data needing regular updates, such as fetching the progress of all items. In these cases, the last known position will be used unless you specifically open and request a single item. These routes will have a shorter cache duration.",
@@ -508,6 +510,8 @@
   "@multipleServerAdressess": {},
   "mustEnterValidAddress": "You must enter a valid server address",
   "@mustEnterValidAddress": {},
+  "name": "Name",
+  "@name": {},
   "narrators": "Narrators",
   "@narrators": {},
   "newestEpisodes": "Newest Episodes",
@@ -546,6 +550,8 @@
       }
     }
   },
+  "numberOfBooks": "Number of Books",
+  "@numberOfBooks": {},
   "offlineProgress": "Offline Progress",
   "@offlineProgress": {},
   "offlineSavedProgress": "Offline saved progress",
@@ -745,8 +751,5 @@
   "waitingForDownload": "Waiting for download to start",
   "@waitingForDownload": {},
   "year": "Year",
-  "@year": {},
-  "name": "Name",
-  "added": "Added",
-  "numberOfBooks": "Number of Books"
+  "@year": {}
 }
