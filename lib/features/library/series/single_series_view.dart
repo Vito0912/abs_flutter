@@ -77,6 +77,10 @@ class _SingleSeriesViewState extends ConsumerState<SingleSeriesView> {
         await ref
             .read(libraryItemsProvider.notifier)
             .loadMoreData(libraryItems.page + 1);
+
+        if (libraryItems.total <= libraryItems.items.length) {
+          _hasMore = false;
+        }
       }
 
       setState(() {
