@@ -177,7 +177,7 @@ class RoutePattern {
 
   bool matches(String path) {
     final patternSegments = pattern.split('/');
-    final pathSegments = path.split('/');
+    final pathSegments = Uri.parse(path).path.split('/');
 
     if (patternSegments.length != pathSegments.length) {
       return false;

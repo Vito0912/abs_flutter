@@ -41,8 +41,13 @@ class _SingleSeriesViewState extends ConsumerState<SingleSeriesView> {
                   sort: 'sequence',
                   desc: (ref.read(settingsProvider)[Constants.SORT_SERIES_ASC])
                       ? 1
-                      : 0);
+                      : 0,
+                  previous: [
+                ref.read(libraryItemSearchProvider).copyWith(previous: null),
+                ...?ref.read(libraryItemSearchProvider).previous
+              ]);
         }
+        print(ref.read(libraryItemSearchProvider));
       }
     });
 
@@ -122,11 +127,15 @@ class _SingleSeriesViewState extends ConsumerState<SingleSeriesView> {
             icon: const Icon(Icons.arrow_back),
             onPressed: () {
               // Reset filter on back
-              final sortNotifier = ref.read(libraryItemSearchProvider.notifier);
-              sortNotifier.state = sortNotifier.state.copyWith(
-                filter: null,
-                filterKey: null,
-              );
+              ref.read(libraryItemSearchProvider.notifier).state = ref
+                  .read(libraryItemSearchProvider)
+                  .previous!
+                  .first
+                  .copyWith(
+                      previous: ref
+                          .read(libraryItemSearchProvider)
+                          .previous
+                          ?.sublist(1));
               Navigator.pop(context);
             },
           )),
