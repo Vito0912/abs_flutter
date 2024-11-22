@@ -43,6 +43,8 @@ class _NotchContentState extends ConsumerState<NotchContent> {
     final librarySortNotifier = ref.watch(libraryItemSearchProvider.notifier);
     final librarySort = ref.watch(libraryItemSearchProvider);
 
+    searchController.text = librarySort.search ?? "";
+
     return Row(
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,

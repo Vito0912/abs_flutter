@@ -16,9 +16,7 @@ _$MediaMetadataImpl _$$MediaMetadataImplFromJson(Map<String, dynamic> json) =>
       narrators: (json['narrators'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
-      series: (json['series'] as List<dynamic>?)
-          ?.map((e) => Series.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      series: const SeriesConverter().fromJson(json['series']),
       genres:
           (json['genres'] as List<dynamic>?)?.map((e) => e as String).toList(),
       publishedYear: json['publishedYear'] as String?,
@@ -38,7 +36,7 @@ Map<String, dynamic> _$$MediaMetadataImplToJson(_$MediaMetadataImpl instance) =>
       'subtitle': instance.subtitle,
       'authors': instance.authors,
       'narrators': instance.narrators,
-      'series': instance.series,
+      'series': const SeriesConverter().toJson(instance.series),
       'genres': instance.genres,
       'publishedYear': instance.publishedYear,
       'publishedDate': instance.publishedDate,
