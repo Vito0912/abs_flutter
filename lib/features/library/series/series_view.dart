@@ -47,6 +47,9 @@ class _SeriesViewState extends ConsumerState<SeriesView> {
     });
 
     try {
+      if (loadMore) {
+        currentPage++;
+      }
       await ref
           .read(seriesProvider.notifier)
           .fetchSeries(page: currentPage, loadMore: loadMore);
@@ -58,9 +61,6 @@ class _SeriesViewState extends ConsumerState<SeriesView> {
         final fetchedResults = data?.results.length ?? 0;
 
         setState(() {
-          if (loadMore) {
-            currentPage++;
-          }
           hasMore = fetchedResults < totalResults;
           isLoading = false;
         });
@@ -76,7 +76,11 @@ class _SeriesViewState extends ConsumerState<SeriesView> {
   @override
   Widget build(BuildContext context) {
     final seriesAsyncValue = ref.watch(seriesProvider);
-    final search = ref.watch(libraryItemSearchProvider);
+
+    ref.listen(libraryItemSearchProvider, (old, newVal) {
+      hasMore = true;
+      currentPage = 0;
+    });
 
     ref.listen(currentLibraryProvider, (old, newVal) {
       ref.read(seriesProvider.notifier).resetSeries();
@@ -90,11 +94,13 @@ class _SeriesViewState extends ConsumerState<SeriesView> {
 
     return seriesAsyncValue.when(
       data: (data) {
-        if (data == null || data.results == null || data.results!.isEmpty) {
+        if (data == null || data.results.isEmpty) {
           return const Center(child: Text('No series found'));
         }
 
-        final seriesList = data.results!
+        if (data.results.length >= data.total) hasMore = false;
+
+        final seriesList = data.results
             .where((series) => series.books != null && series.books!.isNotEmpty)
             .toList();
 
@@ -145,11 +151,11 @@ class _SeriesViewState extends ConsumerState<SeriesView> {
 
                   final seriesItem = LibrarySeriesPreview(
                     books: books,
-                    total: data.total ?? 0,
-                    page: data.page ?? 0,
+                    total: data.total,
+                    page: data.page,
                     id: currentSeries.id,
                     libraryId: currentSeries.books!.first.libraryId ?? '',
-                    name: currentSeries.name ?? 'Unnamed Series',
+                    name: currentSeries.name,
                   );
 
                   return ItemSeries(series: seriesItem);

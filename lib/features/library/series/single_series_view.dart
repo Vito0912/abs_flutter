@@ -98,6 +98,10 @@ class _SingleSeriesViewState extends ConsumerState<SingleSeriesView> {
   Widget build(BuildContext context) {
     final series = ref.watch(libraryItemsProvider);
 
+    ref.listen(libraryItemSearchProvider, (old, newVal) {
+      _hasMore = true;
+    });
+
     if (series == null) return const Center(child: CircularProgressIndicator());
     if (series.filterBy == null ||
         series.filterBy!.isEmpty ||

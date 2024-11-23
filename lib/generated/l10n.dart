@@ -70,6 +70,16 @@ class S {
     );
   }
 
+  /// `Added`
+  String get added {
+    return Intl.message(
+      'Added',
+      name: 'added',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Aggressive Caching`
   String get aggressiveCaching {
     return Intl.message(
@@ -1460,6 +1470,16 @@ class S {
     );
   }
 
+  /// `Name`
+  String get name {
+    return Intl.message(
+      'Name',
+      name: 'name',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Narrators`
   String get narrators {
     return Intl.message(
@@ -1620,6 +1640,16 @@ class S {
       name: 'numBooksInSeries',
       desc: '',
       args: [numBooks],
+    );
+  }
+
+  /// `Number of Books`
+  String get numberOfBooks {
+    return Intl.message(
+      'Number of Books',
+      name: 'numberOfBooks',
+      desc: '',
+      args: [],
     );
   }
 
@@ -2528,36 +2558,6 @@ class S {
     return Intl.message(
       'Year',
       name: 'year',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Name`
-  String get name {
-    return Intl.message(
-      'Name',
-      name: 'name',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Added`
-  String get added {
-    return Intl.message(
-      'Added',
-      name: 'added',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Number of Books`
-  String get numberOfBooks {
-    return Intl.message(
-      'Number of Books',
-      name: 'numberOfBooks',
       desc: '',
       args: [],
     );
