@@ -135,27 +135,27 @@ class Home extends HookConsumerWidget {
         itemChanged: (index) {
           final sortList = ref.read(libraryItemSearchProvider);
           final validIndexes = [0, 2];
-          if (index != sortList.index && validIndexes.contains(index)) {
-            LibrarySort? previousSort = sortList.previous
+          if (index != sortList.state.index && validIndexes.contains(index)) {
+            LibrarySort? previousSort = sortList.state.previous
                 ?.firstWhereOrNull((LibrarySort sort) => sort.index == index);
 
-            ref.read(libraryItemSearchProvider.notifier).state = ref
-                .read(libraryItemSearchProvider.notifier)
-                .state
-                .copyWith(
+            ref.read(libraryItemSearchProvider.notifier).updateState(
+                ref.read(libraryItemSearchProvider.notifier).state.copyWith(
                     index: index,
                     search: previousSort?.search ?? '',
                     filter: previousSort?.filter,
                     filterKey: previousSort?.filterKey,
                     sort: previousSort?.sort ?? (index == 2 ? 'name' : null),
+                    desc: previousSort?.desc ?? 0,
                     previous: [
-                  ...?sortList.previous?.where((LibrarySort sort) {
-                    return sort.index != index;
-                  }).map((LibrarySort sort) {
-                    return sort.copyWith(previous: null);
-                  }),
-                  sortList.copyWith(previous: null)
-                ]);
+                      ...?sortList.state.previous?.where((LibrarySort sort) {
+                        return sort.index != index;
+                      }).map((LibrarySort sort) {
+                        return sort.copyWith(previous: null);
+                      }),
+                      sortList.state.copyWith(previous: null)
+                    ]),
+                notify: false);
           }
           currentIndex.value = index;
         },

@@ -78,8 +78,8 @@ class _SeriesViewState extends ConsumerState<SeriesView> {
     final seriesAsyncValue = ref.watch(seriesProvider);
 
     ref.listen(libraryItemSearchProvider, (old, newVal) {
-      hasMore = true;
-      currentPage = 0;
+      if (hasMore == false) hasMore = true;
+      if (currentPage != 0) currentPage = 0;
     });
 
     ref.listen(currentLibraryProvider, (old, newVal) {

@@ -3,6 +3,7 @@ import 'package:abs_flutter/features/library/item_components/library_item_widget
 import 'package:abs_flutter/features/library/notch/notch_content.dart';
 import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/models/library_series_preview.dart';
+import 'package:abs_flutter/models/library_sort.dart';
 import 'package:abs_flutter/provider/library_items_provider.dart';
 import 'package:abs_flutter/provider/settings_provider.dart';
 import 'package:abs_flutter/util/constants.dart';
@@ -23,34 +24,21 @@ class SingleSeriesView extends ConsumerStatefulWidget {
 
 class _SingleSeriesViewState extends ConsumerState<SingleSeriesView> {
   final ScrollController _scrollController = ScrollController();
+  late final LibrarySort _sort;
+
   bool _isLoadingMore = false;
   // TODO: Find a better way to check if the list has more items
   bool _hasMore = true;
 
   @override
   void initState() {
-    // Ensure the widget is initalized
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (widget.seriesId != null) {
-        if (ref.read(libraryItemSearchProvider).filter != widget.seriesId) {
-          ref.read(libraryItemSearchProvider.notifier).state = ref
-              .read(libraryItemSearchProvider)
-              .copyWith(
-                  filter: '${widget.seriesId}',
-                  filterKey: 'series',
-                  sort: 'sequence',
-                  desc: (ref.read(settingsProvider)[Constants.SORT_SERIES_ASC])
-                      ? 1
-                      : 0,
-                  previous: [
-                ref.read(libraryItemSearchProvider).copyWith(previous: null),
-                ...?ref.read(libraryItemSearchProvider).previous
-              ]);
-        }
-        print(ref.read(libraryItemSearchProvider));
-      }
-    });
-
+    _sort = LibrarySort(
+      index: 3,
+      filter: widget.seriesId,
+      filterKey: 'series',
+      sort: 'sequence',
+      desc: (ref.read(settingsProvider)[Constants.SORT_SERIES_ASC]) ? 1 : 0,
+    );
     _scrollController.addListener(_onScroll);
     super.initState();
   }
@@ -77,10 +65,10 @@ class _SingleSeriesViewState extends ConsumerState<SingleSeriesView> {
         _isLoadingMore = true;
       });
 
-      final libraryItems = ref.read(libraryItemsProvider);
+      final libraryItems = ref.read(libraryItemsWithSortProvider(_sort));
       if (libraryItems != null) {
         await ref
-            .read(libraryItemsProvider.notifier)
+            .read(libraryItemsWithSortProvider(_sort).notifier)
             .loadMoreData(libraryItems.page + 1);
 
         if (libraryItems.total <= libraryItems.items.length) {
@@ -96,11 +84,7 @@ class _SingleSeriesViewState extends ConsumerState<SingleSeriesView> {
 
   @override
   Widget build(BuildContext context) {
-    final series = ref.watch(libraryItemsProvider);
-
-    ref.listen(libraryItemSearchProvider, (old, newVal) {
-      _hasMore = true;
-    });
+    final series = ref.watch(libraryItemsWithSortProvider(_sort));
 
     if (series == null) return const Center(child: CircularProgressIndicator());
     if (series.filterBy == null ||
@@ -118,7 +102,7 @@ class _SingleSeriesViewState extends ConsumerState<SingleSeriesView> {
         books: series.items,
         total: series.total,
         page: series.page,
-        id: series.filterBy!.split('.').last,
+        id: widget.seriesId ?? '',
         libraryId: '',
         name: widget.seriesName ?? series.items.first.seriesName ?? '');
 
@@ -130,16 +114,6 @@ class _SingleSeriesViewState extends ConsumerState<SingleSeriesView> {
           leading: PlatformIconButton(
             icon: const Icon(Icons.arrow_back),
             onPressed: () {
-              // Reset filter on back
-              ref.read(libraryItemSearchProvider.notifier).state = ref
-                  .read(libraryItemSearchProvider)
-                  .previous!
-                  .first
-                  .copyWith(
-                      previous: ref
-                          .read(libraryItemSearchProvider)
-                          .previous
-                          ?.sublist(1));
               Navigator.pop(context);
             },
           )),

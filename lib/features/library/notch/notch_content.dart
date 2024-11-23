@@ -47,7 +47,7 @@ class _NotchContentState extends ConsumerState<NotchContent> {
     final librarySortNotifier = ref.watch(libraryItemSearchProvider.notifier);
     final librarySort = ref.watch(libraryItemSearchProvider);
 
-    searchController.text = librarySort.search ?? "";
+    searchController.text = librarySort.state.search ?? "";
 
     return Row(
       mainAxisSize: MainAxisSize.min,
@@ -101,8 +101,8 @@ class _NotchContentState extends ConsumerState<NotchContent> {
                     overwriteSortOptions: widget.sortKeys,
                   ),
                   if (!widget.disableFilter) const FilterButton(),
-                  if (librarySort.search == null ||
-                      librarySort.search!.isNotEmpty)
+                  if (librarySort.state.search == null ||
+                      librarySort.state.search!.isNotEmpty)
                     PlatformIconButton(
                       icon: Icon(PlatformIcons(context).clear),
                       onPressed: () {
