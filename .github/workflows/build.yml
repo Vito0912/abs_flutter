@@ -2,6 +2,13 @@ name: Flutter Build
 
 on:
   workflow_dispatch:
+  pull_request:
+    types:
+      - closed
+    branches-ignore:
+      - main
+    paths:
+      - 'lib/**'
 
 env:
   KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
@@ -15,7 +22,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Update version in pubspec.yaml
         run: |
@@ -50,6 +57,7 @@ jobs:
           echo "The version in pubspec.yaml has been updated to $new_version and msix_version to $msix_version."
 
       - name: Commit changes
+        if: github.ref == 'refs/heads/main'
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
@@ -151,6 +159,12 @@ jobs:
             app-release.aab
             web-release.zip
 
+      - name: Upload single APK file
+        uses: actions/upload-artifact@v4
+        with:
+          name: android-apk
+          path: app-release.apk
+
       - name: Clean up
         if: always()
         run: |
@@ -217,8 +231,21 @@ jobs:
             windows-installer-release-${{ env.VERSION }}.msix
             windows-installer-release-${{ env.VERSION }}-store.msix
 
+      - name: Upload single MSIX file
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-msix
+          path: windows-installer-release-${{ env.VERSION }}.msix
+
+      - name: Upload single MSIX file
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-zip
+          path: windows-Release-${{ env.VERSION }}.zip
+
   create-release:
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' && github.event_name == 'workflow_dispatch'
     needs: [build-ubuntu, build-windows]
     permissions:
       contents: write
@@ -269,6 +296,7 @@ jobs:
 
   publish-release:
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' && github.event_name == 'workflow_dispatch'
     needs: [create-release]
     steps:
       - name: Checkout code
@@ -305,6 +333,7 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' && github.event_name == 'workflow_dispatch'
     needs: build-ubuntu
     environment:
       name: github-pages
