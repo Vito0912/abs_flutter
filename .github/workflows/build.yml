@@ -2,9 +2,7 @@ name: Flutter Build
 
 on:
   workflow_dispatch:
-  pull_request:
-    types:
-      - closed
+  push:
     branches-ignore:
       - main
     paths:
