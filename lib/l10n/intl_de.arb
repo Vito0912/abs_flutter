@@ -745,5 +745,11 @@
   "showMediaType": "Zeige Medienart",
   "@showMediaType": {},
   "showMediaTypeDescription": "Zeigt ein Medienart-Badge unten an jedem Element an.",
-  "@showMediaTypeDescription": {}
+  "@showMediaTypeDescription": {},
+  "numberOfBooks": "Anzahl Bücher",
+  "@numberOfBooks": {},
+  "added": "Hinzugefügt",
+  "@added": {},
+  "name": "Name",
+  "@name": {}
 }
