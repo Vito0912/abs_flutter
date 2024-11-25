@@ -1,5 +1,4 @@
 import 'package:abs_flutter/generated/l10n.dart';
-import 'package:abs_flutter/models/library_sort.dart';
 import 'package:abs_flutter/provider/library_items_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -38,8 +37,7 @@ class SortButton extends ConsumerWidget {
     );
   }
 
-  void _showSortOptions(
-      BuildContext context, StateController<LibrarySort> sort) {
+  void _showSortOptions(BuildContext context, LibraryItemSearchProvider sort) {
     showPlatformModalSheet(
       context: context,
       builder: (BuildContext context) {

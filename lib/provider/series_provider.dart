@@ -14,8 +14,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 final seriesProvider =
     StateNotifierProvider<SeriesNotifier, AsyncValue<SeriesItems?>>((ref) {
   final librarySortState = ref.watch(libraryItemSearchProvider);
-
-  return SeriesNotifier(ref, librarySortState);
+  return SeriesNotifier(ref, librarySortState.state);
 });
 
 class SeriesNotifier extends StateNotifier<AsyncValue<SeriesItems?>> {

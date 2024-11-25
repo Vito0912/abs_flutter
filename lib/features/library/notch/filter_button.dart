@@ -20,19 +20,19 @@ class FilterButton extends HookConsumerWidget {
     final filterString = useState<String?>(null);
 
     useEffect(() {
-      if (sort.filterKey != null && sort.filterKey!.isNotEmpty) {
-        filterString.value =
-            _getSelectedFilterLabel(sort.filterKey!, sort.filter, ref);
+      if (sort.state.filterKey != null && sort.state.filterKey!.isNotEmpty) {
+        filterString.value = _getSelectedFilterLabel(
+            sort.state.filterKey!, sort.state.filter, ref);
       } else {
         filterString.value = null;
       }
       return null;
-    }, [sort.filterKey, sort.filter]);
+    }, [sort.state.filterKey, sort.state.filter]);
 
     return filter.when(
       data: (data) {
         IconData icon = Icons.filter_alt_outlined;
-        if (sort.filterKey != null && sort.filterKey!.isNotEmpty) {
+        if (sort.state.filterKey != null && sort.state.filterKey!.isNotEmpty) {
           icon = Icons.filter_alt_off_outlined;
         } else {
           icon = Icons.filter_alt_outlined;

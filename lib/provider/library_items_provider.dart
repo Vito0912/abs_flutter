@@ -12,6 +12,7 @@ import 'package:abs_flutter/provider/settings_provider.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
 import 'package:abs_flutter/util/constants.dart';
 import 'package:abs_flutter/util/helper.dart';
+import 'package:collection/collection.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -24,7 +25,17 @@ final libraryItemsProvider =
   final setting =
       ref.watch(specificKeysSettingsProvider([Constants.COLLAPSE_SERIES]));
 
-  return LibrariesNotifier(api, currentLibrary, librarySort, setting);
+  return LibrariesNotifier(api, currentLibrary, librarySort.state, setting);
+});
+
+final libraryItemsWithSortProvider = StateNotifierProvider.family<
+    LibrariesNotifier, LibraryPreview?, LibrarySort>((ref, sort) {
+  final ABSApi? api = ref.watch(apiProviderNew);
+  final currentLibrary = ref.watch(currentLibraryProvider);
+  final setting =
+      ref.watch(specificKeysSettingsProvider([Constants.COLLAPSE_SERIES]));
+
+  return LibrariesNotifier(api, currentLibrary, sort, setting);
 });
 
 class LibrariesNotifier extends StateNotifier<LibraryPreview?> {
@@ -227,9 +238,6 @@ class LibrariesNotifier extends StateNotifier<LibraryPreview?> {
     final LibraryItems libraryItems = response;
     final LibraryItems newLibraryItems = newResponse.data!;
 
-    print(libraryItems.results.length);
-    print(newLibraryItems.results.length);
-
     LibraryItems? returnItems = libraryItems.copyWith(
       results: [...libraryItems.results, ...newLibraryItems.results],
       total: newLibraryItems.total,
@@ -240,6 +248,67 @@ class LibrariesNotifier extends StateNotifier<LibraryPreview?> {
   }
 }
 
-final libraryItemSearchProvider = StateProvider<LibrarySort>((ref) {
-  return LibrarySort(index: 0);
+class LibraryItemSearchProvider extends ChangeNotifier {
+  LibraryItemSearchProvider() {
+    _librarySort = LibrarySort(index: 0);
+  }
+
+  late LibrarySort _librarySort;
+
+  LibrarySort get state => _librarySort;
+
+  set state(LibrarySort value) {
+    _librarySort = value;
+    log('Updated state (notify: true)', name: 'LibraryItemSearchProvider');
+    notifyListeners();
+  }
+
+  updateState(LibrarySort value, {bool notify = true}) {
+    _librarySort = value;
+    log('Updated state (notify: $notify)', name: 'LibraryItemSearchProvider');
+    if (notify) notifyListeners();
+  }
+
+  set silentState(LibrarySort value) {
+    _librarySort = value;
+  }
+
+  void addTemporarily(LibrarySort value, {bool notify = true}) {
+    _librarySort = value.copyWith(
+      previous: [
+        _librarySort.copyWith(previous: null),
+        ...?_librarySort.previous?.map((e) => e.copyWith(previous: null))
+      ],
+    );
+    if (notify) notifyListeners();
+  }
+
+  void removeTemporarily({bool notify = true}) {
+    _librarySort = (_librarySort.previous?.first ?? LibrarySort(index: -1))
+        .copyWith(
+            previous: _librarySort.previous?.length == 1
+                ? null
+                : _librarySort.previous?.sublist(1));
+    if (notify) notifyListeners();
+  }
+
+  LibrarySort setByIndex(int index, {bool notify = true}) {
+    LibrarySort? librarySort = _librarySort.previous
+            ?.firstWhereOrNull((element) => element.index == index) ??
+        LibrarySort(index: index);
+    _librarySort = librarySort.copyWith(
+      previous: [
+        _librarySort.copyWith(previous: null),
+        ...?_librarySort.previous?.where((element) => element.index != index)
+      ],
+    );
+
+    if (notify) notifyListeners();
+    return _librarySort;
+  }
+}
+
+final libraryItemSearchProvider =
+    ChangeNotifierProvider<LibraryItemSearchProvider>((ref) {
+  return LibraryItemSearchProvider();
 });
