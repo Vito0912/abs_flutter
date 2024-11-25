@@ -109,6 +109,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "addANewUser":
             MessageLookupByLibrary.simpleMessage("Füge einen Nutzer hinzu"),
         "addUser": MessageLookupByLibrary.simpleMessage("Benutzer hinzufügen"),
+        "added": MessageLookupByLibrary.simpleMessage("Hinzugefügt"),
         "aggressiveCaching":
             MessageLookupByLibrary.simpleMessage("Aggressives Caching"),
         "aggressiveCachingDescription": MessageLookupByLibrary.simpleMessage(
@@ -209,6 +210,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "downloadsOnlyViaWifi": MessageLookupByLibrary.simpleMessage(
             "Nur über W-Lan herunterladen"),
         "duration": MessageLookupByLibrary.simpleMessage("Dauer"),
+        "ebookreader": MessageLookupByLibrary.simpleMessage("eBook Reader"),
         "editQueue":
             MessageLookupByLibrary.simpleMessage("Warteschlange bearbeiten"),
         "enableNotificationsDownload": MessageLookupByLibrary.simpleMessage(
@@ -291,6 +293,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Wenn du mehrere Server verwenden willst, kannst du diese später hinzufügen"),
         "mustEnterValidAddress": MessageLookupByLibrary.simpleMessage(
             "Du musst eine valide Serveradresse eingeben"),
+        "name": MessageLookupByLibrary.simpleMessage("Name"),
         "narrators": MessageLookupByLibrary.simpleMessage("Erzähler"),
         "newestEpisodes":
             MessageLookupByLibrary.simpleMessage("Neuste Episoden"),
@@ -315,11 +318,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "notificationHeading": MessageLookupByLibrary.simpleMessage(
             "Benachrichtigungen sollten aktiviert sein"),
         "numBooksInSeries": m30,
+        "numberOfBooks": MessageLookupByLibrary.simpleMessage("Anzahl Bücher"),
         "offlineProgress":
             MessageLookupByLibrary.simpleMessage("Offline Fortschritte"),
         "offlineSavedProgress": MessageLookupByLibrary.simpleMessage(
             "Offline gespeicherte Fortschritte"),
         "ok": MessageLookupByLibrary.simpleMessage("OK"),
+        "open": MessageLookupByLibrary.simpleMessage("Öffnen"),
         "openDownloads":
             MessageLookupByLibrary.simpleMessage("Öffne Downloads"),
         "openProjectLink":
@@ -385,6 +390,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Kontowechsler anzeigen"),
         "showAccountSwitcherDescription": MessageLookupByLibrary.simpleMessage(
             "Aktiviere diese Option, um der App-Leiste eine Symbolschaltfläche für den schnellen Userwechsel hinzuzufügen."),
+        "showMediaType":
+            MessageLookupByLibrary.simpleMessage("Zeige Medienart"),
+        "showMediaTypeDescription": MessageLookupByLibrary.simpleMessage(
+            "Zeigt ein Medienart-Badge unten an jedem Element an."),
         "showProgressPerChapters": MessageLookupByLibrary.simpleMessage(
             "Zeige Fortschritt pro Kapitel"),
         "signOut": MessageLookupByLibrary.simpleMessage("Abmelden"),

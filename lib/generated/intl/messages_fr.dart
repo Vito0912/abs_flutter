@@ -109,6 +109,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Ajouter un nouvel utilisateur"),
         "addUser":
             MessageLookupByLibrary.simpleMessage("Ajouter un utilisateur"),
+        "added": MessageLookupByLibrary.simpleMessage("Ajouté"),
         "aggressiveCaching": MessageLookupByLibrary.simpleMessage(
             "Mise en mémoire tampon agressive"),
         "aggressiveCachingDescription": MessageLookupByLibrary.simpleMessage(
@@ -152,6 +153,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Continuer l\'écoute"),
         "continueSeries":
             MessageLookupByLibrary.simpleMessage("Continuer les Séries"),
+        "copy": MessageLookupByLibrary.simpleMessage("Copier"),
+        "copyAnonymous": MessageLookupByLibrary.simpleMessage(
+            "Copier (tentative de suppression des données personnelles)"),
+        "copyLogs": MessageLookupByLibrary.simpleMessage("Copier les journaux"),
+        "copyLogsDescription": MessageLookupByLibrary.simpleMessage(
+            "Important:\nEn cliquant sur \"Copier\", vous aller transférer tous les journaux actuellement affichés, dans votre presse-papier. Ceci inclut les données enregistrées depuis le dernier lancement ou le dernier nettoyage de l\'application. Ces journaux peuvent contenir des données sensibles, comme des clefs, noms d\'utilisateur, adresse email, adresse URL du serveur. Soyez vigilants de l\'endroit ou vous déposez ces informations ! \\n Si vous choisissez de \"Copier et tenter de masquer les données sensibles\", l\'application tentera de masquer les objets comme des clefs, noms d\'utilisateur, adresse email, adresse URL du serveur. Vous restez responsables de passer en revue des journaux afin de vous assurer que toutes les données personnelles ont été effacées."),
         "create": MessageLookupByLibrary.simpleMessage("Créer"),
         "createBookmark":
             MessageLookupByLibrary.simpleMessage("Créer un favori"),
@@ -209,6 +216,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "downloadsOnlyViaWifi": MessageLookupByLibrary.simpleMessage(
             "Téléchargement par le WiFi uniquement"),
         "duration": MessageLookupByLibrary.simpleMessage("Durée"),
+        "ebookreader": MessageLookupByLibrary.simpleMessage("Lecteur eBook"),
         "editQueue": MessageLookupByLibrary.simpleMessage("Editer la File"),
         "enableNotificationsDownload": MessageLookupByLibrary.simpleMessage(
             "Veuillez activer les notifications pour suivre l\'avancement du téléchargement, et être capable de télécharger les fichiers en arrière-plan."),
@@ -258,6 +266,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Lorsque cette option est activée, le lecteur ira à la dernière position lorsque le bouton lecture est pressé"),
         "language": MessageLookupByLibrary.simpleMessage("Langue"),
         "languages": MessageLookupByLibrary.simpleMessage("Langues"),
+        "largestItems":
+            MessageLookupByLibrary.simpleMessage("Objets les plus grands"),
         "last30Days": MessageLookupByLibrary.simpleMessage("30 derniers jours"),
         "last7Days": MessageLookupByLibrary.simpleMessage("7 derniers jours"),
         "libraries": MessageLookupByLibrary.simpleMessage("Bibliothèques"),
@@ -277,6 +287,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Lorsque cette option est activée, la barre de progression dans la notification du média est verrouillée, le système d\'exploitation doit le supporter"),
         "logging": MessageLookupByLibrary.simpleMessage("Journalisation"),
         "logs": MessageLookupByLibrary.simpleMessage("Journaux"),
+        "longestItems":
+            MessageLookupByLibrary.simpleMessage("Objets les plus longs"),
         "markItemsFinished": MessageLookupByLibrary.simpleMessage(
             "Marquer les éléments en Terminé"),
         "markItemsFinishedAfterDescription": MessageLookupByLibrary.simpleMessage(
@@ -292,6 +304,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Si vous souhaitez utiliser plusieurs adresses de serveur, vous pourrez les ajouter plus tard"),
         "mustEnterValidAddress": MessageLookupByLibrary.simpleMessage(
             "Vous devez saisir une adresse de serveur valide"),
+        "name": MessageLookupByLibrary.simpleMessage("Nom"),
         "narrators": MessageLookupByLibrary.simpleMessage("Narrateurs"),
         "newestEpisodes":
             MessageLookupByLibrary.simpleMessage("Derniers Episodes"),
@@ -317,11 +330,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "notificationHeading": MessageLookupByLibrary.simpleMessage(
             "Les notifications devraient être activées"),
         "numBooksInSeries": m30,
+        "numberOfBooks":
+            MessageLookupByLibrary.simpleMessage("Nombre de livres"),
         "offlineProgress":
             MessageLookupByLibrary.simpleMessage("Progression Hors-Ligne"),
         "offlineSavedProgress": MessageLookupByLibrary.simpleMessage(
             "Sauvegarde de la progression Hors-Ligne"),
         "ok": MessageLookupByLibrary.simpleMessage("OK"),
+        "open": MessageLookupByLibrary.simpleMessage("Ouvrir"),
         "openDownloads":
             MessageLookupByLibrary.simpleMessage("Ouvrir les téléchargements"),
         "openProjectLink":
@@ -387,6 +403,10 @@ class MessageLookup extends MessageLookupByLibrary {
             "Afficher le sélecteur de compte"),
         "showAccountSwitcherDescription": MessageLookupByLibrary.simpleMessage(
             "Activez cette option pour ajouter une icône bouton dans la barre de l\'application pour accéder rapidement au sélecteur de compte. Cela va réduire la taille de la barre de l\'application."),
+        "showMediaType":
+            MessageLookupByLibrary.simpleMessage("Afficher le type de média"),
+        "showMediaTypeDescription": MessageLookupByLibrary.simpleMessage(
+            "Afficher en bas de chaque objet un badge indiquant le type de média."),
         "showProgressPerChapters": MessageLookupByLibrary.simpleMessage(
             "Afficher la Progression par Chapitre"),
         "signOut": MessageLookupByLibrary.simpleMessage("Se Déconnecter"),
@@ -415,6 +435,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "timerText": m33,
         "title": MessageLookupByLibrary.simpleMessage("Titre"),
         "today": MessageLookupByLibrary.simpleMessage("Aujourd\'hui"),
+        "topAuthors": MessageLookupByLibrary.simpleMessage("Top Auteurs"),
+        "topGenres": MessageLookupByLibrary.simpleMessage("Top Genres"),
+        "totalAudioTracks":
+            MessageLookupByLibrary.simpleMessage("Total des pistes audio"),
+        "totalAuthors":
+            MessageLookupByLibrary.simpleMessage("Total des Auteurs"),
+        "totalDuration": MessageLookupByLibrary.simpleMessage("Durée totale"),
+        "totalGenres": MessageLookupByLibrary.simpleMessage("Total Genres"),
+        "totalItems": MessageLookupByLibrary.simpleMessage("Total d\'Objets"),
+        "totalSize": MessageLookupByLibrary.simpleMessage("Taille totale"),
         "totalTimeListened":
             MessageLookupByLibrary.simpleMessage("Temps d\'écoute total"),
         "tryAgain": MessageLookupByLibrary.simpleMessage("Nouvel Essai"),
