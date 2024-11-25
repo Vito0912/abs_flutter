@@ -1,4 +1,6 @@
 // GoRouter configuration
+import 'dart:io';
+
 import 'package:abs_flutter/features/auth/server_selection.dart';
 import 'package:abs_flutter/features/download/download_library.dart';
 import 'package:abs_flutter/features/download/download_page.dart';
@@ -14,6 +16,7 @@ import 'package:abs_flutter/features/player/player_wrapper.dart';
 import 'package:abs_flutter/features/progress/progress_page.dart';
 import 'package:abs_flutter/features/settings/setting_wrapper.dart';
 import 'package:abs_flutter/features/stats/stats_wrapper.dart';
+import 'package:abs_flutter/util/android_prevent_closing.dart';
 import 'package:abs_flutter/util/helper.dart';
 import 'package:abs_flutter/widgets/tray_manager.dart';
 import 'package:flutter/foundation.dart';
@@ -26,6 +29,7 @@ final router = GoRouter(
         builder: (context, state, child) {
           if (kIsWeb) return child;
           if (Helper.isDesktop()) return TrayManager(child);
+          if (Platform.isAndroid) return AndroidPreventClosing(child: child);
           return child;
         },
         routes: [
