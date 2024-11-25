@@ -29,7 +29,6 @@ final router = GoRouter(
         builder: (context, state, child) {
           if (kIsWeb) return child;
           if (Helper.isDesktop()) return TrayManager(child);
-          if (Platform.isAndroid) return AndroidPreventClosing(child: child);
           return child;
         },
         routes: [
@@ -77,7 +76,12 @@ final router = GoRouter(
                 ),
                 GoRoute(
                     path: '/',
-                    builder: (context, state) => const Home(),
+                    builder: (context, state) {
+                      if (!kIsWeb && Platform.isAndroid) {
+                        return const AndroidPreventClosing(child: Home());
+                      }
+                      return const Home();
+                    },
                     routes: [
                       GoRoute(
                           path: 'view/:mediaType/:itemId',
