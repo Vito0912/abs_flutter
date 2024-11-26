@@ -11,6 +11,18 @@ For Android, iOS*<sup>1,2</sup>, macOS*<sup>1,2</sup>, Windows, Linux, and Web*<
 
 “Buch” (German for "book") + "able" = "Buchable"
 
+### Demo
+
+To explore the app, you can either log in to your private server or use the official ABS demo server. The demo server is an nice way to experience the app, especially when testing the web version of Buchable.
+
+**Demo URL:** [https://audiobooks.dev/](https://audiobooks.dev/)  
+**Login Credentials:**  
+- **Username:** `demo`  
+- **Password:** `demo`  
+
+*Note:* Demo user accounts are automatically deleted after 48 hours.
+
+
 ## Important
 > If you're interested in trying out the Android version of this app, please reach out to me via [email](mailto:fito0912@duck.com) (fito0912@duck.com). I'll add you to the beta testing group on the Google Play Store. It is currently private. Your participation is crucial, as I need testers to be able to create a public beta.
 >
