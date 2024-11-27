@@ -53,6 +53,7 @@ final Map<String, dynamic> defaultSettings = {
   Constants.DOWNLOAD_PATH: null,
   Constants.SORT_SERIES_ASC: false,
   Constants.SHOW_MEDIA_TYPE: true,
+  Constants.DISABEL_VIBRATION: false,
 };
 
 final Map<String, String> supportedLocales = {
