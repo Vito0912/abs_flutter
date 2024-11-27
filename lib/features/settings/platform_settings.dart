@@ -60,13 +60,6 @@ class PlatformSettings extends ConsumerWidget {
                   items: supportedLocales,
                   keyValue: Constants.LANGUAGE),
               SwitchTile(
-                leading: const Icon(Clarity.switch_line),
-                title: S.of(context).showAccountSwitcher,
-                keyValue: Constants.ACCOUNT_SWITCHER,
-                defaultValue: true,
-                toolTipText: S.of(context).showAccountSwitcherDescription,
-              ),
-              SwitchTile(
                 leading: const Icon(
                   OctIcons.sidebar_collapse,
                   size: 18,

@@ -1,6 +1,5 @@
 import 'package:abs_flutter/features/home/components/library_chip.dart';
 import 'package:abs_flutter/features/home/components/user_badge.dart';
-import 'package:abs_flutter/features/home/components/user_switcher.dart';
 import 'package:abs_flutter/features/library/library_items_wrapper.dart';
 import 'package:abs_flutter/features/library/notch/notch_content.dart';
 import 'package:abs_flutter/features/library/series/series_view_wrapper.dart';
@@ -80,8 +79,6 @@ class Home extends HookConsumerWidget {
         ),
         trailingActions: [
           const LibraryChip(),
-          if ((settings[Constants.ACCOUNT_SWITCHER] ?? false) == true)
-            const UserSwitcher(),
           Tooltip(
             message: S.of(context).stats,
             child: IconButton(
