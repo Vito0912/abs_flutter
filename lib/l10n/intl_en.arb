@@ -751,5 +751,6 @@
   "waitingForDownload": "Waiting for download to start",
   "@waitingForDownload": {},
   "year": "Year",
-  "@year": {}
+  "@year": {},
+  "disableVibration": "Disable Vibration"
 }

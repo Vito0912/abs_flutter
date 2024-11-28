@@ -2562,6 +2562,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Disable Vibration`
+  String get disableVibration {
+    return Intl.message(
+      'Disable Vibration',
+      name: 'disableVibration',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

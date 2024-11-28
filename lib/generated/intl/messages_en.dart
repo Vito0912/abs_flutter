@@ -186,6 +186,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "descending": MessageLookupByLibrary.simpleMessage("Descending"),
         "description": MessageLookupByLibrary.simpleMessage("Description"),
         "deviceInfo": m22,
+        "disableVibration":
+            MessageLookupByLibrary.simpleMessage("Disable Vibration"),
         "disabled": MessageLookupByLibrary.simpleMessage("Disabled"),
         "discover": MessageLookupByLibrary.simpleMessage("Discover"),
         "domainOrIp": MessageLookupByLibrary.simpleMessage("Domain or IP"),

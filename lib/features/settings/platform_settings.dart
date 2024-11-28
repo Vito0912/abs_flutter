@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:abs_flutter/features/settings/components/custom_tile.dart';
 import 'package:abs_flutter/features/settings/components/drop_down_tile.dart';
 import 'package:abs_flutter/features/settings/components/navigation_tile.dart';
+import 'package:abs_flutter/features/settings/components/settings_tile_wrapper.dart';
 import 'package:abs_flutter/features/settings/components/slider_tile.dart';
 import 'package:abs_flutter/features/settings/components/switch_tile.dart';
 import 'package:abs_flutter/generated/l10n.dart';
@@ -17,14 +20,19 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:settings_ui/settings_ui.dart';
+import 'package:vibration/vibration.dart';
 
 class PlatformSettings extends ConsumerWidget {
   const PlatformSettings({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final settings = ref.watch(specificKeysSettingsProvider(
-        [Constants.CACHING_ENABLED, Constants.LANGUAGE, Constants.DARK_MODE]));
+    final settings = ref.watch(specificKeysSettingsProvider([
+      Constants.CACHING_ENABLED,
+      Constants.LANGUAGE,
+      Constants.DARK_MODE,
+      Constants.SHAKE_RESET_TIMER
+    ]));
     return PlatformScaffold(
       appBar: PlatformAppBar(
         title: PlatformText(S.of(context).settings),
@@ -142,11 +150,29 @@ class PlatformSettings extends ConsumerWidget {
                 defaultValue: false,
                 toolTipText: S.of(context).progressAsChaptersDescription,
               ),
-              SwitchTile(
-                  leading: const Icon(AntDesign.shake_outline),
-                  title: S.of(context).shakeResetTimer,
-                  keyValue: Constants.SHAKE_RESET_TIMER,
-                  defaultValue: false),
+              //TODO: Check if device supports sensor
+              if (kIsWeb || Platform.isAndroid || Platform.isIOS)
+                SwitchTile(
+                    leading: const Icon(AntDesign.shake_outline),
+                    title: S.of(context).shakeResetTimer,
+                    keyValue: Constants.SHAKE_RESET_TIMER,
+                    defaultValue: false),
+              if (settings[Constants.SHAKE_RESET_TIMER])
+                SettingsTileWrapper(
+                  child: FutureBuilder(
+                      future: Vibration.hasVibrator(),
+                      builder: (context, snapshot) {
+                        if (snapshot.hasData && snapshot.data == true) {
+                          return SwitchTile(
+                              leading: const Icon(Bootstrap.phone_vibrate),
+                              title: S.of(context).disableVibration,
+                              keyValue: Constants.DISABEL_VIBRATION,
+                              defaultValue: false);
+                        } else {
+                          return const SizedBox.shrink();
+                        }
+                      }),
+                ),
               SwitchTile(
                 leading: const Icon(OctIcons.lock),
                 title: S.of(context).lockProgressBar,

@@ -1,6 +1,6 @@
 import 'dart:async';
-import 'package:abs_flutter/provider/log_provider.dart';
 
+import 'package:abs_flutter/provider/log_provider.dart';
 import 'package:abs_flutter/provider/player_provider.dart';
 import 'package:abs_flutter/provider/player_status_provider.dart';
 import 'package:abs_flutter/provider/settings_provider.dart';
@@ -34,12 +34,16 @@ class TimerNotifier extends StateNotifier<double?> {
           name: 'SleepTimer');
       if (_duration != null && !_isPaused) {
         updateTimer(_duration!);
-        final hasVibration = await Vibration.hasVibrator();
-        final hasAmplitudeControl = await Vibration.hasAmplitudeControl();
-        if (hasAmplitudeControl != null && hasAmplitudeControl) {
-          Vibration.vibrate(duration: 250, intensities: [100]);
-        } else if (hasVibration != null && hasVibration) {
-          Vibration.vibrate();
+        final settings = ref
+            .read(specificKeysSettingsProvider([Constants.DISABEL_VIBRATION]));
+        if (!settings[Constants.DISABEL_VIBRATION]) {
+          final hasVibration = await Vibration.hasVibrator();
+          final hasAmplitudeControl = await Vibration.hasAmplitudeControl();
+          if (hasAmplitudeControl != null && hasAmplitudeControl) {
+            Vibration.vibrate(duration: 250, intensities: [100]);
+          } else if (hasVibration != null && hasVibration) {
+            Vibration.vibrate();
+          }
         }
       }
     });
@@ -69,7 +73,8 @@ class TimerNotifier extends StateNotifier<double?> {
 
   void _startTimer() {
     _timer?.cancel(); // Cancel any existing timer before starting a new one
-    final settings = ref.read(settingsProvider);
+    final settings =
+        ref.read(specificKeysSettingsProvider([Constants.SHAKE_RESET_TIMER]));
     if (settings[Constants.SHAKE_RESET_TIMER]) _shakeHandler.start();
 
     // When the timer starts to volume down the player
