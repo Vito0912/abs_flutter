@@ -336,6 +336,8 @@
       }
     }
   },
+  "disableVibration": "Disable Vibration",
+  "@disableVibration": {},
   "disabled": "Disabled",
   "@disabled": {},
   "discover": "Discover",
@@ -751,6 +753,5 @@
   "waitingForDownload": "Waiting for download to start",
   "@waitingForDownload": {},
   "year": "Year",
-  "@year": {},
-  "disableVibration": "Disable Vibration"
+  "@year": {}
 }
