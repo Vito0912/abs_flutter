@@ -23,6 +23,7 @@ class Constants {
   static const String SORT_SERIES_ASC = 'sortSeriesAsc';
   static const String SHOW_MEDIA_TYPE = 'showMediaType';
   static const String DISABEL_VIBRATION = 'disableVibration';
+  static const String DISABLE_CHAPTER_HANDLER = 'disableChapterHandler';
 
   static const String BOOK = 'book';
   static const String PODCAST = 'podcast';

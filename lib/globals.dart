@@ -54,6 +54,7 @@ final Map<String, dynamic> defaultSettings = {
   Constants.SORT_SERIES_ASC: false,
   Constants.SHOW_MEDIA_TYPE: true,
   Constants.DISABEL_VIBRATION: false,
+  Constants.DISABLE_CHAPTER_HANDLER: false,
 };
 
 final Map<String, String> supportedLocales = {
