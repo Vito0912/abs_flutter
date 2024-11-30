@@ -42,6 +42,9 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
     });
 
     _player.playbackEventStream.map(_transformEvent).pipe(playbackState);
+    _player.playingStream.listen((event) {
+      _transformEvent(null);
+    });
 
     _player.playerStateStream.distinct().listen((event) {
       if (seeking == true) {
@@ -358,14 +361,14 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
   ///
   ///
 
-  PlaybackState _transformEvent(PlaybackEvent event) {
+  PlaybackState _transformEvent(PlaybackEvent? event) {
     return PlaybackState(
       controls: [
         if (kIsWeb || !Platform.isAndroid) MediaControl.skipToPrevious,
         MediaControl.rewind,
         if (_player.playing) MediaControl.pause else MediaControl.play,
-        MediaControl.stop,
         MediaControl.fastForward,
+        MediaControl.stop,
         if (kIsWeb || !Platform.isAndroid) MediaControl.skipToNext
       ],
       systemActions: {
@@ -373,25 +376,25 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
         MediaAction.rewind,
         if (!(_settingsProvider?['lockSeekingNotification'] ?? false))
           MediaAction.seek,
-        MediaAction.fastForward,
         MediaAction.stop,
+        MediaAction.fastForward,
         MediaAction.setSpeed,
         if (kIsWeb || !Platform.isAndroid) MediaAction.skipToNext
       },
-      androidCompactActionIndices: const [1, 2, 3],
+      androidCompactActionIndices: const [1, 2, 0],
       processingState: const {
         ProcessingState.idle: AudioProcessingState.idle,
         ProcessingState.loading: AudioProcessingState.loading,
         ProcessingState.buffering: AudioProcessingState.buffering,
         ProcessingState.ready: AudioProcessingState.ready,
         ProcessingState.completed: AudioProcessingState.completed,
-      }[_player.processingState]!,
+      }[event?.processingState ?? _player.processingState]!,
       playing: _player.playing,
       updatePosition: position,
-      bufferedPosition: _player.bufferedPosition,
+      bufferedPosition: position,
       speed: _player.speed,
-      queueIndex: event.currentIndex,
-      captioningEnabled: false,
+      queueIndex: 0,
+      captioningEnabled: true,
     );
   }
 

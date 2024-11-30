@@ -42,6 +42,10 @@
                 android:name="com.google.firebase.messaging.default_notification_color"
                 android:resource="@android:color/black" />
 
+        <meta-data
+            android:name="com.google.android.gms.car.application"
+            android:resource="@xml/automotive_app_desc" />
+
         <service android:name="com.ryanheise.audioservice.AudioService"
                  android:foregroundServiceType="mediaPlayback"
                  android:exported="true" tools:ignore="Instantiatable">
