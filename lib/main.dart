@@ -80,6 +80,7 @@ void main() async {
       androidNotificationChannelName: 'ABSPlayback',
       preloadArtwork: true,
       androidNotificationOngoing: false,
+      androidStopForegroundOnPause: false,
     ),
   );
 
