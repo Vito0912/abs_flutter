@@ -37,7 +37,7 @@ While the current version may not include all the features of the first-party ap
 *<sup>3</sup> The web version requires the server to allow CORS.
 
 ## Translation
-For more details and to contribute, please refer to [TRANSLATION.md](TRANSLATION.md).  
+For more details and to contribute, please refer to [TRANSLATION.md](md/TRANSLATION.md).  
 All translations are managed through [Weblate Hosted](https://hosted.weblate.org/projects/audiobookshelf-flutter-client/app/).
 
 A big thank you to [Weblate](https://weblate.org) for providing their services!
@@ -95,7 +95,7 @@ As for Linux, the app hasn’t been tested on that platform yet.
    **HTML Support** - Converts HTML in descriptions and makes links clickable.\
 🚀 **Fast Loading** - Option to enable fast loading that loads even the biggest libraries in a fraction of time.\
 🚗 **Car Player Mode (Big Buttons)** - Big buttons for easy control while driving.\
-⚙️ **Many Settings** - Customize the app to your liking. Head to [Settings](SETTINGS.md) to learn more.\
+⚙️ **Many Settings** - Customize the app to your liking. Head to [Settings](md/SETTINGS.md) to learn more.\
    **Tray Icon** - Control the app from the tray icon. (Desktops)\
 
 ### Additional to First-party App
@@ -173,7 +173,7 @@ As for Linux, the app hasn’t been tested on that platform yet.
 >
 > From enabling dark mode to setting download preferences, you have full control over your listening experience.
 >
-> Jump to [Settings](SETTINGS.md)
+> Jump to [Settings](md/SETTINGS.md)
 
 <img src="/images/settings.png" alt="Settings Screen" style="width: 300px">
 
@@ -216,6 +216,9 @@ As for Linux, the app hasn’t been tested on that platform yet.
 - The search is limited to 25 results, because there is no pagination available. This is a limitation of the Audiobookshelf API.
 
 # Contributing
+
+See [CONTRIBUTING.md](md/CONTRIBUTING.md) for more information.
+
 Please sort the keys in the `en.json` file (and other edited) alphabetically before submitting a pull request.\
 You can use the following command to sort the keys:
 ```bash
