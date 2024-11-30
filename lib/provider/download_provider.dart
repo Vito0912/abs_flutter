@@ -89,14 +89,31 @@ class DownloadListNotifier extends StateNotifier<List<DownloadInfo>> {
   }
 
   void updateDownloadFile(DownloadInfo current, DownloadFile file) {
-    final download = state.firstWhereOrNull((d) => d == current);
+    final download = state.firstWhereOrNull((d) {
+      return d.itemId == current.itemId &&
+          d.libraryId == current.libraryId &&
+          d.userId == current.userId;
+    });
     if (download == null) {
       return log('Download not found', name: 'updateDownloadFile');
     }
-    final files =
-        download.files.map((f) => f.index == file.index ? file : f).toList();
-    final newDownload = download.copyWith(files: files);
-    state = state.map((d) => d == current ? newDownload : d).toList();
+
+    for (var i = 0; i < download.files.length; i++) {
+      if (download.files[i].filename == file.filename) {
+        download.files[i] = file;
+        break;
+      }
+    }
+
+    for (var i = 0; i < state.length; i++) {
+      if (state[i].itemId == current.itemId &&
+          state[i].libraryId == current.libraryId &&
+          state[i].userId == current.userId) {
+        state[i] = download;
+        break;
+      }
+    }
+
     _saveDownloads();
   }
 

@@ -69,11 +69,14 @@ class DownloadLibrary extends HookConsumerWidget {
 
           return ListTile(
             title: Text(item.displayName),
-            subtitle: Text(item.files.length.toString()),
+            subtitle: Text('${item.files.length.toString()} media files'),
             onTap: () {
               context.push('/view/$itemType/${item.itemId}');
             },
-            leading: AlbumImage(item.itemId),
+            leading: AlbumImage(
+              item.itemId,
+              size: 48,
+            ),
             trailing: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -136,8 +139,6 @@ class DownloadLibrary extends HookConsumerWidget {
                             );
                           });
                     }),
-                const SizedBox(width: 16),
-                Icon(PlatformIcons(context).rightChevron),
               ],
             ),
           );

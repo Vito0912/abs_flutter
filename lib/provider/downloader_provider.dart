@@ -199,9 +199,9 @@ class DownloadProvider extends ChangeNotifier {
       downloadTasks.add(_download(downloadUrl, file.filename, name, item.id));
     }
 
-    List<String?> results = await Future.wait(downloadTasks);
-
     downloadList.add(downloadInfo);
+
+    List<String?> results = await Future.wait(downloadTasks);
 
     if (results.length != files.length) {
       log('Failed to download all files. Removing files',
