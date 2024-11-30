@@ -132,10 +132,8 @@ As for Linux, the app hasn’t been tested on that platform yet.
 |-----------------------------------------------------------------------------|--------------|----------------------------------------------------------------------------|--------------------------------------------------------------|
 | [openapi_generator](https://pub.dev/packages/openapi_generator) (flutter)   | BSD-3-Clause | [devappliance.com](https://pub.dev/publishers/devappliance.com/packages)   | [GitHub](https://github.com/gibahjoe/openapi-generator-dart) |
 | OpenAPI Generator                                                           | Apache-2.0   | -                                                                          | [GitHub](https://github.com/OpenAPITools/openapi-generator)  |
-| [Riverpod](https://pub.dev/packages/flutter_riverpod)                       | MIT          | [dash-overflow.net](https://pub.dev/publishers/dash-overflow.net/packages) | [GitHub](https://github.com/rrousselGit/riverpod)            | [GitHub](
-| [OpenLeaf](https://github.com/JideGuru/FlutterEbookApp) for modified iridum | Apache-2.0   | [JideGuru](https://github.com/JideGuru)                                    | [GitHub](https://github.com/JideGuru/FlutterEbookApp)        |
-| [iridium_reader_widget](https://github.com/Mantano/iridium_reader_widget)   | -            | [Mantano](https://github.com/Mantano)                                      | [GitHub](https://github.com/Mantano/iridium_reader_widget)   |
-| [iridium](https://github.com/Mantano/iridium)                               | -            | [Mantano](https://github.com/Mantano)                                      | [GitHub](https://github.com/Mantano/iridium)                 |
+| [Riverpod](https://pub.dev/packages/flutter_riverpod)                       | MIT          | [dash-overflow.net](https://pub.dev/publishers/dash-overflow.net/packages) | [GitHub](https://github.com/rrousselGit/riverpod)            |
+| [Freezed](https://pub.dev/packages/freezed)                                 | MIT          | [dash-overflow.net](https://pub.dev/publishers/dash-overflow.net/packages) | [GitHub](https://github.com/rrousselGit/freezed)             |
 
 > Thanks to everybody contributing to [Audiobookshelf](https://github.com/advplyr/audiobookshelf) to make this software so awesome.
 > Thanks to everybody who contributed to [Audiobookshelf-App](https://github.com/advplyr/audiobookshelf-app) to make this software so awesome.
@@ -158,7 +156,6 @@ As for Linux, the app hasn’t been tested on that platform yet.
 > Additionally, the chapter view allows you to navigate through your audiobook easily, and the sleep timer can be reset simply by shaking your device.
 
 <img src="/images/player.png" alt="Rich Player Interface" style="width: 300px">
-<img src="/images/player_small.png" alt="Player Compact View" style="width: 300px">
 
 #### Listen Offline!
 > With offline listening, you can enjoy your audiobooks even when you’re off the grid, whether traveling, commuting, or in an area with limited connectivity. 
@@ -170,7 +167,6 @@ As for Linux, the app hasn’t been tested on that platform yet.
 <img src="/images/download_view.png" alt="Download View" style="width: 300px">
 <img src="/images/download_see.png" alt="Downloaded Files View" style="width: 300px">
 <img src="/images/download.png" alt="Download Button" style="width: 300px">
-<img src="/images/no_internet.png" alt="No Internet Connection" style="width: 300px">
 
 #### Rich Settings
 > The settings section offers a comprehensive range of customization options, allowing you to tailor the app to your specific needs. 
@@ -207,6 +203,8 @@ As for Linux, the app hasn’t been tested on that platform yet.
 <img src="/images/stats_1.png" alt="Listening Stats" style="width: 300px">
 <img src="/images/stats_2.png" alt="Additional Listening Stats" style="width: 300px">
 
+#### Logs
+<img src="/images/logs.png" alt="Logs" style="width: 300px">
 
 ### Known Bugs
 
