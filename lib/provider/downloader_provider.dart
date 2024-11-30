@@ -232,9 +232,12 @@ class DownloadProvider extends ChangeNotifier {
         log('Creating directory: ${dir.path}', name: 'DownloadProvider');
       }
       log('Writing meta.json to: ${results.first!}', name: 'DownloadProvider');
+      log('If the message `created file` is not show, the files is not created.',
+          name: 'DownloadProvider');
       final file = File(results.first!);
-      await file.writeAsString(json);
-      log('Writing meta.json to: ${results.first}', name: 'DownloadProvider');
+      log('File path init ($file)', name: 'DownloadProvider');
+      await file.writeAsString(json, flush: true);
+      log('Created file', name: 'DownloadProvider');
     } else {
       log('Failed to save meta.json. Removing files', name: 'DownloadProvider');
       ref.read(downloadListProvider.notifier).removeDownload(downloadInfo);
