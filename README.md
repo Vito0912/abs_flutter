@@ -46,6 +46,10 @@ A big thank you to [Weblate](https://weblate.org) for providing their services!
 <img src="https://hosted.weblate.org/widget/audiobookshelf-flutter-client/app/multi-blue.svg" alt="Translation status" />
 </a>
 
+Preview
+
+<img src="/images/introduction.png" alt="Download View" style="width: 600px">
+
 ## Platform Matrix
 
 | Platform Matrix                       | Android |      iOS       | Windows | Linux |      Web       |
