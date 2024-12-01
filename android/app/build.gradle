@@ -68,6 +68,10 @@ android {
         release {
             keyAlias System.getenv("KEY_ALIAS") ?: keystoreProperties['keyAlias']
             keyPassword System.getenv("KEY_PASSWORD") ?: keystoreProperties['keyPassword']
+            def storeFilePath = System.getenv("STORE_FILE") ?: keystoreProperties['storeFile']
+            if (storeFilePath) {
+                storeFile file(storeFilePath)
+            }
             storeFile file(System.getenv("STORE_FILE") ?: keystoreProperties['storeFile'])
             storePassword System.getenv("STORE_PASSWORD") ?: keystoreProperties['storePassword']
         }

@@ -130,6 +130,10 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
 
     await _player.setAudioSource(source);
 
+    setSpeed(_settingsProvider?[Constants.PLAYBACK_SPEED] ?? 1.0);
+
+    setVolume(_settingsProvider?[Constants.VOLUME] ?? 1.0);
+
     await play();
   }
 

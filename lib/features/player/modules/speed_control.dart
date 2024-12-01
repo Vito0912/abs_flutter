@@ -1,9 +1,12 @@
 import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/provider/player_provider.dart';
+import 'package:abs_flutter/provider/user_provider.dart';
+import 'package:abs_flutter/util/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class SpeedControl extends StatelessWidget {
+class SpeedControl extends ConsumerWidget {
   final PlayerProvider player;
   final Stream<double> speedStream;
   final double? size;
@@ -22,10 +25,11 @@ class SpeedControl extends StatelessWidget {
   };
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return PlatformPopupMenu(
       options: speedOptions.entries
-          .map((entry) => _buildSpeedOption(entry.key, entry.value, context))
+          .map((entry) =>
+              _buildSpeedOption(entry.key, entry.value, context, ref))
           .toList(),
       icon: Tooltip(
         message: S.of(context).playbackSpeed,
@@ -52,10 +56,26 @@ class SpeedControl extends StatelessWidget {
   }
 
   PopupMenuOption _buildSpeedOption(
-      String key, double value, BuildContext context) {
+      String key, double value, BuildContext context, WidgetRef ref) {
     return PopupMenuOption(
         label: key,
         onTap: (option) {
+          final users = ref.read(usersProvider);
+          final userIndex = ref.read(selectedUserProvider);
+          final user = users[userIndex];
+
+          final updatedUser = user.copyWith(
+            setting: user.setting!.copyWith(
+              settings: {
+                ...user.setting!.settings,
+                Constants.PLAYBACK_SPEED: value
+              },
+            ),
+          );
+
+          ref
+              .read(usersProvider.notifier)
+              .updateUserAtIndex(userIndex, updatedUser);
           player.audioService.player.setSpeed(value);
         });
   }

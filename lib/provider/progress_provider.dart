@@ -84,7 +84,8 @@ class ProgressProvider extends ChangeNotifier {
           MediaProgressBuilder builder = MediaProgressBuilder()
             ..currentTime = item.currentTime
             ..duration = item.durationOfItem
-            ..progress = item.currentTime / item.durationOfItem;
+            ..progress = item.currentTime / item.durationOfItem
+            ..lastUpdate = item.createdAt?.millisecondsSinceEpoch;
 
           String key = id + (episodeId ?? '');
           progress ??= {};
@@ -101,7 +102,11 @@ class ProgressProvider extends ChangeNotifier {
         MediaProgress fetchedProgress = response.data!;
 
         String key = id + (episodeId ?? '');
-        progress![key] = fetchedProgress;
+
+        if ((progress![key]?.lastUpdate ?? 0) <=
+            (fetchedProgress.lastUpdate ?? 0)) {
+          progress![key] = fetchedProgress;
+        }
 
         // Notify listeners only if the progress of the specific item has changed
         if (!mapEquals(previousProgress, progress)) {
