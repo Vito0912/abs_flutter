@@ -6,6 +6,8 @@
   "@addUser": {},
   "added": "Added",
   "@added": {},
+  "advanced": "Advanced",
+  "@advanced": {},
   "aggressiveCaching": "Aggressive Caching",
   "@aggressiveCaching": {},
   "aggressiveCachingDescription": "When enabled, the app will enable more aggressive caching. This includes caching routes that might contain data needing regular updates, such as fetching the progress of all items. In these cases, the last known position will be used unless you specifically open and request a single item. These routes will have a shorter cache duration.",
@@ -336,6 +338,10 @@
       }
     }
   },
+  "disableSkippingChapters": "Disable skipping chapters",
+  "@disableSkippingChapters": {},
+  "disableSkippingChaptersDescription": "This will disable the ability to skip chapters from OUTSIDE the application (e.g., via a headset or notification controls). Enable this if you want your headphones to use fast-forward and rewind functions instead of skipping chapters.",
+  "@disableSkippingChaptersDescription": {},
   "disableVibration": "Disable Vibration",
   "@disableVibration": {},
   "disabled": "Disabled",
@@ -753,8 +759,5 @@
   "waitingForDownload": "Waiting for download to start",
   "@waitingForDownload": {},
   "year": "Year",
-  "@year": {},
-  "advanced": "Advanced",
-  "disableSkippingChapters": "Disable skipping chapters",
-  "disableSkippingChaptersDescription": "This will disable the ability to skip chapters from OUTSIDE the application (e.g., via a headset or notification controls). Enable this if you want your headphones to use fast-forward and rewind functions instead of skipping chapters."
+  "@year": {}
 }
