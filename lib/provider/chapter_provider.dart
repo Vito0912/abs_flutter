@@ -16,7 +16,7 @@ class ChapterNotifier extends StateNotifier<Chapter?> {
 
   void _listenToPositionStream() {
     // Abonniert den Positions-Stream und aktualisiert das Kapitel, wenn nötig
-    _positionSubscription = player.positionStream
+    _positionSubscription = player.audioService.positionStream
         .distinct() // Nur bei Änderungen reagieren
         .listen((position) {
       _updateChapter(position.inMilliseconds.toDouble());

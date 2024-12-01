@@ -753,5 +753,8 @@
   "waitingForDownload": "Waiting for download to start",
   "@waitingForDownload": {},
   "year": "Year",
-  "@year": {}
+  "@year": {},
+  "advanced": "Advanced",
+  "disableSkippingChapters": "Disable skipping chapters",
+  "disableSkippingChaptersDescription": "This will disable the ability to skip chapters from OUTSIDE the application (e.g., via a headset or notification controls). Enable this if you want your headphones to use fast-forward and rewind functions instead of skipping chapters."
 }

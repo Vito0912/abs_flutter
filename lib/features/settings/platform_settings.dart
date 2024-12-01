@@ -239,6 +239,17 @@ class PlatformSettings extends ConsumerWidget {
             ],
           ),
           SettingsSection(
+            title: PlatformText(S.of(context).advanced),
+            tiles: [
+              SwitchTile(
+                  leading: const Icon(Icons.bluetooth),
+                  title: S.of(context).disableSkippingChapters,
+                  toolTipText: S.of(context).disableSkippingChaptersDescription,
+                  keyValue: Constants.DISABLE_CHAPTER_HANDLER,
+                  defaultValue: false),
+            ],
+          ),
+          SettingsSection(
             title: PlatformText(S.of(context).user),
             tiles: [
               NavigationTile(

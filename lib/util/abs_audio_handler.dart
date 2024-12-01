@@ -67,7 +67,7 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
       }
     });
 
-    _player.positionStream.listen((event) async {
+    positionStream.listen((event) async {
       if (mediaItem.value != null &&
           mediaItem.value!.duration != null &&
           position >= mediaItem.value!.duration!) {
@@ -262,7 +262,7 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
     }
     final List<Chapter> chapters =
         jsonC.map((e) => Chapter.fromJson(e)).toList();
-    Duration position = _player.position;
+    Duration position = this.position;
 
     for (final chapter in chapters) {
       Duration start = Duration(seconds: chapter.start.round());
@@ -304,7 +304,7 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
   Future<void> seekForward(bool begin) async {
     final settings = _container.read(settingsProvider);
     final int seconds = settings['fastForwardSeconds'] ?? 10;
-    final Duration position = _player.position;
+    final Duration position = this.position;
     final Duration newPosition = position + Duration(seconds: seconds);
     await seek(newPosition);
   }
@@ -314,7 +314,7 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
   Future<void> seekBackward(bool begin) async {
     final settings = _container.read(settingsProvider);
     final int seconds = settings['rewindSeconds'] ?? 10;
-    final Duration position = _player.position;
+    final Duration position = this.position;
     final Duration newPosition = position - Duration(seconds: seconds);
     await seek(newPosition);
   }
@@ -323,7 +323,7 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
   Future<void> fastForward() async {
     final settings = _container.read(settingsProvider);
     final seconds = settings['fastForwardSeconds'] ?? 10;
-    final Duration position = _player.position;
+    final Duration position = this.position;
     final Duration newPosition =
         position + Duration(seconds: double.parse(seconds.toString()).toInt());
     await seek(newPosition);
@@ -333,7 +333,7 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
   Future<void> rewind() async {
     final settings = _container.read(settingsProvider);
     final seconds = settings['rewindSeconds'] ?? 10;
-    final Duration position = _player.position;
+    final Duration position = this.position;
     final Duration newPosition =
         position - Duration(seconds: double.parse(seconds.toString()).toInt());
     await seek(newPosition);
@@ -342,17 +342,26 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
   // Actually this should skip to next item. For us to next chapter
   @override
   Future<void> skipToNext() async {
-    Chapter? currentChapter = getCurrentChapter();
-    if (currentChapter != null && isNextChapter()) {
-      seek(Duration(seconds: currentChapter.end.toInt() + 1));
+    if (_container.read(settingsProvider)[Constants.DISABLE_CHAPTER_HANDLER]) {
+      fastForward();
+    } else {
+      Chapter? currentChapter = getCurrentChapter();
+      log(currentChapter?.toString() ?? 'No chapter found');
+      if (currentChapter != null && isNextChapter()) {
+        seek(Duration(seconds: currentChapter.end.toInt() + 1));
+      }
     }
   }
 
   @override
   Future<void> skipToPrevious() async {
-    Chapter? currentChapter = getCurrentChapter();
-    if (currentChapter != null) {
-      seek(Duration(seconds: currentChapter.start.toInt() - 1));
+    if (_container.read(settingsProvider)[Constants.DISABLE_CHAPTER_HANDLER]) {
+      rewind();
+    } else {
+      Chapter? currentChapter = getCurrentChapter();
+      if (currentChapter != null) {
+        seek(Duration(seconds: currentChapter.start.toInt() - 1));
+      }
     }
   }
 

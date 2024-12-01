@@ -108,6 +108,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "addANewUser": MessageLookupByLibrary.simpleMessage("Add a New User"),
         "addUser": MessageLookupByLibrary.simpleMessage("Add User"),
         "added": MessageLookupByLibrary.simpleMessage("Added"),
+        "advanced": MessageLookupByLibrary.simpleMessage("Advanced"),
         "aggressiveCaching":
             MessageLookupByLibrary.simpleMessage("Aggressive Caching"),
         "aggressiveCachingDescription": MessageLookupByLibrary.simpleMessage(
@@ -186,6 +187,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "descending": MessageLookupByLibrary.simpleMessage("Descending"),
         "description": MessageLookupByLibrary.simpleMessage("Description"),
         "deviceInfo": m22,
+        "disableSkippingChapters":
+            MessageLookupByLibrary.simpleMessage("Disable skipping chapters"),
+        "disableSkippingChaptersDescription": MessageLookupByLibrary.simpleMessage(
+            "This will disable the ability to skip chapters from OUTSIDE the application (e.g., via a headset or notification controls). Enable this if you want your headphones to use fast-forward and rewind functions instead of skipping chapters."),
         "disableVibration":
             MessageLookupByLibrary.simpleMessage("Disable Vibration"),
         "disabled": MessageLookupByLibrary.simpleMessage("Disabled"),

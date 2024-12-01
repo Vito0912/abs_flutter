@@ -720,6 +720,16 @@ class S {
     );
   }
 
+  /// `Disable Vibration`
+  String get disableVibration {
+    return Intl.message(
+      'Disable Vibration',
+      name: 'disableVibration',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Disabled`
   String get disabled {
     return Intl.message(
@@ -2563,11 +2573,31 @@ class S {
     );
   }
 
-  /// `Disable Vibration`
-  String get disableVibration {
+  /// `Advanced`
+  String get advanced {
     return Intl.message(
-      'Disable Vibration',
-      name: 'disableVibration',
+      'Advanced',
+      name: 'advanced',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Disable skipping chapters`
+  String get disableSkippingChapters {
+    return Intl.message(
+      'Disable skipping chapters',
+      name: 'disableSkippingChapters',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This will disable the ability to skip chapters from OUTSIDE the application (e.g., via a headset or notification controls). Enable this if you want your headphones to use fast-forward and rewind functions instead of skipping chapters.`
+  String get disableSkippingChaptersDescription {
+    return Intl.message(
+      'This will disable the ability to skip chapters from OUTSIDE the application (e.g., via a headset or notification controls). Enable this if you want your headphones to use fast-forward and rewind functions instead of skipping chapters.',
+      name: 'disableSkippingChaptersDescription',
       desc: '',
       args: [],
     );
