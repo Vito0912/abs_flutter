@@ -81,6 +81,8 @@ void main() async {
       preloadArtwork: true,
       androidNotificationOngoing: false,
       androidStopForegroundOnPause: false,
+      androidNotificationIcon: 'mipmap/ic_media_monochrome',
+      notificationColor: Color(0xFF2196F3),
     ),
   );
 
