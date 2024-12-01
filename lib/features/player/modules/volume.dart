@@ -1,8 +1,11 @@
 import 'package:abs_flutter/provider/player_provider.dart';
+import 'package:abs_flutter/provider/user_provider.dart';
+import 'package:abs_flutter/util/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class Volume extends StatefulWidget {
+class Volume extends ConsumerStatefulWidget {
   const Volume({
     super.key,
     required this.volumeStream,
@@ -18,7 +21,7 @@ class Volume extends StatefulWidget {
   _VolumeState createState() => _VolumeState();
 }
 
-class _VolumeState extends State<Volume> {
+class _VolumeState extends ConsumerState<Volume> {
   final GlobalKey _buttonKey = GlobalKey();
   OverlayEntry? _overlayEntry;
 
@@ -74,6 +77,24 @@ class _VolumeState extends State<Volume> {
                           value: snapshot.data ?? 0.0,
                           onChanged: (double value) {
                             widget.player.audioService.setVolume(value);
+                          },
+                          onChangeEnd: (double value) {
+                            final users = ref.read(usersProvider);
+                            final userIndex = ref.read(selectedUserProvider);
+                            final user = users[userIndex];
+
+                            final updatedUser = user.copyWith(
+                              setting: user.setting!.copyWith(
+                                settings: {
+                                  ...user.setting!.settings,
+                                  Constants.VOLUME: value
+                                },
+                              ),
+                            );
+
+                            ref
+                                .read(usersProvider.notifier)
+                                .updateUserAtIndex(userIndex, updatedUser);
                           },
                         ),
                       ),

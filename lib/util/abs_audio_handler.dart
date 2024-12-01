@@ -14,6 +14,7 @@ import 'package:abs_flutter/provider/queue_provider.dart';
 import 'package:abs_flutter/provider/session_provider.dart';
 import 'package:abs_flutter/provider/settings_provider.dart';
 import 'package:abs_flutter/provider/sleep_timer_provider.dart';
+import 'package:abs_flutter/util/constants.dart';
 import 'package:abs_flutter/util/tray_menu_handler.dart';
 import 'package:audio_service/audio_service.dart';
 import 'package:flutter/foundation.dart';
@@ -128,6 +129,10 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
     mediaItem.add(item);
 
     await _player.setAudioSource(source);
+
+    setSpeed(_settingsProvider?[Constants.PLAYBACK_SPEED] ?? 1.0);
+
+    setVolume(_settingsProvider?[Constants.VOLUME] ?? 1.0);
 
     await play();
   }
