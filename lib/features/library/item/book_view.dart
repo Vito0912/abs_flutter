@@ -37,7 +37,10 @@ class BookView extends ConsumerWidget {
         return (item == null || item.media?.bookMedia == null)
             ? ErrorPage(
                 shortMessage: S.of(context).errorItemNotFound,
-                longMessage: S.of(context).itemNotFoundDescription)
+                longMessage: S.of(context).itemNotFoundDescription,
+                onRetry: () {
+                  ref.refresh(itemProvider(itemId));
+                })
             : _buildContent(context, ref, item, currentUser!);
       },
       loading: () {
@@ -49,7 +52,10 @@ class BookView extends ConsumerWidget {
         log("$error\n$track", name: 'item_view');
         return ErrorPage(
             shortMessage: S.of(context).errorItemNotFound,
-            longMessage: error.toString());
+            longMessage: error.toString(),
+            onRetry: () {
+              ref.refresh(itemProvider(itemId));
+            });
       },
     );
   }

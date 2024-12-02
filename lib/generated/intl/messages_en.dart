@@ -359,6 +359,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Restart Required"),
         "restartRequiredDescription": MessageLookupByLibrary.simpleMessage(
             "Please restart the app to apply the changes."),
+        "retry": MessageLookupByLibrary.simpleMessage("Retry"),
         "rewind": MessageLookupByLibrary.simpleMessage("Rewind"),
         "rewindSeconds": MessageLookupByLibrary.simpleMessage("Rewind Seconds"),
         "rewindSecondsDescription": MessageLookupByLibrary.simpleMessage(

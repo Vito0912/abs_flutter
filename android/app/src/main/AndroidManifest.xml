@@ -36,11 +36,11 @@
 
         <meta-data
                 android:name="com.google.firebase.messaging.default_notification_icon"
-                android:resource="@mipmap/launcher_icon" />
+                android:resource="@mipmap/ic_media_monochrome" />
 
         <meta-data
                 android:name="com.google.firebase.messaging.default_notification_color"
-                android:resource="@android:color/black" />
+                android:resource="@android:color/white" />
 
         <service android:name="com.ryanheise.audioservice.AudioService"
                  android:foregroundServiceType="mediaPlayback"

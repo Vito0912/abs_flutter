@@ -13,7 +13,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:path/path.dart' as p;
 
 final itemProvider =
-    FutureProvider.family<LibraryItem?, String>((ref, id) async {
+    FutureProvider.autoDispose.family<LibraryItem?, String>((ref, id) async {
   final api = ref.watch(apiProviderNew);
 
   if (api == null) {
@@ -38,8 +38,6 @@ final itemProvider =
     }
 
     try {
-      print(directory);
-
       final String newFilePath = p.join(directory, 'meta.json');
       final File file = File(newFilePath);
 
