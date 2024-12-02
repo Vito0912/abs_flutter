@@ -14,6 +14,7 @@ import 'package:abs_flutter/provider/session_provider.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:uuid/uuid.dart';
 
@@ -22,7 +23,8 @@ final connectionProvider =
   return ConnectionNotifier(ref);
 });
 
-class ConnectionNotifier extends StateNotifier<bool> {
+class ConnectionNotifier extends StateNotifier<bool>
+    with WidgetsBindingObserver {
   final Ref ref;
   Timer? _serverReachabilityTimer;
   final _connectivity = Connectivity();
@@ -33,6 +35,21 @@ class ConnectionNotifier extends StateNotifier<bool> {
     _connectivity.onConnectivityChanged.listen(_handleConnectivityChange);
     _checkServerReachability(); // Initial server reachability check
     syncOfflineProgress(ref);
+
+    WidgetsBinding.instance.addObserver(this);
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    super.didChangeAppLifecycleState(state);
+
+    if (state == AppLifecycleState.resumed) {
+      log('App in foreground: Resuming timer');
+      _startServerReachabilityCheck();
+    } else if (state == AppLifecycleState.paused) {
+      log('App in background: Stopping timer');
+      _stopServerReachabilityCheck();
+    }
   }
 
   void _handleConnectivityChange(List<ConnectivityResult> results) {
@@ -85,7 +102,7 @@ class ConnectionNotifier extends StateNotifier<bool> {
       state = isReachable;
     }
     _serverReachabilityTimer =
-        Timer.periodic(const Duration(minutes: 1), (timer) async {
+        Timer.periodic(const Duration(minutes: 5), (timer) async {
       final isReachable = await _isServerReachable();
       if (state != isReachable) {
         state = isReachable;
@@ -97,7 +114,7 @@ class ConnectionNotifier extends StateNotifier<bool> {
   void _startServerReachabilityCheck() {
     _serverReachabilityTimer?.cancel();
     _serverReachabilityTimer =
-        Timer.periodic(const Duration(minutes: 1), (timer) async {
+        Timer.periodic(const Duration(minutes: 5), (timer) async {
       final isReachable = await _isServerReachable();
       if (state != isReachable) {
         state = isReachable;
@@ -136,6 +153,7 @@ class ConnectionNotifier extends StateNotifier<bool> {
 
   @override
   void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
     _stopServerReachabilityCheck();
     super.dispose();
   }
