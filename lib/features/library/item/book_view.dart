@@ -128,7 +128,7 @@ class BookView extends ConsumerWidget {
                   libraryItem: castItem,
                   user: user,
                 ),
-              if (castItem.media!.hasBook) const VerticalDivider(),
+              if (castItem.media!.hasAudio) const VerticalDivider(),
               if (castItem.media!.hasAudio) AddQueueButton(item: castItem),
             ],
           ),

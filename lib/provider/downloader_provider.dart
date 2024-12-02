@@ -199,9 +199,9 @@ class DownloadProvider extends ChangeNotifier {
       downloadTasks.add(_download(downloadUrl, file.filename, name, item.id));
     }
 
-    List<String?> results = await Future.wait(downloadTasks);
-
     downloadList.add(downloadInfo);
+
+    List<String?> results = await Future.wait(downloadTasks);
 
     if (results.length != files.length) {
       log('Failed to download all files. Removing files',
@@ -232,9 +232,12 @@ class DownloadProvider extends ChangeNotifier {
         log('Creating directory: ${dir.path}', name: 'DownloadProvider');
       }
       log('Writing meta.json to: ${results.first!}', name: 'DownloadProvider');
+      log('If the message `created file` is not show, the files is not created.',
+          name: 'DownloadProvider');
       final file = File(results.first!);
-      await file.writeAsString(json);
-      log('Writing meta.json to: ${results.first}', name: 'DownloadProvider');
+      log('File path init ($file)', name: 'DownloadProvider');
+      await file.writeAsString(json, flush: true);
+      log('Created file', name: 'DownloadProvider');
     } else {
       log('Failed to save meta.json. Removing files', name: 'DownloadProvider');
       ref.read(downloadListProvider.notifier).removeDownload(downloadInfo);
