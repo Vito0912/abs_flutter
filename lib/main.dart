@@ -74,16 +74,14 @@ void main() async {
   final AbsAudioHandler audioService0 = await AudioService.init(
     builder: () => AbsAudioHandler(container),
     config: const AudioServiceConfig(
-      androidNotificationChannelId: 'de.vito.abs_flutter.playback',
-      androidNotificationChannelDescription:
-          'Needed to control audio from lock screen',
-      androidNotificationChannelName: 'ABSPlayback',
-      preloadArtwork: true,
-      androidNotificationOngoing: false,
-      androidStopForegroundOnPause: false,
-      androidNotificationIcon: 'mipmap/ic_media_monochrome',
-      notificationColor: Color(0xFF2196F3),
-    ),
+        androidNotificationChannelId: 'de.vito.abs_flutter.playback',
+        androidNotificationChannelDescription:
+            'Needed to control audio from lock screen',
+        androidNotificationChannelName: 'ABSPlayback',
+        preloadArtwork: true,
+        androidNotificationOngoing: false,
+        androidStopForegroundOnPause: false,
+        androidNotificationIcon: 'mipmap/ic_media_monochrome'),
   );
 
   audioService.setAudioService(audioService0);

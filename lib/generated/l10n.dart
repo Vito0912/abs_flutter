@@ -80,6 +80,16 @@ class S {
     );
   }
 
+  /// `Advanced`
+  String get advanced {
+    return Intl.message(
+      'Advanced',
+      name: 'advanced',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Aggressive Caching`
   String get aggressiveCaching {
     return Intl.message(
@@ -717,6 +727,26 @@ class S {
       name: 'deviceInfo',
       desc: '',
       args: [device, os, version],
+    );
+  }
+
+  /// `Disable skipping chapters`
+  String get disableSkippingChapters {
+    return Intl.message(
+      'Disable skipping chapters',
+      name: 'disableSkippingChapters',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This will disable the ability to skip chapters from OUTSIDE the application (e.g., via a headset or notification controls). Enable this if you want your headphones to use fast-forward and rewind functions instead of skipping chapters.`
+  String get disableSkippingChaptersDescription {
+    return Intl.message(
+      'This will disable the ability to skip chapters from OUTSIDE the application (e.g., via a headset or notification controls). Enable this if you want your headphones to use fast-forward and rewind functions instead of skipping chapters.',
+      name: 'disableSkippingChaptersDescription',
+      desc: '',
+      args: [],
     );
   }
 
@@ -2573,31 +2603,11 @@ class S {
     );
   }
 
-  /// `Advanced`
-  String get advanced {
+  /// `Retry`
+  String get retry {
     return Intl.message(
-      'Advanced',
-      name: 'advanced',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Disable skipping chapters`
-  String get disableSkippingChapters {
-    return Intl.message(
-      'Disable skipping chapters',
-      name: 'disableSkippingChapters',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `This will disable the ability to skip chapters from OUTSIDE the application (e.g., via a headset or notification controls). Enable this if you want your headphones to use fast-forward and rewind functions instead of skipping chapters.`
-  String get disableSkippingChaptersDescription {
-    return Intl.message(
-      'This will disable the ability to skip chapters from OUTSIDE the application (e.g., via a headset or notification controls). Enable this if you want your headphones to use fast-forward and rewind functions instead of skipping chapters.',
-      name: 'disableSkippingChaptersDescription',
+      'Retry',
+      name: 'retry',
       desc: '',
       args: [],
     );
