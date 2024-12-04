@@ -7,9 +7,12 @@ import 'package:abs_flutter/models/history.dart';
 import 'package:abs_flutter/provider/player_status_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:sembast/sembast_io.dart';
 import 'package:url_launcher/url_launcher.dart' as launcher;
 import 'package:url_launcher/url_launcher_string.dart';
+
+import '../provider/log_provider.dart';
 
 class Helper {
   static String base64UrlEncode(String input) {
@@ -201,5 +204,25 @@ class Helper {
     }
 
     return '${digitGroups.toStringAsFixed(2)} ${units[unitIndex]}';
+  }
+
+  static Future<void> deleteTempAudioFiles() async {
+    try {
+      // Get the temporary directory
+      final tempDir = await getTemporaryDirectory();
+
+      // List all files in the directory
+      final files = tempDir.listSync();
+
+      for (var file in files) {
+        if (file is File && file.path.contains('temp_audio')) {
+          await file.delete();
+          log('Deleted temp audio file: ${file.path}');
+        }
+      }
+      print('All temp_audio files deleted.');
+    } catch (e) {
+      print('Error deleting temp_audio files: $e');
+    }
   }
 }

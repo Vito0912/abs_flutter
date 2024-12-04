@@ -2003,6 +2003,16 @@ class S {
     );
   }
 
+  /// `Retry`
+  String get retry {
+    return Intl.message(
+      'Retry',
+      name: 'retry',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Rewind`
   String get rewind {
     return Intl.message(
@@ -2598,16 +2608,6 @@ class S {
     return Intl.message(
       'Year',
       name: 'year',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Retry`
-  String get retry {
-    return Intl.message(
-      'Retry',
-      name: 'retry',
       desc: '',
       args: [],
     );

@@ -19,8 +19,11 @@ import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:icons_plus/icons_plus.dart';
+import 'package:saf_util/saf_util.dart';
 import 'package:settings_ui/settings_ui.dart';
 import 'package:vibration/vibration.dart';
+
+import '../../provider/log_provider.dart';
 
 class PlatformSettings extends ConsumerWidget {
   const PlatformSettings({super.key});
@@ -106,26 +109,34 @@ class PlatformSettings extends ConsumerWidget {
                     keyValue: Constants.WINDOWS_MINIMIZE_TO_TRAY,
                     defaultValue: false),
               //TODO: Add support for Linux and MacOS
-              CustomTile(
-                leading: const Icon(Iconsax.folder_bold),
-                title: S.of(context).downloadPath,
-                keyValue: Constants.DOWNLOAD_PATH,
-                noValue: S.of(context).noPath,
-                description: S.of(context).downloadPathDescription,
-                onPressed: () async {
-                  String? selectedDirectory =
-                      await FilePicker.platform.getDirectoryPath();
+              if (!kIsWeb)
+                CustomTile(
+                  leading: const Icon(Iconsax.folder_bold),
+                  title: S.of(context).downloadPath,
+                  keyValue: Constants.DOWNLOAD_PATH,
+                  noValue: S.of(context).noPath,
+                  description: S.of(context).downloadPathDescription,
+                  onPressed: () async {
+                    late final String? dirPath;
 
-                  if (selectedDirectory == null) {
-                    userSharedPreferences.setString(
-                        Constants.DOWNLOAD_PATH, null);
-                  } else {
-                    userSharedPreferences.setString(
-                        Constants.DOWNLOAD_PATH, selectedDirectory);
-                    print(selectedDirectory);
-                  }
-                },
-              )
+                    if (Platform.isAndroid) {
+                      final dir = await SafUtil().pickDirectory(
+                          writePermission: true, persistablePermission: true);
+                      dirPath = dir?.uri;
+                    } else {
+                      dirPath = await FilePicker.platform.getDirectoryPath();
+                    }
+
+                    if (dirPath == null) {
+                      userSharedPreferences.setString(
+                          Constants.DOWNLOAD_PATH, null);
+                    } else {
+                      userSharedPreferences.setString(
+                          Constants.DOWNLOAD_PATH, dirPath);
+                      log(dirPath);
+                    }
+                  },
+                )
             ],
           ),
           SettingsSection(
