@@ -17,7 +17,7 @@ class PlaybackSession with _$PlaybackSession {
     @JsonKey(name: "libraryItemId") required String libraryItemId,
     @JsonKey(name: "episodeId") String? episodeId,
     @JsonKey(name: "mediaType") String? mediaType,
-    @JsonKey(name: "mediaMetadata") required Metadata mediaMetadata,
+    @JsonKey(name: "mediaMetadata") Metadata? mediaMetadata,
     @JsonKey(name: "chapters") List<Chapter>? chapters,
     @JsonKey(name: "displayTitle") String? displayTitle,
     @JsonKey(name: "displayAuthor") String? displayAuthor,

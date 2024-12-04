@@ -33,7 +33,7 @@ mixin _$PlaybackSession {
   @JsonKey(name: "mediaType")
   String? get mediaType => throw _privateConstructorUsedError;
   @JsonKey(name: "mediaMetadata")
-  Metadata get mediaMetadata => throw _privateConstructorUsedError;
+  Metadata? get mediaMetadata => throw _privateConstructorUsedError;
   @JsonKey(name: "chapters")
   List<Chapter>? get chapters => throw _privateConstructorUsedError;
   @JsonKey(name: "displayTitle")
@@ -94,7 +94,7 @@ abstract class $PlaybackSessionCopyWith<$Res> {
       @JsonKey(name: "libraryItemId") String libraryItemId,
       @JsonKey(name: "episodeId") String? episodeId,
       @JsonKey(name: "mediaType") String? mediaType,
-      @JsonKey(name: "mediaMetadata") Metadata mediaMetadata,
+      @JsonKey(name: "mediaMetadata") Metadata? mediaMetadata,
       @JsonKey(name: "chapters") List<Chapter>? chapters,
       @JsonKey(name: "displayTitle") String? displayTitle,
       @JsonKey(name: "displayAuthor") String? displayAuthor,
@@ -114,7 +114,7 @@ abstract class $PlaybackSessionCopyWith<$Res> {
       @JsonKey(name: "audioTracks") List<AudioTrack>? audioTracks,
       @JsonKey(name: "libraryItem") LibraryItem? libraryItem});
 
-  $MetadataCopyWith<$Res> get mediaMetadata;
+  $MetadataCopyWith<$Res>? get mediaMetadata;
   $DeviceInfoCopyWith<$Res>? get deviceInfo;
   $LibraryItemCopyWith<$Res>? get libraryItem;
 }
@@ -140,7 +140,7 @@ class _$PlaybackSessionCopyWithImpl<$Res, $Val extends PlaybackSession>
     Object? libraryItemId = null,
     Object? episodeId = freezed,
     Object? mediaType = freezed,
-    Object? mediaMetadata = null,
+    Object? mediaMetadata = freezed,
     Object? chapters = freezed,
     Object? displayTitle = freezed,
     Object? displayAuthor = freezed,
@@ -185,10 +185,10 @@ class _$PlaybackSessionCopyWithImpl<$Res, $Val extends PlaybackSession>
           ? _value.mediaType
           : mediaType // ignore: cast_nullable_to_non_nullable
               as String?,
-      mediaMetadata: null == mediaMetadata
+      mediaMetadata: freezed == mediaMetadata
           ? _value.mediaMetadata
           : mediaMetadata // ignore: cast_nullable_to_non_nullable
-              as Metadata,
+              as Metadata?,
       chapters: freezed == chapters
           ? _value.chapters
           : chapters // ignore: cast_nullable_to_non_nullable
@@ -268,8 +268,12 @@ class _$PlaybackSessionCopyWithImpl<$Res, $Val extends PlaybackSession>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $MetadataCopyWith<$Res> get mediaMetadata {
-    return $MetadataCopyWith<$Res>(_value.mediaMetadata, (value) {
+  $MetadataCopyWith<$Res>? get mediaMetadata {
+    if (_value.mediaMetadata == null) {
+      return null;
+    }
+
+    return $MetadataCopyWith<$Res>(_value.mediaMetadata!, (value) {
       return _then(_value.copyWith(mediaMetadata: value) as $Val);
     });
   }
@@ -318,7 +322,7 @@ abstract class _$$PlaybackSessionImplCopyWith<$Res>
       @JsonKey(name: "libraryItemId") String libraryItemId,
       @JsonKey(name: "episodeId") String? episodeId,
       @JsonKey(name: "mediaType") String? mediaType,
-      @JsonKey(name: "mediaMetadata") Metadata mediaMetadata,
+      @JsonKey(name: "mediaMetadata") Metadata? mediaMetadata,
       @JsonKey(name: "chapters") List<Chapter>? chapters,
       @JsonKey(name: "displayTitle") String? displayTitle,
       @JsonKey(name: "displayAuthor") String? displayAuthor,
@@ -339,7 +343,7 @@ abstract class _$$PlaybackSessionImplCopyWith<$Res>
       @JsonKey(name: "libraryItem") LibraryItem? libraryItem});
 
   @override
-  $MetadataCopyWith<$Res> get mediaMetadata;
+  $MetadataCopyWith<$Res>? get mediaMetadata;
   @override
   $DeviceInfoCopyWith<$Res>? get deviceInfo;
   @override
@@ -365,7 +369,7 @@ class __$$PlaybackSessionImplCopyWithImpl<$Res>
     Object? libraryItemId = null,
     Object? episodeId = freezed,
     Object? mediaType = freezed,
-    Object? mediaMetadata = null,
+    Object? mediaMetadata = freezed,
     Object? chapters = freezed,
     Object? displayTitle = freezed,
     Object? displayAuthor = freezed,
@@ -410,10 +414,10 @@ class __$$PlaybackSessionImplCopyWithImpl<$Res>
           ? _value.mediaType
           : mediaType // ignore: cast_nullable_to_non_nullable
               as String?,
-      mediaMetadata: null == mediaMetadata
+      mediaMetadata: freezed == mediaMetadata
           ? _value.mediaMetadata
           : mediaMetadata // ignore: cast_nullable_to_non_nullable
-              as Metadata,
+              as Metadata?,
       chapters: freezed == chapters
           ? _value._chapters
           : chapters // ignore: cast_nullable_to_non_nullable
@@ -500,7 +504,7 @@ class _$PlaybackSessionImpl implements _PlaybackSession {
       @JsonKey(name: "libraryItemId") required this.libraryItemId,
       @JsonKey(name: "episodeId") this.episodeId,
       @JsonKey(name: "mediaType") this.mediaType,
-      @JsonKey(name: "mediaMetadata") required this.mediaMetadata,
+      @JsonKey(name: "mediaMetadata") this.mediaMetadata,
       @JsonKey(name: "chapters") final List<Chapter>? chapters,
       @JsonKey(name: "displayTitle") this.displayTitle,
       @JsonKey(name: "displayAuthor") this.displayAuthor,
@@ -545,7 +549,7 @@ class _$PlaybackSessionImpl implements _PlaybackSession {
   final String? mediaType;
   @override
   @JsonKey(name: "mediaMetadata")
-  final Metadata mediaMetadata;
+  final Metadata? mediaMetadata;
   final List<Chapter>? _chapters;
   @override
   @JsonKey(name: "chapters")
@@ -731,7 +735,7 @@ abstract class _PlaybackSession implements PlaybackSession {
           @JsonKey(name: "libraryItemId") required final String libraryItemId,
           @JsonKey(name: "episodeId") final String? episodeId,
           @JsonKey(name: "mediaType") final String? mediaType,
-          @JsonKey(name: "mediaMetadata") required final Metadata mediaMetadata,
+          @JsonKey(name: "mediaMetadata") final Metadata? mediaMetadata,
           @JsonKey(name: "chapters") final List<Chapter>? chapters,
           @JsonKey(name: "displayTitle") final String? displayTitle,
           @JsonKey(name: "displayAuthor") final String? displayAuthor,
@@ -775,7 +779,7 @@ abstract class _PlaybackSession implements PlaybackSession {
   String? get mediaType;
   @override
   @JsonKey(name: "mediaMetadata")
-  Metadata get mediaMetadata;
+  Metadata? get mediaMetadata;
   @override
   @JsonKey(name: "chapters")
   List<Chapter>? get chapters;

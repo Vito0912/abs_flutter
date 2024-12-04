@@ -242,6 +242,9 @@ class ConnectionNotifier extends StateNotifier<bool>
         bookItem['starttime'] = item.currentTime;
         bookItem['createdAt'] = item.createdAt?.millisecondsSinceEpoch;
         bookItem['updatedAt'] = item.updatedAt?.millisecondsSinceEpoch;
+        bookItem['mediaMetadata'] =
+            libraryItem.media?.bookMedia?.metadata.toJson() ??
+                libraryItem.media?.podcastMedia?.metadata.toJson();
         bookItem['deviceInfo'] = {
           'clientName': appName,
           'clientVersion': version,

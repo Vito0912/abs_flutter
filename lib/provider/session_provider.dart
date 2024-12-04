@@ -83,7 +83,7 @@ class PlaybackSessionNotifier
 
         _session = response;
 
-        if (_session!.data!.mediaMetadata.podcastMetadata != null) {
+        if (_session!.data!.mediaMetadata?.podcastMetadata != null) {
           _podcastSession(_session!.data!.libraryItemId,
               _session!.data!.episodeId!, _session!.data!);
         } else {
@@ -252,7 +252,7 @@ class PlaybackSessionNotifier
 
     MediaItem mediaItem = MediaItem(
         id: path!,
-        album: playback.mediaMetadata.podcastMetadata?.title,
+        album: playback.mediaMetadata?.podcastMetadata?.title,
         title: playback.displayTitle!,
         artist: playback.displayAuthor!,
         duration: Duration(
@@ -307,9 +307,10 @@ class PlaybackSessionNotifier
 
     MediaItem mediaItem = MediaItem(
         id: path!,
-        album: playback.mediaMetadata.bookMetadata?.series?.toList().join(', '),
+        album:
+            playback.mediaMetadata?.bookMetadata?.series?.toList().join(', '),
         title: playback.displayTitle!,
-        displaySubtitle: playback.mediaMetadata.bookMetadata?.subtitle,
+        displaySubtitle: playback.mediaMetadata?.bookMetadata?.subtitle,
         artist: playback.displayAuthor!,
         duration: Duration(
             seconds: playback.audioTracks!
