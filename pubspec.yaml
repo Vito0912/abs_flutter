@@ -3,7 +3,7 @@ description: "An ABS app"
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: 1.7.3
+version: 1.7.4
 
 environment:
   sdk: '>=3.4.3 <4.0.0'
@@ -112,7 +112,7 @@ msix_config:
   publisher_display_name: Vito0912
   identity_name: Vito0912.Audiobookshelfly
   package_name: Vito0912.Audiobookshelfly
-  msix_version: 1.7.3.0
+  msix_version: 1.7.4.0
   capabilities: internetClient
   languages: en-us
   install_certificate: false
