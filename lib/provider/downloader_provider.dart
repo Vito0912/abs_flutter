@@ -335,21 +335,31 @@ class DownloadProvider extends ChangeNotifier {
     String jsonEpisode = jsonEncode(item);
 
     if (metaPath != null) {
-      log('Saving meta.json to: $metaPath', name: 'DownloadProvider');
       // Create the parent directory
       final dir = Directory(metaPath).parent;
       if (!dir.existsSync()) {
         await dir.create(recursive: true);
         log('Creating directory: ${dir.path}', name: 'DownloadProvider');
       }
-      log('Writing meta.json to: ${dir.parent.path}/meta.json',
-          name: 'DownloadProvider');
       File file = File('${dir.parent.path}/meta.json');
       await file.writeAsString(jsonLibrary);
-      log('Writing meta.json to: $metaPath', name: 'DownloadProvider');
       File file1 = File(metaPath);
       await file1.writeAsString(jsonEpisode);
       log('Writing meta.json to: $metaPath', name: 'DownloadProvider');
+
+      if (Platform.isAndroid &&
+          ref.read(settingsProvider)[Constants.DOWNLOAD_PATH] != null) {
+        final saveDir = ref.read(settingsProvider)[Constants.DOWNLOAD_PATH];
+        final path = await SafUtil().mkdirp(saveDir, [libraryItem.id, item.id]);
+        final podcastPath = await SafUtil().mkdirp(saveDir, [libraryItem.id]);
+        await SafStream().pasteLocalFile(
+            file.path, podcastPath.uri, 'meta.json', 'application/json',
+            overwrite: true);
+        await SafStream().pasteLocalFile(
+            metaPath, path.uri, 'meta.json', 'application/json',
+            overwrite: true);
+        log('Moved meta.json to: ${path.uri}', name: 'DownloadProvider');
+      }
     }
   }
 

@@ -108,9 +108,12 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
       final sources = jsonDecode(item.extras?['audioSources']);
       final isStreaming = item.extras?['streaming'] == true;
       List<AudioSource> audioSources = [];
+      List<Future<void>> saveTasks = [];
+      List<AudioSource?> tempAudioSources = List.filled(sources.length, null);
 
-      int index = 0;
-      for (final source in sources) {
+      for (int i = 0; i < sources.length; i++) {
+        final String source = sources[i];
+
         if (isStreaming) {
           audioSources.add(AudioSource.uri(Uri.parse(source)));
         } else {
@@ -118,19 +121,25 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
               Platform.isAndroid &&
               item.id.startsWith('content://')) {
             Directory tmp = await getTemporaryDirectory();
-            SafStream()
-                .readFileStream(item.id)
-                .then((Stream<List<int>> fileStream) {
-              log(index.toString());
-              final tempFile = File('${tmp.path}/temp_audio_${index++}.mp3');
+            String fileType = source.split('.').last;
+
+            saveTasks.add(() async {
+              final tempFile = File('${tmp.path}/temp_audio_$i.$fileType');
               final tempSink = tempFile.openWrite();
 
-              fileStream.forEach((chunk) => tempSink.add(chunk)).then((value) {
-                tempSink.close().then((value) {
-                  audioSources.add(AudioSource.file(tempFile.path));
-                });
+              await (await SafStream().readFileStream(source)).forEach((chunk) {
+                tempSink.add(chunk);
               });
-            });
+              await tempSink.close();
+
+              tempAudioSources[i] = AudioSource.file(tempFile.path);
+            }());
+            await Future.wait(saveTasks);
+            for (final audioSource in tempAudioSources) {
+              if (audioSource != null) {
+                audioSources.add(audioSource);
+              }
+            }
           } else {
             audioSources.add(AudioSource.file(source));
           }
@@ -150,8 +159,9 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
           Stream<List<int>> fileStream =
               await SafStream().readFileStream(item.id);
 
-          final tempFile =
-              File('${(await getTemporaryDirectory()).path}/temp_audio.mp3');
+          String fileType = item.id.split('.').last;
+          final tempFile = File(
+              '${(await getTemporaryDirectory()).path}/temp_audio.$fileType');
           final tempSink = tempFile.openWrite();
 
           await fileStream.forEach((chunk) => tempSink.add(chunk));
