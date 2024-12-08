@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:abs_flutter/api/library_items/episode.dart';
 import 'package:abs_flutter/api/library_items/library_item.dart';
 import 'package:abs_flutter/api/me/user.dart' as m;
@@ -11,7 +13,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'dart:io';
 
 class DownloadButton extends ConsumerWidget {
   const DownloadButton(
@@ -38,6 +39,22 @@ class DownloadButton extends ConsumerWidget {
         .where((element) =>
             element.itemId == libraryItem.id && element.episodeId == episodeId)
         .firstOrNull;
+
+    if (downloader.lastError != null) {
+      Future.delayed(Duration.zero, () {
+        if (!context.mounted) return;
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              downloader.lastError!,
+              maxLines: 3,
+            ),
+            duration: const Duration(seconds: 5),
+          ),
+        );
+        downloader.clearError();
+      });
+    }
 
     return PlatformElevatedButton(
       onPressed: () {
@@ -84,7 +101,7 @@ class DownloadButton extends ConsumerWidget {
   }
 
   Future<void> _downloadFile(WidgetRef ref, BuildContext context) async {
-    if (!Platform.isLinux) {
+    if (kIsWeb || Platform.isAndroid || Platform.isIOS || Platform.isWindows) {
       if (await Permission.notification.isDenied) {
         await Permission.notification.request();
       }

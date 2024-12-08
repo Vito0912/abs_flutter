@@ -19,7 +19,6 @@ import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:flutter/material.dart';
 
 class DownloadItem {
   final DownloadTask task;
@@ -138,11 +137,13 @@ class DownloadProvider extends ChangeNotifier {
       Directory(path).parent.deleteSync(recursive: true);
     }
 
-    if (update.status == TaskStatus.failed && Platform.isLinux) {
+    if (update.status == TaskStatus.failed) {
       final errorMessage = update.exception?.toString() ?? '';
       if (errorMessage.contains('Permission denied')) {
-        _lastError = 'Download failed due to permission error. Please check folder permissions.';
-        notifyListeners();
+        _lastError =
+            'Download failed due to permission error. Please check folder permissions.';
+      } else {
+        _lastError = 'Download failed: $errorMessage';
       }
     }
 
@@ -238,7 +239,7 @@ class DownloadProvider extends ChangeNotifier {
     if (results.firstOrNull != null) {
       log('Saving meta.json to: ${results.firstOrNull}',
           name: 'DownloadProvider');
-    // Create the parent directory
+      // Create the parent directory
       final dir = Directory(results.first!).parent;
       if (!dir.existsSync()) {
         await dir.create(recursive: true);
@@ -319,7 +320,7 @@ class DownloadProvider extends ChangeNotifier {
 
     if (metaPath != null) {
       log('Saving meta.json to: $metaPath', name: 'DownloadProvider');
-       // Create the parent directory
+      // Create the parent directory
       final dir = Directory(metaPath).parent;
       if (!dir.existsSync()) {
         await dir.create(recursive: true);
@@ -370,7 +371,7 @@ class DownloadProvider extends ChangeNotifier {
 
     log('Downloading to: $savePath ($baseDirectory)');
 
-    if (Platform.isLinux) {
+    if (!kIsWeb && Platform.isLinux) {
       if (baseDirectory == BaseDirectory.root) {
         if (!savePath.startsWith('/')) {
           savePath = '/$savePath';
@@ -379,16 +380,17 @@ class DownloadProvider extends ChangeNotifier {
         final appDataDir = await getApplicationSupportDirectory();
         savePath = '${appDataDir.path}/downloads/$savePath';
       }
-      
+
       savePath = savePath.replaceAll('\\', '/');
-      
+
       final downloadDir = Directory(savePath);
       if (!await downloadDir.exists()) {
         try {
           await downloadDir.create(recursive: true);
           await Process.run('chmod', ['755', downloadDir.path]);
         } catch (e) {
-          log('Error creating download directory: $e', name: 'DownloadProvider');
+          log('Error creating download directory: $e',
+              name: 'DownloadProvider');
           return null;
         }
       }
@@ -401,7 +403,8 @@ class DownloadProvider extends ChangeNotifier {
         log('Error verifying write permissions: $e', name: 'DownloadProvider');
         if (e is FileSystemException) {
           if (e.osError?.errorCode == 13) {
-            log('Permission denied. Please check folder permissions', name: 'DownloadProvider');
+            log('Permission denied. Please check folder permissions',
+                name: 'DownloadProvider');
           }
         }
         return null;
@@ -435,25 +438,6 @@ class DownloadProvider extends ChangeNotifier {
 
     _downloads.add(downloadItem);
     notifyListeners();
-
-    final downloadDir = Directory(savePath);
-    if (!await downloadDir.exists()) {
-      try {
-        await downloadDir.create(recursive: true);
-      } catch (e) {
-        log('Error creating download directory: $e', name: 'DownloadProvider');
-        return null;
-      }
-    }
-
-    try {
-      final testFile = File('${downloadDir.path}/test');
-      await testFile.writeAsString('test');
-      await testFile.delete();
-    } catch (e) {
-      log('Error verifying write permissions: $e', name: 'DownloadProvider');
-      return null;
-    }
 
     return task.filePath(withFilename: 'meta.json');
   }
@@ -489,7 +473,6 @@ class DownloadProvider extends ChangeNotifier {
 
   void clearError() {
     _lastError = null;
-    notifyListeners();
   }
 
   @override
