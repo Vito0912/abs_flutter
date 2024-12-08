@@ -18,6 +18,7 @@ import 'package:background_downloader/background_downloader.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:path_provider/path_provider.dart';
 
 class DownloadItem {
   final DownloadTask task;
@@ -50,6 +51,8 @@ class DownloadProvider extends ChangeNotifier {
   List<DownloadItem> get downloads => _downloads;
   final Map<String, TaskStatus> _taskStatuses = {};
   final Ref ref;
+  String? _lastError;
+  String? get lastError => _lastError;
 
   DownloadProvider(this.ref) {
     _init();
@@ -132,6 +135,16 @@ class DownloadProvider extends ChangeNotifier {
       // Remove the directory if the download failed
       String path = await update.task.filePath();
       Directory(path).parent.deleteSync(recursive: true);
+    }
+
+    if (update.status == TaskStatus.failed) {
+      final errorMessage = update.exception?.toString() ?? '';
+      if (errorMessage.contains('Permission denied')) {
+        _lastError =
+            'Download failed due to permission error. Please check folder permissions.';
+      } else {
+        _lastError = 'Download failed: $errorMessage';
+      }
     }
 
     _taskStatuses[update.task.taskId] = update.status;
@@ -220,6 +233,7 @@ class DownloadProvider extends ChangeNotifier {
     }
 
     // Save item to BaseDirectory.applicationDocuments/abs_flutter/itemId/meta.json
+
     String json = jsonEncode(item);
     log('Does safe json?: ${results.firstOrNull}', name: 'DownloadProvider');
     if (results.firstOrNull != null) {
@@ -300,6 +314,7 @@ class DownloadProvider extends ChangeNotifier {
     }
 
     // Save item to BaseDirectory.applicationDocuments/abs_flutter/itemId/meta.json
+
     String jsonLibrary = jsonEncode(libraryItem);
     String jsonEpisode = jsonEncode(item);
 
@@ -356,6 +371,38 @@ class DownloadProvider extends ChangeNotifier {
 
     log('Downloading to: $savePath ($baseDirectory)');
 
+    if (!kIsWeb && Platform.isLinux) {
+      String tmpSavePath = settings[Constants.DOWNLOAD_PATH] == null
+          ? ''
+          : (await getApplicationDocumentsDirectory()).path;
+      tmpSavePath = '$tmpSavePath/$savePath'.replaceAll('\\', '/');
+
+      savePath = savePath.replaceAll('\\', '/');
+
+      final downloadDir = Directory(tmpSavePath);
+      if (!await downloadDir.exists()) {
+        try {
+          await downloadDir.create(recursive: true);
+        } catch (e) {
+          String error = 'Failed to create download directory: $e';
+          log(error, name: 'DownloadProvider');
+          _lastError = error;
+          return null;
+        }
+      }
+
+      final testFile = File('${downloadDir.path}/.write_test');
+      try {
+        await testFile.writeAsString('test', flush: true);
+        await testFile.delete();
+      } catch (e) {
+        String error = 'Failed to write to download directory: $e';
+        log(error, name: 'DownloadProvider');
+        _lastError = error;
+        return null;
+      }
+    }
+
     final task = DownloadTask(
       url: '$url?token=${token.toString()}',
       filename: fileName,
@@ -383,6 +430,7 @@ class DownloadProvider extends ChangeNotifier {
 
     _downloads.add(downloadItem);
     notifyListeners();
+
     return task.filePath(withFilename: 'meta.json');
   }
 
@@ -413,6 +461,10 @@ class DownloadProvider extends ChangeNotifier {
 
   String getDownloadUrl(String fileId, User user, LibraryItem libraryItem) {
     return '${user.server!.url}/api/items/${libraryItem.id}/file/$fileId/download';
+  }
+
+  void clearError() {
+    _lastError = null;
   }
 
   @override
