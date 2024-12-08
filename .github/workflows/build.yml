@@ -265,10 +265,12 @@ jobs:
           sudo apt-get install -y libmpv-dev mpv 
           sudo apt-get install -y clang cmake git ninja-build pkg-config libgtk-3-dev liblzma-dev libstdc++-12-dev
           sudo apt-get install -y fuse libfuse2
+          sudo apt-get install -y libsecret-1-dev xdg-user-dirs
           
           sudo modprobe fuse
           sudo groupadd fuse || true
           sudo usermod -a -G fuse $USER
+
       - name: Build Flutter linux
         run: flutter build linux --release
 
@@ -293,7 +295,10 @@ jobs:
           mkdir -p AppDir/usr/bin
           mkdir -p AppDir/usr/share/applications
           mkdir -p AppDir/usr/share/icons/hicolor/256x256/apps
+          mkdir -p AppDir/usr/lib
           cp -r build/linux/x64/release/bundle/* AppDir/usr/bin/
+          
+          cp /usr/lib/x86_64-linux-gnu/libsecret-1.so* AppDir/usr/lib/ || true
           
           cp assets/images/logo/logo_blue_big_abs.png AppDir/usr/share/icons/hicolor/256x256/apps/buchable.png
           cp assets/images/logo/logo_blue_big_abs.png AppDir/buchable.png
@@ -309,6 +314,7 @@ jobs:
           Categories=Audio;AudioVideo;Player;
           StartupWMClass=buchable
           X-GNOME-UsesNotifications=true
+          MimeType=audio/*;video/*;
           EOL
           
           cp AppDir/buchable.desktop AppDir/usr/share/applications/
@@ -319,6 +325,8 @@ jobs:
           HERE=\${SELF%/*}
           export PATH="\${HERE}/usr/bin:\${PATH}"
           export LD_LIBRARY_PATH="\${HERE}/usr/lib:\${LD_LIBRARY_PATH}"
+          export XDG_DATA_DIRS="\${HERE}/usr/share:\${XDG_DATA_DIRS:-/usr/local/share:/usr/share}"
+          export XDG_CONFIG_DIRS="\${HERE}/etc/xdg:\${XDG_CONFIG_DIRS:-/etc/xdg}"
           exec "\${HERE}/usr/bin/abs_flutter" "\$@"
           EOL
           
