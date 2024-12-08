@@ -372,41 +372,33 @@ class DownloadProvider extends ChangeNotifier {
     log('Downloading to: $savePath ($baseDirectory)');
 
     if (!kIsWeb && Platform.isLinux) {
-      if (baseDirectory == BaseDirectory.root) {
-        if (!savePath.startsWith('/')) {
-          savePath = '/$savePath';
-        }
-      } else {
-        final appDataDir = await getApplicationSupportDirectory();
-        savePath = '${appDataDir.path}/downloads/$savePath';
-      }
+      String tmpSavePath = settings[Constants.DOWNLOAD_PATH] == null
+          ? ''
+          : (await getApplicationDocumentsDirectory()).path;
+      tmpSavePath = '$tmpSavePath/$savePath'.replaceAll('\\', '/');
 
       savePath = savePath.replaceAll('\\', '/');
 
-      final downloadDir = Directory(savePath);
+      final downloadDir = Directory(tmpSavePath);
       if (!await downloadDir.exists()) {
         try {
           await downloadDir.create(recursive: true);
-          await Process.run('chmod', ['755', downloadDir.path]);
         } catch (e) {
-          log('Error creating download directory: $e',
-              name: 'DownloadProvider');
+          String error = 'Failed to create download directory: $e';
+          log(error, name: 'DownloadProvider');
+          _lastError = error;
           return null;
         }
       }
 
+      final testFile = File('${downloadDir.path}/.write_test');
       try {
-        final testFile = File('${downloadDir.path}/.write_test');
-        await testFile.writeAsString('test');
+        await testFile.writeAsString('test', flush: true);
         await testFile.delete();
       } catch (e) {
-        log('Error verifying write permissions: $e', name: 'DownloadProvider');
-        if (e is FileSystemException) {
-          if (e.osError?.errorCode == 13) {
-            log('Permission denied. Please check folder permissions',
-                name: 'DownloadProvider');
-          }
-        }
+        String error = 'Failed to write to download directory: $e';
+        log(error, name: 'DownloadProvider');
+        _lastError = error;
         return null;
       }
     }
