@@ -11,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'dart:io';
 
 class DownloadButton extends ConsumerWidget {
   const DownloadButton(
@@ -83,24 +84,27 @@ class DownloadButton extends ConsumerWidget {
   }
 
   Future<void> _downloadFile(WidgetRef ref, BuildContext context) async {
-    if (await Permission.notification.isDenied) {
-      await Permission.notification.request();
-    }
-    if (await Permission.notification.isDenied) {
-      if (context.mounted) {
-        showDialog(
-            context: context,
-            builder: (context) => AlertDialog(
-                  title: PlatformText(S.of(context).notificationHeading),
-                  content:
-                      PlatformText(S.of(context).enableNotificationsDownload),
-                  actions: [
-                    TextButton(
-                      onPressed: () => Navigator.of(context).pop(),
-                      child: PlatformText(S.of(context).ok),
-                    )
-                  ],
-                ));
+    if (!Platform.isLinux) {
+      if (await Permission.notification.isDenied) {
+        await Permission.notification.request();
+      }
+      if (await Permission.notification.isDenied) {
+        if (context.mounted) {
+          showDialog(
+              context: context,
+              builder: (context) => AlertDialog(
+                    title: PlatformText(S.of(context).notificationHeading),
+                    content:
+                        PlatformText(S.of(context).enableNotificationsDownload),
+                    actions: [
+                      TextButton(
+                        onPressed: () => Navigator.of(context).pop(),
+                        child: PlatformText(S.of(context).ok),
+                      )
+                    ],
+                  ));
+        }
+        return;
       }
     }
 

@@ -2,6 +2,7 @@ import 'package:abs_flutter/features/download/download_library.dart';
 import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/provider/download_provider.dart';
 import 'package:abs_flutter/provider/library_provider.dart';
+import 'package:abs_flutter/provider/downloader_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -14,6 +15,7 @@ class DownloadPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final libraries = ref.read(librariesProvider);
     final downloads = ref.watch(downloadListProvider);
+    final downloader = ref.watch(downloaderProvider);
 
     Map<String, String> distinctLibraries = {};
     for (var download in downloads) {
@@ -28,6 +30,21 @@ class DownloadPage extends ConsumerWidget {
             .name!;
       }
     }
+
+    ref.listen<String?>(
+      downloaderProvider.select((provider) => provider.lastError),
+      (previous, next) {
+        if (next != null) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(next),
+              duration: const Duration(seconds: 5),
+            ),
+          );
+          downloader.clearError();
+        }
+      },
+    );
 
     return PlatformScaffold(
         appBar: PlatformAppBar(
