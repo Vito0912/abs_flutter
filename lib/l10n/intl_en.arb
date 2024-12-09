@@ -761,5 +761,7 @@
   "waitingForDownload": "Waiting for download to start",
   "@waitingForDownload": {},
   "year": "Year",
-  "@year": {}
+  "@year": {},
+  "linuxPermissionError": "Download failed due to permission error. Please check folder permissions.",
+  "@linuxPermissionError": {}
 }

@@ -241,10 +241,114 @@ jobs:
           name: windows-zip
           path: windows-Release-${{ env.VERSION }}.zip
 
+  build-linux:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: 3.22.3
+
+      - name: Install Flutter dependencies
+        run: flutter pub get
+
+      - name: Install linux dependencies
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install -y curl git unzip xz-utils zip libglu1-mesa
+          sudo apt-get install -y libayatana-appindicator3-dev 
+          sudo apt-get install -y ffmpeg libavcodec-dev libavformat-dev libavutil-dev libswresample-dev
+          sudo apt-get install -y libmpv-dev mpv 
+          sudo apt-get install -y clang cmake git ninja-build pkg-config libgtk-3-dev liblzma-dev libstdc++-12-dev
+          sudo apt-get install -y fuse libfuse2
+          sudo apt-get install -y libsecret-1-dev xdg-user-dirs
+          
+          sudo modprobe fuse
+          sudo groupadd fuse || true
+          sudo usermod -a -G fuse $USER
+
+      - name: Build Flutter linux
+        run: flutter build linux --release
+
+      - name: Zip the linux build directory
+        run: |
+          cd build/linux/x64/release/bundle
+          zip -r linux-release.zip .
+          mv linux-release.zip ../../../../../
+          cd ../../../../../
+      - name: Extract version from pubspec.yaml
+        id: extract_version
+        run: |
+          VERSION=$(grep '^version:' pubspec.yaml | sed 's/version: //;s/+.*//')
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+      - name: Download AppImage builder
+        run: |
+          wget https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-x86_64.AppImage -O appimagetool
+          chmod +x appimagetool
+          
+      - name: Prepare AppDir
+        run: |
+          mkdir -p AppDir/usr/bin
+          mkdir -p AppDir/usr/share/applications
+          mkdir -p AppDir/usr/share/icons/hicolor/256x256/apps
+          mkdir -p AppDir/usr/lib
+          cp -r build/linux/x64/release/bundle/* AppDir/usr/bin/
+          
+          cp /usr/lib/x86_64-linux-gnu/libsecret-1.so* AppDir/usr/lib/ || true
+          
+          cp assets/images/logo/logo_blue_big_abs.png AppDir/usr/share/icons/hicolor/256x256/apps/buchable.png
+          cp assets/images/logo/logo_blue_big_abs.png AppDir/buchable.png
+          
+          cat > AppDir/buchable.desktop << EOL
+          [Desktop Entry]
+          Name=Buchable
+          Comment=The unofficial cross-platform app for Audiobookshelf
+          Exec=abs_flutter
+          Icon=buchable
+          Terminal=false
+          Type=Application
+          Categories=Audio;AudioVideo;Player;
+          StartupWMClass=buchable
+          X-GNOME-UsesNotifications=true
+          MimeType=audio/*;video/*;
+          EOL
+          
+          cp AppDir/buchable.desktop AppDir/usr/share/applications/
+          
+          cat > AppDir/AppRun << EOL
+          #!/bin/sh
+          SELF=\$(readlink -f "\$0")
+          HERE=\${SELF%/*}
+          export PATH="\${HERE}/usr/bin:\${PATH}"
+          export LD_LIBRARY_PATH="\${HERE}/usr/lib:\${LD_LIBRARY_PATH}"
+          export XDG_DATA_DIRS="\${HERE}/usr/share:\${XDG_DATA_DIRS:-/usr/local/share:/usr/share}"
+          export XDG_CONFIG_DIRS="\${HERE}/etc/xdg:\${XDG_CONFIG_DIRS:-/etc/xdg}"
+          exec "\${HERE}/usr/bin/abs_flutter" "\$@"
+          EOL
+          
+          chmod +x AppDir/AppRun
+      - name: Build AppImage
+        run: |
+          # Extract appimagetool first to avoid FUSE requirement
+          ./appimagetool --appimage-extract
+          ARCH=x86_64 ./squashfs-root/AppRun AppDir buchable-${{ env.VERSION }}-x86_64.AppImage
+      - name: Upload Linux build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: linux-build-artifacts
+          path: |
+            linux-release.zip
+            buchable-${{ env.VERSION }}-x86_64.AppImage
+
   create-release:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main' && github.event_name == 'workflow_dispatch'
-    needs: [build-ubuntu, build-windows]
+    needs: [build-ubuntu, build-windows, build-linux]
     permissions:
       contents: write
     steps:
@@ -274,6 +378,8 @@ jobs:
           mv linux-artifacts/app-release.apk linux-artifacts/android-release-${{ env.VERSION }}.apk
           mv linux-artifacts/app-release.aab linux-artifacts/android-release-${{ env.VERSION }}.aab
           mv linux-artifacts/web-release.zip linux-artifacts/web-release-${{ env.VERSION }}.zip
+          mv linux-build-artifacts/linux-release.zip linux-build-artifacts/linux-release-${{ env.VERSION }}.zip
+          mv buchable-${{ env.VERSION }}-x86_64.AppImage linux-build-artifacts/buchable-${{ env.VERSION }}-x86_64.AppImage
 
       - name: Create GitHub Release
         id: create_release
@@ -291,6 +397,8 @@ jobs:
             windows-artifacts/windows-Release-${{ env.VERSION }}.zip
             windows-artifacts/windows-installer-release-${{ env.VERSION }}.msix
             windows-artifacts/windows-installer-release-${{ env.VERSION }}-store.msix
+            linux-build-artifacts/linux-release-${{ env.VERSION }}.zip
+            linux-build-artifacts/buchable-${{ env.VERSION }}-x86_64.AppImage
 
   publish-release:
     runs-on: ubuntu-latest

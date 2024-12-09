@@ -8,6 +8,7 @@ import 'package:abs_flutter/provider/user_provider.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:path/path.dart' as path;
 
 final downloadListProvider =
     StateNotifierProvider<DownloadListNotifier, List<DownloadInfo>>((ref) {
@@ -53,9 +54,17 @@ class DownloadListNotifier extends StateNotifier<List<DownloadInfo>> {
     _saveDownloads();
   }
 
+  String _getDownloadPath(DownloadInfo download) {
+    if ( !kIsWeb && Platform.isLinux) {
+      final homeDir = Directory(path.join('/home', Platform.environment['USER']!));
+      return path.join(homeDir.path, '.abs_flutter', download.folderPath);
+    }
+    return download.folderPath;
+  }
+
   void removeDownload(DownloadInfo download) async {
     if (!kIsWeb && download.isDownloaded()) {
-      final folder = Directory(download.folderPath);
+      final folder = Directory(_getDownloadPath(download));
       // For windows support / and \ in path
       final folderName = folder.path.replaceAll('\\', '/').split('/').last;
       if (folderName == download.itemId || folderName == download.episodeId) {
@@ -139,4 +148,6 @@ class DownloadListNotifier extends StateNotifier<List<DownloadInfo>> {
         .firstOrNull;
     return download;
   }
+
+
 }

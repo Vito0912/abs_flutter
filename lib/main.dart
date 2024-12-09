@@ -28,6 +28,7 @@ import 'package:sembast_web/sembast_web.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tray_manager/tray_manager.dart';
 import 'package:window_manager/window_manager.dart';
+import 'package:path/path.dart' as path;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -43,8 +44,9 @@ void main() async {
   provContainer = container;
 
   if (!kIsWeb) {
-    appDir =
-        '${(await getApplicationDocumentsDirectory()).path.replaceAll('\\', '/')}/abs_flutter';
+    appDir = Platform.isLinux 
+        ? '${path.join('/home', Platform.environment['USER']!, '.abs_flutter')}'
+        : '${(await getApplicationDocumentsDirectory()).path.replaceAll('\\', '/')}/abs_flutter';
 
     await Directory(appDir).create(recursive: true);
 
