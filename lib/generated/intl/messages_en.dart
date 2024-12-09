@@ -266,6 +266,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "library": MessageLookupByLibrary.simpleMessage("Library"),
         "libraryName": MessageLookupByLibrary.simpleMessage("Library Name"),
         "libraryStats": MessageLookupByLibrary.simpleMessage("Library Stats"),
+        "linuxPermissionError": MessageLookupByLibrary.simpleMessage(
+            "Download failed due to permission error. Please check folder permissions."),
         "listenAgain": MessageLookupByLibrary.simpleMessage("Listen again"),
         "listeningInTheLastYear":
             MessageLookupByLibrary.simpleMessage("Listening in the last year"),

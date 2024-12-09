@@ -484,6 +484,8 @@
   "@libraryName": {},
   "libraryStats": "Library Stats",
   "@libraryStats": {},
+  "linuxPermissionError": "Download failed due to permission error. Please check folder permissions.",
+  "@linuxPermissionError": {},
   "listenAgain": "Listen again",
   "@listenAgain": {},
   "listeningInTheLastYear": "Listening in the last year",
@@ -761,7 +763,5 @@
   "waitingForDownload": "Waiting for download to start",
   "@waitingForDownload": {},
   "year": "Year",
-  "@year": {},
-  "linuxPermissionError": "Download failed due to permission error. Please check folder permissions.",
-  "@linuxPermissionError": {}
+  "@year": {}
 }
