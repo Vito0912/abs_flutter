@@ -19,6 +19,7 @@ import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:path/path.dart' as path;
 
 class DownloadItem {
   final DownloadTask task;
@@ -134,6 +135,12 @@ class DownloadProvider extends ChangeNotifier {
         update.status == TaskStatus.notFound) {
       // Remove the directory if the download failed
       String path = await update.task.filePath();
+
+      if (!kIsWeb && Platform.isLinux) {
+        String homeDir = '/home/${Platform.environment['USER']}';
+        path = path.replaceFirst('/.abs_flutter', '$homeDir/.abs_flutter');
+      }
+
       Directory(path).parent.deleteSync(recursive: true);
     }
 
@@ -349,11 +356,25 @@ class DownloadProvider extends ChangeNotifier {
         user.setting?.settings['downloadsOnlyViaWifi'] ?? false;
 
     late String savePath;
-    if (episodeId != null) {
-      savePath = 'abs_flutter/$itemId/$episodeId';
-    } else {
-      savePath = 'abs_flutter/$itemId';
-    }
+    Directory? homeDir;
+
+    if (!kIsWeb && Platform.isLinux) {
+      final homeDir = Platform.environment['USER'];
+      savePath = path.join('/home', homeDir, '.abs_flutter');
+
+      if (episodeId != null) {
+        savePath = path.join(savePath, itemId, episodeId);
+      } else {
+        savePath = path.join(savePath, itemId);
+      }
+      } else {
+        if (episodeId != null) {
+          savePath = 'abs_flutter/$itemId/$episodeId';
+        } else {
+          savePath = 'abs_flutter/$itemId';
+        }
+      }
+
     final settings =
         ref.read(specificKeysSettingsProvider([Constants.DOWNLOAD_PATH]));
 
@@ -365,19 +386,16 @@ class DownloadProvider extends ChangeNotifier {
       }
     }
 
-    BaseDirectory baseDirectory = settings[Constants.DOWNLOAD_PATH] == null
-        ? BaseDirectory.applicationDocuments
-        : BaseDirectory.root;
+    BaseDirectory baseDirectory = (!kIsWeb && Platform.isLinux) || settings[Constants.DOWNLOAD_PATH] != null
+        ? BaseDirectory.root
+        : BaseDirectory.applicationDocuments;
 
     log('Downloading to: $savePath ($baseDirectory)');
 
-    if (!kIsWeb && Platform.isLinux) {
+    if (!kIsWeb && Platform.isLinux && homeDir != null) {
       String tmpSavePath = settings[Constants.DOWNLOAD_PATH] == null
-          ? ''
-          : (await getApplicationDocumentsDirectory()).path;
-      tmpSavePath = '$tmpSavePath/$savePath'.replaceAll('\\', '/');
-
-      savePath = savePath.replaceAll('\\', '/');
+          ? path.join(homeDir.path, savePath)
+          : path.join(settings[Constants.DOWNLOAD_PATH]!, savePath);
 
       final downloadDir = Directory(tmpSavePath);
       if (!await downloadDir.exists()) {
@@ -391,7 +409,7 @@ class DownloadProvider extends ChangeNotifier {
         }
       }
 
-      final testFile = File('${downloadDir.path}/.write_test');
+      final testFile = File(path.join(downloadDir.path, '.write_test'));
       try {
         await testFile.writeAsString('test', flush: true);
         await testFile.delete();
