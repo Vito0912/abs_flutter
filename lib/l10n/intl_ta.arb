@@ -1,1 +1,766 @@
-{}
+{
+  "create": "உருவாக்கு",
+  "@create": {},
+  "createBookmark": "புத்தகக்குறியை உருவாக்கவும்",
+  "@createBookmark": {},
+  "dateFormatMinuteSecond": "{நிமிடங்கள், பன்மை, ஒன்று {{minutes} நிமிடம்} மற்ற {{minutes} நிமிடங்கள்}} {விநாடிகள், பன்மை, ஒன்று {{seconds} இரண்டாவது} பிற {{seconds} விநாடிகள்}}",
+  "@dateFormatMinuteSecond": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      },
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatMinuteSecondShort": "{minutes} m {seconds} கள்",
+  "@dateFormatMinuteSecondShort": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      },
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatMinuteShort": "{count} மீ",
+  "@dateFormatMinuteShort": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatSecond": "{எண்ணிக்கை, பன்மை, ஒன்று {{count} இரண்டாவது} மற்ற {{count} விநாடிகள்}}",
+  "@dateFormatSecond": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatSecondShort": "{count} கள்",
+  "@dateFormatSecondShort": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "daysListened": "நாட்கள் கேட்டன",
+  "@daysListened": {},
+  "debugLogs": "பிழைத்திருத்த பதிவுகள்",
+  "@debugLogs": {},
+  "deleteSelected": "தேர்ந்தெடுக்கப்பட்டதை நீக்கு",
+  "@deleteSelected": {},
+  "largestItems": "மிகப்பெரிய பொருட்கள்",
+  "@largestItems": {},
+  "last30Days": "கடந்த 30 நாட்கள்",
+  "@last30Days": {},
+  "last7Days": "கடந்த 7 நாட்கள்",
+  "@last7Days": {},
+  "libraries": "நூலகங்கள்",
+  "@libraries": {},
+  "library": "நூலகம்",
+  "@library": {},
+  "libraryName": "நூலக பெயர்",
+  "@libraryName": {},
+  "libraryStats": "நூலக புள்ளிவிவரங்கள்",
+  "@libraryStats": {},
+  "listenAgain": "மீண்டும் கேளுங்கள்",
+  "@listenAgain": {},
+  "loading": "ஏற்றுகிறது…",
+  "@loading": {},
+  "noSeriesSelected": "எந்தத் தொடரும் தேர்ந்தெடுக்கப்படவில்லை",
+  "@noSeriesSelected": {},
+  "size": "அளவு",
+  "@size": {},
+  "success": "செய்",
+  "@success": {},
+  "close": "மூடு",
+  "@close": {},
+  "addANewUser": "புதிய பயனரைச் சேர்க்கவும்",
+  "@addANewUser": {},
+  "addUser": "பயனரைச் சேர்க்கவும்",
+  "@addUser": {},
+  "added": "சேர்க்கப்பட்டது",
+  "@added": {},
+  "advanced": "மேம்பட்ட",
+  "@advanced": {},
+  "aggressiveCaching": "வன்கவர்வு கேச்சிங்",
+  "@aggressiveCaching": {},
+  "aggressiveCachingDescription": "இயக்கப்பட்டால், பயன்பாடு மிகவும் ஆக்ரோசமான தற்காலிக சேமிப்பிற்கு உதவும். எல்லா பொருட்களின் முன்னேற்றத்தையும் பெறுவது போன்ற வழக்கமான புதுப்பிப்புகள் தேவைப்படும் தரவைக் கொண்டிருக்கக்கூடிய கேச்சிங் வழிகள் இதில் அடங்கும். இந்த சந்தர்ப்பங்களில், நீங்கள் குறிப்பாக ஒரு உருப்படியைத் திறந்து கோராவிட்டால் கடைசியாக அறியப்பட்ட நிலை பயன்படுத்தப்படும். இந்த வழிகளில் குறுகிய கேச் காலம் இருக்கும்.",
+  "@aggressiveCachingDescription": {},
+  "allDownloads": "அனைத்து பதிவிறக்கங்களும்",
+  "@allDownloads": {},
+  "amoledMode": "Amoled பயன்முறை",
+  "@amoledMode": {},
+  "ascending": "ஏறுதல்",
+  "@ascending": {},
+  "attribution": "பண்புக்கூறு",
+  "@attribution": {},
+  "author": "நூலாசிரியர்",
+  "@author": {},
+  "authors": "ஆசிரியர்கள்",
+  "@authors": {},
+  "back": "பின்",
+  "@back": {},
+  "bookCover": "புத்தக அட்டை",
+  "@bookCover": {},
+  "boostLoading": "ஏற்றுதல் அதிகரிக்கும்",
+  "@boostLoading": {},
+  "boostLoadingDescription": "இந்த நற்பொருத்தம் இயக்கப்பட்டால், பயன்பாடு நிகழ்நேர கேச்சிங்கை திறம்பட புறக்கணிக்கிறது. உள்ளடக்கத்தை உடனடியாக ஏற்றுவதற்கு தற்காலிக சேமிப்பு தரவைப் பயன்படுத்தும் போது சேவையகத்திலிருந்து அண்மைக் கால தரவைப் பெற இது எப்போதும் முயற்சிக்கும். புதுப்பிக்கப்பட்ட தரவு மீட்டெடுக்கப்பட்டதும், இது பழைய தற்காலிக சேமிப்பை மாற்றுகிறது, அடுத்த முறை நீங்கள் பயன்பாட்டை ஏற்றும்போது மிக அண்மைக் கால தரவு காட்டப்படும் என்பதை உறுதி செய்கிறது. இதன் விளைவாக, சேவையகத்தின் தற்போதைய தரவின் பின்னால் ஒரு பெறும் சுழற்சியில் இருந்து தரவை நீங்கள் எப்போதும் காண்பீர்கள்.",
+  "@boostLoadingDescription": {},
+  "boostLoadingSubtitle": "இந்த அம்சத்தைப் புரிந்துகொள்ள விளக்கத்தைப் படியுங்கள்.",
+  "@boostLoadingSubtitle": {},
+  "caching": "கேச்சிங்",
+  "@caching": {},
+  "cachingHeader": "கேச்சிங்",
+  "@cachingHeader": {},
+  "cancel": "ரத்துசெய்",
+  "@cancel": {},
+  "carPlayer": "கார் பிளேயர்",
+  "@carPlayer": {},
+  "changeLibrary": "நூலகத்தை மாற்றவும்",
+  "@changeLibrary": {},
+  "chapters": "பாடங்கள்",
+  "@chapters": {},
+  "chaptersNum": "அத்தியாயங்கள் ({num})",
+  "@chaptersNum": {
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "clearCache": "தெளிவான தற்காலிக சேமிப்பு",
+  "@clearCache": {},
+  "collapseSeries": "சரிவு தொடர்",
+  "@collapseSeries": {},
+  "collapseSeriesDescription": "இயக்கப்பட்டால், ஒரு தொடரில் உள்ள உருப்படிகள் நூலகக் காட்சியில் ஒன்றாக தொகுக்கப்படும், இது முழுத் தொடரையும் குறிக்க ஒரே ஒரு உருப்படியைக் காண்பிக்கும்.",
+  "@collapseSeriesDescription": {},
+  "consecutiveDays": "தொடர்ச்சியான நாட்கள்",
+  "@consecutiveDays": {},
+  "continueListening": "தொடர்ந்து கேட்பது",
+  "@continueListening": {},
+  "continueSeries": "தொடரைத் தொடரவும்",
+  "@continueSeries": {},
+  "copy": "நகலெடு",
+  "@copy": {},
+  "copyAnonymous": "நகலெடு (அகற்றப்பட்ட தனிப்பட்ட தரவை முயற்சிக்கவும்)",
+  "@copyAnonymous": {},
+  "copyLogs": "பதிவுகளை நகலெடுக்கவும்",
+  "@copyLogs": {},
+  "copyLogsDescription": "முக்கியமானது:\n 'நகல்' என்பதைக் சொடுக்கு செய்தால், தற்போது காட்டப்படும் அனைத்து பதிவுகளையும் உங்கள் கிளிப்போர்டுக்கு மாற்றும், இதில் பயன்பாடு தொடங்கப்பட்டதிலிருந்து பதிவுசெய்யப்பட்ட தரவு உட்பட அல்லது கடைசியாக அழிக்கப்பட்டது. இந்த பதிவுகளில் டோக்கன்கள், பயனர்பெயர்கள், மின்னஞ்சல்கள் மற்றும் சேவையக முகவரி கள் போன்ற முக்கியமான தகவல்கள் இருக்கலாம். இந்த தகவலை நீங்கள் எங்கு ஒட்டுகிறீர்கள் என்பதில் எச்சரிக்கையாக இருங்கள்! \\ நீங்கள் 'நகலெடுத்து முக்கியமான தகவல்களை மறைக்க முயற்சிக்கிறீர்கள்' என்பதைத் தேர்வுசெய்தால், பயன்பாடு டோக்கன்கள், பயனர்பெயர்கள், மின்னஞ்சல்கள் மற்றும் சேவையக முகவரி கள் போன்ற உருப்படிகளை மறைக்க முயற்சிக்கும். இருப்பினும், அனைத்து தனிப்பட்ட தரவுகளும் முழுமையாக அகற்றப்படுவதை உறுதிசெய்ய பதிவுகளை மதிப்பாய்வு செய்வதற்கு நீங்கள் பொறுப்பு.",
+  "@copyLogsDescription": {},
+  "createBookmarkTitle": "புத்தகக்குறியை உருவாக்கவும்",
+  "@createBookmarkTitle": {},
+  "currentDownloads": "தற்போதைய பதிவிறக்கங்கள்",
+  "@currentDownloads": {},
+  "currentPositionNum": "தற்போதைய நிலை: {position}",
+  "@currentPositionNum": {
+    "placeholders": {
+      "position": {
+        "type": "String"
+      }
+    }
+  },
+  "darkMode": "இருண்ட முறை",
+  "@darkMode": {},
+  "dateFormatDay": "{எண்ணிக்கை, பன்மை, ஒன்று {{count} நாள்} மற்ற {{count} நாட்கள்}}",
+  "@dateFormatDay": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatDayHour": "{நாட்கள், பன்மை, ஒன்று {{days} நாள்} மற்ற {{days} நாட்கள்}} {மணிநேரம், பன்மை, ஒன்று {{hours} மணிநேரம்} பிற {{hours} மணிநேரம்}}",
+  "@dateFormatDayHour": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatDayHourMinute": "{நாட்கள், பன்மை, ஒன்று {{days} நாள்} மற்ற {{days} நாட்கள்}} {மணிநேரம், பன்மை, ஒன்று {{hours} மணிநேரம்} மற்ற {{hours} மணிநேரம்}} {நிமிடங்கள், பன்மை, ஒன்று {{minutes} நிமிடம்} பிற {{minutes} நிமிடங்கள்}}",
+  "@dateFormatDayHourMinute": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatDayHourMinuteSecond": "{நாட்கள், பன்மை, ஒன்று {{days} நாள்} மற்ற {{days} நாட்கள்}} {மணிநேரம், பன்மை, ஒன்று {{hours} மணிநேரம்} மற்ற {{hours} மணிநேரம்}} {நிமிடங்கள், பன்மை, ஒன்று {{minutes} நிமிடம்} பிற {{minutes} நிமிடங்கள்}} {விநாடிகள், பன்மை, ஒரு {{seconds} இரண்டாவது} பிற {{seconds} விநாடிகள்}}",
+  "@dateFormatDayHourMinuteSecond": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      },
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatDayHourMinuteSecondShort": "{days} டி {hours} h {minutes} m {seconds} s",
+  "@dateFormatDayHourMinuteSecondShort": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      },
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatDayHourMinuteShort": "{days} டி {hours} h {minutes} மீ",
+  "@dateFormatDayHourMinuteShort": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatDayHourShort": "{days} டி {hours} h",
+  "@dateFormatDayHourShort": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatDayShort": "{count} டி",
+  "@dateFormatDayShort": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatHourMinuteSecond": "{மணிநேரம், பன்மை, ஒன்று {{hours} மணிநேரம்} மற்ற {{hours} மணிநேரம்}} {நிமிடங்கள், பன்மை, ஒன்று {{minutes} நிமிடம்} பிற {{minutes} நிமிடங்கள்}} {வினாடிகள், பன்மை, ஒன்று {{seconds} இரண்டாவது} பிற {{seconds} விநாடிகள்}}",
+  "@dateFormatHourMinuteSecond": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      },
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatHourMinuteSecondShort": "{hours} h {minutes} m {seconds} கள்",
+  "@dateFormatHourMinuteSecondShort": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      },
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatHourMinuteShort": "{hours} h {minutes} மீ",
+  "@dateFormatHourMinuteShort": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatHourShort": "{count} h",
+  "@dateFormatHourShort": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatMinute": "{எண்ணிக்கை, பன்மை, ஒன்று {{count} நிமிடம்} மற்ற {{count} நிமிடங்கள்}}",
+  "@dateFormatMinute": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "descending": "இறங்கு",
+  "@descending": {},
+  "description": "விவரம்",
+  "@description": {},
+  "deviceInfo": "சாதனம்: {device}\n OS: {os}\n பயன்பாட்டு பதிப்பு: {version}",
+  "@deviceInfo": {
+    "placeholders": {
+      "device": {
+        "type": "String"
+      },
+      "os": {
+        "type": "String"
+      },
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "disableSkippingChapters": "ச்கிப்பிங் அத்தியாயங்களை முடக்கு",
+  "@disableSkippingChapters": {},
+  "dateFormatHour": "{எண்ணிக்கை, பன்மை, ஒன்று {{count} மணிநேரம்} மற்ற {{count} மணிநேரம்}}",
+  "@dateFormatHour": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatHourMinute": "{மணிநேரம், பன்மை, ஒன்று {{hours} மணிநேரம்} மற்ற {{hours} மணிநேரம்}} {நிமிடங்கள், பன்மை, ஒன்று {{minutes} நிமிடம்} பிற {{minutes} நிமிடங்கள்}}",
+  "@dateFormatHourMinute": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "disableSkippingChaptersDescription": "இது பயன்பாட்டிற்கு வெளியில் இருந்து அத்தியாயங்களைத் தவிர்க்கும் திறனை முடக்கும் (எ.கா., எட்செட் அல்லது அறிவிப்புக் கட்டுப்பாடுகள் வழியாக). அத்தியாயங்களைத் தவிர்ப்பதற்குப் பதிலாக உங்கள் எட்ஃபோன்கள் வேகமாக முன்னோக்கி மற்றும் முன்னாடி செயல்பாடுகளைப் பயன்படுத்த விரும்பினால் இதை இயக்கவும்.",
+  "@disableSkippingChaptersDescription": {},
+  "disableVibration": "அதிர்வுகளை முடக்கவும்",
+  "@disableVibration": {},
+  "disabled": "முடக்கப்பட்டது",
+  "@disabled": {},
+  "discover": "கண்டுபிடி",
+  "@discover": {},
+  "domainOrIp": "டொமைன் அல்லது ஐபி",
+  "@domainOrIp": {},
+  "downloadComplete": "முழுமையான பதிவிறக்கம்",
+  "@downloadComplete": {},
+  "downloadCompleteBody": "{displayName} முழுமையான பதிவிறக்க",
+  "@downloadCompleteBody": {},
+  "downloadErrorDescription": "கோப்பு சரியாக பதிவிறக்கம் செய்யப்படவில்லை. பொத்தானைக் சொடுக்கு செய்து மீண்டும் பதிவிறக்குவதன் மூலம் சாதனத்தில் உள்ள தரவை நீக்க முயற்சி செய்யலாம்.",
+  "@downloadErrorDescription": {},
+  "downloadInfo": "செய்தி பதிவிறக்க",
+  "@downloadInfo": {},
+  "downloadPath": "பாதை பதிவிறக்க",
+  "@downloadPath": {},
+  "downloadPathDescription": "பதிவிறக்கங்கள் சேமிக்கப்படும் பாதை. இதை மாற்ற நீங்கள் முதலில் எல்லா பதிவிறக்கங்களையும் நீக்க வேண்டும்.",
+  "@downloadPathDescription": {},
+  "downloading": "பதிவிறக்குகிறது",
+  "@downloading": {},
+  "downloadingBody": "பதிவிறக்கம் {displayName}",
+  "@downloadingBody": {},
+  "downloads": "பதிவிறக்கங்கள்",
+  "@downloads": {},
+  "downloadsOnlyViaWifi": "வைஃபை வழியாக மட்டுமே பதிவிறக்குகிறது",
+  "@downloadsOnlyViaWifi": {},
+  "duration": "காலம்",
+  "@duration": {},
+  "ebookreader": "மின்புத்தக-வாசகர்",
+  "@ebookreader": {},
+  "editQueue": "வால் திருத்து",
+  "@editQueue": {},
+  "enableNotificationsDownload": "பதிவிறக்க முன்னேற்ற புதுப்பிப்புகளைப் பெறுவதற்கான அறிவிப்புகளை இயக்கவும், பின்னணியில் கோப்புகளைப் பதிவிறக்கவும் முடியும்.",
+  "@enableNotificationsDownload": {},
+  "enabled": "இயக்கப்பட்டது",
+  "@enabled": {},
+  "enterValidUsernameOrPassword": "உங்கள் பயனர்பெயர் மற்றும் கடவுச்சொல்லை உள்ளிடுவதற்கு முன் செல்லுபடியாகும் ஐபி/டொமைன் மற்றும் போர்ட்டை உள்ளிடவும்.",
+  "@enterValidUsernameOrPassword": {},
+  "episodeId": "அத்தியாயம் ஐடி",
+  "@episodeId": {},
+  "error": "பிழை",
+  "@error": {},
+  "errorDownloading": "பதிவிறக்குவதில் பிழை",
+  "@errorDownloading": {},
+  "errorDownloadingBody": "பதிவிறக்கும்போது பிழை ஏற்பட்டது {displayName}",
+  "@errorDownloadingBody": {},
+  "errorItemNotFound": "பிழை: உருப்படி கிடைக்கவில்லை!",
+  "@errorItemNotFound": {},
+  "exit": "வெளியேறு",
+  "@exit": {},
+  "failed": "தோல்வியுற்றது",
+  "@failed": {},
+  "logging": "பதிவு",
+  "@logging": {},
+  "fastForward": "வேகமாக முன்னோக்கி",
+  "@fastForward": {},
+  "fastForwardSeconds": "வேகமாக முன்னோக்கி விநாடிகள்",
+  "@fastForwardSeconds": {},
+  "fastForwardSecondsDescription": "வேகமான முன்னோக்கி பொத்தானை அழுத்தும்போது முன்னோக்கி தவிர்க்க வினாடிகளின் எண்ணிக்கையை அமைக்கவும்.",
+  "@fastForwardSecondsDescription": {},
+  "feedOpen": "திறந்த உணவு",
+  "@feedOpen": {},
+  "filename": "கோப்புப்பெயர்",
+  "@filename": {},
+  "filepath": "FilePath",
+  "@filepath": {},
+  "filter": "வடிப்பி",
+  "@filter": {},
+  "finished": "முடிந்தது",
+  "@finished": {},
+  "general": "பொது",
+  "@general": {},
+  "genres": "வகைகள்",
+  "@genres": {},
+  "hide": "மறை",
+  "@hide": {},
+  "ifTheQuickAccountSwitcherShouldBeShown": "விரைவான கணக்கு சுவிட்சர் காட்டப்பட வேண்டும் என்றால்",
+  "@ifTheQuickAccountSwitcherShouldBeShown": {},
+  "inProgress": "முன்னேற்றத்தில் உள்ளது",
+  "@inProgress": {},
+  "information": "தகவல்",
+  "@information": {},
+  "itemId": "பொருள் ஐடி",
+  "@itemId": {},
+  "itemLength": "நீளம்: {length}",
+  "@itemLength": {
+    "placeholders": {
+      "length": {
+        "type": "String"
+      }
+    }
+  },
+  "itemNotFoundDescription": "உருப்படியைக் கண்டுபிடிக்க முடியவில்லை. இது பிணையம் பிழை காரணமாக இருக்கலாம் அல்லது உருப்படி இனி இல்லை, ஆனால் தற்காலிக சேமிப்பில் இருக்கலாம்.",
+  "@itemNotFoundDescription": {},
+  "itemNumChapters": "அத்தியாயங்களின் எண்ணிக்கை: {numChapters}",
+  "@itemNumChapters": {
+    "placeholders": {
+      "numChapters": {
+        "type": "String"
+      }
+    }
+  },
+  "itemProgress": "முன்னேற்றம்: {progress}%",
+  "@itemProgress": {
+    "placeholders": {
+      "progress": {
+        "type": "String"
+      }
+    }
+  },
+  "itemPublishedYear": "வெளியிடப்பட்ட ஆண்டு: {year}",
+  "@itemPublishedYear": {
+    "placeholders": {
+      "year": {
+        "type": "String"
+      }
+    }
+  },
+  "itemType": "உருப்படி வகை",
+  "@itemType": {},
+  "jumpToLastPosition": "கடைசி நிலைக்கு செல்லவும்",
+  "@jumpToLastPosition": {},
+  "jumpToLastPositionDescription": "இயக்கப்பட்டால், விளையாட்டை அழுத்தும்போது வீரர் கடைசி நிலைக்கு செல்வார்",
+  "@jumpToLastPositionDescription": {},
+  "language": "மொழி",
+  "@language": {},
+  "languages": "மொழிகள்",
+  "@languages": {},
+  "linuxPermissionError": "இசைவு பிழை காரணமாக பதிவிறக்கம் தோல்வியடைந்தது. கோப்புறை அனுமதிகளை சரிபார்க்கவும்.",
+  "@linuxPermissionError": {},
+  "listeningInTheLastYear": "கடந்த ஆண்டில் கேட்பது",
+  "@listeningInTheLastYear": {},
+  "lockProgressBar": "பூட்டு மீடியா முன்னேற்றப் பட்டி",
+  "@lockProgressBar": {},
+  "lockProgressBarDescription": "இயக்கப்பட்டால், இந்த நற்பொருத்தம் இயக்க முறைமையால் ஆதரிக்கப்பட்டால், ஊடக அறிவிப்பில் முன்னேற்றப் பட்டியை பூட்டுகிறது",
+  "@lockProgressBarDescription": {},
+  "logs": "பதிவுகள்",
+  "@logs": {},
+  "longestItems": "நீளமான உருப்படிகள்",
+  "@longestItems": {},
+  "markItemsFinished": "மார்க் உருப்படிகள் முடிந்தது",
+  "@markItemsFinished": {},
+  "markItemsFinishedAfterDescription": "ஒரு பொருளின் முடிவிற்கு சில நொடிகளில் நேரத்தைக் குறிப்பிடவும். இதை 0 ஆக அமைப்பது, வீரர் இறுதிவரை அடையும் போது மட்டுமே முடிக்கப்பட்ட உருப்படியைக் குறிக்கிறது. நேர்மறையான மதிப்பு அமைக்கப்பட்டால், வீரர் அந்த நேரத்தை முடிவுக்கு வரும்போது உருப்படி முடிந்ததாக குறிக்கப்பட்டுள்ளது.",
+  "@markItemsFinishedAfterDescription": {},
+  "minimize": "குறைக்கவும்",
+  "@minimize": {},
+  "minimizeToTray": "தட்டில் குறைக்கவும்",
+  "@minimizeToTray": {},
+  "minimizeToTrayDescription": "இந்த விருப்பம் பணிப்பட்டியிலிருந்து பயன்பாட்டை மறைத்து, கணினி தட்டில் நகர்த்துகிறது.",
+  "@minimizeToTrayDescription": {},
+  "miscellaneous": "மற்றவை",
+  "@miscellaneous": {},
+  "moreOptions": "மேலும் விருப்பங்கள்",
+  "@moreOptions": {},
+  "multipleServerAdressess": "நீங்கள் பல சேவையக முகவரிகளைப் பயன்படுத்த விரும்பினால், அவற்றை பின்னர் சேர்க்கலாம்",
+  "@multipleServerAdressess": {},
+  "mustEnterValidAddress": "நீங்கள் செல்லுபடியாகும் சேவையக முகவரியை உள்ளிட வேண்டும்",
+  "@mustEnterValidAddress": {},
+  "name": "பெயர்",
+  "@name": {},
+  "narrators": "விவரிப்பாளர்கள்",
+  "@narrators": {},
+  "newestEpisodes": "புதிய அத்தியாயங்கள்",
+  "@newestEpisodes": {},
+  "next": "அடுத்தது",
+  "@next": {},
+  "nextChapter": "அடுத்த அத்தியாயம்",
+  "@nextChapter": {},
+  "noConnection": "இணைப்பு இல்லை",
+  "@noConnection": {},
+  "noDownloads": "பதிவிறக்கங்கள் இல்லை",
+  "@noDownloads": {},
+  "noInternetDescription": "சேவையகத்துடன் இணைப்பதில் சிக்கல் உள்ளது.",
+  "@noInternetDescription": {},
+  "noItemsFound": "உருப்படிகள் எதுவும் கிடைக்கவில்லை",
+  "@noItemsFound": {},
+  "noPath": "பாதை இல்லை",
+  "@noPath": {},
+  "noUserData": "உள்நுழைவு தோல்வியுற்றது: பயனர் தரவு எதுவும் பெறப்படவில்லை",
+  "@noUserData": {},
+  "notFinished": "முடிக்கப்படவில்லை",
+  "@notFinished": {},
+  "notStarted": "தொடங்கப்படவில்லை",
+  "@notStarted": {},
+  "notTriedYet": "இன்னும் முயற்சிக்கவில்லை",
+  "@notTriedYet": {},
+  "notificationHeading": "அறிவிப்புகள் இயக்கப்பட வேண்டும்",
+  "@notificationHeading": {},
+  "numBooksInSeries": "{numbooks, பன்மை, = 0 {No Books} = 1 {1 Book} பிற {{numBooks} புத்தகங்கள்}}",
+  "@numBooksInSeries": {
+    "placeholders": {
+      "numBooks": {
+        "type": "num"
+      }
+    }
+  },
+  "numberOfBooks": "புத்தகங்களின் எண்ணிக்கை",
+  "@numberOfBooks": {},
+  "offlineProgress": "இணைப்பில்லாத முன்னேற்றம்",
+  "@offlineProgress": {},
+  "offlineSavedProgress": "இணைப்பில்லாத முன்னேற்றத்தை சேமித்தது",
+  "@offlineSavedProgress": {},
+  "ok": "சரி",
+  "@ok": {},
+  "open": "திற",
+  "@open": {},
+  "openDownloads": "பதிவிறக்கங்களைத் திறந்த",
+  "@openDownloads": {},
+  "openProjectLink": "ஆடியோபூக்செல்ஃப்/சேவையகம்",
+  "@openProjectLink": {},
+  "ownStats": "சொந்த புள்ளிவிவரங்கள்",
+  "@ownStats": {},
+  "password": "கடவுச்சொல்",
+  "@password": {},
+  "pause": "இடைநிறுத்தம்",
+  "@pause": {},
+  "personalizedLibrary": "தனிப்பயனாக்கப்பட்ட நூலகம்",
+  "@personalizedLibrary": {},
+  "play": "விளையாடுங்கள்",
+  "@play": {},
+  "playHistory": "வரலாறு விளையாடுங்கள்",
+  "@playHistory": {},
+  "playNextEpisode": "அடுத்த அத்தியாயத்தை விளையாடுங்கள்",
+  "@playNextEpisode": {},
+  "playbackSpeed": "வேகம்",
+  "@playbackSpeed": {},
+  "player": "வீரர்",
+  "@player": {},
+  "playerSettings": "பிளேயர் அமைப்புகள்",
+  "@playerSettings": {},
+  "pleaseCheckInternet": "உங்கள் இணைய இணைப்பை சரிபார்த்து மீண்டும் முயற்சிக்கவும்.",
+  "@pleaseCheckInternet": {},
+  "port": "துறைமுகம்",
+  "@port": {},
+  "previous": "முந்தைய",
+  "@previous": {},
+  "previousChapter": "முந்தைய அத்தியாயம்",
+  "@previousChapter": {},
+  "progress": "முன்னேற்றம்",
+  "@progress": {},
+  "progressAsChaptersDescription": "ஒரு அத்தியாயம் அடிப்படையில் பிளேயரில் முன்னேற்றத்தையும் அறிவிப்புகளையும் காட்ட இந்த விருப்பத்தை இயக்கவும். முடக்கப்பட்டால், முழு உருப்படியின் அடிப்படையில் முன்னேற்றம் காண்பிக்கப்படும்.",
+  "@progressAsChaptersDescription": {},
+  "progressNum": "தற்போதைய முன்னேற்றம்: {progress} %",
+  "@progressNum": {
+    "placeholders": {
+      "progress": {
+        "type": "String"
+      }
+    }
+  },
+  "publisher": "வெளியீட்டாளர்",
+  "@publisher": {},
+  "readLess": "குறைவாகப் படியுங்கள்",
+  "@readLess": {},
+  "readMore": "மேலும் வாசிக்க",
+  "@readMore": {},
+  "recentSeries": "அண்மைக் கால தொடர்",
+  "@recentSeries": {},
+  "recentlyAdded": "அண்மைக் காலத்தில் சேர்க்கப்பட்டது",
+  "@recentlyAdded": {},
+  "reportAnIssue": "ஒரு சிக்கலைப் புகாரளிக்கவும்",
+  "@reportAnIssue": {},
+  "restartRequired": "மறுதொடக்கம் தேவை",
+  "@restartRequired": {},
+  "restartRequiredDescription": "மாற்றங்களைப் பயன்படுத்த பயன்பாட்டை மறுதொடக்கம் செய்யுங்கள்.",
+  "@restartRequiredDescription": {},
+  "retry": "மீண்டும் முயற்சிக்கவும்",
+  "@retry": {},
+  "rewind": "முன்னாடி",
+  "@rewind": {},
+  "rewindSeconds": "வினாடிகள் முன்னாடி",
+  "@rewindSeconds": {},
+  "rewindSecondsDescription": "ரிவைண்ட் பொத்தானை அழுத்தும்போது பின்தங்கிய நிலையில் தவிர்க்க விநாடிகளின் எண்ணிக்கையை அமைக்கவும்.",
+  "@rewindSecondsDescription": {},
+  "search": "தேடல்",
+  "@search": {},
+  "searchDisabled": "முடக்கப்பட்டதைத் தேடுங்கள்",
+  "@searchDisabled": {},
+  "seek": "தேடுங்கள்",
+  "@seek": {},
+  "sequence": "வரிசை",
+  "@sequence": {},
+  "serverSelection": "சேவையக தேர்வு",
+  "@serverSelection": {},
+  "series": "தொடர்",
+  "@series": {},
+  "serverAdressContinue": "தொடர உங்கள் சேவையக முகவரியை உள்ளிடவும்",
+  "@serverAdressContinue": {},
+  "settings": "அமைப்புகள்",
+  "@settings": {},
+  "shakeResetTimer": "ச்லீப் டைமரை மீட்டமைக்க குலுக்கவும்",
+  "@shakeResetTimer": {},
+  "shareOpen": "திறந்த பகிர்ந்து கொள்ளுங்கள்",
+  "@shareOpen": {},
+  "show": "காட்டு",
+  "@show": {},
+  "showAccountSwitcher": "கணக்கு ச்விட்சர் காட்டு",
+  "@showAccountSwitcher": {},
+  "showAccountSwitcherDescription": "விரைவான கணக்கு மாறுவதற்கு பயன்பாட்டு பட்டியில் படவுரு பொத்தானைச் சேர்க்க இந்த விருப்பத்தை இயக்கவும். இது பயன்பாட்டு பட்டியின் அளவைக் குறைக்கும்.",
+  "@showAccountSwitcherDescription": {},
+  "showMediaType": "ஊடக வகையைக் காட்டு",
+  "@showMediaType": {},
+  "showMediaTypeDescription": "ஒவ்வொரு பொருளின் அடிப்பகுதியில் மீடியா வகை பேட்ச்களைக் காட்டுகிறது.",
+  "@showMediaTypeDescription": {},
+  "showProgressPerChapters": "அத்தியாயத்திற்கு முன்னேற்றத்தைக் காட்டு",
+  "@showProgressPerChapters": {},
+  "signOut": "விடுபதிகை",
+  "@signOut": {},
+  "sleepTimer": "தூக்க நேரங்குறிகருவி",
+  "@sleepTimer": {},
+  "sort": "வரிசைப்படுத்து",
+  "@sort": {},
+  "sortSeriesAsc": "ஏறுவரிசை வரிசையில் தொடரை வரிசைப்படுத்தவும்",
+  "@sortSeriesAsc": {},
+  "stats": "புள்ளிவிவரங்கள்",
+  "@stats": {},
+  "stop": "நிறுத்து",
+  "@stop": {},
+  "stopPlayerUntilSync": "ஒத்திசைவு வரை பிளேயரை நிறுத்துங்கள்",
+  "@stopPlayerUntilSync": {},
+  "stopPlayerWhileSyncingDescription": "மிக அண்மைக் கால பின்னணி நிலை ஒத்திசைக்கப்படும் வரை வீரர் தொடங்குவதைத் தடுக்க இந்த விருப்பத்தை இயக்கவும். பிளேபேக் சரியான நிலையில் இருந்து மீண்டும் தொடங்குவதை இது உறுதி செய்கிறது. முடக்கப்பட்டால், தொடங்கிய உடனேயே பிளேபேக் நிலை மாறக்கூடும், இது தரவு இழப்புக்கு வழிவகுக்கும். இதை இயக்குவது தரவு பயன்பாட்டைப் பாதுகாக்க உதவுகிறது.",
+  "@stopPlayerWhileSyncingDescription": {},
+  "sync": "ஒத்திசைவு",
+  "@sync": {},
+  "syncInterval": "ஒத்திசைவு இடைவெளி (விநாடிகள்)",
+  "@syncInterval": {},
+  "syncIntervalDescription": "பயன்பாடு எவ்வளவு அடிக்கடி சேவையகத்துடன் ஒத்திசைக்க வேண்டும் என்பதைக் குறிப்பிடுகிறது. மாற்றங்கள் நடைமுறைக்கு வரும் பயன்பாட்டை மறுதொடக்கம் செய்யுங்கள்.",
+  "@syncIntervalDescription": {},
+  "syncOnlyViaWifi": "வைஃபை வழியாக மட்டுமே ஒத்திசைக்கவும்",
+  "@syncOnlyViaWifi": {},
+  "tags": "குறிச்சொற்கள்",
+  "@tags": {},
+  "timeRemainingNum": "மீதமுள்ள நேரம்: {time}",
+  "@timeRemainingNum": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "timerText": "{time} மணித்துளி",
+  "@timerText": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "title": "தலைப்பு",
+  "@title": {},
+  "today": "இன்று",
+  "@today": {},
+  "topAuthors": "சிறந்த ஆசிரியர்கள்",
+  "@topAuthors": {},
+  "topGenres": "சிறந்த வகைகள்",
+  "@topGenres": {},
+  "totalAudioTracks": "மொத்த ஆடியோ தடங்கள்",
+  "@totalAudioTracks": {},
+  "totalAuthors": "மொத்த ஆசிரியர்கள்",
+  "@totalAuthors": {},
+  "totalDuration": "மொத்த காலம்",
+  "@totalDuration": {},
+  "totalGenres": "மொத்த வகைகள்",
+  "@totalGenres": {},
+  "totalItems": "மொத்த உருப்படிகள்",
+  "@totalItems": {},
+  "totalSize": "மொத்த அளவு",
+  "@totalSize": {},
+  "totalTimeListened": "மொத்த நேரம் கேட்டது",
+  "@totalTimeListened": {},
+  "tryAgain": "மீண்டும் முயற்சிக்கவும்",
+  "@tryAgain": {},
+  "unknown": "தெரியவில்லை",
+  "@unknown": {},
+  "unknownTitle": "தெரியாத தலைப்பு",
+  "@unknownTitle": {},
+  "updatedAt": "இல் புதுப்பிக்கப்பட்டது",
+  "@updatedAt": {},
+  "user": "பயனர்",
+  "@user": {},
+  "username": "பயனர்பெயர்",
+  "@username": {},
+  "usernameOrPasswordNotEmpty": "பயனர்பெயர் மற்றும் கடவுச்சொல் காலியாக இருக்க முடியாது",
+  "@usernameOrPasswordNotEmpty": {},
+  "viewBookmarks": "புக்மார்க்குகளைக் காண்க",
+  "@viewBookmarks": {},
+  "viewChapters": "அத்தியாயங்களைக் காண்க",
+  "@viewChapters": {},
+  "viewOnGithub": "கிட்அப்பைக் காண்க",
+  "@viewOnGithub": {},
+  "waitTillRedirect": "/Init க்கு திருப்பி விடுங்கள். நீங்கள் தற்போது உள்நுழையவில்லை.",
+  "@waitTillRedirect": {},
+  "waitingForDownload": "பதிவிறக்கம் தொடங்க காத்திருக்கிறது",
+  "@waitingForDownload": {},
+  "year": "ஆண்டு",
+  "@year": {}
+}
