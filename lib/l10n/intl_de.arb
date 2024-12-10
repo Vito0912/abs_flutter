@@ -755,5 +755,13 @@
   "advanced": "Erweitert",
   "@advanced": {},
   "disableSkippingChapters": "Deaktiviere Kapitelsprünge",
-  "@disableSkippingChapters": {}
+  "@disableSkippingChapters": {},
+  "disableVibration": "Deaktiviere Vibrationen",
+  "@disableVibration": {},
+  "retry": "Wiederholen",
+  "@retry": {},
+  "disableSkippingChaptersDescription": "Das deaktiviert die Möglichkeit, Kapitel von außerhalb der Anwendung zu überspringen (z. B. über ein Headset oder Steuerungen in Benachrichtigungen). Aktiviere diese Einstellung, wenn du möchtest, dass deine Kopfhörer die Funktionen für Vor- und Zurückspulen nutzen, anstatt Kapitel zu überspringen.",
+  "@disableSkippingChaptersDescription": {},
+  "linuxPermissionError": "Der Download ist aufgrund eines Berechtigungsfehlers fehlgeschlagen. Bitte überprüfe die Zugriffsrechte.",
+  "@linuxPermissionError": {}
 }
