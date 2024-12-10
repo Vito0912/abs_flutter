@@ -751,5 +751,9 @@
   "waitingForDownload": "Warten auf den Beginn des Downloads",
   "@waitingForDownload": {},
   "year": "Jahr",
-  "@year": {}
+  "@year": {},
+  "advanced": "Erweitert",
+  "@advanced": {},
+  "disableSkippingChapters": "Deaktiviere Kapitelsprünge",
+  "@disableSkippingChapters": {}
 }
