@@ -33,7 +33,9 @@ final itemProvider =
   } else {
     final String originalFilePath = download.folderPath;
     late final String directory;
-    if (!kIsWeb && Platform.isAndroid) {
+    if (!kIsWeb &&
+        Platform.isAndroid &&
+        download.folderPath.contains('content://')) {
       // Everything from beginning until last %2F
       String? filePath = download.files.first.filePath;
       if (filePath == null) {
@@ -49,7 +51,9 @@ final itemProvider =
     }
 
     try {
-      if (!kIsWeb && Platform.isAndroid) {
+      if (!kIsWeb &&
+          Platform.isAndroid &&
+          download.folderPath.contains('content://')) {
         final String newFilePath = '$directory%2Fmeta.json';
         final Uint8List content = await SafStream().readFileBytes(newFilePath);
         return LibraryItem.fromJson(jsonDecode(utf8.decode(content)));
