@@ -8,6 +8,9 @@ For Android, iOS*<sup>1,2</sup>, macOS*<sup>1,2</sup>, Windows, Linux, and Web*<
 <a href="https://apps.microsoft.com/detail/9n3m43ss4889?mode=direct">
 	<img src="https://get.microsoft.com/images/en-us%20dark.svg" width="200"/>
 </a>
+<a href='https://play.google.com/store/apps/details?id=de.vito.absapp.abs_flutter'>
+  <img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png' style='height: 80px'/>
+</a>
 
 “Buch” (German for "book") + "able" = "Buchable"
 
