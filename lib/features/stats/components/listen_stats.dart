@@ -50,7 +50,8 @@ class ListenStats extends StatelessWidget {
           Helper.formatTimeToReadable(
               ownStats.days == null
                   ? 0
-                  : ((ownStats.totalTime ?? 0) / ownStats.days!.length),
+                  : ((ownStats.totalTime ?? 0) /
+                      (ownStats.days!.isEmpty ? 1 : ownStats.days!.length)),
               precise: true,
               short: true),
           'Average per day',

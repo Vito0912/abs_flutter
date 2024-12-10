@@ -15,8 +15,9 @@ _$PlaybackSessionImpl _$$PlaybackSessionImplFromJson(
       libraryItemId: json['libraryItemId'] as String,
       episodeId: json['episodeId'] as String?,
       mediaType: json['mediaType'] as String?,
-      mediaMetadata:
-          Metadata.fromJson(json['mediaMetadata'] as Map<String, dynamic>),
+      mediaMetadata: json['mediaMetadata'] == null
+          ? null
+          : Metadata.fromJson(json['mediaMetadata'] as Map<String, dynamic>),
       chapters: (json['chapters'] as List<dynamic>?)
           ?.map((e) => Chapter.fromJson(e as Map<String, dynamic>))
           .toList(),

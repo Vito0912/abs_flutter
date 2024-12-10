@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:abs_flutter/api/library_items/episode.dart';
 import 'package:abs_flutter/api/library_items/library_item.dart';
 import 'package:abs_flutter/api/me/user.dart' as m;
@@ -37,6 +39,22 @@ class DownloadButton extends ConsumerWidget {
         .where((element) =>
             element.itemId == libraryItem.id && element.episodeId == episodeId)
         .firstOrNull;
+
+    if (downloader.lastError != null) {
+      Future.delayed(Duration.zero, () {
+        if (!context.mounted) return;
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              downloader.lastError!,
+              maxLines: 3,
+            ),
+            duration: const Duration(seconds: 5),
+          ),
+        );
+        downloader.clearError();
+      });
+    }
 
     return PlatformElevatedButton(
       onPressed: () {
@@ -83,24 +101,27 @@ class DownloadButton extends ConsumerWidget {
   }
 
   Future<void> _downloadFile(WidgetRef ref, BuildContext context) async {
-    if (await Permission.notification.isDenied) {
-      await Permission.notification.request();
-    }
-    if (await Permission.notification.isDenied) {
-      if (context.mounted) {
-        showDialog(
-            context: context,
-            builder: (context) => AlertDialog(
-                  title: PlatformText(S.of(context).notificationHeading),
-                  content:
-                      PlatformText(S.of(context).enableNotificationsDownload),
-                  actions: [
-                    TextButton(
-                      onPressed: () => Navigator.of(context).pop(),
-                      child: PlatformText(S.of(context).ok),
-                    )
-                  ],
-                ));
+    if (kIsWeb || Platform.isAndroid || Platform.isIOS || Platform.isWindows) {
+      if (await Permission.notification.isDenied) {
+        await Permission.notification.request();
+      }
+      if (await Permission.notification.isDenied) {
+        if (context.mounted) {
+          showDialog(
+              context: context,
+              builder: (context) => AlertDialog(
+                    title: PlatformText(S.of(context).notificationHeading),
+                    content:
+                        PlatformText(S.of(context).enableNotificationsDownload),
+                    actions: [
+                      TextButton(
+                        onPressed: () => Navigator.of(context).pop(),
+                        child: PlatformText(S.of(context).ok),
+                      )
+                    ],
+                  ));
+        }
+        return;
       }
     }
 
