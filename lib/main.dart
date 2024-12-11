@@ -21,6 +21,7 @@ import 'package:flutter_settings_screens/flutter_settings_screens.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:just_audio_media_kit/just_audio_media_kit.dart';
 import 'package:package_info_plus/package_info_plus.dart';
+import 'package:path/path.dart' as path;
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sembast/sembast_io.dart';
@@ -28,7 +29,6 @@ import 'package:sembast_web/sembast_web.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tray_manager/tray_manager.dart';
 import 'package:window_manager/window_manager.dart';
-import 'package:path/path.dart' as path;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -44,7 +44,7 @@ void main() async {
   provContainer = container;
 
   if (!kIsWeb) {
-    appDir = Platform.isLinux 
+    appDir = Platform.isLinux
         ? '${path.join('/home', Platform.environment['USER']!, '.abs_flutter')}'
         : '${(await getApplicationDocumentsDirectory()).path.replaceAll('\\', '/')}/abs_flutter';
 
@@ -56,10 +56,16 @@ void main() async {
     db = await factory.openDatabase('test');
   }
 
-  secureStorage = FlutterSecureStorage(aOptions: getAndroidOptions());
   sp = await SharedPreferences.getInstance();
 
-  final String? userString = await secureStorage.read(key: 'users');
+  late final String? userString;
+  if (!kIsWeb && Platform.isLinux) {
+    userString = sp.getString('users');
+  } else {
+    secureStorage = FlutterSecureStorage(aOptions: getAndroidOptions());
+    userString = await secureStorage.read(key: 'users');
+  }
+
   final List<User>? users = userString != null && userString.isNotEmpty
       ? (jsonDecode(userString) as List).map((e) => User.fromJson(e)).toList()
       : null;

@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:abs_api/abs_api.dart' as abs_api;
 import 'package:abs_api/src/auth/bearer_auth.dart';
@@ -14,6 +15,7 @@ import 'package:abs_flutter/util/interceptor/abs_interceptor.dart';
 import 'package:abs_flutter/util/interceptor/cache_interceptor.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
@@ -30,8 +32,11 @@ class UserNotifier extends StateNotifier<List<User>> {
     }
 
     log(newUsers.toString());
-
-    secureStorage.write(key: 'users', value: jsonEncode(newUsers));
+    if (!kIsWeb && Platform.isLinux) {
+      sp.setString('users', jsonEncode(newUsers));
+    } else {
+      secureStorage.write(key: 'users', value: jsonEncode(newUsers));
+    }
   }
 
   void setUsers(List<User> users) {
