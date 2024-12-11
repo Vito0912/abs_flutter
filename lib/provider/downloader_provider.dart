@@ -18,6 +18,8 @@ import 'package:background_downloader/background_downloader.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:saf_stream/saf_stream.dart';
+import 'package:saf_util/saf_util.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart' as path;
 
@@ -112,11 +114,38 @@ class DownloadProvider extends ChangeNotifier {
     }
 
     if (currentDownloadFile != null && currentDownload != null) {
+      String? filePath;
+      if (update.status == TaskStatus.complete) {
+        final String? saveDir =
+            ref.read(settingsProvider)[Constants.DOWNLOAD_PATH];
+        if (Platform.isAndroid && saveDir != null) {
+          filePath = await update.task.filePath();
+          final File file = File(filePath);
+          final dirPath = await SafUtil().mkdirp(
+              saveDir,
+              currentDownload.episodeId != null
+                  ? [currentDownload.itemId, currentDownload.episodeId!]
+                  : [currentDownload.itemId]);
+          /* final newFile = await SafStream().writeFileBytes(dirPath.uri,
+              update.task.filename, update.mimeType ?? '', fileContent,
+              overwrite: true); */
+
+          final newFile = await SafStream().pasteLocalFile(file.path,
+              dirPath.uri, update.task.filename, update.mimeType ?? '',
+              overwrite: true);
+
+          filePath = newFile.uri.toString();
+          file.deleteSync();
+        } else {
+          filePath = await update.task.filePath();
+        }
+      } else {
+        filePath = currentDownloadFile.filePath;
+      }
+
       final newDownload = currentDownloadFile.copyWith(
         status: update.status,
-        filePath: update.status == TaskStatus.complete
-            ? await update.task.filePath()
-            : currentDownloadFile.filePath,
+        filePath: filePath,
       );
       final downloadListNotifier = ref.read(downloadListProvider.notifier);
       downloadListNotifier.updateDownloadFile(currentDownload, newDownload);
@@ -242,23 +271,25 @@ class DownloadProvider extends ChangeNotifier {
     // Save item to BaseDirectory.applicationDocuments/abs_flutter/itemId/meta.json
 
     String json = jsonEncode(item);
-    log('Does safe json?: ${results.firstOrNull}', name: 'DownloadProvider');
     if (results.firstOrNull != null) {
-      log('Saving meta.json to: ${results.firstOrNull}',
-          name: 'DownloadProvider');
-      // Create the parent directory
       final dir = Directory(results.first!).parent;
       if (!dir.existsSync()) {
         await dir.create(recursive: true);
-        log('Creating directory: ${dir.path}', name: 'DownloadProvider');
       }
-      log('Writing meta.json to: ${results.first!}', name: 'DownloadProvider');
-      log('If the message `created file` is not show, the files is not created.',
-          name: 'DownloadProvider');
       final file = File(results.first!);
-      log('File path init ($file)', name: 'DownloadProvider');
       await file.writeAsString(json, flush: true);
-      log('Created file', name: 'DownloadProvider');
+      if (Platform.isAndroid &&
+          ref.read(settingsProvider)[Constants.DOWNLOAD_PATH] != null) {
+        final saveDir = ref.read(settingsProvider)[Constants.DOWNLOAD_PATH];
+        final path = await SafUtil().mkdirp(saveDir, [item.id]);
+        /*await SafStream().writeFileBytes(
+            path.uri, 'meta.json', 'application/json', utf8.encode(json),
+            overwrite: true);*/
+        await SafStream().pasteLocalFile(
+            results.first!, path.uri, 'meta.json', 'application/json',
+            overwrite: true);
+        log('Moved meta.json to: ${path.uri}', name: 'DownloadProvider');
+      }
     } else {
       log('Failed to save meta.json. Removing files', name: 'DownloadProvider');
       ref.read(downloadListProvider.notifier).removeDownload(downloadInfo);
@@ -326,21 +357,31 @@ class DownloadProvider extends ChangeNotifier {
     String jsonEpisode = jsonEncode(item);
 
     if (metaPath != null) {
-      log('Saving meta.json to: $metaPath', name: 'DownloadProvider');
       // Create the parent directory
       final dir = Directory(metaPath).parent;
       if (!dir.existsSync()) {
         await dir.create(recursive: true);
         log('Creating directory: ${dir.path}', name: 'DownloadProvider');
       }
-      log('Writing meta.json to: ${dir.parent.path}/meta.json',
-          name: 'DownloadProvider');
       File file = File('${dir.parent.path}/meta.json');
       await file.writeAsString(jsonLibrary);
-      log('Writing meta.json to: $metaPath', name: 'DownloadProvider');
       File file1 = File(metaPath);
       await file1.writeAsString(jsonEpisode);
       log('Writing meta.json to: $metaPath', name: 'DownloadProvider');
+
+      if (Platform.isAndroid &&
+          ref.read(settingsProvider)[Constants.DOWNLOAD_PATH] != null) {
+        final saveDir = ref.read(settingsProvider)[Constants.DOWNLOAD_PATH];
+        final path = await SafUtil().mkdirp(saveDir, [libraryItem.id, item.id]);
+        final podcastPath = await SafUtil().mkdirp(saveDir, [libraryItem.id]);
+        await SafStream().pasteLocalFile(
+            file.path, podcastPath.uri, 'meta.json', 'application/json',
+            overwrite: true);
+        await SafStream().pasteLocalFile(
+            metaPath, path.uri, 'meta.json', 'application/json',
+            overwrite: true);
+        log('Moved meta.json to: ${path.uri}', name: 'DownloadProvider');
+      }
     }
   }
 
@@ -378,7 +419,7 @@ class DownloadProvider extends ChangeNotifier {
     final settings =
         ref.read(specificKeysSettingsProvider([Constants.DOWNLOAD_PATH]));
 
-    if (settings[Constants.DOWNLOAD_PATH] != null) {
+    if (settings[Constants.DOWNLOAD_PATH] != null && !Platform.isAndroid) {
       if (episodeId != null) {
         savePath = '${settings[Constants.DOWNLOAD_PATH]}/$itemId/$episodeId';
       } else {
@@ -386,9 +427,15 @@ class DownloadProvider extends ChangeNotifier {
       }
     }
 
-    BaseDirectory baseDirectory = (!kIsWeb && Platform.isLinux) || settings[Constants.DOWNLOAD_PATH] != null
-        ? BaseDirectory.root
-        : BaseDirectory.applicationDocuments;
+    BaseDirectory baseDirectory;
+
+    if (settings[Constants.DOWNLOAD_PATH] == null && !Platform.isLinux) {
+      baseDirectory = BaseDirectory.applicationDocuments;
+    } else if (Platform.isAndroid) {
+      baseDirectory = BaseDirectory.temporary;
+    } else {
+      baseDirectory = BaseDirectory.root;
+    }
 
     log('Downloading to: $savePath ($baseDirectory)');
 

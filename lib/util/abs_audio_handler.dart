@@ -15,11 +15,14 @@ import 'package:abs_flutter/provider/session_provider.dart';
 import 'package:abs_flutter/provider/settings_provider.dart';
 import 'package:abs_flutter/provider/sleep_timer_provider.dart';
 import 'package:abs_flutter/util/constants.dart';
+import 'package:abs_flutter/util/helper.dart';
 import 'package:abs_flutter/util/tray_menu_handler.dart';
 import 'package:audio_service/audio_service.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:just_audio/just_audio.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:saf_stream/saf_stream.dart';
 
 class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
   final AudioPlayer _player = AudioPlayer();
@@ -105,12 +108,41 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
       final sources = jsonDecode(item.extras?['audioSources']);
       final isStreaming = item.extras?['streaming'] == true;
       List<AudioSource> audioSources = [];
+      List<Future<void>> saveTasks = [];
+      List<AudioSource?> tempAudioSources = List.filled(sources.length, null);
 
-      for (final source in sources) {
+      for (int i = 0; i < sources.length; i++) {
+        final String source = sources[i];
+
         if (isStreaming) {
           audioSources.add(AudioSource.uri(Uri.parse(source)));
         } else {
-          audioSources.add(AudioSource.file(source));
+          if (!kIsWeb &&
+              Platform.isAndroid &&
+              item.id.startsWith('content://')) {
+            Directory tmp = await getTemporaryDirectory();
+            String fileType = source.split('.').last;
+
+            saveTasks.add(() async {
+              final tempFile = File('${tmp.path}/temp_audio_$i.$fileType');
+              final tempSink = tempFile.openWrite();
+
+              await (await SafStream().readFileStream(source)).forEach((chunk) {
+                tempSink.add(chunk);
+              });
+              await tempSink.close();
+
+              tempAudioSources[i] = AudioSource.file(tempFile.path);
+            }());
+            await Future.wait(saveTasks);
+            for (final audioSource in tempAudioSources) {
+              if (audioSource != null) {
+                audioSources.add(audioSource);
+              }
+            }
+          } else {
+            audioSources.add(AudioSource.file(source));
+          }
         }
       }
 
@@ -123,7 +155,22 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
       if (item.extras?['streaming'] == true) {
         source = AudioSource.uri(Uri.parse(item.id));
       } else {
-        source = AudioSource.file(item.id);
+        if (!kIsWeb && Platform.isAndroid && item.id.startsWith('content://')) {
+          Stream<List<int>> fileStream =
+              await SafStream().readFileStream(item.id);
+
+          String fileType = item.id.split('.').last;
+          final tempFile = File(
+              '${(await getTemporaryDirectory()).path}/temp_audio.$fileType');
+          final tempSink = tempFile.openWrite();
+
+          await fileStream.forEach((chunk) => tempSink.add(chunk));
+          await tempSink.close();
+
+          source = AudioSource.file(tempFile.path);
+        } else {
+          source = AudioSource.file(item.id);
+        }
       }
     }
     mediaItem.add(item);
@@ -211,6 +258,10 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
     final currentStatus = _container.read(playStatusProvider.notifier);
     if (currentStatus.playStatus != PlayerStatus.stopped) {
       await currentStatus.setPlayStatusQuietly(PlayerStatus.stopped, 'stop');
+    }
+
+    if (!kIsWeb && Platform.isAndroid) {
+      Helper.deleteTempAudioFiles();
     }
 
     _player.pause();

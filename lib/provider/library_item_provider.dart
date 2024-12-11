@@ -9,8 +9,10 @@ import 'package:abs_flutter/provider/download_provider.dart';
 import 'package:abs_flutter/provider/log_provider.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:path/path.dart' as p;
+import 'package:saf_stream/saf_stream.dart';
 
 final itemProvider =
     FutureProvider.autoDispose.family<LibraryItem?, String>((ref, id) async {
@@ -31,13 +33,31 @@ final itemProvider =
   } else {
     final String originalFilePath = download.folderPath;
     late final String directory;
-    if (download.type == MediaTypeDownload.podcast) {
-      directory = Directory(originalFilePath).parent.path;
+    if (!kIsWeb &&
+        Platform.isAndroid &&
+        download.folderPath.contains('content://')) {
+      // Everything from beginning until last %2F
+      String? filePath = download.files.first.filePath;
+      if (filePath == null) {
+        return await _fetchData(api, id);
+      }
+      directory = filePath.substring(0, filePath.lastIndexOf('%2F'));
     } else {
-      directory = Directory(originalFilePath).path;
+      if (download.type == MediaTypeDownload.podcast) {
+        directory = Directory(originalFilePath).parent.path;
+      } else {
+        directory = Directory(originalFilePath).path;
+      }
     }
 
     try {
+      if (!kIsWeb &&
+          Platform.isAndroid &&
+          download.folderPath.contains('content://')) {
+        final String newFilePath = '$directory%2Fmeta.json';
+        final Uint8List content = await SafStream().readFileBytes(newFilePath);
+        return LibraryItem.fromJson(jsonDecode(utf8.decode(content)));
+      }
       final String newFilePath = p.join(directory, 'meta.json');
       final File file = File(newFilePath);
 

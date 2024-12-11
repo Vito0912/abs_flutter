@@ -8,6 +8,8 @@ import 'package:abs_flutter/provider/user_provider.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:saf_util/saf_util.dart';
+import 'package:saf_util/saf_util_platform_interface.dart';
 import 'package:path/path.dart' as path;
 
 final downloadListProvider =
@@ -63,28 +65,65 @@ class DownloadListNotifier extends StateNotifier<List<DownloadInfo>> {
   }
 
   void removeDownload(DownloadInfo download) async {
-    if (!kIsWeb && download.isDownloaded()) {
-      final folder = Directory(_getDownloadPath(download));
-      // For windows support / and \ in path
-      final folderName = folder.path.replaceAll('\\', '/').split('/').last;
-      if (folderName == download.itemId || folderName == download.episodeId) {
-        log('Deleting folder: ${folder.path}', name: 'removeDownload');
+    if (!kIsWeb) {
+      final String? filePath = download.files
+          .firstWhereOrNull((file) => file.filePath != null)
+          ?.filePath;
+      if (Platform.isAndroid &&
+          filePath != null &&
+          filePath.startsWith('content://')) {
         try {
-          if (folderName == download.episodeId &&
-              // Folder itself + meta.json
-              folder.parent.listSync().length <= 2) {
-            folder.parent.deleteSync(recursive: true);
+          // %2F
+          final folderPath = filePath.substring(0, filePath.lastIndexOf('%2F'));
+          final folderName = filePath.substring(
+              filePath.lastIndexOf('%2F') - 36, filePath.lastIndexOf('%2F'));
+          if (folderName == download.itemId ||
+              folderName == download.episodeId) {
+            log('Deleting folder: $folderPath', name: 'removeDownload');
+            await SafUtil().delete(folderPath, true);
+            final parentFolder =
+                folderPath.substring(0, folderPath.lastIndexOf('%2F'));
+            final List<SafDocumentFile> files =
+                await SafUtil().list(parentFolder);
+            if (folderName == download.episodeId && files.length <= 1) {
+              final parentFolderName = parentFolder.substring(
+                  parentFolder.lastIndexOf('%2F') + 3, parentFolder.length);
+              if (parentFolderName == download.itemId) {
+                await SafUtil().delete(parentFolder, true);
+                log('Deleting parent folder: $parentFolder',
+                    name: 'removeDownload');
+              }
+            }
           } else {
-            folder.deleteSync(recursive: true);
+            log('Not deleting folder: $folderPath - Names do not match',
+                name: 'removeDownload');
           }
         } catch (e) {
-          if (e is! PathNotFoundException) {
-            rethrow;
-          }
+          log('Error deleting file: $e', name: 'removeDownload');
         }
       } else {
-        log('Not deleting folder: ${folder.path} - Names do not match',
-            name: 'removeDownload');
+        final folder = Directory(_getDownloadPath(download));
+        // For windows support / and \ in path
+        final folderName = folder.path.replaceAll('\\', '/').split('/').last;
+        if (folderName == download.itemId || folderName == download.episodeId) {
+          log('Deleting folder: ${folder.path}', name: 'removeDownload');
+          try {
+            if (folderName == download.episodeId &&
+                // Folder itself + meta.json
+                folder.parent.listSync().length <= 2) {
+              folder.parent.deleteSync(recursive: true);
+            } else {
+              folder.deleteSync(recursive: true);
+            }
+          } catch (e) {
+            if (e is! PathNotFoundException) {
+              rethrow;
+            }
+          }
+        } else {
+          log('Not deleting folder: ${folder.path} - Names do not match',
+              name: 'removeDownload');
+        }
       }
     }
 
