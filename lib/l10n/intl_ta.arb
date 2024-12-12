@@ -1,86 +1,4 @@
 {
-  "create": "உருவாக்கு",
-  "@create": {},
-  "createBookmark": "புத்தகக்குறியை உருவாக்கவும்",
-  "@createBookmark": {},
-  "dateFormatMinuteSecond": "{நிமிடங்கள், பன்மை, ஒன்று {{minutes} நிமிடம்} மற்ற {{minutes} நிமிடங்கள்}} {விநாடிகள், பன்மை, ஒன்று {{seconds} இரண்டாவது} பிற {{seconds} விநாடிகள்}}",
-  "@dateFormatMinuteSecond": {
-    "placeholders": {
-      "minutes": {
-        "type": "int"
-      },
-      "seconds": {
-        "type": "int"
-      }
-    }
-  },
-  "dateFormatMinuteSecondShort": "{minutes} m {seconds} கள்",
-  "@dateFormatMinuteSecondShort": {
-    "placeholders": {
-      "minutes": {
-        "type": "int"
-      },
-      "seconds": {
-        "type": "int"
-      }
-    }
-  },
-  "dateFormatMinuteShort": "{count} மீ",
-  "@dateFormatMinuteShort": {
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
-  "dateFormatSecond": "{எண்ணிக்கை, பன்மை, ஒன்று {{count} இரண்டாவது} மற்ற {{count} விநாடிகள்}}",
-  "@dateFormatSecond": {
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
-  "dateFormatSecondShort": "{count} கள்",
-  "@dateFormatSecondShort": {
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
-  "daysListened": "நாட்கள் கேட்டன",
-  "@daysListened": {},
-  "debugLogs": "பிழைத்திருத்த பதிவுகள்",
-  "@debugLogs": {},
-  "deleteSelected": "தேர்ந்தெடுக்கப்பட்டதை நீக்கு",
-  "@deleteSelected": {},
-  "largestItems": "மிகப்பெரிய பொருட்கள்",
-  "@largestItems": {},
-  "last30Days": "கடந்த 30 நாட்கள்",
-  "@last30Days": {},
-  "last7Days": "கடந்த 7 நாட்கள்",
-  "@last7Days": {},
-  "libraries": "நூலகங்கள்",
-  "@libraries": {},
-  "library": "நூலகம்",
-  "@library": {},
-  "libraryName": "நூலக பெயர்",
-  "@libraryName": {},
-  "libraryStats": "நூலக புள்ளிவிவரங்கள்",
-  "@libraryStats": {},
-  "listenAgain": "மீண்டும் கேளுங்கள்",
-  "@listenAgain": {},
-  "loading": "ஏற்றுகிறது…",
-  "@loading": {},
-  "noSeriesSelected": "எந்தத் தொடரும் தேர்ந்தெடுக்கப்படவில்லை",
-  "@noSeriesSelected": {},
-  "size": "அளவு",
-  "@size": {},
-  "success": "செய்",
-  "@success": {},
-  "close": "மூடு",
-  "@close": {},
   "addANewUser": "புதிய பயனரைச் சேர்க்கவும்",
   "@addANewUser": {},
   "addUser": "பயனரைச் சேர்க்கவும்",
@@ -137,6 +55,8 @@
   },
   "clearCache": "தெளிவான தற்காலிக சேமிப்பு",
   "@clearCache": {},
+  "close": "மூடு",
+  "@close": {},
   "collapseSeries": "சரிவு தொடர்",
   "@collapseSeries": {},
   "collapseSeriesDescription": "இயக்கப்பட்டால், ஒரு தொடரில் உள்ள உருப்படிகள் நூலகக் காட்சியில் ஒன்றாக தொகுக்கப்படும், இது முழுத் தொடரையும் குறிக்க ஒரே ஒரு உருப்படியைக் காண்பிக்கும்.",
@@ -155,6 +75,10 @@
   "@copyLogs": {},
   "copyLogsDescription": "முக்கியமானது:\n 'நகல்' என்பதைக் சொடுக்கு செய்தால், தற்போது காட்டப்படும் அனைத்து பதிவுகளையும் உங்கள் கிளிப்போர்டுக்கு மாற்றும், இதில் பயன்பாடு தொடங்கப்பட்டதிலிருந்து பதிவுசெய்யப்பட்ட தரவு உட்பட அல்லது கடைசியாக அழிக்கப்பட்டது. இந்த பதிவுகளில் டோக்கன்கள், பயனர்பெயர்கள், மின்னஞ்சல்கள் மற்றும் சேவையக முகவரி கள் போன்ற முக்கியமான தகவல்கள் இருக்கலாம். இந்த தகவலை நீங்கள் எங்கு ஒட்டுகிறீர்கள் என்பதில் எச்சரிக்கையாக இருங்கள்! \\n நீங்கள் 'நகலெடுத்து முக்கியமான தகவல்களை மறைக்க முயற்சிக்கிறீர்கள்' என்பதைத் தேர்வுசெய்தால், பயன்பாடு டோக்கன்கள், பயனர்பெயர்கள், மின்னஞ்சல்கள் மற்றும் சேவையக முகவரி கள் போன்ற உருப்படிகளை மறைக்க முயற்சிக்கும். இருப்பினும், அனைத்து தனிப்பட்ட தரவுகளும் முழுமையாக அகற்றப்படுவதை உறுதிசெய்ய பதிவுகளை மதிப்பாய்வு செய்வதற்கு நீங்கள் பொறுப்பு.",
   "@copyLogsDescription": {},
+  "create": "உருவாக்கு",
+  "@create": {},
+  "createBookmark": "புத்தகக்குறியை உருவாக்கவும்",
+  "@createBookmark": {},
   "createBookmarkTitle": "புத்தகக்குறியை உருவாக்கவும்",
   "@createBookmarkTitle": {},
   "currentDownloads": "தற்போதைய பதிவிறக்கங்கள்",
@@ -269,6 +193,25 @@
       }
     }
   },
+  "dateFormatHour": "{எண்ணிக்கை, பன்மை, ஒன்று {{count} மணிநேரம்} மற்ற {{count} மணிநேரம்}}",
+  "@dateFormatHour": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatHourMinute": "{மணிநேரம், பன்மை, ஒன்று {{hours} மணிநேரம்} மற்ற {{hours} மணிநேரம்}} {நிமிடங்கள், பன்மை, ஒன்று {{minutes} நிமிடம்} பிற {{minutes} நிமிடங்கள்}}",
+  "@dateFormatHourMinute": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
   "dateFormatHourMinuteSecond": "{மணிநேரம், பன்மை, ஒன்று {{hours} மணிநேரம்} மற்ற {{hours} மணிநேரம்}} {நிமிடங்கள், பன்மை, ஒன்று {{minutes} நிமிடம்} பிற {{minutes} நிமிடங்கள்}} {வினாடிகள், பன்மை, ஒன்று {{seconds} இரண்டாவது} பிற {{seconds} விநாடிகள்}}",
   "@dateFormatHourMinuteSecond": {
     "placeholders": {
@@ -324,6 +267,58 @@
       }
     }
   },
+  "dateFormatMinuteSecond": "{நிமிடங்கள், பன்மை, ஒன்று {{minutes} நிமிடம்} மற்ற {{minutes} நிமிடங்கள்}} {விநாடிகள், பன்மை, ஒன்று {{seconds} இரண்டாவது} பிற {{seconds} விநாடிகள்}}",
+  "@dateFormatMinuteSecond": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      },
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatMinuteSecondShort": "{minutes} m {seconds} கள்",
+  "@dateFormatMinuteSecondShort": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      },
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatMinuteShort": "{count} மீ",
+  "@dateFormatMinuteShort": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatSecond": "{எண்ணிக்கை, பன்மை, ஒன்று {{count} இரண்டாவது} மற்ற {{count} விநாடிகள்}}",
+  "@dateFormatSecond": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatSecondShort": "{count} கள்",
+  "@dateFormatSecondShort": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "daysListened": "நாட்கள் கேட்டன",
+  "@daysListened": {},
+  "debugLogs": "பிழைத்திருத்த பதிவுகள்",
+  "@debugLogs": {},
+  "deleteSelected": "தேர்ந்தெடுக்கப்பட்டதை நீக்கு",
+  "@deleteSelected": {},
   "descending": "இறங்கு",
   "@descending": {},
   "description": "விவரம்",
@@ -344,25 +339,6 @@
   },
   "disableSkippingChapters": "ச்கிப்பிங் அத்தியாயங்களை முடக்கு",
   "@disableSkippingChapters": {},
-  "dateFormatHour": "{எண்ணிக்கை, பன்மை, ஒன்று {{count} மணிநேரம்} மற்ற {{count} மணிநேரம்}}",
-  "@dateFormatHour": {
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
-  "dateFormatHourMinute": "{மணிநேரம், பன்மை, ஒன்று {{hours} மணிநேரம்} மற்ற {{hours} மணிநேரம்}} {நிமிடங்கள், பன்மை, ஒன்று {{minutes} நிமிடம்} பிற {{minutes} நிமிடங்கள்}}",
-  "@dateFormatHourMinute": {
-    "placeholders": {
-      "hours": {
-        "type": "int"
-      },
-      "minutes": {
-        "type": "int"
-      }
-    }
-  },
   "disableSkippingChaptersDescription": "இது பயன்பாட்டிற்கு வெளியில் இருந்து அத்தியாயங்களைத் தவிர்க்கும் திறனை முடக்கும் (எ.கா., எட்செட் அல்லது அறிவிப்புக் கட்டுப்பாடுகள் வழியாக). அத்தியாயங்களைத் தவிர்ப்பதற்குப் பதிலாக உங்கள் எட்ஃபோன்கள் வேகமாக முன்னோக்கி மற்றும் முன்னாடி செயல்பாடுகளைப் பயன்படுத்த விரும்பினால் இதை இயக்கவும்.",
   "@disableSkippingChaptersDescription": {},
   "disableVibration": "அதிர்வுகளை முடக்கவும்",
@@ -419,8 +395,6 @@
   "@exit": {},
   "failed": "தோல்வியுற்றது",
   "@failed": {},
-  "logging": "பதிவு",
-  "@logging": {},
   "fastForward": "வேகமாக முன்னோக்கி",
   "@fastForward": {},
   "fastForwardSeconds": "வேகமாக முன்னோக்கி விநாடிகள்",
@@ -495,14 +469,34 @@
   "@language": {},
   "languages": "மொழிகள்",
   "@languages": {},
+  "largestItems": "மிகப்பெரிய பொருட்கள்",
+  "@largestItems": {},
+  "last30Days": "கடந்த 30 நாட்கள்",
+  "@last30Days": {},
+  "last7Days": "கடந்த 7 நாட்கள்",
+  "@last7Days": {},
+  "libraries": "நூலகங்கள்",
+  "@libraries": {},
+  "library": "நூலகம்",
+  "@library": {},
+  "libraryName": "நூலக பெயர்",
+  "@libraryName": {},
+  "libraryStats": "நூலக புள்ளிவிவரங்கள்",
+  "@libraryStats": {},
   "linuxPermissionError": "இசைவு பிழை காரணமாக பதிவிறக்கம் தோல்வியடைந்தது. கோப்புறை அனுமதிகளை சரிபார்க்கவும்.",
   "@linuxPermissionError": {},
+  "listenAgain": "மீண்டும் கேளுங்கள்",
+  "@listenAgain": {},
   "listeningInTheLastYear": "கடந்த ஆண்டில் கேட்பது",
   "@listeningInTheLastYear": {},
+  "loading": "ஏற்றுகிறது…",
+  "@loading": {},
   "lockProgressBar": "பூட்டு மீடியா முன்னேற்றப் பட்டி",
   "@lockProgressBar": {},
   "lockProgressBarDescription": "இயக்கப்பட்டால், இந்த நற்பொருத்தம் இயக்க முறைமையால் ஆதரிக்கப்பட்டால், ஊடக அறிவிப்பில் முன்னேற்றப் பட்டியை பூட்டுகிறது",
   "@lockProgressBarDescription": {},
+  "logging": "பதிவு",
+  "@logging": {},
   "logs": "பதிவுகள்",
   "@logs": {},
   "longestItems": "நீளமான உருப்படிகள்",
@@ -545,6 +539,8 @@
   "@noItemsFound": {},
   "noPath": "பாதை இல்லை",
   "@noPath": {},
+  "noSeriesSelected": "எந்தத் தொடரும் தேர்ந்தெடுக்கப்படவில்லை",
+  "@noSeriesSelected": {},
   "noUserData": "உள்நுழைவு தோல்வியுற்றது: பயனர் தரவு எதுவும் பெறப்படவில்லை",
   "@noUserData": {},
   "notFinished": "முடிக்கப்படவில்லை",
@@ -649,12 +645,12 @@
   "@seek": {},
   "sequence": "வரிசை",
   "@sequence": {},
-  "serverSelection": "சேவையக தேர்வு",
-  "@serverSelection": {},
   "series": "தொடர்",
   "@series": {},
   "serverAdressContinue": "தொடர உங்கள் சேவையக முகவரியை உள்ளிடவும்",
   "@serverAdressContinue": {},
+  "serverSelection": "சேவையக தேர்வு",
+  "@serverSelection": {},
   "settings": "அமைப்புகள்",
   "@settings": {},
   "shakeResetTimer": "ச்லீப் டைமரை மீட்டமைக்க குலுக்கவும்",
@@ -675,6 +671,8 @@
   "@showProgressPerChapters": {},
   "signOut": "விடுபதிகை",
   "@signOut": {},
+  "size": "அளவு",
+  "@size": {},
   "sleepTimer": "தூக்க நேரங்குறிகருவி",
   "@sleepTimer": {},
   "sort": "வரிசைப்படுத்து",
@@ -689,6 +687,8 @@
   "@stopPlayerUntilSync": {},
   "stopPlayerWhileSyncingDescription": "மிக அண்மைக் கால பின்னணி நிலை ஒத்திசைக்கப்படும் வரை வீரர் தொடங்குவதைத் தடுக்க இந்த விருப்பத்தை இயக்கவும். பிளேபேக் சரியான நிலையில் இருந்து மீண்டும் தொடங்குவதை இது உறுதி செய்கிறது. முடக்கப்பட்டால், தொடங்கிய உடனேயே பிளேபேக் நிலை மாறக்கூடும், இது தரவு இழப்புக்கு வழிவகுக்கும். இதை இயக்குவது தரவு பயன்பாட்டைப் பாதுகாக்க உதவுகிறது.",
   "@stopPlayerWhileSyncingDescription": {},
+  "success": "செய்",
+  "@success": {},
   "sync": "ஒத்திசைவு",
   "@sync": {},
   "syncInterval": "ஒத்திசைவு இடைவெளி (விநாடிகள்)",

@@ -110,6 +110,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Füge einen Nutzer hinzu"),
         "addUser": MessageLookupByLibrary.simpleMessage("Benutzer hinzufügen"),
         "added": MessageLookupByLibrary.simpleMessage("Hinzugefügt"),
+        "advanced": MessageLookupByLibrary.simpleMessage("Erweitert"),
         "aggressiveCaching":
             MessageLookupByLibrary.simpleMessage("Aggressives Caching"),
         "aggressiveCachingDescription": MessageLookupByLibrary.simpleMessage(
@@ -190,6 +191,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "descending": MessageLookupByLibrary.simpleMessage("Absteigend"),
         "description": MessageLookupByLibrary.simpleMessage("Beschreibung"),
         "deviceInfo": m22,
+        "disableSkippingChapters":
+            MessageLookupByLibrary.simpleMessage("Deaktiviere Kapitelsprünge"),
+        "disableSkippingChaptersDescription": MessageLookupByLibrary.simpleMessage(
+            "Das deaktiviert die Möglichkeit, Kapitel von außerhalb der Anwendung zu überspringen (z. B. über ein Headset oder Steuerungen in Benachrichtigungen). Aktiviere diese Einstellung, wenn du möchtest, dass deine Kopfhörer die Funktionen für Vor- und Zurückspulen nutzen, anstatt Kapitel zu überspringen."),
+        "disableVibration":
+            MessageLookupByLibrary.simpleMessage("Deaktiviere Vibrationen"),
         "disabled": MessageLookupByLibrary.simpleMessage("Deaktiviert"),
         "discover": MessageLookupByLibrary.simpleMessage("Entdecken"),
         "domainOrIp":
@@ -267,6 +274,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "libraryName": MessageLookupByLibrary.simpleMessage("Bibliotheksname"),
         "libraryStats":
             MessageLookupByLibrary.simpleMessage("Bibliotekstatistik"),
+        "linuxPermissionError": MessageLookupByLibrary.simpleMessage(
+            "Der Download ist aufgrund eines Berechtigungsfehlers fehlgeschlagen. Bitte überprüfe die Zugriffsrechte."),
         "listenAgain": MessageLookupByLibrary.simpleMessage("Erneut hören"),
         "listeningInTheLastYear":
             MessageLookupByLibrary.simpleMessage("In diesem Jahr gehört"),
@@ -366,6 +375,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Neustart erforderlich"),
         "restartRequiredDescription": MessageLookupByLibrary.simpleMessage(
             "Bitte starte die App neu, um diese Änderung zu speichern."),
+        "retry": MessageLookupByLibrary.simpleMessage("Wiederholen"),
         "rewind": MessageLookupByLibrary.simpleMessage("Zurückspulen"),
         "rewindSeconds":
             MessageLookupByLibrary.simpleMessage("Sekunden zurückspulen"),
