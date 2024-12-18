@@ -751,5 +751,9 @@
   "waitingForDownload": "En attente de démarrage du téléchargement",
   "@waitingForDownload": {},
   "year": "Année",
-  "@year": {}
+  "@year": {},
+  "retry": "Réessayer",
+  "@retry": {},
+  "linuxPermissionError": "Le téléchargement a échoué à cause d'un problème de droits. Vérifiez les droits appliqués au dossier.",
+  "@linuxPermissionError": {}
 }
