@@ -108,7 +108,7 @@
       }
     }
   },
-  "dateFormatHourMinuteSecond": "{hours, plural, one {{hours} ura} other {{hours} ur}} {minutes, plural, one {{minuta} minute} other {{minutes} minut}} {seconds, plural, one {{seconds} sekunda} other {{seconds} sekund}}",
+  "dateFormatHourMinuteSecond": "{hours, plural, one {{hours} ura} other {{hours} ur}} {minutes, plural, one {{minutes} minuta} other {{minutes} minut}} {seconds, plural, one {{seconds} sekunda} other {{seconds} sekund}}",
   "@dateFormatHourMinuteSecond": {
     "placeholders": {
       "hours": {
