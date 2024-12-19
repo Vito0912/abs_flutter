@@ -1,1 +1,766 @@
-{}
+{
+  "cancel": "Prekliči",
+  "@cancel": {},
+  "dateFormatHourMinute": "{hours, plural, one {{hours} ura} other {{hours} ur}} {minutes, plural, one {{minutes} minuta} other {{minutes} minut}}",
+  "@dateFormatHourMinute": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "create": "Ustvari",
+  "@create": {},
+  "dateFormatDayHourMinuteSecondShort": "{days}d {hours}u {minutes}m {seconds}s",
+  "@dateFormatDayHourMinuteSecondShort": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      },
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatMinuteShort": "{count}m",
+  "@dateFormatMinuteShort": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "downloadInfo": "Informacije o prenosu",
+  "@downloadInfo": {},
+  "dateFormatMinuteSecond": "{minutes, plural, one {{minutes} minuta} other {{minutes} minut}} {seconds, plural, one {{seconds} sekunda} other {{seconds} sekund}}",
+  "@dateFormatMinuteSecond": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      },
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "currentPositionNum": "Trenutni položaj: {position}",
+  "@currentPositionNum": {
+    "placeholders": {
+      "position": {
+        "type": "String"
+      }
+    }
+  },
+  "boostLoadingDescription": "Ko je ta funkcija omogočena, aplikacija učinkovito zaobide predpomnjenje v realnem času. Vedno bo poskušala pridobiti najnovejše podatke s strežnika, medtem ko bo uporabila predpomnjene podatke za takojšnje nalaganje vsebine. Ko so posodobljeni podatki pridobljeni, zamenjajo stari predpomnilnik in zagotovijo, ko naslednjič naložite aplikacijo, da so prikazani najnovejši podatki. Posledično boste vedno videli podatke iz enega cikla pridobivanja za trenutnimi podatki strežnika.",
+  "@boostLoadingDescription": {},
+  "dateFormatHourShort": "{count}u",
+  "@dateFormatHourShort": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "collapseSeriesDescription": "Ko je omogočeno, bodo elementi v seriji združeni skupaj v pogledu knjižnice, pri čemer bo prikazan samo en element, ki predstavlja celotno serijo.",
+  "@collapseSeriesDescription": {},
+  "currentDownloads": "Trenutni prenosi",
+  "@currentDownloads": {},
+  "dateFormatHour": "{count, plural, one {{count} ura} other {{count} ur}}",
+  "@dateFormatHour": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "copyLogsDescription": "Pomembno:\nČe kliknete »Kopiraj«, boste vse trenutno prikazane dnevnike prenesli v odložišče, vključno s podatki, zabeleženimi od zagona ali zadnjega brisanja aplikacije. Ti dnevniki lahko vsebujejo občutljive podatke, kot so žetoni, uporabniška imena, e-poštna sporočila in URL-ji strežnikov. Bodite previdni, kam boste prilepili te podatke!\\nČe izberete »Kopiraj in poskusi skriti občutljive informacije«, bo aplikacija poskušala prikriti elemente, kot so žetoni, uporabniška imena, e-poštna sporočila in URL-ji strežnikov. Vendar ste odgovorni za pregled dnevnikov, da zagotovite, da so vsi osebni podatki v celoti odstranjeni.",
+  "@copyLogsDescription": {},
+  "dateFormatDayHourShort": "{days}d {hours}u",
+  "@dateFormatDayHourShort": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "downloadErrorDescription": "Datoteka ni bila pravilno prenesena. Podatke v napravi lahko poskusite izbrisati s klikom na gumb in jih ponovno prenesete.",
+  "@downloadErrorDescription": {},
+  "dateFormatDayHour": "{days, plural, one {{days} dan} other {{days} dni}} {hours, plural, one {{hours} ura} other {{hours} ur}}",
+  "@dateFormatDayHour": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatHourMinuteSecond": "{hours, plural, one {{hours} ura} other {{hours} ur}} {minutes, plural, one {{minuta} minute} other {{minutes} minut}} {seconds, plural, one {{seconds} sekunda} other {{seconds} sekund}}",
+  "@dateFormatHourMinuteSecond": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      },
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "disableVibration": "Onemogoči vibriranje",
+  "@disableVibration": {},
+  "dateFormatSecond": "{count, plural, one {{count}  sekunda} other {{count} sekund}}",
+  "@dateFormatSecond": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "downloadComplete": "Prenos končan",
+  "@downloadComplete": {},
+  "description": "Opis",
+  "@description": {},
+  "deviceInfo": "Naprava: {device}\nOS: {os}\nRazličica aplikacije: {version}",
+  "@deviceInfo": {
+    "placeholders": {
+      "device": {
+        "type": "String"
+      },
+      "os": {
+        "type": "String"
+      },
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "duration": "Trajanje",
+  "@duration": {},
+  "cachingHeader": "Predpomnjenje",
+  "@cachingHeader": {},
+  "disableSkippingChaptersDescription": "To bo onemogočilo možnost preskakovanja poglavij ZUNAJ aplikacije (npr. prek slušalk ali kontrolnikov za obvestila). Omogočite to, če želite, da vaše slušalke uporabljajo funkciji za hitro previjanje naprej in nazaj, namesto da preskakujejo poglavja.",
+  "@disableSkippingChaptersDescription": {},
+  "addANewUser": "Dodaj novega uporabnika",
+  "@addANewUser": {},
+  "addUser": "Dodaj uporabnika",
+  "@addUser": {},
+  "added": "Dodano",
+  "@added": {},
+  "advanced": "To je naslov za zavihek z \"naprednimi\" nastavitvami",
+  "@advanced": {},
+  "aggressiveCaching": "Agresivno predpomnjenje",
+  "@aggressiveCaching": {},
+  "aggressiveCachingDescription": "Ko je omogočena, bo aplikacija omogočila bolj agresivno predpomnjenje. To vključuje poti predpomnjenja, ki lahko vsebujejo podatke, ki jih je treba redno posodabljati, na primer pridobivanje napredka vseh elementov. V teh primerih bo uporabljen zadnji znani položaj, razen če posebej odprete in zahtevate en element. Te poti bodo imele krajše trajanje predpomnilnika.",
+  "@aggressiveCachingDescription": {},
+  "allDownloads": "Vsi prenosi",
+  "@allDownloads": {},
+  "amoledMode": "AMOLED način",
+  "@amoledMode": {},
+  "ascending": "Naraščajoče",
+  "@ascending": {},
+  "attribution": "Pripisovanje",
+  "@attribution": {},
+  "author": "Avtor",
+  "@author": {},
+  "authors": "Avtorji",
+  "@authors": {},
+  "back": "Nazaj",
+  "@back": {},
+  "bookCover": "Naslovnica knjige",
+  "@bookCover": {},
+  "boostLoading": "Pohitri nalaganje",
+  "@boostLoading": {},
+  "boostLoadingSubtitle": "Prosim preberite opis, da boste lažje razumeli to funkcijo.",
+  "@boostLoadingSubtitle": {},
+  "caching": "Predpomnjenje",
+  "@caching": {},
+  "carPlayer": "Avto predvajalnik",
+  "@carPlayer": {},
+  "changeLibrary": "Spremeni knjižnico",
+  "@changeLibrary": {},
+  "chapters": "Poglavja",
+  "@chapters": {},
+  "chaptersNum": "Poglavja ({num})",
+  "@chaptersNum": {
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "clearCache": "Počisti predpomnilnik",
+  "@clearCache": {},
+  "close": "Zapri",
+  "@close": {},
+  "collapseSeries": "Strni serije",
+  "@collapseSeries": {},
+  "consecutiveDays": "Zaporedni dnevi",
+  "@consecutiveDays": {},
+  "continueListening": "Nadaljujte s poslušanjem",
+  "@continueListening": {},
+  "continueSeries": "Nadaljuj serijo",
+  "@continueSeries": {},
+  "copy": "Kopiraj",
+  "@copy": {},
+  "copyLogs": "Kopiraj dnevnike",
+  "@copyLogs": {},
+  "copyAnonymous": "Kopiraj (poskusi skriti občutljive informacije)",
+  "@copyAnonymous": {},
+  "createBookmark": "Ustvari zaznamek",
+  "@createBookmark": {},
+  "createBookmarkTitle": "Ustvari zaznamek",
+  "@createBookmarkTitle": {},
+  "dateFormatDay": "{count, plural, one {{count}  dan} other {{count} dni}}",
+  "@dateFormatDay": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatDayHourMinute": "{days, plural, one {{days} dan} other {{days} dni}} {hours, plural, one {{hours} ura} other {{hours} ur}} {minutes, plural, one {{minutes} minuta} other {{minutes} minut}}",
+  "@dateFormatDayHourMinute": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatDayHourMinuteShort": "{days}d {hours}u {minutes}m",
+  "@dateFormatDayHourMinuteShort": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatDayShort": "{count}d",
+  "@dateFormatDayShort": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatHourMinuteSecondShort": "{hours}u {minutes}m {seconds}s",
+  "@dateFormatHourMinuteSecondShort": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      },
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatHourMinuteShort": "{hours}u {minutes}m",
+  "@dateFormatHourMinuteShort": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatMinute": "{count, plural, one {{count} minuta} other {{count} minut}}",
+  "@dateFormatMinute": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatMinuteSecondShort": "{minutes}m {seconds}s",
+  "@dateFormatMinuteSecondShort": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      },
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatSecondShort": "{count}s",
+  "@dateFormatSecondShort": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "daysListened": "Dnevi poslušanja",
+  "@daysListened": {},
+  "debugLogs": "Dnevniki razhroščevanja",
+  "@debugLogs": {},
+  "deleteSelected": "Izbriši izbrano",
+  "@deleteSelected": {},
+  "descending": "Padajoče",
+  "@descending": {},
+  "disableSkippingChapters": "Onemogoči preskakovanje poglavij",
+  "@disableSkippingChapters": {},
+  "disabled": "Onemogočeno",
+  "@disabled": {},
+  "discover": "Odkrij",
+  "@discover": {},
+  "domainOrIp": "Domena ali IP",
+  "@domainOrIp": {},
+  "downloadCompleteBody": "Prenos {displayName} je končan",
+  "@downloadCompleteBody": {},
+  "downloading": "Prenašanje",
+  "@downloading": {},
+  "downloadingBody": "Prenašanje {displayName}",
+  "@downloadingBody": {},
+  "downloads": "Prenosi",
+  "@downloads": {},
+  "downloadsOnlyViaWifi": "Prenašaj samo preko WiFi",
+  "@downloadsOnlyViaWifi": {},
+  "ebookreader": "e-bralnik",
+  "@ebookreader": {},
+  "editQueue": "Uredi čakalno vrsto",
+  "@editQueue": {},
+  "enabled": "Omogočeno",
+  "@enabled": {},
+  "episodeId": "ID epizode",
+  "@episodeId": {},
+  "errorDownloading": "Napaka pri prenosu",
+  "@errorDownloading": {},
+  "errorItemNotFound": "Napaka: Predmet ni bil najden!",
+  "@errorItemNotFound": {},
+  "exit": "Izhod",
+  "@exit": {},
+  "failed": "Ni uspelo",
+  "@failed": {},
+  "feedOpen": "Odpri vir",
+  "@feedOpen": {},
+  "filename": "Ime datoteke",
+  "@filename": {},
+  "filepath": "Pot datoteke",
+  "@filepath": {},
+  "filter": "Filter",
+  "@filter": {},
+  "finished": "Zaključeno",
+  "@finished": {},
+  "genres": "Žanri",
+  "@genres": {},
+  "ifTheQuickAccountSwitcherShouldBeShown": "Ali mora biti prikazan hitri preklopnik računov",
+  "@ifTheQuickAccountSwitcherShouldBeShown": {},
+  "inProgress": "V teku",
+  "@inProgress": {},
+  "information": "Informacija",
+  "@information": {},
+  "itemId": "ID elementa",
+  "@itemId": {},
+  "itemProgress": "Napredek: {progress} %",
+  "@itemProgress": {
+    "placeholders": {
+      "progress": {
+        "type": "String"
+      }
+    }
+  },
+  "itemPublishedYear": "Leto izdaje: {year}",
+  "@itemPublishedYear": {
+    "placeholders": {
+      "year": {
+        "type": "String"
+      }
+    }
+  },
+  "itemType": "Vrsta elementa",
+  "@itemType": {},
+  "languages": "Jeziki",
+  "@languages": {},
+  "largestItems": "Največji elementi",
+  "@largestItems": {},
+  "last30Days": "Zadnjih 30 dni",
+  "@last30Days": {},
+  "last7Days": "Zadnjih 7 dni",
+  "@last7Days": {},
+  "libraries": "Knjižnice",
+  "@libraries": {},
+  "library": "Knjižnica",
+  "@library": {},
+  "libraryName": "Ime knjižnice",
+  "@libraryName": {},
+  "linuxPermissionError": "Prenos ni uspel zaradi napake pri dovoljenju. Preverite dovoljenja za mapo.",
+  "@linuxPermissionError": {},
+  "loading": "Nalaganje…",
+  "@loading": {},
+  "lockProgressBar": "Zakleni vrstico napredka predstavnosti",
+  "@lockProgressBar": {},
+  "logging": "Beleženje",
+  "@logging": {},
+  "logs": "Dnevniki",
+  "@logs": {},
+  "longestItems": "Najdaljši elementi",
+  "@longestItems": {},
+  "markItemsFinished": "Označi elemente kot dokončane",
+  "@markItemsFinished": {},
+  "minimize": "Minimiziraj",
+  "@minimize": {},
+  "minimizeToTray": "Minimiziraj v opravilno vrstico",
+  "@minimizeToTray": {},
+  "minimizeToTrayDescription": "Ta možnost skrije aplikacijo iz opravilne vrstice in jo premakne v sistemsko vrstico.",
+  "@minimizeToTrayDescription": {},
+  "miscellaneous": "Razno",
+  "@miscellaneous": {},
+  "moreOptions": "Več možnosti",
+  "@moreOptions": {},
+  "multipleServerAdressess": "Če želite uporabiti več naslovov strežnika, jih lahko dodate pozneje",
+  "@multipleServerAdressess": {},
+  "mustEnterValidAddress": "Vnesti morate veljaven naslov strežnika",
+  "@mustEnterValidAddress": {},
+  "name": "Ime",
+  "@name": {},
+  "nextChapter": "Naslednje poglavje",
+  "@nextChapter": {},
+  "noConnection": "Brez povezave",
+  "@noConnection": {},
+  "noDownloads": "Brez prenosov",
+  "@noDownloads": {},
+  "noInternetDescription": "Imamo težave pri povezovanju s strežnikom.",
+  "@noInternetDescription": {},
+  "noPath": "Brez poti",
+  "@noPath": {},
+  "noSeriesSelected": "Ni izbrane serije",
+  "@noSeriesSelected": {},
+  "notFinished": "Ni dokončano",
+  "@notFinished": {},
+  "notTriedYet": "Še ni preizkušeno",
+  "@notTriedYet": {},
+  "numBooksInSeries": "{numBooks, plural, =0 {Ni knjig} =1 {1 knjiga} other {{numBooks} knjig}}",
+  "@numBooksInSeries": {
+    "placeholders": {
+      "numBooks": {
+        "type": "num"
+      }
+    }
+  },
+  "numberOfBooks": "Število knjig",
+  "@numberOfBooks": {},
+  "ok": "V redu",
+  "@ok": {},
+  "open": "Odpri",
+  "@open": {},
+  "openDownloads": "Odpri prenose",
+  "@openDownloads": {},
+  "openProjectLink": "Audiobookshelf/strežnik",
+  "@openProjectLink": {},
+  "personalizedLibrary": "Osebna knjižnica",
+  "@personalizedLibrary": {},
+  "play": "Predvajaj",
+  "@play": {},
+  "playHistory": "Zgodovina predvajanj",
+  "@playHistory": {},
+  "playbackSpeed": "Histrost",
+  "@playbackSpeed": {},
+  "port": "Vrata",
+  "@port": {},
+  "previousChapter": "Prejšnje poglavje",
+  "@previousChapter": {},
+  "progressNum": "Trenutni napredek: {progress} %",
+  "@progressNum": {
+    "placeholders": {
+      "progress": {
+        "type": "String"
+      }
+    }
+  },
+  "publisher": "Izdajatelj",
+  "@publisher": {},
+  "readLess": "Preberi manj",
+  "@readLess": {},
+  "readMore": "Preberi več",
+  "@readMore": {},
+  "recentSeries": "Nedavne serije",
+  "@recentSeries": {},
+  "recentlyAdded": "Nedavno dodano",
+  "@recentlyAdded": {},
+  "reportAnIssue": "Prijavite težavo",
+  "@reportAnIssue": {},
+  "restartRequired": "Potreben je ponovni zagon",
+  "@restartRequired": {},
+  "retry": "Poskusite znova",
+  "@retry": {},
+  "rewind": "Previjanje nazaj",
+  "@rewind": {},
+  "rewindSeconds": "Sekunde previjanja nazaj",
+  "@rewindSeconds": {},
+  "search": "Iskanje",
+  "@search": {},
+  "searchDisabled": "Iskanje je onemogočeno",
+  "@searchDisabled": {},
+  "sequence": "Zaporedje",
+  "@sequence": {},
+  "serverAdressContinue": "Za nadaljevanje vnesite naslov strežnika",
+  "@serverAdressContinue": {},
+  "serverSelection": "Izbira strežnika",
+  "@serverSelection": {},
+  "shakeResetTimer": "Stresi za ponastavitev časovnika za spanje",
+  "@shakeResetTimer": {},
+  "shareOpen": "Odpri skupno rabo",
+  "@shareOpen": {},
+  "show": "Prikaži",
+  "@show": {},
+  "showMediaType": "Prikaži vrsto medija",
+  "@showMediaType": {},
+  "showMediaTypeDescription": "Prikaže značke vrste medija na dnu vsakega elementa.",
+  "@showMediaTypeDescription": {},
+  "showProgressPerChapters": "Prikaži napredek po poglavjih",
+  "@showProgressPerChapters": {},
+  "signOut": "Odjava",
+  "@signOut": {},
+  "size": "Velikost",
+  "@size": {},
+  "sleepTimer": "Časovnik za spanje",
+  "@sleepTimer": {},
+  "sort": "Razvrsti",
+  "@sort": {},
+  "sortSeriesAsc": "Razvrsti serije v naraščajočem vrstnem redu",
+  "@sortSeriesAsc": {},
+  "syncOnlyViaWifi": "Sinhroniziraj samo prek WiFi",
+  "@syncOnlyViaWifi": {},
+  "tags": "Oznake",
+  "@tags": {},
+  "timeRemainingNum": "Preostali čas: {time}",
+  "@timeRemainingNum": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "timerText": "{time} min",
+  "@timerText": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "today": "Danes",
+  "@today": {},
+  "topAuthors": "Top avtorji",
+  "@topAuthors": {},
+  "totalAudioTracks": "Skupaj zvočnih posnetkov",
+  "@totalAudioTracks": {},
+  "totalDuration": "Skupna dolžina",
+  "@totalDuration": {},
+  "totalAuthors": "Skupno avtorjev",
+  "@totalAuthors": {},
+  "totalGenres": "Skupno žanrov",
+  "@totalGenres": {},
+  "totalItems": "Skupno elementov",
+  "@totalItems": {},
+  "totalSize": "Skupna velikost",
+  "@totalSize": {},
+  "tryAgain": "Poskusi znova",
+  "@tryAgain": {},
+  "unknownTitle": "Neznani naslov",
+  "@unknownTitle": {},
+  "updatedAt": "Posodobljeno ob",
+  "@updatedAt": {},
+  "user": "Uporabnik",
+  "@user": {},
+  "username": "Uporabniško ime",
+  "@username": {},
+  "viewChapters": "Ogled poglavij",
+  "@viewChapters": {},
+  "viewOnGithub": "Ogled na GitHub",
+  "@viewOnGithub": {},
+  "waitTillRedirect": "Počakajte na preusmeritev na /init. Trenutno niste prijavljeni.",
+  "@waitTillRedirect": {},
+  "waitingForDownload": "Čakam na začetek prenosa",
+  "@waitingForDownload": {},
+  "year": "Leto",
+  "@year": {},
+  "seek": "Iskanje",
+  "@seek": {},
+  "itemNotFoundDescription": "Elementa ni bilo mogoče najti. To je lahko posledica omrežne napake ali ker element ne obstaja več, vendar ostaja predpomnjen.",
+  "@itemNotFoundDescription": {},
+  "libraryStats": "Statistika knjižnice",
+  "@libraryStats": {},
+  "noUserData": "Prijava ni uspela: podatki o uporabniku niso bili prejeti",
+  "@noUserData": {},
+  "progressAsChaptersDescription": "Omogočite to možnost za prikaz napredka v predvajalniku in obvestil za posamezno poglavje. Če je onemogočeno, bo napredek prikazan glede na celoten element.",
+  "@progressAsChaptersDescription": {},
+  "itemNumChapters": "Število poglavij: {numChapters}",
+  "@itemNumChapters": {
+    "placeholders": {
+      "numChapters": {
+        "type": "String"
+      }
+    }
+  },
+  "jumpToLastPosition": "Skoči na zadnji položaj",
+  "@jumpToLastPosition": {},
+  "newestEpisodes": "Najnovejše epizode",
+  "@newestEpisodes": {},
+  "narrators": "Bralci",
+  "@narrators": {},
+  "jumpToLastPositionDescription": "Ko je omogočeno, bo predvajalnik skočil na zadnji položaj, ko pritisnete predvajaj",
+  "@jumpToLastPositionDescription": {},
+  "language": "Jezik",
+  "@language": {},
+  "noItemsFound": "Ne najdem elementov",
+  "@noItemsFound": {},
+  "notificationHeading": "Obvestila morajo biti omogočena",
+  "@notificationHeading": {},
+  "notStarted": "Ni začeto",
+  "@notStarted": {},
+  "offlineProgress": "Brez povezave napredek",
+  "@offlineProgress": {},
+  "listenAgain": "Poslušaj znova",
+  "@listenAgain": {},
+  "listeningInTheLastYear": "Poslušanje v zadnjem letu",
+  "@listeningInTheLastYear": {},
+  "markItemsFinishedAfterDescription": "Določite čas v sekundah pred koncem elementa, ko naj bo označen kot končan. Če to nastavite na 0, označite element kot končan šele, ko igralec doseže sam konec. Če je nastavljena pozitivna vrednost, je predmet označen kot končan, ko igralec doseže ta čas pred koncem.",
+  "@markItemsFinishedAfterDescription": {},
+  "restartRequiredDescription": "Za uveljavite sprememb, prosim znova zaženite aplikacijo.",
+  "@restartRequiredDescription": {},
+  "pause": "Pavza",
+  "@pause": {},
+  "playNextEpisode": "Predvajaj naslednjo epizodo",
+  "@playNextEpisode": {},
+  "next": "Naslednje",
+  "@next": {},
+  "stats": "Statistike",
+  "@stats": {},
+  "success": "Uspeh",
+  "@success": {},
+  "player": "Predvajalnik",
+  "@player": {},
+  "playerSettings": "Nastavitve predvajalnika",
+  "@playerSettings": {},
+  "ownStats": "Lastna statistika",
+  "@ownStats": {},
+  "stop": "Ustavi",
+  "@stop": {},
+  "totalTimeListened": "Skupni čas poslušanja",
+  "@totalTimeListened": {},
+  "password": "Geslo",
+  "@password": {},
+  "series": "Serije",
+  "@series": {},
+  "syncInterval": "Interval sinhronizacije (sekunde)",
+  "@syncInterval": {},
+  "progress": "Napredek",
+  "@progress": {},
+  "showAccountSwitcherDescription": "Omogočite to možnost, če želite v vrstico z aplikacijami dodati gumb z ikonami za hitro preklapljanje med računi. To bo zmanjšalo velikost vrstice aplikacij.",
+  "@showAccountSwitcherDescription": {},
+  "rewindSecondsDescription": "Nastavite število sekund za preskok nazaj, ko pritisnete gumb za previjanje nazaj.",
+  "@rewindSecondsDescription": {},
+  "syncIntervalDescription": "Določa, kako pogosto naj se aplikacija sinhronizira s strežnikom. Znova zaženite aplikacijo, da bodo spremembe začele veljati.",
+  "@syncIntervalDescription": {},
+  "stopPlayerUntilSync": "Ustavi predvajalnik do sinhronizacije",
+  "@stopPlayerUntilSync": {},
+  "stopPlayerWhileSyncingDescription": "Omogočite to možnost, da preprečite zagon predvajalnika, dokler ni sinhroniziran zadnji položaj predvajanja. To zagotavlja, da se predvajanje nadaljuje s pravilnega položaja. Če je onemogočeno, se lahko položaj predvajanja spremeni kmalu po začetku, kar lahko povzroči izgubo podatkov. Vklop te možnosti pomaga ohraniti porabo podatkov.",
+  "@stopPlayerWhileSyncingDescription": {},
+  "darkMode": "Temni način",
+  "@darkMode": {},
+  "dateFormatDayHourMinuteSecond": "{days, plural, one {{days} dan} other {{days} dni}} {hours, plural, one {{hours} ura} other {{hours} ur}} {minutes, plural, one {{minutes} minuta} other {{minutes} minut}} {seconds, plural, one {{seconds} sekunda} other {{seconds} sekund}}",
+  "@dateFormatDayHourMinuteSecond": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      },
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "downloadPath": "Pot prenosa",
+  "@downloadPath": {},
+  "downloadPathDescription": "Pot, kjer so shranjeni prenosi. Če želite to spremeniti, morate najprej izbrisati vse prenose.",
+  "@downloadPathDescription": {},
+  "enableNotificationsDownload": "Omogočite obvestila, če želite prejemati posodobitve napredka prenosa in lahko prenašate datoteke v ozadju.",
+  "@enableNotificationsDownload": {},
+  "enterValidUsernameOrPassword": "Preden vnesete uporabniško ime in geslo, vnesite veljaven IP/domeno in vrata.",
+  "@enterValidUsernameOrPassword": {},
+  "general": "Splošno",
+  "@general": {},
+  "usernameOrPasswordNotEmpty": "Uporabniško ime in geslo ne smeta biti prazna",
+  "@usernameOrPasswordNotEmpty": {},
+  "error": "Napaka",
+  "@error": {},
+  "fastForwardSecondsDescription": "Nastavite število sekund za preskok naprej, ko pritisnete gumb za hitro premikanje naprej.",
+  "@fastForwardSecondsDescription": {},
+  "errorDownloadingBody": "Med prenosom {displayName} je prišlo do napake",
+  "@errorDownloadingBody": {},
+  "fastForward": "Hitro premikanje naprej",
+  "@fastForward": {},
+  "previous": "Prejšnje",
+  "@previous": {},
+  "fastForwardSeconds": "Sekunde hitrega premikanja naprej",
+  "@fastForwardSeconds": {},
+  "hide": "Skrij",
+  "@hide": {},
+  "itemLength": "Dolžina: {length}",
+  "@itemLength": {
+    "placeholders": {
+      "length": {
+        "type": "String"
+      }
+    }
+  },
+  "lockProgressBarDescription": "Ko je omogočena, ta funkcija zaklene vrstico napredka v medijskem obvestilu, če to podpira operacijski sistem",
+  "@lockProgressBarDescription": {},
+  "sync": "Sinhronizacija",
+  "@sync": {},
+  "offlineSavedProgress": "Shranjen napredek brez povezave",
+  "@offlineSavedProgress": {},
+  "pleaseCheckInternet": "Preverite internetno povezavo in poskusite znova.",
+  "@pleaseCheckInternet": {},
+  "settings": "Nastavitve",
+  "@settings": {},
+  "showAccountSwitcher": "Pokaži preklopnik računov",
+  "@showAccountSwitcher": {},
+  "viewBookmarks": "Ogled zaznamkov",
+  "@viewBookmarks": {},
+  "unknown": "Neznano",
+  "@unknown": {},
+  "title": "Naslov",
+  "@title": {},
+  "topGenres": "Top žanri",
+  "@topGenres": {}
+}
