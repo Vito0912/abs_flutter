@@ -1340,6 +1340,16 @@ class S {
     );
   }
 
+  /// `Download failed due to permission error. Please check folder permissions.`
+  String get linuxPermissionError {
+    return Intl.message(
+      'Download failed due to permission error. Please check folder permissions.',
+      name: 'linuxPermissionError',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Listen again`
   String get listenAgain {
     return Intl.message(
@@ -2625,6 +2635,7 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
       Locale.fromSubtags(languageCode: 'it'),
       Locale.fromSubtags(languageCode: 'nb', countryCode: 'NO'),
       Locale.fromSubtags(languageCode: 'pt', countryCode: 'BR'),
+      Locale.fromSubtags(languageCode: 'ta'),
       Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hans'),
     ];
   }

@@ -1,8 +1,10 @@
 import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/provider/player_provider.dart';
+import 'package:abs_flutter/provider/settings_provider.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
 import 'package:abs_flutter/util/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -14,14 +16,11 @@ class SpeedControl extends ConsumerWidget {
       {super.key, required this.player, required this.speedStream, this.size});
 
   final Map<String, dynamic> speedOptions = {
-    '0.5x': 0.5,
-    '0.75x': 0.75,
     '0.9x': 0.9,
     '1.0x': 1.0,
+    '1.1x': 1.1,
     '1.2x': 1.2,
-    '1.5x': 1.5,
-    '1.75x': 1.75,
-    '2.0x': 2.0,
+    'Custom Speed': "Custom Speed",
   };
 
   @override
@@ -44,6 +43,10 @@ class SpeedControl extends ConsumerWidget {
                 builder:
                     (BuildContext context, AsyncSnapshot<double> snapshot) {
                   if (snapshot.hasData) {
+                    if (snapshot.data.runtimeType == double) {
+                      return PlatformText(
+                          '${snapshot.data!.toStringAsFixed(2)}x');
+                    }
                     return PlatformText('${snapshot.data.toString()}x');
                   } else {
                     return const SizedBox.shrink();
@@ -56,27 +59,99 @@ class SpeedControl extends ConsumerWidget {
   }
 
   PopupMenuOption _buildSpeedOption(
-      String key, double value, BuildContext context, WidgetRef ref) {
+      String key, dynamic value, BuildContext context, WidgetRef ref) {
     return PopupMenuOption(
         label: key,
         onTap: (option) {
-          final users = ref.read(usersProvider);
-          final userIndex = ref.read(selectedUserProvider);
-          final user = users[userIndex];
-
-          final updatedUser = user.copyWith(
-            setting: user.setting!.copyWith(
-              settings: {
-                ...user.setting!.settings,
-                Constants.PLAYBACK_SPEED: value
-              },
-            ),
-          );
-
-          ref
-              .read(usersProvider.notifier)
-              .updateUserAtIndex(userIndex, updatedUser);
-          player.audioService.player.setSpeed(value);
+          if (value.runtimeType == double) {
+            _voidUpdateSpeed(ref, value);
+          } else {
+            _showCustomSpeedModal(context, ref);
+          }
         });
+  }
+
+  void _showCustomSpeedModal(BuildContext context, WidgetRef ref) {
+    showModalBottomSheet(
+        context: context,
+        showDragHandle: true,
+        useSafeArea: true,
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        builder: (BuildContext context) {
+          final TextEditingController customSpeedController =
+              TextEditingController();
+          return HookBuilder(builder: (context) {
+            final ValueNotifier<double> speed =
+                useState(ref.read(settingsProvider)[Constants.PLAYBACK_SPEED]);
+            customSpeedController.text = speed.value.toString();
+            return Padding(
+              padding: const EdgeInsets.only(bottom: 16, left: 16, right: 16),
+              child: Container(
+                decoration: BoxDecoration(
+                  border: Border.all(color: Theme.of(context).dividerColor),
+                  borderRadius: BorderRadius.circular(5),
+                ),
+                height: 36,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 4, horizontal: 4),
+                      child: PlatformTextButton(
+                        child: PlatformText("-0.05x"),
+                        onPressed: () {
+                          speed.value = double.parse((speed.value - 0.05)
+                              .clamp(0.5, 2.0)
+                              .toStringAsFixed(2));
+                          _voidUpdateSpeed(ref, speed.value);
+                        },
+                      ),
+                    ),
+                    VerticalDivider(
+                      color: Theme.of(context).dividerColor,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8),
+                      child: Text("${speed.value.toStringAsFixed(2)}x"),
+                    ),
+                    VerticalDivider(
+                      color: Theme.of(context).dividerColor,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 4, horizontal: 4),
+                      child: PlatformTextButton(
+                        child: PlatformText("+0.05x"),
+                        onPressed: () {
+                          speed.value = double.parse((speed.value + 0.05)
+                              .clamp(0.5, 2.0)
+                              .toStringAsFixed(2));
+                          _voidUpdateSpeed(ref, speed.value);
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            );
+          });
+        });
+  }
+
+  _voidUpdateSpeed(WidgetRef ref, double value) {
+    final users = ref.read(usersProvider);
+    final userIndex = ref.read(selectedUserProvider);
+    final user = users[userIndex];
+
+    final updatedUser = user.copyWith(
+      setting: user.setting!.copyWith(
+        settings: {...user.setting!.settings, Constants.PLAYBACK_SPEED: value},
+      ),
+    );
+
+    ref.read(usersProvider.notifier).updateUserAtIndex(userIndex, updatedUser);
+    player.audioService.player.setSpeed(value);
   }
 }
