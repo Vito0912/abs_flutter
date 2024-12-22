@@ -476,6 +476,8 @@
   "@libraryName": {},
   "libraryStats": "Statistiques de la bibliothèque",
   "@libraryStats": {},
+  "linuxPermissionError": "Le téléchargement a échoué à cause d'un problème de droits. Vérifiez les droits appliqués au dossier.",
+  "@linuxPermissionError": {},
   "listenAgain": "Ecouter à nouveau",
   "@listenAgain": {},
   "listeningInTheLastYear": "Ecoutes durant l'année passée",
@@ -620,6 +622,8 @@
   "@restartRequired": {},
   "restartRequiredDescription": "Veuillez redémarrer l'application pour appliquer les changements.",
   "@restartRequiredDescription": {},
+  "retry": "Réessayer",
+  "@retry": {},
   "rewind": "Rembobiner",
   "@rewind": {},
   "rewindSeconds": "Rembobiner Secondes",
@@ -751,9 +755,5 @@
   "waitingForDownload": "En attente de démarrage du téléchargement",
   "@waitingForDownload": {},
   "year": "Année",
-  "@year": {},
-  "retry": "Réessayer",
-  "@retry": {},
-  "linuxPermissionError": "Le téléchargement a échoué à cause d'un problème de droits. Vérifiez les droits appliqués au dossier.",
-  "@linuxPermissionError": {}
+  "@year": {}
 }
