@@ -62,11 +62,13 @@ final Map<String, dynamic> defaultSettings = {
 final Map<String, String> supportedLocales = {
   'en': 'English',
   'de': 'Deutsch',
-  'nb': 'Norsk Bokmål',
   'zh': '中文',
   'pt': 'Português',
   'fr': 'Français',
   'it': 'Italiano',
+  'sl': 'Slovenščina',
+  'nb': 'Norsk Bokmål',
+  'ta': 'தமிழ்',
 };
 
 bool cachingEnabled = true;

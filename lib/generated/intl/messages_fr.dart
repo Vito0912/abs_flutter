@@ -276,6 +276,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Nom de la bibliothèque"),
         "libraryStats": MessageLookupByLibrary.simpleMessage(
             "Statistiques de la bibliothèque"),
+        "linuxPermissionError": MessageLookupByLibrary.simpleMessage(
+            "Le téléchargement a échoué à cause d\'un problème de droits. Vérifiez les droits appliqués au dossier."),
         "listenAgain":
             MessageLookupByLibrary.simpleMessage("Ecouter à nouveau"),
         "listeningInTheLastYear": MessageLookupByLibrary.simpleMessage(
@@ -379,6 +381,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Redémarrage Requis"),
         "restartRequiredDescription": MessageLookupByLibrary.simpleMessage(
             "Veuillez redémarrer l\'application pour appliquer les changements."),
+        "retry": MessageLookupByLibrary.simpleMessage("Réessayer"),
         "rewind": MessageLookupByLibrary.simpleMessage("Rembobiner"),
         "rewindSeconds":
             MessageLookupByLibrary.simpleMessage("Rembobiner Secondes"),
