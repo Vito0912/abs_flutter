@@ -103,7 +103,7 @@ class SpeedControl extends ConsumerWidget {
                         child: PlatformText("-0.05x"),
                         onPressed: () {
                           speed.value = double.parse((speed.value - 0.05)
-                              .clamp(0.5, 2.0)
+                              .clamp(0.5, 2.5)
                               .toStringAsFixed(2));
                           _voidUpdateSpeed(ref, speed.value);
                         },
