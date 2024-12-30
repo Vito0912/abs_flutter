@@ -61,7 +61,7 @@ class TimerNotifier extends StateNotifier<DateTime?> {
 
     final currentTime = player.position.inMicroseconds / 1000000;
     final duration =
-        (player.audioService.player.duration?.inMicroseconds ?? -1) / 1000000;
+        (player.audioService.duration.inMicroseconds ?? -1) / 1000000;
 
     log('Current time: $currentTime', name: 'progress_timer_provider');
 
@@ -130,9 +130,7 @@ class TimerNotifier extends StateNotifier<DateTime?> {
           currentTime: currentTime,
           timeListened: listenedSeconds + progressItem.timeListened,
           updatedAt: DateTime.now(),
-          durationOfItem: player
-              .audioService.mediaItem.value!.duration!.inSeconds
-              .toDouble(),
+          durationOfItem: duration,
         ));
       } else {
         log('Adding offline progress: $listenedSeconds',
@@ -155,9 +153,7 @@ class TimerNotifier extends StateNotifier<DateTime?> {
           type: (episodeId != null || episodeId.toString().isEmpty)
               ? 'podcast'
               : 'book',
-          durationOfItem: player
-              .audioService.mediaItem.value!.duration!.inSeconds
-              .toDouble(),
+          durationOfItem: duration,
           startTime: currentTime,
           updatedAt: DateTime.now(),
         );

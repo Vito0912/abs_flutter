@@ -103,7 +103,10 @@ class AlbumImage extends ConsumerWidget {
               builder: (BuildContext context, WidgetRef ref, Widget? child) {
                 final progress = ref
                     .watch(progressProviderWithItemId(ItemEpisodeId(itemId)));
-                num progressValue = progress?.progress ?? 0.0;
+                num progressValue =
+                    ((progress?.currentTime! ?? 0) / (progress?.duration ?? 1))
+                        .toDouble();
+
                 return Align(
                   alignment: Alignment.bottomCenter,
                   child: LinearProgressIndicator(

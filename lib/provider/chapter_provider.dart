@@ -15,11 +15,8 @@ class ChapterNotifier extends StateNotifier<Chapter?> {
   }
 
   void _listenToPositionStream() {
-    // Abonniert den Positions-Stream und aktualisiert das Kapitel, wenn nötig
-    _positionSubscription = player.audioService.positionStream
-        .distinct() // Nur bei Änderungen reagieren
-        .listen((position) {
-      _updateChapter(position.inMilliseconds.toDouble());
+    _positionSubscription = player.positionStream.distinct().listen((position) {
+      _updateChapter(position.inMicroseconds.toDouble());
     });
   }
 
@@ -35,6 +32,22 @@ class ChapterNotifier extends StateNotifier<Chapter?> {
     }
   }
 
+  void clearChapter() {
+    previousEnd = 0.0;
+    previousStart = 0.0;
+    if (state != null) state = null;
+    _positionSubscription?.cancel();
+
+    // Wait until player.mediaItem.value is not null
+    if (player.audioService.mediaItem.value == null) {
+      Future.delayed(const Duration(milliseconds: 100), () {
+        clearChapter();
+      });
+    } else {
+      _listenToPositionStream();
+    }
+  }
+
   @override
   void dispose() {
     _positionSubscription?.cancel();
@@ -46,13 +59,11 @@ class ChapterNotifier extends StateNotifier<Chapter?> {
   }
 }
 
-// Provider für das aktuelle Kapitel
 final chapterProvider = StateNotifierProvider<ChapterNotifier, Chapter?>((ref) {
   final player = ref.watch(playerProvider);
   return ChapterNotifier(player);
 });
 
-// Wenn der Player sich ändert, wird auch der ChapterProvider aktualisiert
 final playerListener = Provider((ref) {
   ref.listen(playerProvider, (_, __) {
     ref.read(chapterProvider.notifier).updatePlayer();

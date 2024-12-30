@@ -19,19 +19,18 @@ class Progress extends ConsumerWidget {
         progress!.progress! <= 0) {
       return const SizedBox.shrink();
     }
-    final currentProgress =
-        Helper.formatPercentage(progress.progress!.toDouble());
-    final currentPosition = Helper.formatTimeToReadable(progress.currentTime!,
-        precise: true, short: true);
     final double mediaDuration = item.media?.bookMedia?.audioFiles!
             .map((e) => e.duration)
             .reduce((value, element) => value! + element!) ??
         0;
-    final toGoSeconds = mediaDuration - progress.progress! * mediaDuration;
-    final timeRemaining = Helper.formatTimeToReadable(
-        toGoSeconds >= mediaDuration ? mediaDuration : toGoSeconds,
-        precise: true,
-        short: true);
+    final currentProgress = Helper.formatPercentage(
+        (progress.currentTime! / mediaDuration).toDouble());
+
+    final currentPosition = Helper.formatTimeToReadable(progress.currentTime!,
+        precise: true, short: true);
+    final toGoSeconds = mediaDuration - progress.currentTime!;
+    final timeRemaining =
+        Helper.formatTimeToReadable(toGoSeconds, precise: true, short: true);
     return Chip(
         label: IntrinsicWidth(
       child: Column(

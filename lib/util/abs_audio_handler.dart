@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:abs_flutter/api/library_items/audio_track.dart';
 import 'package:abs_flutter/models/chapter.dart';
 import 'package:abs_flutter/models/history.dart';
+import 'package:abs_flutter/provider/chapter_provider.dart';
 import 'package:abs_flutter/provider/connection_provider.dart';
 import 'package:abs_flutter/provider/history_provider.dart';
 import 'package:abs_flutter/provider/log_provider.dart';
@@ -214,6 +215,8 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
     if (Platform.isWindows) await player.pause();
     if (Platform.isWindows) await player.play();
     _container.read(timerProvider.notifier).continueTimer();
+    // Clear old chapter
+    _container.read(chapterProvider.notifier).clearChapter();
   }
 
   Future<void> _seekOnProgress() async {
@@ -469,6 +472,7 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
 
   Stream<Duration> get positionStream {
     if (mediaItem.value == null) {
+      print('Something is wrong. Please use positionStream later');
       return player.positionStream;
     }
     return _positionStream();
@@ -589,6 +593,32 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
       }
     }
     return null;
+  }
+
+  Duration get duration => getDuration();
+
+  Duration getDuration() {
+    if (mediaItem.value == null) {
+      return Duration.zero;
+    }
+    if (mediaItem.value!.extras != null &&
+        mediaItem.value!.extras!['audioTracks'] != null) {
+      List<AudioTrack> audioTracks =
+          (jsonDecode(mediaItem.value!.extras!['audioTracks']) as List)
+              .map((track) => AudioTrack.fromJson(track))
+              .toList();
+      if (audioTracks.length > 1) {
+        Duration cumulativeOffset = Duration.zero;
+        for (int i = 0; i < audioTracks.length; i++) {
+          cumulativeOffset +=
+              Duration(milliseconds: (audioTracks[i].duration * 1000).toInt());
+        }
+        return cumulativeOffset;
+      }
+    } else {
+      return mediaItem.value!.duration!;
+    }
+    return Duration.zero;
   }
 
   Duration getOffsetAtDuration(Duration target) {
