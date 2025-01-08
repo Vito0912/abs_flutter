@@ -1,1 +1,338 @@
-{}
+{
+  "pleaseCheckInternet": "Пожалуйста, проверьте свое интернет-соединение и повторите попытку.",
+  "@pleaseCheckInternet": {},
+  "port": "Порт",
+  "@port": {},
+  "error": "Ошибка",
+  "@error": {},
+  "amoledMode": "AMOLED режим",
+  "@amoledMode": {},
+  "domainOrIp": "Домен или IP",
+  "@domainOrIp": {},
+  "addUser": "Добавить Пользователя",
+  "@addUser": {},
+  "addANewUser": "Добавить нового Пользователя",
+  "@addANewUser": {},
+  "added": "Добавлен",
+  "@added": {},
+  "stop": "Стоп",
+  "@stop": {},
+  "authors": "Авторы",
+  "@authors": {},
+  "search": "Поиск",
+  "@search": {},
+  "language": "Язык",
+  "@language": {},
+  "advanced": "Расширенные",
+  "@advanced": {},
+  "dateFormatSecondShort": "{count}с",
+  "@dateFormatSecondShort": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatHourMinuteShort": "{hours}ч {minutes}м",
+  "@dateFormatHourMinuteShort": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "errorDownloading": "Ошибка загрузки",
+  "@errorDownloading": {},
+  "password": "Пароль",
+  "@password": {},
+  "dateFormatHourShort": "{count}ч",
+  "@dateFormatHourShort": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "size": "Размер",
+  "@size": {},
+  "currentDownloads": "Текущие загрузки",
+  "@currentDownloads": {},
+  "errorItemNotFound": "Ошибка: Объект не найден!",
+  "@errorItemNotFound": {},
+  "enabled": "Включено",
+  "@enabled": {},
+  "episodeId": "Id эпизода",
+  "@episodeId": {},
+  "exit": "Выйти",
+  "@exit": {},
+  "filter": "Фильтр",
+  "@filter": {},
+  "itemPublishedYear": "Год публикации: {year}",
+  "@itemPublishedYear": {
+    "placeholders": {
+      "year": {
+        "type": "String"
+      }
+    }
+  },
+  "genres": "Жанры",
+  "@genres": {},
+  "information": "Информация",
+  "@information": {},
+  "pause": "Пауза",
+  "@pause": {},
+  "open": "Открыть",
+  "@open": {},
+  "openDownloads": "Открыть загрузки",
+  "@openDownloads": {},
+  "retry": "Повторить",
+  "@retry": {},
+  "progress": "Прогресс",
+  "@progress": {},
+  "playbackSpeed": "Скорость",
+  "@playbackSpeed": {},
+  "progressNum": "Текущий прогресс: {progress}%",
+  "@progressNum": {
+    "placeholders": {
+      "progress": {
+        "type": "String"
+      }
+    }
+  },
+  "previous": "Предыдущий",
+  "@previous": {},
+  "previousChapter": "Предыдущая глава",
+  "@previousChapter": {},
+  "settings": "Настройки",
+  "@settings": {},
+  "signOut": "Выход",
+  "@signOut": {},
+  "user": "Пользователь",
+  "@user": {},
+  "timerText": "{time} мин",
+  "@timerText": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "year": "Год",
+  "@year": {},
+  "ok": "Ок",
+  "@ok": {},
+  "close": "Закрыть",
+  "@close": {},
+  "downloadingBody": "Загрузка {displayName}",
+  "@downloadingBody": {},
+  "downloadCompleteBody": "Загрузка {displayName} завершена",
+  "@downloadCompleteBody": {},
+  "back": "Назад",
+  "@back": {},
+  "currentPositionNum": "Текущая позиция: {position}",
+  "@currentPositionNum": {
+    "placeholders": {
+      "position": {
+        "type": "String"
+      }
+    }
+  },
+  "username": "Имя пользователя",
+  "@username": {},
+  "dateFormatDayHourMinuteShort": "{days}д {hours}ч {minutes}м",
+  "@dateFormatDayHourMinuteShort": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "itemProgress": "Прогресс: {progress}%",
+  "@itemProgress": {
+    "placeholders": {
+      "progress": {
+        "type": "String"
+      }
+    }
+  },
+  "disabled": "Отключить",
+  "@disabled": {},
+  "deviceInfo": "Устройство: {device}\nОС: {os}\nВерсия приложения: {version}",
+  "@deviceInfo": {
+    "placeholders": {
+      "device": {
+        "type": "String"
+      },
+      "os": {
+        "type": "String"
+      },
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "author": "Автор",
+  "@author": {},
+  "bookCover": "Обложка",
+  "@bookCover": {},
+  "cancel": "Отмена",
+  "@cancel": {},
+  "chapters": "Главы",
+  "@chapters": {},
+  "clearCache": "Очистить Кэш",
+  "@clearCache": {},
+  "copy": "Копировать",
+  "@copy": {},
+  "copyLogs": "Копировать логи",
+  "@copyLogs": {},
+  "create": "Создать",
+  "@create": {},
+  "allDownloads": "Скачать все",
+  "@allDownloads": {},
+  "darkMode": "Темный режим",
+  "@darkMode": {},
+  "caching": "Кэширование",
+  "@caching": {},
+  "createBookmark": "Создать Закладку",
+  "@createBookmark": {},
+  "boostLoading": "Ускоренная загрузка",
+  "@boostLoading": {},
+  "changeLibrary": "Выбор библиотеки",
+  "@changeLibrary": {},
+  "chaptersNum": "Главы ({num})",
+  "@chaptersNum": {
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "collapseSeries": "Свернуть серию",
+  "@collapseSeries": {},
+  "consecutiveDays": "Дней подряд",
+  "@consecutiveDays": {},
+  "continueListening": "Продолжить прослушивание",
+  "@continueListening": {},
+  "continueSeries": "Продолжить серию",
+  "@continueSeries": {},
+  "downloadsOnlyViaWifi": "Загружать только по WiFi",
+  "@downloadsOnlyViaWifi": {},
+  "duration": "Продолжительность",
+  "@duration": {},
+  "downloadComplete": "Загрузка завершена",
+  "@downloadComplete": {},
+  "downloads": "Загрузки",
+  "@downloads": {},
+  "dateFormatDayShort": "{count}д",
+  "@dateFormatDayShort": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatMinuteShort": "{count}м",
+  "@dateFormatMinuteShort": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatDayHourShort": "{days}д {hours}ч",
+  "@dateFormatDayHourShort": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatDayHourMinuteSecondShort": "{days}д {hours}ч {minutes}м {seconds}с",
+  "@dateFormatDayHourMinuteSecondShort": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      },
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatHourMinuteSecondShort": "{hours}ч {minutes}м {seconds}с",
+  "@dateFormatHourMinuteSecondShort": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      },
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatMinuteSecondShort": "{minutes}м {seconds}с",
+  "@dateFormatMinuteSecondShort": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      },
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "deleteSelected": "Удалить выбранное",
+  "@deleteSelected": {},
+  "descending": "По убыванию",
+  "@descending": {},
+  "description": "Описание",
+  "@description": {},
+  "disableVibration": "Отключить вибрацию",
+  "@disableVibration": {},
+  "downloadPathDescription": "Путь, по которому хранятся загруженные файлы. Чтобы изменить путь, необходимо удалить все загруженные файлы.",
+  "@downloadPathDescription": {},
+  "daysListened": "Дней прослушивания",
+  "@daysListened": {},
+  "debugLogs": "Журнал отладки",
+  "@debugLogs": {},
+  "disableSkippingChapters": "Отключить пропуск глав",
+  "@disableSkippingChapters": {},
+  "downloadInfo": "Информация о загрузках",
+  "@downloadInfo": {},
+  "downloadPath": "Путь загрузки",
+  "@downloadPath": {},
+  "enterValidUsernameOrPassword": "Пожалуйста, введите действительный IP/Домен и порт, прежде чем вводить имя пользователя и пароль.",
+  "@enterValidUsernameOrPassword": {},
+  "filename": "Имя файла",
+  "@filename": {},
+  "usernameOrPasswordNotEmpty": "Имя пользователя и пароль не могут быть пустыми",
+  "@usernameOrPasswordNotEmpty": {},
+  "aggressiveCaching": "Принудительное кэширование",
+  "@aggressiveCaching": {},
+  "cachingHeader": "Кэширование",
+  "@cachingHeader": {},
+  "createBookmarkTitle": "Создать закладку",
+  "@createBookmarkTitle": {},
+  "downloading": "Загрузка",
+  "@downloading": {}
+}
