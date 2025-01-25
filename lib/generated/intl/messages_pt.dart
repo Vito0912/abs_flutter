@@ -24,80 +24,63 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m1(position) => "Posição atual: ${position}";
 
-  static String m2(count) =>
-      "${Intl.plural(count, one: '${count}  dia', other: '${count} dias')}";
-
-  static String m3(days, hours) =>
-      "${Intl.plural(days, one: '${days} dia', other: '${days} dias')} ${Intl.plural(hours, one: '${hours} hora', other: '${hours} horas')}";
-
-  static String m4(days, hours, minutes) =>
+  static String m2(days, hours, minutes) =>
       "${Intl.plural(days, one: '${days} dia', other: '${days} dias')} ${Intl.plural(hours, one: '${hours} hora', other: '${hours} horas')} ${Intl.plural(minutes, one: '${minutes} minuto', other: '${minutes} minutos')}";
 
-  static String m5(days, hours, minutes, seconds) =>
+  static String m3(days, hours, minutes, seconds) =>
       "${Intl.plural(days, one: '${days} dia', other: '${days} dias')} ${Intl.plural(hours, one: '${hours} hora', other: '${hours} horas')} ${Intl.plural(minutes, one: '${minutes} minuto', other: '${minutes} minutos')} ${Intl.plural(seconds, one: '${seconds} segundo', other: '${seconds} segundos')}";
 
-  static String m6(days, hours, minutes, seconds) =>
+  static String m4(days, hours, minutes, seconds) =>
       "${days}d ${hours}h ${minutes}m ${seconds}s";
 
-  static String m7(days, hours, minutes) => "${days}d ${hours}h ${minutes}m";
+  static String m5(days, hours, minutes) => "${days}d ${hours}h ${minutes}m";
 
-  static String m8(days, hours) => "${days}d ${hours}h";
-
-  static String m9(count) => "${count}d";
-
-  static String m10(count) =>
-      "${Intl.plural(count, one: '${count} hora', other: '${count} horas')}";
-
-  static String m11(hours, minutes) =>
+  static String m6(hours, minutes) =>
       "${Intl.plural(hours, one: '${hours} hora', other: '${hours} horas')} ${Intl.plural(minutes, one: '${minutes} minuto', other: '${minutes} minutos')}";
 
-  static String m12(hours, minutes, seconds) =>
+  static String m7(hours, minutes, seconds) =>
       "${Intl.plural(hours, one: '${hours} hora', other: '${hours} horas')} ${Intl.plural(minutes, one: '${minutes} minuto', other: '${minutes} minutos')} ${Intl.plural(seconds, one: '${seconds} segundo', other: '${seconds} segundos')}";
 
-  static String m13(hours, minutes, seconds) =>
+  static String m8(hours, minutes, seconds) =>
       "${hours}h ${minutes}m ${seconds}s";
 
-  static String m14(hours, minutes) => "${hours}h ${minutes}m";
+  static String m9(hours, minutes) => "${hours}h ${minutes}m";
 
-  static String m15(count) => "${count}h";
-
-  static String m16(count) =>
+  static String m10(count) =>
       "${Intl.plural(count, one: '${count} minuto', other: '${count} minutos')}";
 
-  static String m17(minutes, seconds) =>
+  static String m11(minutes, seconds) =>
       "${Intl.plural(minutes, one: '${minutes} minuto', other: '${minutes} minutos')} ${Intl.plural(seconds, one: '${seconds} segundo', other: '${seconds} segundos')}";
 
-  static String m18(minutes, seconds) => "${minutes}m ${seconds}s";
+  static String m12(minutes, seconds) => "${minutes}m ${seconds}s";
 
-  static String m19(count) => "${count}m";
+  static String m13(count) => "${count}m";
 
-  static String m20(count) =>
+  static String m14(count) =>
       "${Intl.plural(count, one: '${count}  segundo', other: '${count} segundos')}";
 
-  static String m21(count) => "${count}s";
+  static String m15(count) => "${count}s";
 
-  static String m22(device, os, version) =>
+  static String m16(device, os, version) =>
       "Dispositivo: ${device}\nSP: ${os}\nVersão do app: ${version}";
 
-  static String m23(displayName) => "Download de ${displayName} completado";
+  static String m17(displayName) => "Download de ${displayName} completado";
 
-  static String m24(displayName) => "Fazendo download de ${displayName}";
+  static String m18(displayName) => "Fazendo download de ${displayName}";
 
-  static String m25(displayName) =>
+  static String m19(displayName) =>
       "Ocorreu um erro ao fazer download de ${displayName}";
 
-  static String m27(numChapters) => "Número de CApítulos: ${numChapters}";
+  static String m21(numChapters) => "Número de CApítulos: ${numChapters}";
 
-  static String m28(progress) => "Progresso: ${progress}%";
+  static String m22(year) => "Ano de publicação: ${year}";
 
-  static String m29(year) => "Ano de publicação: ${year}";
-
-  static String m30(numBooks) =>
+  static String m23(numBooks) =>
       "${Intl.plural(numBooks, zero: 'Sem livros', one: '1 livro', other: '${numBooks} livors')}";
 
-  static String m31(progress) => "Progresso atual: ${progress} %";
+  static String m24(progress) => "Progresso atual: ${progress} %";
 
-  static String m33(time) => "${time} min";
+  static String m26(time) => "${time} min";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -115,22 +98,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "author": MessageLookupByLibrary.simpleMessage("Autor"),
     "authors": MessageLookupByLibrary.simpleMessage("Autores"),
     "back": MessageLookupByLibrary.simpleMessage("Voltar"),
-    "bookCover": MessageLookupByLibrary.simpleMessage("Capa do livro"),
-    "boostLoadingSubtitle": MessageLookupByLibrary.simpleMessage(
-      "Por favor, leia a descrição para entender esta funcionalidade.",
-    ),
     "caching": MessageLookupByLibrary.simpleMessage("Cacheando"),
     "cachingHeader": MessageLookupByLibrary.simpleMessage("Cacheando"),
     "cancel": MessageLookupByLibrary.simpleMessage("Cancelar"),
     "changeLibrary": MessageLookupByLibrary.simpleMessage("Mudar biblioteca"),
-    "chapters": MessageLookupByLibrary.simpleMessage("Capítulos"),
     "chaptersNum": m0,
     "clearCache": MessageLookupByLibrary.simpleMessage("Limpar cache"),
     "close": MessageLookupByLibrary.simpleMessage("Fechar"),
     "collapseSeries": MessageLookupByLibrary.simpleMessage("Agrupar séries"),
-    "collapseSeriesDescription": MessageLookupByLibrary.simpleMessage(
-      "Quando ativado, itens em uma série serão agrupados na visão de biblioteca, mostrando apenas um único item para representar a série inteira.",
-    ),
     "consecutiveDays": MessageLookupByLibrary.simpleMessage(
       "Dias consecutivos",
     ),
@@ -143,46 +118,40 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "currentPositionNum": m1,
     "darkMode": MessageLookupByLibrary.simpleMessage("Modo escuro"),
-    "dateFormatDay": m2,
-    "dateFormatDayHour": m3,
-    "dateFormatDayHourMinute": m4,
-    "dateFormatDayHourMinuteSecond": m5,
-    "dateFormatDayHourMinuteSecondShort": m6,
-    "dateFormatDayHourMinuteShort": m7,
-    "dateFormatDayHourShort": m8,
-    "dateFormatDayShort": m9,
-    "dateFormatHour": m10,
-    "dateFormatHourMinute": m11,
-    "dateFormatHourMinuteSecond": m12,
-    "dateFormatHourMinuteSecondShort": m13,
-    "dateFormatHourMinuteShort": m14,
-    "dateFormatHourShort": m15,
-    "dateFormatMinute": m16,
-    "dateFormatMinuteSecond": m17,
-    "dateFormatMinuteSecondShort": m18,
-    "dateFormatMinuteShort": m19,
-    "dateFormatSecond": m20,
-    "dateFormatSecondShort": m21,
+    "dateFormatDayHourMinute": m2,
+    "dateFormatDayHourMinuteSecond": m3,
+    "dateFormatDayHourMinuteSecondShort": m4,
+    "dateFormatDayHourMinuteShort": m5,
+    "dateFormatHourMinute": m6,
+    "dateFormatHourMinuteSecond": m7,
+    "dateFormatHourMinuteSecondShort": m8,
+    "dateFormatHourMinuteShort": m9,
+    "dateFormatMinute": m10,
+    "dateFormatMinuteSecond": m11,
+    "dateFormatMinuteSecondShort": m12,
+    "dateFormatMinuteShort": m13,
+    "dateFormatSecond": m14,
+    "dateFormatSecondShort": m15,
     "daysListened": MessageLookupByLibrary.simpleMessage("Dias ouvindo"),
     "deleteSelected": MessageLookupByLibrary.simpleMessage(
       "Apagar selecionado",
     ),
     "descending": MessageLookupByLibrary.simpleMessage("Descendente"),
     "description": MessageLookupByLibrary.simpleMessage("Descrição"),
-    "deviceInfo": m22,
+    "deviceInfo": m16,
     "disabled": MessageLookupByLibrary.simpleMessage("Desabilitado"),
     "discover": MessageLookupByLibrary.simpleMessage("Descobrir"),
     "domainOrIp": MessageLookupByLibrary.simpleMessage("Domínio ou IP"),
     "downloadComplete": MessageLookupByLibrary.simpleMessage(
       "Download completado",
     ),
-    "downloadCompleteBody": m23,
+    "downloadCompleteBody": m17,
     "downloadInfo": MessageLookupByLibrary.simpleMessage(
       "Informações sobre o download",
     ),
     "downloadPath": MessageLookupByLibrary.simpleMessage("Caminho do download"),
     "downloading": MessageLookupByLibrary.simpleMessage("Fazendo download"),
-    "downloadingBody": m24,
+    "downloadingBody": m18,
     "downloads": MessageLookupByLibrary.simpleMessage("Downloads"),
     "downloadsOnlyViaWifi": MessageLookupByLibrary.simpleMessage(
       "Downloads somente via WiFi",
@@ -195,7 +164,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "errorDownloading": MessageLookupByLibrary.simpleMessage(
       "Erro ao fazer download",
     ),
-    "errorDownloadingBody": m25,
+    "errorDownloadingBody": m19,
     "errorItemNotFound": MessageLookupByLibrary.simpleMessage(
       "Erro: Item não encontrado",
     ),
@@ -219,9 +188,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "inProgress": MessageLookupByLibrary.simpleMessage("Em progresso"),
     "information": MessageLookupByLibrary.simpleMessage("Informação"),
     "itemId": MessageLookupByLibrary.simpleMessage("Id do item"),
-    "itemNumChapters": m27,
-    "itemProgress": m28,
-    "itemPublishedYear": m29,
+    "itemNumChapters": m21,
+    "itemPublishedYear": m22,
     "itemType": MessageLookupByLibrary.simpleMessage("Tipo de item"),
     "jumpToLastPosition": MessageLookupByLibrary.simpleMessage(
       "Pular para última posição",
@@ -242,34 +210,21 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "loading": MessageLookupByLibrary.simpleMessage("Carregando…"),
     "logs": MessageLookupByLibrary.simpleMessage("Logs"),
-    "markItemsFinished": MessageLookupByLibrary.simpleMessage(
-      "Marcar itens como terminados",
-    ),
     "minimize": MessageLookupByLibrary.simpleMessage("Minimizar"),
     "moreOptions": MessageLookupByLibrary.simpleMessage("Mais opções"),
-    "mustEnterValidAddress": MessageLookupByLibrary.simpleMessage(
-      "Você precisa informar um endereço de servidor válido",
-    ),
     "narrators": MessageLookupByLibrary.simpleMessage("Narradores"),
     "newestEpisodes": MessageLookupByLibrary.simpleMessage(
       "Episódios mais recentes",
     ),
-    "next": MessageLookupByLibrary.simpleMessage("Próximo"),
     "nextChapter": MessageLookupByLibrary.simpleMessage("Próximo capítulo"),
     "noConnection": MessageLookupByLibrary.simpleMessage("Sem conexão"),
     "noDownloads": MessageLookupByLibrary.simpleMessage("Sem downloads"),
     "noInternetDescription": MessageLookupByLibrary.simpleMessage(
       "Estamos enfrentando problemas para conectar ao servidor.",
     ),
-    "noItemsFound": MessageLookupByLibrary.simpleMessage(
-      "Nenhum item encontrado",
-    ),
     "noPath": MessageLookupByLibrary.simpleMessage("Sem caminho"),
     "noSeriesSelected": MessageLookupByLibrary.simpleMessage(
       "Nenhuma série selecionada",
-    ),
-    "noUserData": MessageLookupByLibrary.simpleMessage(
-      "Falha no login: dados de usuário não recebidos",
     ),
     "notFinished": MessageLookupByLibrary.simpleMessage("Não terminado"),
     "notStarted": MessageLookupByLibrary.simpleMessage("Não começado"),
@@ -277,7 +232,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "notificationHeading": MessageLookupByLibrary.simpleMessage(
       "Notificações devem estar ativadas",
     ),
-    "numBooksInSeries": m30,
+    "numBooksInSeries": m23,
     "offlineProgress": MessageLookupByLibrary.simpleMessage(
       "Progresso offline",
     ),
@@ -305,12 +260,11 @@ class MessageLookup extends MessageLookupByLibrary {
       "Configurações do tocador",
     ),
     "port": MessageLookupByLibrary.simpleMessage("Porta"),
-    "previous": MessageLookupByLibrary.simpleMessage("Anterior"),
     "previousChapter": MessageLookupByLibrary.simpleMessage(
       "Capítulo anterior",
     ),
     "progress": MessageLookupByLibrary.simpleMessage("Progresso"),
-    "progressNum": m31,
+    "progressNum": m24,
     "readLess": MessageLookupByLibrary.simpleMessage("Ler menos"),
     "readMore": MessageLookupByLibrary.simpleMessage("Ler mais"),
     "recentSeries": MessageLookupByLibrary.simpleMessage("Séries recentes"),
@@ -331,9 +285,6 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "sequence": MessageLookupByLibrary.simpleMessage("Sequência"),
     "series": MessageLookupByLibrary.simpleMessage("Séries"),
-    "serverAdressContinue": MessageLookupByLibrary.simpleMessage(
-      "Informe o endereço do servidor para continuar",
-    ),
     "serverSelection": MessageLookupByLibrary.simpleMessage(
       "Seleção de servidor",
     ),
@@ -349,20 +300,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "syncInterval": MessageLookupByLibrary.simpleMessage(
       "Intervalo de sincronização (segundos)",
     ),
-    "timerText": m33,
+    "timerText": m26,
     "title": MessageLookupByLibrary.simpleMessage("Título"),
     "today": MessageLookupByLibrary.simpleMessage("Hoje"),
     "tryAgain": MessageLookupByLibrary.simpleMessage("Tentar novamente"),
     "unknown": MessageLookupByLibrary.simpleMessage("Desconhecido"),
-    "unknownTitle": MessageLookupByLibrary.simpleMessage("Título desconhecido"),
-    "updatedAt": MessageLookupByLibrary.simpleMessage("Atualizado em"),
     "user": MessageLookupByLibrary.simpleMessage("Usuário"),
     "username": MessageLookupByLibrary.simpleMessage("Nome de usuário"),
-    "usernameOrPasswordNotEmpty": MessageLookupByLibrary.simpleMessage(
-      "Nome de usuário e senha não podem estar vazios",
-    ),
     "viewChapters": MessageLookupByLibrary.simpleMessage("Ver capítulos"),
     "viewOnGithub": MessageLookupByLibrary.simpleMessage("Ver on GitHub"),
-    "year": MessageLookupByLibrary.simpleMessage("Ano"),
   };
 }

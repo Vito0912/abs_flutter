@@ -24,84 +24,67 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m1(position) => "Posizione attuale: ${position}";
 
-  static String m2(count) =>
-      "${Intl.plural(count, one: '${count}  day', other: '${count} days')}";
-
-  static String m3(days, hours) =>
-      "${Intl.plural(days, one: '${days} day', other: '${days} days')} ${Intl.plural(hours, one: '${hours} hour', other: '${hours} hours')}";
-
-  static String m4(days, hours, minutes) =>
+  static String m2(days, hours, minutes) =>
       "${Intl.plural(days, one: '${days} day', other: '${days} days')} ${Intl.plural(hours, one: '${hours} hour', other: '${hours} hours')} ${Intl.plural(minutes, one: '${minutes} minute', other: '${minutes} minutes')}";
 
-  static String m5(days, hours, minutes, seconds) =>
+  static String m3(days, hours, minutes, seconds) =>
       "${Intl.plural(days, one: '${days} day', other: '${days} days')} ${Intl.plural(hours, one: '${hours} hour', other: '${hours} hours')} ${Intl.plural(minutes, one: '${minutes} minute', other: '${minutes} minutes')} ${Intl.plural(seconds, one: '${seconds} second', other: '${seconds} seconds')}";
 
-  static String m6(days, hours, minutes, seconds) =>
+  static String m4(days, hours, minutes, seconds) =>
       "${days}d ${hours}h ${minutes}m ${seconds}s";
 
-  static String m7(days, hours, minutes) => "${days}d ${hours}h ${minutes}m";
+  static String m5(days, hours, minutes) => "${days}d ${hours}h ${minutes}m";
 
-  static String m8(days, hours) => "${days}d ${hours}h";
-
-  static String m9(count) => "${count}d";
-
-  static String m10(count) =>
-      "${Intl.plural(count, one: '${count} hour', other: '${count} hours')}";
-
-  static String m11(hours, minutes) =>
+  static String m6(hours, minutes) =>
       "${Intl.plural(hours, one: '${hours} hour', other: '${hours} hours')} ${Intl.plural(minutes, one: '${minutes} minute', other: '${minutes} minutes')}";
 
-  static String m12(hours, minutes, seconds) =>
+  static String m7(hours, minutes, seconds) =>
       "${Intl.plural(hours, one: '${hours} hour', other: '${hours} hours')} ${Intl.plural(minutes, one: '${minutes} minute', other: '${minutes} minutes')} ${Intl.plural(seconds, one: '${seconds} second', other: '${seconds} seconds')}";
 
-  static String m13(hours, minutes, seconds) =>
+  static String m8(hours, minutes, seconds) =>
       "${hours}h ${minutes}m ${seconds}s";
 
-  static String m14(hours, minutes) => "${hours}h ${minutes}m";
+  static String m9(hours, minutes) => "${hours}h ${minutes}m";
 
-  static String m15(count) => "${count}h";
-
-  static String m16(count) =>
+  static String m10(count) =>
       "${Intl.plural(count, one: '${count} minute', other: '${count} minutes')}";
 
-  static String m17(minutes, seconds) =>
+  static String m11(minutes, seconds) =>
       "${Intl.plural(minutes, one: '${minutes} minute', other: '${minutes} minutes')} ${Intl.plural(seconds, one: '${seconds} second', other: '${seconds} seconds')}";
 
-  static String m18(minutes, seconds) => "${minutes}m ${seconds}s";
+  static String m12(minutes, seconds) => "${minutes}m ${seconds}s";
 
-  static String m19(count) => "${count}m";
+  static String m13(count) => "${count}m";
 
-  static String m20(count) =>
+  static String m14(count) =>
       "${Intl.plural(count, one: '${count}  second', other: '${count} seconds')}";
 
-  static String m21(count) => "${count}s";
+  static String m15(count) => "${count}s";
 
-  static String m22(device, os, version) =>
+  static String m16(device, os, version) =>
       "Dispositivo: ${device}\nOS: ${os}\nApp Versione: ${version}";
 
-  static String m23(displayName) => "Download si ${displayName} completo";
+  static String m17(displayName) => "Download si ${displayName} completo";
 
-  static String m24(displayName) => "Scaricamento ${displayName}";
+  static String m18(displayName) => "Scaricamento ${displayName}";
 
-  static String m25(displayName) =>
+  static String m19(displayName) =>
       "Si è verificato un errore durante il download di ${displayName}";
 
-  static String m26(length) => "Lunghezza: ${length}";
+  static String m20(length) => "Lunghezza: ${length}";
 
-  static String m27(numChapters) => "Numero dei Capitoli: ${numChapters}";
+  static String m21(numChapters) => "Numero dei Capitoli: ${numChapters}";
 
-  static String m28(progress) => "Progresso: ${progress}%";
+  static String m22(year) => "Anno di Pubblicazione: ${year}";
 
-  static String m29(year) => "Anno di Pubblicazione: ${year}";
-
-  static String m30(numBooks) =>
+  static String m23(numBooks) =>
       "${Intl.plural(numBooks, zero: 'No Books', one: '1 Book', other: '${numBooks} Books')}";
 
-  static String m31(progress) => "progresso Corrente: ${progress} %";
+  static String m24(progress) => "progresso Corrente: ${progress} %";
 
-  static String m32(time) => "Tempo rimanente: ${time}";
+  static String m25(time) => "Tempo rimanente: ${time}";
 
-  static String m33(time) => "${time} min";
+  static String m26(time) => "${time} min";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -122,29 +105,21 @@ class MessageLookup extends MessageLookupByLibrary {
     "author": MessageLookupByLibrary.simpleMessage("Autore"),
     "authors": MessageLookupByLibrary.simpleMessage("Autori"),
     "back": MessageLookupByLibrary.simpleMessage("Indietro"),
-    "bookCover": MessageLookupByLibrary.simpleMessage("Copertina"),
     "boostLoading": MessageLookupByLibrary.simpleMessage(
       "Caricamento potenziato",
     ),
     "boostLoadingDescription": MessageLookupByLibrary.simpleMessage(
       "Quando questa funzionalità è abilitata, l\'app bypassa efficacemente la memorizzazione nella cache in tempo reale. Tenterà sempre di recuperare i dati più recenti dal server mentre utilizza i dati memorizzati nella cache per caricare immediatamente i contenuti. Una volta recuperati i dati aggiornati, sostituisce la vecchia cache, assicurando che i dati più recenti vengano visualizzati la prossima volta che carichi l\'app. Di conseguenza, vedrai sempre i dati di un ciclo di recupero dietro i dati correnti del server.",
     ),
-    "boostLoadingSubtitle": MessageLookupByLibrary.simpleMessage(
-      "Si prega di leggere la descrizione per comprendere questa funzionalità.",
-    ),
     "caching": MessageLookupByLibrary.simpleMessage("Caching"),
     "cachingHeader": MessageLookupByLibrary.simpleMessage("Caching"),
     "cancel": MessageLookupByLibrary.simpleMessage("Cancella"),
     "carPlayer": MessageLookupByLibrary.simpleMessage("Car Player"),
     "changeLibrary": MessageLookupByLibrary.simpleMessage("Cambia Libreria"),
-    "chapters": MessageLookupByLibrary.simpleMessage("Capitoli"),
     "chaptersNum": m0,
     "clearCache": MessageLookupByLibrary.simpleMessage("Pulisci la Cache"),
     "close": MessageLookupByLibrary.simpleMessage("Chiudi"),
     "collapseSeries": MessageLookupByLibrary.simpleMessage("Raggruppa Serie"),
-    "collapseSeriesDescription": MessageLookupByLibrary.simpleMessage(
-      "Se abilitata, gli elementi di una serie verranno raggruppati nella vista libreria, visualizzando un solo elemento per rappresentare l\'intera serie.",
-    ),
     "consecutiveDays": MessageLookupByLibrary.simpleMessage(
       "Giorni Consecutivi",
     ),
@@ -170,26 +145,20 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "currentPositionNum": m1,
     "darkMode": MessageLookupByLibrary.simpleMessage("Modalità scura"),
-    "dateFormatDay": m2,
-    "dateFormatDayHour": m3,
-    "dateFormatDayHourMinute": m4,
-    "dateFormatDayHourMinuteSecond": m5,
-    "dateFormatDayHourMinuteSecondShort": m6,
-    "dateFormatDayHourMinuteShort": m7,
-    "dateFormatDayHourShort": m8,
-    "dateFormatDayShort": m9,
-    "dateFormatHour": m10,
-    "dateFormatHourMinute": m11,
-    "dateFormatHourMinuteSecond": m12,
-    "dateFormatHourMinuteSecondShort": m13,
-    "dateFormatHourMinuteShort": m14,
-    "dateFormatHourShort": m15,
-    "dateFormatMinute": m16,
-    "dateFormatMinuteSecond": m17,
-    "dateFormatMinuteSecondShort": m18,
-    "dateFormatMinuteShort": m19,
-    "dateFormatSecond": m20,
-    "dateFormatSecondShort": m21,
+    "dateFormatDayHourMinute": m2,
+    "dateFormatDayHourMinuteSecond": m3,
+    "dateFormatDayHourMinuteSecondShort": m4,
+    "dateFormatDayHourMinuteShort": m5,
+    "dateFormatHourMinute": m6,
+    "dateFormatHourMinuteSecond": m7,
+    "dateFormatHourMinuteSecondShort": m8,
+    "dateFormatHourMinuteShort": m9,
+    "dateFormatMinute": m10,
+    "dateFormatMinuteSecond": m11,
+    "dateFormatMinuteSecondShort": m12,
+    "dateFormatMinuteShort": m13,
+    "dateFormatSecond": m14,
+    "dateFormatSecondShort": m15,
     "daysListened": MessageLookupByLibrary.simpleMessage("Giorni di ascolto"),
     "debugLogs": MessageLookupByLibrary.simpleMessage("Debug Logs"),
     "deleteSelected": MessageLookupByLibrary.simpleMessage(
@@ -197,14 +166,14 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "descending": MessageLookupByLibrary.simpleMessage("Discendente"),
     "description": MessageLookupByLibrary.simpleMessage("Descrizione"),
-    "deviceInfo": m22,
+    "deviceInfo": m16,
     "disabled": MessageLookupByLibrary.simpleMessage("Diattivato"),
     "discover": MessageLookupByLibrary.simpleMessage("Scopri"),
     "domainOrIp": MessageLookupByLibrary.simpleMessage("Domain or IP"),
     "downloadComplete": MessageLookupByLibrary.simpleMessage(
       "Download completato",
     ),
-    "downloadCompleteBody": m23,
+    "downloadCompleteBody": m17,
     "downloadErrorDescription": MessageLookupByLibrary.simpleMessage(
       "Il file non è stato scaricato correttamente. Puoi provare a eliminare i dati sul dispositivo cliccando sul pulsante e scaricarlo di nuovo.",
     ),
@@ -214,7 +183,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Il percorso in cui vengono salvati i download. Per modificarlo, devi prima eliminare tutti i download.",
     ),
     "downloading": MessageLookupByLibrary.simpleMessage("Scaricamento"),
-    "downloadingBody": m24,
+    "downloadingBody": m18,
     "downloads": MessageLookupByLibrary.simpleMessage("Scaricati"),
     "downloadsOnlyViaWifi": MessageLookupByLibrary.simpleMessage(
       "Download solo tramite WiFi",
@@ -226,15 +195,12 @@ class MessageLookup extends MessageLookupByLibrary {
       "Abilita le notifiche per ricevere aggiornamenti sullo stato di avanzamento del download e poter scaricare i file in background.",
     ),
     "enabled": MessageLookupByLibrary.simpleMessage("Abilitato"),
-    "enterValidUsernameOrPassword": MessageLookupByLibrary.simpleMessage(
-      "Inserisci un IP/dominio e una porta validi prima di inserire nome utente e password.",
-    ),
     "episodeId": MessageLookupByLibrary.simpleMessage("Episodio Id"),
     "error": MessageLookupByLibrary.simpleMessage("Errore"),
     "errorDownloading": MessageLookupByLibrary.simpleMessage(
       "Errore di download",
     ),
-    "errorDownloadingBody": m25,
+    "errorDownloadingBody": m19,
     "errorItemNotFound": MessageLookupByLibrary.simpleMessage(
       "Errore: elemento non trovato!",
     ),
@@ -255,20 +221,15 @@ class MessageLookup extends MessageLookupByLibrary {
     "general": MessageLookupByLibrary.simpleMessage("Generale"),
     "genres": MessageLookupByLibrary.simpleMessage("Generi"),
     "hide": MessageLookupByLibrary.simpleMessage("Nascondi"),
-    "ifTheQuickAccountSwitcherShouldBeShown":
-        MessageLookupByLibrary.simpleMessage(
-          "Se deve essere visualizzato il commutatore rapido dell\'account",
-        ),
     "inProgress": MessageLookupByLibrary.simpleMessage("in corso"),
     "information": MessageLookupByLibrary.simpleMessage("Informazioni"),
     "itemId": MessageLookupByLibrary.simpleMessage("Id Oggetto"),
-    "itemLength": m26,
+    "itemLength": m20,
     "itemNotFoundDescription": MessageLookupByLibrary.simpleMessage(
       "L\'elemento non è stato trovato. Ciò potrebbe essere dovuto a un errore di rete o perché l\'elemento non esiste più ma rimane nella cache.",
     ),
-    "itemNumChapters": m27,
-    "itemProgress": m28,
-    "itemPublishedYear": m29,
+    "itemNumChapters": m21,
+    "itemPublishedYear": m22,
     "itemType": MessageLookupByLibrary.simpleMessage("Tipo Oggetto"),
     "jumpToLastPosition": MessageLookupByLibrary.simpleMessage(
       "Vai all\'ultima posizione",
@@ -301,12 +262,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "logging": MessageLookupByLibrary.simpleMessage("registrazione"),
     "logs": MessageLookupByLibrary.simpleMessage("Log"),
     "longestItems": MessageLookupByLibrary.simpleMessage("Oggetti lungi"),
-    "markItemsFinished": MessageLookupByLibrary.simpleMessage(
-      "Segna come Finito",
-    ),
-    "markItemsFinishedAfterDescription": MessageLookupByLibrary.simpleMessage(
-      "Specifica il tempo in secondi prima della fine di un elemento in cui deve essere contrassegnato come terminato. Impostando questo valore su 0, l\'elemento viene contrassegnato come terminato solo quando il giocatore raggiunge la fine. Se viene impostato un valore positivo, l\'elemento viene contrassegnato come terminato quando il giocatore raggiunge quel momento prima della fine.",
-    ),
     "minimize": MessageLookupByLibrary.simpleMessage("Riduci"),
     "minimizeToTray": MessageLookupByLibrary.simpleMessage(
       "Riduci nella barra",
@@ -316,30 +271,17 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "miscellaneous": MessageLookupByLibrary.simpleMessage("Varie"),
     "moreOptions": MessageLookupByLibrary.simpleMessage("Altre Opzioni"),
-    "multipleServerAdressess": MessageLookupByLibrary.simpleMessage(
-      "Se vuoi utilizzare più indirizzi server, puoi aggiungerli in seguito",
-    ),
-    "mustEnterValidAddress": MessageLookupByLibrary.simpleMessage(
-      "Devi inserire un indirizzo server valido",
-    ),
     "narrators": MessageLookupByLibrary.simpleMessage("Lettori"),
     "newestEpisodes": MessageLookupByLibrary.simpleMessage("Nuovi Episodi"),
-    "next": MessageLookupByLibrary.simpleMessage("Prossimo"),
     "nextChapter": MessageLookupByLibrary.simpleMessage("Prossimo Capitolo"),
     "noConnection": MessageLookupByLibrary.simpleMessage("Nessuna connessione"),
     "noDownloads": MessageLookupByLibrary.simpleMessage("Nessun Download"),
     "noInternetDescription": MessageLookupByLibrary.simpleMessage(
       "Stiamo riscontrando problemi di connessione al server.",
     ),
-    "noItemsFound": MessageLookupByLibrary.simpleMessage(
-      "Nessun Oggetto trovato",
-    ),
     "noPath": MessageLookupByLibrary.simpleMessage("Nessun Percorso"),
     "noSeriesSelected": MessageLookupByLibrary.simpleMessage(
       "Nessuna serie selezionata",
-    ),
-    "noUserData": MessageLookupByLibrary.simpleMessage(
-      "Accesso non riuscito: nessun dato utente ricevuto",
     ),
     "notFinished": MessageLookupByLibrary.simpleMessage("Non Finito"),
     "notStarted": MessageLookupByLibrary.simpleMessage("Non Iniziato"),
@@ -347,7 +289,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "notificationHeading": MessageLookupByLibrary.simpleMessage(
       "Le notifiche dovrebbero essere abilitate",
     ),
-    "numBooksInSeries": m30,
+    "numBooksInSeries": m23,
     "offlineProgress": MessageLookupByLibrary.simpleMessage(
       "Progressi offline",
     ),
@@ -355,7 +297,6 @@ class MessageLookup extends MessageLookupByLibrary {
       "Progressi offline salvati",
     ),
     "ok": MessageLookupByLibrary.simpleMessage("OK"),
-    "open": MessageLookupByLibrary.simpleMessage("Apri"),
     "openDownloads": MessageLookupByLibrary.simpleMessage("Apri Download"),
     "openProjectLink": MessageLookupByLibrary.simpleMessage(
       "Audiobookshelf/Server",
@@ -382,7 +323,6 @@ class MessageLookup extends MessageLookupByLibrary {
       "Controlla la tua connessione Internet e riprova.",
     ),
     "port": MessageLookupByLibrary.simpleMessage("Porta"),
-    "previous": MessageLookupByLibrary.simpleMessage("Precedente"),
     "previousChapter": MessageLookupByLibrary.simpleMessage(
       "Capitolo Precedente",
     ),
@@ -390,7 +330,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "progressAsChaptersDescription": MessageLookupByLibrary.simpleMessage(
       "Abilita questa opzione per visualizzare i progressi nel player e le notifiche in base al capitolo. Se disabilitata, i progressi saranno mostrati in base all\'intero elemento.",
     ),
-    "progressNum": m31,
+    "progressNum": m24,
     "publisher": MessageLookupByLibrary.simpleMessage("Publisher"),
     "readLess": MessageLookupByLibrary.simpleMessage("di meno"),
     "readMore": MessageLookupByLibrary.simpleMessage("di più"),
@@ -421,9 +361,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "seek": MessageLookupByLibrary.simpleMessage("Scorri"),
     "sequence": MessageLookupByLibrary.simpleMessage("Sequenza"),
     "series": MessageLookupByLibrary.simpleMessage("Serie"),
-    "serverAdressContinue": MessageLookupByLibrary.simpleMessage(
-      "Inserisci l\'indirizzo del tuo server per continuare",
-    ),
     "serverSelection": MessageLookupByLibrary.simpleMessage("Selezione server"),
     "settings": MessageLookupByLibrary.simpleMessage("Impostazioni"),
     "shakeResetTimer": MessageLookupByLibrary.simpleMessage(
@@ -431,12 +368,6 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "shareOpen": MessageLookupByLibrary.simpleMessage("Condivisione Aperta"),
     "show": MessageLookupByLibrary.simpleMessage("Mostra"),
-    "showAccountSwitcher": MessageLookupByLibrary.simpleMessage(
-      "Mostra il selettore account",
-    ),
-    "showAccountSwitcherDescription": MessageLookupByLibrary.simpleMessage(
-      "Abilita questa opzione per aggiungere un pulsante icona alla barra delle applicazioni per un rapido cambio di account. Ciò ridurrà le dimensioni della barra delle applicazioni.",
-    ),
     "showMediaType": MessageLookupByLibrary.simpleMessage("Mostra Media Type"),
     "showMediaTypeDescription": MessageLookupByLibrary.simpleMessage(
       "Visualizza i badge del tipo di media nella parte inferiore di ogni elemento.",
@@ -471,8 +402,8 @@ class MessageLookup extends MessageLookupByLibrary {
       "Sincronizzazione solo tramite WiFi",
     ),
     "tags": MessageLookupByLibrary.simpleMessage("Tags"),
-    "timeRemainingNum": m32,
-    "timerText": m33,
+    "timeRemainingNum": m25,
+    "timerText": m26,
     "title": MessageLookupByLibrary.simpleMessage("Titolo"),
     "today": MessageLookupByLibrary.simpleMessage("Oggi"),
     "topAuthors": MessageLookupByLibrary.simpleMessage("Miglior Autore"),
@@ -490,13 +421,8 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "tryAgain": MessageLookupByLibrary.simpleMessage("Riprova"),
     "unknown": MessageLookupByLibrary.simpleMessage("Sconosciuto"),
-    "unknownTitle": MessageLookupByLibrary.simpleMessage("TItolo Sconosciuto"),
-    "updatedAt": MessageLookupByLibrary.simpleMessage("Aggiornato il"),
     "user": MessageLookupByLibrary.simpleMessage("Utente"),
     "username": MessageLookupByLibrary.simpleMessage("Username"),
-    "usernameOrPasswordNotEmpty": MessageLookupByLibrary.simpleMessage(
-      "Il nome utente e la password non possono essere vuoti",
-    ),
     "viewBookmarks": MessageLookupByLibrary.simpleMessage("Vedi Segnalibri"),
     "viewChapters": MessageLookupByLibrary.simpleMessage("Vedi Capitoli"),
     "viewOnGithub": MessageLookupByLibrary.simpleMessage("Vedi su Github"),
@@ -506,6 +432,5 @@ class MessageLookup extends MessageLookupByLibrary {
     "waitingForDownload": MessageLookupByLibrary.simpleMessage(
       "In attesa dell\'avvio del download",
     ),
-    "year": MessageLookupByLibrary.simpleMessage("Anno"),
   };
 }

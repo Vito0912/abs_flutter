@@ -22,14 +22,10 @@
   "@authors": {},
   "back": "后退",
   "@back": {},
-  "bookCover": "书籍封面",
-  "@bookCover": {},
   "boostLoading": "实时更新",
   "@boostLoading": {},
   "boostLoadingDescription": "启用此功能后，应用将有效地绕过实时缓存。它将始终尝试从服务器获取最新数据，同时使用缓存数据立即加载内容。检索到更新的数据后，它将替换旧缓存，确保下次加载应用时显示最新数据。因此，您将始终看到服务器当前数据后面一个获取周期的数据。",
   "@boostLoadingDescription": {},
-  "boostLoadingSubtitle": "请阅读说明以了解此功能。",
-  "@boostLoadingSubtitle": {},
   "caching": "缓存",
   "@caching": {},
   "cachingHeader": "缓存",
@@ -40,8 +36,6 @@
   "@carPlayer": {},
   "changeLibrary": "切换媒体库",
   "@changeLibrary": {},
-  "chapters": "章节",
-  "@chapters": {},
   "chaptersNum": "章节 ({num})",
   "@chaptersNum": {
     "placeholders": {
@@ -54,8 +48,6 @@
   "@clearCache": {},
   "close": "关闭",
   "@close": {},
-  "collapseSeriesDescription": "启用后，系列中的项目将在库视图中分组，仅显示单个项目来代表整个系列。",
-  "@collapseSeriesDescription": {},
   "consecutiveDays": "连续收听天数",
   "@consecutiveDays": {},
   "continueListening": "继续收听",
@@ -103,17 +95,6 @@
       }
     }
   },
-  "dateFormatDayHourShort": "{days}天 {hours}时",
-  "@dateFormatDayHourShort": {
-    "placeholders": {
-      "days": {
-        "type": "int"
-      },
-      "hours": {
-        "type": "int"
-      }
-    }
-  },
   "dateFormatHourMinuteSecondShort": "{hours}时 {minutes}分 {seconds}秒",
   "@dateFormatHourMinuteSecondShort": {
     "placeholders": {
@@ -135,14 +116,6 @@
         "type": "int"
       },
       "minutes": {
-        "type": "int"
-      }
-    }
-  },
-  "dateFormatHourShort": "{count}小时",
-  "@dateFormatHourShort": {
-    "placeholders": {
-      "count": {
         "type": "int"
       }
     }
@@ -194,8 +167,6 @@
   "@enableNotificationsDownload": {},
   "enabled": "启用",
   "@enabled": {},
-  "enterValidUsernameOrPassword": "请输入您的用户名和密码。",
-  "@enterValidUsernameOrPassword": {},
   "error": "错误",
   "@error": {},
   "errorDownloading": "下载失败",
@@ -220,8 +191,6 @@
   "@genres": {},
   "hide": "隐藏",
   "@hide": {},
-  "ifTheQuickAccountSwitcherShouldBeShown": "如果需要启用账号快速切换功能",
-  "@ifTheQuickAccountSwitcherShouldBeShown": {},
   "inProgress": "正在更新",
   "@inProgress": {},
   "information": "信息",
@@ -238,14 +207,6 @@
   "@itemNumChapters": {
     "placeholders": {
       "numChapters": {
-        "type": "String"
-      }
-    }
-  },
-  "itemProgress": "进度: {progress}%",
-  "@itemProgress": {
-    "placeholders": {
-      "progress": {
         "type": "String"
       }
     }
@@ -288,10 +249,6 @@
   "@logging": {},
   "logs": "日志",
   "@logs": {},
-  "markItemsFinished": "将项目标记为已完成",
-  "@markItemsFinished": {},
-  "markItemsFinishedAfterDescription": "指定项目结束前应标记为完成的时间（以秒为单位） 。将其设置为 0 表示只有当玩家到达最后时，项目才会标记为完成。如果设置了正值，则当玩家在结束前到达该时间时，项目才会标记为完成。",
-  "@markItemsFinishedAfterDescription": {},
   "minimize": "最小化",
   "@minimize": {},
   "minimizeToTray": "最小化至托盘",
@@ -300,16 +257,10 @@
   "@minimizeToTrayDescription": {},
   "moreOptions": "更多选择",
   "@moreOptions": {},
-  "multipleServerAdressess": "如果要使用多个服务器地址，可以稍后添加",
-  "@multipleServerAdressess": {},
-  "mustEnterValidAddress": "您必须输入有效的服务器地址",
-  "@mustEnterValidAddress": {},
   "narrators": "演播者",
   "@narrators": {},
   "newestEpisodes": "最新剧集",
   "@newestEpisodes": {},
-  "next": "下一个",
-  "@next": {},
   "nextChapter": "下一章",
   "@nextChapter": {},
   "noConnection": "未连接",
@@ -318,12 +269,8 @@
   "@noDownloads": {},
   "noInternetDescription": "连接到服务器时遇到问题。",
   "@noInternetDescription": {},
-  "noItemsFound": "未找到任何商品",
-  "@noItemsFound": {},
   "noSeriesSelected": "未选择系列",
   "@noSeriesSelected": {},
-  "noUserData": "登录失败：未获取到用户数据",
-  "@noUserData": {},
   "notFinished": "未完成",
   "@notFinished": {},
   "notStarted": "未播放",
@@ -362,8 +309,6 @@
   "@pleaseCheckInternet": {},
   "port": "端口",
   "@port": {},
-  "previous": "以前的",
-  "@previous": {},
   "previousChapter": "上一章",
   "@previousChapter": {},
   "progress": "进度",
@@ -408,8 +353,6 @@
   "@sequence": {},
   "series": "系列",
   "@series": {},
-  "serverAdressContinue": "输入您的服务器地址以继续",
-  "@serverAdressContinue": {},
   "serverSelection": "服务器选择",
   "@serverSelection": {},
   "settings": "设置",
@@ -418,10 +361,6 @@
   "@shakeResetTimer": {},
   "show": "显示",
   "@show": {},
-  "showAccountSwitcher": "显示帐户切换",
-  "@showAccountSwitcher": {},
-  "showAccountSwitcherDescription": "启用此选项可在应用栏中添加图标按钮，以便快速切换帐户。这将减小应用栏的大小。",
-  "@showAccountSwitcherDescription": {},
   "showProgressPerChapters": "显示每章的进度",
   "@showProgressPerChapters": {},
   "signOut": "注销",
@@ -476,22 +415,14 @@
   "@tryAgain": {},
   "unknown": "未知",
   "@unknown": {},
-  "unknownTitle": "未知标题",
-  "@unknownTitle": {},
-  "updatedAt": "更新于",
-  "@updatedAt": {},
   "user": "用户",
   "@user": {},
   "username": "用户名",
   "@username": {},
-  "usernameOrPasswordNotEmpty": "密码不能为空",
-  "@usernameOrPasswordNotEmpty": {},
   "viewOnGithub": "GitHub页面",
   "@viewOnGithub": {},
   "waitTillRedirect": "请等待重定向至 /init。您目前尚未登录。",
   "@waitTillRedirect": {},
   "waitingForDownload": "等待下载开始",
-  "@waitingForDownload": {},
-  "year": "年",
-  "@year": {}
+  "@waitingForDownload": {}
 }

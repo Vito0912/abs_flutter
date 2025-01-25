@@ -20,15 +20,13 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'nb';
 
-  static String m26(length) => "Varighet: ${length}";
+  static String m20(length) => "Varighet: ${length}";
 
-  static String m27(numChapters) => "Antall kapitler: ${numChapters}";
+  static String m21(numChapters) => "Antall kapitler: ${numChapters}";
 
-  static String m28(progress) => "Framdrift: ${progress}%";
+  static String m22(year) => "Publisert år: ${year}";
 
-  static String m29(year) => "Publisert år: ${year}";
-
-  static String m33(time) => "${time} min";
+  static String m26(time) => "${time} min";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -40,12 +38,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "attribution": MessageLookupByLibrary.simpleMessage("Henvisninger"),
     "author": MessageLookupByLibrary.simpleMessage("Skaper"),
     "authors": MessageLookupByLibrary.simpleMessage("Skapere"),
-    "bookCover": MessageLookupByLibrary.simpleMessage("Bokomslag"),
     "cancel": MessageLookupByLibrary.simpleMessage("Avbryt"),
     "collapseSeries": MessageLookupByLibrary.simpleMessage("Fold sammen serie"),
-    "collapseSeriesDescription": MessageLookupByLibrary.simpleMessage(
-      "Elementer i en serie grupperes sammen i biblioteksvisning, noe som viser ett element for å representere en hel serie.",
-    ),
     "darkMode": MessageLookupByLibrary.simpleMessage("Mørk drakt"),
     "descending": MessageLookupByLibrary.simpleMessage("Synkende"),
     "description": MessageLookupByLibrary.simpleMessage("Beskrivelse"),
@@ -53,9 +47,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "domainOrIp": MessageLookupByLibrary.simpleMessage("Domene eller IP"),
     "duration": MessageLookupByLibrary.simpleMessage("Varighet"),
     "enabled": MessageLookupByLibrary.simpleMessage("Påskrudd"),
-    "enterValidUsernameOrPassword": MessageLookupByLibrary.simpleMessage(
-      "Skriv inn gyldig IP/domene og port før du skriver inn brukernavn og passord.",
-    ),
     "error": MessageLookupByLibrary.simpleMessage("Feil"),
     "fastForwardSeconds": MessageLookupByLibrary.simpleMessage(
       "Hurtigspoling, sekunder",
@@ -65,33 +56,13 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "general": MessageLookupByLibrary.simpleMessage("Generelt"),
     "genres": MessageLookupByLibrary.simpleMessage("Sjangere"),
-    "ifTheQuickAccountSwitcherShouldBeShown":
-        MessageLookupByLibrary.simpleMessage(
-          "Hvorvidt hurtigkontobytting skal være tilgjengelig",
-        ),
-    "itemLength": m26,
-    "itemNumChapters": m27,
-    "itemProgress": m28,
-    "itemPublishedYear": m29,
+    "itemLength": m20,
+    "itemNumChapters": m21,
+    "itemPublishedYear": m22,
     "language": MessageLookupByLibrary.simpleMessage("Språk"),
     "loading": MessageLookupByLibrary.simpleMessage("Laster inn …"),
-    "markItemsFinished": MessageLookupByLibrary.simpleMessage(
-      "Marker elementer som fullført",
-    ),
-    "markItemsFinishedAfterDescription": MessageLookupByLibrary.simpleMessage(
-      "Angi antall sekunder før de faktisk er ferdige elementer skal markers som fullført. «0» betyr at fullføring kun inntreffer når avspilleren faktisk er ferdig.",
-    ),
     "miscellaneous": MessageLookupByLibrary.simpleMessage("Ymse"),
-    "multipleServerAdressess": MessageLookupByLibrary.simpleMessage(
-      "Hvis du ønsker å bruke flere tjeneradresser kan du legge dem til senere",
-    ),
-    "mustEnterValidAddress": MessageLookupByLibrary.simpleMessage(
-      "Du å angi en gyldig tjeneradresse",
-    ),
     "noConnection": MessageLookupByLibrary.simpleMessage("Ingen tilkobling"),
-    "noUserData": MessageLookupByLibrary.simpleMessage(
-      "Kunne ikke logge inn. Mottok ingen brukerdata",
-    ),
     "password": MessageLookupByLibrary.simpleMessage("Passord"),
     "playbackSpeed": MessageLookupByLibrary.simpleMessage("Hastighet"),
     "player": MessageLookupByLibrary.simpleMessage("Avspiller"),
@@ -112,17 +83,8 @@ class MessageLookup extends MessageLookupByLibrary {
       "Sett antall sekunder å hoppe forover når tilbakespolingsknappen trykkes.",
     ),
     "series": MessageLookupByLibrary.simpleMessage("Serie"),
-    "serverAdressContinue": MessageLookupByLibrary.simpleMessage(
-      "Skriv inn din tjeneradresse for å fortsette",
-    ),
     "serverSelection": MessageLookupByLibrary.simpleMessage("Valg av tjener"),
     "settings": MessageLookupByLibrary.simpleMessage("Innstillinger"),
-    "showAccountSwitcher": MessageLookupByLibrary.simpleMessage(
-      "Vis kontobytter",
-    ),
-    "showAccountSwitcherDescription": MessageLookupByLibrary.simpleMessage(
-      "Legger til en ikonknapp i programfeltet for hurtig kontobytte. Reduserer størrelsen på toppfeltet.",
-    ),
     "showProgressPerChapters": MessageLookupByLibrary.simpleMessage(
       "Vis framdrift per kapittel",
     ),
@@ -136,14 +98,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "Alternativ for å forhindre avspilleren fra å starte til mest nylige avspillingsposisjon er nådd. Forsikrer at avspilling starter fra rett posisjon. Ellers kan posisjonen endres kort tid etter oppstart, noe som kan medføre datatap. Å skru dette på bruker mindre data.",
     ),
     "tags": MessageLookupByLibrary.simpleMessage("Etiketter"),
-    "timerText": m33,
+    "timerText": m26,
     "title": MessageLookupByLibrary.simpleMessage("Navn"),
-    "updatedAt": MessageLookupByLibrary.simpleMessage("Oppdatert"),
     "user": MessageLookupByLibrary.simpleMessage("Bruker"),
     "username": MessageLookupByLibrary.simpleMessage("Brukernavn"),
-    "usernameOrPasswordNotEmpty": MessageLookupByLibrary.simpleMessage(
-      "Brukernavn og/eller passord kan ikke stå tomt",
-    ),
-    "year": MessageLookupByLibrary.simpleMessage("År"),
   };
 }
