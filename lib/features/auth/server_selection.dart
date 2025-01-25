@@ -12,7 +12,6 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:quickalert/quickalert.dart';
 
 final loginFormProvider =
     StateNotifierProvider.autoDispose<LoginFormNotifier, LoginFormState>(
@@ -21,14 +20,18 @@ final loginFormProvider =
 
 class LoginFormNotifier extends StateNotifier<LoginFormState> {
   final Ref ref;
-  LoginFormNotifier(this.ref) : super(const LoginFormState());
+  LoginFormNotifier(this.ref)
+      : super(const LoginFormState(subdirectory: '/audiobookshelf'));
 
   void updateUsername(String value) => state = state.copyWith(username: value);
   void updatePassword(String value) => state = state.copyWith(password: value);
   void updateServerDetails(String protocol, String domain, String port) =>
       state = state.copyWith(protocol: protocol, domain: domain, port: port);
+  void toggleSubdomain(bool value) => state = state.copyWith(
+        subdirectory: value ? '/audiobookshelf' : null,
+      );
   void updateSubdirectory(String value) =>
-      state = state.copyWith(subdirectory: value.isNotEmpty ? value : null);
+      state = state.copyWith(subdirectory: value);
 
   Future<void> submit(BuildContext context) async {
     if (!state.isValid) {
@@ -50,6 +53,10 @@ class LoginFormNotifier extends StateNotifier<LoginFormState> {
       );
 
       setBasePathOverride(ref, server.url);
+
+      if (server.subdirectory != null && server.subdirectory!.startsWith('/')) {
+        server.subdirectory = server.subdirectory!.substring(1);
+      }
 
       final response = await ref.read(apiProviderNew)!.getMeApi().login(
             loginRequest: LoginRequest(
@@ -105,15 +112,6 @@ class LoginFormNotifier extends StateNotifier<LoginFormState> {
       status: FormStatus.error,
       errorMessage: message,
     );
-
-    if (context.mounted) {
-      QuickAlert.show(
-        context: context,
-        type: QuickAlertType.error,
-        title: "Error",
-        text: message,
-      );
-    }
   }
 }
 
@@ -172,7 +170,7 @@ class _LoginForm extends StatelessWidget {
           const SizedBox(height: 32),
           _CredentialsSection(notifier: notifier, state: state),
           const SizedBox(height: 24),
-          _SubdirectoryInput(notifier: notifier, state: state),
+          _SubdomainCard(notifier: notifier, state: state),
           const SizedBox(height: 32),
           _LoginButton(notifier: notifier, state: state),
           if (state.status == FormStatus.loading)
@@ -261,24 +259,46 @@ class _CredentialsSection extends StatelessWidget {
   }
 }
 
-class _SubdirectoryInput extends StatelessWidget {
+class _SubdomainCard extends StatelessWidget {
   final LoginFormNotifier notifier;
   final LoginFormState state;
 
-  const _SubdirectoryInput({
+  const _SubdomainCard({
     required this.notifier,
     required this.state,
   });
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
-      onChanged: notifier.updateSubdirectory,
-      decoration: const InputDecoration(
-        labelText: "Subdirectory (e.g., /audiobookshelf)",
-        hintText: "Optional",
-        border: OutlineInputBorder(),
-        prefixIcon: Icon(Icons.folder),
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(12),
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text("Enable Subdirectory"),
+                Switch(
+                  value: state.subdirectory != null,
+                  onChanged: notifier.toggleSubdomain,
+                  activeColor: Theme.of(context).colorScheme.primary,
+                ),
+              ],
+            ),
+            if (state.subdirectory != null)
+              TextField(
+                onChanged: notifier.updateSubdirectory,
+                controller: TextEditingController(text: state.subdirectory),
+                decoration: const InputDecoration(
+                  labelText: "Subdirectory",
+                  hintText: "/audiobookshelf",
+                  border: OutlineInputBorder(),
+                  prefixIcon: Icon(Icons.folder),
+                ),
+              ),
+          ],
+        ),
       ),
     );
   }
