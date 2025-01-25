@@ -17,7 +17,6 @@ import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
 
 // StateNotifier to manage the users list and selected user
 class UserNotifier extends StateNotifier<List<User>> {
@@ -165,7 +164,6 @@ class CurrentUserNotifier extends StateNotifier<User?> {
     if (allUsers == null || allUsers.mounted == false) return;
 
     allUsers.removeUser(state!);
-    context.go("/");
   }
 }
 
@@ -179,7 +177,7 @@ final basePathOverrideProvider = StateProvider<String?>((ref) => null);
 
 // Provider to manage the API client
 final apiProvider = Provider<abs_api.AbsApi?>((ref) {
-  final users = ref.read(usersProvider);
+  final users = ref.watch(usersProvider);
   final index = ref.watch(selectedUserProvider);
   final basePathOverride = ref.watch(basePathOverrideProvider);
 
@@ -225,7 +223,7 @@ final apiProvider = Provider<abs_api.AbsApi?>((ref) {
 });
 
 final apiProviderNew = Provider<ABSApi?>((ref) {
-  final users = ref.read(usersProvider);
+  final users = ref.watch(usersProvider);
   final index = ref.watch(selectedUserProvider);
   final basePathOverride = ref.watch(basePathOverrideProvider);
 

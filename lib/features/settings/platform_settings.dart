@@ -270,8 +270,17 @@ class PlatformSettings extends ConsumerWidget {
               ),
               ..._getOtherUsers(ref, context),
               NavigationTile(
-                (BuildContext context) =>
-                    ref.watch(currentUserProvider.notifier).removeUser(context),
+                (BuildContext context) {
+                  ref.watch(currentUserProvider.notifier).removeUser(context);
+                  final allUsers = ref.read(usersProvider);
+                  if (allUsers.isNotEmpty) {
+                    if (context.mounted) context.go("/");
+                    ref.read(selectedUserProvider.notifier).state = 0;
+                  } else {
+                    if (context.mounted) context.go("/init");
+                    ref.read(selectedUserProvider.notifier).state = -1;
+                  }
+                },
                 leading: Icon(PlatformIcons(context).exitToApp),
                 title: S.of(context).signOut,
               ),

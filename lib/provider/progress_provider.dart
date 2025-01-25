@@ -24,6 +24,8 @@ class ProgressProvider extends ChangeNotifier {
   }
 
   Future<void> getAllProgress() async {
+    api = ref.read(apiProvider);
+    print('api: $api');
     if (api == null) return;
     if (lastUpdated != null &&
         DateTime.now().difference(lastUpdated!).inSeconds < 1) {
@@ -68,6 +70,8 @@ class ProgressProvider extends ChangeNotifier {
 
   Future<void> getProgressWithLibraryItem(String id,
       {String? episodeId}) async {
+    api = ref.read(apiProvider);
+    print('api: $api');
     if (api == null) return;
 
     final Completer<void> progressChanged = Completer<void>();
