@@ -11,13 +11,16 @@ import 'package:abs_flutter/models/setting.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:quickalert/quickalert.dart';
 
+// TODO: Use proper state management
 final usernameProvider = StateProvider<String>((ref) => '');
 final passwordProvider = StateProvider<String>((ref) => '');
+final subdomainProvider = StateProvider<String?>((ref) => 'audiobookshelf');
 final loginStateProvider =
     StateNotifierProvider<LoginStateNotifier, LoginState>(
         (ref) => LoginStateNotifier());
@@ -107,6 +110,27 @@ class ServerSelection extends ConsumerWidget {
                           PasswordInputField(
                               isServerInputValid: isServerInputValid,
                               showHint: () => showHint(context)),
+                          const SizedBox(height: 16),
+                          HookBuilder(builder: (context) {
+                            final useSubdomain = useState<bool>(true);
+                            return Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                const Text('Use subdirectory'),
+                                Switch(
+                                    value: useSubdomain.value,
+                                    onChanged: (val) {
+                                      useSubdomain.value = !useSubdomain.value;
+                                      ref
+                                              .read(subdomainProvider.notifier)
+                                              .state =
+                                          useSubdomain.value
+                                              ? 'audiobookshelf'
+                                              : null;
+                                    })
+                              ],
+                            );
+                          }),
                           const SizedBox(height: 16),
                           if (loginState.isLoading)
                             PlatformCircularProgressIndicator(),
@@ -321,9 +345,16 @@ class LoginButton extends ConsumerWidget {
         final protocol = ref.read(protocolProvider);
         final domain = ref.read(domainProvider);
         final port = ref.read(portProvider);
+        final String? subdomain = ref.read(subdomainProvider);
+
+        print(subdomain);
 
         Server server = Server(
-            ssl: protocol == 'https://', host: domain, port: int.parse(port));
+            ssl: protocol == 'https://',
+            host: domain,
+            port: int.parse(port),
+            subdomain: subdomain);
+        print('connecting to server: ${server.url}');
         setBasePathOverride(ref, server.url);
 
         LoginRequest loginRequest = LoginRequest(

@@ -26,6 +26,8 @@ mixin _$Server {
   set host(String value) => throw _privateConstructorUsedError;
   bool get ssl => throw _privateConstructorUsedError;
   set ssl(bool value) => throw _privateConstructorUsedError;
+  String? get subdomain => throw _privateConstructorUsedError;
+  set subdomain(String? value) => throw _privateConstructorUsedError;
 
   /// Serializes this Server to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -41,7 +43,7 @@ abstract class $ServerCopyWith<$Res> {
   factory $ServerCopyWith(Server value, $Res Function(Server) then) =
       _$ServerCopyWithImpl<$Res, Server>;
   @useResult
-  $Res call({int port, String host, bool ssl});
+  $Res call({int port, String host, bool ssl, String? subdomain});
 }
 
 /// @nodoc
@@ -62,6 +64,7 @@ class _$ServerCopyWithImpl<$Res, $Val extends Server>
     Object? port = null,
     Object? host = null,
     Object? ssl = null,
+    Object? subdomain = freezed,
   }) {
     return _then(_value.copyWith(
       port: null == port
@@ -76,6 +79,10 @@ class _$ServerCopyWithImpl<$Res, $Val extends Server>
           ? _value.ssl
           : ssl // ignore: cast_nullable_to_non_nullable
               as bool,
+      subdomain: freezed == subdomain
+          ? _value.subdomain
+          : subdomain // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -87,7 +94,7 @@ abstract class _$$ServerImplCopyWith<$Res> implements $ServerCopyWith<$Res> {
       __$$ServerImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int port, String host, bool ssl});
+  $Res call({int port, String host, bool ssl, String? subdomain});
 }
 
 /// @nodoc
@@ -106,6 +113,7 @@ class __$$ServerImplCopyWithImpl<$Res>
     Object? port = null,
     Object? host = null,
     Object? ssl = null,
+    Object? subdomain = freezed,
   }) {
     return _then(_$ServerImpl(
       port: null == port
@@ -120,6 +128,10 @@ class __$$ServerImplCopyWithImpl<$Res>
           ? _value.ssl
           : ssl // ignore: cast_nullable_to_non_nullable
               as bool,
+      subdomain: freezed == subdomain
+          ? _value.subdomain
+          : subdomain // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -127,7 +139,11 @@ class __$$ServerImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$ServerImpl extends _Server with DiagnosticableTreeMixin {
-  _$ServerImpl({required this.port, required this.host, required this.ssl})
+  _$ServerImpl(
+      {required this.port,
+      required this.host,
+      required this.ssl,
+      this.subdomain})
       : super._();
 
   factory _$ServerImpl.fromJson(Map<String, dynamic> json) =>
@@ -139,10 +155,12 @@ class _$ServerImpl extends _Server with DiagnosticableTreeMixin {
   String host;
   @override
   bool ssl;
+  @override
+  String? subdomain;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Server(port: $port, host: $host, ssl: $ssl)';
+    return 'Server(port: $port, host: $host, ssl: $ssl, subdomain: $subdomain)';
   }
 
   @override
@@ -152,7 +170,8 @@ class _$ServerImpl extends _Server with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('type', 'Server'))
       ..add(DiagnosticsProperty('port', port))
       ..add(DiagnosticsProperty('host', host))
-      ..add(DiagnosticsProperty('ssl', ssl));
+      ..add(DiagnosticsProperty('ssl', ssl))
+      ..add(DiagnosticsProperty('subdomain', subdomain));
   }
 
   /// Create a copy of Server
@@ -175,7 +194,8 @@ abstract class _Server extends Server {
   factory _Server(
       {required int port,
       required String host,
-      required bool ssl}) = _$ServerImpl;
+      required bool ssl,
+      String? subdomain}) = _$ServerImpl;
   _Server._() : super._();
 
   factory _Server.fromJson(Map<String, dynamic> json) = _$ServerImpl.fromJson;
@@ -189,6 +209,9 @@ abstract class _Server extends Server {
   @override
   bool get ssl;
   set ssl(bool value);
+  @override
+  String? get subdomain;
+  set subdomain(String? value);
 
   /// Create a copy of Server
   /// with the given fields replaced by the non-null parameter values.
