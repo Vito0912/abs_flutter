@@ -173,7 +173,7 @@ final currentUserProvider =
 });
 
 // StateProvider to hold the overridden base path
-final basePathOverrideProvider = StateProvider<String?>((ref) => null);
+final basePathOverrideProvider = StateProvider<List<dynamic>?>((ref) => null);
 
 // Provider to manage the API client
 final apiProvider = Provider<abs_api.AbsApi?>((ref) {
@@ -183,7 +183,17 @@ final apiProvider = Provider<abs_api.AbsApi?>((ref) {
 
   // If there is an overridden base path, use it
   if (basePathOverride != null) {
-    abs_api.AbsApi res = abs_api.AbsApi(basePathOverride: basePathOverride);
+    abs_api.AbsApi res = abs_api.AbsApi(
+      basePathOverride: basePathOverride[0],
+      dio: Dio(
+        BaseOptions(
+          connectTimeout: const Duration(seconds: 3),
+          receiveTimeout: const Duration(seconds: 20),
+          baseUrl: basePathOverride[0],
+          headers: basePathOverride[1],
+        ),
+      ),
+    );
     return res;
   }
 
@@ -204,6 +214,7 @@ final apiProvider = Provider<abs_api.AbsApi?>((ref) {
             connectTimeout: const Duration(seconds: 3),
             receiveTimeout: const Duration(seconds: 20),
             baseUrl: users[index].server?.url ?? r'http://localhost:3000',
+            headers: users[index].server?.headers,
           ),
         ),
         interceptors: interceptors,
@@ -229,7 +240,16 @@ final apiProviderNew = Provider<ABSApi?>((ref) {
 
   // If there is an overridden base path, use it
   if (basePathOverride != null) {
-    ABSApi res = ABSApi(basePathOverride: basePathOverride);
+    ABSApi res = ABSApi(
+        basePathOverride: basePathOverride[0],
+        dio: Dio(
+          BaseOptions(
+            connectTimeout: const Duration(seconds: 3),
+            receiveTimeout: const Duration(seconds: 20),
+            baseUrl: basePathOverride[0],
+            headers: basePathOverride[1],
+          ),
+        ));
     return res;
   }
 
@@ -248,6 +268,7 @@ final apiProviderNew = Provider<ABSApi?>((ref) {
             connectTimeout: const Duration(seconds: 3),
             receiveTimeout: const Duration(seconds: 20),
             baseUrl: users[index].server?.url ?? r'http://localhost:3000',
+            headers: users[index].server?.headers,
           ),
         ),
         interceptors: interceptors,
@@ -266,7 +287,7 @@ final apiProviderNew = Provider<ABSApi?>((ref) {
   return null;
 });
 
-void setBasePathOverride(Ref ref, String? newBasePath) {
+void setBasePathOverride(Ref ref, List<dynamic>? newBasePath) {
   ref.read(basePathOverrideProvider.notifier).state = newBasePath;
 }
 

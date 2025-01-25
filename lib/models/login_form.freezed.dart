@@ -23,6 +23,7 @@ mixin _$LoginFormState {
   String get port => throw _privateConstructorUsedError;
   String? get subdirectory => throw _privateConstructorUsedError;
   FormStatus get status => throw _privateConstructorUsedError;
+  Map<String, String>? get headers => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
 
   /// Create a copy of LoginFormState
@@ -46,6 +47,7 @@ abstract class $LoginFormStateCopyWith<$Res> {
       String port,
       String? subdirectory,
       FormStatus status,
+      Map<String, String>? headers,
       String? errorMessage});
 }
 
@@ -71,6 +73,7 @@ class _$LoginFormStateCopyWithImpl<$Res, $Val extends LoginFormState>
     Object? port = null,
     Object? subdirectory = freezed,
     Object? status = null,
+    Object? headers = freezed,
     Object? errorMessage = freezed,
   }) {
     return _then(_value.copyWith(
@@ -102,6 +105,10 @@ class _$LoginFormStateCopyWithImpl<$Res, $Val extends LoginFormState>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as FormStatus,
+      headers: freezed == headers
+          ? _value.headers
+          : headers // ignore: cast_nullable_to_non_nullable
+              as Map<String, String>?,
       errorMessage: freezed == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -126,6 +133,7 @@ abstract class _$$LoginFormStateImplCopyWith<$Res>
       String port,
       String? subdirectory,
       FormStatus status,
+      Map<String, String>? headers,
       String? errorMessage});
 }
 
@@ -149,6 +157,7 @@ class __$$LoginFormStateImplCopyWithImpl<$Res>
     Object? port = null,
     Object? subdirectory = freezed,
     Object? status = null,
+    Object? headers = freezed,
     Object? errorMessage = freezed,
   }) {
     return _then(_$LoginFormStateImpl(
@@ -180,6 +189,10 @@ class __$$LoginFormStateImplCopyWithImpl<$Res>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as FormStatus,
+      headers: freezed == headers
+          ? _value._headers
+          : headers // ignore: cast_nullable_to_non_nullable
+              as Map<String, String>?,
       errorMessage: freezed == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -191,7 +204,7 @@ class __$$LoginFormStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoginFormStateImpl extends _LoginFormState {
-  const _$LoginFormStateImpl(
+  _$LoginFormStateImpl(
       {this.username = '',
       this.password = '',
       this.protocol = 'https://',
@@ -199,8 +212,10 @@ class _$LoginFormStateImpl extends _LoginFormState {
       this.port = '443',
       this.subdirectory = 'audiobookshelf',
       this.status = FormStatus.idle,
+      final Map<String, String>? headers = const {},
       this.errorMessage})
-      : super._();
+      : _headers = headers,
+        super._();
 
   @override
   @JsonKey()
@@ -223,12 +238,23 @@ class _$LoginFormStateImpl extends _LoginFormState {
   @override
   @JsonKey()
   final FormStatus status;
+  final Map<String, String>? _headers;
+  @override
+  @JsonKey()
+  Map<String, String>? get headers {
+    final value = _headers;
+    if (value == null) return null;
+    if (_headers is EqualUnmodifiableMapView) return _headers;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(value);
+  }
+
   @override
   final String? errorMessage;
 
   @override
   String toString() {
-    return 'LoginFormState(username: $username, password: $password, protocol: $protocol, domain: $domain, port: $port, subdirectory: $subdirectory, status: $status, errorMessage: $errorMessage)';
+    return 'LoginFormState(username: $username, password: $password, protocol: $protocol, domain: $domain, port: $port, subdirectory: $subdirectory, status: $status, headers: $headers, errorMessage: $errorMessage)';
   }
 
   @override
@@ -247,13 +273,23 @@ class _$LoginFormStateImpl extends _LoginFormState {
             (identical(other.subdirectory, subdirectory) ||
                 other.subdirectory == subdirectory) &&
             (identical(other.status, status) || other.status == status) &&
+            const DeepCollectionEquality().equals(other._headers, _headers) &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, username, password, protocol,
-      domain, port, subdirectory, status, errorMessage);
+  int get hashCode => Object.hash(
+      runtimeType,
+      username,
+      password,
+      protocol,
+      domain,
+      port,
+      subdirectory,
+      status,
+      const DeepCollectionEquality().hash(_headers),
+      errorMessage);
 
   /// Create a copy of LoginFormState
   /// with the given fields replaced by the non-null parameter values.
@@ -266,7 +302,7 @@ class _$LoginFormStateImpl extends _LoginFormState {
 }
 
 abstract class _LoginFormState extends LoginFormState {
-  const factory _LoginFormState(
+  factory _LoginFormState(
       {final String username,
       final String password,
       final String protocol,
@@ -274,8 +310,9 @@ abstract class _LoginFormState extends LoginFormState {
       final String port,
       final String? subdirectory,
       final FormStatus status,
+      final Map<String, String>? headers,
       final String? errorMessage}) = _$LoginFormStateImpl;
-  const _LoginFormState._() : super._();
+  _LoginFormState._() : super._();
 
   @override
   String get username;
@@ -291,6 +328,8 @@ abstract class _LoginFormState extends LoginFormState {
   String? get subdirectory;
   @override
   FormStatus get status;
+  @override
+  Map<String, String>? get headers;
   @override
   String? get errorMessage;
 

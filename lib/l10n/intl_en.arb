@@ -664,5 +664,6 @@
   "serverAddress": "Server Address",
   "enableSubdirectory": "Enable Subdirectory",
   "subdirectory": "Subdirectory",
-  "login": "LOGIN"
+  "login": "LOGIN",
+  "customHeaders": "Custom Headers"
 }

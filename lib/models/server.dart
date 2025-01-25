@@ -13,6 +13,7 @@ class Server with _$Server {
     required String host,
     required bool ssl,
     String? subdirectory,
+    Map<String, String>? headers,
   }) = _Server;
 
   factory Server.fromJson(Map<String, dynamic> json) => _$ServerFromJson(json);

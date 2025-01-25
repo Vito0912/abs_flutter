@@ -4,9 +4,9 @@ part 'login_form.freezed.dart';
 
 @freezed
 class LoginFormState with _$LoginFormState {
-  const LoginFormState._();
+  LoginFormState._();
 
-  const factory LoginFormState({
+  factory LoginFormState({
     @Default('') String username,
     @Default('') String password,
     @Default('https://') String protocol,
@@ -14,6 +14,7 @@ class LoginFormState with _$LoginFormState {
     @Default('443') String port,
     @Default('audiobookshelf') String? subdirectory,
     @Default(FormStatus.idle) FormStatus status,
+    @Default({}) Map<String, String>? headers,
     String? errorMessage,
   }) = _LoginFormState;
 

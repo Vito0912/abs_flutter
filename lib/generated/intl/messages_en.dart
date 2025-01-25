@@ -144,6 +144,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Current Downloads",
     ),
     "currentPositionNum": m1,
+    "customHeaders": MessageLookupByLibrary.simpleMessage("Custom Headers"),
     "darkMode": MessageLookupByLibrary.simpleMessage("Dark Mode"),
     "dateFormatDayHourMinute": m2,
     "dateFormatDayHourMinuteSecond": m3,

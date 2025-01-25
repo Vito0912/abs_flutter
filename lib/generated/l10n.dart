@@ -1911,6 +1911,16 @@ class S {
   String get login {
     return Intl.message('LOGIN', name: 'login', desc: '', args: []);
   }
+
+  /// `Custom Headers`
+  String get customHeaders {
+    return Intl.message(
+      'Custom Headers',
+      name: 'customHeaders',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

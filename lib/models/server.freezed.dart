@@ -28,6 +28,8 @@ mixin _$Server {
   set ssl(bool value) => throw _privateConstructorUsedError;
   String? get subdirectory => throw _privateConstructorUsedError;
   set subdirectory(String? value) => throw _privateConstructorUsedError;
+  Map<String, String>? get headers => throw _privateConstructorUsedError;
+  set headers(Map<String, String>? value) => throw _privateConstructorUsedError;
 
   /// Serializes this Server to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -43,7 +45,12 @@ abstract class $ServerCopyWith<$Res> {
   factory $ServerCopyWith(Server value, $Res Function(Server) then) =
       _$ServerCopyWithImpl<$Res, Server>;
   @useResult
-  $Res call({int port, String host, bool ssl, String? subdirectory});
+  $Res call(
+      {int port,
+      String host,
+      bool ssl,
+      String? subdirectory,
+      Map<String, String>? headers});
 }
 
 /// @nodoc
@@ -65,6 +72,7 @@ class _$ServerCopyWithImpl<$Res, $Val extends Server>
     Object? host = null,
     Object? ssl = null,
     Object? subdirectory = freezed,
+    Object? headers = freezed,
   }) {
     return _then(_value.copyWith(
       port: null == port
@@ -83,6 +91,10 @@ class _$ServerCopyWithImpl<$Res, $Val extends Server>
           ? _value.subdirectory
           : subdirectory // ignore: cast_nullable_to_non_nullable
               as String?,
+      headers: freezed == headers
+          ? _value.headers
+          : headers // ignore: cast_nullable_to_non_nullable
+              as Map<String, String>?,
     ) as $Val);
   }
 }
@@ -94,7 +106,12 @@ abstract class _$$ServerImplCopyWith<$Res> implements $ServerCopyWith<$Res> {
       __$$ServerImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int port, String host, bool ssl, String? subdirectory});
+  $Res call(
+      {int port,
+      String host,
+      bool ssl,
+      String? subdirectory,
+      Map<String, String>? headers});
 }
 
 /// @nodoc
@@ -114,6 +131,7 @@ class __$$ServerImplCopyWithImpl<$Res>
     Object? host = null,
     Object? ssl = null,
     Object? subdirectory = freezed,
+    Object? headers = freezed,
   }) {
     return _then(_$ServerImpl(
       port: null == port
@@ -132,6 +150,10 @@ class __$$ServerImplCopyWithImpl<$Res>
           ? _value.subdirectory
           : subdirectory // ignore: cast_nullable_to_non_nullable
               as String?,
+      headers: freezed == headers
+          ? _value.headers
+          : headers // ignore: cast_nullable_to_non_nullable
+              as Map<String, String>?,
     ));
   }
 }
@@ -143,7 +165,8 @@ class _$ServerImpl extends _Server with DiagnosticableTreeMixin {
       {required this.port,
       required this.host,
       required this.ssl,
-      this.subdirectory})
+      this.subdirectory,
+      this.headers})
       : super._();
 
   factory _$ServerImpl.fromJson(Map<String, dynamic> json) =>
@@ -157,10 +180,12 @@ class _$ServerImpl extends _Server with DiagnosticableTreeMixin {
   bool ssl;
   @override
   String? subdirectory;
+  @override
+  Map<String, String>? headers;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Server(port: $port, host: $host, ssl: $ssl, subdirectory: $subdirectory)';
+    return 'Server(port: $port, host: $host, ssl: $ssl, subdirectory: $subdirectory, headers: $headers)';
   }
 
   @override
@@ -171,7 +196,8 @@ class _$ServerImpl extends _Server with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('port', port))
       ..add(DiagnosticsProperty('host', host))
       ..add(DiagnosticsProperty('ssl', ssl))
-      ..add(DiagnosticsProperty('subdirectory', subdirectory));
+      ..add(DiagnosticsProperty('subdirectory', subdirectory))
+      ..add(DiagnosticsProperty('headers', headers));
   }
 
   /// Create a copy of Server
@@ -195,7 +221,8 @@ abstract class _Server extends Server {
       {required int port,
       required String host,
       required bool ssl,
-      String? subdirectory}) = _$ServerImpl;
+      String? subdirectory,
+      Map<String, String>? headers}) = _$ServerImpl;
   _Server._() : super._();
 
   factory _Server.fromJson(Map<String, dynamic> json) = _$ServerImpl.fromJson;
@@ -212,6 +239,9 @@ abstract class _Server extends Server {
   @override
   String? get subdirectory;
   set subdirectory(String? value);
+  @override
+  Map<String, String>? get headers;
+  set headers(Map<String, String>? value);
 
   /// Create a copy of Server
   /// with the given fields replaced by the non-null parameter values.

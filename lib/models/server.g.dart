@@ -11,6 +11,9 @@ _$ServerImpl _$$ServerImplFromJson(Map<String, dynamic> json) => _$ServerImpl(
       host: json['host'] as String,
       ssl: json['ssl'] as bool,
       subdirectory: json['subdirectory'] as String?,
+      headers: (json['headers'] as Map<String, dynamic>?)?.map(
+        (k, e) => MapEntry(k, e as String),
+      ),
     );
 
 Map<String, dynamic> _$$ServerImplToJson(_$ServerImpl instance) =>
@@ -19,4 +22,5 @@ Map<String, dynamic> _$$ServerImplToJson(_$ServerImpl instance) =>
       'host': instance.host,
       'ssl': instance.ssl,
       'subdirectory': instance.subdirectory,
+      'headers': instance.headers,
     };

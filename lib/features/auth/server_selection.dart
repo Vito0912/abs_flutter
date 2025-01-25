@@ -22,7 +22,7 @@ final loginFormProvider =
 class LoginFormNotifier extends StateNotifier<LoginFormState> {
   final Ref ref;
   LoginFormNotifier(this.ref)
-      : super(const LoginFormState(subdirectory: '/audiobookshelf'));
+      : super(LoginFormState(subdirectory: '/audiobookshelf'));
 
   void updateUsername(String value) => state = state.copyWith(username: value);
   void updatePassword(String value) => state = state.copyWith(password: value);
@@ -33,6 +33,26 @@ class LoginFormNotifier extends StateNotifier<LoginFormState> {
       );
   void updateSubdirectory(String value) =>
       state = state.copyWith(subdirectory: value);
+
+  void addHeader(String key, String value) =>
+      state = state.copyWith(headers: {...(state.headers ?? {}), key: value});
+
+  void updateHeader(String oldKey, String newKey, String newValue) {
+    final newHeaders = {...(state.headers ?? {})}..remove(oldKey);
+    newHeaders[newKey] = newValue;
+    state = state.copyWith(headers: newHeaders);
+  }
+
+  void removeHeader(String key) {
+    Map<String, String> newHeaders = {};
+    if (state.headers == null) return;
+    for (final entry in state.headers!.entries) {
+      if (entry.key != key) {
+        newHeaders[entry.key] = entry.value;
+      }
+    }
+    state = state.copyWith(headers: newHeaders);
+  }
 
   Future<void> submit(BuildContext context) async {
     if (!state.isValid) {
@@ -51,9 +71,10 @@ class LoginFormNotifier extends StateNotifier<LoginFormState> {
         host: state.domain,
         port: int.tryParse(state.port) ?? 443,
         subdirectory: state.subdirectory,
+        headers: state.headers,
       );
 
-      setBasePathOverride(ref, server.url);
+      setBasePathOverride(ref, [server.url, state.headers]);
 
       if (server.subdirectory != null && server.subdirectory!.startsWith('/')) {
         server.subdirectory = server.subdirectory!.substring(1);
@@ -130,6 +151,21 @@ class ServerSelection extends ConsumerWidget {
       appBar: AppBar(
         title: Text(S.of(context).serverSelection),
         automaticallyImplyLeading: !initAttempted,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.http),
+            onPressed: () => showDialog(
+              context: context,
+              builder: (context) => HeaderDialog(
+                headers: state.headers ?? {},
+                onAdd: notifier.addHeader,
+                onUpdate: notifier.updateHeader,
+                onRemove: notifier.removeHeader,
+              ),
+            ),
+            tooltip: S.of(context).customHeaders,
+          ),
+        ],
       ),
       body: Center(
         child: ConstrainedBox(
@@ -335,6 +371,166 @@ class _LoginButton extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+class HeaderDialog extends StatefulWidget {
+  final Map<String, String> headers;
+  final Function(String, String) onAdd;
+  final Function(String, String, String) onUpdate;
+  final Function(String) onRemove;
+
+  const HeaderDialog({
+    super.key,
+    required this.headers,
+    required this.onAdd,
+    required this.onUpdate,
+    required this.onRemove,
+  });
+
+  @override
+  State<HeaderDialog> createState() => _HeaderDialogState();
+}
+
+class _HeaderDialogState extends State<HeaderDialog> {
+  late List<MapEntry<String, String>> _headers;
+  final List<TextEditingController> _keyControllers = [];
+  final List<TextEditingController> _valueControllers = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _initializeHeaders();
+  }
+
+  @override
+  void didUpdateWidget(HeaderDialog oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.headers != widget.headers) {
+      _initializeHeaders();
+    }
+  }
+
+  void _initializeHeaders() {
+    _headers = widget.headers.entries.toList();
+    _keyControllers.clear();
+    _valueControllers.clear();
+    for (final entry in _headers) {
+      _keyControllers.add(TextEditingController(text: entry.key));
+      _valueControllers.add(TextEditingController(text: entry.value));
+    }
+  }
+
+  void _addHeader() {
+    setState(() {
+      _headers.add(const MapEntry('', ''));
+      _keyControllers.add(TextEditingController());
+      _valueControllers.add(TextEditingController());
+      widget.onAdd('', '');
+    });
+  }
+
+  void _updateHeader(int index) {
+    final newKey = _keyControllers[index].text;
+    final newValue = _valueControllers[index].text;
+    final oldKey = _headers[index].key;
+
+    if (newKey.isEmpty) return;
+
+    widget.onUpdate(oldKey, newKey, newValue);
+    _headers[index] = MapEntry(newKey, newValue);
+  }
+
+  void _removeHeader(int index) {
+    final removedKey = _headers[index].key;
+    setState(() {
+      _headers.removeAt(index);
+      _keyControllers.removeAt(index);
+      _valueControllers.removeAt(index);
+    });
+    widget.onRemove(removedKey);
+  }
+
+  @override
+  void dispose() {
+    for (final controller in _keyControllers) {
+      controller.dispose();
+    }
+    for (final controller in _valueControllers) {
+      controller.dispose();
+    }
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      title: Text(S.of(context).customHeaders),
+      content: SizedBox(
+        width: double.maxFinite,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            ConstrainedBox(
+              constraints: const BoxConstraints(maxHeight: 300),
+              child: ListView.builder(
+                shrinkWrap: true,
+                itemCount: _headers.length,
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.only(bottom: 8),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: TextField(
+                            decoration: const InputDecoration(
+                              labelText: 'Key',
+                              border: OutlineInputBorder(),
+                              contentPadding:
+                                  EdgeInsets.symmetric(horizontal: 8),
+                            ),
+                            controller: _keyControllers[index],
+                            onChanged: (_) => _updateHeader(index),
+                          ),
+                        ),
+                        const SizedBox(width: 8),
+                        Expanded(
+                          child: TextField(
+                            decoration: const InputDecoration(
+                              labelText: 'Value',
+                              border: OutlineInputBorder(),
+                              contentPadding:
+                                  EdgeInsets.symmetric(horizontal: 8),
+                            ),
+                            controller: _valueControllers[index],
+                            onChanged: (_) => _updateHeader(index),
+                          ),
+                        ),
+                        IconButton(
+                          icon: const Icon(Icons.remove_circle,
+                              color: Colors.red),
+                          onPressed: () => _removeHeader(index),
+                        ),
+                      ],
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
+      ),
+      actions: [
+        TextButton(
+          onPressed: _addHeader,
+          child: const Text('Add Header'),
+        ),
+        TextButton(
+          onPressed: () => Navigator.pop(context),
+          child: const Text('Close'),
+        ),
+      ],
     );
   }
 }
