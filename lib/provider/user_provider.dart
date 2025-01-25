@@ -142,6 +142,24 @@ class CurrentUserNotifier extends StateNotifier<User?> {
     }
   }
 
+  Future<bool> validateLogin() async {
+    final user = state;
+    if (user == null) return Future.value(false);
+
+    final api = _ref.read(apiProviderNew);
+    if (api == null) return Future.value(false);
+
+    try {
+      final response = await api.getMeApi().checkLogin();
+      if (response.statusCode == 500) {
+        return Future.value(false);
+      }
+    } catch (e) {
+      log(e.toString());
+    }
+    return Future.value(true);
+  }
+
   void removeUser(BuildContext context) {
     final allUsers = _ref.read(usersProvider.notifier);
     if (allUsers == null || allUsers.mounted == false) return;
@@ -250,7 +268,7 @@ final apiProviderNew = Provider<ABSApi?>((ref) {
   return null;
 });
 
-void setBasePathOverride(WidgetRef ref, String? newBasePath) {
+void setBasePathOverride(Ref ref, String? newBasePath) {
   ref.read(basePathOverrideProvider.notifier).state = newBasePath;
 }
 

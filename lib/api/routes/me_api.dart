@@ -29,6 +29,22 @@ class MeApi {
     );
   }
 
+  Future<Response<Login>> checkLogin({
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+  }) async {
+    return ABSApi.makeApiPostRequest(
+      route: '/api/authorize',
+      fromJson: (data) => Login.fromJson(data),
+      cancelToken: cancelToken,
+      headers: headers,
+      extra: extra,
+      dio: _dio,
+      bodyData: {},
+    );
+  }
+
   Future<Response<Bookmark>> createBookmark(
     itemId, {
     required CreateBookmarkRequest createBookmarkRequest,

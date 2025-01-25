@@ -2,51 +2,118 @@ import 'dart:developer';
 
 import 'package:abs_flutter/api/me/login.dart';
 import 'package:abs_flutter/api/me/request/login_request.dart';
-import 'package:abs_flutter/api/me/user.dart';
 import 'package:abs_flutter/features/auth/server_input.dart';
-import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/globals.dart';
+import 'package:abs_flutter/models/login_form.dart';
 import 'package:abs_flutter/models/server.dart';
 import 'package:abs_flutter/models/setting.dart';
 import 'package:abs_flutter/provider/user_provider.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:quickalert/quickalert.dart';
 
-// TODO: Use proper state management
-final usernameProvider = StateProvider<String>((ref) => '');
-final passwordProvider = StateProvider<String>((ref) => '');
-final subdomainProvider = StateProvider<String?>((ref) => 'audiobookshelf');
-final loginStateProvider =
-    StateNotifierProvider<LoginStateNotifier, LoginState>(
-        (ref) => LoginStateNotifier());
+final loginFormProvider =
+    StateNotifierProvider.autoDispose<LoginFormNotifier, LoginFormState>(
+  (ref) => LoginFormNotifier(ref),
+);
 
-class LoginState {
-  final bool isLoading;
-  final bool isSuccess;
-  final String errorMessage;
+class LoginFormNotifier extends StateNotifier<LoginFormState> {
+  final Ref ref;
+  LoginFormNotifier(this.ref) : super(const LoginFormState());
 
-  LoginState(
-      {this.isLoading = false, this.isSuccess = false, this.errorMessage = ''});
-}
+  void updateUsername(String value) => state = state.copyWith(username: value);
+  void updatePassword(String value) => state = state.copyWith(password: value);
+  void updateServerDetails(String protocol, String domain, String port) =>
+      state = state.copyWith(protocol: protocol, domain: domain, port: port);
+  void updateSubdirectory(String value) =>
+      state = state.copyWith(subdirectory: value.isNotEmpty ? value : null);
 
-class LoginStateNotifier extends StateNotifier<LoginState> {
-  LoginStateNotifier() : super(LoginState());
+  Future<void> submit(BuildContext context) async {
+    if (!state.isValid) {
+      state = state.copyWith(
+        status: FormStatus.error,
+        errorMessage: "Please fill all required fields",
+      );
+      return;
+    }
 
-  void setLoading() {
-    state = LoginState(isLoading: true);
+    state = state.copyWith(status: FormStatus.loading, errorMessage: null);
+
+    try {
+      final server = Server(
+        ssl: state.protocol == 'https://',
+        host: state.domain,
+        port: int.tryParse(state.port) ?? 443,
+        subdirectory: state.subdirectory,
+      );
+
+      setBasePathOverride(ref, server.url);
+
+      final response = await ref.read(apiProviderNew)!.getMeApi().login(
+            loginRequest: LoginRequest(
+              username: state.username.trim(),
+              password: state.password.trim(),
+            ),
+          );
+
+      _handleLoginResponse(context, response, server);
+    } on DioException catch (e) {
+      _handleDioError(context, e);
+    } catch (e, stackTrace) {
+      log("Login Error: $e\n$stackTrace");
+      state = state.copyWith(
+        status: FormStatus.error,
+        errorMessage: "An unknown error occurred",
+      );
+    }
   }
 
-  void setSuccess() {
-    state = LoginState(isLoading: false, isSuccess: true);
+  void _handleLoginResponse(
+      BuildContext context, Response<Login> response, Server server) {
+    final user = response.data?.user;
+    if (user == null || !context.mounted) {
+      state = state.copyWith(
+        status: FormStatus.error,
+        errorMessage: "Invalid credentials",
+      );
+      return;
+    }
+
+    user.server = server;
+    user.setting ??= Setting()..settings = defaultSettings;
+
+    ref.read(usersProvider.notifier).addUser(user);
+    ref.read(selectedUserProvider.notifier).state =
+        ref.read(usersProvider).length - 1;
+
+    if (context.mounted) {
+      state = state.copyWith(status: FormStatus.success);
+      context.go('/');
+    }
   }
 
-  void setError(String errorMessage) {
-    state = LoginState(isLoading: false, errorMessage: errorMessage);
+  void _handleDioError(BuildContext context, DioException e) {
+    final message = switch (e.response?.statusCode) {
+      401 => "Invalid credentials",
+      404 => "Server not found",
+      _ => e.message ?? "Connection error",
+    };
+
+    state = state.copyWith(
+      status: FormStatus.error,
+      errorMessage: message,
+    );
+
+    if (context.mounted) {
+      QuickAlert.show(
+        context: context,
+        type: QuickAlertType.error,
+        title: "Error",
+        text: message,
+      );
+    }
   }
 }
 
@@ -54,98 +121,27 @@ class ServerSelection extends ConsumerWidget {
   final bool initAttempted;
   const ServerSelection({super.key, this.initAttempted = false});
 
-  void enableCredentialsInput(WidgetRef ref, String enteredProtocol,
-      String enteredDomain, String enteredPort) {
-    ref.read(isInputValidProvider.notifier).state = true;
-    ref.read(protocolProvider.notifier).state = enteredProtocol;
-    ref.read(domainProvider.notifier).state = enteredDomain;
-    ref.read(portProvider.notifier).state = enteredPort;
-  }
-
-  void showHint(BuildContext context) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(S.of(context).enterValidUsernameOrPassword),
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isServerInputValid = ref.watch(isInputValidProvider);
-    final loginState = ref.watch(loginStateProvider);
+    final state = ref.watch(loginFormProvider);
+    final notifier = ref.read(loginFormProvider.notifier);
+    final colorScheme = Theme.of(context).colorScheme;
 
-    return PlatformScaffold(
-      appBar: (initAttempted)
-          ? PlatformAppBar(
-              title: Text(S.of(context).serverSelection), leading: null)
-          : PlatformAppBar(
-              title: Text(S.of(context).serverSelection),
-            ),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Server Selection"),
+        automaticallyImplyLeading: !initAttempted,
+      ),
       body: Center(
-        child: Container(
-          constraints: const BoxConstraints(maxWidth: 1000),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 24),
-            child: Form(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Expanded(
-                    child: SingleChildScrollView(
-                      child: Column(
-                        children: [
-                          SizedBox(
-                              height: MediaQuery.of(context).size.height * 0.1),
-                          ServerInputContainer(
-                            onValidInput: (protocol, domain, port) =>
-                                enableCredentialsInput(
-                                    ref, protocol, domain, port),
-                          ),
-                          const SizedBox(height: 16),
-                          UsernameInputField(
-                              isServerInputValid: isServerInputValid,
-                              showHint: () => showHint(context)),
-                          const SizedBox(height: 16),
-                          PasswordInputField(
-                              isServerInputValid: isServerInputValid,
-                              showHint: () => showHint(context)),
-                          const SizedBox(height: 16),
-                          HookBuilder(builder: (context) {
-                            final useSubdomain = useState<bool>(true);
-                            return Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                const Text('Use subdirectory'),
-                                Switch(
-                                    value: useSubdomain.value,
-                                    onChanged: (val) {
-                                      useSubdomain.value = !useSubdomain.value;
-                                      ref
-                                              .read(subdomainProvider.notifier)
-                                              .state =
-                                          useSubdomain.value
-                                              ? 'audiobookshelf'
-                                              : null;
-                                    })
-                              ],
-                            );
-                          }),
-                          const SizedBox(height: 16),
-                          if (loginState.isLoading)
-                            PlatformCircularProgressIndicator(),
-                          if (loginState.errorMessage.isNotEmpty)
-                            PlatformText(loginState.errorMessage,
-                                style: const TextStyle(color: Colors.red)),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 8),
-                    child: LoginButton(isServerInputValid: isServerInputValid),
-                  ),
-                ],
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 600),
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: _LoginForm(
+                state: state,
+                notifier: notifier,
+                colorScheme: colorScheme,
               ),
             ),
           ),
@@ -155,277 +151,164 @@ class ServerSelection extends ConsumerWidget {
   }
 }
 
-class ServerInputContainer extends StatelessWidget {
-  final Function(String, String, String) onValidInput;
+class _LoginForm extends StatelessWidget {
+  final LoginFormState state;
+  final LoginFormNotifier notifier;
+  final ColorScheme colorScheme;
 
-  const ServerInputContainer({super.key, required this.onValidInput});
+  const _LoginForm({
+    required this.state,
+    required this.notifier,
+    required this.colorScheme,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(8),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        color: Theme.of(context).primaryColor.withOpacity(0.1),
-      ),
+    return AutofillGroup(
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          PlatformText(S.of(context).serverAdressContinue),
-          PlatformText(S.of(context).multipleServerAdressess),
+          _ServerInputSection(notifier: notifier),
+          const SizedBox(height: 32),
+          _CredentialsSection(notifier: notifier, state: state),
           const SizedBox(height: 24),
-          ServerInput(onValidInput: onValidInput),
+          _SubdirectoryInput(notifier: notifier, state: state),
+          const SizedBox(height: 32),
+          _LoginButton(notifier: notifier, state: state),
+          if (state.status == FormStatus.loading)
+            const Padding(
+              padding: EdgeInsets.only(top: 16),
+              child: CircularProgressIndicator(),
+            ),
+          if (state.errorMessage != null)
+            Padding(
+              padding: const EdgeInsets.only(top: 8),
+              child: Text(
+                state.errorMessage!,
+                style: TextStyle(color: colorScheme.error),
+              ),
+            ),
         ],
       ),
     );
   }
 }
 
-class UsernameInputField extends ConsumerStatefulWidget {
-  final bool isServerInputValid;
-  final VoidCallback showHint;
+class _ServerInputSection extends StatelessWidget {
+  final LoginFormNotifier notifier;
 
-  const UsernameInputField(
-      {super.key, required this.isServerInputValid, required this.showHint});
-
-  @override
-  ConsumerState<ConsumerStatefulWidget> createState() =>
-      _UsernameInputFieldState();
-}
-
-class _UsernameInputFieldState extends ConsumerState<UsernameInputField> {
-  late TextEditingController usernameController;
-
-  @override
-  void initState() {
-    super.initState();
-    usernameController =
-        TextEditingController(text: ref.read(usernameProvider));
-
-    usernameController.addListener(() {
-      ref.read(usernameProvider.notifier).state = usernameController.text;
-    });
-  }
-
-  @override
-  void dispose() {
-    usernameController.dispose();
-    super.dispose();
-  }
+  const _ServerInputSection({required this.notifier});
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        if (!widget.isServerInputValid) {
-          widget.showHint();
-        }
-      },
-      child: AbsorbPointer(
-        absorbing: !widget.isServerInputValid,
-        child: PlatformTextField(
-          controller: usernameController,
-          hintText: S.of(context).username,
-          material: (_, __) => MaterialTextFieldData(
-            decoration: InputDecoration(
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-              contentPadding: const EdgeInsets.symmetric(horizontal: 8.0),
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(8),
+        child: Column(
+          children: [
+            Text(
+              "Server Address",
+              style: Theme.of(context).textTheme.titleMedium,
             ),
-          ),
-          cupertino: (_, __) => CupertinoTextFieldData(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              border: Border.all(color: Colors.grey),
+            const SizedBox(height: 16),
+            ServerInput(
+              onValidInput: (protocol, domain, port) =>
+                  notifier.updateServerDetails(protocol, domain, port),
             ),
-          ),
+          ],
         ),
       ),
     );
   }
 }
 
-class PasswordInputField extends ConsumerStatefulWidget {
-  final bool isServerInputValid;
-  final VoidCallback showHint;
+class _CredentialsSection extends StatelessWidget {
+  final LoginFormNotifier notifier;
+  final LoginFormState state;
 
-  const PasswordInputField(
-      {super.key, required this.isServerInputValid, required this.showHint});
-
-  @override
-  ConsumerState<ConsumerStatefulWidget> createState() =>
-      _PasswordInputFieldState();
-}
-
-class _PasswordInputFieldState extends ConsumerState<PasswordInputField> {
-  late TextEditingController passwordController;
-
-  @override
-  void initState() {
-    super.initState();
-    passwordController =
-        TextEditingController(text: ref.read(passwordProvider));
-
-    passwordController.addListener(() {
-      ref.read(passwordProvider.notifier).state = passwordController.text;
-    });
-  }
-
-  @override
-  void dispose() {
-    passwordController.dispose();
-    super.dispose();
-  }
+  const _CredentialsSection({
+    required this.notifier,
+    required this.state,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        if (!widget.isServerInputValid) {
-          widget.showHint();
-        }
-      },
-      child: AbsorbPointer(
-        absorbing: !widget.isServerInputValid,
-        child: PlatformTextField(
-          controller: passwordController,
-          hintText: S.of(context).password,
+    return Column(
+      children: [
+        TextField(
+          autofillHints: const [AutofillHints.username],
+          onChanged: notifier.updateUsername,
+          decoration: const InputDecoration(
+            labelText: "Username",
+            border: OutlineInputBorder(),
+            prefixIcon: Icon(Icons.person),
+          ),
+          keyboardType: TextInputType.emailAddress,
+        ),
+        const SizedBox(height: 16),
+        TextField(
+          autofillHints: const [AutofillHints.password],
           obscureText: true,
-          material: (_, __) => MaterialTextFieldData(
-            decoration: InputDecoration(
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-              contentPadding: const EdgeInsets.symmetric(horizontal: 8.0),
-            ),
-          ),
-          cupertino: (_, __) => CupertinoTextFieldData(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              border: Border.all(color: Colors.grey),
-            ),
+          onChanged: notifier.updatePassword,
+          decoration: const InputDecoration(
+            labelText: "Password",
+            border: OutlineInputBorder(),
+            prefixIcon: Icon(Icons.lock),
           ),
         ),
+      ],
+    );
+  }
+}
+
+class _SubdirectoryInput extends StatelessWidget {
+  final LoginFormNotifier notifier;
+  final LoginFormState state;
+
+  const _SubdirectoryInput({
+    required this.notifier,
+    required this.state,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return TextField(
+      onChanged: notifier.updateSubdirectory,
+      decoration: const InputDecoration(
+        labelText: "Subdirectory (e.g., /audiobookshelf)",
+        hintText: "Optional",
+        border: OutlineInputBorder(),
+        prefixIcon: Icon(Icons.folder),
       ),
     );
   }
 }
 
-class LoginButton extends ConsumerWidget {
-  final bool isServerInputValid;
+class _LoginButton extends StatelessWidget {
+  final LoginFormNotifier notifier;
+  final LoginFormState state;
 
-  const LoginButton({super.key, required this.isServerInputValid});
+  const _LoginButton({
+    required this.notifier,
+    required this.state,
+  });
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    return PlatformElevatedButton(
-      onPressed: () async {
-        if (!isServerInputValid) {
-          QuickAlert.show(
-              context: context,
-              type: QuickAlertType.warning,
-              title: S.of(context).mustEnterValidAddress);
-          return;
-        }
-
-        final username = ref.read(usernameProvider).trim();
-        final password = ref.read(passwordProvider).trim();
-        if (username.isEmpty || password.isEmpty) {
-          QuickAlert.show(
-              context: context,
-              type: QuickAlertType.warning,
-              title: S.of(context).usernameOrPasswordNotEmpty);
-          return;
-        }
-
-        ref.read(loginStateProvider.notifier).setLoading();
-
-        final protocol = ref.read(protocolProvider);
-        final domain = ref.read(domainProvider);
-        final port = ref.read(portProvider);
-        final String? subdomain = ref.read(subdomainProvider);
-
-        print(subdomain);
-
-        Server server = Server(
-            ssl: protocol == 'https://',
-            host: domain,
-            port: int.parse(port),
-            subdomain: subdomain);
-        print('connecting to server: ${server.url}');
-        setBasePathOverride(ref, server.url);
-
-        LoginRequest loginRequest = LoginRequest(
-          username: username,
-          password: password,
-        );
-
-        try {
-          Response<Login> res = await ref
-              .watch(apiProviderNew)!
-              .getMeApi()
-              .login(loginRequest: loginRequest);
-
-          if (res.data!.user == null) {
-            ref
-                .read(loginStateProvider.notifier)
-                .setError(S.current.noUserData);
-            return;
-          }
-
-          User user = res.data!.user;
-          user.server = server;
-          user.setting = user.setting ?? Setting();
-
-          // set default settings
-          user.setting!.settings = defaultSettings;
-
-          final usersNotifier = ref.read(usersProvider.notifier);
-          final users = ref.read(usersProvider);
-
-          List<User> updatedUsers = List.from(users);
-
-          // Delete the user if it already exists
-          updatedUsers.removeWhere((userCurrent) => userCurrent.id == user.id);
-
-          updatedUsers.add(user);
-
-          usersNotifier.setUsers(updatedUsers);
-
-          ref.read(selectedUserProvider.notifier).state =
-              updatedUsers.length - 1;
-
-          ref.read(loginStateProvider.notifier).setSuccess();
-
-          resetBasePathOverride(ref);
-
-          // Go to the home screen
-          if (context.mounted) {
-            context.go('/');
-          } else {
-            ref.read(loginStateProvider.notifier).setError(
-                'There was an error while trying to navigate to the home screen');
-          }
-        } catch (e, stackTrace) {
-          log("$e\n$stackTrace", name: 'LoginButton');
-          String errorMessage = 'Login failed';
-          if (e is DioException) {
-            if (e.response?.statusCode == 401) {
-              errorMessage = 'Invalid username or password';
-            } else {
-              errorMessage = e.response?.data ??
-                  e.message ??
-                  'Login failed with no error message';
-            }
-          } else {
-            errorMessage = e.toString();
-          }
-          ref.read(loginStateProvider.notifier).setError(errorMessage);
-        }
-      },
-      child: PlatformText('Login'),
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: double.infinity,
+      child: ElevatedButton(
+        onPressed: (state.isValid && state.status != FormStatus.loading)
+            ? () => notifier.submit(context)
+            : null,
+        child: const Padding(
+          padding: EdgeInsets.symmetric(vertical: 16),
+          child: Text(
+            "LOGIN",
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
+        ),
+      ),
     );
   }
 }
