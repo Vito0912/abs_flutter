@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:abs_flutter/api/me/login.dart';
 import 'package:abs_flutter/api/me/request/login_request.dart';
 import 'package:abs_flutter/features/auth/server_input.dart';
+import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/globals.dart';
 import 'package:abs_flutter/models/login_form.dart';
 import 'package:abs_flutter/models/server.dart';
@@ -37,7 +38,7 @@ class LoginFormNotifier extends StateNotifier<LoginFormState> {
     if (!state.isValid) {
       state = state.copyWith(
         status: FormStatus.error,
-        errorMessage: "Please fill all required fields",
+        errorMessage: S.of(context).requiredFields,
       );
       return;
     }
@@ -72,7 +73,7 @@ class LoginFormNotifier extends StateNotifier<LoginFormState> {
       log("Login Error: $e\n$stackTrace");
       state = state.copyWith(
         status: FormStatus.error,
-        errorMessage: "An unknown error occurred",
+        errorMessage: S.of(context).anUnknownErrorOccurred,
       );
     }
   }
@@ -83,7 +84,7 @@ class LoginFormNotifier extends StateNotifier<LoginFormState> {
     if (user == null || !context.mounted) {
       state = state.copyWith(
         status: FormStatus.error,
-        errorMessage: "Invalid credentials",
+        errorMessage: S.of(context).invalidCredentials,
       );
       return;
     }
@@ -103,9 +104,9 @@ class LoginFormNotifier extends StateNotifier<LoginFormState> {
 
   void _handleDioError(BuildContext context, DioException e) {
     final message = switch (e.response?.statusCode) {
-      401 => "Invalid credentials",
-      404 => "Server not found",
-      _ => e.message ?? "Connection error",
+      401 => S.of(context).invalidCredentials,
+      404 => S.of(context).serverNotFound,
+      _ => e.message ?? S.of(context).connectionError,
     };
 
     state = state.copyWith(
@@ -127,7 +128,7 @@ class ServerSelection extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Server Selection"),
+        title: Text(S.of(context).serverSelection),
         automaticallyImplyLeading: !initAttempted,
       ),
       body: Center(
@@ -167,7 +168,7 @@ class _LoginForm extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           _ServerInputSection(notifier: notifier),
-          const SizedBox(height: 32),
+          const SizedBox(height: 64),
           _CredentialsSection(notifier: notifier, state: state),
           const SizedBox(height: 24),
           _SubdomainCard(notifier: notifier, state: state),
@@ -205,7 +206,7 @@ class _ServerInputSection extends StatelessWidget {
         child: Column(
           children: [
             Text(
-              "Server Address",
+              S.of(context).serverAddress,
               style: Theme.of(context).textTheme.titleMedium,
             ),
             const SizedBox(height: 16),
@@ -236,10 +237,10 @@ class _CredentialsSection extends StatelessWidget {
         TextField(
           autofillHints: const [AutofillHints.username],
           onChanged: notifier.updateUsername,
-          decoration: const InputDecoration(
-            labelText: "Username",
-            border: OutlineInputBorder(),
-            prefixIcon: Icon(Icons.person),
+          decoration: InputDecoration(
+            labelText: S.of(context).username,
+            border: const OutlineInputBorder(),
+            prefixIcon: const Icon(Icons.person),
           ),
           keyboardType: TextInputType.emailAddress,
         ),
@@ -248,10 +249,10 @@ class _CredentialsSection extends StatelessWidget {
           autofillHints: const [AutofillHints.password],
           obscureText: true,
           onChanged: notifier.updatePassword,
-          decoration: const InputDecoration(
-            labelText: "Password",
-            border: OutlineInputBorder(),
-            prefixIcon: Icon(Icons.lock),
+          decoration: InputDecoration(
+            labelText: S.of(context).password,
+            border: const OutlineInputBorder(),
+            prefixIcon: const Icon(Icons.lock),
           ),
         ),
       ],
@@ -278,7 +279,7 @@ class _SubdomainCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text("Enable Subdirectory"),
+                Text(S.of(context).enableSubdirectory),
                 Switch(
                   value: state.subdirectory != null,
                   onChanged: notifier.toggleSubdomain,
@@ -290,11 +291,10 @@ class _SubdomainCard extends StatelessWidget {
               TextField(
                 onChanged: notifier.updateSubdirectory,
                 controller: TextEditingController(text: state.subdirectory),
-                decoration: const InputDecoration(
-                  labelText: "Subdirectory",
+                decoration: InputDecoration(
+                  labelText: S.of(context).subdirectory,
                   hintText: "/audiobookshelf",
-                  border: OutlineInputBorder(),
-                  prefixIcon: Icon(Icons.folder),
+                  border: const OutlineInputBorder(),
                 ),
               ),
           ],
@@ -321,10 +321,10 @@ class _LoginButton extends StatelessWidget {
         onPressed: (state.isValid && state.status != FormStatus.loading)
             ? () => notifier.submit(context)
             : null,
-        child: const Padding(
+        child: Padding(
           padding: EdgeInsets.symmetric(vertical: 16),
           child: Text(
-            "LOGIN",
+            S.of(context).login,
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
         ),

@@ -763,5 +763,14 @@
   "waitingForDownload": "Waiting for download to start",
   "@waitingForDownload": {},
   "year": "Year",
-  "@year": {}
+  "@year": {},
+  "invalidCredentials": "Invalid credentials",
+  "serverNotFound": "Server not found",
+  "connectionError": "Connection error",
+  "anUnknownErrorOccurred": "An unknown error occurred",
+  "requiredFields": "Please fill all required fields",
+  "serverAddress": "Server Address",
+  "enableSubdirectory": "Enable Subdirectory",
+  "subdirectory": "Subdirectory",
+  "login": "LOGIN"
 }

@@ -2095,6 +2095,91 @@ class S {
   String get year {
     return Intl.message('Year', name: 'year', desc: '', args: []);
   }
+
+  /// `Invalid credentials`
+  String get invalidCredentials {
+    return Intl.message(
+      'Invalid credentials',
+      name: 'invalidCredentials',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Server not found`
+  String get serverNotFound {
+    return Intl.message(
+      'Server not found',
+      name: 'serverNotFound',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Connection error`
+  String get connectionError {
+    return Intl.message(
+      'Connection error',
+      name: 'connectionError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `An unknown error occurred`
+  String get anUnknownErrorOccurred {
+    return Intl.message(
+      'An unknown error occurred',
+      name: 'anUnknownErrorOccurred',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please fill all required fields`
+  String get requiredFields {
+    return Intl.message(
+      'Please fill all required fields',
+      name: 'requiredFields',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Server Address`
+  String get serverAddress {
+    return Intl.message(
+      'Server Address',
+      name: 'serverAddress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enable Subdirectory`
+  String get enableSubdirectory {
+    return Intl.message(
+      'Enable Subdirectory',
+      name: 'enableSubdirectory',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Subdirectory`
+  String get subdirectory {
+    return Intl.message(
+      'Subdirectory',
+      name: 'subdirectory',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `LOGIN`
+  String get login {
+    return Intl.message('LOGIN', name: 'login', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

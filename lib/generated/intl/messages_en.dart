@@ -117,6 +117,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "allDownloads": MessageLookupByLibrary.simpleMessage("All Downloads"),
     "amoledMode": MessageLookupByLibrary.simpleMessage("AMOLED Mode"),
+    "anUnknownErrorOccurred": MessageLookupByLibrary.simpleMessage(
+      "An unknown error occurred",
+    ),
     "ascending": MessageLookupByLibrary.simpleMessage("Ascending"),
     "attribution": MessageLookupByLibrary.simpleMessage("Attribution"),
     "author": MessageLookupByLibrary.simpleMessage("Author"),
@@ -143,6 +146,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "collapseSeriesDescription": MessageLookupByLibrary.simpleMessage(
       "When enabled, items in a series will be grouped together in the library view, displaying only a single item to represent the entire series.",
     ),
+    "connectionError": MessageLookupByLibrary.simpleMessage("Connection error"),
     "consecutiveDays": MessageLookupByLibrary.simpleMessage("Consecutive days"),
     "continueListening": MessageLookupByLibrary.simpleMessage(
       "Continue Listening",
@@ -228,6 +232,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "enableNotificationsDownload": MessageLookupByLibrary.simpleMessage(
       "Please enable notifications to receive download progress updates and be able to download files in the background.",
     ),
+    "enableSubdirectory": MessageLookupByLibrary.simpleMessage(
+      "Enable Subdirectory",
+    ),
     "enabled": MessageLookupByLibrary.simpleMessage("Enabled"),
     "enterValidUsernameOrPassword": MessageLookupByLibrary.simpleMessage(
       "Please enter a valid IP/Domain and port before entering your username and password.",
@@ -264,6 +271,9 @@ class MessageLookup extends MessageLookupByLibrary {
         ),
     "inProgress": MessageLookupByLibrary.simpleMessage("In Progress"),
     "information": MessageLookupByLibrary.simpleMessage("Information"),
+    "invalidCredentials": MessageLookupByLibrary.simpleMessage(
+      "Invalid credentials",
+    ),
     "itemId": MessageLookupByLibrary.simpleMessage("Item Id"),
     "itemLength": m26,
     "itemNotFoundDescription": MessageLookupByLibrary.simpleMessage(
@@ -303,6 +313,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "When enabled, this feature locks the progress bar in the media notification, if supported by the operating system",
     ),
     "logging": MessageLookupByLibrary.simpleMessage("Logging"),
+    "login": MessageLookupByLibrary.simpleMessage("LOGIN"),
     "logs": MessageLookupByLibrary.simpleMessage("Logs"),
     "longestItems": MessageLookupByLibrary.simpleMessage("Longest Items"),
     "markItemsFinished": MessageLookupByLibrary.simpleMessage(
@@ -391,6 +402,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "recentSeries": MessageLookupByLibrary.simpleMessage("Recent Series"),
     "recentlyAdded": MessageLookupByLibrary.simpleMessage("Recently Added"),
     "reportAnIssue": MessageLookupByLibrary.simpleMessage("Report an issue"),
+    "requiredFields": MessageLookupByLibrary.simpleMessage(
+      "Please fill all required fields",
+    ),
     "restartRequired": MessageLookupByLibrary.simpleMessage("Restart Required"),
     "restartRequiredDescription": MessageLookupByLibrary.simpleMessage(
       "Please restart the app to apply the changes.",
@@ -406,9 +420,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "seek": MessageLookupByLibrary.simpleMessage("Seek"),
     "sequence": MessageLookupByLibrary.simpleMessage("Sequence"),
     "series": MessageLookupByLibrary.simpleMessage("Series"),
+    "serverAddress": MessageLookupByLibrary.simpleMessage("Server Address"),
     "serverAdressContinue": MessageLookupByLibrary.simpleMessage(
       "Enter your server address to continue",
     ),
+    "serverNotFound": MessageLookupByLibrary.simpleMessage("Server not found"),
     "serverSelection": MessageLookupByLibrary.simpleMessage("Server Selection"),
     "settings": MessageLookupByLibrary.simpleMessage("Settings"),
     "shakeResetTimer": MessageLookupByLibrary.simpleMessage(
@@ -444,6 +460,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "stopPlayerWhileSyncingDescription": MessageLookupByLibrary.simpleMessage(
       "Enable this option to prevent the player from starting until the most recent playback position has been synced. This ensures that playback resumes from the correct position. If disabled, the playback position may change shortly after starting, potentially leading to data loss. Turning this on helps conserve data usage.",
     ),
+    "subdirectory": MessageLookupByLibrary.simpleMessage("Subdirectory"),
     "success": MessageLookupByLibrary.simpleMessage("Success"),
     "sync": MessageLookupByLibrary.simpleMessage("Sync"),
     "syncInterval": MessageLookupByLibrary.simpleMessage(
