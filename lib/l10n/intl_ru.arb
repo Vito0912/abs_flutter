@@ -612,5 +612,155 @@
   "waitingForDownload": "Ожидание начала загрузки",
   "@waitingForDownload": {},
   "ebookreader": "eBook-Reader",
-  "@ebookreader": {}
+  "@ebookreader": {},
+  "fastForwardSeconds": "Время промотки",
+  "@fastForwardSeconds": {},
+  "editQueue": "Редактировать очередь",
+  "@editQueue": {},
+  "fastForward": "Быстрая перемотка",
+  "@fastForward": {},
+  "general": "Главная",
+  "@general": {},
+  "ifTheQuickAccountSwitcherShouldBeShown": "Если должен быть показан быстрый переключатель учетной записи",
+  "@ifTheQuickAccountSwitcherShouldBeShown": {},
+  "itemId": "ID элемента",
+  "@itemId": {},
+  "feedOpen": "Открыть канал",
+  "@feedOpen": {},
+  "filepath": "Путь к файлу",
+  "@filepath": {},
+  "markItemsFinished": "Отметка завершенных элементов",
+  "@markItemsFinished": {},
+  "miscellaneous": "Разное",
+  "@miscellaneous": {},
+  "lockProgressBar": "Блокировка полосы прогресса медиа",
+  "@lockProgressBar": {},
+  "numBooksInSeries": "{numBooks, plural, =0 {No Books} =1 {1 Book} other {{numBooks} Books}}",
+  "@numBooksInSeries": {
+    "placeholders": {
+      "numBooks": {
+        "type": "num"
+      }
+    }
+  },
+  "rewindSeconds": "Время отмотки",
+  "@rewindSeconds": {},
+  "showAccountSwitcher": "Показать переключатель аккаунтов",
+  "@showAccountSwitcher": {},
+  "showAccountSwitcherDescription": "Включите эту опцию, чтобы добавить кнопку-значок на панель приложений для быстрого переключения между аккаунтами. Это уменьшит размер панели приложений.",
+  "@showAccountSwitcherDescription": {},
+  "attribution": "Авторство",
+  "@attribution": {},
+  "carPlayer": "Автоплеер",
+  "@carPlayer": {},
+  "dateFormatDay": "{count, plural, one {{count}  day} other {{count} days}}",
+  "@dateFormatDay": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatDayHour": "{days, plural, one {{days} day} other {{days} days}} {hours, plural, one {{hours} hour} other {{hours} hours}}",
+  "@dateFormatDayHour": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatDayHourMinute": "{days, plural, one {{days} day} other {{days} days}} {hours, plural, one {{hours} hour} other {{hours} hours}} {minutes, plural, one {{minutes} minute} other {{minutes} minutes}}",
+  "@dateFormatDayHourMinute": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatMinute": "{count, plural, one {{count} minute} other {{count} minutes}}",
+  "@dateFormatMinute": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatMinuteSecond": "{minutes, plural, one {{minutes} minute} other {{minutes} minutes}} {seconds, plural, one {{seconds} second} other {{seconds} seconds}}",
+  "@dateFormatMinuteSecond": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      },
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatDayHourMinuteSecond": "{days, plural, one {{days} day} other {{days} days}} {hours, plural, one {{hours} hour} other {{hours} hours}} {minutes, plural, one {{minutes} minute} other {{minutes} minutes}} {seconds, plural, one {{seconds} second} other {{seconds} seconds}}",
+  "@dateFormatDayHourMinuteSecond": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      },
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatHour": "{count, plural, one {{count} hour} other {{count} hours}}",
+  "@dateFormatHour": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatHourMinute": "{hours, plural, one {{hours} hour} other {{hours} hours}} {minutes, plural, one {{minutes} minute} other {{minutes} minutes}}",
+  "@dateFormatHourMinute": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatHourMinuteSecond": "{hours, plural, one {{hours} hour} other {{hours} hours}} {minutes, plural, one {{minutes} minute} other {{minutes} minutes}} {seconds, plural, one {{seconds} second} other {{seconds} seconds}}",
+  "@dateFormatHourMinuteSecond": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      },
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatSecond": "{count, plural, one {{count}  second} other {{count} seconds}}",
+  "@dateFormatSecond": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  }
 }
