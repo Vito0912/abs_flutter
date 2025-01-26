@@ -1,38 +1,36 @@
 name: buchable
-version: 1.4.0
-summary: An ABS app
-description: Client for Audiobookshelf
+version: 1.7.7
+summary: Enjoy hearing self-hosted audiobooks.
+description: testtesttesttestttest
 
 confinement: strict
 base: core22
 grade: stable
 
+architectures:
+  - build-on: amd64
+    run-on: [amd64, i386, arm64]
+
 slots:
   dbus-buchable:
     interface: dbus
     bus: session
-    name: org.bar.buchable
+    name: io.github.vito0912.abs_flutter
 
 apps:
   buchable:
     command: buchable
-    extensions: [gnome]
+    extensions: [flutter-stable]
     plugs:
+      - desktop
+      - desktop-legacy
+      - wayland
       - network
+      - audio-playback
     slots:
-      - dbus-super-cool-app
+      - dbus-buchable
 parts:
   buchable:
     source: .
     plugin: flutter
     flutter-target: lib/main.dart
-  uet-lms:
-    source: .
-    plugin: flutter
-    flutter-target: lib/main.dart
-    build-packages:
-      - libsecret-1-dev
-      - libjsoncpp-dev
-    stage-packages:
-      - libsecret-1-0
-      - libjsoncpp-dev

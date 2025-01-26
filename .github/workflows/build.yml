@@ -301,24 +301,25 @@ jobs:
           
           cp /usr/lib/x86_64-linux-gnu/libsecret-1.so* AppDir/usr/lib/ || true
           
-          cp assets/images/logo/logo_blue_big_abs.png AppDir/usr/share/icons/hicolor/256x256/apps/buchable.png
-          cp assets/images/logo/logo_blue_big_abs.png AppDir/buchable.png
+          cp assets/images/logo/logo_blue_big_abs.png AppDir/usr/share/icons/hicolor/256x256/apps/io.github.vito0912.abs_flutter.png
+          cp assets/images/logo/logo_blue_big_abs.png AppDir/io.github.vito0912.abs_flutter.png
           
-          cat > AppDir/buchable.desktop << EOL
+          cat > AppDir/io.github.vito0912.abs_flutter.desktop << EOL
           [Desktop Entry]
           Name=Buchable
-          Comment=The unofficial cross-platform app for Audiobookshelf
-          Exec=abs_flutter
-          Icon=buchable
-          Terminal=false
+          Comment=Enjoy hearing self-hosted audiobooks.
+          Exec=buchable
           Type=Application
-          Categories=Audio;AudioVideo;Player;
-          StartupWMClass=buchable
-          X-GNOME-UsesNotifications=true
+          Icon=io.github.vito0912.abs_flutter.png
+          Terminal=false
+          Keywords=Audiobook,Player,Audiobookshelf,Listen;
+          Categories=Multimedia;Audio;AudioVideo;Player;
           MimeType=audio/*;video/*;
+          X-GNOME-UsesNotifications=true
+          StartupWMClass=buchable
           EOL
           
-          cp AppDir/buchable.desktop AppDir/usr/share/applications/
+          cp AppDir/io.github.vito0912.abs_flutter.desktop AppDir/usr/share/applications/
           
           cat > AppDir/AppRun << EOL
           #!/bin/sh

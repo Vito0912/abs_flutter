@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Buchable
+Comment=Enjoy hearing self-hosted audiobooks.
+Exec=buchable
+Type=Application
+Icon=${SNAP}/meta/gui/app_icon.png
+Terminal=false
+Keywords=Audiobook,Player,Audiobookshelf,Listen;
+Categories=Multimedia;Audio;AudioVideo;Player;
+MimeType=audio/*;video/*;
+X-GNOME-UsesNotifications=true
+StartupWMClass=buchable
