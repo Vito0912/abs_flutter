@@ -27,6 +27,7 @@ apps:
       - wayland
       - network
       - audio-playback
+      - password-manager-service
     slots:
       - dbus-buchable
 parts:
@@ -34,3 +35,9 @@ parts:
     source: .
     plugin: flutter
     flutter-target: lib/main.dart
+    build-packages:
+      - libsecret-1-dev
+      - libjsoncpp-dev
+    stage-packages:
+      - libsecret-1-0
+      - libjsoncpp-dev
