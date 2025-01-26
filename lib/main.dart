@@ -21,7 +21,6 @@ import 'package:flutter_settings_screens/flutter_settings_screens.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:just_audio_media_kit/just_audio_media_kit.dart';
 import 'package:package_info_plus/package_info_plus.dart';
-import 'package:path/path.dart' as path;
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sembast/sembast_io.dart';
@@ -45,7 +44,7 @@ void main() async {
 
   if (!kIsWeb) {
     appDir = Platform.isLinux
-        ? '${path.join('/home', Platform.environment['USER']!, '.abs_flutter')}'
+        ? (await getApplicationSupportDirectory()).path
         : '${(await getApplicationDocumentsDirectory()).path.replaceAll('\\', '/')}/abs_flutter';
 
     await Directory(appDir).create(recursive: true);

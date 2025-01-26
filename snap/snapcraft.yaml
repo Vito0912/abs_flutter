@@ -2,14 +2,18 @@ name: buchable
 version: 1.7.7
 summary: Enjoy hearing self-hosted audiobooks.
 description: testtesttesttestttest
+website: https://github.com/Vito0912/abs_flutter
+contact: fito0912@duck.com
+source-code: https://github.com/Vito0912/abs_flutter
+icon: snap/gui/buchable.png
 
 confinement: strict
 base: core22
 grade: stable
+license: BSD-3-Clause
 
 architectures:
   - build-on: amd64
-    run-on: [amd64, i386, arm64]
 
 slots:
   dbus-buchable:
@@ -19,8 +23,8 @@ slots:
 
 apps:
   buchable:
-    command: buchable
-    extensions: [flutter-stable]
+    command: abs_flutter
+    extensions: [gnome]
     plugs:
       - desktop
       - desktop-legacy
@@ -40,4 +44,3 @@ parts:
       - libjsoncpp-dev
     stage-packages:
       - libsecret-1-0
-      - libjsoncpp-dev
