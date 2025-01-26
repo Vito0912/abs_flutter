@@ -19,7 +19,7 @@ slots:
   dbus-buchable:
     interface: dbus
     bus: session
-    name: io.github.vito0912.abs_flutter
+    name: de.vito.abs_flutter
 
 apps:
   buchable:
@@ -34,6 +34,7 @@ apps:
       - password-manager-service
     slots:
       - dbus-buchable
+      - mpris
 parts:
   buchable:
     source: .
