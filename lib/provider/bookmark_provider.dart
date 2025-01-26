@@ -36,6 +36,8 @@ class BookmarkProvider extends ChangeNotifier {
     List<Bookmark> newBookmarks = [];
 
     try {
+      api = ref.read(apiProviderNew);
+      if (api == null) return;
       final response = await api!.getMeApi().getUser();
       User user = response.data!;
 

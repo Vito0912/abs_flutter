@@ -10,7 +10,10 @@ _$ServerImpl _$$ServerImplFromJson(Map<String, dynamic> json) => _$ServerImpl(
       port: (json['port'] as num).toInt(),
       host: json['host'] as String,
       ssl: json['ssl'] as bool,
-      subdomain: json['subdomain'] as String?,
+      subdirectory: json['subdirectory'] as String?,
+      headers: (json['headers'] as Map<String, dynamic>?)?.map(
+        (k, e) => MapEntry(k, e as String),
+      ),
     );
 
 Map<String, dynamic> _$$ServerImplToJson(_$ServerImpl instance) =>
@@ -18,5 +21,6 @@ Map<String, dynamic> _$$ServerImplToJson(_$ServerImpl instance) =>
       'port': instance.port,
       'host': instance.host,
       'ssl': instance.ssl,
-      'subdomain': instance.subdomain,
+      'subdirectory': instance.subdirectory,
+      'headers': instance.headers,
     };

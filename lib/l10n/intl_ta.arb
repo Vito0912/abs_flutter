@@ -25,14 +25,10 @@
   "@authors": {},
   "back": "பின்",
   "@back": {},
-  "bookCover": "புத்தக அட்டை",
-  "@bookCover": {},
   "boostLoading": "ஏற்றுதல் அதிகரிக்கும்",
   "@boostLoading": {},
   "boostLoadingDescription": "இந்த நற்பொருத்தம் இயக்கப்பட்டால், பயன்பாடு நிகழ்நேர கேச்சிங்கை திறம்பட புறக்கணிக்கிறது. உள்ளடக்கத்தை உடனடியாக ஏற்றுவதற்கு தற்காலிக சேமிப்பு தரவைப் பயன்படுத்தும் போது சேவையகத்திலிருந்து அண்மைக் கால தரவைப் பெற இது எப்போதும் முயற்சிக்கும். புதுப்பிக்கப்பட்ட தரவு மீட்டெடுக்கப்பட்டதும், இது பழைய தற்காலிக சேமிப்பை மாற்றுகிறது, அடுத்த முறை நீங்கள் பயன்பாட்டை ஏற்றும்போது மிக அண்மைக் கால தரவு காட்டப்படும் என்பதை உறுதி செய்கிறது. இதன் விளைவாக, சேவையகத்தின் தற்போதைய தரவின் பின்னால் ஒரு பெறும் சுழற்சியில் இருந்து தரவை நீங்கள் எப்போதும் காண்பீர்கள்.",
   "@boostLoadingDescription": {},
-  "boostLoadingSubtitle": "இந்த அம்சத்தைப் புரிந்துகொள்ள விளக்கத்தைப் படியுங்கள்.",
-  "@boostLoadingSubtitle": {},
   "caching": "கேச்சிங்",
   "@caching": {},
   "cachingHeader": "கேச்சிங்",
@@ -43,8 +39,6 @@
   "@carPlayer": {},
   "changeLibrary": "நூலகத்தை மாற்றவும்",
   "@changeLibrary": {},
-  "chapters": "பாடங்கள்",
-  "@chapters": {},
   "chaptersNum": "அத்தியாயங்கள் ({num})",
   "@chaptersNum": {
     "placeholders": {
@@ -59,8 +53,6 @@
   "@close": {},
   "collapseSeries": "சரிவு தொடர்",
   "@collapseSeries": {},
-  "collapseSeriesDescription": "இயக்கப்பட்டால், ஒரு தொடரில் உள்ள உருப்படிகள் நூலகக் காட்சியில் ஒன்றாக தொகுக்கப்படும், இது முழுத் தொடரையும் குறிக்க ஒரே ஒரு உருப்படியைக் காண்பிக்கும்.",
-  "@collapseSeriesDescription": {},
   "consecutiveDays": "தொடர்ச்சியான நாட்கள்",
   "@consecutiveDays": {},
   "continueListening": "தொடர்ந்து கேட்பது",
@@ -93,25 +85,6 @@
   },
   "darkMode": "இருண்ட முறை",
   "@darkMode": {},
-  "dateFormatDay": "{எண்ணிக்கை, பன்மை, ஒன்று {{count} நாள்} மற்ற {{count} நாட்கள்}}",
-  "@dateFormatDay": {
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
-  "dateFormatDayHour": "{நாட்கள், பன்மை, ஒன்று {{days} நாள்} மற்ற {{days} நாட்கள்}} {மணிநேரம், பன்மை, ஒன்று {{hours} மணிநேரம்} பிற {{hours} மணிநேரம்}}",
-  "@dateFormatDayHour": {
-    "placeholders": {
-      "days": {
-        "type": "int"
-      },
-      "hours": {
-        "type": "int"
-      }
-    }
-  },
   "dateFormatDayHourMinute": "{நாட்கள், பன்மை, ஒன்று {{days} நாள்} மற்ற {{days} நாட்கள்}} {மணிநேரம், பன்மை, ஒன்று {{hours} மணிநேரம்} மற்ற {{hours} மணிநேரம்}} {நிமிடங்கள், பன்மை, ஒன்று {{minutes} நிமிடம்} பிற {{minutes} நிமிடங்கள்}}",
   "@dateFormatDayHourMinute": {
     "placeholders": {
@@ -174,33 +147,6 @@
       }
     }
   },
-  "dateFormatDayHourShort": "{days} டி {hours} h",
-  "@dateFormatDayHourShort": {
-    "placeholders": {
-      "days": {
-        "type": "int"
-      },
-      "hours": {
-        "type": "int"
-      }
-    }
-  },
-  "dateFormatDayShort": "{count} டி",
-  "@dateFormatDayShort": {
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
-  "dateFormatHour": "{எண்ணிக்கை, பன்மை, ஒன்று {{count} மணிநேரம்} மற்ற {{count} மணிநேரம்}}",
-  "@dateFormatHour": {
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
   "dateFormatHourMinute": "{மணிநேரம், பன்மை, ஒன்று {{hours} மணிநேரம்} மற்ற {{hours} மணிநேரம்}} {நிமிடங்கள், பன்மை, ஒன்று {{minutes} நிமிடம்} பிற {{minutes} நிமிடங்கள்}}",
   "@dateFormatHourMinute": {
     "placeholders": {
@@ -247,14 +193,6 @@
         "type": "int"
       },
       "minutes": {
-        "type": "int"
-      }
-    }
-  },
-  "dateFormatHourShort": "{count} h",
-  "@dateFormatHourShort": {
-    "placeholders": {
-      "count": {
         "type": "int"
       }
     }
@@ -379,8 +317,6 @@
   "@enableNotificationsDownload": {},
   "enabled": "இயக்கப்பட்டது",
   "@enabled": {},
-  "enterValidUsernameOrPassword": "உங்கள் பயனர்பெயர் மற்றும் கடவுச்சொல்லை உள்ளிடுவதற்கு முன் செல்லுபடியாகும் ஐபி/டொமைன் மற்றும் போர்ட்டை உள்ளிடவும்.",
-  "@enterValidUsernameOrPassword": {},
   "episodeId": "அத்தியாயம் ஐடி",
   "@episodeId": {},
   "error": "பிழை",
@@ -417,8 +353,6 @@
   "@genres": {},
   "hide": "மறை",
   "@hide": {},
-  "ifTheQuickAccountSwitcherShouldBeShown": "விரைவான கணக்கு சுவிட்சர் காட்டப்பட வேண்டும் என்றால்",
-  "@ifTheQuickAccountSwitcherShouldBeShown": {},
   "inProgress": "முன்னேற்றத்தில் உள்ளது",
   "@inProgress": {},
   "information": "தகவல்",
@@ -439,14 +373,6 @@
   "@itemNumChapters": {
     "placeholders": {
       "numChapters": {
-        "type": "String"
-      }
-    }
-  },
-  "itemProgress": "முன்னேற்றம்: {progress}%",
-  "@itemProgress": {
-    "placeholders": {
-      "progress": {
         "type": "String"
       }
     }
@@ -483,8 +409,6 @@
   "@libraryName": {},
   "libraryStats": "நூலக புள்ளிவிவரங்கள்",
   "@libraryStats": {},
-  "linuxPermissionError": "இசைவு பிழை காரணமாக பதிவிறக்கம் தோல்வியடைந்தது. கோப்புறை அனுமதிகளை சரிபார்க்கவும்.",
-  "@linuxPermissionError": {},
   "listenAgain": "மீண்டும் கேளுங்கள்",
   "@listenAgain": {},
   "listeningInTheLastYear": "கடந்த ஆண்டில் கேட்பது",
@@ -501,10 +425,6 @@
   "@logs": {},
   "longestItems": "நீளமான உருப்படிகள்",
   "@longestItems": {},
-  "markItemsFinished": "மார்க் உருப்படிகள் முடிந்தது",
-  "@markItemsFinished": {},
-  "markItemsFinishedAfterDescription": "ஒரு பொருளின் முடிவிற்கு சில நொடிகளில் நேரத்தைக் குறிப்பிடவும். இதை 0 ஆக அமைப்பது, வீரர் இறுதிவரை அடையும் போது மட்டுமே முடிக்கப்பட்ட உருப்படியைக் குறிக்கிறது. நேர்மறையான மதிப்பு அமைக்கப்பட்டால், வீரர் அந்த நேரத்தை முடிவுக்கு வரும்போது உருப்படி முடிந்ததாக குறிக்கப்பட்டுள்ளது.",
-  "@markItemsFinishedAfterDescription": {},
   "minimize": "குறைக்கவும்",
   "@minimize": {},
   "minimizeToTray": "தட்டில் குறைக்கவும்",
@@ -515,18 +435,12 @@
   "@miscellaneous": {},
   "moreOptions": "மேலும் விருப்பங்கள்",
   "@moreOptions": {},
-  "multipleServerAdressess": "நீங்கள் பல சேவையக முகவரிகளைப் பயன்படுத்த விரும்பினால், அவற்றை பின்னர் சேர்க்கலாம்",
-  "@multipleServerAdressess": {},
-  "mustEnterValidAddress": "நீங்கள் செல்லுபடியாகும் சேவையக முகவரியை உள்ளிட வேண்டும்",
-  "@mustEnterValidAddress": {},
   "name": "பெயர்",
   "@name": {},
   "narrators": "விவரிப்பாளர்கள்",
   "@narrators": {},
   "newestEpisodes": "புதிய அத்தியாயங்கள்",
   "@newestEpisodes": {},
-  "next": "அடுத்தது",
-  "@next": {},
   "nextChapter": "அடுத்த அத்தியாயம்",
   "@nextChapter": {},
   "noConnection": "இணைப்பு இல்லை",
@@ -535,14 +449,10 @@
   "@noDownloads": {},
   "noInternetDescription": "சேவையகத்துடன் இணைப்பதில் சிக்கல் உள்ளது.",
   "@noInternetDescription": {},
-  "noItemsFound": "உருப்படிகள் எதுவும் கிடைக்கவில்லை",
-  "@noItemsFound": {},
   "noPath": "பாதை இல்லை",
   "@noPath": {},
   "noSeriesSelected": "எந்தத் தொடரும் தேர்ந்தெடுக்கப்படவில்லை",
   "@noSeriesSelected": {},
-  "noUserData": "உள்நுழைவு தோல்வியுற்றது: பயனர் தரவு எதுவும் பெறப்படவில்லை",
-  "@noUserData": {},
   "notFinished": "முடிக்கப்படவில்லை",
   "@notFinished": {},
   "notStarted": "தொடங்கப்படவில்லை",
@@ -567,8 +477,6 @@
   "@offlineSavedProgress": {},
   "ok": "சரி",
   "@ok": {},
-  "open": "திற",
-  "@open": {},
   "openDownloads": "பதிவிறக்கங்களைத் திறந்த",
   "@openDownloads": {},
   "openProjectLink": "ஆடியோபூக்செல்ஃப்/சேவையகம்",
@@ -597,8 +505,6 @@
   "@pleaseCheckInternet": {},
   "port": "துறைமுகம்",
   "@port": {},
-  "previous": "முந்தைய",
-  "@previous": {},
   "previousChapter": "முந்தைய அத்தியாயம்",
   "@previousChapter": {},
   "progress": "முன்னேற்றம்",
@@ -647,8 +553,6 @@
   "@sequence": {},
   "series": "தொடர்",
   "@series": {},
-  "serverAdressContinue": "தொடர உங்கள் சேவையக முகவரியை உள்ளிடவும்",
-  "@serverAdressContinue": {},
   "serverSelection": "சேவையக தேர்வு",
   "@serverSelection": {},
   "settings": "அமைப்புகள்",
@@ -659,10 +563,6 @@
   "@shareOpen": {},
   "show": "காட்டு",
   "@show": {},
-  "showAccountSwitcher": "கணக்கு ச்விட்சர் காட்டு",
-  "@showAccountSwitcher": {},
-  "showAccountSwitcherDescription": "விரைவான கணக்கு மாறுவதற்கு பயன்பாட்டு பட்டியில் படவுரு பொத்தானைச் சேர்க்க இந்த விருப்பத்தை இயக்கவும். இது பயன்பாட்டு பட்டியின் அளவைக் குறைக்கும்.",
-  "@showAccountSwitcherDescription": {},
   "showMediaType": "ஊடக வகையைக் காட்டு",
   "@showMediaType": {},
   "showMediaTypeDescription": "ஒவ்வொரு பொருளின் அடிப்பகுதியில் மீடியா வகை பேட்ச்களைக் காட்டுகிறது.",
@@ -741,16 +641,10 @@
   "@tryAgain": {},
   "unknown": "தெரியவில்லை",
   "@unknown": {},
-  "unknownTitle": "தெரியாத தலைப்பு",
-  "@unknownTitle": {},
-  "updatedAt": "இல் புதுப்பிக்கப்பட்டது",
-  "@updatedAt": {},
   "user": "பயனர்",
   "@user": {},
   "username": "பயனர்பெயர்",
   "@username": {},
-  "usernameOrPasswordNotEmpty": "பயனர்பெயர் மற்றும் கடவுச்சொல் காலியாக இருக்க முடியாது",
-  "@usernameOrPasswordNotEmpty": {},
   "viewBookmarks": "புக்மார்க்குகளைக் காண்க",
   "@viewBookmarks": {},
   "viewChapters": "அத்தியாயங்களைக் காண்க",
@@ -760,7 +654,5 @@
   "waitTillRedirect": "/Init க்கு திருப்பி விடுங்கள். நீங்கள் தற்போது உள்நுழையவில்லை.",
   "@waitTillRedirect": {},
   "waitingForDownload": "பதிவிறக்கம் தொடங்க காத்திருக்கிறது",
-  "@waitingForDownload": {},
-  "year": "ஆண்டு",
-  "@year": {}
+  "@waitingForDownload": {}
 }

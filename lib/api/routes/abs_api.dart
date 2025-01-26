@@ -106,12 +106,7 @@ class ABSApi {
       );
     } catch (error, stackTrace) {
       log("$error\n$stackTrace", name: route);
-      throw DioException(
-        requestOptions: RequestOptions(path: route),
-        type: DioExceptionType.unknown,
-        error: error,
-        stackTrace: stackTrace,
-      );
+      rethrow;
     }
   }
 
@@ -193,12 +188,7 @@ class ABSApi {
           log(error.response!.data.toString(), name: replacedRoute);
         }
       }
-      throw DioException(
-        requestOptions: RequestOptions(path: replacedRoute),
-        type: DioExceptionType.unknown,
-        error: error,
-        stackTrace: stackTrace,
-      );
+      rethrow;
     }
   }
 

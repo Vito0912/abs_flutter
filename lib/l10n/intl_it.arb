@@ -22,14 +22,10 @@
   "@authors": {},
   "back": "Indietro",
   "@back": {},
-  "bookCover": "Copertina",
-  "@bookCover": {},
   "boostLoading": "Caricamento potenziato",
   "@boostLoading": {},
   "boostLoadingDescription": "Quando questa funzionalità è abilitata, l'app bypassa efficacemente la memorizzazione nella cache in tempo reale. Tenterà sempre di recuperare i dati più recenti dal server mentre utilizza i dati memorizzati nella cache per caricare immediatamente i contenuti. Una volta recuperati i dati aggiornati, sostituisce la vecchia cache, assicurando che i dati più recenti vengano visualizzati la prossima volta che carichi l'app. Di conseguenza, vedrai sempre i dati di un ciclo di recupero dietro i dati correnti del server.",
   "@boostLoadingDescription": {},
-  "boostLoadingSubtitle": "Si prega di leggere la descrizione per comprendere questa funzionalità.",
-  "@boostLoadingSubtitle": {},
   "caching": "Caching",
   "@caching": {},
   "cachingHeader": "Caching",
@@ -40,8 +36,6 @@
   "@carPlayer": {},
   "changeLibrary": "Cambia Libreria",
   "@changeLibrary": {},
-  "chapters": "Capitoli",
-  "@chapters": {},
   "chaptersNum": "Capitoli ({num})",
   "@chaptersNum": {
     "placeholders": {
@@ -56,8 +50,6 @@
   "@close": {},
   "collapseSeries": "Raggruppa Serie",
   "@collapseSeries": {},
-  "collapseSeriesDescription": "Se abilitata, gli elementi di una serie verranno raggruppati nella vista libreria, visualizzando un solo elemento per rappresentare l'intera serie.",
-  "@collapseSeriesDescription": {},
   "consecutiveDays": "Giorni Consecutivi",
   "@consecutiveDays": {},
   "continueListening": "Continua L'ascolto",
@@ -90,25 +82,6 @@
   },
   "darkMode": "Modalità scura",
   "@darkMode": {},
-  "dateFormatDay": "{count, plural, one {{count}  day} other {{count} days}}",
-  "@dateFormatDay": {
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
-  "dateFormatDayHour": "{days, plural, one {{days} day} other {{days} days}} {hours, plural, one {{hours} hour} other {{hours} hours}}",
-  "@dateFormatDayHour": {
-    "placeholders": {
-      "days": {
-        "type": "int"
-      },
-      "hours": {
-        "type": "int"
-      }
-    }
-  },
   "dateFormatDayHourMinute": "{days, plural, one {{days} day} other {{days} days}} {hours, plural, one {{hours} hour} other {{hours} hours}} {minutes, plural, one {{minutes} minute} other {{minutes} minutes}}",
   "@dateFormatDayHourMinute": {
     "placeholders": {
@@ -171,33 +144,6 @@
       }
     }
   },
-  "dateFormatDayHourShort": "{days}d {hours}h",
-  "@dateFormatDayHourShort": {
-    "placeholders": {
-      "days": {
-        "type": "int"
-      },
-      "hours": {
-        "type": "int"
-      }
-    }
-  },
-  "dateFormatDayShort": "{count}d",
-  "@dateFormatDayShort": {
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
-  "dateFormatHour": "{count, plural, one {{count} hour} other {{count} hours}}",
-  "@dateFormatHour": {
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
   "dateFormatHourMinute": "{hours, plural, one {{hours} hour} other {{hours} hours}} {minutes, plural, one {{minutes} minute} other {{minutes} minutes}}",
   "@dateFormatHourMinute": {
     "placeholders": {
@@ -244,14 +190,6 @@
         "type": "int"
       },
       "minutes": {
-        "type": "int"
-      }
-    }
-  },
-  "dateFormatHourShort": "{count}h",
-  "@dateFormatHourShort": {
-    "placeholders": {
-      "count": {
         "type": "int"
       }
     }
@@ -370,8 +308,6 @@
   "@enableNotificationsDownload": {},
   "enabled": "Abilitato",
   "@enabled": {},
-  "enterValidUsernameOrPassword": "Inserisci un IP/dominio e una porta validi prima di inserire nome utente e password.",
-  "@enterValidUsernameOrPassword": {},
   "episodeId": "Episodio Id",
   "@episodeId": {},
   "error": "Errore",
@@ -408,8 +344,6 @@
   "@genres": {},
   "hide": "Nascondi",
   "@hide": {},
-  "ifTheQuickAccountSwitcherShouldBeShown": "Se deve essere visualizzato il commutatore rapido dell'account",
-  "@ifTheQuickAccountSwitcherShouldBeShown": {},
   "inProgress": "in corso",
   "@inProgress": {},
   "information": "Informazioni",
@@ -430,14 +364,6 @@
   "@itemNumChapters": {
     "placeholders": {
       "numChapters": {
-        "type": "String"
-      }
-    }
-  },
-  "itemProgress": "Progresso: {progress}%",
-  "@itemProgress": {
-    "placeholders": {
-      "progress": {
         "type": "String"
       }
     }
@@ -490,10 +416,6 @@
   "@logs": {},
   "longestItems": "Oggetti lungi",
   "@longestItems": {},
-  "markItemsFinished": "Segna come Finito",
-  "@markItemsFinished": {},
-  "markItemsFinishedAfterDescription": "Specifica il tempo in secondi prima della fine di un elemento in cui deve essere contrassegnato come terminato. Impostando questo valore su 0, l'elemento viene contrassegnato come terminato solo quando il giocatore raggiunge la fine. Se viene impostato un valore positivo, l'elemento viene contrassegnato come terminato quando il giocatore raggiunge quel momento prima della fine.",
-  "@markItemsFinishedAfterDescription": {},
   "minimize": "Riduci",
   "@minimize": {},
   "minimizeToTray": "Riduci nella barra",
@@ -504,16 +426,10 @@
   "@miscellaneous": {},
   "moreOptions": "Altre Opzioni",
   "@moreOptions": {},
-  "multipleServerAdressess": "Se vuoi utilizzare più indirizzi server, puoi aggiungerli in seguito",
-  "@multipleServerAdressess": {},
-  "mustEnterValidAddress": "Devi inserire un indirizzo server valido",
-  "@mustEnterValidAddress": {},
   "narrators": "Lettori",
   "@narrators": {},
   "newestEpisodes": "Nuovi Episodi",
   "@newestEpisodes": {},
-  "next": "Prossimo",
-  "@next": {},
   "nextChapter": "Prossimo Capitolo",
   "@nextChapter": {},
   "noConnection": "Nessuna connessione",
@@ -522,14 +438,10 @@
   "@noDownloads": {},
   "noInternetDescription": "Stiamo riscontrando problemi di connessione al server.",
   "@noInternetDescription": {},
-  "noItemsFound": "Nessun Oggetto trovato",
-  "@noItemsFound": {},
   "noPath": "Nessun Percorso",
   "@noPath": {},
   "noSeriesSelected": "Nessuna serie selezionata",
   "@noSeriesSelected": {},
-  "noUserData": "Accesso non riuscito: nessun dato utente ricevuto",
-  "@noUserData": {},
   "notFinished": "Non Finito",
   "@notFinished": {},
   "notStarted": "Non Iniziato",
@@ -552,8 +464,6 @@
   "@offlineSavedProgress": {},
   "ok": "OK",
   "@ok": {},
-  "open": "Apri",
-  "@open": {},
   "openDownloads": "Apri Download",
   "@openDownloads": {},
   "openProjectLink": "Audiobookshelf/Server",
@@ -582,8 +492,6 @@
   "@pleaseCheckInternet": {},
   "port": "Porta",
   "@port": {},
-  "previous": "Precedente",
-  "@previous": {},
   "previousChapter": "Capitolo Precedente",
   "@previousChapter": {},
   "progress": "Progresso",
@@ -630,8 +538,6 @@
   "@sequence": {},
   "series": "Serie",
   "@series": {},
-  "serverAdressContinue": "Inserisci l'indirizzo del tuo server per continuare",
-  "@serverAdressContinue": {},
   "serverSelection": "Selezione server",
   "@serverSelection": {},
   "settings": "Impostazioni",
@@ -642,10 +548,6 @@
   "@shareOpen": {},
   "show": "Mostra",
   "@show": {},
-  "showAccountSwitcher": "Mostra il selettore account",
-  "@showAccountSwitcher": {},
-  "showAccountSwitcherDescription": "Abilita questa opzione per aggiungere un pulsante icona alla barra delle applicazioni per un rapido cambio di account. Ciò ridurrà le dimensioni della barra delle applicazioni.",
-  "@showAccountSwitcherDescription": {},
   "showMediaType": "Mostra Media Type",
   "@showMediaType": {},
   "showMediaTypeDescription": "Visualizza i badge del tipo di media nella parte inferiore di ogni elemento.",
@@ -724,16 +626,10 @@
   "@tryAgain": {},
   "unknown": "Sconosciuto",
   "@unknown": {},
-  "unknownTitle": "TItolo Sconosciuto",
-  "@unknownTitle": {},
-  "updatedAt": "Aggiornato il",
-  "@updatedAt": {},
   "user": "Utente",
   "@user": {},
   "username": "Username",
   "@username": {},
-  "usernameOrPasswordNotEmpty": "Il nome utente e la password non possono essere vuoti",
-  "@usernameOrPasswordNotEmpty": {},
   "viewBookmarks": "Vedi Segnalibri",
   "@viewBookmarks": {},
   "viewChapters": "Vedi Capitoli",
@@ -743,7 +639,5 @@
   "waitTillRedirect": "Attendi il reindirizzamento a /init. Al momento non hai effettuato l'accesso.",
   "@waitTillRedirect": {},
   "waitingForDownload": "In attesa dell'avvio del download",
-  "@waitingForDownload": {},
-  "year": "Anno",
-  "@year": {}
+  "@waitingForDownload": {}
 }

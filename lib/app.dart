@@ -61,6 +61,7 @@ class _AbsAppState extends ConsumerState<AbsApp> with WidgetsBindingObserver {
     final settings = ref.watch(specificKeysSettingsProvider(
         [Constants.DARK_MODE, Constants.LANGUAGE, Constants.AMOLED_MODE]));
     final userIndex = ref.watch(selectedUserProvider);
+    print('User Index: $userIndex');
     //TODO: Two calls. Unify me api calls
     if (userIndex >= 0) {
       final progressProv = ref.read(progressProvider);
