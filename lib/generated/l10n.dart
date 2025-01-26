@@ -115,6 +115,16 @@ class S {
     return Intl.message('AMOLED Mode', name: 'amoledMode', desc: '', args: []);
   }
 
+  /// `An unknown error occurred`
+  String get anUnknownErrorOccurred {
+    return Intl.message(
+      'An unknown error occurred',
+      name: 'anUnknownErrorOccurred',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Ascending`
   String get ascending {
     return Intl.message('Ascending', name: 'ascending', desc: '', args: []);
@@ -215,6 +225,16 @@ class S {
     return Intl.message(
       'Collapse Series',
       name: 'collapseSeries',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Connection error`
+  String get connectionError {
+    return Intl.message(
+      'Connection error',
+      name: 'connectionError',
       desc: '',
       args: [],
     );
@@ -322,6 +342,16 @@ class S {
       name: 'currentPositionNum',
       desc: '',
       args: [position],
+    );
+  }
+
+  /// `Custom Headers`
+  String get customHeaders {
+    return Intl.message(
+      'Custom Headers',
+      name: 'customHeaders',
+      desc: '',
+      args: [],
     );
   }
 
@@ -694,6 +724,16 @@ class S {
     );
   }
 
+  /// `Enable Subdirectory`
+  String get enableSubdirectory {
+    return Intl.message(
+      'Enable Subdirectory',
+      name: 'enableSubdirectory',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Enabled`
   String get enabled {
     return Intl.message('Enabled', name: 'enabled', desc: '', args: []);
@@ -827,6 +867,16 @@ class S {
   /// `Information`
   String get information {
     return Intl.message('Information', name: 'information', desc: '', args: []);
+  }
+
+  /// `Invalid credentials`
+  String get invalidCredentials {
+    return Intl.message(
+      'Invalid credentials',
+      name: 'invalidCredentials',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Item Id`
@@ -1007,6 +1057,11 @@ class S {
   /// `Logging`
   String get logging {
     return Intl.message('Logging', name: 'logging', desc: '', args: []);
+  }
+
+  /// `LOGIN`
+  String get login {
+    return Intl.message('LOGIN', name: 'login', desc: '', args: []);
   }
 
   /// `Logs`
@@ -1412,6 +1467,16 @@ class S {
     );
   }
 
+  /// `Please fill all required fields`
+  String get requiredFields {
+    return Intl.message(
+      'Please fill all required fields',
+      name: 'requiredFields',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Restart Required`
   String get restartRequired {
     return Intl.message(
@@ -1490,6 +1555,26 @@ class S {
   /// `Series`
   String get series {
     return Intl.message('Series', name: 'series', desc: '', args: []);
+  }
+
+  /// `Server Address`
+  String get serverAddress {
+    return Intl.message(
+      'Server Address',
+      name: 'serverAddress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Server not found`
+  String get serverNotFound {
+    return Intl.message(
+      'Server not found',
+      name: 'serverNotFound',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Server Selection`
@@ -1612,6 +1697,16 @@ class S {
     return Intl.message(
       'Enable this option to prevent the player from starting until the most recent playback position has been synced. This ensures that playback resumes from the correct position. If disabled, the playback position may change shortly after starting, potentially leading to data loss. Turning this on helps conserve data usage.',
       name: 'stopPlayerWhileSyncingDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Subdirectory`
+  String get subdirectory {
+    return Intl.message(
+      'Subdirectory',
+      name: 'subdirectory',
       desc: '',
       args: [],
     );
@@ -1826,101 +1921,6 @@ class S {
       args: [],
     );
   }
-
-  /// `Invalid credentials`
-  String get invalidCredentials {
-    return Intl.message(
-      'Invalid credentials',
-      name: 'invalidCredentials',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Server not found`
-  String get serverNotFound {
-    return Intl.message(
-      'Server not found',
-      name: 'serverNotFound',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Connection error`
-  String get connectionError {
-    return Intl.message(
-      'Connection error',
-      name: 'connectionError',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `An unknown error occurred`
-  String get anUnknownErrorOccurred {
-    return Intl.message(
-      'An unknown error occurred',
-      name: 'anUnknownErrorOccurred',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Please fill all required fields`
-  String get requiredFields {
-    return Intl.message(
-      'Please fill all required fields',
-      name: 'requiredFields',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Server Address`
-  String get serverAddress {
-    return Intl.message(
-      'Server Address',
-      name: 'serverAddress',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Enable Subdirectory`
-  String get enableSubdirectory {
-    return Intl.message(
-      'Enable Subdirectory',
-      name: 'enableSubdirectory',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Subdirectory`
-  String get subdirectory {
-    return Intl.message(
-      'Subdirectory',
-      name: 'subdirectory',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `LOGIN`
-  String get login {
-    return Intl.message('LOGIN', name: 'login', desc: '', args: []);
-  }
-
-  /// `Custom Headers`
-  String get customHeaders {
-    return Intl.message(
-      'Custom Headers',
-      name: 'customHeaders',
-      desc: '',
-      args: [],
-    );
-  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
@@ -1934,6 +1934,7 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
       Locale.fromSubtags(languageCode: 'it'),
       Locale.fromSubtags(languageCode: 'nb', countryCode: 'NO'),
       Locale.fromSubtags(languageCode: 'pt', countryCode: 'BR'),
+      Locale.fromSubtags(languageCode: 'ru'),
       Locale.fromSubtags(languageCode: 'sl'),
       Locale.fromSubtags(languageCode: 'ta'),
       Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hans'),

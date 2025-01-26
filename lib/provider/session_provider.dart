@@ -241,7 +241,7 @@ class PlaybackSessionNotifier
     }
 
     final streamUrl =
-        '${currentUser?.server!.url}${playback.audioTracks![0].contentUrl}?token=${currentUser?.token!}';
+        '${currentUser?.server!.url}${playback.audioTracks![0].processedContentUrl}?token=${currentUser?.token!}';
 
     String? path;
     if (download != null) {
@@ -269,7 +269,7 @@ class PlaybackSessionNotifier
           'streaming': download == null
         });
 
-    log('Adding to queue: ${mediaItem.title} from ${currentUser.server!.url}${playback.audioTracks![0].contentUrl}?token=${currentUser.token!}');
+    log('Adding to queue: ${mediaItem.title} from ${currentUser.server!.url}${playback.audioTracks![0].processedContentUrl}?token=${currentUser.token!}');
 
     await player.playMediaItem(mediaItem);
 
@@ -290,7 +290,7 @@ class PlaybackSessionNotifier
     }
 
     final streamUrl =
-        '${currentUser?.server!.url}${playback.audioTracks![0].contentUrl}?token=${currentUser?.token!}';
+        '${currentUser?.server!.url}${playback.audioTracks![0].processedContentUrl}?token=${currentUser?.token!}';
 
     String? path;
     if (download != null) {
@@ -302,7 +302,7 @@ class PlaybackSessionNotifier
     bool multipleTracks = playback.audioTracks!.length > 1;
     List<String> audioSources = playback.audioTracks!
         .map((e) =>
-            '${currentUser?.server!.url}${e.contentUrl}?token=${currentUser?.token!}')
+            '${currentUser?.server!.url}${e.processedContentUrl}?token=${currentUser?.token!}')
         .toList();
 
     MediaItem mediaItem = MediaItem(
@@ -335,7 +335,7 @@ class PlaybackSessionNotifier
           'audioTracks': jsonEncode(playback.audioTracks),
         });
 
-    log('Adding to queue: ${mediaItem.title} from ${currentUser.server!.url}${playback.audioTracks![0].contentUrl}?token=${currentUser.token!}');
+    log('Adding to queue: ${mediaItem.title} from ${currentUser.server!.url}${playback.audioTracks![0].processedContentUrl}?token=${currentUser.token!}');
 
     await player.playMediaItem(mediaItem);
 
