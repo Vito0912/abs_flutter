@@ -128,8 +128,10 @@ class _SingleSeriesViewState extends ConsumerState<SingleSeriesView> {
                 children: [
                   Container(
                       constraints: const BoxConstraints(maxWidth: 300),
-                      child:
-                          ItemSeries(series: seriesPreview, clickable: false)),
+                      child: MultiItem(
+                          '/series-view/${seriesPreview.name}/${seriesPreview.id}',
+                          series: seriesPreview,
+                          clickable: false)),
                   const Divider(),
                   const NotchContent(
                     disableFilter: true,

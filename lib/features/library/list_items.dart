@@ -1,3 +1,6 @@
+import 'package:abs_flutter/features/library/list/collection_view.dart';
+import 'package:abs_flutter/features/library/list/playlist_view.dart';
+import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/provider/list_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -15,8 +18,8 @@ class TabBarWidget extends ConsumerWidget {
             indicatorSize: TabBarIndicatorSize.tab,
             padding: EdgeInsets.zero,
             tabs: [
-              Tab(text: "Collections"),
-              Tab(text: "Playlists"),
+              Tab(text: S.of(context).collections),
+              Tab(text: S.of(context).playlists),
             ],
           ),
         ),
@@ -27,23 +30,12 @@ class TabBarWidget extends ConsumerWidget {
                 await playlistCollectionNotifier.refresh();
               },
               child: playlistCollectionNotifier.isLoading
-                  ? Center(child: CircularProgressIndicator())
+                  ? const Center(child: CircularProgressIndicator())
                   : playlistCollectionNotifier.error != null
                       ? Center(
                           child: Text(
                               'Error: ${playlistCollectionNotifier.error}'))
-                      : ListView.builder(
-                          itemCount: playlistCollectionNotifier
-                                  .collections?.items.length ??
-                              0,
-                          itemBuilder: (context, index) {
-                            print(playlistCollectionNotifier.collections);
-                            final collection = playlistCollectionNotifier
-                                    .collections?.items[index].name ??
-                                "Unnamed";
-                            return ListTile(title: Text(collection));
-                          },
-                        ),
+                      : const CollectionView(),
             ),
             RefreshIndicator(
               onRefresh: () async {
@@ -55,17 +47,7 @@ class TabBarWidget extends ConsumerWidget {
                       ? Center(
                           child: Text(
                               'Error: ${playlistCollectionNotifier.error}'))
-                      : ListView.builder(
-                          itemCount: playlistCollectionNotifier
-                                  .playlists?.items.length ??
-                              0,
-                          itemBuilder: (context, index) {
-                            final playlist = playlistCollectionNotifier
-                                    .playlists?.items[index].name ??
-                                "Unnamed";
-                            return ListTile(title: Text(playlist));
-                          },
-                        ),
+                      : const PlaylistView(),
             ),
           ],
         ),

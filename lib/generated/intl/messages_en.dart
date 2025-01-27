@@ -121,6 +121,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "clearCache": MessageLookupByLibrary.simpleMessage("Clear Cache"),
     "close": MessageLookupByLibrary.simpleMessage("Close"),
     "collapseSeries": MessageLookupByLibrary.simpleMessage("Collapse Series"),
+    "collections": MessageLookupByLibrary.simpleMessage("Collections"),
     "connectionError": MessageLookupByLibrary.simpleMessage("Connection error"),
     "consecutiveDays": MessageLookupByLibrary.simpleMessage("Consecutive days"),
     "continueListening": MessageLookupByLibrary.simpleMessage(
@@ -326,6 +327,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "playbackSpeed": MessageLookupByLibrary.simpleMessage("Speed"),
     "player": MessageLookupByLibrary.simpleMessage("Player"),
     "playerSettings": MessageLookupByLibrary.simpleMessage("Player Settings"),
+    "playlists": MessageLookupByLibrary.simpleMessage("Playlists"),
     "pleaseCheckInternet": MessageLookupByLibrary.simpleMessage(
       "Please check your internet connection and try again.",
     ),

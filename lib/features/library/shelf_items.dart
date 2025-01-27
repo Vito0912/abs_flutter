@@ -204,7 +204,8 @@ class ShelfItems extends ConsumerWidget {
       );
       return Container(
           constraints: const BoxConstraints(maxWidth: 350),
-          child: ItemSeries(series: series));
+          child: MultiItem('/series-view/${series.name}/${series.id}',
+              series: series));
     }).toList();
   }
 

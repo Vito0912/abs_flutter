@@ -158,7 +158,9 @@ class _SeriesViewState extends ConsumerState<SeriesView> {
                     name: currentSeries.name,
                   );
 
-                  return ItemSeries(series: seriesItem);
+                  return MultiItem(
+                      '/series-view/${seriesItem.name}/${seriesItem.id}',
+                      series: seriesItem);
                 },
               );
             },

@@ -14,10 +14,12 @@ import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-class ItemSeries extends ConsumerWidget {
-  const ItemSeries({super.key, required this.series, this.clickable = true});
+class MultiItem extends ConsumerWidget {
+  const MultiItem(this.route,
+      {super.key, required this.series, this.clickable = true});
   final LibrarySeriesPreview series;
   final bool clickable;
+  final String route;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -28,7 +30,7 @@ class ItemSeries extends ConsumerWidget {
       return InkWell(
         onTap: clickable
             ? () {
-                context.push('/series-view/${series.name}/${series.id}');
+                context.push(route);
               }
             : null,
         child: Padding(

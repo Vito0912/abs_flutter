@@ -1921,6 +1921,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Collections`
+  String get collections {
+    return Intl.message('Collections', name: 'collections', desc: '', args: []);
+  }
+
+  /// `Playlists`
+  String get playlists {
+    return Intl.message('Playlists', name: 'playlists', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
