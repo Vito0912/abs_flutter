@@ -1,10 +1,10 @@
-name: Flutter Build 2 Test
+name: Linux Test
 
 on:
   workflow_dispatch:
 
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
 
     steps:
