@@ -166,8 +166,7 @@ class DownloadProvider extends ChangeNotifier {
       String path = await update.task.filePath();
 
       if (!kIsWeb && Platform.isLinux) {
-        String homeDir = '/home/${Platform.environment['USER']}';
-        path = path.replaceFirst('/.abs_flutter', '$homeDir/.abs_flutter');
+        path = (await getApplicationSupportDirectory()).path;
       }
 
       Directory(path).parent.deleteSync(recursive: true);
@@ -400,8 +399,7 @@ class DownloadProvider extends ChangeNotifier {
     Directory? homeDir;
 
     if (!kIsWeb && Platform.isLinux) {
-      final homeDir = Platform.environment['USER'];
-      savePath = path.join('/home', homeDir, '.abs_flutter');
+      savePath = (await getApplicationSupportDirectory()).path;
 
       if (episodeId != null) {
         savePath = path.join(savePath, itemId, episodeId);
