@@ -8,6 +8,7 @@ import 'package:abs_flutter/provider/user_provider.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:saf_util/saf_util.dart';
 import 'package:saf_util/saf_util_platform_interface.dart';
 import 'package:path/path.dart' as path;
@@ -56,10 +57,9 @@ class DownloadListNotifier extends StateNotifier<List<DownloadInfo>> {
     _saveDownloads();
   }
 
-  String _getDownloadPath(DownloadInfo download) {
+  Future<String> _getDownloadPath(DownloadInfo download) async {
     if ( !kIsWeb && Platform.isLinux) {
-      final homeDir = Directory(path.join('/home', Platform.environment['USER']!));
-      return path.join(homeDir.path, '.abs_flutter', download.folderPath);
+      return path.join((await getApplicationSupportDirectory()).path, download.folderPath);
     }
     return download.folderPath;
   }
@@ -102,7 +102,7 @@ class DownloadListNotifier extends StateNotifier<List<DownloadInfo>> {
           log('Error deleting file: $e', name: 'removeDownload');
         }
       } else {
-        final folder = Directory(_getDownloadPath(download));
+        final folder = Directory(await _getDownloadPath(download));
         // For windows support / and \ in path
         final folderName = folder.path.replaceAll('\\', '/').split('/').last;
         if (folderName == download.itemId || folderName == download.episodeId) {
