@@ -21,7 +21,7 @@ PlaylistResponse _$PlaylistResponseFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$PlaylistResponse {
   @JsonKey(name: "playlists")
-  List<Playlist> get playlists => throw _privateConstructorUsedError;
+  List<Playlist> get items => throw _privateConstructorUsedError;
 
   /// Serializes this PlaylistResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -39,7 +39,7 @@ abstract class $PlaylistResponseCopyWith<$Res> {
           PlaylistResponse value, $Res Function(PlaylistResponse) then) =
       _$PlaylistResponseCopyWithImpl<$Res, PlaylistResponse>;
   @useResult
-  $Res call({@JsonKey(name: "playlists") List<Playlist> playlists});
+  $Res call({@JsonKey(name: "playlists") List<Playlist> items});
 }
 
 /// @nodoc
@@ -57,12 +57,12 @@ class _$PlaylistResponseCopyWithImpl<$Res, $Val extends PlaylistResponse>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? playlists = null,
+    Object? items = null,
   }) {
     return _then(_value.copyWith(
-      playlists: null == playlists
-          ? _value.playlists
-          : playlists // ignore: cast_nullable_to_non_nullable
+      items: null == items
+          ? _value.items
+          : items // ignore: cast_nullable_to_non_nullable
               as List<Playlist>,
     ) as $Val);
   }
@@ -76,7 +76,7 @@ abstract class _$$PlaylistResponseImplCopyWith<$Res>
       __$$PlaylistResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({@JsonKey(name: "playlists") List<Playlist> playlists});
+  $Res call({@JsonKey(name: "playlists") List<Playlist> items});
 }
 
 /// @nodoc
@@ -92,12 +92,12 @@ class __$$PlaylistResponseImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? playlists = null,
+    Object? items = null,
   }) {
     return _then(_$PlaylistResponseImpl(
-      playlists: null == playlists
-          ? _value._playlists
-          : playlists // ignore: cast_nullable_to_non_nullable
+      items: null == items
+          ? _value._items
+          : items // ignore: cast_nullable_to_non_nullable
               as List<Playlist>,
     ));
   }
@@ -107,24 +107,24 @@ class __$$PlaylistResponseImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$PlaylistResponseImpl implements _PlaylistResponse {
   const _$PlaylistResponseImpl(
-      {@JsonKey(name: "playlists") required final List<Playlist> playlists})
-      : _playlists = playlists;
+      {@JsonKey(name: "playlists") required final List<Playlist> items})
+      : _items = items;
 
   factory _$PlaylistResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$PlaylistResponseImplFromJson(json);
 
-  final List<Playlist> _playlists;
+  final List<Playlist> _items;
   @override
   @JsonKey(name: "playlists")
-  List<Playlist> get playlists {
-    if (_playlists is EqualUnmodifiableListView) return _playlists;
+  List<Playlist> get items {
+    if (_items is EqualUnmodifiableListView) return _items;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_playlists);
+    return EqualUnmodifiableListView(_items);
   }
 
   @override
   String toString() {
-    return 'PlaylistResponse(playlists: $playlists)';
+    return 'PlaylistResponse(items: $items)';
   }
 
   @override
@@ -132,14 +132,13 @@ class _$PlaylistResponseImpl implements _PlaylistResponse {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PlaylistResponseImpl &&
-            const DeepCollectionEquality()
-                .equals(other._playlists, _playlists));
+            const DeepCollectionEquality().equals(other._items, _items));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_playlists));
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_items));
 
   /// Create a copy of PlaylistResponse
   /// with the given fields replaced by the non-null parameter values.
@@ -160,15 +159,15 @@ class _$PlaylistResponseImpl implements _PlaylistResponse {
 
 abstract class _PlaylistResponse implements PlaylistResponse {
   const factory _PlaylistResponse(
-      {@JsonKey(name: "playlists")
-      required final List<Playlist> playlists}) = _$PlaylistResponseImpl;
+          {@JsonKey(name: "playlists") required final List<Playlist> items}) =
+      _$PlaylistResponseImpl;
 
   factory _PlaylistResponse.fromJson(Map<String, dynamic> json) =
       _$PlaylistResponseImpl.fromJson;
 
   @override
   @JsonKey(name: "playlists")
-  List<Playlist> get playlists;
+  List<Playlist> get items;
 
   /// Create a copy of PlaylistResponse
   /// with the given fields replaced by the non-null parameter values.

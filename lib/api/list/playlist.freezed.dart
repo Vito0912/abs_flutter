@@ -25,7 +25,7 @@ mixin _$Playlist {
   @JsonKey(name: "libraryId")
   String get libraryId => throw _privateConstructorUsedError;
   @JsonKey(name: "userId")
-  String get userId => throw _privateConstructorUsedError;
+  String? get userId => throw _privateConstructorUsedError;
   @JsonKey(name: "name")
   String get name => throw _privateConstructorUsedError;
   @JsonKey(name: "description")
@@ -57,7 +57,7 @@ abstract class $PlaylistCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: "id") String id,
       @JsonKey(name: "libraryId") String libraryId,
-      @JsonKey(name: "userId") String userId,
+      @JsonKey(name: "userId") String? userId,
       @JsonKey(name: "name") String name,
       @JsonKey(name: "description") String? description,
       @JsonKey(name: "coverPath") String? coverPath,
@@ -83,7 +83,7 @@ class _$PlaylistCopyWithImpl<$Res, $Val extends Playlist>
   $Res call({
     Object? id = null,
     Object? libraryId = null,
-    Object? userId = null,
+    Object? userId = freezed,
     Object? name = null,
     Object? description = freezed,
     Object? coverPath = freezed,
@@ -100,10 +100,10 @@ class _$PlaylistCopyWithImpl<$Res, $Val extends Playlist>
           ? _value.libraryId
           : libraryId // ignore: cast_nullable_to_non_nullable
               as String,
-      userId: null == userId
+      userId: freezed == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -143,7 +143,7 @@ abstract class _$$PlaylistImplCopyWith<$Res>
   $Res call(
       {@JsonKey(name: "id") String id,
       @JsonKey(name: "libraryId") String libraryId,
-      @JsonKey(name: "userId") String userId,
+      @JsonKey(name: "userId") String? userId,
       @JsonKey(name: "name") String name,
       @JsonKey(name: "description") String? description,
       @JsonKey(name: "coverPath") String? coverPath,
@@ -167,7 +167,7 @@ class __$$PlaylistImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? libraryId = null,
-    Object? userId = null,
+    Object? userId = freezed,
     Object? name = null,
     Object? description = freezed,
     Object? coverPath = freezed,
@@ -184,10 +184,10 @@ class __$$PlaylistImplCopyWithImpl<$Res>
           ? _value.libraryId
           : libraryId // ignore: cast_nullable_to_non_nullable
               as String,
-      userId: null == userId
+      userId: freezed == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -222,7 +222,7 @@ class _$PlaylistImpl implements _Playlist {
   const _$PlaylistImpl(
       {@JsonKey(name: "id") required this.id,
       @JsonKey(name: "libraryId") required this.libraryId,
-      @JsonKey(name: "userId") required this.userId,
+      @JsonKey(name: "userId") this.userId,
       @JsonKey(name: "name") required this.name,
       @JsonKey(name: "description") this.description,
       @JsonKey(name: "coverPath") this.coverPath,
@@ -242,7 +242,7 @@ class _$PlaylistImpl implements _Playlist {
   final String libraryId;
   @override
   @JsonKey(name: "userId")
-  final String userId;
+  final String? userId;
   @override
   @JsonKey(name: "name")
   final String name;
@@ -330,7 +330,7 @@ abstract class _Playlist implements Playlist {
   const factory _Playlist(
           {@JsonKey(name: "id") required final String id,
           @JsonKey(name: "libraryId") required final String libraryId,
-          @JsonKey(name: "userId") required final String userId,
+          @JsonKey(name: "userId") final String? userId,
           @JsonKey(name: "name") required final String name,
           @JsonKey(name: "description") final String? description,
           @JsonKey(name: "coverPath") final String? coverPath,
@@ -350,7 +350,7 @@ abstract class _Playlist implements Playlist {
   String get libraryId;
   @override
   @JsonKey(name: "userId")
-  String get userId;
+  String? get userId;
   @override
   @JsonKey(name: "name")
   String get name;

@@ -17,6 +17,8 @@ class CacheInterceptor extends Interceptor {
     RoutePattern('/api/items/{uuidv4}/{uuidv4}', const Duration(days: 7)),
     RoutePattern('/api/libraries/{uuidv4}/filterdata', const Duration(days: 7)),
     RoutePattern('/api/libraries/{uuidv4}/series', const Duration(days: 7)),
+    RoutePattern('/api/playlists', const Duration(days: 7)),
+    RoutePattern('/api/collections', const Duration(days: 7)),
     RoutePattern('/api/me', const Duration(days: 1), aggressiveCache: true),
   ];
 

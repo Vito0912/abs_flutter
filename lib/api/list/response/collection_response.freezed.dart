@@ -21,7 +21,7 @@ CollectionResponse _$CollectionResponseFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$CollectionResponse {
   @JsonKey(name: "collections")
-  List<Collection> get collections => throw _privateConstructorUsedError;
+  List<Collection> get items => throw _privateConstructorUsedError;
 
   /// Serializes this CollectionResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -39,7 +39,7 @@ abstract class $CollectionResponseCopyWith<$Res> {
           CollectionResponse value, $Res Function(CollectionResponse) then) =
       _$CollectionResponseCopyWithImpl<$Res, CollectionResponse>;
   @useResult
-  $Res call({@JsonKey(name: "collections") List<Collection> collections});
+  $Res call({@JsonKey(name: "collections") List<Collection> items});
 }
 
 /// @nodoc
@@ -57,12 +57,12 @@ class _$CollectionResponseCopyWithImpl<$Res, $Val extends CollectionResponse>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? collections = null,
+    Object? items = null,
   }) {
     return _then(_value.copyWith(
-      collections: null == collections
-          ? _value.collections
-          : collections // ignore: cast_nullable_to_non_nullable
+      items: null == items
+          ? _value.items
+          : items // ignore: cast_nullable_to_non_nullable
               as List<Collection>,
     ) as $Val);
   }
@@ -76,7 +76,7 @@ abstract class _$$CollectionResponseImplCopyWith<$Res>
       __$$CollectionResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({@JsonKey(name: "collections") List<Collection> collections});
+  $Res call({@JsonKey(name: "collections") List<Collection> items});
 }
 
 /// @nodoc
@@ -92,12 +92,12 @@ class __$$CollectionResponseImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? collections = null,
+    Object? items = null,
   }) {
     return _then(_$CollectionResponseImpl(
-      collections: null == collections
-          ? _value._collections
-          : collections // ignore: cast_nullable_to_non_nullable
+      items: null == items
+          ? _value._items
+          : items // ignore: cast_nullable_to_non_nullable
               as List<Collection>,
     ));
   }
@@ -107,25 +107,24 @@ class __$$CollectionResponseImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$CollectionResponseImpl implements _CollectionResponse {
   const _$CollectionResponseImpl(
-      {@JsonKey(name: "collections")
-      required final List<Collection> collections})
-      : _collections = collections;
+      {@JsonKey(name: "collections") required final List<Collection> items})
+      : _items = items;
 
   factory _$CollectionResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$CollectionResponseImplFromJson(json);
 
-  final List<Collection> _collections;
+  final List<Collection> _items;
   @override
   @JsonKey(name: "collections")
-  List<Collection> get collections {
-    if (_collections is EqualUnmodifiableListView) return _collections;
+  List<Collection> get items {
+    if (_items is EqualUnmodifiableListView) return _items;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_collections);
+    return EqualUnmodifiableListView(_items);
   }
 
   @override
   String toString() {
-    return 'CollectionResponse(collections: $collections)';
+    return 'CollectionResponse(items: $items)';
   }
 
   @override
@@ -133,14 +132,13 @@ class _$CollectionResponseImpl implements _CollectionResponse {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CollectionResponseImpl &&
-            const DeepCollectionEquality()
-                .equals(other._collections, _collections));
+            const DeepCollectionEquality().equals(other._items, _items));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_collections));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_items));
 
   /// Create a copy of CollectionResponse
   /// with the given fields replaced by the non-null parameter values.
@@ -162,14 +160,14 @@ class _$CollectionResponseImpl implements _CollectionResponse {
 abstract class _CollectionResponse implements CollectionResponse {
   const factory _CollectionResponse(
       {@JsonKey(name: "collections")
-      required final List<Collection> collections}) = _$CollectionResponseImpl;
+      required final List<Collection> items}) = _$CollectionResponseImpl;
 
   factory _CollectionResponse.fromJson(Map<String, dynamic> json) =
       _$CollectionResponseImpl.fromJson;
 
   @override
   @JsonKey(name: "collections")
-  List<Collection> get collections;
+  List<Collection> get items;
 
   /// Create a copy of CollectionResponse
   /// with the given fields replaced by the non-null parameter values.

@@ -9,7 +9,7 @@ part of 'collection_response.dart';
 _$CollectionResponseImpl _$$CollectionResponseImplFromJson(
         Map<String, dynamic> json) =>
     _$CollectionResponseImpl(
-      collections: (json['collections'] as List<dynamic>)
+      items: (json['collections'] as List<dynamic>)
           .map((e) => Collection.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
@@ -17,5 +17,5 @@ _$CollectionResponseImpl _$$CollectionResponseImplFromJson(
 Map<String, dynamic> _$$CollectionResponseImplToJson(
         _$CollectionResponseImpl instance) =>
     <String, dynamic>{
-      'collections': instance.collections,
+      'collections': instance.items,
     };

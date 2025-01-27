@@ -7,7 +7,7 @@ part 'playlist_response.g.dart';
 @freezed
 class PlaylistResponse with _$PlaylistResponse {
   const factory PlaylistResponse({
-    @JsonKey(name: "playlists") required List<Playlist> playlists,
+    @JsonKey(name: "playlists") required List<Playlist> items,
   }) = _PlaylistResponse;
 
   factory PlaylistResponse.fromJson(Map<String, dynamic> json) =>

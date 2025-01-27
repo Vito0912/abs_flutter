@@ -9,7 +9,7 @@ class Playlist with _$Playlist {
   const factory Playlist({
     @JsonKey(name: "id") required String id,
     @JsonKey(name: "libraryId") required String libraryId,
-    @JsonKey(name: "userId") required String userId,
+    @JsonKey(name: "userId") String? userId,
     @JsonKey(name: "name") required String name,
     @JsonKey(name: "description") String? description,
     @JsonKey(name: "coverPath") String? coverPath,

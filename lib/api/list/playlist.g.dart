@@ -10,7 +10,7 @@ _$PlaylistImpl _$$PlaylistImplFromJson(Map<String, dynamic> json) =>
     _$PlaylistImpl(
       id: json['id'] as String,
       libraryId: json['libraryId'] as String,
-      userId: json['userId'] as String,
+      userId: json['userId'] as String?,
       name: json['name'] as String,
       description: json['description'] as String?,
       coverPath: json['coverPath'] as String?,
