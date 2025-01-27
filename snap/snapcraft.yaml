@@ -15,15 +15,7 @@ license: BSD-3-Clause
 architectures:
   - build-on: amd64
 
-layout:
-  /usr/lib/libmpv.so:
-    symlink: $SNAP/usr/lib/x86_64-linux-gnu/libmpv.so
-
 slots:
-  dbus-buchable:
-    interface: dbus
-    bus: session
-    name: io.github.vito0912.abs_flutter
   mpris:
     interface: mpris
     name: ABSPlayback
@@ -39,9 +31,7 @@ apps:
       - network
       - network-manager-observe
       - audio-playback
-      - password-manager-service
     slots:
-      - dbus-buchable
       - mpris
     environment:
       LD_LIBRARY_PATH: $LD_LIBRARY_PATH:$SNAP/usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR:$SNAP/usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/blas:$SNAP/usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/lapack:$SNAP/usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/caca:$SNAP/usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/vdpau:$SNAP/usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/mfx
