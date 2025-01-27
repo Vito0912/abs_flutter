@@ -1,5 +1,7 @@
 import 'dart:developer';
 
+import 'package:abs_flutter/api/list/collection.dart';
+import 'package:abs_flutter/api/list/playlist.dart';
 import 'package:abs_flutter/api/list/response/collection_response.dart';
 import 'package:abs_flutter/api/list/response/playlist_response.dart';
 import 'package:abs_flutter/api/routes/abs_api.dart';
@@ -20,7 +22,9 @@ class PlaylistCollectionNotifier extends ChangeNotifier {
   Object? _error;
   bool _isLoading = false;
 
-  PlaylistCollectionNotifier(this.ref);
+  PlaylistCollectionNotifier(this.ref) {
+    fetchAll();
+  }
 
   PlaylistResponse? get playlists => _playlists;
   CollectionResponse? get collections => _collections;
@@ -68,6 +72,14 @@ class PlaylistCollectionNotifier extends ChangeNotifier {
       _isLoading = false;
       notifyListeners();
     }
+  }
+
+  Collection? getCollectionById(String id) {
+    return _collections?.items.firstWhere((element) => element.id == id);
+  }
+
+  Playlist? getPlaylistById(String id) {
+    return _playlists?.items.firstWhere((element) => element.id == id);
   }
 
   Future<void> refresh() async {
