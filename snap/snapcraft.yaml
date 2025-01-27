@@ -1,5 +1,5 @@
 name: buchable
-version: 1.7.7
+version: 1.7.8
 summary: Enjoy hearing self-hosted audiobooks.
 description: testtesttesttestttest
 website: https://github.com/Vito0912/abs_flutter
@@ -8,42 +8,76 @@ source-code: https://github.com/Vito0912/abs_flutter
 icon: snap/gui/buchable.png
 
 confinement: strict
-base: core22
+base: core22 # We could also use core24.
 grade: stable
 license: BSD-3-Clause
 
+# For now we just stay on x64_86
 architectures:
   - build-on: amd64
+    build-for: amd64
 
 slots:
-  mpris:
+  mpris: # We need this so package:audio_service has proper permissions to function.
     interface: mpris
     name: ABSPlayback
 
 apps:
   buchable:
-    command: abs_flutter
-    extensions: [gnome]
+    command: abs_flutter # Name of the executable file.
+    extensions: [gnome] # Provides various graphics libraries (like GTK) or so.
     plugs:
+      # Support for every desktop out there.
       - desktop
       - desktop-legacy
       - wayland
+
       - network
+
+      # No auto-connect! Need to ask for permission. (package:ConnectivityPlus needs it to access NetworkManager)
       - network-manager-observe
+
+      # There are some ALSA warnings/errors but they can be ignored.
       - audio-playback
     slots:
       - mpris
     environment:
+      # Needed because the app needs to access libmpv and other associated libraries.
       LD_LIBRARY_PATH: $LD_LIBRARY_PATH:$SNAP/usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR:$SNAP/usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/blas:$SNAP/usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/lapack:$SNAP/usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/caca:$SNAP/usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/vdpau:$SNAP/usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/mfx
 
 parts:
-  buchable:
+  buchable: # Entrypoint for the app.
     source: .
     plugin: flutter
     flutter-target: lib/main.dart
+
+    # Needed for permissions
     build-packages:
       - libsecret-1-dev
       - libjsoncpp-dev
     stage-packages:
       - libsecret-1-0
+
+      # Needed for MediaKit
       - libmpv-dev
+
+  # This part removes all the files in this snap which already exist in
+  # connected content and base snaps. Since these files will be available
+  # at runtime from the content and base snaps, they do not need to be
+  # included in this snap itself.
+  #
+  # More info: https://forum.snapcraft.io/t/reducing-the-size-of-desktop-snaps/17280#heading--cleanup-part
+  #
+  cleanup:
+    after: # Make this part run last; list all your other parts here
+      - buchable
+    plugin: nil
+    build-snaps: # List all content-snaps and base snaps you're using here
+      - core22
+      - gtk-common-themes
+      - gnome-42-2204 # (core22 version)
+    override-prime: |
+      set -eux
+      for snap in "core22" "gtk-common-themes" "gnome-42-2204"; do  # List all content-snaps and base snaps you're using here
+        cd "/snap/$snap/current" && find . -type f,l -exec rm -f "$CRAFT_PRIME/{}" \;
+      done
