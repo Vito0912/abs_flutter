@@ -385,7 +385,7 @@ jobs:
           mv ubuntu-artifacts/app-release.apk ubuntu-artifacts/android-release-${{ env.VERSION }}.apk
           mv ubuntu-artifacts/app-release.aab ubuntu-artifacts/android-release-${{ env.VERSION }}.aab
           mv ubuntu-artifacts/web-release.zip ubuntu-artifacts/web-release-${{ env.VERSION }}.zip
-          mv linux-artifacts/linux-release.zip linux-artifacts/linux-release-${{ env.VERSION }}.zip
+          mv linux-artifacts/linux-release.zip linux-artifacts/linux-release.zip
           mv linux-artifacts/buchable-${{ env.VERSION }}-x86_64.AppImage linux-artifacts/buchable-${{ env.VERSION }}-x86_64.AppImage || true
 
       - name: Create GitHub Release
@@ -404,7 +404,7 @@ jobs:
             windows-artifacts/windows-Release-${{ env.VERSION }}.zip
             windows-artifacts/windows-installer-release-${{ env.VERSION }}.msix
             windows-artifacts/windows-installer-release-${{ env.VERSION }}-store.msix
-            linux-artifacts/linux-release-${{ env.VERSION }}.zip
+            linux-artifacts/linux-release.zip
             linux-artifacts/buchable-${{ env.VERSION }}-x86_64.AppImage
 
   publish-release:
