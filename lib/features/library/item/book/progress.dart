@@ -19,10 +19,8 @@ class Progress extends ConsumerWidget {
         progress!.progress! <= 0) {
       return const SizedBox.shrink();
     }
-    final double mediaDuration = item.media?.bookMedia?.audioFiles!
-            .map((e) => e.duration)
-            .reduce((value, element) => value! + element!) ??
-        0;
+    final num mediaDuration = progress.duration ?? 0.0;
+
     final currentProgress = Helper.formatPercentage(
         (progress.currentTime! / mediaDuration).toDouble());
 

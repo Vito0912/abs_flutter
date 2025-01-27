@@ -24,6 +24,8 @@ class ProgressProvider extends ChangeNotifier {
   }
 
   Future<void> getAllProgress() async {
+    api = ref.read(apiProvider);
+    print('api: $api');
     if (api == null) return;
     if (lastUpdated != null &&
         DateTime.now().difference(lastUpdated!).inSeconds < 1) {
@@ -68,6 +70,8 @@ class ProgressProvider extends ChangeNotifier {
 
   Future<void> getProgressWithLibraryItem(String id,
       {String? episodeId}) async {
+    api = ref.read(apiProvider);
+    print('api: $api');
     if (api == null) return;
 
     final Completer<void> progressChanged = Completer<void>();
@@ -81,11 +85,18 @@ class ProgressProvider extends ChangeNotifier {
             offlineProgress.indexWhere((element) => element.itemId == id);
         if (index != -1) {
           ProgressItem item = offlineProgress[index];
+
+          int lastUpdate = item.createdAt?.millisecondsSinceEpoch ?? 0;
+          if ((item.updatedAt?.millisecondsSinceEpoch ?? 0) >
+              (item.createdAt?.millisecondsSinceEpoch ?? 0)) {
+            lastUpdate = (item.updatedAt?.millisecondsSinceEpoch ?? 0);
+          }
+
           MediaProgressBuilder builder = MediaProgressBuilder()
             ..currentTime = item.currentTime
             ..duration = item.durationOfItem
             ..progress = item.currentTime / item.durationOfItem
-            ..lastUpdate = item.createdAt?.millisecondsSinceEpoch;
+            ..lastUpdate = lastUpdate;
 
           String key = id + (episodeId ?? '');
           progress ??= {};

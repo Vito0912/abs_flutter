@@ -107,10 +107,14 @@ void main() async {
   if (users != null && userNotifier != null) {
     userNotifier.setUsers(users);
   }
-  if (currentUser < 0 && users != null && users.length > 0) {
+  if (currentUser < 0 && users != null && users.isNotEmpty) {
     selectedUserNotifier.state = 0;
   } else {
-    selectedUserNotifier.state = currentUser;
+    if (users != null && currentUser >= users.length) {
+      selectedUserNotifier.state = users.length - 1;
+    } else {
+      selectedUserNotifier.state = currentUser;
+    }
   }
   if (users == null || users.isEmpty) {
     selectedUserNotifier.state = -1;

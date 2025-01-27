@@ -210,7 +210,7 @@ class __$$AudioTrackImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$AudioTrackImpl implements _AudioTrack {
+class _$AudioTrackImpl extends _AudioTrack {
   const _$AudioTrackImpl(
       {@JsonKey(name: "index") required this.index,
       @JsonKey(name: "startOffset") required this.startOffset,
@@ -218,7 +218,8 @@ class _$AudioTrackImpl implements _AudioTrack {
       @JsonKey(name: "title") required this.title,
       @JsonKey(name: "contentUrl") required this.contentUrl,
       @JsonKey(name: "mimeType") required this.mimeType,
-      @JsonKey(name: "metadata") this.metadata});
+      @JsonKey(name: "metadata") this.metadata})
+      : super._();
 
   factory _$AudioTrackImpl.fromJson(Map<String, dynamic> json) =>
       _$$AudioTrackImplFromJson(json);
@@ -290,7 +291,7 @@ class _$AudioTrackImpl implements _AudioTrack {
   }
 }
 
-abstract class _AudioTrack implements AudioTrack {
+abstract class _AudioTrack extends AudioTrack {
   const factory _AudioTrack(
           {@JsonKey(name: "index") required final int index,
           @JsonKey(name: "startOffset") required final double startOffset,
@@ -300,6 +301,7 @@ abstract class _AudioTrack implements AudioTrack {
           @JsonKey(name: "mimeType") required final String mimeType,
           @JsonKey(name: "metadata") final LibraryFileMetadata? metadata}) =
       _$AudioTrackImpl;
+  const _AudioTrack._() : super._();
 
   factory _AudioTrack.fromJson(Map<String, dynamic> json) =
       _$AudioTrackImpl.fromJson;

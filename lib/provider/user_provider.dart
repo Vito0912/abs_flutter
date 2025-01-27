@@ -17,7 +17,6 @@ import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
 
 // StateNotifier to manage the users list and selected user
 class UserNotifier extends StateNotifier<List<User>> {
@@ -142,12 +141,29 @@ class CurrentUserNotifier extends StateNotifier<User?> {
     }
   }
 
+  Future<bool> validateLogin() async {
+    final user = state;
+    if (user == null) return Future.value(false);
+
+    final api = _ref.read(apiProviderNew);
+    if (api == null) return Future.value(false);
+
+    try {
+      final response = await api.getMeApi().checkLogin();
+      if (response.statusCode == 500) {
+        return Future.value(false);
+      }
+    } catch (e) {
+      log(e.toString());
+    }
+    return Future.value(true);
+  }
+
   void removeUser(BuildContext context) {
     final allUsers = _ref.read(usersProvider.notifier);
     if (allUsers == null || allUsers.mounted == false) return;
 
     allUsers.removeUser(state!);
-    context.go("/");
   }
 }
 
@@ -157,17 +173,27 @@ final currentUserProvider =
 });
 
 // StateProvider to hold the overridden base path
-final basePathOverrideProvider = StateProvider<String?>((ref) => null);
+final basePathOverrideProvider = StateProvider<List<dynamic>?>((ref) => null);
 
 // Provider to manage the API client
 final apiProvider = Provider<abs_api.AbsApi?>((ref) {
-  final users = ref.read(usersProvider);
+  final users = ref.watch(usersProvider);
   final index = ref.watch(selectedUserProvider);
   final basePathOverride = ref.watch(basePathOverrideProvider);
 
   // If there is an overridden base path, use it
   if (basePathOverride != null) {
-    abs_api.AbsApi res = abs_api.AbsApi(basePathOverride: basePathOverride);
+    abs_api.AbsApi res = abs_api.AbsApi(
+      basePathOverride: basePathOverride[0],
+      dio: Dio(
+        BaseOptions(
+          connectTimeout: const Duration(seconds: 3),
+          receiveTimeout: const Duration(seconds: 20),
+          baseUrl: basePathOverride[0],
+          headers: basePathOverride[1],
+        ),
+      ),
+    );
     return res;
   }
 
@@ -188,6 +214,7 @@ final apiProvider = Provider<abs_api.AbsApi?>((ref) {
             connectTimeout: const Duration(seconds: 3),
             receiveTimeout: const Duration(seconds: 20),
             baseUrl: users[index].server?.url ?? r'http://localhost:3000',
+            headers: users[index].server?.headers,
           ),
         ),
         interceptors: interceptors,
@@ -207,13 +234,22 @@ final apiProvider = Provider<abs_api.AbsApi?>((ref) {
 });
 
 final apiProviderNew = Provider<ABSApi?>((ref) {
-  final users = ref.read(usersProvider);
+  final users = ref.watch(usersProvider);
   final index = ref.watch(selectedUserProvider);
   final basePathOverride = ref.watch(basePathOverrideProvider);
 
   // If there is an overridden base path, use it
   if (basePathOverride != null) {
-    ABSApi res = ABSApi(basePathOverride: basePathOverride);
+    ABSApi res = ABSApi(
+        basePathOverride: basePathOverride[0],
+        dio: Dio(
+          BaseOptions(
+            connectTimeout: const Duration(seconds: 3),
+            receiveTimeout: const Duration(seconds: 20),
+            baseUrl: basePathOverride[0],
+            headers: basePathOverride[1],
+          ),
+        ));
     return res;
   }
 
@@ -232,6 +268,7 @@ final apiProviderNew = Provider<ABSApi?>((ref) {
             connectTimeout: const Duration(seconds: 3),
             receiveTimeout: const Duration(seconds: 20),
             baseUrl: users[index].server?.url ?? r'http://localhost:3000',
+            headers: users[index].server?.headers,
           ),
         ),
         interceptors: interceptors,
@@ -250,7 +287,7 @@ final apiProviderNew = Provider<ABSApi?>((ref) {
   return null;
 });
 
-void setBasePathOverride(WidgetRef ref, String? newBasePath) {
+void setBasePathOverride(Ref ref, List<dynamic>? newBasePath) {
   ref.read(basePathOverrideProvider.notifier).state = newBasePath;
 }
 

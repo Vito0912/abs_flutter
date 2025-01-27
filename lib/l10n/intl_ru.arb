@@ -1,0 +1,766 @@
+{
+  "addANewUser": "Добавить нового пользователя",
+  "@addANewUser": {},
+  "addUser": "Добавить пользователя",
+  "@addUser": {},
+  "added": "Добавлен",
+  "@added": {},
+  "advanced": "Расширенные",
+  "@advanced": {},
+  "aggressiveCaching": "Принудительное кэширование",
+  "@aggressiveCaching": {},
+  "aggressiveCachingDescription": "Если эта функция включена, приложение будет активировать более активное кэширование. Это включает в себя маршруты кэширования, которые могут содержать данные, требующие регулярного обновления, например, для получения информации о ходе выполнения всех элементов. В этих случаях будет использоваться последняя известная позиция, если вы специально не откроете и не запросите один элемент. Эти маршруты будут иметь меньшую продолжительность кэширования.",
+  "@aggressiveCachingDescription": {},
+  "allDownloads": "Скачать все",
+  "@allDownloads": {},
+  "amoledMode": "AMOLED режим",
+  "@amoledMode": {},
+  "ascending": "По возрастанию",
+  "@ascending": {},
+  "attribution": "Авторство",
+  "@attribution": {},
+  "author": "Автор",
+  "@author": {},
+  "authors": "Авторы",
+  "@authors": {},
+  "back": "Назад",
+  "@back": {},
+  "bookCover": "Обложка",
+  "@bookCover": {},
+  "boostLoading": "Ускоренная загрузка",
+  "@boostLoading": {},
+  "boostLoadingDescription": "Когда эта функция включена, приложение эффективно обходит кэширование в реальном времени. Оно всегда будет пытаться получить последние данные с сервера, используя при этом кэшированные данные для немедленной загрузки контента. Как только обновленные данные будут извлечены, они заменят старый кэш, гарантируя, что при следующей загрузке приложения будут отображены самые свежие данные. В результате вы всегда будете видеть данные за один цикл выборки за текущими данными сервера.",
+  "@boostLoadingDescription": {},
+  "boostLoadingSubtitle": "Пожалуйста, прочтите описание, чтобы разобраться в этой функции.",
+  "@boostLoadingSubtitle": {},
+  "caching": "Кэширование",
+  "@caching": {},
+  "cachingHeader": "Кэширование",
+  "@cachingHeader": {},
+  "cancel": "Отмена",
+  "@cancel": {},
+  "carPlayer": "Автоплеер",
+  "@carPlayer": {},
+  "changeLibrary": "Выбор библиотеки",
+  "@changeLibrary": {},
+  "chapters": "Главы",
+  "@chapters": {},
+  "chaptersNum": "Главы ({num})",
+  "@chaptersNum": {
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "clearCache": "Очистить Кэш",
+  "@clearCache": {},
+  "close": "Закрыть",
+  "@close": {},
+  "collapseSeries": "Свернуть серию",
+  "@collapseSeries": {},
+  "collapseSeriesDescription": "Если этот параметр включен, элементы серии будут сгруппированы в режиме просмотра библиотеки, при этом будет отображаться только один элемент, представляющий всю серию.",
+  "@collapseSeriesDescription": {},
+  "consecutiveDays": "Дней подряд",
+  "@consecutiveDays": {},
+  "continueListening": "Продолжить прослушивание",
+  "@continueListening": {},
+  "continueSeries": "Продолжить серию",
+  "@continueSeries": {},
+  "copy": "Копировать",
+  "@copy": {},
+  "copyAnonymous": "Копировать (Без персональных данных)",
+  "@copyAnonymous": {},
+  "copyLogs": "Копировать логи",
+  "@copyLogs": {},
+  "copyLogsDescription": "Важно:\nНажатие кнопки \"Копировать\" перенесет все отображаемые в данный момент журналы в ваш буфер обмена, включая данные, записанные с момента запуска приложения или последней очистки. Эти журналы могут содержать конфиденциальную информацию, такую как токены, имена пользователей, электронные письма и URL-адреса серверов. Будьте осторожны с тем, куда вы вставляете эту информацию!\\nЕсли вы выберете \"Копировать и пытаться скрыть конфиденциальную информацию\", приложение попытается замаскировать такие элементы, как токены, имена пользователей, электронные письма и URL-адреса серверов. Однако вы несете ответственность за просмотр журналов, чтобы убедиться, что все личные данные полностью удалены.",
+  "@copyLogsDescription": {},
+  "create": "Создать",
+  "@create": {},
+  "createBookmark": "Создать Закладку",
+  "@createBookmark": {},
+  "createBookmarkTitle": "Создать закладку",
+  "@createBookmarkTitle": {},
+  "currentDownloads": "Текущие загрузки",
+  "@currentDownloads": {},
+  "currentPositionNum": "Текущая позиция: {position}",
+  "@currentPositionNum": {
+    "placeholders": {
+      "position": {
+        "type": "String"
+      }
+    }
+  },
+  "darkMode": "Темный режим",
+  "@darkMode": {},
+  "dateFormatDay": "{count, plural, one {{count}  day} other {{count} days}}",
+  "@dateFormatDay": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatDayHour": "{days, plural, one {{days} day} other {{days} days}} {hours, plural, one {{hours} hour} other {{hours} hours}}",
+  "@dateFormatDayHour": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatDayHourMinute": "{days, plural, one {{days} day} other {{days} days}} {hours, plural, one {{hours} hour} other {{hours} hours}} {minutes, plural, one {{minutes} minute} other {{minutes} minutes}}",
+  "@dateFormatDayHourMinute": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatDayHourMinuteSecond": "{days, plural, one {{days} day} other {{days} days}} {hours, plural, one {{hours} hour} other {{hours} hours}} {minutes, plural, one {{minutes} minute} other {{minutes} minutes}} {seconds, plural, one {{seconds} second} other {{seconds} seconds}}",
+  "@dateFormatDayHourMinuteSecond": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      },
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatDayHourMinuteSecondShort": "{days}д {hours}ч {minutes}м {seconds}с",
+  "@dateFormatDayHourMinuteSecondShort": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      },
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatDayHourMinuteShort": "{days}д {hours}ч {minutes}м",
+  "@dateFormatDayHourMinuteShort": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatDayHourShort": "{days}д {hours}ч",
+  "@dateFormatDayHourShort": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatDayShort": "{count}д",
+  "@dateFormatDayShort": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatHour": "{count, plural, one {{count} hour} other {{count} hours}}",
+  "@dateFormatHour": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatHourMinute": "{hours, plural, one {{hours} hour} other {{hours} hours}} {minutes, plural, one {{minutes} minute} other {{minutes} minutes}}",
+  "@dateFormatHourMinute": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatHourMinuteSecond": "{hours, plural, one {{hours} hour} other {{hours} hours}} {minutes, plural, one {{minutes} minute} other {{minutes} minutes}} {seconds, plural, one {{seconds} second} other {{seconds} seconds}}",
+  "@dateFormatHourMinuteSecond": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      },
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatHourMinuteSecondShort": "{hours}ч {minutes}м {seconds}с",
+  "@dateFormatHourMinuteSecondShort": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      },
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatHourMinuteShort": "{hours}ч {minutes}м",
+  "@dateFormatHourMinuteShort": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatHourShort": "{count}ч",
+  "@dateFormatHourShort": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatMinute": "{count, plural, one {{count} minute} other {{count} minutes}}",
+  "@dateFormatMinute": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatMinuteSecond": "{minutes, plural, one {{minutes} minute} other {{minutes} minutes}} {seconds, plural, one {{seconds} second} other {{seconds} seconds}}",
+  "@dateFormatMinuteSecond": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      },
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatMinuteSecondShort": "{minutes}м {seconds}с",
+  "@dateFormatMinuteSecondShort": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      },
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatMinuteShort": "{count}м",
+  "@dateFormatMinuteShort": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatSecond": "{count, plural, one {{count}  second} other {{count} seconds}}",
+  "@dateFormatSecond": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatSecondShort": "{count}с",
+  "@dateFormatSecondShort": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "daysListened": "Дней прослушивания",
+  "@daysListened": {},
+  "debugLogs": "Журнал отладки",
+  "@debugLogs": {},
+  "deleteSelected": "Удалить выбранное",
+  "@deleteSelected": {},
+  "descending": "По убыванию",
+  "@descending": {},
+  "description": "Описание",
+  "@description": {},
+  "deviceInfo": "Устройство: {device}\nОС: {os}\nВерсия приложения: {version}",
+  "@deviceInfo": {
+    "placeholders": {
+      "device": {
+        "type": "String"
+      },
+      "os": {
+        "type": "String"
+      },
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "disableSkippingChapters": "Отключить пропуск глав",
+  "@disableSkippingChapters": {},
+  "disableSkippingChaptersDescription": "Это отключит возможность пропускать главы из-за пределов приложения (например, с помощью гарнитуры или элементов управления уведомлениями). Включите это, если вы хотите, чтобы ваши наушники использовали функции быстрой перемотки вперед и назад вместо пропуска глав.",
+  "@disableSkippingChaptersDescription": {},
+  "disableVibration": "Отключить вибрацию",
+  "@disableVibration": {},
+  "disabled": "Отключить",
+  "@disabled": {},
+  "discover": "Не начато",
+  "@discover": {},
+  "domainOrIp": "Домен или IP",
+  "@domainOrIp": {},
+  "downloadComplete": "Загрузка завершена",
+  "@downloadComplete": {},
+  "downloadCompleteBody": "Загрузка {displayName} завершена",
+  "@downloadCompleteBody": {},
+  "downloadErrorDescription": "Файл был загружен неправильно. Вы можете попробовать удалить данные с устройства, нажав на кнопку, и загрузить их снова.",
+  "@downloadErrorDescription": {},
+  "downloadInfo": "Информация о загрузках",
+  "@downloadInfo": {},
+  "downloadPath": "Путь загрузки",
+  "@downloadPath": {},
+  "downloadPathDescription": "Путь, по которому хранятся загруженные файлы. Чтобы изменить путь, необходимо удалить все загруженные файлы.",
+  "@downloadPathDescription": {},
+  "downloading": "Загрузка",
+  "@downloading": {},
+  "downloadingBody": "Загрузка {displayName}",
+  "@downloadingBody": {},
+  "downloads": "Загрузки",
+  "@downloads": {},
+  "downloadsOnlyViaWifi": "Загружать только по WiFi",
+  "@downloadsOnlyViaWifi": {},
+  "duration": "Продолжительность",
+  "@duration": {},
+  "ebookreader": "eBook-Reader",
+  "@ebookreader": {},
+  "editQueue": "Редактировать очередь",
+  "@editQueue": {},
+  "enableNotificationsDownload": "Пожалуйста, включите уведомления, чтобы получать обновления о ходе загрузки и иметь возможность загружать файлы в фоновом режиме.",
+  "@enableNotificationsDownload": {},
+  "enabled": "Включено",
+  "@enabled": {},
+  "enterValidUsernameOrPassword": "Пожалуйста, введите действительный IP/Домен и порт, прежде чем вводить имя пользователя и пароль.",
+  "@enterValidUsernameOrPassword": {},
+  "episodeId": "Id эпизода",
+  "@episodeId": {},
+  "error": "Ошибка",
+  "@error": {},
+  "errorDownloading": "Ошибка загрузки",
+  "@errorDownloading": {},
+  "errorDownloadingBody": "Во время загрузки произошла ошибка {displayName}",
+  "@errorDownloadingBody": {},
+  "errorItemNotFound": "Ошибка: Объект не найден!",
+  "@errorItemNotFound": {},
+  "exit": "Выйти",
+  "@exit": {},
+  "failed": "Не удалось",
+  "@failed": {},
+  "fastForward": "Быстрая перемотка",
+  "@fastForward": {},
+  "fastForwardSeconds": "Время промотки",
+  "@fastForwardSeconds": {},
+  "fastForwardSecondsDescription": "Установите количество секунд для перехода вперед при нажатии кнопки быстрой перемотки.",
+  "@fastForwardSecondsDescription": {},
+  "feedOpen": "Открыть канал",
+  "@feedOpen": {},
+  "filename": "Имя файла",
+  "@filename": {},
+  "filepath": "Путь к файлу",
+  "@filepath": {},
+  "filter": "Фильтр",
+  "@filter": {},
+  "finished": "Готово",
+  "@finished": {},
+  "general": "Главная",
+  "@general": {},
+  "genres": "Жанры",
+  "@genres": {},
+  "hide": "Скрыть",
+  "@hide": {},
+  "ifTheQuickAccountSwitcherShouldBeShown": "Если должен быть показан быстрый переключатель учетной записи",
+  "@ifTheQuickAccountSwitcherShouldBeShown": {},
+  "inProgress": "В процессе",
+  "@inProgress": {},
+  "information": "Информация",
+  "@information": {},
+  "itemId": "ID элемента",
+  "@itemId": {},
+  "itemLength": "Длительность: {length}",
+  "@itemLength": {
+    "placeholders": {
+      "length": {
+        "type": "String"
+      }
+    }
+  },
+  "itemNotFoundDescription": "Элемент не удалось найти. Это может быть связано с сетевой ошибкой или с тем, что элемент больше не существует, но остается в кэше.",
+  "@itemNotFoundDescription": {},
+  "itemNumChapters": "Количество глав: {numChapters}",
+  "@itemNumChapters": {
+    "placeholders": {
+      "numChapters": {
+        "type": "String"
+      }
+    }
+  },
+  "itemProgress": "Прогресс: {progress}%",
+  "@itemProgress": {
+    "placeholders": {
+      "progress": {
+        "type": "String"
+      }
+    }
+  },
+  "itemPublishedYear": "Год публикации: {year}",
+  "@itemPublishedYear": {
+    "placeholders": {
+      "year": {
+        "type": "String"
+      }
+    }
+  },
+  "itemType": "Тип элемента",
+  "@itemType": {},
+  "jumpToLastPosition": "Перейти в последнюю позицию",
+  "@jumpToLastPosition": {},
+  "jumpToLastPositionDescription": "Если эта функция включена, то при нажатии кнопки воспроизведения проигрыватель перейдет на последнюю позицию",
+  "@jumpToLastPositionDescription": {},
+  "language": "Язык",
+  "@language": {},
+  "languages": "Языки",
+  "@languages": {},
+  "largestItems": "Самые большые элементы",
+  "@largestItems": {},
+  "last30Days": "За последние 30 дней",
+  "@last30Days": {},
+  "last7Days": "За последние 7 дней",
+  "@last7Days": {},
+  "libraries": "Библиотеки",
+  "@libraries": {},
+  "library": "Библиотека",
+  "@library": {},
+  "libraryName": "Имя библиотеки",
+  "@libraryName": {},
+  "libraryStats": "Статистика библиотеки",
+  "@libraryStats": {},
+  "linuxPermissionError": "Не удалось выполнить загрузку из-за ошибки в разрешениях. Пожалуйста, проверьте права доступа к папкам.",
+  "@linuxPermissionError": {},
+  "listenAgain": "Прослушать снова",
+  "@listenAgain": {},
+  "listeningInTheLastYear": "Прослушивание за последний год",
+  "@listeningInTheLastYear": {},
+  "loading": "Загрузка…",
+  "@loading": {},
+  "lockProgressBar": "Блокировка полосы прогресса медиа",
+  "@lockProgressBar": {},
+  "lockProgressBarDescription": "Если эта функция включена, она блокирует индикатор уведомления о прослушивании, если оно поддерживается операционной системой",
+  "@lockProgressBarDescription": {},
+  "logging": "Журнал",
+  "@logging": {},
+  "logs": "Журналы",
+  "@logs": {},
+  "longestItems": "Самые длинные элементы",
+  "@longestItems": {},
+  "markItemsFinished": "Отметка завершенных элементов",
+  "@markItemsFinished": {},
+  "markItemsFinishedAfterDescription": "Укажите время в секундах до окончания выполнения задания, по истечении которого оно должно быть помечено как завершенное. При установке значения 0 задание считается завершенным только тогда, когда игрок дойдет до самого конца. Если установлено положительное значение, то задание помечается как выполненное, когда игрок успевает выполнить его за указанное время до конца.",
+  "@markItemsFinishedAfterDescription": {},
+  "minimize": "Свернуть",
+  "@minimize": {},
+  "minimizeToTray": "Свернуть в трей",
+  "@minimizeToTray": {},
+  "minimizeToTrayDescription": "Этот параметр скрывает приложение с панели задач и перемещает его в системный трей.",
+  "@minimizeToTrayDescription": {},
+  "miscellaneous": "Разное",
+  "@miscellaneous": {},
+  "moreOptions": "Дополнительные параметры",
+  "@moreOptions": {},
+  "multipleServerAdressess": "Если вы хотите использовать несколько адресов серверов, вы можете добавить их позже",
+  "@multipleServerAdressess": {},
+  "mustEnterValidAddress": "Вы должны ввести действительный адрес сервера",
+  "@mustEnterValidAddress": {},
+  "name": "Имя",
+  "@name": {},
+  "narrators": "Чтецы",
+  "@narrators": {},
+  "newestEpisodes": "Новые эпизоды",
+  "@newestEpisodes": {},
+  "next": "Следующий",
+  "@next": {},
+  "nextChapter": "Следующая глава",
+  "@nextChapter": {},
+  "noConnection": "Нет соединения",
+  "@noConnection": {},
+  "noDownloads": "Загрузки отсутствуют",
+  "@noDownloads": {},
+  "noInternetDescription": "У нас возникли проблемы с подключением к серверу.",
+  "@noInternetDescription": {},
+  "noItemsFound": "Ничего не найдено",
+  "@noItemsFound": {},
+  "noPath": "Нет пути",
+  "@noPath": {},
+  "noSeriesSelected": "Серия не выбрана",
+  "@noSeriesSelected": {},
+  "noUserData": "Ошибка входа: Пользователь не найден",
+  "@noUserData": {},
+  "notFinished": "Не завершено",
+  "@notFinished": {},
+  "notStarted": "Не запущено",
+  "@notStarted": {},
+  "notTriedYet": "Пока не пробовал",
+  "@notTriedYet": {},
+  "notificationHeading": "Уведомления должны быть включены",
+  "@notificationHeading": {},
+  "numBooksInSeries": "{numBooks, plural, =0 {No Books} =1 {1 Book} other {{numBooks} Books}}",
+  "@numBooksInSeries": {
+    "placeholders": {
+      "numBooks": {
+        "type": "num"
+      }
+    }
+  },
+  "numberOfBooks": "Количество книг",
+  "@numberOfBooks": {},
+  "offlineProgress": "Оффлайновый прогресс",
+  "@offlineProgress": {},
+  "offlineSavedProgress": "Сохраненный оффлайновый прогресс",
+  "@offlineSavedProgress": {},
+  "ok": "Ок",
+  "@ok": {},
+  "open": "Открыть",
+  "@open": {},
+  "openDownloads": "Открыть загрузки",
+  "@openDownloads": {},
+  "openProjectLink": "Audiobookshelf/Server",
+  "@openProjectLink": {},
+  "ownStats": "Собственная статистика",
+  "@ownStats": {},
+  "password": "Пароль",
+  "@password": {},
+  "pause": "Пауза",
+  "@pause": {},
+  "personalizedLibrary": "Персонализированная библиотека",
+  "@personalizedLibrary": {},
+  "play": "Слушать",
+  "@play": {},
+  "playHistory": "История воспроизведения",
+  "@playHistory": {},
+  "playNextEpisode": "Воспроизведение следующего эпизода",
+  "@playNextEpisode": {},
+  "playbackSpeed": "Скорость",
+  "@playbackSpeed": {},
+  "player": "Плеер",
+  "@player": {},
+  "playerSettings": "Настройки плеера",
+  "@playerSettings": {},
+  "pleaseCheckInternet": "Пожалуйста, проверьте свое интернет-соединение и повторите попытку.",
+  "@pleaseCheckInternet": {},
+  "port": "Порт",
+  "@port": {},
+  "previous": "Предыдущий",
+  "@previous": {},
+  "previousChapter": "Предыдущая глава",
+  "@previousChapter": {},
+  "progress": "Прогресс",
+  "@progress": {},
+  "progressAsChaptersDescription": "Включите эту опцию, чтобы отображать прогресс в проигрывателе и уведомления по каждой главе. Если она отключена, прогресс будет отображаться по всему разделу.",
+  "@progressAsChaptersDescription": {},
+  "progressNum": "Текущий прогресс: {progress}%",
+  "@progressNum": {
+    "placeholders": {
+      "progress": {
+        "type": "String"
+      }
+    }
+  },
+  "publisher": "Издатель",
+  "@publisher": {},
+  "readLess": "Читать меньше",
+  "@readLess": {},
+  "readMore": "Читать больше",
+  "@readMore": {},
+  "recentSeries": "Последние серии",
+  "@recentSeries": {},
+  "recentlyAdded": "Недавно добавленные",
+  "@recentlyAdded": {},
+  "reportAnIssue": "Сообщить о проблеме",
+  "@reportAnIssue": {},
+  "restartRequired": "Требуется перезагрузка",
+  "@restartRequired": {},
+  "restartRequiredDescription": "Пожалуйста, перезапустите приложение, чтобы применить изменения.",
+  "@restartRequiredDescription": {},
+  "retry": "Повторить",
+  "@retry": {},
+  "rewind": "Перемотка",
+  "@rewind": {},
+  "rewindSeconds": "Время отмотки",
+  "@rewindSeconds": {},
+  "rewindSecondsDescription": "Установите количество секунд для перехода назад при нажатии кнопки перемотки назад.",
+  "@rewindSecondsDescription": {},
+  "search": "Поиск",
+  "@search": {},
+  "searchDisabled": "Поиск отключен",
+  "@searchDisabled": {},
+  "seek": "Искать",
+  "@seek": {},
+  "sequence": "Последовательность",
+  "@sequence": {},
+  "series": "Серия",
+  "@series": {},
+  "serverAdressContinue": "Введите ваш адрес сервера, чтобы продолжить",
+  "@serverAdressContinue": {},
+  "serverSelection": "Выбор сервера",
+  "@serverSelection": {},
+  "settings": "Настройки",
+  "@settings": {},
+  "shakeResetTimer": "Встряхните, чтобы сбросить таймер сна",
+  "@shakeResetTimer": {},
+  "shareOpen": "Общедоступно",
+  "@shareOpen": {},
+  "show": "Показать",
+  "@show": {},
+  "showAccountSwitcher": "Показать переключатель аккаунтов",
+  "@showAccountSwitcher": {},
+  "showAccountSwitcherDescription": "Включите эту опцию, чтобы добавить кнопку-значок на панель приложений для быстрого переключения между аккаунтами. Это уменьшит размер панели приложений.",
+  "@showAccountSwitcherDescription": {},
+  "showMediaType": "Показать тип медиа",
+  "@showMediaType": {},
+  "showMediaTypeDescription": "Отображает значки типов медиа в нижней части каждого элемента.",
+  "@showMediaTypeDescription": {},
+  "showProgressPerChapters": "Показывать прогресс по главе",
+  "@showProgressPerChapters": {},
+  "signOut": "Выход",
+  "@signOut": {},
+  "size": "Размер",
+  "@size": {},
+  "sleepTimer": "Таймер сна",
+  "@sleepTimer": {},
+  "sort": "Сортировать",
+  "@sort": {},
+  "sortSeriesAsc": "Сортировка серий в порядке возрастания",
+  "@sortSeriesAsc": {},
+  "stats": "Статистика",
+  "@stats": {},
+  "stop": "Стоп",
+  "@stop": {},
+  "stopPlayerUntilSync": "Остановить проигрывание до синхронизации",
+  "@stopPlayerUntilSync": {},
+  "stopPlayerWhileSyncingDescription": "Включите эту опцию, чтобы предотвратить запуск проигрывателя до тех пор, пока не будет синхронизирована последняя позиция воспроизведения. Это гарантирует, что воспроизведение возобновится с правильной позиции. Если эта опция отключена, позиция воспроизведения может измениться вскоре после запуска, что может привести к потере данных. Включение этой функции помогает экономить использование данных.",
+  "@stopPlayerWhileSyncingDescription": {},
+  "success": "Успех",
+  "@success": {},
+  "sync": "Синхронизация",
+  "@sync": {},
+  "syncInterval": "Интервал синхронизации (секунд)",
+  "@syncInterval": {},
+  "syncIntervalDescription": "Указывает, как часто приложение должно синхронизироваться с сервером. Пожалуйста, перезапустите приложение, чтобы изменения вступили в силу.",
+  "@syncIntervalDescription": {},
+  "syncOnlyViaWifi": "Синхронизация только через Wi-Fi",
+  "@syncOnlyViaWifi": {},
+  "tags": "Тэги",
+  "@tags": {},
+  "timeRemainingNum": "Оставшееся время: {time}",
+  "@timeRemainingNum": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "timerText": "{time} мин",
+  "@timerText": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "title": "Название",
+  "@title": {},
+  "today": "Сегодня",
+  "@today": {},
+  "topAuthors": "Лучшие авторы",
+  "@topAuthors": {},
+  "topGenres": "Лучшие жанры",
+  "@topGenres": {},
+  "totalAudioTracks": "Всего аудио треков",
+  "@totalAudioTracks": {},
+  "totalAuthors": "Всего авторов",
+  "@totalAuthors": {},
+  "totalDuration": "Общая продолжительность",
+  "@totalDuration": {},
+  "totalGenres": "Всего жанров",
+  "@totalGenres": {},
+  "totalItems": "Всего элементов",
+  "@totalItems": {},
+  "totalSize": "Общий размер",
+  "@totalSize": {},
+  "totalTimeListened": "Всего прослушано",
+  "@totalTimeListened": {},
+  "tryAgain": "Попробуйте снова",
+  "@tryAgain": {},
+  "unknown": "Неизвестный",
+  "@unknown": {},
+  "unknownTitle": "Неизвестный заголовок",
+  "@unknownTitle": {},
+  "updatedAt": "Обновлено в",
+  "@updatedAt": {},
+  "user": "Пользователь",
+  "@user": {},
+  "username": "Имя пользователя",
+  "@username": {},
+  "usernameOrPasswordNotEmpty": "Имя пользователя и пароль не могут быть пустыми",
+  "@usernameOrPasswordNotEmpty": {},
+  "viewBookmarks": "Просмотр закладок",
+  "@viewBookmarks": {},
+  "viewChapters": "Просмотр глав",
+  "@viewChapters": {},
+  "viewOnGithub": "Посмотреть на GitHub",
+  "@viewOnGithub": {},
+  "waitTillRedirect": "Пожалуйста, дождитесь перенаправления на страницу /init. В данный момент вы не вошли в систему.",
+  "@waitTillRedirect": {},
+  "waitingForDownload": "Ожидание начала загрузки",
+  "@waitingForDownload": {},
+  "year": "Год",
+  "@year": {}
+}

@@ -6,6 +6,8 @@ part 'audio_track.g.dart';
 
 @freezed
 class AudioTrack with _$AudioTrack {
+  const AudioTrack._();
+
   const factory AudioTrack({
     @JsonKey(name: "index") required int index,
     @JsonKey(name: "startOffset") required double startOffset,
@@ -15,6 +17,14 @@ class AudioTrack with _$AudioTrack {
     @JsonKey(name: "mimeType") required String mimeType,
     @JsonKey(name: "metadata") LibraryFileMetadata? metadata,
   }) = _AudioTrack;
+
+  // Overwrite contentUrl to remove /audiobookshelf if it starts
+  String get processedContentUrl {
+    if (contentUrl.startsWith('/audiobookshelf')) {
+      return contentUrl.substring(15);
+    }
+    return contentUrl;
+  }
 
   factory AudioTrack.fromJson(Map<String, dynamic> json) =>
       _$AudioTrackFromJson(json);

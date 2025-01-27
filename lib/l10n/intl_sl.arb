@@ -25,14 +25,10 @@
   "@authors": {},
   "back": "Nazaj",
   "@back": {},
-  "bookCover": "Naslovnica knjige",
-  "@bookCover": {},
   "boostLoading": "Pohitri nalaganje",
   "@boostLoading": {},
   "boostLoadingDescription": "Ko je ta funkcija omogočena, aplikacija učinkovito zaobide predpomnjenje v realnem času. Vedno bo poskušala pridobiti najnovejše podatke s strežnika, medtem ko bo uporabila predpomnjene podatke za takojšnje nalaganje vsebine. Ko so posodobljeni podatki pridobljeni, zamenjajo stari predpomnilnik in zagotovijo, ko naslednjič naložite aplikacijo, da so prikazani najnovejši podatki. Posledično boste vedno videli podatke iz enega cikla pridobivanja za trenutnimi podatki strežnika.",
   "@boostLoadingDescription": {},
-  "boostLoadingSubtitle": "Prosim preberite opis, da boste lažje razumeli to funkcijo.",
-  "@boostLoadingSubtitle": {},
   "caching": "Predpomnjenje",
   "@caching": {},
   "cachingHeader": "Predpomnjenje",
@@ -43,8 +39,6 @@
   "@carPlayer": {},
   "changeLibrary": "Spremeni knjižnico",
   "@changeLibrary": {},
-  "chapters": "Poglavja",
-  "@chapters": {},
   "chaptersNum": "Poglavja ({num})",
   "@chaptersNum": {
     "placeholders": {
@@ -59,8 +53,6 @@
   "@close": {},
   "collapseSeries": "Strni serije",
   "@collapseSeries": {},
-  "collapseSeriesDescription": "Ko je omogočeno, bodo elementi v seriji združeni skupaj v pogledu knjižnice, pri čemer bo prikazan samo en element, ki predstavlja celotno serijo.",
-  "@collapseSeriesDescription": {},
   "consecutiveDays": "Zaporedni dnevi",
   "@consecutiveDays": {},
   "continueListening": "Nadaljujte s poslušanjem",
@@ -93,25 +85,6 @@
   },
   "darkMode": "Temni način",
   "@darkMode": {},
-  "dateFormatDay": "{count, plural, one {{count}  dan} other {{count} dni}}",
-  "@dateFormatDay": {
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
-  "dateFormatDayHour": "{days, plural, one {{days} dan} other {{days} dni}} {hours, plural, one {{hours} ura} other {{hours} ur}}",
-  "@dateFormatDayHour": {
-    "placeholders": {
-      "days": {
-        "type": "int"
-      },
-      "hours": {
-        "type": "int"
-      }
-    }
-  },
   "dateFormatDayHourMinute": "{days, plural, one {{days} dan} other {{days} dni}} {hours, plural, one {{hours} ura} other {{hours} ur}} {minutes, plural, one {{minutes} minuta} other {{minutes} minut}}",
   "@dateFormatDayHourMinute": {
     "placeholders": {
@@ -174,33 +147,6 @@
       }
     }
   },
-  "dateFormatDayHourShort": "{days}d {hours}u",
-  "@dateFormatDayHourShort": {
-    "placeholders": {
-      "days": {
-        "type": "int"
-      },
-      "hours": {
-        "type": "int"
-      }
-    }
-  },
-  "dateFormatDayShort": "{count}d",
-  "@dateFormatDayShort": {
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
-  "dateFormatHour": "{count, plural, one {{count} ura} other {{count} ur}}",
-  "@dateFormatHour": {
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
   "dateFormatHourMinute": "{hours, plural, one {{hours} ura} other {{hours} ur}} {minutes, plural, one {{minutes} minuta} other {{minutes} minut}}",
   "@dateFormatHourMinute": {
     "placeholders": {
@@ -247,14 +193,6 @@
         "type": "int"
       },
       "minutes": {
-        "type": "int"
-      }
-    }
-  },
-  "dateFormatHourShort": "{count}u",
-  "@dateFormatHourShort": {
-    "placeholders": {
-      "count": {
         "type": "int"
       }
     }
@@ -379,8 +317,6 @@
   "@enableNotificationsDownload": {},
   "enabled": "Omogočeno",
   "@enabled": {},
-  "enterValidUsernameOrPassword": "Preden vnesete uporabniško ime in geslo, vnesite veljaven IP/domeno in vrata.",
-  "@enterValidUsernameOrPassword": {},
   "episodeId": "ID epizode",
   "@episodeId": {},
   "error": "Napaka",
@@ -417,8 +353,6 @@
   "@genres": {},
   "hide": "Skrij",
   "@hide": {},
-  "ifTheQuickAccountSwitcherShouldBeShown": "Ali mora biti prikazan hitri preklopnik računov",
-  "@ifTheQuickAccountSwitcherShouldBeShown": {},
   "inProgress": "V teku",
   "@inProgress": {},
   "information": "Informacija",
@@ -439,14 +373,6 @@
   "@itemNumChapters": {
     "placeholders": {
       "numChapters": {
-        "type": "String"
-      }
-    }
-  },
-  "itemProgress": "Napredek: {progress} %",
-  "@itemProgress": {
-    "placeholders": {
-      "progress": {
         "type": "String"
       }
     }
@@ -483,8 +409,6 @@
   "@libraryName": {},
   "libraryStats": "Statistika knjižnice",
   "@libraryStats": {},
-  "linuxPermissionError": "Prenos ni uspel zaradi napake pri dovoljenju. Preverite dovoljenja za mapo.",
-  "@linuxPermissionError": {},
   "listenAgain": "Poslušaj znova",
   "@listenAgain": {},
   "listeningInTheLastYear": "Poslušanje v zadnjem letu",
@@ -501,10 +425,6 @@
   "@logs": {},
   "longestItems": "Najdaljši elementi",
   "@longestItems": {},
-  "markItemsFinished": "Označi elemente kot dokončane",
-  "@markItemsFinished": {},
-  "markItemsFinishedAfterDescription": "Določite čas v sekundah pred koncem elementa, ko naj bo označen kot končan. Če to nastavite na 0, označite element kot končan šele, ko igralec doseže sam konec. Če je nastavljena pozitivna vrednost, je predmet označen kot končan, ko igralec doseže ta čas pred koncem.",
-  "@markItemsFinishedAfterDescription": {},
   "minimize": "Minimiziraj",
   "@minimize": {},
   "minimizeToTray": "Minimiziraj v opravilno vrstico",
@@ -515,18 +435,12 @@
   "@miscellaneous": {},
   "moreOptions": "Več možnosti",
   "@moreOptions": {},
-  "multipleServerAdressess": "Če želite uporabiti več naslovov strežnika, jih lahko dodate pozneje",
-  "@multipleServerAdressess": {},
-  "mustEnterValidAddress": "Vnesti morate veljaven naslov strežnika",
-  "@mustEnterValidAddress": {},
   "name": "Ime",
   "@name": {},
   "narrators": "Bralci",
   "@narrators": {},
   "newestEpisodes": "Najnovejše epizode",
   "@newestEpisodes": {},
-  "next": "Naslednje",
-  "@next": {},
   "nextChapter": "Naslednje poglavje",
   "@nextChapter": {},
   "noConnection": "Brez povezave",
@@ -535,14 +449,10 @@
   "@noDownloads": {},
   "noInternetDescription": "Imamo težave pri povezovanju s strežnikom.",
   "@noInternetDescription": {},
-  "noItemsFound": "Ne najdem elementov",
-  "@noItemsFound": {},
   "noPath": "Brez poti",
   "@noPath": {},
   "noSeriesSelected": "Ni izbrane serije",
   "@noSeriesSelected": {},
-  "noUserData": "Prijava ni uspela: podatki o uporabniku niso bili prejeti",
-  "@noUserData": {},
   "notFinished": "Ni dokončano",
   "@notFinished": {},
   "notStarted": "Ni začeto",
@@ -567,8 +477,6 @@
   "@offlineSavedProgress": {},
   "ok": "V redu",
   "@ok": {},
-  "open": "Odpri",
-  "@open": {},
   "openDownloads": "Odpri prenose",
   "@openDownloads": {},
   "openProjectLink": "Audiobookshelf/strežnik",
@@ -597,8 +505,6 @@
   "@pleaseCheckInternet": {},
   "port": "Vrata",
   "@port": {},
-  "previous": "Prejšnje",
-  "@previous": {},
   "previousChapter": "Prejšnje poglavje",
   "@previousChapter": {},
   "progress": "Napredek",
@@ -647,8 +553,6 @@
   "@sequence": {},
   "series": "Serije",
   "@series": {},
-  "serverAdressContinue": "Za nadaljevanje vnesite naslov strežnika",
-  "@serverAdressContinue": {},
   "serverSelection": "Izbira strežnika",
   "@serverSelection": {},
   "settings": "Nastavitve",
@@ -659,10 +563,6 @@
   "@shareOpen": {},
   "show": "Prikaži",
   "@show": {},
-  "showAccountSwitcher": "Pokaži preklopnik računov",
-  "@showAccountSwitcher": {},
-  "showAccountSwitcherDescription": "Omogočite to možnost, če želite v vrstico z aplikacijami dodati gumb z ikonami za hitro preklapljanje med računi. To bo zmanjšalo velikost vrstice aplikacij.",
-  "@showAccountSwitcherDescription": {},
   "showMediaType": "Prikaži vrsto medija",
   "@showMediaType": {},
   "showMediaTypeDescription": "Prikaže značke vrste medija na dnu vsakega elementa.",
@@ -741,16 +641,10 @@
   "@tryAgain": {},
   "unknown": "Neznano",
   "@unknown": {},
-  "unknownTitle": "Neznani naslov",
-  "@unknownTitle": {},
-  "updatedAt": "Posodobljeno ob",
-  "@updatedAt": {},
   "user": "Uporabnik",
   "@user": {},
   "username": "Uporabniško ime",
   "@username": {},
-  "usernameOrPasswordNotEmpty": "Uporabniško ime in geslo ne smeta biti prazna",
-  "@usernameOrPasswordNotEmpty": {},
   "viewBookmarks": "Ogled zaznamkov",
   "@viewBookmarks": {},
   "viewChapters": "Ogled poglavij",
@@ -760,7 +654,5 @@
   "waitTillRedirect": "Počakajte na preusmeritev na /init. Trenutno niste prijavljeni.",
   "@waitTillRedirect": {},
   "waitingForDownload": "Čakam na začetek prenosa",
-  "@waitingForDownload": {},
-  "year": "Leto",
-  "@year": {}
+  "@waitingForDownload": {}
 }

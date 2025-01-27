@@ -26,14 +26,10 @@
   "@authors": {},
   "back": "Zurück",
   "@back": {},
-  "bookCover": "Buch Cover",
-  "@bookCover": {},
   "boostLoading": "Ladezeiten senken",
   "@boostLoading": {},
   "boostLoadingDescription": "Wenn aktiviert, umgeht die App effektiv das Real-Time-Caching. Sie versucht stets, die neuesten Daten vom Server abzurufen, während zwischengespeicherte Daten genutzt werden, um Inhalte sofort zu laden. Sobald die aktualisierten Daten abgerufen sind, ersetzen sie den alten Cache, sodass beim nächsten Laden der App die aktuellsten Daten angezeigt werden. Dadurch siehst du immer die Daten aus einem Abrufzyklus hinter den neuesten Serverdaten. Dafür lädt der Inhalt schneller.",
   "@boostLoadingDescription": {},
-  "boostLoadingSubtitle": "Bitte lese die Beschreibung um dieses Feature zu verstehen.",
-  "@boostLoadingSubtitle": {},
   "caching": "Caching",
   "@caching": {},
   "cachingHeader": "Caching",
@@ -44,8 +40,6 @@
   "@carPlayer": {},
   "changeLibrary": "Bibliothek wechseln",
   "@changeLibrary": {},
-  "chapters": "Kapitel",
-  "@chapters": {},
   "chaptersNum": "Kapitel ({num})",
   "@chaptersNum": {
     "placeholders": {
@@ -60,8 +54,6 @@
   "@close": {},
   "collapseSeries": "Serien einklappen",
   "@collapseSeries": {},
-  "collapseSeriesDescription": "Wenn aktiviert, werden Elemente einer Serie in der Bibliotheksansicht zusammengefasst und es wird nur ein einzelnes Element angezeigt, das die gesamte Serie repräsentiert.",
-  "@collapseSeriesDescription": {},
   "consecutiveDays": "Aufeinanderfolgende Tage",
   "@consecutiveDays": {},
   "continueListening": "Weiter hören",
@@ -94,25 +86,6 @@
   },
   "darkMode": "Dunkler Modus",
   "@darkMode": {},
-  "dateFormatDay": "{count, plural, one {{count}  Tag} other {{count} Tage}}",
-  "@dateFormatDay": {
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
-  "dateFormatDayHour": "{days, plural, one {{days} Tag} other {{days} Tage}} {hours, plural, one {{hours} Stunde} other {{hours} Stunden}}",
-  "@dateFormatDayHour": {
-    "placeholders": {
-      "days": {
-        "type": "int"
-      },
-      "hours": {
-        "type": "int"
-      }
-    }
-  },
   "dateFormatDayHourMinute": "{days, plural, one {{days} Tag} other {{days} Tage}} {hours, plural, one {{hours} Stunde} other {{hours} Stunden}} {minutes, plural, one {{minutes} Minute} other {{minutes} Minuten}}",
   "@dateFormatDayHourMinute": {
     "placeholders": {
@@ -175,33 +148,6 @@
       }
     }
   },
-  "dateFormatDayHourShort": "{days}d {hours}h",
-  "@dateFormatDayHourShort": {
-    "placeholders": {
-      "days": {
-        "type": "int"
-      },
-      "hours": {
-        "type": "int"
-      }
-    }
-  },
-  "dateFormatDayShort": "{count}d",
-  "@dateFormatDayShort": {
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
-  "dateFormatHour": "{count, plural, one {{count} Stunde} other {{count} Stunden}}",
-  "@dateFormatHour": {
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
   "dateFormatHourMinute": "{hours, plural, one {{hours} Stunde} other {{hours} Stunden}} {minutes, plural, one {{minutes} Minute} other {{minutes} Minuten}}",
   "@dateFormatHourMinute": {
     "placeholders": {
@@ -248,14 +194,6 @@
         "type": "int"
       },
       "minutes": {
-        "type": "int"
-      }
-    }
-  },
-  "dateFormatHourShort": "{count}h",
-  "@dateFormatHourShort": {
-    "placeholders": {
-      "count": {
         "type": "int"
       }
     }
@@ -380,8 +318,6 @@
   "@enableNotificationsDownload": {},
   "enabled": "Aktiviert",
   "@enabled": {},
-  "enterValidUsernameOrPassword": "Bitte gib eine gültige IP/Domain und einen Port ein, bevor du deinen Benutzernamen und dein Passwort eingibst.",
-  "@enterValidUsernameOrPassword": {},
   "episodeId": "Episoden Id",
   "@episodeId": {},
   "error": "Fehler",
@@ -418,8 +354,6 @@
   "@genres": {},
   "hide": "Verstecken",
   "@hide": {},
-  "ifTheQuickAccountSwitcherShouldBeShown": "Ob der schnelle Nutzerwechsel angezeigt werden soll",
-  "@ifTheQuickAccountSwitcherShouldBeShown": {},
   "inProgress": "In Bearbeitung",
   "@inProgress": {},
   "information": "Informationen",
@@ -440,14 +374,6 @@
   "@itemNumChapters": {
     "placeholders": {
       "numChapters": {
-        "type": "String"
-      }
-    }
-  },
-  "itemProgress": "Fortschritt: {progress}%",
-  "@itemProgress": {
-    "placeholders": {
-      "progress": {
         "type": "String"
       }
     }
@@ -484,8 +410,6 @@
   "@libraryName": {},
   "libraryStats": "Bibliotekstatistik",
   "@libraryStats": {},
-  "linuxPermissionError": "Der Download ist aufgrund eines Berechtigungsfehlers fehlgeschlagen. Bitte überprüfe die Zugriffsrechte.",
-  "@linuxPermissionError": {},
   "listenAgain": "Erneut hören",
   "@listenAgain": {},
   "listeningInTheLastYear": "In diesem Jahr gehört",
@@ -502,10 +426,6 @@
   "@logs": {},
   "longestItems": "Längste Medien",
   "@longestItems": {},
-  "markItemsFinished": "Makiere Element als fertig",
-  "@markItemsFinished": {},
-  "markItemsFinishedAfterDescription": "Gib die Zeit in Sekunden an, bevor ein Element endet, ab der es als abgeschlossen markiert werden soll. Wenn dieser Wert auf 0 gesetzt wird, wird das Element nur als abgeschlossen markiert, wenn der Player das Ende erreicht. Wenn ein positiver Wert festgelegt wird, wird das Element als abgeschlossen markiert, wenn der Player diese Zeit vor dem Ende erreicht.",
-  "@markItemsFinishedAfterDescription": {},
   "minimize": "Minimieren",
   "@minimize": {},
   "minimizeToTray": "Nur im System-Tray anzeigen",
@@ -516,18 +436,12 @@
   "@miscellaneous": {},
   "moreOptions": "Mehr Optionen",
   "@moreOptions": {},
-  "multipleServerAdressess": "Wenn du mehrere Server verwenden willst, kannst du diese später hinzufügen",
-  "@multipleServerAdressess": {},
-  "mustEnterValidAddress": "Du musst eine valide Serveradresse eingeben",
-  "@mustEnterValidAddress": {},
   "name": "Name",
   "@name": {},
   "narrators": "Erzähler",
   "@narrators": {},
   "newestEpisodes": "Neuste Episoden",
   "@newestEpisodes": {},
-  "next": "Nächste",
-  "@next": {},
   "nextChapter": "Nächstes Kapitel",
   "@nextChapter": {},
   "noConnection": "Keine Verbindung",
@@ -536,14 +450,10 @@
   "@noDownloads": {},
   "noInternetDescription": "Wir haben Probleme, eine Verbindung zum Server herzustellen.",
   "@noInternetDescription": {},
-  "noItemsFound": "Keine Elemente gefunden",
-  "@noItemsFound": {},
   "noPath": "Kein Pfad",
   "@noPath": {},
   "noSeriesSelected": "Keine Serie ausgewählt",
   "@noSeriesSelected": {},
-  "noUserData": "Login fehlgeschlagen: Keine Daten erhalten",
-  "@noUserData": {},
   "notFinished": "Nicht fertig",
   "@notFinished": {},
   "notStarted": "Nicht gestartet",
@@ -568,8 +478,6 @@
   "@offlineSavedProgress": {},
   "ok": "OK",
   "@ok": {},
-  "open": "Öffnen",
-  "@open": {},
   "openDownloads": "Öffne Downloads",
   "@openDownloads": {},
   "openProjectLink": "Audiobookshelf/Server",
@@ -598,8 +506,6 @@
   "@pleaseCheckInternet": {},
   "port": "Port",
   "@port": {},
-  "previous": "Vorherige",
-  "@previous": {},
   "previousChapter": "Vorheriges Kapitel",
   "@previousChapter": {},
   "progress": "Fortschritt",
@@ -648,8 +554,6 @@
   "@sequence": {},
   "series": "Serien",
   "@series": {},
-  "serverAdressContinue": "Gib eine Serveradresse ein, um fortzufahren",
-  "@serverAdressContinue": {},
   "serverSelection": "Serverauswahl",
   "@serverSelection": {},
   "settings": "Einstellungen",
@@ -660,10 +564,6 @@
   "@shareOpen": {},
   "show": "Zeigen",
   "@show": {},
-  "showAccountSwitcher": "Kontowechsler anzeigen",
-  "@showAccountSwitcher": {},
-  "showAccountSwitcherDescription": "Aktiviere diese Option, um der App-Leiste eine Symbolschaltfläche für den schnellen Userwechsel hinzuzufügen.",
-  "@showAccountSwitcherDescription": {},
   "showMediaType": "Zeige Medienart",
   "@showMediaType": {},
   "showMediaTypeDescription": "Zeigt ein Medienart-Badge unten an jedem Element an.",
@@ -742,16 +642,10 @@
   "@tryAgain": {},
   "unknown": "Unbekannt",
   "@unknown": {},
-  "unknownTitle": "Unbekannter Titel",
-  "@unknownTitle": {},
-  "updatedAt": "Aktualisiert am",
-  "@updatedAt": {},
   "user": "Benutzer",
   "@user": {},
   "username": "Nutzername",
   "@username": {},
-  "usernameOrPasswordNotEmpty": "Der Nutzername und das Passwort dürfen nicht leer sein",
-  "@usernameOrPasswordNotEmpty": {},
   "viewBookmarks": "Lesezeichen anzeigen",
   "@viewBookmarks": {},
   "viewChapters": "Kapitel anzeigen",
@@ -761,7 +655,5 @@
   "waitTillRedirect": "Bitte warte bis du weitergeleitet wirst. Du bist aktuell nicht eingeloggt.",
   "@waitTillRedirect": {},
   "waitingForDownload": "Warten auf den Beginn des Downloads",
-  "@waitingForDownload": {},
-  "year": "Jahr",
-  "@year": {}
+  "@waitingForDownload": {}
 }

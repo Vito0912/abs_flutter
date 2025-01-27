@@ -3,7 +3,7 @@ description: "An ABS app"
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: 1.7.8
+version: 1.7.9
 
 environment:
   sdk: '>=3.4.3 <4.0.0'
@@ -89,7 +89,10 @@ dev_dependencies:
   analyzer: ^6.5.0
   msix: ^3.16.7
   icons_launcher: ^2.1.7
-
+  intl_utils:
+    git:
+      url: https://github.com/vulpeep/intl_utils.git
+      ref: master
 
 dependency_overrides:
   meta: ^1.14.0
@@ -118,7 +121,7 @@ msix_config:
   publisher_display_name: Vito0912
   identity_name: Vito0912.Audiobookshelfly
   package_name: Vito0912.Audiobookshelfly
-  msix_version: 1.7.8.0
+  msix_version: 1.7.9.0
   capabilities: internetClient
   languages: en-us
   install_certificate: false

@@ -16,6 +16,8 @@
   "@allDownloads": {},
   "amoledMode": "AMOLED Mode",
   "@amoledMode": {},
+  "anUnknownErrorOccurred": "An unknown error occurred",
+  "@anUnknownErrorOccurred": {},
   "ascending": "Ascending",
   "@ascending": {},
   "attribution": "Attribution",
@@ -26,14 +28,10 @@
   "@authors": {},
   "back": "Back",
   "@back": {},
-  "bookCover": "Book Cover",
-  "@bookCover": {},
   "boostLoading": "Boost loading",
   "@boostLoading": {},
   "boostLoadingDescription": "When this feature is enabled, the app effectively bypasses real-time caching. It will always attempt to fetch the latest data from the server while using cached data to load content immediately. Once the updated data is retrieved, it replaces the old cache, ensuring that the most recent data is displayed the next time you load the app. As a result, you will always see the data from one fetch cycle behind the server's current data.",
   "@boostLoadingDescription": {},
-  "boostLoadingSubtitle": "Please read the description to understand this feature.",
-  "@boostLoadingSubtitle": {},
   "caching": "Caching",
   "@caching": {},
   "cachingHeader": "Caching",
@@ -44,8 +42,6 @@
   "@carPlayer": {},
   "changeLibrary": "Change Library",
   "@changeLibrary": {},
-  "chapters": "Chapters",
-  "@chapters": {},
   "chaptersNum": "Chapters ({num})",
   "@chaptersNum": {
     "placeholders": {
@@ -60,8 +56,8 @@
   "@close": {},
   "collapseSeries": "Collapse Series",
   "@collapseSeries": {},
-  "collapseSeriesDescription": "When enabled, items in a series will be grouped together in the library view, displaying only a single item to represent the entire series.",
-  "@collapseSeriesDescription": {},
+  "connectionError": "Connection error",
+  "@connectionError": {},
   "consecutiveDays": "Consecutive days",
   "@consecutiveDays": {},
   "continueListening": "Continue Listening",
@@ -92,27 +88,10 @@
       }
     }
   },
+  "customHeaders": "Custom Headers",
+  "@customHeaders": {},
   "darkMode": "Dark Mode",
   "@darkMode": {},
-  "dateFormatDay": "{count, plural, one {{count}  day} other {{count} days}}",
-  "@dateFormatDay": {
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
-  "dateFormatDayHour": "{days, plural, one {{days} day} other {{days} days}} {hours, plural, one {{hours} hour} other {{hours} hours}}",
-  "@dateFormatDayHour": {
-    "placeholders": {
-      "days": {
-        "type": "int"
-      },
-      "hours": {
-        "type": "int"
-      }
-    }
-  },
   "dateFormatDayHourMinute": "{days, plural, one {{days} day} other {{days} days}} {hours, plural, one {{hours} hour} other {{hours} hours}} {minutes, plural, one {{minutes} minute} other {{minutes} minutes}}",
   "@dateFormatDayHourMinute": {
     "placeholders": {
@@ -175,33 +154,6 @@
       }
     }
   },
-  "dateFormatDayHourShort": "{days}d {hours}h",
-  "@dateFormatDayHourShort": {
-    "placeholders": {
-      "days": {
-        "type": "int"
-      },
-      "hours": {
-        "type": "int"
-      }
-    }
-  },
-  "dateFormatDayShort": "{count}d",
-  "@dateFormatDayShort": {
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
-  "dateFormatHour": "{count, plural, one {{count} hour} other {{count} hours}}",
-  "@dateFormatHour": {
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
   "dateFormatHourMinute": "{hours, plural, one {{hours} hour} other {{hours} hours}} {minutes, plural, one {{minutes} minute} other {{minutes} minutes}}",
   "@dateFormatHourMinute": {
     "placeholders": {
@@ -248,14 +200,6 @@
         "type": "int"
       },
       "minutes": {
-        "type": "int"
-      }
-    }
-  },
-  "dateFormatHourShort": "{count}h",
-  "@dateFormatHourShort": {
-    "placeholders": {
-      "count": {
         "type": "int"
       }
     }
@@ -378,10 +322,10 @@
   "@editQueue": {},
   "enableNotificationsDownload": "Please enable notifications to receive download progress updates and be able to download files in the background.",
   "@enableNotificationsDownload": {},
+  "enableSubdirectory": "Enable Subdirectory",
+  "@enableSubdirectory": {},
   "enabled": "Enabled",
   "@enabled": {},
-  "enterValidUsernameOrPassword": "Please enter a valid IP/Domain and port before entering your username and password.",
-  "@enterValidUsernameOrPassword": {},
   "episodeId": "Episode Id",
   "@episodeId": {},
   "error": "Error",
@@ -418,12 +362,12 @@
   "@genres": {},
   "hide": "Hide",
   "@hide": {},
-  "ifTheQuickAccountSwitcherShouldBeShown": "If the quick account switcher should be shown",
-  "@ifTheQuickAccountSwitcherShouldBeShown": {},
   "inProgress": "In Progress",
   "@inProgress": {},
   "information": "Information",
   "@information": {},
+  "invalidCredentials": "Invalid credentials",
+  "@invalidCredentials": {},
   "itemId": "Item Id",
   "@itemId": {},
   "itemLength": "Length: {length}",
@@ -440,14 +384,6 @@
   "@itemNumChapters": {
     "placeholders": {
       "numChapters": {
-        "type": "String"
-      }
-    }
-  },
-  "itemProgress": "Progress: {progress}%",
-  "@itemProgress": {
-    "placeholders": {
-      "progress": {
         "type": "String"
       }
     }
@@ -484,8 +420,6 @@
   "@libraryName": {},
   "libraryStats": "Library Stats",
   "@libraryStats": {},
-  "linuxPermissionError": "Download failed due to permission error. Please check folder permissions.",
-  "@linuxPermissionError": {},
   "listenAgain": "Listen again",
   "@listenAgain": {},
   "listeningInTheLastYear": "Listening in the last year",
@@ -498,14 +432,12 @@
   "@lockProgressBarDescription": {},
   "logging": "Logging",
   "@logging": {},
+  "login": "LOGIN",
+  "@login": {},
   "logs": "Logs",
   "@logs": {},
   "longestItems": "Longest Items",
   "@longestItems": {},
-  "markItemsFinished": "Mark Items Finished",
-  "@markItemsFinished": {},
-  "markItemsFinishedAfterDescription": "Specify the time in seconds before the end of an item at which it should be marked as finished. Setting this to 0 marks the item as finished only when the player reaches the very end. If a positive value is set, the item is marked as finished when the player reaches that time before the end.",
-  "@markItemsFinishedAfterDescription": {},
   "minimize": "Minimize",
   "@minimize": {},
   "minimizeToTray": "Minimize to tray",
@@ -516,18 +448,12 @@
   "@miscellaneous": {},
   "moreOptions": "More options",
   "@moreOptions": {},
-  "multipleServerAdressess": "If you want to use multiple server addresses, you can add them later",
-  "@multipleServerAdressess": {},
-  "mustEnterValidAddress": "You must enter a valid server address",
-  "@mustEnterValidAddress": {},
   "name": "Name",
   "@name": {},
   "narrators": "Narrators",
   "@narrators": {},
   "newestEpisodes": "Newest Episodes",
   "@newestEpisodes": {},
-  "next": "Next",
-  "@next": {},
   "nextChapter": "Next Chapter",
   "@nextChapter": {},
   "noConnection": "No Connection",
@@ -536,14 +462,10 @@
   "@noDownloads": {},
   "noInternetDescription": "We are having trouble connecting to the server.",
   "@noInternetDescription": {},
-  "noItemsFound": "No items found",
-  "@noItemsFound": {},
   "noPath": "No Path",
   "@noPath": {},
   "noSeriesSelected": "No series selected",
   "@noSeriesSelected": {},
-  "noUserData": "Login failed: No user data received",
-  "@noUserData": {},
   "notFinished": "Not Finished",
   "@notFinished": {},
   "notStarted": "Not Started",
@@ -568,8 +490,6 @@
   "@offlineSavedProgress": {},
   "ok": "OK",
   "@ok": {},
-  "open": "Open",
-  "@open": {},
   "openDownloads": "Open Downloads",
   "@openDownloads": {},
   "openProjectLink": "Audiobookshelf/Server",
@@ -598,8 +518,6 @@
   "@pleaseCheckInternet": {},
   "port": "Port",
   "@port": {},
-  "previous": "Previous",
-  "@previous": {},
   "previousChapter": "Previous Chapter",
   "@previousChapter": {},
   "progress": "Progress",
@@ -626,6 +544,8 @@
   "@recentlyAdded": {},
   "reportAnIssue": "Report an issue",
   "@reportAnIssue": {},
+  "requiredFields": "Please fill all required fields",
+  "@requiredFields": {},
   "restartRequired": "Restart Required",
   "@restartRequired": {},
   "restartRequiredDescription": "Please restart the app to apply the changes.",
@@ -648,8 +568,10 @@
   "@sequence": {},
   "series": "Series",
   "@series": {},
-  "serverAdressContinue": "Enter your server address to continue",
-  "@serverAdressContinue": {},
+  "serverAddress": "Server Address",
+  "@serverAddress": {},
+  "serverNotFound": "Server not found",
+  "@serverNotFound": {},
   "serverSelection": "Server Selection",
   "@serverSelection": {},
   "settings": "Settings",
@@ -660,10 +582,6 @@
   "@shareOpen": {},
   "show": "Show",
   "@show": {},
-  "showAccountSwitcher": "Show Account Switcher",
-  "@showAccountSwitcher": {},
-  "showAccountSwitcherDescription": "Enable this option to add an icon button to the app bar for quick account switching. This will reduce the size of the app bar.",
-  "@showAccountSwitcherDescription": {},
   "showMediaType": "Show Media Type",
   "@showMediaType": {},
   "showMediaTypeDescription": "Displays the media type badges at the bottom of each item.",
@@ -688,6 +606,8 @@
   "@stopPlayerUntilSync": {},
   "stopPlayerWhileSyncingDescription": "Enable this option to prevent the player from starting until the most recent playback position has been synced. This ensures that playback resumes from the correct position. If disabled, the playback position may change shortly after starting, potentially leading to data loss. Turning this on helps conserve data usage.",
   "@stopPlayerWhileSyncingDescription": {},
+  "subdirectory": "Subdirectory",
+  "@subdirectory": {},
   "success": "Success",
   "@success": {},
   "sync": "Sync",
@@ -742,16 +662,10 @@
   "@tryAgain": {},
   "unknown": "Unknown",
   "@unknown": {},
-  "unknownTitle": "Unknown Title",
-  "@unknownTitle": {},
-  "updatedAt": "Updated At",
-  "@updatedAt": {},
   "user": "User",
   "@user": {},
   "username": "Username",
   "@username": {},
-  "usernameOrPasswordNotEmpty": "Username and password cannot be empty",
-  "@usernameOrPasswordNotEmpty": {},
   "viewBookmarks": "View Bookmarks",
   "@viewBookmarks": {},
   "viewChapters": "View Chapters",
@@ -761,7 +675,5 @@
   "waitTillRedirect": "Please wait for redirect to /init. You are currently not logged in.",
   "@waitTillRedirect": {},
   "waitingForDownload": "Waiting for download to start",
-  "@waitingForDownload": {},
-  "year": "Year",
-  "@year": {}
+  "@waitingForDownload": {}
 }
