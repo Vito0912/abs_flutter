@@ -21,7 +21,7 @@ AudioTrack _$AudioTrackFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$AudioTrack {
   @JsonKey(name: "index")
-  int get index => throw _privateConstructorUsedError;
+  int? get index => throw _privateConstructorUsedError;
   @JsonKey(name: "startOffset")
   double get startOffset => throw _privateConstructorUsedError;
   @JsonKey(name: "duration")
@@ -52,7 +52,7 @@ abstract class $AudioTrackCopyWith<$Res> {
       _$AudioTrackCopyWithImpl<$Res, AudioTrack>;
   @useResult
   $Res call(
-      {@JsonKey(name: "index") int index,
+      {@JsonKey(name: "index") int? index,
       @JsonKey(name: "startOffset") double startOffset,
       @JsonKey(name: "duration") double duration,
       @JsonKey(name: "title") String title,
@@ -78,7 +78,7 @@ class _$AudioTrackCopyWithImpl<$Res, $Val extends AudioTrack>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? index = null,
+    Object? index = freezed,
     Object? startOffset = null,
     Object? duration = null,
     Object? title = null,
@@ -87,10 +87,10 @@ class _$AudioTrackCopyWithImpl<$Res, $Val extends AudioTrack>
     Object? metadata = freezed,
   }) {
     return _then(_value.copyWith(
-      index: null == index
+      index: freezed == index
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       startOffset: null == startOffset
           ? _value.startOffset
           : startOffset // ignore: cast_nullable_to_non_nullable
@@ -142,7 +142,7 @@ abstract class _$$AudioTrackImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: "index") int index,
+      {@JsonKey(name: "index") int? index,
       @JsonKey(name: "startOffset") double startOffset,
       @JsonKey(name: "duration") double duration,
       @JsonKey(name: "title") String title,
@@ -167,7 +167,7 @@ class __$$AudioTrackImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? index = null,
+    Object? index = freezed,
     Object? startOffset = null,
     Object? duration = null,
     Object? title = null,
@@ -176,10 +176,10 @@ class __$$AudioTrackImplCopyWithImpl<$Res>
     Object? metadata = freezed,
   }) {
     return _then(_$AudioTrackImpl(
-      index: null == index
+      index: freezed == index
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       startOffset: null == startOffset
           ? _value.startOffset
           : startOffset // ignore: cast_nullable_to_non_nullable
@@ -212,7 +212,7 @@ class __$$AudioTrackImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$AudioTrackImpl extends _AudioTrack {
   const _$AudioTrackImpl(
-      {@JsonKey(name: "index") required this.index,
+      {@JsonKey(name: "index") this.index,
       @JsonKey(name: "startOffset") required this.startOffset,
       @JsonKey(name: "duration") required this.duration,
       @JsonKey(name: "title") required this.title,
@@ -226,7 +226,7 @@ class _$AudioTrackImpl extends _AudioTrack {
 
   @override
   @JsonKey(name: "index")
-  final int index;
+  final int? index;
   @override
   @JsonKey(name: "startOffset")
   final double startOffset;
@@ -293,7 +293,7 @@ class _$AudioTrackImpl extends _AudioTrack {
 
 abstract class _AudioTrack extends AudioTrack {
   const factory _AudioTrack(
-          {@JsonKey(name: "index") required final int index,
+          {@JsonKey(name: "index") final int? index,
           @JsonKey(name: "startOffset") required final double startOffset,
           @JsonKey(name: "duration") required final double duration,
           @JsonKey(name: "title") required final String title,
@@ -308,7 +308,7 @@ abstract class _AudioTrack extends AudioTrack {
 
   @override
   @JsonKey(name: "index")
-  int get index;
+  int? get index;
   @override
   @JsonKey(name: "startOffset")
   double get startOffset;

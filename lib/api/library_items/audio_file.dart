@@ -9,7 +9,7 @@ part 'audio_file.g.dart';
 @freezed
 class AudioFile with _$AudioFile {
   const factory AudioFile({
-    @JsonKey(name: "index") required int index,
+    @JsonKey(name: "index") int? index,
     @JsonKey(name: "ino") required String ino,
     @JsonKey(name: "metadata") required LibraryFileMetadata metadata,
     @JsonKey(name: "addedAt") required int addedAt,
