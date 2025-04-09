@@ -25,11 +25,7 @@ To explore the app, you can either log in to your private server or use the offi
 
 *Note:* Demo user accounts are automatically deleted after 48 hours.
 
-
-## Important
-> If you're interested in trying out the Android version of this app, please reach out to me via [email](mailto:fito0912@duck.com) (fito0912@duck.com). I'll add you to the beta testing group on the Google Play Store. It is currently private. Your participation is crucial, as I need testers to be able to create a public beta.
->
-> Alternatively, you can download the APK from the release section. However, joining the beta would greatly assist in bringing the app to the Play Store sooner.
+## About
 
 This is a third-party app for the Audiobookshelf server, designed to maintain a single codebase for multiple OS platforms.\
 The app is written in Dart and utilizes the Flutter framework.\
@@ -73,7 +69,7 @@ Preview
 > *<sup>1</sup> Chapter support, sleep timer, playback speed, custom skip time, and more\
 > *<sup>2</sup> Android Auto and Apple CarPlay are not supported as standalone apps, but media controls are supported\
 > *<sup>3</sup> You need to allow CORS on the server so the web app can access it\
-> *<sup>5</sup> Will be added in the future\
+> *<sup>5</sup> Very basic support included\
 > *<sup>6</sup> A secure SSL connection is needed.
 
 iOS requires some additional setup to configure the necessary plugins. Unfortunately, I’m unable to test, build, or fix errors on iOS since I don’t have access to a Mac. However, I’ve only used packages and libraries that are compatible with Apple, so once the setup is complete, there shouldn't be any issues building the app for iOS.
