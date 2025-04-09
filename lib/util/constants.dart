@@ -26,6 +26,7 @@ class Constants {
   static const String DISABLE_CHAPTER_HANDLER = 'disableChapterHandler';
   static const String VOLUME = 'volume';
   static const String PLAYBACK_SPEED = 'playbackSpeed';
+  static const String WRAP_TEXTS = 'wrapTexts';
 
   static const String BOOK = 'book';
   static const String PODCAST = 'podcast';

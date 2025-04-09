@@ -1,5 +1,7 @@
 import 'package:abs_flutter/generated/l10n.dart';
 import 'package:abs_flutter/provider/player_provider.dart';
+import 'package:abs_flutter/provider/settings_provider.dart';
+import 'package:abs_flutter/util/constants.dart';
 import 'package:abs_flutter/util/helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
@@ -16,6 +18,7 @@ class Chapters extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final player = ref.watch(playerProvider);
     final isPlaying = player.audioService.mediaItem.value != null;
+    final settings = ref.read(settingsProvider);
 
     return IconButton(
       icon: child,
@@ -57,7 +60,7 @@ class Chapters extends ConsumerWidget {
                                     message: chapter['title'],
                                     child: Text(
                                       chapter['title'],
-                                      overflow: TextOverflow.ellipsis,
+                                      overflow: settings[Constants.WRAP_TEXTS] ? TextOverflow.clip : TextOverflow.ellipsis,
                                     )),
                               ),
                             ],

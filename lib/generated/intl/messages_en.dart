@@ -436,5 +436,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "waitingForDownload": MessageLookupByLibrary.simpleMessage(
       "Waiting for download to start",
     ),
+    "wrapText": MessageLookupByLibrary.simpleMessage("Wrap Text"),
+    "wrapTextDescription": MessageLookupByLibrary.simpleMessage(
+      "When enabled, some texts, such as chapters, are wrapped instead of being cut off. This will break some designs.",
+    ),
   };
 }

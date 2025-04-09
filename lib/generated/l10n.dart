@@ -1931,6 +1931,21 @@ class S {
   String get playlists {
     return Intl.message('Playlists', name: 'playlists', desc: '', args: []);
   }
+
+  /// `Wrap Text`
+  String get wrapText {
+    return Intl.message('Wrap Text', name: 'wrapText', desc: '', args: []);
+  }
+
+  /// `When enabled, some texts, such as chapters, are wrapped instead of being cut off. This will break some designs.`
+  String get wrapTextDescription {
+    return Intl.message(
+      'When enabled, some texts, such as chapters, are wrapped instead of being cut off. This will break some designs.',
+      name: 'wrapTextDescription',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
