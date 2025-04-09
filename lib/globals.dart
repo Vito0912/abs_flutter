@@ -57,6 +57,7 @@ final Map<String, dynamic> defaultSettings = {
   Constants.DISABLE_CHAPTER_HANDLER: false,
   Constants.VOLUME: 1.0,
   Constants.PLAYBACK_SPEED: 1.0,
+  Constants.WRAP_TEXTS: false,
 };
 
 final Map<String, String> supportedLocales = {

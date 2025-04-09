@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
+import 'dart:math' as math;
 
 import 'package:abs_flutter/api/library_items/audio_file.dart';
 import 'package:abs_flutter/api/library_items/episode.dart';
@@ -215,9 +216,10 @@ class DownloadProvider extends ChangeNotifier {
 
     final List<AudioFile> audioFiles = item.media!.bookMedia!.audioFiles!;
     final List<DownloadFile> files = [];
+    int fallbackIndex = 1;
     for (AudioFile file in audioFiles) {
       files.add(DownloadFile(
-        index: file.index,
+        index: file.index ?? fallbackIndex,
         ino: file.ino,
         filename: file.metadata.filename,
         size: file.metadata.size,
@@ -225,6 +227,7 @@ class DownloadProvider extends ChangeNotifier {
         duration: file.duration,
         format: file.metadata.ext,
       ));
+      fallbackIndex++;
     }
 
     final downloadInfo = DownloadInfo(
@@ -324,8 +327,9 @@ class DownloadProvider extends ChangeNotifier {
           .firstWhere((library) => library.id == libraryItem.libraryId)
           .name!,
       files: [
+        // TODO: ABS does not assigns a index to uploaded podcast episodes. Random
         DownloadFile(
-          index: item.audioFile!.index,
+          index: item.audioFile!.index ?? math.Random().nextInt(10000),
           filename: item.audioFile!.metadata.filename,
           size: item.audioFile!.metadata.size,
           status: TaskStatus.enqueued,

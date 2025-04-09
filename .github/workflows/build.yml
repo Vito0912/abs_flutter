@@ -113,7 +113,6 @@ jobs:
         uses: subosito/flutter-action@v2
         with:
           channel: stable
-          flutter-version: 3.27.1
 
       - name: Install Flutter dependencies
         run: flutter pub get
@@ -180,7 +179,6 @@ jobs:
         uses: subosito/flutter-action@v2
         with:
           channel: stable
-          flutter-version: 3.27.1
 
       - name: Extract version from pubspec.yaml
         id: extract_version
@@ -252,7 +250,6 @@ jobs:
         uses: subosito/flutter-action@v2
         with:
           channel: stable
-          flutter-version: 3.27.1
 
       - name: Install Flutter dependencies
         run: flutter pub get

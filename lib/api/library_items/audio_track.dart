@@ -9,7 +9,7 @@ class AudioTrack with _$AudioTrack {
   const AudioTrack._();
 
   const factory AudioTrack({
-    @JsonKey(name: "index") required int index,
+    @JsonKey(name: "index") int? index,
     @JsonKey(name: "startOffset") required double startOffset,
     @JsonKey(name: "duration") required double duration,
     @JsonKey(name: "title") required String title,

@@ -21,7 +21,7 @@ AudioFile _$AudioFileFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$AudioFile {
   @JsonKey(name: "index")
-  int get index => throw _privateConstructorUsedError;
+  int? get index => throw _privateConstructorUsedError;
   @JsonKey(name: "ino")
   String get ino => throw _privateConstructorUsedError;
   @JsonKey(name: "metadata")
@@ -85,7 +85,7 @@ abstract class $AudioFileCopyWith<$Res> {
       _$AudioFileCopyWithImpl<$Res, AudioFile>;
   @useResult
   $Res call(
-      {@JsonKey(name: "index") int index,
+      {@JsonKey(name: "index") int? index,
       @JsonKey(name: "ino") String ino,
       @JsonKey(name: "metadata") LibraryFileMetadata metadata,
       @JsonKey(name: "addedAt") int addedAt,
@@ -129,7 +129,7 @@ class _$AudioFileCopyWithImpl<$Res, $Val extends AudioFile>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? index = null,
+    Object? index = freezed,
     Object? ino = null,
     Object? metadata = null,
     Object? addedAt = null,
@@ -155,10 +155,10 @@ class _$AudioFileCopyWithImpl<$Res, $Val extends AudioFile>
     Object? mimeType = freezed,
   }) {
     return _then(_value.copyWith(
-      index: null == index
+      index: freezed == index
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       ino: null == ino
           ? _value.ino
           : ino // ignore: cast_nullable_to_non_nullable
@@ -288,7 +288,7 @@ abstract class _$$AudioFileImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: "index") int index,
+      {@JsonKey(name: "index") int? index,
       @JsonKey(name: "ino") String ino,
       @JsonKey(name: "metadata") LibraryFileMetadata metadata,
       @JsonKey(name: "addedAt") int addedAt,
@@ -332,7 +332,7 @@ class __$$AudioFileImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? index = null,
+    Object? index = freezed,
     Object? ino = null,
     Object? metadata = null,
     Object? addedAt = null,
@@ -358,10 +358,10 @@ class __$$AudioFileImplCopyWithImpl<$Res>
     Object? mimeType = freezed,
   }) {
     return _then(_$AudioFileImpl(
-      index: null == index
+      index: freezed == index
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       ino: null == ino
           ? _value.ino
           : ino // ignore: cast_nullable_to_non_nullable
@@ -462,7 +462,7 @@ class __$$AudioFileImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$AudioFileImpl implements _AudioFile {
   const _$AudioFileImpl(
-      {@JsonKey(name: "index") required this.index,
+      {@JsonKey(name: "index") this.index,
       @JsonKey(name: "ino") required this.ino,
       @JsonKey(name: "metadata") required this.metadata,
       @JsonKey(name: "addedAt") required this.addedAt,
@@ -493,7 +493,7 @@ class _$AudioFileImpl implements _AudioFile {
 
   @override
   @JsonKey(name: "index")
-  final int index;
+  final int? index;
   @override
   @JsonKey(name: "ino")
   final String ino;
@@ -671,7 +671,7 @@ class _$AudioFileImpl implements _AudioFile {
 
 abstract class _AudioFile implements AudioFile {
   const factory _AudioFile(
-      {@JsonKey(name: "index") required final int index,
+      {@JsonKey(name: "index") final int? index,
       @JsonKey(name: "ino") required final String ino,
       @JsonKey(name: "metadata") required final LibraryFileMetadata metadata,
       @JsonKey(name: "addedAt") required final int addedAt,
@@ -701,7 +701,7 @@ abstract class _AudioFile implements AudioFile {
 
   @override
   @JsonKey(name: "index")
-  int get index;
+  int? get index;
   @override
   @JsonKey(name: "ino")
   String get ino;

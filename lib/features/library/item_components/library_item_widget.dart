@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:abs_flutter/api/library/collapsed_series.dart';
 import 'package:abs_flutter/features/library/item_components/top_label.dart';
 import 'package:abs_flutter/generated/l10n.dart';
@@ -39,8 +41,10 @@ class LibraryItemWidget extends StatelessWidget {
           ? null
           : () {
               if (collapseSeries != null) {
+                String base64Id = Uri.encodeComponent(base64.encode(utf8.encode(collapseSeries!.id)));
+                String base64Name = Uri.encodeComponent(base64.encode(utf8.encode(collapseSeries!.name ?? '')));
                 context.push(
-                    '/series-view/${collapseSeries!.name}/${collapseSeries!.id}');
+                    '/series-view/$base64Name/$base64Id');
               } else {
                 context.push('/view/${item!.mediaType}/${item!.id}');
               }

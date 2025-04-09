@@ -8,7 +8,7 @@ part of 'audio_file.dart';
 
 _$AudioFileImpl _$$AudioFileImplFromJson(Map<String, dynamic> json) =>
     _$AudioFileImpl(
-      index: (json['index'] as num).toInt(),
+      index: (json['index'] as num?)?.toInt(),
       ino: json['ino'] as String,
       metadata: LibraryFileMetadata.fromJson(
           json['metadata'] as Map<String, dynamic>),
