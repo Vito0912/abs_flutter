@@ -1,0 +1,433 @@
+{
+  "language": "Taal",
+  "@language": {},
+  "deleteSelected": "Verwijder Selectie",
+  "@deleteSelected": {},
+  "stop": "Stop",
+  "@stop": {},
+  "user": "Gebruiker",
+  "@user": {},
+  "disableSkippingChaptersDescription": "Deze functie schakelt de mogelijkheid om hoofdstukken over te slaan buiten de applicatie om uit (e.g. via een hoofdtelefoon of bij notificatie controls). Schakel deze functie in om aan de hand van hoofdtelefoons vooruit en teruguit te kunnen spoelen.",
+  "@disableSkippingChaptersDescription": {},
+  "progressNum": "Huidige Voortgang: {progress} %",
+  "@progressNum": {
+    "placeholders": {
+      "progress": {
+        "type": "String"
+      }
+    }
+  },
+  "fastForwardSecondsDescription": "Stel het aantal seconden in voor het vooruitspoelen wanneer de vooruitspoelknop is ingedrukt.",
+  "@fastForwardSecondsDescription": {},
+  "description": "Beschrijving",
+  "@description": {},
+  "information": "Informatie",
+  "@information": {},
+  "port": "Poort",
+  "@port": {},
+  "publisher": "Uitgever",
+  "@publisher": {},
+  "moreOptions": "Meer opties",
+  "@moreOptions": {},
+  "personalizedLibrary": "Gepersonaliseerde Bibliotheek",
+  "@personalizedLibrary": {},
+  "errorDownloadingBody": "Er is iets misgegaan met het downloaden van {displayName}",
+  "@errorDownloadingBody": {},
+  "largestItems": "Grootste Item",
+  "@largestItems": {},
+  "notStarted": "Niet Gestart",
+  "@notStarted": {},
+  "offlineProgress": "Lokale Progressie",
+  "@offlineProgress": {},
+  "added": "Toegevoegd",
+  "@added": {},
+  "allDownloads": "Alle Downloads",
+  "@allDownloads": {},
+  "addUser": "Voeg een Gebruiker toe",
+  "@addUser": {},
+  "addANewUser": "Voeg een Nieuwe Gebruiker toe",
+  "@addANewUser": {},
+  "author": "Auteur",
+  "@author": {},
+  "authors": "Auteurs",
+  "@authors": {},
+  "changeLibrary": "Verander de Bibliotheek",
+  "@changeLibrary": {},
+  "chaptersNum": "Hoofdstuk ({num})",
+  "@chaptersNum": {
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "close": "Sluiten",
+  "@close": {},
+  "connectionError": "Verbindingsfout",
+  "@connectionError": {},
+  "clearCache": "Verwijder cache",
+  "@clearCache": {},
+  "anUnknownErrorOccurred": "Een onbekende fout is voorgekomen",
+  "@anUnknownErrorOccurred": {},
+  "amoledMode": "AMOLED Modus",
+  "@amoledMode": {},
+  "carPlayer": "Auto Speler",
+  "@carPlayer": {},
+  "collapseSeries": "Minimaliseer Series",
+  "@collapseSeries": {},
+  "consecutiveDays": "Aaneengesloten dagen",
+  "@consecutiveDays": {},
+  "continueSeries": "Vervolg Series",
+  "@continueSeries": {},
+  "downloadPathDescription": "De locatie waar de downloads zijn opgeslagen. Om dit te veranderen moet je eerst alle downloads verwijderen.",
+  "@downloadPathDescription": {},
+  "downloading": "Aan het downloaden",
+  "@downloading": {},
+  "downloadingBody": "Aan het downloaden van {displayName}",
+  "@downloadingBody": {},
+  "duration": "Duratie",
+  "@duration": {},
+  "enabled": "Ingeschakeld",
+  "@enabled": {},
+  "downloadsOnlyViaWifi": "Download alleen via WiFi",
+  "@downloadsOnlyViaWifi": {},
+  "ebookreader": "eBook-Reader",
+  "@ebookreader": {},
+  "downloadInfo": "Download Info",
+  "@downloadInfo": {},
+  "downloads": "Downloads",
+  "@downloads": {},
+  "episodeId": "Episode Id",
+  "@episodeId": {},
+  "downloadPath": "Download Locatie",
+  "@downloadPath": {},
+  "editQueue": "Bewerk Wachtrij",
+  "@editQueue": {},
+  "enableNotificationsDownload": "Schakel notificaties in om voortgangsupdates van de download te krijgen en om in de achtergrond te kunnen downloaden.",
+  "@enableNotificationsDownload": {},
+  "fastForward": "Doorspoelen",
+  "@fastForward": {},
+  "failed": "Mislukt",
+  "@failed": {},
+  "errorItemNotFound": "Fout: Het item is niet gevonden!",
+  "@errorItemNotFound": {},
+  "exit": "Exit",
+  "@exit": {},
+  "errorDownloading": "Downloadfout",
+  "@errorDownloading": {},
+  "filename": "Bestandsnaam",
+  "@filename": {},
+  "filepath": "Bestands locatie",
+  "@filepath": {},
+  "hide": "Minimaliseer",
+  "@hide": {},
+  "genres": "Genres",
+  "@genres": {},
+  "general": "Algemeen",
+  "@general": {},
+  "invalidCredentials": "Ongeldige gegevens",
+  "@invalidCredentials": {},
+  "itemId": "Item Id",
+  "@itemId": {},
+  "itemLength": "Lengte: {length}",
+  "@itemLength": {
+    "placeholders": {
+      "length": {
+        "type": "String"
+      }
+    }
+  },
+  "itemNotFoundDescription": "Het Item kon niet worden gevonden. Dit kan zijn door een verbindingsfout of omdat het item niet langer bestaad maar nog wel gecached is.",
+  "@itemNotFoundDescription": {},
+  "itemType": "Item type",
+  "@itemType": {},
+  "libraryName": "Bibliotheek Naam",
+  "@libraryName": {},
+  "libraryStats": "Bibliotheek Statistieken",
+  "@libraryStats": {},
+  "listenAgain": "Luister opnieuw",
+  "@listenAgain": {},
+  "listeningInTheLastYear": "Geluisterd in het laatste jaar",
+  "@listeningInTheLastYear": {},
+  "last30Days": "Laatste 30 dagen",
+  "@last30Days": {},
+  "last7Days": "Laatste 7 dagen",
+  "@last7Days": {},
+  "lockProgressBar": "Vergrendel Media Voortgangs Balk",
+  "@lockProgressBar": {},
+  "longestItems": "Langstdurende Items",
+  "@longestItems": {},
+  "minimizeToTray": "Minimalizeer naar systeemvak",
+  "@minimizeToTray": {},
+  "newestEpisodes": "Nieuwste Episoden",
+  "@newestEpisodes": {},
+  "nextChapter": "Volgende Hoofdstuk",
+  "@nextChapter": {},
+  "noConnection": "Geen Verbinding",
+  "@noConnection": {},
+  "noDownloads": "Geen downloads",
+  "@noDownloads": {},
+  "notificationHeading": "Notificaties moeten worden ingeschakeld",
+  "@notificationHeading": {},
+  "noInternetDescription": "Er zijn problemen met het verbinden met de server.",
+  "@noInternetDescription": {},
+  "noSeriesSelected": "Geen series geselecteerd",
+  "@noSeriesSelected": {},
+  "ownStats": "Eigen Statistieken",
+  "@ownStats": {},
+  "password": "Wachtwoord",
+  "@password": {},
+  "numberOfBooks": "Aantal Boeken",
+  "@numberOfBooks": {},
+  "offlineSavedProgress": "Lokaal opgeslagen voortgang",
+  "@offlineSavedProgress": {},
+  "playHistory": "Afspeelgeschiedenis",
+  "@playHistory": {},
+  "previousChapter": "Vorige Hoofdstuk",
+  "@previousChapter": {},
+  "play": "Afspelen",
+  "@play": {},
+  "playbackSpeed": "Snelheid",
+  "@playbackSpeed": {},
+  "progress": "Progressie",
+  "@progress": {},
+  "playNextEpisode": "Speel volgende episode af",
+  "@playNextEpisode": {},
+  "pleaseCheckInternet": "Controleer je internetverbinding en probeer het opnieuw.",
+  "@pleaseCheckInternet": {},
+  "progressAsChaptersDescription": "Activeer deze functie om de voortgang per hoofdstuk in de speler te laten zien. Als deze functie is uitgeschakeld zal de totale voortgang worden laten zien.",
+  "@progressAsChaptersDescription": {},
+  "recentSeries": "Recente Series",
+  "@recentSeries": {},
+  "recentlyAdded": "Recentelijk Toegevoegd",
+  "@recentlyAdded": {},
+  "restartRequiredDescription": "Herstart de applicatie om de aanpassingen toe te passen.",
+  "@restartRequiredDescription": {},
+  "retry": "Probeer opnieuw",
+  "@retry": {},
+  "rewind": "Spoel terug",
+  "@rewind": {},
+  "reportAnIssue": "Rapporteer een issue",
+  "@reportAnIssue": {},
+  "requiredFields": "Vul alle benodigde velden in",
+  "@requiredFields": {},
+  "serverSelection": "Server Selectie",
+  "@serverSelection": {},
+  "signOut": "Uitloggen",
+  "@signOut": {},
+  "topAuthors": "Top Auteurs",
+  "@topAuthors": {},
+  "totalAuthors": "Totaal aantal Auteurs",
+  "@totalAuthors": {},
+  "totalDuration": "Totale Duratie",
+  "@totalDuration": {},
+  "totalGenres": "Totaal aantal Genres",
+  "@totalGenres": {},
+  "totalItems": "Totaal aantal Items",
+  "@totalItems": {},
+  "totalSize": "Totale hoeveelheid opslag",
+  "@totalSize": {},
+  "totalTimeListened": "Totale tijd geluisterd",
+  "@totalTimeListened": {},
+  "syncOnlyViaWifi": "Synchroniseer alleen via WiFi",
+  "@syncOnlyViaWifi": {},
+  "sortSeriesAsc": "Sorteer series in Oplopende Volgorde",
+  "@sortSeriesAsc": {},
+  "search": "Zoek",
+  "@search": {},
+  "series": "Series",
+  "@series": {},
+  "settings": "Instellingen",
+  "@settings": {},
+  "sync": "Synchroniseer",
+  "@sync": {},
+  "title": "Titel",
+  "@title": {},
+  "today": "Vandaag",
+  "@today": {},
+  "serverNotFound": "Server niet gevonden",
+  "@serverNotFound": {},
+  "showMediaType": "Laat Media Types Zien",
+  "@showMediaType": {},
+  "syncInterval": "Synchronisatie Interval (seconden)",
+  "@syncInterval": {},
+  "timeRemainingNum": "Tijd Resterend: {time}",
+  "@timeRemainingNum": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "totalAudioTracks": "Totale Audiotracks",
+  "@totalAudioTracks": {},
+  "showProgressPerChapters": "Laat het Voortgang per Hoofdstuk zien",
+  "@showProgressPerChapters": {},
+  "stopPlayerUntilSync": "Stop Speler tot Synchronisatie is afgerond",
+  "@stopPlayerUntilSync": {},
+  "shakeResetTimer": "Schud om timer te resetten",
+  "@shakeResetTimer": {},
+  "showMediaTypeDescription": "Weergeeft de mediatype badge onderaan elke item.",
+  "@showMediaTypeDescription": {},
+  "syncIntervalDescription": "Specificeert hoevaak de applicatie moet synchroniseren met de server. Herstart de applicatie om de verandering toe te passen.",
+  "@syncIntervalDescription": {},
+  "viewOnGithub": "Bekijk op GitHub",
+  "@viewOnGithub": {},
+  "waitingForDownload": "Wachten op het starten van de download",
+  "@waitingForDownload": {},
+  "currentDownloads": "Huidige Downloads",
+  "@currentDownloads": {},
+  "jumpToLastPosition": "Spring naar de laatste positie",
+  "@jumpToLastPosition": {},
+  "dateFormatDayHourMinuteSecondShort": "{days}d {hours}h {minutes}m {seconds}s",
+  "@dateFormatDayHourMinuteSecondShort": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      },
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "sequence": "Sequentie",
+  "@sequence": {},
+  "stats": "Statistieken",
+  "@stats": {},
+  "show": "Toon",
+  "@show": {},
+  "username": "Gebruikersnaam",
+  "@username": {},
+  "continueListening": "Hervat",
+  "@continueListening": {},
+  "copyLogs": "Kopieer logs",
+  "@copyLogs": {},
+  "size": "Grootte",
+  "@size": {},
+  "unknown": "Onbekend",
+  "@unknown": {},
+  "notTriedYet": "Niet geprobeerd",
+  "@notTriedYet": {},
+  "rewindSecondsDescription": "Zet het aantal seconden om terug te spoelen wanneer de terugspoelknop is ingedrukt.",
+  "@rewindSecondsDescription": {},
+  "lockProgressBarDescription": "Bij het activeren van deze functie wordt devoortgangsbalk in de medianotificatie vergrendeld, als de OS dat toestaat",
+  "@lockProgressBarDescription": {},
+  "downloadErrorDescription": "Het bestand was niet correct gedownload. You kan proberen om de data te verwijderen op dit apparaat door op de knop te drukken en het overnieuw proberen te downloaden.",
+  "@downloadErrorDescription": {},
+  "minimizeToTrayDescription": "Deze functie verplaatst de applicatie van de taakbalk naar het systeemvak.",
+  "@minimizeToTrayDescription": {},
+  "itemNumChapters": "Aantal Hoofdstukken: {numChapters}",
+  "@itemNumChapters": {
+    "placeholders": {
+      "numChapters": {
+        "type": "String"
+      }
+    }
+  },
+  "player": "Speler",
+  "@player": {},
+  "sort": "Sorteer",
+  "@sort": {},
+  "success": "Success",
+  "@success": {},
+  "daysListened": "Dagen geluisterd",
+  "@daysListened": {},
+  "descending": "Afdalend",
+  "@descending": {},
+  "deviceInfo": "Apparaat: {device}\nOS: {os}\nApplicatie Versie: {version}",
+  "@deviceInfo": {
+    "placeholders": {
+      "device": {
+        "type": "String"
+      },
+      "os": {
+        "type": "String"
+      },
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "disableSkippingChapters": "Schakel het overslaan van hoofdstukken uit",
+  "@disableSkippingChapters": {},
+  "disableVibration": "Schakel Vibraties uit",
+  "@disableVibration": {},
+  "disabled": "Uitgeschakeld",
+  "@disabled": {},
+  "discover": "Ontdek",
+  "@discover": {},
+  "domainOrIp": "Domein of IP",
+  "@domainOrIp": {},
+  "debugLogs": "Debug Logs",
+  "@debugLogs": {},
+  "darkMode": "Donkere Modus",
+  "@darkMode": {},
+  "dateFormatHourMinuteShort": "{hours}h {minutes}m",
+  "@dateFormatHourMinuteShort": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatMinuteSecondShort": "{minutes}m {seconds}s",
+  "@dateFormatMinuteSecondShort": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      },
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatMinuteShort": "{count}m",
+  "@dateFormatMinuteShort": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dateFormatSecondShort": "{count}s",
+  "@dateFormatSecondShort": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "createBookmark": "Creeer Bladwijzer",
+  "@createBookmark": {},
+  "createBookmarkTitle": "Creeer bladwijzer",
+  "@createBookmarkTitle": {},
+  "customHeaders": "Aangepaste Koptekst",
+  "@customHeaders": {},
+  "downloadComplete": "Download kompleet",
+  "@downloadComplete": {},
+  "downloadCompleteBody": "De download van {displayName} is kompleet",
+  "@downloadCompleteBody": {},
+  "pause": "Pauseer",
+  "@pause": {},
+  "itemPublishedYear": "Jaar Uitgebracht: {year}",
+  "@itemPublishedYear": {
+    "placeholders": {
+      "year": {
+        "type": "String"
+      }
+    }
+  },
+  "stopPlayerWhileSyncingDescription": "Activeer deze functie om de speler pas te laten spelen als de meest recente voortgangspositie is gesynchroniseerd. Dit zorgt ervoor dat de correcte afspeelpositie wordt gebruikt. Als deze functie is uitgeschakeld kan de afspeelpositie veranderen, wat kan leiden tot extra data gebruik. Deze functie zorgt voor data besparing.",
+  "@stopPlayerWhileSyncingDescription": {},
+  "copyLogsDescription": "Belangrijk:\nBij het clicken op 'Kopieer' worden alle logs naar je clipboard gekopieerd, waaronder de data die is opgeslagen sinds de applicatie voor het laatst is gestart of gecleared. Deze logs kunnen gevoelige informatie bevatten zoals: tokens, gebruikersnamen, email adressen en server URLs. Ben voorzichtig waar je deze informatie plakt.\\n Als je 'Kopieer zonder gevoelige informatie' selecteerd zal de applicatie proberen tokens, gebruikersnamen, emails en server URLs te verbergen. Echter ben je zelf verantwoordelijk om de logs te controleren op gevoelige informatie.",
+  "@copyLogsDescription": {}
+}
