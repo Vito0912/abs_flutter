@@ -121,6 +121,9 @@ class _SingleSeriesViewState extends ConsumerState<SingleSeriesView> {
 
     const double screenWidth = 800;
 
+    String base64Id = Uri.encodeComponent(base64.encode(utf8.encode(seriesPreview.id)));
+    String base64Name = Uri.encodeComponent(base64.encode(utf8.encode(seriesPreview.name)));
+
     return PlatformScaffold(
       appBar: PlatformAppBar(
           title: PlatformText(seriesPreview.name),
@@ -142,7 +145,7 @@ class _SingleSeriesViewState extends ConsumerState<SingleSeriesView> {
                   Container(
                       constraints: const BoxConstraints(maxWidth: 300),
                       child: MultiItem(
-                          '/series-view/${seriesPreview.name}/${seriesPreview.id}',
+                          '/series-view/$base64Name/$base64Id',
                           series: seriesPreview,
                           clickable: false)),
                   const Divider(),

@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:ui';
 
 import 'package:abs_api/abs_api.dart';
@@ -202,9 +203,11 @@ class ShelfItems extends ConsumerWidget {
         name: item.name!,
         description: item.description,
       );
+      String base64Id = Uri.encodeComponent(base64.encode(utf8.encode(series.id)));
+      String base64Name = Uri.encodeComponent(base64.encode(utf8.encode(series.name ?? '')));
       return Container(
           constraints: const BoxConstraints(maxWidth: 350),
-          child: MultiItem('/series-view/${series.name}/${series.id}',
+          child: MultiItem('/series-view/$base64Name/$base64Id',
               series: series));
     }).toList();
   }
