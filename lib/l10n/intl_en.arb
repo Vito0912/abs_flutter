@@ -675,5 +675,9 @@
   "waitTillRedirect": "Please wait for redirect to /init. You are currently not logged in.",
   "@waitTillRedirect": {},
   "waitingForDownload": "Waiting for download to start",
-  "@waitingForDownload": {}
+  "@waitingForDownload": {},
+  "collections": "Collections",
+  "playlists": "Playlists",
+  "wrapText": "Wrap Text",
+  "wrapTextDescription": "When enabled, some texts, such as chapters, are wrapped instead of being cut off. This will break some designs."
 }

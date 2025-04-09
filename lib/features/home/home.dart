@@ -1,6 +1,7 @@
 import 'package:abs_flutter/features/home/components/library_chip.dart';
 import 'package:abs_flutter/features/home/components/user_badge.dart';
 import 'package:abs_flutter/features/library/library_items_wrapper.dart';
+import 'package:abs_flutter/features/library/list_items.dart';
 import 'package:abs_flutter/features/library/notch/notch_content.dart';
 import 'package:abs_flutter/features/library/series/series_view_wrapper.dart';
 import 'package:abs_flutter/features/library/shelf_items.dart';
@@ -111,6 +112,12 @@ class Home extends HookConsumerWidget {
                   },
                 ),
                 PopupMenuOption(
+                  label: S.of(context).playlists,
+                  onTap: (PopupMenuOption option) {
+                    context.push('/list-view');
+                  },
+                ),
+                PopupMenuOption(
                     label: S.of(context).addUser,
                     onTap: (PopupMenuOption option) {
                       context.push('/select-server');
@@ -142,7 +149,10 @@ class Home extends HookConsumerWidget {
                     search: previousSort?.search ?? '',
                     filter: previousSort?.filter,
                     filterKey: previousSort?.filterKey,
-                    sort: previousSort?.sort ?? (index == 2 ? 'name' : null),
+                    sort: previousSort?.sort ??
+                        ((index == 2 && currentLibrary?.mediaType == 'book')
+                            ? 'name'
+                            : null),
                     desc: previousSort?.desc ?? 0,
                     previous: [
                       ...?sortList.state.previous?.where((LibrarySort sort) {
@@ -161,6 +171,11 @@ class Home extends HookConsumerWidget {
             return const SafeArea(child: LibraryItemsWrapper());
           } else if (index == 1) {
             return const SafeArea(child: ShelfItems());
+          } else if (index == 2 && currentLibrary?.mediaType == 'book') {
+            return const SafeArea(child: SeriesViewWrapper());
+          } else if (index == 3 && currentLibrary?.mediaType == 'book' ||
+              index == 2) {
+            return SafeArea(child: TabBarWidget());
           } else {
             return const SafeArea(child: SeriesViewWrapper());
           }

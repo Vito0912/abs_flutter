@@ -2,6 +2,7 @@ import 'package:abs_flutter/api/routes/interceptors/bearer_auth_interceptor.dart
 import 'package:abs_flutter/api/routes/interceptors/o_auth_interceptor.dart';
 import 'package:abs_flutter/api/routes/library_api.dart';
 import 'package:abs_flutter/api/routes/library_item_api.dart';
+import 'package:abs_flutter/api/routes/list_api.dart';
 import 'package:abs_flutter/api/routes/me_api.dart';
 import 'package:abs_flutter/api/routes/session_api.dart';
 import 'package:abs_flutter/provider/log_provider.dart';
@@ -253,5 +254,9 @@ class ABSApi {
 
   LibraryApi getLibraryApi() {
     return LibraryApi(dio);
+  }
+
+  ListApi getListApi() {
+    return ListApi(dio);
   }
 }

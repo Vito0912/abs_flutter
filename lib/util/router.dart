@@ -7,6 +7,8 @@ import 'package:abs_flutter/features/download/download_page.dart';
 import 'package:abs_flutter/features/ereader/ereader.dart';
 import 'package:abs_flutter/features/home/home.dart';
 import 'package:abs_flutter/features/library/item/item_view.dart';
+import 'package:abs_flutter/features/library/list/list_view.dart';
+import 'package:abs_flutter/features/library/list_items.dart';
 import 'package:abs_flutter/features/library/series/single_series_view.dart';
 import 'package:abs_flutter/features/logging/log_view.dart';
 import 'package:abs_flutter/features/player/car_player_page.dart';
@@ -70,6 +72,19 @@ final router = GoRouter(
                     builder: (context, state) => SingleSeriesView(
                         seriesName: state.pathParameters['seriesName']!,
                         seriesId: state.pathParameters['id']!)),
+                GoRoute(
+                    path: '/list-view',
+                    builder: (context, state) => TabBarWidget()),
+                GoRoute(
+                    path: '/playlist-view/:id',
+                    builder: (context, state) => ListsItemView(
+                        type: ListViewType.playlist,
+                        id: state.pathParameters['id']!)),
+                GoRoute(
+                    path: '/collection-view/:id',
+                    builder: (context, state) => ListsItemView(
+                        type: ListViewType.collection,
+                        id: state.pathParameters['id']!)),
                 GoRoute(
                   path: '/logs',
                   builder: (context, state) => const LogView(),

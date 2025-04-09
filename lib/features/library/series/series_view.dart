@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:abs_flutter/features/library/item_components/item_series.dart';
 import 'package:abs_flutter/models/library_preview_item.dart';
 import 'package:abs_flutter/models/library_series_preview.dart';
@@ -158,7 +160,12 @@ class _SeriesViewState extends ConsumerState<SeriesView> {
                     name: currentSeries.name,
                   );
 
-                  return ItemSeries(series: seriesItem);
+                  String base64Id = Uri.encodeComponent(base64.encode(utf8.encode(currentSeries.id)));
+                  String base64Name = Uri.encodeComponent(base64.encode(utf8.encode(currentSeries.name)));
+
+                  return MultiItem(
+                      '/series-view/$base64Name/$base64Id',
+                      series: seriesItem);
                 },
               );
             },

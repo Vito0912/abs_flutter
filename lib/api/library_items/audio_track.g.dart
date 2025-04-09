@@ -8,7 +8,7 @@ part of 'audio_track.dart';
 
 _$AudioTrackImpl _$$AudioTrackImplFromJson(Map<String, dynamic> json) =>
     _$AudioTrackImpl(
-      index: (json['index'] as num).toInt(),
+      index: (json['index'] as num?)?.toInt(),
       startOffset: (json['startOffset'] as num).toDouble(),
       duration: (json['duration'] as num).toDouble(),
       title: json['title'] as String,

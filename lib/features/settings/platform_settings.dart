@@ -258,6 +258,12 @@ class PlatformSettings extends ConsumerWidget {
                   toolTipText: S.of(context).disableSkippingChaptersDescription,
                   keyValue: Constants.DISABLE_CHAPTER_HANDLER,
                   defaultValue: false),
+              SwitchTile(
+                  leading: const Icon(Icons.wrap_text),
+                  title: S.of(context).wrapText,
+                  toolTipText: S.of(context).wrapTextDescription,
+                  keyValue: Constants.WRAP_TEXTS,
+                  defaultValue: false),
             ],
           ),
           SettingsSection(
