@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:abs_flutter/api/library_items/library_item.dart';
 import 'package:abs_flutter/api/list/collection.dart';
 import 'package:abs_flutter/api/list/playlist.dart';
@@ -26,14 +28,16 @@ class ListsItemView extends ConsumerWidget {
       return Center(child: Text('Error: ${items.error}'));
     }
 
+    final String decodedId = utf8.decode(base64.decode(id));
+
     final List<LibraryItem> libraryItems = [];
     String title = '';
     if (type == ListViewType.collection) {
-      final Collection? collection = items.getCollectionById(id);
+      final Collection? collection = items.getCollectionById(decodedId);
       libraryItems.addAll(collection?.items ?? []);
       title = collection?.name ?? '';
     } else {
-      final Playlist? playlist = items.getPlaylistById(id);
+      final Playlist? playlist = items.getPlaylistById(decodedId);
       libraryItems.addAll(playlist?.items
               ?.map((e) => e.libraryItem)
               .where((element) => element != null)

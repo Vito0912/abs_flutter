@@ -112,6 +112,12 @@ class Home extends HookConsumerWidget {
                   },
                 ),
                 PopupMenuOption(
+                  label: S.of(context).playlists,
+                  onTap: (PopupMenuOption option) {
+                    context.push('/list-view');
+                  },
+                ),
+                PopupMenuOption(
                     label: S.of(context).addUser,
                     onTap: (PopupMenuOption option) {
                       context.push('/select-server');
@@ -143,7 +149,10 @@ class Home extends HookConsumerWidget {
                     search: previousSort?.search ?? '',
                     filter: previousSort?.filter,
                     filterKey: previousSort?.filterKey,
-                    sort: previousSort?.sort ?? (index == 2 ? 'name' : null),
+                    sort: previousSort?.sort ??
+                        ((index == 2 && currentLibrary?.mediaType == 'book')
+                            ? 'name'
+                            : null),
                     desc: previousSort?.desc ?? 0,
                     previous: [
                       ...?sortList.state.previous?.where((LibrarySort sort) {
@@ -194,13 +203,6 @@ class Home extends HookConsumerWidget {
               ),
               label: S.of(context).series,
             ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.list_alt,
-              color: Theme.of(context).colorScheme.onSurface,
-            ),
-            label: 'Lists',
-          ),
         ],
         tabsBackgroundColor: Theme.of(context).colorScheme.surface,
       ),

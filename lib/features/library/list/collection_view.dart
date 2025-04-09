@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:abs_flutter/api/list/response/collection_response.dart';
 import 'package:abs_flutter/features/library/item_components/item_series.dart';
 import 'package:abs_flutter/models/library_preview_item.dart';
@@ -75,7 +77,9 @@ class _CollectionViewState extends ConsumerState<CollectionView> {
               name: currentSeries.name,
             );
 
-            return MultiItem('/collection-view/${currentSeries.id}',
+            String base64Id = Uri.encodeComponent(base64.encode(utf8.encode(currentSeries.id)));
+
+            return MultiItem('/collection-view/$base64Id',
                 series: seriesItem);
           },
         );

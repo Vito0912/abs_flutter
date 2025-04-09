@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:abs_flutter/features/library/item_components/item_series.dart';
 import 'package:abs_flutter/features/library/item_components/library_item_widget.dart';
 import 'package:abs_flutter/features/library/notch/notch_content.dart';
@@ -32,9 +34,12 @@ class _SingleSeriesViewState extends ConsumerState<SingleSeriesView> {
 
   @override
   void initState() {
+    String? decodedSeriesId = widget.seriesId != null
+        ? utf8.decode(base64.decode(widget.seriesId!))
+        : null;
     _sort = LibrarySort(
       index: 3,
-      filter: widget.seriesId,
+      filter: decodedSeriesId,
       filterKey: 'series',
       sort: 'sequence',
       desc: (ref.read(settingsProvider)[Constants.SORT_SERIES_ASC]) ? 1 : 0,
@@ -86,6 +91,14 @@ class _SingleSeriesViewState extends ConsumerState<SingleSeriesView> {
   Widget build(BuildContext context) {
     final series = ref.watch(libraryItemsWithSortProvider(_sort));
 
+    // Convert base64 encoded series name to a readable format
+    String? decodedSeriesName = widget.seriesName != null
+        ? utf8.decode(base64.decode(widget.seriesName!))
+        : null;
+    String? decodedSeriesId = widget.seriesId != null
+        ? utf8.decode(base64.decode(widget.seriesId!))
+        : null;
+
     if (series == null) return const Center(child: CircularProgressIndicator());
     if (series.filterBy == null ||
         series.filterBy!.isEmpty ||
@@ -93,7 +106,7 @@ class _SingleSeriesViewState extends ConsumerState<SingleSeriesView> {
       return PlatformScaffold(
           appBar: PlatformAppBar(
             title: PlatformText(
-                widget.seriesName ?? series.items.first.seriesName ?? ''),
+                decodedSeriesName ?? series.items.first.seriesName ?? ''),
           ),
           body: Center(child: PlatformText(S.of(context).noSeriesSelected)));
     }
@@ -102,9 +115,9 @@ class _SingleSeriesViewState extends ConsumerState<SingleSeriesView> {
         books: series.items,
         total: series.total,
         page: series.page,
-        id: widget.seriesId ?? '',
+        id: decodedSeriesId ?? '',
         libraryId: '',
-        name: widget.seriesName ?? series.items.first.seriesName ?? '');
+        name: decodedSeriesName ?? series.items.first.seriesName ?? '');
 
     const double screenWidth = 800;
 

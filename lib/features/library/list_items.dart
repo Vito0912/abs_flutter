@@ -17,6 +17,12 @@ class TabBarWidget extends ConsumerWidget {
           title: TabBar(
             indicatorSize: TabBarIndicatorSize.tab,
             padding: EdgeInsets.zero,
+            indicator: BoxDecoration(
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(10),
+                    topRight: Radius.circular(10)),
+            color: Theme.of(context).colorScheme.surfaceContainer,
+            ),
             tabs: [
               Tab(text: S.of(context).collections),
               Tab(text: S.of(context).playlists),
