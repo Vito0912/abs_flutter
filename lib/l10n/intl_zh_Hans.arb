@@ -424,5 +424,17 @@
   "waitTillRedirect": "请等待重定向至 /init。您目前尚未登录。",
   "@waitTillRedirect": {},
   "waitingForDownload": "等待下载开始",
-  "@waitingForDownload": {}
+  "@waitingForDownload": {},
+  "anUnknownErrorOccurred": "一个未知的错误",
+  "@anUnknownErrorOccurred": {},
+  "connectionError": "连接错误",
+  "@connectionError": {},
+  "copyAnonymous": "复制（尝试转移私人数据）",
+  "@copyAnonymous": {},
+  "advanced": "高级设置",
+  "@advanced": {},
+  "copyLogs": "复制日志",
+  "@copyLogs": {},
+  "added": "添加",
+  "@added": {}
 }
