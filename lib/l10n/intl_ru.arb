@@ -112,7 +112,7 @@
       }
     }
   },
-  "dateFormatDayHourMinute": "{days, plural, one {{days} day} other {{days} days}} {hours, plural, one {{hours} hour} other {{hours} hours}} {minutes, plural, one {{minutes} minute} other {{minutes} minutes}}",
+  "dateFormatDayHourMinute": "{days, plural, one {{days} день} other {{days} дней}} {hours, plural, one {{hours} час} other {{hours} часов}} {minutes, plural, one {{minutes} минута} other {{minutes} минут}}",
   "@dateFormatDayHourMinute": {
     "placeholders": {
       "days": {
@@ -126,7 +126,7 @@
       }
     }
   },
-  "dateFormatDayHourMinuteSecond": "{days, plural, one {{days} day} other {{days} days}} {hours, plural, one {{hours} hour} other {{hours} hours}} {minutes, plural, one {{minutes} minute} other {{minutes} minutes}} {seconds, plural, one {{seconds} second} other {{seconds} seconds}}",
+  "dateFormatDayHourMinuteSecond": "{days, plural, one {{days} день} other {{days} дней}} {hours, plural, one {{hours} час} other {{hours} часов}} {minutes, plural, one {{minutes} минута} other {{minutes} минут}} {seconds, plural, one {{seconds} секунда} other {{seconds} секунд}}",
   "@dateFormatDayHourMinuteSecond": {
     "placeholders": {
       "days": {
@@ -201,7 +201,7 @@
       }
     }
   },
-  "dateFormatHourMinute": "{hours, plural, one {{hours} hour} other {{hours} hours}} {minutes, plural, one {{minutes} minute} other {{minutes} minutes}}",
+  "dateFormatHourMinute": "{hours, plural, one {{hours} час} other {{hours} часов}} {minutes, plural, one {{minutes} минута} other {{minutes} минут}}",
   "@dateFormatHourMinute": {
     "placeholders": {
       "hours": {
@@ -212,7 +212,7 @@
       }
     }
   },
-  "dateFormatHourMinuteSecond": "{hours, plural, one {{hours} hour} other {{hours} hours}} {minutes, plural, one {{minutes} minute} other {{minutes} minutes}} {seconds, plural, one {{seconds} second} other {{seconds} seconds}}",
+  "dateFormatHourMinuteSecond": "{hours, plural, one {{hours} час} other {{hours} часов}} {minutes, plural, one {{minutes} минута} other {{minutes} минут}} {seconds, plural, one {{seconds} секунда} other {{seconds} секунд}}",
   "@dateFormatHourMinuteSecond": {
     "placeholders": {
       "hours": {
@@ -259,7 +259,7 @@
       }
     }
   },
-  "dateFormatMinute": "{count, plural, one {{count} minute} other {{count} minutes}}",
+  "dateFormatMinute": "{count, plural, one {{count} минута} other {{count} минут}}",
   "@dateFormatMinute": {
     "placeholders": {
       "count": {
@@ -267,7 +267,7 @@
       }
     }
   },
-  "dateFormatMinuteSecond": "{minutes, plural, one {{minutes} minute} other {{minutes} minutes}} {seconds, plural, one {{seconds} second} other {{seconds} seconds}}",
+  "dateFormatMinuteSecond": "{minutes, plural, one {{minutes} минута} other {{minutes} минут}} {seconds, plural, one {{seconds} секунда} other {{seconds} секунд}}",
   "@dateFormatMinuteSecond": {
     "placeholders": {
       "minutes": {
@@ -297,7 +297,7 @@
       }
     }
   },
-  "dateFormatSecond": "{count, plural, one {{count}  second} other {{count} seconds}}",
+  "dateFormatSecond": "{count, plural, one {{count}  секунда} other {{count} секунд}}",
   "@dateFormatSecond": {
     "placeholders": {
       "count": {
@@ -371,7 +371,7 @@
   "@downloadsOnlyViaWifi": {},
   "duration": "Продолжительность",
   "@duration": {},
-  "ebookreader": "eBook-Reader",
+  "ebookreader": "Читалка",
   "@ebookreader": {},
   "editQueue": "Редактировать очередь",
   "@editQueue": {},
@@ -551,7 +551,7 @@
   "@notTriedYet": {},
   "notificationHeading": "Уведомления должны быть включены",
   "@notificationHeading": {},
-  "numBooksInSeries": "{numBooks, plural, =0 {No Books} =1 {1 Book} other {{numBooks} Books}}",
+  "numBooksInSeries": "{numBooks, plural, =0 {Нет книг} =1 {1 книга} other {{numBooks} книг}}",
   "@numBooksInSeries": {
     "placeholders": {
       "numBooks": {
@@ -782,5 +782,13 @@
   "requiredFields": "Пожалуйста, заполните все необходимые поля",
   "@requiredFields": {},
   "enableSubdirectory": "Включить подкаталог",
-  "@enableSubdirectory": {}
+  "@enableSubdirectory": {},
+  "wrapTextDescription": "При включении некоторые тексты, такие как главы, переносятся, а не отрезаются. Это сломает некоторые дизайны.",
+  "@wrapTextDescription": {},
+  "collections": "Коллекции",
+  "@collections": {},
+  "playlists": "Плейлисты",
+  "@playlists": {},
+  "wrapText": "Перенос текста",
+  "@wrapText": {}
 }
