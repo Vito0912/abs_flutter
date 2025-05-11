@@ -120,6 +120,7 @@ msix_config:
   install_certificate: false
   logo_path: assets\images\logo\logo_big_black_abs.png
   publisher: CN=DA946D62-5745-4496-B294-7F84B50FFF97
+  signtool_options: /td SHA256
   # store: true # Prevents the app from being installed when not downloaded from the store
 
 icons_launcher:
