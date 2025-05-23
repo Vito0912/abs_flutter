@@ -55,10 +55,10 @@ Preview
 |---------------------------------------|:-------:|:--------------:|:-------:|:-----:|:--------------:|
 | Playing Audio                         |    ✅    |       ✅        |    ✅    |   ✅   |       ✅        |
 | Playing Podcasts                      |    ✅    |       ✅        |    ✅    |   ✅   |       ✅        |
-| Reading eBooks*<sup>5</sup>           |    🟨    |       🟨        |    🟨    |   🟨   |       🟨        |
+| Reading eBooks*<sup>5</sup>           |    🟨❌    |       🟨❌        |    🟨❌    |   🟨❌   |       🟨❌        |
 | Up-to-date Sync                       |    ✅    |       ✅        |    ✅    |   ✅   |       ✅        |
 | Advanced Player Controls*<sup>1</sup> |    ✅    |       ✅        |    ✅    |   ✅   |       ✅        |
-| Car Support*<sup>2</sup>              |   🟨    |       🟨       |    ❌    |   ❌   |       ❌        |
+| Car Support*<sup>2</sup>              |   ❌    |       ❌       |    ❌    |   ❌   |       ❌        |
 | Car Mode (Big Buttons for Car)        |    ✅    |       ✅        |    ✅    |   ✅   |       ✅        |
 | No Extra Setup Needed                 |    ✅    | ❌*<sup>6</sup> |    ✅    |   ✅   | ❌*<sup>3</sup> |
 | Media Notifications                   |    ✅    |       ✅        |    ❌    |   ✅   |       ❌        |
