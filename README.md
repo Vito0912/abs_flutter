@@ -1,4 +1,9 @@
 # Buchable
+
+> [!IMPORTANT]
+> Searching for a person that wants to do UI and UX for an "Buchable 2" which will this time be released for iOS free of charge without any PayWalls.\
+> The basic structure for this app is already in place. If you are interested and motivated to help build a great abs app for all platforms with many features, please contact me at fito0912@duck.com.
+
 <a href="https://hosted.weblate.org/engage/audiobookshelf-flutter-client/">
 <img src="https://hosted.weblate.org/widget/audiobookshelf-flutter-client/app/svg-badge.svg" alt="Translation status" />
 </a>
@@ -50,6 +55,9 @@ Preview
 <img src="/images/introduction.png" alt="Download View" style="width: 600px">
 
 ## Platform Matrix
+
+> [!NOTE]
+> iOS and macOS are supported in theory, but no builds are available!
 
 | Platform Matrix                       | Android |      iOS       | Windows | Linux |      Web       |
 |---------------------------------------|:-------:|:--------------:|:-------:|:-----:|:--------------:|
