@@ -85,7 +85,7 @@
   },
   "darkMode": "இருண்ட முறை",
   "@darkMode": {},
-  "dateFormatDayHourMinute": "{நாட்கள், பன்மை, ஒன்று {{days} நாள்} மற்ற {{days} நாட்கள்}} {மணிநேரம், பன்மை, ஒன்று {{hours} மணிநேரம்} மற்ற {{hours} மணிநேரம்}} {நிமிடங்கள், பன்மை, ஒன்று {{minutes} நிமிடம்} பிற {{minutes} நிமிடங்கள்}}",
+  "dateFormatDayHourMinute": "{days, plural, one {{days} நாள்} other {{days} நாட்கள்}} {hours, plural, one {{hours} மணிநேரம்} other {{hours} மணிநேரங்கள்}} {minutes, plural, one {{minutes} நிமையம்} other {{minutes} நிமையங்கள்}}",
   "@dateFormatDayHourMinute": {
     "placeholders": {
       "days": {
@@ -99,7 +99,7 @@
       }
     }
   },
-  "dateFormatDayHourMinuteSecond": "{நாட்கள், பன்மை, ஒன்று {{days} நாள்} மற்ற {{days} நாட்கள்}} {மணிநேரம், பன்மை, ஒன்று {{hours} மணிநேரம்} மற்ற {{hours} மணிநேரம்}} {நிமிடங்கள், பன்மை, ஒன்று {{minutes} நிமிடம்} பிற {{minutes} நிமிடங்கள்}} {விநாடிகள், பன்மை, ஒரு {{seconds} இரண்டாவது} பிற {{seconds} விநாடிகள்}}",
+  "dateFormatDayHourMinuteSecond": "{days, plural, one {{days} நாள்} other {{days} நாட்கள்}} {hours, plural, one {{hours} மணிநேரம்} other {{hours} மணிநேரம்}} {minutes, plural, one {{minutes} நிமையம்} other {{minutes} நிமையங்கள்}} {seconds, plural, one {{seconds} நொடி} other {{seconds} நொடிகள்}}",
   "@dateFormatDayHourMinuteSecond": {
     "placeholders": {
       "days": {
@@ -147,7 +147,7 @@
       }
     }
   },
-  "dateFormatHourMinute": "{மணிநேரம், பன்மை, ஒன்று {{hours} மணிநேரம்} மற்ற {{hours} மணிநேரம்}} {நிமிடங்கள், பன்மை, ஒன்று {{minutes} நிமிடம்} பிற {{minutes} நிமிடங்கள்}}",
+  "dateFormatHourMinute": "{hours, plural, one {{hours} மணிநேரம்} other {{hours} மணிநேரம்}} {minutes, plural, one {{minutes} நிமையம்} other {{minutes} நிமையங்கள்}}",
   "@dateFormatHourMinute": {
     "placeholders": {
       "hours": {
@@ -158,7 +158,7 @@
       }
     }
   },
-  "dateFormatHourMinuteSecond": "{மணிநேரம், பன்மை, ஒன்று {{hours} மணிநேரம்} மற்ற {{hours} மணிநேரம்}} {நிமிடங்கள், பன்மை, ஒன்று {{minutes} நிமிடம்} பிற {{minutes} நிமிடங்கள்}} {வினாடிகள், பன்மை, ஒன்று {{seconds} இரண்டாவது} பிற {{seconds} விநாடிகள்}}",
+  "dateFormatHourMinuteSecond": "{hours, plural, one {{hours} மணிநேரம்} other {{hours} மணிநேரம்}} {minutes, plural, one {{minutes} நிமையம்} other {{minutes} நிமையங்கள்}} {seconds, plural, one {{seconds} நொடி} other {{seconds} நொடிகள்}}",
   "@dateFormatHourMinuteSecond": {
     "placeholders": {
       "hours": {
@@ -197,7 +197,7 @@
       }
     }
   },
-  "dateFormatMinute": "{எண்ணிக்கை, பன்மை, ஒன்று {{count} நிமிடம்} மற்ற {{count} நிமிடங்கள்}}",
+  "dateFormatMinute": "{count, plural, one {{count} நிமையம்} other {{count} நிமையங்கள்}}",
   "@dateFormatMinute": {
     "placeholders": {
       "count": {
@@ -205,7 +205,7 @@
       }
     }
   },
-  "dateFormatMinuteSecond": "{நிமிடங்கள், பன்மை, ஒன்று {{minutes} நிமிடம்} மற்ற {{minutes} நிமிடங்கள்}} {விநாடிகள், பன்மை, ஒன்று {{seconds} இரண்டாவது} பிற {{seconds} விநாடிகள்}}",
+  "dateFormatMinuteSecond": "{minutes, plural, one {{minutes} நிமையம்} other {{minutes} நிமையங்கள்}} {seconds, plural, one {{seconds} நொடி} other {{seconds} நொடிகள்}}",
   "@dateFormatMinuteSecond": {
     "placeholders": {
       "minutes": {
@@ -235,7 +235,7 @@
       }
     }
   },
-  "dateFormatSecond": "{எண்ணிக்கை, பன்மை, ஒன்று {{count} இரண்டாவது} மற்ற {{count} விநாடிகள்}}",
+  "dateFormatSecond": "{count, plural, one {{count}  நொடி} other {{count} நொடிகள்}}",
   "@dateFormatSecond": {
     "placeholders": {
       "count": {
@@ -461,7 +461,7 @@
   "@notTriedYet": {},
   "notificationHeading": "அறிவிப்புகள் இயக்கப்பட வேண்டும்",
   "@notificationHeading": {},
-  "numBooksInSeries": "{numbooks, பன்மை, = 0 {No Books} = 1 {1 Book} பிற {{numBooks} புத்தகங்கள்}}",
+  "numBooksInSeries": "{numBooks, plural, =0 {புத்தகங்கள் இல்லை} =1 {1 புத்தகம்} other {{numBooks} புத்தகங்கள்}}",
   "@numBooksInSeries": {
     "placeholders": {
       "numBooks": {
@@ -535,7 +535,7 @@
   "@restartRequired": {},
   "restartRequiredDescription": "மாற்றங்களைப் பயன்படுத்த பயன்பாட்டை மறுதொடக்கம் செய்யுங்கள்.",
   "@restartRequiredDescription": {},
-  "retry": "மீண்டும் முயற்சிக்கவும்",
+  "retry": "மறுமுயற்சி",
   "@retry": {},
   "rewind": "முன்னாடி",
   "@rewind": {},
@@ -637,7 +637,7 @@
   "@totalSize": {},
   "totalTimeListened": "மொத்த நேரம் கேட்டது",
   "@totalTimeListened": {},
-  "tryAgain": "மீண்டும் முயற்சிக்கவும்",
+  "tryAgain": "மீண்டும் முயற்சி",
   "@tryAgain": {},
   "unknown": "தெரியவில்லை",
   "@unknown": {},
@@ -654,5 +654,33 @@
   "waitTillRedirect": "/Init க்கு திருப்பி விடுங்கள். நீங்கள் தற்போது உள்நுழையவில்லை.",
   "@waitTillRedirect": {},
   "waitingForDownload": "பதிவிறக்கம் தொடங்க காத்திருக்கிறது",
-  "@waitingForDownload": {}
+  "@waitingForDownload": {},
+  "connectionError": "இணைப்பு பிழை",
+  "@connectionError": {},
+  "anUnknownErrorOccurred": "அறியப்படாத பிழை ஏற்பட்டது",
+  "@anUnknownErrorOccurred": {},
+  "customHeaders": "தனிப்பயன் தலைப்புகள்",
+  "@customHeaders": {},
+  "invalidCredentials": "தவறான நற்சான்றிதழ்கள்",
+  "@invalidCredentials": {},
+  "serverAddress": "சேவையக முகவரி",
+  "@serverAddress": {},
+  "serverNotFound": "சேவையகம் கிடைக்கவில்லை",
+  "@serverNotFound": {},
+  "subdirectory": "துணை அடைவு",
+  "@subdirectory": {},
+  "requiredFields": "தேவையான அனைத்து புலங்களையும் நிரப்பவும்",
+  "@requiredFields": {},
+  "enableSubdirectory": "துணை அடைவை இயக்கவும்",
+  "@enableSubdirectory": {},
+  "login": "புகுபதிவு",
+  "@login": {},
+  "wrapTextDescription": "இயக்கப்பட்டால், அத்தியாயங்கள் போன்ற சில நூல்கள் துண்டிக்கப்படுவதற்கு பதிலாக மூடப்பட்டிருக்கும். இது சில வடிவமைப்புகளை உடைக்கும்.",
+  "@wrapTextDescription": {},
+  "collections": "சேகரிப்புகள்",
+  "@collections": {},
+  "playlists": "பிளேலிச்ட்கள்",
+  "@playlists": {},
+  "wrapText": "உரையை மடக்கு",
+  "@wrapText": {}
 }

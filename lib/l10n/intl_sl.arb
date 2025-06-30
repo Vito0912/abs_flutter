@@ -674,5 +674,13 @@
   "serverNotFound": "Ne najdem strežnika",
   "@serverNotFound": {},
   "anUnknownErrorOccurred": "Prišlo je do neznane napake",
-  "@anUnknownErrorOccurred": {}
+  "@anUnknownErrorOccurred": {},
+  "collections": "Zbirke",
+  "@collections": {},
+  "playlists": "Seznami predvajanj",
+  "@playlists": {},
+  "wrapText": "Prelom besedila",
+  "@wrapText": {},
+  "wrapTextDescription": "Ko je omogočeno, se nekatera besedila, na primer poglavja, prelomijo namesto da bi bila odrezana. To lahko pokvari nekatera oblikovanja.",
+  "@wrapTextDescription": {}
 }
