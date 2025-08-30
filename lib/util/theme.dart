@@ -68,7 +68,7 @@ final ThemeData amoledTheme = ThemeData.dark(useMaterial3: true).copyWith(
     brightness: Brightness.dark,
     labelStyle: TextStyle(color: Colors.white),
   ),
-  bottomAppBarTheme: const BottomAppBarTheme(
+  bottomAppBarTheme: const BottomAppBarThemeData(
     color: black,
   ),
   bottomSheetTheme: const BottomSheetThemeData(
