@@ -76,7 +76,7 @@ final ThemeData amoledTheme = ThemeData.dark(useMaterial3: true).copyWith(
   ),
   iconTheme: const IconThemeData(color: Colors.white),
   bottomNavigationBarTheme: amoledBottomNavigation,
-  tabBarTheme: const TabBarTheme(indicatorColor: primaryContainerColor),
+  tabBarTheme: const TabBarThemeData(indicatorColor: primaryContainerColor),
   appBarTheme: const AppBarTheme(
       backgroundColor: black,
       surfaceTintColor: Colors.black,

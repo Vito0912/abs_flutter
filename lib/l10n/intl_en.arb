@@ -56,6 +56,8 @@
   "@close": {},
   "collapseSeries": "Collapse Series",
   "@collapseSeries": {},
+  "collections": "Collections",
+  "@collections": {},
   "connectionError": "Connection error",
   "@connectionError": {},
   "consecutiveDays": "Consecutive days",
@@ -514,6 +516,8 @@
   "@player": {},
   "playerSettings": "Player Settings",
   "@playerSettings": {},
+  "playlists": "Playlists",
+  "@playlists": {},
   "pleaseCheckInternet": "Please check your internet connection and try again.",
   "@pleaseCheckInternet": {},
   "port": "Port",
@@ -676,8 +680,8 @@
   "@waitTillRedirect": {},
   "waitingForDownload": "Waiting for download to start",
   "@waitingForDownload": {},
-  "collections": "Collections",
-  "playlists": "Playlists",
   "wrapText": "Wrap Text",
-  "wrapTextDescription": "When enabled, some texts, such as chapters, are wrapped instead of being cut off. This will break some designs."
+  "@wrapText": {},
+  "wrapTextDescription": "When enabled, some texts, such as chapters, are wrapped instead of being cut off. This will break some designs.",
+  "@wrapTextDescription": {}
 }

@@ -25,10 +25,10 @@ class MessageLookup extends MessageLookupByLibrary {
   static String m1(position) => "Текущая позиция: ${position}";
 
   static String m2(days, hours, minutes) =>
-      "${Intl.plural(days, one: '${days} day', other: '${days} days')} ${Intl.plural(hours, one: '${hours} hour', other: '${hours} hours')} ${Intl.plural(minutes, one: '${minutes} minute', other: '${minutes} minutes')}";
+      "${Intl.plural(days, one: '${days} день', other: '${days} дней')} ${Intl.plural(hours, one: '${hours} час', other: '${hours} часов')} ${Intl.plural(minutes, one: '${minutes} минута', other: '${minutes} минут')}";
 
   static String m3(days, hours, minutes, seconds) =>
-      "${Intl.plural(days, one: '${days} day', other: '${days} days')} ${Intl.plural(hours, one: '${hours} hour', other: '${hours} hours')} ${Intl.plural(minutes, one: '${minutes} minute', other: '${minutes} minutes')} ${Intl.plural(seconds, one: '${seconds} second', other: '${seconds} seconds')}";
+      "${Intl.plural(days, one: '${days} день', other: '${days} дней')} ${Intl.plural(hours, one: '${hours} час', other: '${hours} часов')} ${Intl.plural(minutes, one: '${minutes} минута', other: '${minutes} минут')} ${Intl.plural(seconds, one: '${seconds} секунда', other: '${seconds} секунд')}";
 
   static String m4(days, hours, minutes, seconds) =>
       "${days}д ${hours}ч ${minutes}м ${seconds}с";
@@ -36,10 +36,10 @@ class MessageLookup extends MessageLookupByLibrary {
   static String m5(days, hours, minutes) => "${days}д ${hours}ч ${minutes}м";
 
   static String m6(hours, minutes) =>
-      "${Intl.plural(hours, one: '${hours} hour', other: '${hours} hours')} ${Intl.plural(minutes, one: '${minutes} minute', other: '${minutes} minutes')}";
+      "${Intl.plural(hours, one: '${hours} час', other: '${hours} часов')} ${Intl.plural(minutes, one: '${minutes} минута', other: '${minutes} минут')}";
 
   static String m7(hours, minutes, seconds) =>
-      "${Intl.plural(hours, one: '${hours} hour', other: '${hours} hours')} ${Intl.plural(minutes, one: '${minutes} minute', other: '${minutes} minutes')} ${Intl.plural(seconds, one: '${seconds} second', other: '${seconds} seconds')}";
+      "${Intl.plural(hours, one: '${hours} час', other: '${hours} часов')} ${Intl.plural(minutes, one: '${minutes} минута', other: '${minutes} минут')} ${Intl.plural(seconds, one: '${seconds} секунда', other: '${seconds} секунд')}";
 
   static String m8(hours, minutes, seconds) =>
       "${hours}ч ${minutes}м ${seconds}с";
@@ -47,17 +47,17 @@ class MessageLookup extends MessageLookupByLibrary {
   static String m9(hours, minutes) => "${hours}ч ${minutes}м";
 
   static String m10(count) =>
-      "${Intl.plural(count, one: '${count} minute', other: '${count} minutes')}";
+      "${Intl.plural(count, one: '${count} минута', other: '${count} минут')}";
 
   static String m11(minutes, seconds) =>
-      "${Intl.plural(minutes, one: '${minutes} minute', other: '${minutes} minutes')} ${Intl.plural(seconds, one: '${seconds} second', other: '${seconds} seconds')}";
+      "${Intl.plural(minutes, one: '${minutes} минута', other: '${minutes} минут')} ${Intl.plural(seconds, one: '${seconds} секунда', other: '${seconds} секунд')}";
 
   static String m12(minutes, seconds) => "${minutes}м ${seconds}с";
 
   static String m13(count) => "${count}м";
 
   static String m14(count) =>
-      "${Intl.plural(count, one: '${count}  second', other: '${count} seconds')}";
+      "${Intl.plural(count, one: '${count}  секунда', other: '${count} секунд')}";
 
   static String m15(count) => "${count}с";
 
@@ -78,7 +78,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static String m22(year) => "Год публикации: ${year}";
 
   static String m23(numBooks) =>
-      "${Intl.plural(numBooks, zero: 'No Books', one: '1 Book', other: '${numBooks} Books')}";
+      "${Intl.plural(numBooks, zero: 'Нет книг', one: '1 книга', other: '${numBooks} книг')}";
 
   static String m24(progress) => "Текущий прогресс: ${progress}%";
 
@@ -102,6 +102,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "allDownloads": MessageLookupByLibrary.simpleMessage("Скачать все"),
     "amoledMode": MessageLookupByLibrary.simpleMessage("AMOLED режим"),
+    "anUnknownErrorOccurred": MessageLookupByLibrary.simpleMessage(
+      "Произошла неизвестная ошибка",
+    ),
     "ascending": MessageLookupByLibrary.simpleMessage("По возрастанию"),
     "attribution": MessageLookupByLibrary.simpleMessage("Авторство"),
     "author": MessageLookupByLibrary.simpleMessage("Автор"),
@@ -120,6 +123,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "clearCache": MessageLookupByLibrary.simpleMessage("Очистить Кэш"),
     "close": MessageLookupByLibrary.simpleMessage("Закрыть"),
     "collapseSeries": MessageLookupByLibrary.simpleMessage("Свернуть серию"),
+    "collections": MessageLookupByLibrary.simpleMessage("Коллекции"),
+    "connectionError": MessageLookupByLibrary.simpleMessage(
+      "Ошибка подключения",
+    ),
     "consecutiveDays": MessageLookupByLibrary.simpleMessage("Дней подряд"),
     "continueListening": MessageLookupByLibrary.simpleMessage(
       "Продолжить прослушивание",
@@ -142,6 +149,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "Текущие загрузки",
     ),
     "currentPositionNum": m1,
+    "customHeaders": MessageLookupByLibrary.simpleMessage(
+      "Пользовательские заголовки",
+    ),
     "darkMode": MessageLookupByLibrary.simpleMessage("Темный режим"),
     "dateFormatDayHourMinute": m2,
     "dateFormatDayHourMinuteSecond": m3,
@@ -196,10 +206,13 @@ class MessageLookup extends MessageLookupByLibrary {
       "Загружать только по WiFi",
     ),
     "duration": MessageLookupByLibrary.simpleMessage("Продолжительность"),
-    "ebookreader": MessageLookupByLibrary.simpleMessage("eBook-Reader"),
+    "ebookreader": MessageLookupByLibrary.simpleMessage("Читалка"),
     "editQueue": MessageLookupByLibrary.simpleMessage("Редактировать очередь"),
     "enableNotificationsDownload": MessageLookupByLibrary.simpleMessage(
       "Пожалуйста, включите уведомления, чтобы получать обновления о ходе загрузки и иметь возможность загружать файлы в фоновом режиме.",
+    ),
+    "enableSubdirectory": MessageLookupByLibrary.simpleMessage(
+      "Включить подкаталог",
     ),
     "enabled": MessageLookupByLibrary.simpleMessage("Включено"),
     "episodeId": MessageLookupByLibrary.simpleMessage("Id эпизода"),
@@ -228,6 +241,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "hide": MessageLookupByLibrary.simpleMessage("Скрыть"),
     "inProgress": MessageLookupByLibrary.simpleMessage("В процессе"),
     "information": MessageLookupByLibrary.simpleMessage("Информация"),
+    "invalidCredentials": MessageLookupByLibrary.simpleMessage(
+      "Неверные учетные данные",
+    ),
     "itemId": MessageLookupByLibrary.simpleMessage("ID элемента"),
     "itemLength": m20,
     "itemNotFoundDescription": MessageLookupByLibrary.simpleMessage(
@@ -267,6 +283,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Если эта функция включена, она блокирует индикатор уведомления о прослушивании, если оно поддерживается операционной системой",
     ),
     "logging": MessageLookupByLibrary.simpleMessage("Журнал"),
+    "login": MessageLookupByLibrary.simpleMessage("Логин"),
     "logs": MessageLookupByLibrary.simpleMessage("Журналы"),
     "longestItems": MessageLookupByLibrary.simpleMessage(
       "Самые длинные элементы",
@@ -310,7 +327,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "ok": MessageLookupByLibrary.simpleMessage("Ок"),
     "openDownloads": MessageLookupByLibrary.simpleMessage("Открыть загрузки"),
     "openProjectLink": MessageLookupByLibrary.simpleMessage(
-      "Audiobookshelf/Server",
+      "Сервер Audiobookshelf",
     ),
     "ownStats": MessageLookupByLibrary.simpleMessage("Собственная статистика"),
     "password": MessageLookupByLibrary.simpleMessage("Пароль"),
@@ -328,6 +345,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "playbackSpeed": MessageLookupByLibrary.simpleMessage("Скорость"),
     "player": MessageLookupByLibrary.simpleMessage("Плеер"),
     "playerSettings": MessageLookupByLibrary.simpleMessage("Настройки плеера"),
+    "playlists": MessageLookupByLibrary.simpleMessage("Плейлисты"),
     "pleaseCheckInternet": MessageLookupByLibrary.simpleMessage(
       "Пожалуйста, проверьте свое интернет-соединение и повторите попытку.",
     ),
@@ -348,6 +366,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "reportAnIssue": MessageLookupByLibrary.simpleMessage(
       "Сообщить о проблеме",
     ),
+    "requiredFields": MessageLookupByLibrary.simpleMessage(
+      "Пожалуйста, заполните все необходимые поля",
+    ),
     "restartRequired": MessageLookupByLibrary.simpleMessage(
       "Требуется перезагрузка",
     ),
@@ -365,6 +386,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "seek": MessageLookupByLibrary.simpleMessage("Искать"),
     "sequence": MessageLookupByLibrary.simpleMessage("Последовательность"),
     "series": MessageLookupByLibrary.simpleMessage("Серия"),
+    "serverAddress": MessageLookupByLibrary.simpleMessage("Адрес сервера"),
+    "serverNotFound": MessageLookupByLibrary.simpleMessage("Сервер не найден"),
     "serverSelection": MessageLookupByLibrary.simpleMessage("Выбор сервера"),
     "settings": MessageLookupByLibrary.simpleMessage("Настройки"),
     "shakeResetTimer": MessageLookupByLibrary.simpleMessage(
@@ -394,6 +417,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "stopPlayerWhileSyncingDescription": MessageLookupByLibrary.simpleMessage(
       "Включите эту опцию, чтобы предотвратить запуск проигрывателя до тех пор, пока не будет синхронизирована последняя позиция воспроизведения. Это гарантирует, что воспроизведение возобновится с правильной позиции. Если эта опция отключена, позиция воспроизведения может измениться вскоре после запуска, что может привести к потере данных. Включение этой функции помогает экономить использование данных.",
     ),
+    "subdirectory": MessageLookupByLibrary.simpleMessage("Подкаталог"),
     "success": MessageLookupByLibrary.simpleMessage("Успех"),
     "sync": MessageLookupByLibrary.simpleMessage("Синхронизация"),
     "syncInterval": MessageLookupByLibrary.simpleMessage(
@@ -439,6 +463,10 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "waitingForDownload": MessageLookupByLibrary.simpleMessage(
       "Ожидание начала загрузки",
+    ),
+    "wrapText": MessageLookupByLibrary.simpleMessage("Перенос текста"),
+    "wrapTextDescription": MessageLookupByLibrary.simpleMessage(
+      "При включении некоторые тексты, такие как главы, переносятся, а не отрезаются. Это сломает некоторые дизайны.",
     ),
   };
 }

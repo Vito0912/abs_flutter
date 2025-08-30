@@ -92,6 +92,8 @@ class MessageLookup extends MessageLookupByLibrary {
       "Aggiungi un nuovo Utente",
     ),
     "addUser": MessageLookupByLibrary.simpleMessage("Aggiungi utente"),
+    "added": MessageLookupByLibrary.simpleMessage("Aggiunto"),
+    "advanced": MessageLookupByLibrary.simpleMessage("Avanzate"),
     "aggressiveCaching": MessageLookupByLibrary.simpleMessage(
       "Caching aggressivo",
     ),
@@ -100,6 +102,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "allDownloads": MessageLookupByLibrary.simpleMessage("Tutti i Download"),
     "amoledMode": MessageLookupByLibrary.simpleMessage("Modalità AMOLED"),
+    "anUnknownErrorOccurred": MessageLookupByLibrary.simpleMessage(
+      "Errore sconosciuto",
+    ),
     "ascending": MessageLookupByLibrary.simpleMessage("Ascendente"),
     "attribution": MessageLookupByLibrary.simpleMessage("Attributi"),
     "author": MessageLookupByLibrary.simpleMessage("Autore"),
@@ -120,6 +125,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "clearCache": MessageLookupByLibrary.simpleMessage("Pulisci la Cache"),
     "close": MessageLookupByLibrary.simpleMessage("Chiudi"),
     "collapseSeries": MessageLookupByLibrary.simpleMessage("Raggruppa Serie"),
+    "connectionError": MessageLookupByLibrary.simpleMessage(
+      "Errore connessione",
+    ),
     "consecutiveDays": MessageLookupByLibrary.simpleMessage(
       "Giorni Consecutivi",
     ),
@@ -136,7 +144,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "Importante:\nCliccando su \"Copia\" tutti i log attualmente visualizzati verranno trasferiti negli appunti, inclusi i dati registrati dall\'avvio o dall\'ultima cancellazione dell\'app. Questi log potrebbero contenere informazioni sensibili come token, nomi utente, e-mail e URL del server. Fai attenzione a dove incolli queste informazioni!\\nSe scegli \"Copia e tenta di nascondere informazioni sensibili\", l\'app proverà a mascherare elementi come token, nomi utente, e-mail e URL del server. Tuttavia, sei responsabile della revisione dei log per assicurarti che tutti i dati personali vengano completamente rimossi.",
     ),
     "create": MessageLookupByLibrary.simpleMessage("Crea"),
-    "createBookmark": MessageLookupByLibrary.simpleMessage("Crea Segnalibro"),
+    "createBookmark": MessageLookupByLibrary.simpleMessage(
+      "Crea un Segnalibro",
+    ),
     "createBookmarkTitle": MessageLookupByLibrary.simpleMessage(
       "Crea Segnalibro",
     ),
@@ -144,6 +154,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "Download corrente",
     ),
     "currentPositionNum": m1,
+    "customHeaders": MessageLookupByLibrary.simpleMessage(
+      "intestazione personalizzata",
+    ),
     "darkMode": MessageLookupByLibrary.simpleMessage("Modalità scura"),
     "dateFormatDayHourMinute": m2,
     "dateFormatDayHourMinuteSecond": m3,
@@ -167,6 +180,15 @@ class MessageLookup extends MessageLookupByLibrary {
     "descending": MessageLookupByLibrary.simpleMessage("Discendente"),
     "description": MessageLookupByLibrary.simpleMessage("Descrizione"),
     "deviceInfo": m16,
+    "disableSkippingChapters": MessageLookupByLibrary.simpleMessage(
+      "Disattiva salta capitoli",
+    ),
+    "disableSkippingChaptersDescription": MessageLookupByLibrary.simpleMessage(
+      "Questo disabiliterà la possibilità di saltare i capitoli dall\'ESTERNO dell\'applicazione (ad esempio, tramite un auricolare o i controlli delle notifiche). Abilita questa opzione se vuoi che le tue cuffie utilizzino le funzioni di avanzamento rapido e riavvolgimento anziché saltare i capitoli.",
+    ),
+    "disableVibration": MessageLookupByLibrary.simpleMessage(
+      "Disattiva vibrazione",
+    ),
     "disabled": MessageLookupByLibrary.simpleMessage("Diattivato"),
     "discover": MessageLookupByLibrary.simpleMessage("Scopri"),
     "domainOrIp": MessageLookupByLibrary.simpleMessage("Domain or IP"),
@@ -193,6 +215,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "editQueue": MessageLookupByLibrary.simpleMessage("Modifica coda"),
     "enableNotificationsDownload": MessageLookupByLibrary.simpleMessage(
       "Abilita le notifiche per ricevere aggiornamenti sullo stato di avanzamento del download e poter scaricare i file in background.",
+    ),
+    "enableSubdirectory": MessageLookupByLibrary.simpleMessage(
+      "Attiva sottocartelle",
     ),
     "enabled": MessageLookupByLibrary.simpleMessage("Abilitato"),
     "episodeId": MessageLookupByLibrary.simpleMessage("Episodio Id"),
@@ -223,6 +248,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "hide": MessageLookupByLibrary.simpleMessage("Nascondi"),
     "inProgress": MessageLookupByLibrary.simpleMessage("in corso"),
     "information": MessageLookupByLibrary.simpleMessage("Informazioni"),
+    "invalidCredentials": MessageLookupByLibrary.simpleMessage(
+      "Credenziali invalide",
+    ),
     "itemId": MessageLookupByLibrary.simpleMessage("Id Oggetto"),
     "itemLength": m20,
     "itemNotFoundDescription": MessageLookupByLibrary.simpleMessage(
@@ -260,6 +288,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Se abilitata, questa funzione blocca la barra di avanzamento nella notifica multimediale, se supportata dal sistema operativo",
     ),
     "logging": MessageLookupByLibrary.simpleMessage("registrazione"),
+    "login": MessageLookupByLibrary.simpleMessage("LOGIN"),
     "logs": MessageLookupByLibrary.simpleMessage("Log"),
     "longestItems": MessageLookupByLibrary.simpleMessage("Oggetti lungi"),
     "minimize": MessageLookupByLibrary.simpleMessage("Riduci"),
@@ -271,6 +300,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "miscellaneous": MessageLookupByLibrary.simpleMessage("Varie"),
     "moreOptions": MessageLookupByLibrary.simpleMessage("Altre Opzioni"),
+    "name": MessageLookupByLibrary.simpleMessage("Nome"),
     "narrators": MessageLookupByLibrary.simpleMessage("Lettori"),
     "newestEpisodes": MessageLookupByLibrary.simpleMessage("Nuovi Episodi"),
     "nextChapter": MessageLookupByLibrary.simpleMessage("Prossimo Capitolo"),
@@ -290,6 +320,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Le notifiche dovrebbero essere abilitate",
     ),
     "numBooksInSeries": m23,
+    "numberOfBooks": MessageLookupByLibrary.simpleMessage("Numero di libri"),
     "offlineProgress": MessageLookupByLibrary.simpleMessage(
       "Progressi offline",
     ),
@@ -341,12 +372,16 @@ class MessageLookup extends MessageLookupByLibrary {
     "reportAnIssue": MessageLookupByLibrary.simpleMessage(
       "Segnala un problema",
     ),
+    "requiredFields": MessageLookupByLibrary.simpleMessage(
+      "Si prega di compilare tutti i campi obbligatori",
+    ),
     "restartRequired": MessageLookupByLibrary.simpleMessage(
       "RIavvio Richiesto",
     ),
     "restartRequiredDescription": MessageLookupByLibrary.simpleMessage(
       "Riavvia l\'app per applicare le modifiche.",
     ),
+    "retry": MessageLookupByLibrary.simpleMessage("Riprovare"),
     "rewind": MessageLookupByLibrary.simpleMessage("Riavvolgi"),
     "rewindSeconds": MessageLookupByLibrary.simpleMessage(
       "Riavvolgi di tot secondi",
@@ -361,6 +396,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "seek": MessageLookupByLibrary.simpleMessage("Scorri"),
     "sequence": MessageLookupByLibrary.simpleMessage("Sequenza"),
     "series": MessageLookupByLibrary.simpleMessage("Serie"),
+    "serverAddress": MessageLookupByLibrary.simpleMessage("Indirizzo server"),
+    "serverNotFound": MessageLookupByLibrary.simpleMessage(
+      "Server non trovato",
+    ),
     "serverSelection": MessageLookupByLibrary.simpleMessage("Selezione server"),
     "settings": MessageLookupByLibrary.simpleMessage("Impostazioni"),
     "shakeResetTimer": MessageLookupByLibrary.simpleMessage(
@@ -390,6 +429,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "stopPlayerWhileSyncingDescription": MessageLookupByLibrary.simpleMessage(
       "Abilita questa opzione per impedire al player di avviarsi finché non è stata sincronizzata la posizione di riproduzione più recente. Ciò assicura che la riproduzione riprenda dalla posizione corretta. Se disabilitata, la posizione di riproduzione potrebbe cambiare poco dopo l\'avvio, causando potenzialmente la perdita di dati. L\'attivazione di questa opzione aiuta a risparmiare l\'utilizzo dei dati.",
     ),
+    "subdirectory": MessageLookupByLibrary.simpleMessage("Sottocartella"),
     "success": MessageLookupByLibrary.simpleMessage("Successo"),
     "sync": MessageLookupByLibrary.simpleMessage("Sync"),
     "syncInterval": MessageLookupByLibrary.simpleMessage(
