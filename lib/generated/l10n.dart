@@ -28,10 +28,9 @@ class S {
   static const AppLocalizationDelegate delegate = AppLocalizationDelegate();
 
   static Future<S> load(Locale locale) {
-    final name =
-        (locale.countryCode?.isEmpty ?? false)
-            ? locale.languageCode
-            : locale.toString();
+    final name = (locale.countryCode?.isEmpty ?? false)
+        ? locale.languageCode
+        : locale.toString();
     final localeName = Intl.canonicalizedLocale(name);
     return initializeMessages(localeName).then((_) {
       Intl.defaultLocale = localeName;
@@ -228,6 +227,11 @@ class S {
       desc: '',
       args: [],
     );
+  }
+
+  /// `Collections`
+  String get collections {
+    return Intl.message('Collections', name: 'collections', desc: '', args: []);
   }
 
   /// `Connection error`
@@ -1372,6 +1376,11 @@ class S {
     );
   }
 
+  /// `Playlists`
+  String get playlists {
+    return Intl.message('Playlists', name: 'playlists', desc: '', args: []);
+  }
+
   /// `Please check your internet connection and try again.`
   String get pleaseCheckInternet {
     return Intl.message(
@@ -1922,16 +1931,6 @@ class S {
     );
   }
 
-  /// `Collections`
-  String get collections {
-    return Intl.message('Collections', name: 'collections', desc: '', args: []);
-  }
-
-  /// `Playlists`
-  String get playlists {
-    return Intl.message('Playlists', name: 'playlists', desc: '', args: []);
-  }
-
   /// `Wrap Text`
   String get wrapText {
     return Intl.message('Wrap Text', name: 'wrapText', desc: '', args: []);
@@ -1958,6 +1957,8 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
       Locale.fromSubtags(languageCode: 'fr'),
       Locale.fromSubtags(languageCode: 'it'),
       Locale.fromSubtags(languageCode: 'nb', countryCode: 'NO'),
+      Locale.fromSubtags(languageCode: 'nl'),
+      Locale.fromSubtags(languageCode: 'pt'),
       Locale.fromSubtags(languageCode: 'pt', countryCode: 'BR'),
       Locale.fromSubtags(languageCode: 'ru'),
       Locale.fromSubtags(languageCode: 'sl'),

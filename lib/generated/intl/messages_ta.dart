@@ -25,10 +25,10 @@ class MessageLookup extends MessageLookupByLibrary {
   static String m1(position) => "தற்போதைய நிலை: ${position}";
 
   static String m2(days, hours, minutes) =>
-      "{நாட்கள், பன்மை, ஒன்று {${days} நாள்} மற்ற {${days} நாட்கள்}} {மணிநேரம், பன்மை, ஒன்று {${hours} மணிநேரம்} மற்ற {${hours} மணிநேரம்}} {நிமிடங்கள், பன்மை, ஒன்று {${minutes} நிமிடம்} பிற {${minutes} நிமிடங்கள்}}";
+      "${Intl.plural(days, one: '${days} நாள்', other: '${days} நாட்கள்')} ${Intl.plural(hours, one: '${hours} மணிநேரம்', other: '${hours} மணிநேரங்கள்')} ${Intl.plural(minutes, one: '${minutes} நிமையம்', other: '${minutes} நிமையங்கள்')}";
 
   static String m3(days, hours, minutes, seconds) =>
-      "{நாட்கள், பன்மை, ஒன்று {${days} நாள்} மற்ற {${days} நாட்கள்}} {மணிநேரம், பன்மை, ஒன்று {${hours} மணிநேரம்} மற்ற {${hours} மணிநேரம்}} {நிமிடங்கள், பன்மை, ஒன்று {${minutes} நிமிடம்} பிற {${minutes} நிமிடங்கள்}} {விநாடிகள், பன்மை, ஒரு {${seconds} இரண்டாவது} பிற {${seconds} விநாடிகள்}}";
+      "${Intl.plural(days, one: '${days} நாள்', other: '${days} நாட்கள்')} ${Intl.plural(hours, one: '${hours} மணிநேரம்', other: '${hours} மணிநேரம்')} ${Intl.plural(minutes, one: '${minutes} நிமையம்', other: '${minutes} நிமையங்கள்')} ${Intl.plural(seconds, one: '${seconds} நொடி', other: '${seconds} நொடிகள்')}";
 
   static String m4(days, hours, minutes, seconds) =>
       "${days} டி ${hours} h ${minutes} m ${seconds} s";
@@ -37,10 +37,10 @@ class MessageLookup extends MessageLookupByLibrary {
       "${days} டி ${hours} h ${minutes} மீ";
 
   static String m6(hours, minutes) =>
-      "{மணிநேரம், பன்மை, ஒன்று {${hours} மணிநேரம்} மற்ற {${hours} மணிநேரம்}} {நிமிடங்கள், பன்மை, ஒன்று {${minutes} நிமிடம்} பிற {${minutes} நிமிடங்கள்}}";
+      "${Intl.plural(hours, one: '${hours} மணிநேரம்', other: '${hours} மணிநேரம்')} ${Intl.plural(minutes, one: '${minutes} நிமையம்', other: '${minutes} நிமையங்கள்')}";
 
   static String m7(hours, minutes, seconds) =>
-      "{மணிநேரம், பன்மை, ஒன்று {${hours} மணிநேரம்} மற்ற {${hours} மணிநேரம்}} {நிமிடங்கள், பன்மை, ஒன்று {${minutes} நிமிடம்} பிற {${minutes} நிமிடங்கள்}} {வினாடிகள், பன்மை, ஒன்று {${seconds} இரண்டாவது} பிற {${seconds} விநாடிகள்}}";
+      "${Intl.plural(hours, one: '${hours} மணிநேரம்', other: '${hours} மணிநேரம்')} ${Intl.plural(minutes, one: '${minutes} நிமையம்', other: '${minutes} நிமையங்கள்')} ${Intl.plural(seconds, one: '${seconds} நொடி', other: '${seconds} நொடிகள்')}";
 
   static String m8(hours, minutes, seconds) =>
       "${hours} h ${minutes} m ${seconds} கள்";
@@ -48,17 +48,17 @@ class MessageLookup extends MessageLookupByLibrary {
   static String m9(hours, minutes) => "${hours} h ${minutes} மீ";
 
   static String m10(count) =>
-      "{எண்ணிக்கை, பன்மை, ஒன்று {${count} நிமிடம்} மற்ற {${count} நிமிடங்கள்}}";
+      "${Intl.plural(count, one: '${count} நிமையம்', other: '${count} நிமையங்கள்')}";
 
   static String m11(minutes, seconds) =>
-      "{நிமிடங்கள், பன்மை, ஒன்று {${minutes} நிமிடம்} மற்ற {${minutes} நிமிடங்கள்}} {விநாடிகள், பன்மை, ஒன்று {${seconds} இரண்டாவது} பிற {${seconds} விநாடிகள்}}";
+      "${Intl.plural(minutes, one: '${minutes} நிமையம்', other: '${minutes} நிமையங்கள்')} ${Intl.plural(seconds, one: '${seconds} நொடி', other: '${seconds} நொடிகள்')}";
 
   static String m12(minutes, seconds) => "${minutes} m ${seconds} கள்";
 
   static String m13(count) => "${count} மீ";
 
   static String m14(count) =>
-      "{எண்ணிக்கை, பன்மை, ஒன்று {${count} இரண்டாவது} மற்ற {${count} விநாடிகள்}}";
+      "${Intl.plural(count, one: '${count}  நொடி', other: '${count} நொடிகள்')}";
 
   static String m15(count) => "${count} கள்";
 
@@ -79,7 +79,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static String m22(year) => "வெளியிடப்பட்ட ஆண்டு: ${year}";
 
   static String m23(numBooks) =>
-      "{numbooks, பன்மை, = 0 {No Books} = 1 {1 Book} பிற {${numBooks} புத்தகங்கள்}}";
+      "${Intl.plural(numBooks, zero: 'புத்தகங்கள் இல்லை', one: '1 புத்தகம்', other: '${numBooks} புத்தகங்கள்')}";
 
   static String m24(progress) => "தற்போதைய முன்னேற்றம்: ${progress} %";
 
@@ -105,6 +105,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "அனைத்து பதிவிறக்கங்களும்",
     ),
     "amoledMode": MessageLookupByLibrary.simpleMessage("Amoled பயன்முறை"),
+    "anUnknownErrorOccurred": MessageLookupByLibrary.simpleMessage(
+      "அறியப்படாத பிழை ஏற்பட்டது",
+    ),
     "ascending": MessageLookupByLibrary.simpleMessage("ஏறுதல்"),
     "attribution": MessageLookupByLibrary.simpleMessage("பண்புக்கூறு"),
     "author": MessageLookupByLibrary.simpleMessage("நூலாசிரியர்"),
@@ -127,6 +130,8 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "close": MessageLookupByLibrary.simpleMessage("மூடு"),
     "collapseSeries": MessageLookupByLibrary.simpleMessage("சரிவு தொடர்"),
+    "collections": MessageLookupByLibrary.simpleMessage("சேகரிப்புகள்"),
+    "connectionError": MessageLookupByLibrary.simpleMessage("இணைப்பு பிழை"),
     "consecutiveDays": MessageLookupByLibrary.simpleMessage(
       "தொடர்ச்சியான நாட்கள்",
     ),
@@ -153,6 +158,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "தற்போதைய பதிவிறக்கங்கள்",
     ),
     "currentPositionNum": m1,
+    "customHeaders": MessageLookupByLibrary.simpleMessage(
+      "தனிப்பயன் தலைப்புகள்",
+    ),
     "darkMode": MessageLookupByLibrary.simpleMessage("இருண்ட முறை"),
     "dateFormatDayHourMinute": m2,
     "dateFormatDayHourMinuteSecond": m3,
@@ -212,6 +220,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "enableNotificationsDownload": MessageLookupByLibrary.simpleMessage(
       "பதிவிறக்க முன்னேற்ற புதுப்பிப்புகளைப் பெறுவதற்கான அறிவிப்புகளை இயக்கவும், பின்னணியில் கோப்புகளைப் பதிவிறக்கவும் முடியும்.",
     ),
+    "enableSubdirectory": MessageLookupByLibrary.simpleMessage(
+      "துணை அடைவை இயக்கவும்",
+    ),
     "enabled": MessageLookupByLibrary.simpleMessage("இயக்கப்பட்டது"),
     "episodeId": MessageLookupByLibrary.simpleMessage("அத்தியாயம் ஐடி"),
     "error": MessageLookupByLibrary.simpleMessage("பிழை"),
@@ -243,6 +254,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "முன்னேற்றத்தில் உள்ளது",
     ),
     "information": MessageLookupByLibrary.simpleMessage("தகவல்"),
+    "invalidCredentials": MessageLookupByLibrary.simpleMessage(
+      "தவறான நற்சான்றிதழ்கள்",
+    ),
     "itemId": MessageLookupByLibrary.simpleMessage("பொருள் ஐடி"),
     "itemLength": m20,
     "itemNotFoundDescription": MessageLookupByLibrary.simpleMessage(
@@ -282,6 +296,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "இயக்கப்பட்டால், இந்த நற்பொருத்தம் இயக்க முறைமையால் ஆதரிக்கப்பட்டால், ஊடக அறிவிப்பில் முன்னேற்றப் பட்டியை பூட்டுகிறது",
     ),
     "logging": MessageLookupByLibrary.simpleMessage("பதிவு"),
+    "login": MessageLookupByLibrary.simpleMessage("புகுபதிவு"),
     "logs": MessageLookupByLibrary.simpleMessage("பதிவுகள்"),
     "longestItems": MessageLookupByLibrary.simpleMessage("நீளமான உருப்படிகள்"),
     "minimize": MessageLookupByLibrary.simpleMessage("குறைக்கவும்"),
@@ -349,6 +364,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "playerSettings": MessageLookupByLibrary.simpleMessage(
       "பிளேயர் அமைப்புகள்",
     ),
+    "playlists": MessageLookupByLibrary.simpleMessage("பிளேலிச்ட்கள்"),
     "pleaseCheckInternet": MessageLookupByLibrary.simpleMessage(
       "உங்கள் இணைய இணைப்பை சரிபார்த்து மீண்டும் முயற்சிக்கவும்.",
     ),
@@ -371,11 +387,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "reportAnIssue": MessageLookupByLibrary.simpleMessage(
       "ஒரு சிக்கலைப் புகாரளிக்கவும்",
     ),
+    "requiredFields": MessageLookupByLibrary.simpleMessage(
+      "தேவையான அனைத்து புலங்களையும் நிரப்பவும்",
+    ),
     "restartRequired": MessageLookupByLibrary.simpleMessage("மறுதொடக்கம் தேவை"),
     "restartRequiredDescription": MessageLookupByLibrary.simpleMessage(
       "மாற்றங்களைப் பயன்படுத்த பயன்பாட்டை மறுதொடக்கம் செய்யுங்கள்.",
     ),
-    "retry": MessageLookupByLibrary.simpleMessage("மீண்டும் முயற்சிக்கவும்"),
+    "retry": MessageLookupByLibrary.simpleMessage("மறுமுயற்சி"),
     "rewind": MessageLookupByLibrary.simpleMessage("முன்னாடி"),
     "rewindSeconds": MessageLookupByLibrary.simpleMessage("வினாடிகள் முன்னாடி"),
     "rewindSecondsDescription": MessageLookupByLibrary.simpleMessage(
@@ -388,6 +407,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "seek": MessageLookupByLibrary.simpleMessage("தேடுங்கள்"),
     "sequence": MessageLookupByLibrary.simpleMessage("வரிசை"),
     "series": MessageLookupByLibrary.simpleMessage("தொடர்"),
+    "serverAddress": MessageLookupByLibrary.simpleMessage("சேவையக முகவரி"),
+    "serverNotFound": MessageLookupByLibrary.simpleMessage(
+      "சேவையகம் கிடைக்கவில்லை",
+    ),
     "serverSelection": MessageLookupByLibrary.simpleMessage("சேவையக தேர்வு"),
     "settings": MessageLookupByLibrary.simpleMessage("அமைப்புகள்"),
     "shakeResetTimer": MessageLookupByLibrary.simpleMessage(
@@ -419,6 +442,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "stopPlayerWhileSyncingDescription": MessageLookupByLibrary.simpleMessage(
       "மிக அண்மைக் கால பின்னணி நிலை ஒத்திசைக்கப்படும் வரை வீரர் தொடங்குவதைத் தடுக்க இந்த விருப்பத்தை இயக்கவும். பிளேபேக் சரியான நிலையில் இருந்து மீண்டும் தொடங்குவதை இது உறுதி செய்கிறது. முடக்கப்பட்டால், தொடங்கிய உடனேயே பிளேபேக் நிலை மாறக்கூடும், இது தரவு இழப்புக்கு வழிவகுக்கும். இதை இயக்குவது தரவு பயன்பாட்டைப் பாதுகாக்க உதவுகிறது.",
     ),
+    "subdirectory": MessageLookupByLibrary.simpleMessage("துணை அடைவு"),
     "success": MessageLookupByLibrary.simpleMessage("செய்"),
     "sync": MessageLookupByLibrary.simpleMessage("ஒத்திசைவு"),
     "syncInterval": MessageLookupByLibrary.simpleMessage(
@@ -448,7 +472,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "totalTimeListened": MessageLookupByLibrary.simpleMessage(
       "மொத்த நேரம் கேட்டது",
     ),
-    "tryAgain": MessageLookupByLibrary.simpleMessage("மீண்டும் முயற்சிக்கவும்"),
+    "tryAgain": MessageLookupByLibrary.simpleMessage("மீண்டும் முயற்சி"),
     "unknown": MessageLookupByLibrary.simpleMessage("தெரியவில்லை"),
     "user": MessageLookupByLibrary.simpleMessage("பயனர்"),
     "username": MessageLookupByLibrary.simpleMessage("பயனர்பெயர்"),
@@ -464,6 +488,10 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "waitingForDownload": MessageLookupByLibrary.simpleMessage(
       "பதிவிறக்கம் தொடங்க காத்திருக்கிறது",
+    ),
+    "wrapText": MessageLookupByLibrary.simpleMessage("உரையை மடக்கு"),
+    "wrapTextDescription": MessageLookupByLibrary.simpleMessage(
+      "இயக்கப்பட்டால், அத்தியாயங்கள் போன்ற சில நூல்கள் துண்டிக்கப்படுவதற்கு பதிலாக மூடப்பட்டிருக்கும். இது சில வடிவமைப்புகளை உடைக்கும்.",
     ),
   };
 }

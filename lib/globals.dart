@@ -70,6 +70,9 @@ final Map<String, String> supportedLocales = {
   'sl': 'Slovenščina',
   'nb': 'Norsk Bokmål',
   'ta': 'தமிழ்',
+  'pt_BR': 'Português (Brasil)',
+  'ru': 'Русский',
+  'nl': 'Nederlands',
 };
 
 bool cachingEnabled = true;

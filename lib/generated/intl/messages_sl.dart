@@ -104,6 +104,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "allDownloads": MessageLookupByLibrary.simpleMessage("Vsi prenosi"),
     "amoledMode": MessageLookupByLibrary.simpleMessage("AMOLED način"),
+    "anUnknownErrorOccurred": MessageLookupByLibrary.simpleMessage(
+      "Prišlo je do neznane napake",
+    ),
     "ascending": MessageLookupByLibrary.simpleMessage("Naraščajoče"),
     "attribution": MessageLookupByLibrary.simpleMessage("Pripisovanje"),
     "author": MessageLookupByLibrary.simpleMessage("Avtor"),
@@ -122,6 +125,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "clearCache": MessageLookupByLibrary.simpleMessage("Počisti predpomnilnik"),
     "close": MessageLookupByLibrary.simpleMessage("Zapri"),
     "collapseSeries": MessageLookupByLibrary.simpleMessage("Strni serije"),
+    "collections": MessageLookupByLibrary.simpleMessage("Zbirke"),
+    "connectionError": MessageLookupByLibrary.simpleMessage(
+      "Napaka pri povezavi",
+    ),
     "consecutiveDays": MessageLookupByLibrary.simpleMessage("Zaporedni dnevi"),
     "continueListening": MessageLookupByLibrary.simpleMessage(
       "Nadaljujte s poslušanjem",
@@ -144,6 +151,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Trenutni prenosi",
     ),
     "currentPositionNum": m1,
+    "customHeaders": MessageLookupByLibrary.simpleMessage("Glave po meri"),
     "darkMode": MessageLookupByLibrary.simpleMessage("Temni način"),
     "dateFormatDayHourMinute": m2,
     "dateFormatDayHourMinuteSecond": m3,
@@ -203,6 +211,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "enableNotificationsDownload": MessageLookupByLibrary.simpleMessage(
       "Omogočite obvestila, če želite prejemati posodobitve napredka prenosa in lahko prenašate datoteke v ozadju.",
     ),
+    "enableSubdirectory": MessageLookupByLibrary.simpleMessage(
+      "Omogoči podmape",
+    ),
     "enabled": MessageLookupByLibrary.simpleMessage("Omogočeno"),
     "episodeId": MessageLookupByLibrary.simpleMessage("ID epizode"),
     "error": MessageLookupByLibrary.simpleMessage("Napaka"),
@@ -234,6 +245,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "hide": MessageLookupByLibrary.simpleMessage("Skrij"),
     "inProgress": MessageLookupByLibrary.simpleMessage("V teku"),
     "information": MessageLookupByLibrary.simpleMessage("Informacija"),
+    "invalidCredentials": MessageLookupByLibrary.simpleMessage(
+      "Neveljavni prijavni podatki",
+    ),
     "itemId": MessageLookupByLibrary.simpleMessage("ID elementa"),
     "itemLength": m20,
     "itemNotFoundDescription": MessageLookupByLibrary.simpleMessage(
@@ -271,6 +285,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Ko je omogočena, ta funkcija zaklene vrstico napredka v medijskem obvestilu, če to podpira operacijski sistem",
     ),
     "logging": MessageLookupByLibrary.simpleMessage("Beleženje"),
+    "login": MessageLookupByLibrary.simpleMessage("PRIJAVA"),
     "logs": MessageLookupByLibrary.simpleMessage("Dnevniki"),
     "longestItems": MessageLookupByLibrary.simpleMessage("Najdaljši elementi"),
     "minimize": MessageLookupByLibrary.simpleMessage("Minimiziraj"),
@@ -332,6 +347,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "playerSettings": MessageLookupByLibrary.simpleMessage(
       "Nastavitve predvajalnika",
     ),
+    "playlists": MessageLookupByLibrary.simpleMessage("Seznami predvajanj"),
     "pleaseCheckInternet": MessageLookupByLibrary.simpleMessage(
       "Preverite internetno povezavo in poskusite znova.",
     ),
@@ -350,6 +366,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "recentSeries": MessageLookupByLibrary.simpleMessage("Nedavne serije"),
     "recentlyAdded": MessageLookupByLibrary.simpleMessage("Nedavno dodano"),
     "reportAnIssue": MessageLookupByLibrary.simpleMessage("Prijavite težavo"),
+    "requiredFields": MessageLookupByLibrary.simpleMessage(
+      "Prosim izpolnite vsa obvezna polja",
+    ),
     "restartRequired": MessageLookupByLibrary.simpleMessage(
       "Potreben je ponovni zagon",
     ),
@@ -371,6 +390,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "seek": MessageLookupByLibrary.simpleMessage("Iskanje"),
     "sequence": MessageLookupByLibrary.simpleMessage("Zaporedje"),
     "series": MessageLookupByLibrary.simpleMessage("Serije"),
+    "serverAddress": MessageLookupByLibrary.simpleMessage("Naslov strežnika"),
+    "serverNotFound": MessageLookupByLibrary.simpleMessage(
+      "Ne najdem strežnika",
+    ),
     "serverSelection": MessageLookupByLibrary.simpleMessage("Izbira strežnika"),
     "settings": MessageLookupByLibrary.simpleMessage("Nastavitve"),
     "shakeResetTimer": MessageLookupByLibrary.simpleMessage(
@@ -402,6 +425,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "stopPlayerWhileSyncingDescription": MessageLookupByLibrary.simpleMessage(
       "Omogočite to možnost, da preprečite zagon predvajalnika, dokler ni sinhroniziran zadnji položaj predvajanja. To zagotavlja, da se predvajanje nadaljuje s pravilnega položaja. Če je onemogočeno, se lahko položaj predvajanja spremeni kmalu po začetku, kar lahko povzroči izgubo podatkov. Vklop te možnosti pomaga ohraniti porabo podatkov.",
     ),
+    "subdirectory": MessageLookupByLibrary.simpleMessage("Podmapa"),
     "success": MessageLookupByLibrary.simpleMessage("Uspeh"),
     "sync": MessageLookupByLibrary.simpleMessage("Sinhronizacija"),
     "syncInterval": MessageLookupByLibrary.simpleMessage(
@@ -443,6 +467,10 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "waitingForDownload": MessageLookupByLibrary.simpleMessage(
       "Čakam na začetek prenosa",
+    ),
+    "wrapText": MessageLookupByLibrary.simpleMessage("Prelom besedila"),
+    "wrapTextDescription": MessageLookupByLibrary.simpleMessage(
+      "Ko je omogočeno, se nekatera besedila, na primer poglavja, prelomijo namesto da bi bila odrezana. To lahko pokvari nekatera oblikovanja.",
     ),
   };
 }

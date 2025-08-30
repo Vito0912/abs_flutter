@@ -103,6 +103,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "allDownloads": MessageLookupByLibrary.simpleMessage("Alle Downloads"),
     "amoledMode": MessageLookupByLibrary.simpleMessage("AMOLED Modus"),
+    "anUnknownErrorOccurred": MessageLookupByLibrary.simpleMessage(
+      "Ein unbekannter Fehler ist aufgetreten",
+    ),
     "ascending": MessageLookupByLibrary.simpleMessage("Aufsteigend"),
     "attribution": MessageLookupByLibrary.simpleMessage("Anerkennungen"),
     "author": MessageLookupByLibrary.simpleMessage("Autor"),
@@ -123,6 +126,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "clearCache": MessageLookupByLibrary.simpleMessage("Cache leeren"),
     "close": MessageLookupByLibrary.simpleMessage("Schließen"),
     "collapseSeries": MessageLookupByLibrary.simpleMessage("Serien einklappen"),
+    "collections": MessageLookupByLibrary.simpleMessage("Sammlungen"),
+    "connectionError": MessageLookupByLibrary.simpleMessage(
+      "Verbindungsfehler",
+    ),
     "consecutiveDays": MessageLookupByLibrary.simpleMessage(
       "Aufeinanderfolgende Tage",
     ),
@@ -149,6 +156,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "Aktuell heruntergeladen",
     ),
     "currentPositionNum": m1,
+    "customHeaders": MessageLookupByLibrary.simpleMessage(
+      "Benutzerdefinierte Kopfzeilen",
+    ),
     "darkMode": MessageLookupByLibrary.simpleMessage("Dunkler Modus"),
     "dateFormatDayHourMinute": m2,
     "dateFormatDayHourMinuteSecond": m3,
@@ -208,6 +218,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "enableNotificationsDownload": MessageLookupByLibrary.simpleMessage(
       "Bitte aktiviere die Benachrichtigungen, um Fortschrittsupdates zum Download zu erhalten und Dateien im Hintergrund herunterladen zu können.",
     ),
+    "enableSubdirectory": MessageLookupByLibrary.simpleMessage(
+      "Unterverzeichnis aktivieren",
+    ),
     "enabled": MessageLookupByLibrary.simpleMessage("Aktiviert"),
     "episodeId": MessageLookupByLibrary.simpleMessage("Episoden Id"),
     "error": MessageLookupByLibrary.simpleMessage("Fehler"),
@@ -237,6 +250,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "hide": MessageLookupByLibrary.simpleMessage("Verstecken"),
     "inProgress": MessageLookupByLibrary.simpleMessage("In Bearbeitung"),
     "information": MessageLookupByLibrary.simpleMessage("Informationen"),
+    "invalidCredentials": MessageLookupByLibrary.simpleMessage(
+      "Ungültige Anmeldeinformationen",
+    ),
     "itemId": MessageLookupByLibrary.simpleMessage("Medien Id"),
     "itemLength": m20,
     "itemNotFoundDescription": MessageLookupByLibrary.simpleMessage(
@@ -272,6 +288,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Wenn aktiviert, sperrt diese Funktion die Fortschrittsleiste in der Medienbenachrichtigung, sofern das Betriebssystem dies unterstützt",
     ),
     "logging": MessageLookupByLibrary.simpleMessage("Protokollierung"),
+    "login": MessageLookupByLibrary.simpleMessage("ANMELDEN"),
     "logs": MessageLookupByLibrary.simpleMessage("Protokolle"),
     "longestItems": MessageLookupByLibrary.simpleMessage("Längste Medien"),
     "minimize": MessageLookupByLibrary.simpleMessage("Minimieren"),
@@ -333,6 +350,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "playerSettings": MessageLookupByLibrary.simpleMessage(
       "Playereinstellungen",
     ),
+    "playlists": MessageLookupByLibrary.simpleMessage("Wiedergabelisten"),
     "pleaseCheckInternet": MessageLookupByLibrary.simpleMessage(
       "Bitte überprüfe deine Internetverbindung und versuche es erneut.",
     ),
@@ -352,6 +370,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "recentlyAdded": MessageLookupByLibrary.simpleMessage("Neu hinzugefügt"),
     "reportAnIssue": MessageLookupByLibrary.simpleMessage(
       "Einen Fehler melden",
+    ),
+    "requiredFields": MessageLookupByLibrary.simpleMessage(
+      "Bitte füllen Sie alle erforderlichen Felder aus",
     ),
     "restartRequired": MessageLookupByLibrary.simpleMessage(
       "Neustart erforderlich",
@@ -374,6 +395,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "seek": MessageLookupByLibrary.simpleMessage("Spulen"),
     "sequence": MessageLookupByLibrary.simpleMessage("Reihenfolge"),
     "series": MessageLookupByLibrary.simpleMessage("Serien"),
+    "serverAddress": MessageLookupByLibrary.simpleMessage("Server Adresse"),
+    "serverNotFound": MessageLookupByLibrary.simpleMessage(
+      "Server nicht gefunden",
+    ),
     "serverSelection": MessageLookupByLibrary.simpleMessage("Serverauswahl"),
     "settings": MessageLookupByLibrary.simpleMessage("Einstellungen"),
     "shakeResetTimer": MessageLookupByLibrary.simpleMessage(
@@ -403,6 +428,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "stopPlayerWhileSyncingDescription": MessageLookupByLibrary.simpleMessage(
       "Aktiviere diese Option, um zu verhindern, dass der Player startet, bevor die letzte Wiedergabeposition synchronisiert wurde. Dies stellt sicher, dass die Wiedergabe an der richtigen Stelle fortgesetzt wird. Wenn diese Option deaktiviert ist, kann sich die Wiedergabeposition kurz nach dem Start ändern, was möglicherweise zu Datenverlust führen kann. Das Aktivieren dieser Option hilft, den Datenverbrauch zu reduzieren.",
     ),
+    "subdirectory": MessageLookupByLibrary.simpleMessage("Unterverzeichnis"),
     "success": MessageLookupByLibrary.simpleMessage("Erfolgreich"),
     "sync": MessageLookupByLibrary.simpleMessage("Syncronisation"),
     "syncInterval": MessageLookupByLibrary.simpleMessage(
@@ -444,6 +470,10 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "waitingForDownload": MessageLookupByLibrary.simpleMessage(
       "Warten auf den Beginn des Downloads",
+    ),
+    "wrapText": MessageLookupByLibrary.simpleMessage("Texte umbrechen"),
+    "wrapTextDescription": MessageLookupByLibrary.simpleMessage(
+      "Wenn diese Option aktiviert ist, werden bestimmte Texte, z. B. Kapitel, umgebrochen, anstatt abgeschnitten zu werden. Dies führt jedoch dazu, dass einige Designs nicht mehr funktionieren.",
     ),
   };
 }
