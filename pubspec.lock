@@ -825,10 +825,10 @@ packages:
     dependency: "direct dev"
     description:
       name: just_audio_web
-      sha256: "6ba8a2a7e87d57d32f0f7b42856ade3d6a9fbe0f1a11fabae0a4f00bb73f0663"
+      sha256: "9a98035b8b24b40749507687520ec5ab404e291d2b0937823ff45d92cb18d448"
       url: "https://pub.dev"
     source: hosted
-    version: "0.4.16"
+    version: "0.4.13"
   just_audio_windows:
     dependency: "direct main"
     description:

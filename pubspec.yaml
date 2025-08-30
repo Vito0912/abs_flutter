@@ -85,7 +85,7 @@ dev_dependencies:
   msix: ^3.16.7
   icons_launcher: ^3.0.0
   intl_utils: ^2.8.10
-  just_audio_web: ^0.4.16
+  just_audio_web: 0.4.13
 
 dependency_overrides:
   meta: ^1.14.0
