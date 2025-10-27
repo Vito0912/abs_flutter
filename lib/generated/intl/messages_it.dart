@@ -125,6 +125,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "clearCache": MessageLookupByLibrary.simpleMessage("Pulisci la Cache"),
     "close": MessageLookupByLibrary.simpleMessage("Chiudi"),
     "collapseSeries": MessageLookupByLibrary.simpleMessage("Raggruppa Serie"),
+    "collections": MessageLookupByLibrary.simpleMessage("Collezioni"),
     "connectionError": MessageLookupByLibrary.simpleMessage(
       "Errore connessione",
     ),
@@ -191,7 +192,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "disabled": MessageLookupByLibrary.simpleMessage("Diattivato"),
     "discover": MessageLookupByLibrary.simpleMessage("Scopri"),
-    "domainOrIp": MessageLookupByLibrary.simpleMessage("Domain or IP"),
+    "domainOrIp": MessageLookupByLibrary.simpleMessage("Dominio o IP"),
     "downloadComplete": MessageLookupByLibrary.simpleMessage(
       "Download completato",
     ),
@@ -350,6 +351,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "playerSettings": MessageLookupByLibrary.simpleMessage(
       "Impostazioni Player",
     ),
+    "playlists": MessageLookupByLibrary.simpleMessage("Playlists"),
     "pleaseCheckInternet": MessageLookupByLibrary.simpleMessage(
       "Controlla la tua connessione Internet e riprova.",
     ),
@@ -471,6 +473,10 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "waitingForDownload": MessageLookupByLibrary.simpleMessage(
       "In attesa dell\'avvio del download",
+    ),
+    "wrapText": MessageLookupByLibrary.simpleMessage("Testo a capo"),
+    "wrapTextDescription": MessageLookupByLibrary.simpleMessage(
+      "Se abilitata, alcuni testi, come i capitoli, vengono mandati a capo anziché essere troncati. Questo potrebbe compromettere alcuni design.",
     ),
   };
 }
