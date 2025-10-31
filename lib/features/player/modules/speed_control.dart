@@ -97,8 +97,7 @@ class SpeedControl extends ConsumerWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 4, horizontal: 4),
+                      padding: const EdgeInsets.symmetric(horizontal: 4),
                       child: PlatformTextButton(
                         child: PlatformText("-0.05x"),
                         onPressed: () {
@@ -120,8 +119,7 @@ class SpeedControl extends ConsumerWidget {
                       color: Theme.of(context).dividerColor,
                     ),
                     Padding(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 4, horizontal: 4),
+                      padding: const EdgeInsets.symmetric(horizontal: 4),
                       child: PlatformTextButton(
                         child: PlatformText("+0.05x"),
                         onPressed: () {

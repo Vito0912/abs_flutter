@@ -93,6 +93,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "addUser": MessageLookupByLibrary.simpleMessage("Ajouter un utilisateur"),
     "added": MessageLookupByLibrary.simpleMessage("Ajouté"),
+    "addedAt": MessageLookupByLibrary.simpleMessage("Ajouté le"),
     "aggressiveCaching": MessageLookupByLibrary.simpleMessage(
       "Mise en mémoire tampon agressive",
     ),
