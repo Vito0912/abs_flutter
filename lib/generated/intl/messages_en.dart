@@ -91,6 +91,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "addANewUser": MessageLookupByLibrary.simpleMessage("Add a New User"),
     "addUser": MessageLookupByLibrary.simpleMessage("Add User"),
     "added": MessageLookupByLibrary.simpleMessage("Added"),
+    "addedAt": MessageLookupByLibrary.simpleMessage("Added At"),
     "advanced": MessageLookupByLibrary.simpleMessage("Advanced"),
     "aggressiveCaching": MessageLookupByLibrary.simpleMessage(
       "Aggressive Caching",

@@ -6,6 +6,8 @@
   "@addUser": {},
   "added": "Ajouté",
   "@added": {},
+  "addedAt": "Ajouté le",
+  "@addedAt": {},
   "aggressiveCaching": "Mise en mémoire tampon agressive",
   "@aggressiveCaching": {},
   "aggressiveCachingDescription": "Lorsque cette option est activée, l'application va activer la mise en mémoire tampon agressive. Cela inclus stocker les chemins qui peuvent contenir des données nécessitant des mises à jour régulières, comme récupérer la progression de tous les éléments. Dans ces cas, la dernière position connue sera utilisée à moins que vous ouvriez spécifiquement un seul élément. Ces chemins auront une durée de mise en tampon plus courte.",
