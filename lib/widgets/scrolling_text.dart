@@ -24,6 +24,7 @@ class _ScrollingTextState extends State<ScrollingText>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late ScrollController _scrollController;
+  bool _isDisposed = false;
 
   @override
   void initState() {
@@ -34,6 +35,7 @@ class _ScrollingTextState extends State<ScrollingText>
       vsync: this,
       duration: widget.scrollDuration,
     )..addStatusListener((status) {
+        if (!mounted) return;
         if (status == AnimationStatus.completed) {
           _pauseAndReverse();
         } else if (status == AnimationStatus.dismissed) {
@@ -42,7 +44,7 @@ class _ScrollingTextState extends State<ScrollingText>
       });
 
     _controller.addListener(() {
-      if (_scrollController.hasClients) {
+      if (mounted && _scrollController.hasClients) {
         final maxScrollExtent = _scrollController.position.maxScrollExtent;
         final offset = maxScrollExtent * _controller.value;
         _scrollController.jumpTo(offset);
@@ -54,16 +56,21 @@ class _ScrollingTextState extends State<ScrollingText>
 
   Future<void> _pauseAndReverse() async {
     await Future.delayed(widget.pauseDuration);
-    _controller.reverse();
+    if (mounted && !_isDisposed) {
+      _controller.reverse();
+    }
   }
 
   Future<void> _pauseAndForward() async {
     await Future.delayed(widget.pauseDuration);
-    _controller.forward();
+    if (mounted && !_isDisposed) {
+      _controller.forward();
+    }
   }
 
   @override
   void dispose() {
+    _isDisposed = true;
     _controller.dispose();
     _scrollController.dispose();
     super.dispose();
