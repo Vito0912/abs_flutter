@@ -117,6 +117,8 @@ class LoginFormNotifier extends StateNotifier<LoginFormState> {
     ref.read(selectedUserProvider.notifier).state =
         ref.read(usersProvider).length - 1;
 
+    setBasePathOverride(ref, null);
+
     if (context.mounted) {
       state = state.copyWith(status: FormStatus.success);
       context.go('/');
@@ -215,12 +217,6 @@ class _LoginForm extends StatelessWidget {
               padding: EdgeInsets.only(top: 16),
               child: CircularProgressIndicator(),
             ),
-          const Padding(
-            padding: EdgeInsets.only(top: 8),
-            child: Text(
-              'After login, please restart the app once',
-            ),
-          ),
           if (state.errorMessage != null)
             Padding(
               padding: const EdgeInsets.only(top: 8),
