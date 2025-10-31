@@ -18,6 +18,7 @@ class SortButton extends ConsumerWidget {
           "media.metadata.language": S.current.language,
           "media.duration": S.current.duration,
           "sequence": S.current.sequence,
+          "addedAt": S.current.addedAt,
         };
   }
 

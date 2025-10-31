@@ -74,6 +74,11 @@ class S {
     return Intl.message('Added', name: 'added', desc: '', args: []);
   }
 
+  /// `Added At`
+  String get addedAt {
+    return Intl.message('Added At', name: 'addedAt', desc: '', args: []);
+  }
+
   /// `Advanced`
   String get advanced {
     return Intl.message('Advanced', name: 'advanced', desc: '', args: []);
@@ -1963,6 +1968,7 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
       Locale.fromSubtags(languageCode: 'ru'),
       Locale.fromSubtags(languageCode: 'sl'),
       Locale.fromSubtags(languageCode: 'ta'),
+      Locale.fromSubtags(languageCode: 'uk'),
       Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hans'),
     ];
   }

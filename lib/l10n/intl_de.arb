@@ -6,6 +6,8 @@
   "@addUser": {},
   "added": "Hinzugefügt",
   "@added": {},
+  "addedAt": "Hinzugefügt am",
+  "@addedAt": {},
   "advanced": "Erweitert",
   "@advanced": {},
   "aggressiveCaching": "Aggressives Caching",
