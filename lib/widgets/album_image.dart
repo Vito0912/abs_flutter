@@ -42,6 +42,7 @@ class AlbumImage extends ConsumerWidget {
               imageUrl: '${user.server!.url}/api/items/$itemId/cover',
               httpHeaders: {
                 'Authorization': 'Bearer ${user.token}',
+                ...?user.server?.headers,
               },
               imageBuilder: (context, imageProvider) => Container(
                 decoration: BoxDecoration(

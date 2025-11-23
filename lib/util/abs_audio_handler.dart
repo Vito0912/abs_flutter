@@ -24,6 +24,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:saf_stream/saf_stream.dart';
+import 'package:abs_flutter/provider/user_provider.dart';
 
 class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
   final AudioPlayer _player = AudioPlayer();
@@ -92,9 +93,15 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
     });
   }
 
+  Map<String, String> _getHeaders() {
+    final user = _container.read(currentUserProvider);
+    return user?.server?.headers ?? {};
+  }
+
   @override
   Future<void> addQueueItem(MediaItem mediaItem) async {
-    AudioSource source = AudioSource.uri(Uri.parse(mediaItem.id));
+    AudioSource source =
+        AudioSource.uri(Uri.parse(mediaItem.id), headers: _getHeaders());
     await _player.setAudioSource(source);
   }
 
@@ -116,7 +123,8 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
         final String source = sources[i];
 
         if (isStreaming) {
-          audioSources.add(AudioSource.uri(Uri.parse(source)));
+          audioSources
+              .add(AudioSource.uri(Uri.parse(source), headers: _getHeaders()));
         } else {
           if (!kIsWeb &&
               Platform.isAndroid &&
@@ -154,7 +162,7 @@ class AbsAudioHandler extends BaseAudioHandler with QueueHandler, SeekHandler {
       log('Multiple sources', name: 'playMediaItem');
     } else {
       if (item.extras?['streaming'] == true) {
-        source = AudioSource.uri(Uri.parse(item.id));
+        source = AudioSource.uri(Uri.parse(item.id), headers: _getHeaders());
       } else {
         if (!kIsWeb && Platform.isAndroid && item.id.startsWith('content://')) {
           Stream<List<int>> fileStream =
