@@ -27,7 +27,8 @@ class Constants {
   static const String VOLUME = 'volume';
   static const String PLAYBACK_SPEED = 'playbackSpeed';
   static const String WRAP_TEXTS = 'wrapTexts';
-  static const String SHOW_ONLY_DOWNLOADED_WHEN_OFFLINE = 'showOnlyDownloadedWhenOffline';
+  static const String SHOW_ONLY_DOWNLOADED_WHEN_OFFLINE =
+      'showOnlyDownloadedWhenOffline';
 
   static const String BOOK = 'book';
   static const String PODCAST = 'podcast';

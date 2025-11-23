@@ -104,7 +104,8 @@ class PlatformSettings extends ConsumerWidget {
               SwitchTile(
                   leading: const Icon(Icons.cloud_off_outlined),
                   title: S.of(context).showOnlyDownloadedWhenOffline,
-                  toolTipText: S.of(context).showOnlyDownloadedWhenOfflineDescription,
+                  toolTipText:
+                      S.of(context).showOnlyDownloadedWhenOfflineDescription,
                   keyValue: Constants.SHOW_ONLY_DOWNLOADED_WHEN_OFFLINE,
                   defaultValue: false),
               if (!kIsWeb && Helper.isDesktop())
