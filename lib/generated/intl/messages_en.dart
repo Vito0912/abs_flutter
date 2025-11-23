@@ -376,6 +376,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "showMediaTypeDescription": MessageLookupByLibrary.simpleMessage(
       "Displays the media type badges at the bottom of each item.",
     ),
+    "showOnlyDownloadedWhenOffline": MessageLookupByLibrary.simpleMessage(
+      "Show Only Downloaded Items When Offline",
+    ),
+    "showOnlyDownloadedWhenOfflineDescription":
+        MessageLookupByLibrary.simpleMessage(
+          "When enabled and not connected to the server, only downloaded items will be displayed in your library.",
+        ),
     "showProgressPerChapters": MessageLookupByLibrary.simpleMessage(
       "Show Progress per Chapter",
     ),
