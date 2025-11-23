@@ -58,6 +58,7 @@ final Map<String, dynamic> defaultSettings = {
   Constants.VOLUME: 1.0,
   Constants.PLAYBACK_SPEED: 1.0,
   Constants.WRAP_TEXTS: false,
+  Constants.SHOW_ONLY_DOWNLOADED_WHEN_OFFLINE: false,
 };
 
 final Map<String, String> supportedLocales = {

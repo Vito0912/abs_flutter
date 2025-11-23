@@ -101,6 +101,12 @@ class PlatformSettings extends ConsumerWidget {
                   toolTipText: S.of(context).showMediaTypeDescription,
                   keyValue: Constants.SHOW_MEDIA_TYPE,
                   defaultValue: true),
+              SwitchTile(
+                  leading: const Icon(Icons.cloud_off_outlined),
+                  title: S.of(context).showOnlyDownloadedWhenOffline,
+                  toolTipText: S.of(context).showOnlyDownloadedWhenOfflineDescription,
+                  keyValue: Constants.SHOW_ONLY_DOWNLOADED_WHEN_OFFLINE,
+                  defaultValue: false),
               if (!kIsWeb && Helper.isDesktop())
                 SwitchTile(
                     leading: const Icon(IonIcons.file_tray),
