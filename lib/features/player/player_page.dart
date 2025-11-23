@@ -41,79 +41,81 @@ class PlayerPage extends ConsumerWidget {
           )
         ],
       ),
-      body: LayoutBuilder(
-        builder: (context, constraints) {
-          return SingleChildScrollView(
-            child: Center(
-              child: ConstrainedBox(
-                constraints: BoxConstraints(
-                  maxWidth: 600,
-                  minHeight: constraints
-                      .maxHeight, // Ensure the column takes up the full height
-                ),
-                child: IntrinsicHeight(
-                  child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        AlbumImage(
-                            player.audioService.mediaItem.value!
-                                .extras!['libraryItemId'],
-                            size: 200),
-                        const SizedBox(height: 16),
-                        SingleChildScrollView(
-                            scrollDirection: Axis.horizontal,
-                            child: PlatformText(
-                              player.audioService.mediaItem.value?.title ?? '',
-                              style: Theme.of(context).textTheme.titleLarge,
-                            )),
-                        const SizedBox(height: 16),
-                        PlatformText(
-                          player.audioService.mediaItem.value?.artist ?? '',
-                          style: const TextStyle(fontSize: 16),
-                        ),
-                        const SizedBox(height: 16),
-                        Expanded(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              PlayBar(
+      body: SafeArea(
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            return SingleChildScrollView(
+              child: Center(
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(
+                    maxWidth: 600,
+                    minHeight: constraints.maxHeight,
+                  ),
+                  child: IntrinsicHeight(
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          AlbumImage(
+                              player.audioService.mediaItem.value!
+                                  .extras!['libraryItemId'],
+                              size: 200),
+                          const SizedBox(height: 16),
+                          SingleChildScrollView(
+                              scrollDirection: Axis.horizontal,
+                              child: PlatformText(
+                                player.audioService.mediaItem.value?.title ??
+                                    '',
+                                style: Theme.of(context).textTheme.titleLarge,
+                              )),
+                          const SizedBox(height: 16),
+                          PlatformText(
+                            player.audioService.mediaItem.value?.artist ?? '',
+                            style: const TextStyle(fontSize: 16),
+                          ),
+                          const SizedBox(height: 16),
+                          Expanded(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                PlayBar(
+                                    positionStream: positionStream,
+                                    player: player,
+                                    playerStatus: playerStatus,
+                                    currentChapter: currentChapter,
+                                    size: size),
+                                ProgressBar(
                                   positionStream: positionStream,
                                   player: player,
+                                  showPerChapter: user?.setting
+                                          ?.settings['progressAsChapters'] ??
+                                      false,
+                                  currentChapter: currentChapter,
+                                  bufferStream: bufferStream,
+                                  size: size,
+                                ),
+                                const SizedBox(height: 16),
+                                PlayerButtonMenu(
+                                  size: size,
+                                  speedStream: speedStream,
+                                  player: player,
+                                  libraryItemId: libraryItemId,
                                   playerStatus: playerStatus,
                                   currentChapter: currentChapter,
-                                  size: size),
-                              ProgressBar(
-                                positionStream: positionStream,
-                                player: player,
-                                showPerChapter: user?.setting
-                                        ?.settings['progressAsChapters'] ??
-                                    false,
-                                currentChapter: currentChapter,
-                                bufferStream: bufferStream,
-                                size: size,
-                              ),
-                              const SizedBox(height: 16),
-                              PlayerButtonMenu(
-                                size: size,
-                                speedStream: speedStream,
-                                player: player,
-                                libraryItemId: libraryItemId,
-                                playerStatus: playerStatus,
-                                currentChapter: currentChapter,
-                              )
-                            ],
-                          ),
-                        )
-                      ],
+                                )
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
-          );
-        },
+            );
+          },
+        ),
       ),
     );
   }
