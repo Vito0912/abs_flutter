@@ -85,7 +85,10 @@ class SpeedControl extends ConsumerWidget {
                 useState(ref.read(settingsProvider)[Constants.PLAYBACK_SPEED]);
             customSpeedController.text = speed.value.toString();
             return Padding(
-              padding: const EdgeInsets.only(bottom: 16, left: 16, right: 16),
+              padding: EdgeInsets.only(
+                  bottom: 16 + MediaQuery.of(context).padding.bottom,
+                  left: 16,
+                  right: 16),
               child: Container(
                 decoration: BoxDecoration(
                   border: Border.all(color: Theme.of(context).dividerColor),
