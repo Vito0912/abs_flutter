@@ -1646,6 +1646,26 @@ class S {
     );
   }
 
+  /// `Show Only Downloaded Items When Offline`
+  String get showOnlyDownloadedWhenOffline {
+    return Intl.message(
+      'Show Only Downloaded Items When Offline',
+      name: 'showOnlyDownloadedWhenOffline',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `When enabled and not connected to the server, only downloaded items will be displayed in your library.`
+  String get showOnlyDownloadedWhenOfflineDescription {
+    return Intl.message(
+      'When enabled and not connected to the server, only downloaded items will be displayed in your library.',
+      name: 'showOnlyDownloadedWhenOfflineDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Show Progress per Chapter`
   String get showProgressPerChapters {
     return Intl.message(

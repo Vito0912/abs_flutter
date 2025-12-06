@@ -1,8 +1,11 @@
 import 'package:abs_flutter/features/library/item_components/library_item_widget.dart';
 import 'package:abs_flutter/models/library_preview.dart';
 import 'package:abs_flutter/provider/connection_provider.dart';
+import 'package:abs_flutter/provider/download_provider.dart';
 import 'package:abs_flutter/provider/library_items_provider.dart';
 import 'package:abs_flutter/provider/progress_provider.dart';
+import 'package:abs_flutter/provider/settings_provider.dart';
+import 'package:abs_flutter/util/constants.dart';
 import 'package:abs_flutter/widgets/no_connection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -61,8 +64,42 @@ class _LibraryItemsState extends ConsumerState<LibraryItems> {
   Widget build(BuildContext context) {
     final connection = ref.watch(connectionProvider);
     final libraryItems = ref.watch(libraryItemsProvider);
+    final settings = ref.watch(specificKeysSettingsProvider(
+        [Constants.SHOW_ONLY_DOWNLOADED_WHEN_OFFLINE]));
+    final downloads = ref.watch(downloadListProvider);
 
     if (!connection) {
+      final showOnlyDownloaded =
+          settings[Constants.SHOW_ONLY_DOWNLOADED_WHEN_OFFLINE] ?? false;
+
+      if (showOnlyDownloaded) {
+        if (libraryItems != null && downloads.isNotEmpty) {
+          final downloadedItemIds = downloads.map((d) => d.itemId).toSet();
+          final filteredItems = libraryItems.items
+              .where((item) => downloadedItemIds.contains(item.id))
+              .toList();
+
+          final filteredLibraryItems = LibraryPreview(
+            items: filteredItems,
+            total: filteredItems.length,
+            page: libraryItems.page,
+            limit: libraryItems.limit,
+            offset: libraryItems.offset,
+            filterBy: libraryItems.filterBy,
+            sortDesc: libraryItems.sortDesc,
+            minified: libraryItems.minified,
+            collapseseries: libraryItems.collapseseries,
+            include: libraryItems.include,
+          );
+
+          (MediaQuery.of(context).size.width < 900)
+              ? abovePadding = 80
+              : abovePadding = 16;
+
+          return _buildItems(filteredLibraryItems);
+        }
+      }
+
       return const NoConnection();
     }
 
